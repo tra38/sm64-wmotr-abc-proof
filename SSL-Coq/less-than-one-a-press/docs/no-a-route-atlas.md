@@ -11,6 +11,9 @@ the [open checklist](checklist.md): the checklist says what proof obligation is
 next, while this atlas says what the gameplay idea is, what has already been
 learned about it, and why it is or is not worth more search time.
 
+For the shared proof gaps that affect many routes at once, see the
+[plain-English guide to the hardest obligations](hardeest-obligations.md).
+
 ### Authoring rule
 
 Keep this atlas non-technical and centered on what has actually been proved or
