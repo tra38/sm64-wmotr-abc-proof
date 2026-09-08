@@ -2,7 +2,7 @@ COQMAKEFILE := CoqMakefile
 COQBIN ?=
 COQMAKEFILE_CMD ?= $(COQBIN)coq_makefile
 
-.PHONY: all generated regenerate verify-generated proofs check check-rank9 check-rank9-timing check-rank9a check-rank9a-prehome check-rank10a check-rank10a-entry check-rank12b clean
+.PHONY: all generated regenerate verify-generated proofs check check-rank9 check-rank9-timing check-rank9a check-rank9a-prehome check-rank10a check-rank10a-entry check-rank12b check-contact-necessity clean
 
 all: proofs
 
@@ -2347,6 +2347,19 @@ check-rank10a: $(COQMAKEFILE)
 	bash pipeline/assumptions.sh \
 	  LessThanOneAPress.Proofs.MainTheorem \
 	  conditional_evidence_bearing_clight_run_impossibility
+
+check-contact-necessity: $(COQMAKEFILE)
+	$(MAKE) -f $(COQMAKEFILE) proofs/MainTheorem.vo
+	bash pipeline/check-no-admitted.sh
+	bash pipeline/check-link-hygiene.sh
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.Area2Rank12BContact rank12b_selected_contact_body_resolves
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.ObjectContactNecessity ocn_generated_contact_checkpoints
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.ObjectContactNecessity ocn_success_requires_ordered_contact_tests
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.ObjectContactNecessity ocn_actual_tests_imply_reported_overlap
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.ObjectContactNecessity ocn_successful_body_supplies_collision_phase_overlap
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem current_successful_contact_requires_ordered_tests
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem current_source_contact_supplies_collection_geometry
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem conditional_evidence_bearing_clight_run_impossibility
 
 check-rank12b: $(COQMAKEFILE)
 	$(MAKE) -f $(COQMAKEFILE) proofs/MainTheorem.vo

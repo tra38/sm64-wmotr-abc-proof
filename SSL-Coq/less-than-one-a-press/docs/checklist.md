@@ -180,6 +180,19 @@ These obligations currently block the clean-retail result.
 - [ ] Derive constructor origin, collision, spawn, trigger, lifecycle, and
   preservation premises from Clight instead of assuming them in steps.
 
+  - [x] Derive the three necessary comparison outcomes from every successful
+    execution of the full selected US/JP `detect_object_hitbox_overlap` body,
+    with ordered input, height-read, and registration subexecutions from one
+    trace. `ObjectContactNecessity.v` also derives the existing overlap formula
+    from six explicit local-value readbacks; the MainTheorem construction
+    interface supplies `collision_phase_overlap` without assuming its geometric
+    member. This is a source-level result, not a complete collection bridge.
+  - [ ] Establish those six readbacks from the correct live objects, including
+    the actual `sqrtf` result and pre-/post-call read history; derive object
+    roles, count bounds, pair registration, and collision-phase timing; trace
+    each real target award or secret credit back to that same successful call.
+    See [the shared contact proof](notes/object-contact-necessity.md).
+
 - [ ] Prove Clight-to-writer coverage for the finite normal-star/save
   inventory, excluding the explicit corruption/unmodeled writer for clean
   target executions.

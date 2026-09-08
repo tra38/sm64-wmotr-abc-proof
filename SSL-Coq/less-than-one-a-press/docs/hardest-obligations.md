@@ -53,17 +53,25 @@ during the very frame in which Mario first gets access.
 **What we already have.** Within the proof's current account of collection,
 earning Inside the Ancient Pyramid requires contact with the correct star,
 and earning Pyramid Puzzle requires its secret-trigger sequence, including
-the upper trigger. There is also a framework for identifying the first event
-that makes the necessary access possible. The remaining gap is showing that
-the actual game always fits this account, with the real collision shapes,
-object identities, and timing. A simple height line above the second pole
-has already proved inadequate as a substitute for this work.
+the upper trigger. The new [shared contact proof](notes/object-contact-necessity.md)
+now follows every successful execution of the checked US and Japanese contact
+routine: the sideways-distance test must accept, and neither vertical-separation
+test can reject. Those checks belong to one uninterrupted execution, not to
+unrelated snapshots. Connecting the numbers actually read there to the reported
+Mario and target positions then supplies the touch condition used by the
+collection proof. We still need to establish those readings, the correct
+objects and timing, and the connection from each real collection or secret
+credit to that contact. A simple height line above the second pole remains
+inadequate as a substitute.
 
-**What finishes it.** Establish a genuinely necessary contact or access
-condition for each star, then account for every game operation that could
-first satisfy it. This includes changes to the star, secret, or supporting
-floor, not only movement by Mario. Once complete, the argument would cover
-unnamed tricks as well as routes already in the atlas.
+**What finishes it.** Trace each real collection or secret credit back to the
+correct recorded contact, establish the numbers read by that contact check,
+and show that the proof reports the same objects at the right moment. Then
+account for every game operation that could first make the required contact
+possible. This includes changes to the star, secret, or supporting floor,
+not only movement by Mario. Once complete, the argument would cover unnamed
+tricks as well as routes already in the atlas; the new contact result alone
+does not finish this obligation.
 
 ## 3. Find restrictions that survive every allowed input sequence
 
@@ -203,7 +211,7 @@ and the open [checklist](checklist.md). The concrete examples come from the
 [execution-scope guide](compcert-execution-scope.md) gives the detailed limits
 on what the current proof can claim.
 
-This is a documentation update, not a new proof or a declaration that any of
-the six obligations above is finished.
+This guide now includes a new, checked contact result for obligation 2. It does
+not declare any of the six obligations above finished.
 
 [Back to the route atlas](no-a-route-atlas.md)

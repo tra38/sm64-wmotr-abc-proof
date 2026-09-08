@@ -1,5 +1,5 @@
 From Coq Require Import Lia List ZArith.
-From compcert Require Import AST Clight Ctypes Floats Integers.
+From compcert Require Import AST Clight ClightBigstep Clightdefs Ctypes Floats Integers Values.
 From LessThanOneAPress.Proofs Require Import
   GameTypes InputSemantics CleanEntry ObjectProvenance StarCollection
   CollisionRegions AreaTransitions HiddenStar LowerEntrance UpperEntrance
@@ -42,6 +42,7 @@ From LessThanOneAPress.Proofs Require Import
   Area2Rank10AGroundPound Area2Rank12BContact Area2Rank9UpperStarDance Area2Rank9StarTiming
   Area2Rank9APreHomeMovement
   Area2Rank10AEntryChecks
+  ObjectContactNecessity
   CompCertRouteScope.
 
 Import ListNotations.
@@ -859,6 +860,39 @@ Proof. split; [exact rank10a_ground_pound_boundary_checked |
     census nor that sample supplies a live support or controller predecessor. *)
 Theorem current_rank12b_cross_barrier_contact_boundary : Rank12BContactBoundary.
 Proof. exact rank12b_contact_boundary_checked. Qed.
+
+(** Hardest obligation 2: this necessity result starts from the WHOLE selected
+    US/JP contact body returning one, not from a granted successful overlap or
+    a gate-crossing assumption. The actual input/height/registration executions
+    belong to one trace. It does not yet connect an award to that body call. *)
+Theorem current_successful_contact_requires_ordered_tests :
+  forall version environment locals memory trace final_locals final_memory,
+  ocn_exec (Clight.globalenv (selected_clight_target version))
+    environment locals memory (fn_body (rank12b_body version))
+    trace final_locals final_memory (Out_return (Some (Vint Int.one, tint))) ->
+  exists radius_locals radius_memory vertical_locals vertical_memory
+      input_trace height_trace registration_trace,
+    ocn_ordered_contact_checkpoints version environment locals memory trace
+      final_locals final_memory radius_locals radius_memory vertical_locals
+      vertical_memory input_trace height_trace registration_trace.
+Proof. exact ocn_success_requires_ordered_contact_tests. Qed.
+
+(** Construction interface for the collision predicate consumed by
+    [CertifiedStep], [StarCollection], and [HiddenStar]. Its geometric member
+    is now derived from actual source execution plus six precise readbacks.
+    The readbacks, object roles, registration, and phase chronology still
+    have to be supplied from the SAME live run. This is a partial discharge
+    of the collection-geometry part of whole-program refinement, not a proof
+    of [WholeProgramClightRefinementObligation]. *)
+Theorem current_source_contact_supplies_collection_geometry :
+  forall version environment locals memory trace final_locals final_memory phase,
+  ocn_exec (Clight.globalenv (selected_clight_target version))
+    environment locals memory (fn_body (rank12b_body version))
+    trace final_locals final_memory (Out_return (Some (Vint Int.one, tint))) ->
+  ObjectContactReadbackObligation version environment locals memory trace
+    final_locals final_memory phase ->
+  ocn_other_phase_facts phase -> collision_phase_overlap phase.
+Proof. exact ocn_successful_body_supplies_collision_phase_overlap. Qed.
 
 (** Rank 9's upper continuation now has an actual memory-executed floor
     commit and a post-air-step branch that does not undo a ledge result.

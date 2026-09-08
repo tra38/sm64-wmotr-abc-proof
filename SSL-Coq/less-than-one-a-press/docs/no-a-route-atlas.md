@@ -12,7 +12,7 @@ next, while this atlas says what the gameplay idea is, what has already been
 learned about it, and why it is or is not worth more search time.
 
 For the shared proof gaps that affect many routes at once, see the
-[plain-English guide to the hardest obligations](hardeest-obligations.md).
+[plain-English guide to the hardest obligations](hardest-obligations.md).
 
 ### Authoring rule
 
