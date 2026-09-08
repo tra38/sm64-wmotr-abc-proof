@@ -1,0 +1,119 @@
+{
+  "schema": 1,
+  "recorded_utc": "2026-09-08T00:15:15.395145+00:00",
+  "branch": "codex/ssl-pyramid-item-proof",
+  "parent_commit": "a891bfc7bb2982efee16c13f0c907d25b7b60235",
+  "source_revision": "9921382a68bb0c865e5e45eb594d9c64db59b1af",
+  "versions": [
+    "VERSION_US",
+    "VERSION_JP"
+  ],
+  "toolchain": {
+    "coq": "8.16.1",
+    "compcert": "3.15",
+    "switch": "sm64-item-proof"
+  },
+  "virtual_memory_cap_kib": 3145728,
+  "workspace_source_sha256": {
+    "Pedro-Coq/_CoqProject": "c0e49f46f64040e36602f1358aa3e50af219a8efe27ff9f726d3a2de58d25aed",
+    "Pedro-Coq/proofs/CloneFloorExecution.v": "41f89f34efbceda68012cd0fec68aafebb9a24de80e5629b1f8663416c1c763c",
+    "Pedro-Coq/proofs/CloneFloorPartition.v": "572261204f23888bc69c923bbfdd8fa88427c0fc8f0ac07a29a198ccfc9015a0",
+    "Pedro-Coq/proofs/CloneFloorRefresh.v": "d0f83b2e725f5cca2fff549fc5faac7709981ffec839a9b493820c6d55e2f881",
+    "Pedro-Coq/proofs/TTCCloneCandidates.v": "b5a85287bd951828cc388ea708bc0c4a3ff2ff6dca7b2aaef7b73aec8c23681a",
+    "Pedro-Coq/proofs/CloneFloorMechanism.v": "992f86d954161e92dc2eb9f4b5aba61c786e7ca0531d7bd883b90cc334ed660e",
+    "Pedro-Coq/proofs/MainTheorem.v": "600f605d36dd039090ca3c28902db445c3286882e8919617069f8f83dfcdb662"
+  },
+  "checks": [
+    {
+      "command": "COQ_JOBS=2 bash Pedro-Coq/pipeline/build.sh proofs COQEXTRAFLAGS=-time",
+      "exit_code": 0,
+      "log": "Pedro-Coq/build/clone-floor-build.log",
+      "log_sha256": "ebb88941b7921cead27f3893cacb72b0e34d8d0d8b090c0ca3e52a6ccbba8e93"
+    },
+    {
+      "command": "bash Pedro-Coq/pipeline/check-no-admitted.sh",
+      "exit_code": 0,
+      "log": "Pedro-Coq/build/clone-floor-no-holes.log",
+      "log_sha256": "30740e5e288838f99272181e71b4280edde451d4ba72da6379fc974503088d15"
+    },
+    {
+      "command": "bash Pedro-Coq/pipeline/assumptions.sh Pedro.Proofs.CloneFloorMechanism checked_ttc_cog_clone_floor_frontier_us_jp",
+      "exit_code": 0,
+      "log": "Pedro-Coq/build/clone-floor-assumptions.log",
+      "log_sha256": "649c4dfb867a6c016545c885a436502f8914780184b149d6ec8de83b399b034d"
+    },
+    {
+      "command": "bash Pedro-Coq/pipeline/assumptions.sh Pedro.Proofs.MainTheorem checked_ttc_cog_local_mechanism_us_jp",
+      "exit_code": 0,
+      "log": "Pedro-Coq/build/clone-floor-main-assumptions.log",
+      "log_sha256": "649c4dfb867a6c016545c885a436502f8914780184b149d6ec8de83b399b034d"
+    },
+    {
+      "command": "SM64_PROOF_SWITCH=sm64-item-proof bash .claude/skills/proof-discipline/discipline_check.sh",
+      "exit_code": 0,
+      "log": "Pedro-Coq/build/clone-floor-discipline.log",
+      "log_sha256": "819bae79d93609aaec743b476873074411f25ded3641b15c1f33a4e7a58eac0a"
+    },
+    {
+      "command": "python Pedro-Coq/pipeline/check-rng-source-coverage.py",
+      "exit_code": 0,
+      "pinned_rng_bearing_files": 81,
+      "generated_files": 82
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --cached --check",
+      "exit_code": 0
+    },
+    {
+      "command": "Validate local Markdown links in the three changed documents",
+      "exit_code": 0,
+      "checked_targets": 26
+    }
+  ],
+  "standard_assumption_names": [
+    "ClassicalDedekindReals.sig_forall_dec",
+    "ClassicalDedekindReals.sig_not_dec",
+    "Classical_Prop.classic",
+    "Events.external_functions_sem",
+    "Events.inline_assembly_sem",
+    "FunctionalExtensionality.functional_extensionality_dep"
+  ],
+  "assumption_names_match_previous_transition_validation": true,
+  "active_capstone": "Pedro.Proofs.MainTheorem.checked_ttc_cog_local_mechanism_us_jp",
+  "new_frontier": "Pedro.Proofs.CloneFloorMechanism.checked_ttc_cog_clone_floor_frontier_us_jp",
+  "scope": {
+    "complete_generated_function_executions": [
+      "find_floor_from_list: empty and specified published-triangle cases",
+      "bhv_cmd_break",
+      "clear_spatial_partition: all 256 cells",
+      "clear_dynamic_surfaces: global-Time-Stop mask-64 case"
+    ],
+    "generated_statement_executions": [
+      "cur_obj_update command loop at BREAK, including its indirect call and exit",
+      "find_floor output-pointer reset"
+    ],
+    "composition": "The complete partition clear establishes null heads used by the subsequent real floor-list query.",
+    "source_checks": [
+      "non-holdable script replacement and carry scripts",
+      "caller ordering and floor-output arguments",
+      "79 TTC surface-list descriptors across 12 families",
+      "initial holdable-flag writes and cork-box absence",
+      "13 exclamation-box parameter presets"
+    ],
+    "not_established": [
+      "reachable cloning/allocation sequence",
+      "runtime holdable-flag invariant",
+      "script-installation N64 address refinement",
+      "complete surrounding object/frame execution",
+      "surface republishing and pool-reuse invariant",
+      "preserving in-spot dust or RNG-control witness"
+    ],
+    "new_emulator_run": false,
+    "new_generated_ast_regeneration": false,
+    "root_discipline_audit_targets": "Existing root no-A capstones; Pedro is checked separately above."
+  }
+}

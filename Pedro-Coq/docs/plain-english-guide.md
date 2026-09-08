@@ -18,6 +18,14 @@ sliding phase after a slide kick. The latest work proves that two previously
 assumed helper paths execute and preserve Mario's position and floor reference.
 The sliding-motion and ground-step helpers remain open.
 
+The cloning investigation now proves a separate distinction: floor queries
+can select an already published triangle without consulting its parent
+object's hitbox or position, but changing the object position does not move
+that triangle. The complete partition-clearing function and its following
+empty-list query are also checked. See the
+[cloning and floor report](notes/ttc-cog-cloning-floor.md) for the TTC candidates
+and the remaining gameplay obligations.
+
 The project still has no complete witness of Mario staying in the cog Pedro
 spot and controlling RNG there. Some recorded experiments start from a declared
 near-cog test placement; they do not establish a route from normal level entry.
@@ -137,6 +145,43 @@ needs a different animation and more movement code. The airborne entry and
 bounce also need their own preserving execution proofs. The current result
 therefore identifies a dust candidate; it does not establish dust creation
 while Mario remains in the actual cog spot.
+
+### Could a cloned object supply the missing floor?
+
+An object has several kinds of data. Its interaction hitbox determines things
+such as whether Mario can touch or grab it. A platform's collision triangles
+are separate data, placed in lists that the floor-search code reads. Removing
+ordinary interaction does not automatically remove a triangle already in one
+of those lists.
+
+The proof executes a floor search that selects a supplied cog triangle without
+reading any parent-object fields. It finds the triangle at its stored location.
+Teleporting the object therefore does not, by itself, put a new floor underneath
+Mario at the destination.
+
+There is a further obstacle for non-holdable clones: their original behavior is
+replaced by a short carry script ending in `BREAK`. The proof executes that
+command and the interpreter-loop exit without changing memory. The original
+platform's collision-loading behavior is not run by that loop. Other generic
+object-update work still needs to be accounted for in a complete frame.
+
+Normal dynamic-surface processing clears the lists before terrain objects load
+their current triangles. The checked clearing function sets all 768 list heads
+to null, and the checked search finds no floor in those cleared lists before
+new triangles are added. Global Time Stop can skip the clear, but this is a
+different setting from TTC's clock being stopped. Old triangles before a clear
+and global Time Stop are timing qualifications, not established dust witnesses.
+
+The TTC census includes its clockwork platforms, Thwomp, thirteen exclamation
+boxes and blue coin switch. None of those behavior scripts sets the holdable
+flag. The scripts that do set it belong to the Heave-Ho and two Bob-ombs, whose
+normal behaviors do not provide standing platform triangles. TTC has no cork-box
+descriptors; its exclamation boxes contain coins or walking 1-Ups.
+
+This does not prove that the listed platforms cannot be cloned. It identifies
+why cloning one does not automatically provide collision at its new position.
+A reachable cloning sequence, suitable published floor, preserving Mario action
+and accepted dust request remain to be established together.
 
 ## Why dust can affect random numbers
 

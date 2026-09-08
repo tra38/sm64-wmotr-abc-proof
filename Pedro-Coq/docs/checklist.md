@@ -93,6 +93,22 @@ current request.
       the dispatcher, entry/bounce path and following knockback update in the
       actual cog state. Finish particle acceptance and its N64 address refinement,
       accounting for both dust and vertical-star requests and their ordered draws.
+- [x] Execute US/JP empty-list and published-cog-triangle floor searches; distinguish
+      published surface data from the parent object's position and hitbox.
+- [x] Check the non-holdable script-replacement branch and all three carry scripts;
+      execute the real BREAK handler, indirect interpreter dispatch and loop exit.
+- [x] Execute all 256 cells of the original partition clear, construct all 768
+      pointer stores and derive the following empty-list floor-search result.
+- [x] Execute the actual floor-pointer reset statement and global-Time-Stop clear
+      exception; check generated caller ordering and field/partition layouts.
+- [x] Check TTC's 79 surface-list descriptors, twelve behavior families, immediate
+      holdable-flag writes, cork-box absence and thirteen box-content parameters.
+      Consume the results in the active cog capstone; see the
+      [cloning and floor report](notes/ttc-cog-cloning-floor.md).
+- [ ] Establish a reachable cloned-platform setup, or a complete exclusion for a
+      stated setup family, with runtime flags, script installation, surface
+      clearing/republishing and Mario's next geometry refresh accounted for.
+      Initial descriptor/script checks do not establish this runtime invariant.
 - [x] Generate all seven Mario action groups, interaction, camera, environmental
       effects and supporting dialog/geometry units for US/JP: 41 units each.
 - [x] Prove structural coverage and exact lists for 282 direct RNG sites,

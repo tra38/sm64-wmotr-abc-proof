@@ -10,7 +10,7 @@ From Pedro.Proofs Require Import
   RNGSourceCoverage MarioParticleCatalogue EnvironmentNoRNG
   SoundRequestExecution SlideKickAnimationExecution SlideKickHelperDischarge
   CogActionExecution CogReflectionExecution CogSlideExecution CogDustClearing
-  CogParticleAcceptance.
+  CogParticleAcceptance CloneFloorMechanism.
 
 Module MainSpawnUS := DustSpawnParticleExecution.
 Module MainSpawnJP := DustSpawnParticleExecutionJP.
@@ -91,13 +91,15 @@ Theorem checked_ttc_cog_local_mechanism_us_jp :
   ttc_cog_rng_reduction_claim /\
   (forall version, cog_zero_update_execution_claim version) /\
   ttc_cog_dust_action_frontier_claim /\
-  ttc_cog_rng_source_frontier_claim.
+  ttc_cog_rng_source_frontier_claim /\
+  ttc_cog_clone_floor_frontier_claim.
 Proof.
   destruct TTCCogExecution.checked_ttc_cog_local_mechanism_us_jp
     as [Hgeometry [Hrng Hexecution]].
   exact (conj Hgeometry (conj Hrng (conj Hexecution
     (conj checked_ttc_cog_dust_action_frontier_us_jp
-      checked_ttc_cog_rng_source_frontier_us_jp)))).
+      (conj checked_ttc_cog_rng_source_frontier_us_jp
+        checked_ttc_cog_clone_floor_frontier_us_jp))))).
 Qed.
 
 (** Initial source-and-arithmetic capstone. Every conjunct is tied either to a
