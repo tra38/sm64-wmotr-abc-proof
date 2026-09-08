@@ -90,9 +90,17 @@ current request.
       See [the transition report](notes/ttc-cog-transition-execution.md).
 - [ ] Discharge the remaining two slide-kick helper execution/preservation premises
       (`update_sliding` and `perform_ground_step`) and execute
-      the dispatcher, entry/bounce path and following knockback update in the
+      the entry/bounce path and following knockback update in the
       actual cog state. Finish particle acceptance and its N64 address refinement,
       accounting for both dust and vertical-star requests and their ordered draws.
+- [x] Execute the complete dry moving dispatcher around the two-helper slide
+      result: common cancels, both default-floor quicksand stores, real action
+      selection and cleanup. Preserve the original position/floor anchor and
+      retain mask 3 and backward ground knockback in US/JP. Also execute the
+      same prefix for the knockback case; its action body remains open.
+      See the [preserving RNG execution plan](notes/ttc-cog-preserving-rng-plan.md).
+- [ ] Construct the dispatcher's starting memory through actual earlier updates;
+      discharge its remaining movement-helper and state-image conditions.
 - [x] Execute US/JP empty-list and published-cog-triangle floor searches; distinguish
       published surface data from the parent object's position and hitbox.
 - [x] Check the non-holdable script-replacement branch and all three carry scripts;
@@ -248,6 +256,11 @@ current request.
   - [x] Prove the exact standard-Clight boundary in US/JP
         `segmented_to_virtual`: the generated pointer-to-`u32` cast preserves a
         symbolic `Vptr`, so its first integer right shift cannot evaluate.
+  - [x] Lift that obstruction through the full `segmented_to_virtual` call and
+        the actual first call in `spawn_object_at_origin`. Under the generated
+        binding and a symbolic behavior pointer, the allocator execution
+        premise is impossible in standard Clight, before any object allocation.
+        Keep this model limitation distinct from a retail dust impossibility.
   - [ ] Execute `cur_obj_update`'s complete command loop, list traversal,
         Mario particle dispatch, Mist/Puff spawn/allocation, and WhitePuff1.
         The next WhitePuff2 commands are `ADD_INT` and `END_REPEAT`; the

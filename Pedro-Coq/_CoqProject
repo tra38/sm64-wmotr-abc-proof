@@ -117,6 +117,7 @@ proofs/DustCurObjUpdateExecution.v
 proofs/DustSpawnParticleExecution.v
 proofs/DustSpawnParticleExecutionJP.v
 proofs/SegmentedPointerBoundary.v
+proofs/DustAllocationBoundary.v
 proofs/TTCDebugBoundary.v
 proofs/TTCRNGWindow.v
 proofs/TTCRNGCensus.v
@@ -134,6 +135,8 @@ proofs/CogReflectionExecution.v
 proofs/SlideKickHelperDischarge.v
 proofs/CogSlideExecution.v
 proofs/CogDustClearing.v
+proofs/CogMovingDispatcher.v
+proofs/CogSlideDispatcher.v
 proofs/CogParticleAcceptance.v
 proofs/CloneFloorExecution.v
 proofs/CloneFloorPartition.v

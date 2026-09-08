@@ -1,0 +1,107 @@
+{
+  "schema": 1,
+  "recorded_utc": "2026-09-08T01:12:43.547992+00:00",
+  "branch": "codex/ssl-pyramid-item-proof",
+  "parent_commit": "59b75e7bd65482ae54189a17ef96ddd312994d97",
+  "source_revision": "9921382a68bb0c865e5e45eb594d9c64db59b1af",
+  "versions": [
+    "VERSION_US",
+    "VERSION_JP"
+  ],
+  "toolchain": {
+    "coq": "8.16.1",
+    "compcert": "3.15",
+    "switch": "sm64-item-proof"
+  },
+  "virtual_memory_cap_kib": 3145728,
+  "workspace_source_sha256": {
+    "Pedro-Coq/_CoqProject": "ddb18836f34dddc253b9177534576b532494ab19426ca521988845852245b3ae",
+    "Pedro-Coq/proofs/CogMovingDispatcher.v": "8b82a33c40b880aff52bc924ebae09251476170cb368974c5565453cac1e4d97",
+    "Pedro-Coq/proofs/CogSlideDispatcher.v": "a975cf44c6e06bbaf74cc4e882e7a8550fb1a3caff80f7de963121aad39654a5",
+    "Pedro-Coq/proofs/DustAllocationBoundary.v": "9f15a418ccce2dd821eb873fbc8cc49cf594a557ba5b774343dc0d4853bf6381",
+    "Pedro-Coq/proofs/CogParticleAcceptance.v": "be0ab5c39e33d3614ac2d60e0881a909e0156bd291e6b9fe3f3f59efe0cdb59f",
+    "Pedro-Coq/proofs/MainTheorem.v": "e3d6b0e63f82aaeeda023d688244c8abd870d4bcc4141e6729ec24b560e33e91",
+    "Pedro-Coq/docs/checklist.md": "382780e64b06ec1d196d03af5c7eeb9fcb295a43df1bad680b5f5c5e501b1080",
+    "Pedro-Coq/docs/plain-english-guide.md": "532fc9e711df3040878a42ec545db755368c1338ab93b89fae7b3f1cab3286e9",
+    "Pedro-Coq/docs/notes/ttc-cog-preserving-rng-plan.md": "93e5d53c2aad767b66050a332b8ba6ab7617a3b9c4199951bba8f93b0ef96aac"
+  },
+  "checks": [
+    {
+      "command": "COQ_JOBS=2 bash Pedro-Coq/pipeline/build.sh proofs COQEXTRAFLAGS=-time",
+      "exit_code": 0,
+      "log": "Pedro-Coq/build/preserving-build.log",
+      "log_sha256": "cd30098b7b5922b5b8840a958fa0423ad77d0b3b3cf5b9e12f9eae19e9c5dee5"
+    },
+    {
+      "command": "bash Pedro-Coq/pipeline/build.sh no-admitted rng-source-coverage",
+      "exit_code": 0,
+      "log": "Pedro-Coq/build/preserving-source-checks.log",
+      "log_sha256": "314c72d8507358fa6d766204acd899926596895040f15b72c51a39f6102f7d20"
+    },
+    {
+      "command": "SM64_PROOF_SWITCH=sm64-item-proof bash .claude/skills/proof-discipline/discipline_check.sh",
+      "exit_code": 0,
+      "log": "Pedro-Coq/build/preserving-discipline.log",
+      "log_sha256": "819bae79d93609aaec743b476873074411f25ded3641b15c1f33a4e7a58eac0a"
+    },
+    {
+      "command": "bash Pedro-Coq/pipeline/assumptions.sh Pedro.Proofs.MainTheorem checked_ttc_cog_local_mechanism_us_jp",
+      "exit_code": 0,
+      "log": "Pedro-Coq/build/preserving-main-assumptions.log",
+      "log_sha256": "649c4dfb867a6c016545c885a436502f8914780184b149d6ec8de83b399b034d"
+    },
+    {
+      "command": "bash Pedro-Coq/pipeline/assumptions.sh Pedro.Proofs.CogSlideDispatcher generated_cog_slide_complete_dispatch_us_jp",
+      "exit_code": 0,
+      "log": "Pedro-Coq/build/preserving-dispatch-assumptions.log",
+      "log_sha256": "649c4dfb867a6c016545c885a436502f8914780184b149d6ec8de83b399b034d"
+    },
+    {
+      "command": "bash Pedro-Coq/pipeline/assumptions.sh Pedro.Proofs.DustAllocationBoundary generated_spawn_origin_cannot_execute_from_symbolic_behavior_us_jp",
+      "exit_code": 0,
+      "log": "Pedro-Coq/build/preserving-allocation-assumptions.log",
+      "log_sha256": "649c4dfb867a6c016545c885a436502f8914780184b149d6ec8de83b399b034d"
+    },
+    {
+      "command": "git diff --check -- Pedro-Coq",
+      "exit_code": 0
+    },
+    {
+      "command": "Validate local Markdown links in changed documents",
+      "exit_code": 0,
+      "checked_targets": 25
+    }
+  ],
+  "standard_assumption_names": [
+    "ClassicalDedekindReals.sig_forall_dec",
+    "ClassicalDedekindReals.sig_not_dec",
+    "Classical_Prop.classic",
+    "Events.external_functions_sem",
+    "Events.inline_assembly_sem",
+    "FunctionalExtensionality.functional_extensionality_dep"
+  ],
+  "all_three_assumption_sets_match_baseline": true,
+  "active_capstone": "Pedro.Proofs.MainTheorem.checked_ttc_cog_local_mechanism_us_jp",
+  "scope": {
+    "discharged": [
+      "Actual common moving cancellations for the specified slide and knockback entry cases",
+      "Actual default-floor quicksand helper, both stores and position/floor preservation",
+      "Complete moving dispatcher composed with the existing two-helper slide execution",
+      "Dry dust/star-mask retention and final backward-ground-knockback action"
+    ],
+    "semantic_obstruction": "The actual spawn_object_at_origin call cannot execute in standard Clight with a symbolic behavior pointer and the generated segmented_to_virtual binding, before create_object.",
+    "obstruction_is_not_a_retail_dust_impossibility": true,
+    "not_established": [
+      "reachable entry satisfying the memory images",
+      "update_sliding and perform_ground_step execution/preservation",
+      "airborne slide entry/bounce and successive knockback execution",
+      "N64 address refinement and sqrtf external semantic contract",
+      "accepted dust/star allocations and complete particle/list execution",
+      "all ordered RNG draws and both cog updates across preserving input choices",
+      "full preserving RNG gameplay theorem"
+    ],
+    "new_emulator_run": false,
+    "new_generated_ast_regeneration": false,
+    "root_discipline_audit_targets": "Existing root no-A capstones; Pedro separately checked above."
+  }
+}

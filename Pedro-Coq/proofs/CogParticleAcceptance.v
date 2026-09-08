@@ -3,7 +3,8 @@ From compcert Require Import AST Clight Clightdefs ClightBigstep Cop Ctypes
   Errors Events Globalenvs Integers Maps Memory Values.
 From Pedro.Generated Require Import us_object_list_processor jp_object_list_processor.
 From Pedro.Proofs Require Import GameTypes TTCCogExecution CogActionExecution
-  DustSpawnParticleExecution DustSpawnParticleExecutionJP SegmentedPointerBoundary.
+  DustSpawnParticleExecution DustSpawnParticleExecutionJP SegmentedPointerBoundary
+  DustAllocationBoundary.
 Import ListNotations.
 Open Scope Z_scope.
 Module PA := us_object_list_processor.
@@ -79,19 +80,23 @@ Proof.
     [action_entry | simpl fn_body; timeout 10 particle_skip_stmt | cbn; reflexivity | cbn; reflexivity].
 Qed.
 
-(** Clear-bit acceptance still needs the allocator/address and copy executions
-    documented by the existing positive-branch proof. This frontier keeps both
-    that boundary and the fully executed occupied-bit rejection explicit. *)
+(** With the actual segmented-function binding, the positive caller's allocator
+    premise cannot hold for a symbolic behavior pointer in standard Clight.
+    The full-call obstruction below makes this semantic incompatibility explicit;
+    it is not a retail dust exclusion. A proved address refinement is required.
+    Occupied-bit rejection executes before reaching this boundary. *)
 Definition cog_particle_acceptance_frontier_claim : Prop :=
   (forall version, cog_occupied_dust_claim version) /\
   DustSpawnParticleExecution.us_spawn_particle_execution_claim /\
   DustSpawnParticleExecutionJP.jp_spawn_particle_execution_claim /\
-  segmented_pointer_boundary_claim.
+  segmented_pointer_boundary_claim /\
+  dust_allocation_symbolic_boundary_claim.
 
 Theorem checked_cog_particle_acceptance_frontier_us_jp : cog_particle_acceptance_frontier_claim.
 Proof.
   exact (conj generated_occupied_dust_request_skips_us_jp
     (conj us_generated_spawn_particle_accepts_clear_dust_in_any_genv
       (conj jp_generated_spawn_particle_accepts_clear_dust_in_any_genv
-        checked_segmented_pointer_boundary_us_jp))).
+        (conj checked_segmented_pointer_boundary_us_jp
+          generated_spawn_origin_cannot_execute_from_symbolic_behavior_us_jp)))).
 Qed.

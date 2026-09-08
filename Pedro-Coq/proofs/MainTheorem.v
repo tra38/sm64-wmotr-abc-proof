@@ -10,7 +10,7 @@ From Pedro.Proofs Require Import
   RNGSourceCoverage MarioParticleCatalogue EnvironmentNoRNG
   SoundRequestExecution SlideKickAnimationExecution SlideKickHelperDischarge
   CogActionExecution CogReflectionExecution CogSlideExecution CogDustClearing
-  CogParticleAcceptance CloneFloorMechanism.
+  CogParticleAcceptance CloneFloorMechanism CogMovingDispatcher CogSlideDispatcher.
 
 Module MainSpawnUS := DustSpawnParticleExecution.
 Module MainSpawnJP := DustSpawnParticleExecutionJP.
@@ -21,7 +21,8 @@ Module MainSegmented := SegmentedPointerBoundary.
     begins after the queries. The slide-kick caller executes its cached
     animation, sound, no-wall reflection and action transition; two actual
     helper-execution premises and their anchor-boundary conditions remain.
-    The dispatcher dust-clearing suffix is also executed. None is
+    The complete moving dispatcher now executes its cancellation and quicksand
+    prefix, selects the proved slide caller and retains the dry particle mask. None is
     an existence theorem for a reachable in-spot dust event. *)
 Definition ttc_cog_dust_action_frontier_claim : Prop :=
   mario_direct_dust_inventory_claim /\
@@ -32,7 +33,8 @@ Definition ttc_cog_dust_action_frontier_claim : Prop :=
   cog_action_layout_receipt /\
   cog_reflection_layout_receipt /\
   cog_trig_table_bounds_claim /\
-  (forall version, cog_slide_two_helper_claim version) /\
+  cog_dispatch_layout_receipt /\
+  (forall version, cog_slide_dispatch_claim version) /\
   (forall version, cog_dust_clearing_claim version) /\
   (forall version, cog_terrain_execution_claim version) /\
   cog_particle_acceptance_frontier_claim.
@@ -48,10 +50,11 @@ Proof.
             (conj cog_action_layout_generated_us_jp
               (conj cog_reflection_layout_generated_us_jp
                 (conj cog_trig_table_bounds_generated_us_jp
-                 (conj generated_cog_slide_with_two_helpers_us_jp
+                 (conj cog_dispatch_layout_generated_us_jp
+                 (conj generated_cog_slide_complete_dispatch_us_jp
                   (conj generated_cog_dispatcher_dust_clearing_us_jp
                     (conj generated_cog_stone_terrain_addend_us_jp
-                      checked_cog_particle_acceptance_frontier_us_jp))))))))))).
+                      checked_cog_particle_acceptance_frontier_us_jp)))))))))))).
 Qed.
 
 (** Active cog target: exact stock inventory and a pairwise binary32 geometry

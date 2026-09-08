@@ -196,13 +196,21 @@ Before counting dust's random calls, three separate questions must be settled:
 2. Does the request survive the common cleanup after the action?
 3. Does the particle system accept it and run the resulting objects?
 
-The latest proof checks the cleanup at the end of the moving-action dispatcher,
-the routine that selects an action handler and performs common follow-up work.
-With the specified off-floor input and no in-water flag, the dust and star
-requests survive this tail unchanged. With the in-water flag also set, the
-same tail removes dust and requests a wave trail instead; the stars remain.
-Only this tail is executed here. The dispatcher's earlier cancellation checks
-and action selection still need to be connected to the actual cog state.
+The proof now executes the whole moving-action dispatcher around the checked
+slide-kick body, under its stated starting-memory and movement-helper
+conditions. At the specified dry cog height, healthy Mario with off-floor
+input passes the water, stomp, squish and death cancellation checks. The
+default-floor quicksand helper briefly sets depth to 1.1 and then resets it
+to zero; both writes preserve Mario's position and stored floor. The real
+action switch selects slide-kick sliding, and the dry cleanup retains its
+dust and star requests. The complete result ends in backward ground knockback
+with the same position and stored-floor fields. The two movement helpers and
+the existence of that starting state remain conditions of this result.
+
+The separate water-cleanup case removes dust and requests a wave trail
+instead; the stars remain. Cancellation and default-floor quicksand processing
+are also checked for backward ground knockback, but execution of that next
+action's body in the successive cog state is still open.
 
 There is another gate in the particle system. Mario's request flags and his
 object's active-particle flags are different fields. If the active dust bit
@@ -210,6 +218,13 @@ is already set, the proof executes the complete particle-spawn function and
 shows that it returns without allocating anything or changing memory. If the
 bit is clear, the existing caller proof still assumes successful execution of
 allocation and position copying. A dust request alone does not settle that case.
+The allocation path also needs a change in the proof's semantic foundation:
+standard CompCert represents pointers symbolically, while the game's address
+conversion extracts bits from numeric N64 addresses. The existing model
+cannot execute that conversion from a symbolic behavior pointer. This is a
+limitation of the current proof model; it does not show that the game cannot
+create dust. A proved N64 address connection must resolve it before those
+allocation premises can be instantiated.
 
 Once its runtime conditions hold, the checked dust chain is:
 
@@ -439,7 +454,8 @@ The project currently establishes that:
 - the slide-kick sliding caller requests dust and stars while preserving its
   checked position/floor fields, conditional on two remaining helper executions
   and their preservation conditions;
-- the dry dispatcher tail keeps those requests, its water case clears dust,
+- the complete dry moving dispatcher selects that slide body, preserves its
+  position/floor result and keeps those requests; its separate water-tail case clears dust,
   and an already active dust bit makes the spawn function skip allocation;
 - the checked dust path owns four random-seed advances under explicit runtime
   conditions;
@@ -455,8 +471,8 @@ still needs:
   followed by actual successive updates that preserve Mario and the relevant cogs;
 - execution and preservation proofs for `update_sliding` and the full
   `perform_ground_step`, including the actual surface selections;
-- the complete moving-action dispatcher, airborne slide-kick entry/bounce and
-  following knockback update in that state;
+- a reachable state satisfying the complete dispatcher's entry conditions,
+  airborne slide-kick entry/bounce and the following knockback update;
 - accepted particle allocation, the N64 address connection, and the complete
   dust/star behavior chain in a reachable object-pool and object-list state; and
 - preserving input choices or proved exclusions for all relevant RNG sources,
