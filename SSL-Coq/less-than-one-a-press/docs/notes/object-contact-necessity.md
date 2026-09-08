@@ -56,6 +56,12 @@ relevant read history; the proof does not grant those facts for free.
 
 ## What remains to finish obligation 2?
 
+The follow-up [backward collection proof](collection-backward-contact.md) now
+derives the successful contact-search reads, unchanged search memory, and the
+ordinary secret callback's actual direct query. It supplies part of the first
+item below; it does not yet supply the contact record's creation history or
+the target award's full execution.
+
 1. Follow each real target-star award or secret credit back to the correct
    recorded object pair, then to the contact check that registered that pair.
    This must cover other legitimate ways the game might set the relevant
@@ -124,7 +130,7 @@ the assumptions of the new source and geometry results plus the overall
 conditional theorem. Successful checks are verification of the stated partial
 result, not completion of obligation 2.
 
-The focused build and all eight assumption audits passed with the installed
+The original focused build and all eight assumption audits passed with the installed
 `sm64-item-proof` toolchain. The syntax-checkpoint theorem has no global
 assumptions; the other results use only standard Coq/CompCert assumptions.
 The separate repository-wide discipline audit still fails its legacy build

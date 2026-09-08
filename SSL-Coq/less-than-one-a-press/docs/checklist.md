@@ -187,6 +187,19 @@ These obligations currently block the clean-retail result.
     from six explicit local-value readbacks; the MainTheorem construction
     interface supplies `collision_phase_overlap` without assuming its geometric
     member. This is a source-level result, not a complete collection bridge.
+  - [x] Derive the actual selected US/JP contact-consumer reads: a successful
+    pair check reads the requested pointer, and a star search reads the
+    returned object and accepts its type comparison. Prove both entire search
+    calls preserve memory, including entry/return, and bind the pair-call
+    witness to its actual arguments. Resolve the secret callback's direct
+    query to that selected function. See
+    [the backward collection proof](notes/collection-backward-contact.md).
+  - [x] Derive the ordinary secret callback's successful entry query from any
+    completed invocation that changes memory or emits an event, including
+    function entry and return. `SecretContactExecution.v` derives the matching
+    list read in that entry memory when the Mario value is identified as a
+    pointer. This does not yet identify the credited controller, the earlier
+    collision, or initialization credit from missing triggers.
   - [ ] Establish those six readbacks from the correct live objects, including
     the actual `sqrtf` result and pre-/post-call read history; derive object
     roles, count bounds, pair registration, and collision-phase timing; trace

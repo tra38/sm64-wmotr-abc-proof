@@ -1,6 +1,6 @@
 # Hardest remaining proof obligations
 
-> Status reviewed: 2026-09-07.
+> Status reviewed: 2026-09-08.
 
 This guide concerns **Inside the Ancient Pyramid** and **Pyramid Puzzle**.
 
@@ -50,28 +50,29 @@ a moving star, or a changed supporting floor must receive the same attention
 as Mario visibly crossing an opening. The decisive contact could also happen
 during the very frame in which Mario first gets access.
 
-**What we already have.** Within the proof's current account of collection,
-earning Inside the Ancient Pyramid requires contact with the correct star,
-and earning Pyramid Puzzle requires its secret-trigger sequence, including
-the upper trigger. The new [shared contact proof](notes/object-contact-necessity.md)
-now follows every successful execution of the checked US and Japanese contact
-routine: the sideways-distance test must accept, and neither vertical-separation
-test can reject. Those checks belong to one uninterrupted execution, not to
-unrelated snapshots. Connecting the numbers actually read there to the reported
-Mario and target positions then supplies the touch condition used by the
-collection proof. We still need to establish those readings, the correct
-objects and timing, and the connection from each real collection or secret
-credit to that contact. A simple height line above the second pole remains
-inadequate as a substitute.
+**What we already have.** The [shared contact proof](notes/object-contact-necessity.md)
+shows which sideways-distance and vertical-separation tests every successful
+contact check must pass. Working backward from collection now also gives
+[checked contact-list searches](notes/collection-backward-contact.md): a
+successful secret check reads the requested Mario pointer, and a star search
+reads the object it returns and accepts its interaction type. Neither search
+changes memory. These are facts about the actual US and Japanese code, not
+assumed contacts. We still need to connect the correct saved star or secret
+credit to those searches, explain when each contact record was created, and
+establish the positions actually read by the collision check. Puzzle progress
+restored from missing triggers needs its own earlier-visit history. A simple
+height line above the second pole remains inadequate as a substitute.
 
 **What finishes it.** Trace each real collection or secret credit back to the
 correct recorded contact, establish the numbers read by that contact check,
 and show that the proof reports the same objects at the right moment. Then
 account for every game operation that could first make the required contact
 possible. This includes changes to the star, secret, or supporting floor,
-not only movement by Mario. Once complete, the argument would cover unnamed
-tricks as well as routes already in the atlas; the new contact result alone
-does not finish this obligation.
+not only movement by Mario. Work backward to identify every necessary earlier
+event, then forward from the accepted start to test whether allowed no-A play
+can supply it. Once complete, the argument would cover unnamed tricks as well
+as routes already in the atlas; the checked contact searches alone do not
+finish this obligation.
 
 ## 3. Find restrictions that survive every allowed input sequence
 

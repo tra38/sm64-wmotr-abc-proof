@@ -1,5 +1,5 @@
 From Coq Require Import Lia List ZArith.
-From compcert Require Import AST Clight ClightBigstep Clightdefs Ctypes Floats Integers Values.
+From compcert Require Import AST Clight ClightBigstep Clightdefs Ctypes Events Floats Integers Maps Values.
 From LessThanOneAPress.Proofs Require Import
   GameTypes InputSemantics CleanEntry ObjectProvenance StarCollection
   CollisionRegions AreaTransitions HiddenStar LowerEntrance UpperEntrance
@@ -43,6 +43,8 @@ From LessThanOneAPress.Proofs Require Import
   Area2Rank9APreHomeMovement
   Area2Rank10AEntryChecks
   ObjectContactNecessity
+  ContactConsumerSource ContactConsumerExecution ContactCreditExecution
+  SecretContactExecution
   CompCertRouteScope.
 
 Import ListNotations.
@@ -893,6 +895,50 @@ Theorem current_source_contact_supplies_collection_geometry :
     final_locals final_memory phase ->
   ocn_other_phase_facts phase -> collision_phase_overlap phase.
 Proof. exact ocn_successful_body_supplies_collision_phase_overlap. Qed.
+
+(** Backward collection refinement: the real consumers are read-only even
+    across function entry/return. These facts do not grant the provenance of
+    a stored contact or the identity of a saved target-star reward. *)
+Theorem current_contact_search_calls_preserve_memory :
+  forall version consumer args memory trace final_memory result,
+  consumer = CCPairSearch \/ consumer = CCStarSearch ->
+  ClightBigstep.Clight2.eval_funcall
+    (Clight.globalenv (selected_clight_target version)) memory
+    (Internal (ccs_body version consumer)) args trace final_memory result ->
+  trace = E0 /\ final_memory = memory.
+Proof. exact cce_search_call_preserves_memory. Qed.
+
+(** Unlike a granted query subexpression, this starts at a full invocation
+    of the actual secret callback and derives its entry reads and successful
+    selected pair query. Initialization from missing triggers is separate. *)
+Theorem current_secret_effect_requires_entry_contact :
+  forall version args memory trace final_memory result,
+  ClightBigstep.Clight2.eval_funcall
+    (Clight.globalenv (selected_clight_target version)) memory
+    (Internal (ccs_body version CCSecret)) args trace final_memory result ->
+  (final_memory <> memory \/ trace <> E0) ->
+  exists locals current mario,
+    sce_entry_pair_evidence version locals memory current mario.
+Proof. exact sce_secret_call_effect_requires_entry_pair. Qed.
+
+(** Consume that callback-derived evidence: once the read Mario value is
+    identified as a pointer, the exact array read and count guard are
+    derived in the callback's unchanged ENTRY memory. Registration history,
+    live identity, and the six collision readbacks are still required. *)
+Theorem current_secret_entry_reads_recorded_mario :
+  forall version locals memory current target offset,
+  sce_entry_pair_evidence version locals memory current (Vptr target offset) ->
+  exists iteration_locals count,
+    PTree.get CCH._obj1 iteration_locals = Some current /\
+    PTree.get CCH._obj2 iteration_locals = Some (Vptr target offset) /\
+    eval_expr (Clight.globalenv (selected_clight_target version)) empty_env
+      iteration_locals memory cce_pair_count_expression count /\
+    eval_expr (Clight.globalenv (selected_clight_target version)) empty_env
+      (PTree.set CCH._t'2 count iteration_locals) memory
+      cce_pair_entry_expression (Vptr target offset) /\
+    ocn_test_value (Clight.globalenv (selected_clight_target version)) empty_env
+      (PTree.set CCH._t'2 count iteration_locals) memory cce_pair_count_guard true.
+Proof. exact sce_entry_pair_reads_recorded_mario. Qed.
 
 (** Rank 9's upper continuation now has an actual memory-executed floor
     commit and a post-air-step branch that does not undo a ledge result.
