@@ -41,6 +41,7 @@ From LessThanOneAPress.Proofs Require Import
   Area2Rank9ACoinProducers Area2Rank9ACoinLaunch Area2Rank9ACoinFlight
   Area2Rank10AGroundPound Area2Rank12BContact Area2Rank9UpperStarDance Area2Rank9StarTiming
   Area2Rank9APreHomeMovement
+  Area2Rank10AEntryChecks
   CompCertRouteScope.
 
 Import ListNotations.
@@ -840,10 +841,15 @@ Qed.
     schedule obeys the Float32 110-unit bound, and the granted fifteen-update
     elevator scenario reaches relative 260. Zero horizontal speed and the
     earlier live geometry queries remain essential: entry, other whole-frame
-    effects and a useful departure are not discharged by this boundary. *)
+    effects and a useful departure are not discharged by this boundary.
+    The new nominal-cycle check covers start/stop jolts and waits, and the
+    actual floor-distance guard executes its false branch under the stated
+    same-base projection. All six stock hangable faces miss the bucket.
+    Live timing/base agreement and a fresh ceiling remain obligations. *)
 Theorem current_rank10a_ground_pound_moving_geometry_boundary :
-  Rank10AGroundPoundBoundary.
-Proof. exact rank10a_ground_pound_boundary_checked. Qed.
+  Rank10AGroundPoundBoundary /\ Rank10AEntryChecksBoundary.
+Proof. split; [exact rank10a_ground_pound_boundary_checked |
+  exact rank10e_entry_checks_boundary_checked]. Qed.
 
 (** Rank 12B does not presume that target contact entails a gate crossing.
     The actual selected radius-test tail rejects every standard target from

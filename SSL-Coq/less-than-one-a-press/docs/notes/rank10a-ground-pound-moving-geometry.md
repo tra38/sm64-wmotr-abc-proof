@@ -131,9 +131,12 @@ Float32 `Y > (Y + (-10)) + 100` test false, including fractional Y. If the
 real query keeps returning the intact elevator base and grounded movement
 reanchors every frame, descent alone cannot produce `OFF_FLOOR`. Different
 floors, skipped reanchors, outside pushes and already-airborne predecessors
-are different cases, not excluded gameplay glitches. The start/stop jolts
-and transformed-surface rounding still need their own live projection if
-used in an entry.
+are different cases, not excluded gameplay glitches. The [entry follow-up](rank10a-elevator-entry-checks.md)
+now checks the complete nominal cycle, including the start/stop jolts, and
+executes the actual floor-distance guard under one-unit agreement with the
+same base. It also finds no stock hangable ceiling above the bucket. Live
+timing, selected-surface agreement and ceiling freshness remain explicit
+obligations; the local checks are not a complete gameplay execution.
 
 ## Remaining useful searches
 

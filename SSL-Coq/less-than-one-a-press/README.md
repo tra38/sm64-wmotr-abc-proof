@@ -2472,3 +2472,11 @@ Clight Y-store are consumed by Main. Higher supports, renewed airborne jumps,
 other position changes and a genuinely delayed first star update remain open;
 no clean setup or complete bypass is claimed. Run `check-rank9a-prehome`
 through the build wrapper and the linked note's offline diagnostic.
+
+The [Rank-10A entry audit](docs/notes/rank10a-elevator-entry-checks.md) checks
+the complete nominal elevator cycle, including its start/stop jolts, and
+executes the actual floor-distance guard under explicit same-base agreement.
+It also excludes all six stock hangable ceiling faces from the bucket
+footprint. These results narrow eligible entry, not the complete route:
+changed supports, missed reanchors, unusual ceiling histories and useful
+departures remain open. Run `check-rank10a-entry` through the build wrapper.

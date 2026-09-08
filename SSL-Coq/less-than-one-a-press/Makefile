@@ -2,7 +2,7 @@ COQMAKEFILE := CoqMakefile
 COQBIN ?=
 COQMAKEFILE_CMD ?= $(COQBIN)coq_makefile
 
-.PHONY: all generated regenerate verify-generated proofs check check-rank9 check-rank9-timing check-rank9a check-rank9a-prehome check-rank10a check-rank12b clean
+.PHONY: all generated regenerate verify-generated proofs check check-rank9 check-rank9-timing check-rank9a check-rank9a-prehome check-rank10a check-rank10a-entry check-rank12b clean
 
 all: proofs
 
@@ -2340,6 +2340,7 @@ check-rank10a: $(COQMAKEFILE)
 	bash pipeline/assumptions.sh \
 	  LessThanOneAPress.Proofs.Area2Rank10AGroundPound \
 	  rank10a_ground_pound_boundary_checked
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.Area2Rank10AEntryChecks rank10e_entry_checks_boundary_checked
 	bash pipeline/assumptions.sh \
 	  LessThanOneAPress.Proofs.MainTheorem \
 	  current_rank10a_ground_pound_moving_geometry_boundary
@@ -2404,6 +2405,20 @@ check-rank9a-prehome: $(COQMAKEFILE)
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.Area2Rank9APreHomeMovement rank9ph_gp_store_below_gate
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.Area2Rank9APreHomeMovement rank9ph_prehome_boundary_checked
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem current_rank9a_coin_star_gate_boundary
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem conditional_less_than_one_a_press_impossibility
+
+check-rank10a-entry: $(COQMAKEFILE)
+	$(MAKE) -f $(COQMAKEFILE) proofs/MainTheorem.vo
+	bash pipeline/check-no-admitted.sh
+	bash pipeline/check-link-hygiene.sh
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.Area2Rank10AEntryChecks rank10e_height_expressions_are_generated
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.Area2Rank10AEntryChecks rank10e_sine_samples_are_initialized
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.Area2Rank10AEntryChecks rank10e_nominal_cycle_checked
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.Area2Rank10AEntryChecks rank10e_geometry_guard_executes_skip
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.Area2Rank10AEntryChecks rank10e_hangable_inventory_is_complete
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.Area2Rank10AEntryChecks rank10e_no_hangable_face_over_bucket
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.Area2Rank10AEntryChecks rank10e_entry_checks_boundary_checked
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem current_rank10a_ground_pound_moving_geometry_boundary
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem conditional_less_than_one_a_press_impossibility
 
 clean:

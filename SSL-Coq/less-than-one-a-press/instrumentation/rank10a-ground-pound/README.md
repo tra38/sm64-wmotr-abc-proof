@@ -18,3 +18,11 @@ the missing clean entry and useful departure. The companion
 [Coq proof](../../proofs/Area2Rank10AGroundPound.v) checks the selected source
 and Y-store and gives a general binary32 startup bound; this finite offline
 checker is not a replacement for a live execution projection.
+
+`node instrumentation/rank10a-ground-pound/check_entries.js` checks the
+nominal 504-sample elevator cycle in both generated versions, including the
+start/stop jolts, integer-base and one-unit-margin controls, and all six
+hangable static triangles against the full outer bucket footprint. It also
+checks that the four stock moving meshes contain no hangable triangles.
+The [entry note](../../docs/notes/rank10a-elevator-entry-checks.md) states the
+remaining timing, selected-base and ceiling-history obligations.
