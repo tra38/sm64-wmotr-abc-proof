@@ -2,7 +2,7 @@ COQMAKEFILE := CoqMakefile
 COQBIN ?=
 COQMAKEFILE_CMD ?= $(COQBIN)coq_makefile
 
-.PHONY: all generated regenerate verify-generated proofs check check-rank9 check-rank9-timing check-rank9a check-rank10a check-rank12b clean
+.PHONY: all generated regenerate verify-generated proofs check check-rank9 check-rank9-timing check-rank9a check-rank9a-prehome check-rank10a check-rank12b clean
 
 all: proofs
 
@@ -2300,6 +2300,9 @@ check-rank9a: $(COQMAKEFILE)
 	  LessThanOneAPress.Proofs.Area2Rank9ACoinFlight \
 	  rank9cf_coin_flight_boundary_checked
 	bash pipeline/assumptions.sh \
+	  LessThanOneAPress.Proofs.Area2Rank9APreHomeMovement \
+	  rank9ph_prehome_boundary_checked
+	bash pipeline/assumptions.sh \
 	  LessThanOneAPress.Proofs.MainTheorem \
 	  current_rank9a_coin_star_gate_boundary
 
@@ -2390,6 +2393,17 @@ check-rank9-timing: $(COQMAKEFILE)
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.Area2Rank9StarTiming rank9t_late_collection_cannot_use_same_startup
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.Area2Rank9StarTiming rank9t_star_timing_boundary_checked
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem current_rank9_upper_star_dance_boundary
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem conditional_less_than_one_a_press_impossibility
+
+check-rank9a-prehome: $(COQMAKEFILE)
+	$(MAKE) -f $(COQMAKEFILE) proofs/MainTheorem.vo
+	bash pipeline/check-no-admitted.sh
+	bash pipeline/check-link-hygiene.sh
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.Area2Rank9APreHomeMovement rank9ph_regular_jump_is_generated
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.Area2Rank9APreHomeMovement rank9ph_source_order_checked
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.Area2Rank9APreHomeMovement rank9ph_gp_store_below_gate
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.Area2Rank9APreHomeMovement rank9ph_prehome_boundary_checked
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem current_rank9a_coin_star_gate_boundary
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem conditional_less_than_one_a_press_impossibility
 
 clean:

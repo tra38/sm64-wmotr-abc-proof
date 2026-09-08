@@ -2,6 +2,11 @@
 
 ## Result
 
+The [pre-home follow-up](rank9a-pre-home-movement.md) also rules out the named
+extra-hop plus pickup-frame ground-pound improvement within the checked
+vertical projection. It does not provide a clean higher installation or
+rule out a real higher-support or other pre-home movement event.
+
 Follow-up: the [Goomba defeat/coin flight audit](rank9a-goomba-coin-flight.md)
 now bounds all ordinary random launches with CompCert Float32 rounding,
 arbitrary pauses and checked lower-support resets. The bounded flight branch

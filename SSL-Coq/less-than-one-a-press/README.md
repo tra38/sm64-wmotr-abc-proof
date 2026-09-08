@@ -2462,3 +2462,13 @@ this work starts beyond the upper-elevator barrier; none of the local results
 supplies that escape. Even completing the continuation would leave one A
 press if Mario uses the ordinary elevator jump. Retain the checked results
 as conditional support and prioritize a clean bypass before extending them.
+
+The [Rank-9A pre-home movement audit](docs/notes/rank9a-pre-home-movement.md)
+instead tests installation before the gate: even granting a final Goomba hop
+above the conditional raising station, finishing attack, coin flight and one
+pickup-frame ground-pound lift leaves the checked home sample at most 3495,
+below the required 3505. The source-linked Float32 bounds and actual selected
+Clight Y-store are consumed by Main. Higher supports, renewed airborne jumps,
+other position changes and a genuinely delayed first star update remain open;
+no clean setup or complete bypass is claimed. Run `check-rank9a-prehome`
+through the build wrapper and the linked note's offline diagnostic.

@@ -146,6 +146,14 @@ star-collection suffix. The coin star itself is index 6, not either target.
 
 ## Next decisive work
 
+The [pre-home movement follow-up](rank9a-pre-home-movement.md) excludes one
+stronger projected installer: an extra released Goomba hop followed by the
+finishing attack, coin toss and same-update ground-pound lift still misses
+the checked home window. A full future ground-pound rise happens too late
+for the ordinary first sample. Find a genuinely higher support, renewed
+airborne jump, different actual position change or justified delayed first
+star update before proceeding to the payoff.
+
 For the pole, first follow a normal Goomba defeat and its moving loot coin
 through a controller history which creates the star in a compatible place,
 or exclude every such drop; a different source needs its own evidence. Then reach an airborne

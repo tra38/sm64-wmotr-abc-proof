@@ -40,6 +40,7 @@ From LessThanOneAPress.Proofs Require Import
   Area2Rank9AStarSource Area2Rank9AStarExecution Area2Rank9AStarGeometry
   Area2Rank9ACoinProducers Area2Rank9ACoinLaunch Area2Rank9ACoinFlight
   Area2Rank10AGroundPound Area2Rank12BContact Area2Rank9UpperStarDance Area2Rank9StarTiming
+  Area2Rank9APreHomeMovement
   CompCertRouteScope.
 
 Import ListNotations.
@@ -786,17 +787,24 @@ Qed.
     The Float32 flight envelope now handles all bounded random launches,
     arbitrary pauses and checked lower-support resets. It still requires
     projection of live steps; airborne re-jumps, higher selected supports and
-    movement between contact and star-home sampling are not ruled out. *)
+    movement between contact and star-home sampling are not ruled out.
+    One stronger named branch is now bounded: grant a final ordinary released
+    hop above the 2517 station, a finishing attack, the coin flight and one
+    pre-home ground-pound lift. Even generous Float32 ceilings leave the home
+    sample below 3505. The actual post-headroom store is executed, while live
+    scheduling, copied raw-Object identity and other pre-home movement remain
+    projection obligations, not assumed successful installation. *)
 Theorem current_rank9a_coin_star_gate_boundary :
   Rank9ASelectedStarBoundary /\ Rank9AGeometricTestBoundary /\
   Rank9ACoinProducerSourceBoundary /\ Rank9ACoinLaunchBoundary /\
-  Rank9ACoinFlightBoundary.
+  Rank9ACoinFlightBoundary /\ Rank9APreHomeMovementBoundary.
 Proof.
   split; [exact rank9a_selected_star_boundary_holds |].
   split; [exact rank9a_geometric_test_boundary_checked |].
   split; [exact rank9ac_coin_producer_source_boundary_checked |].
-  split; [exact rank9ac_coin_launch_boundary_checked |
-    exact rank9cf_coin_flight_boundary_checked].
+  split; [exact rank9ac_coin_launch_boundary_checked |].
+  split; [exact rank9cf_coin_flight_boundary_checked |
+    exact rank9ph_prehome_boundary_checked].
 Qed.
 
 (** Rank 10 now has one continuous original-JP B-only execution from the

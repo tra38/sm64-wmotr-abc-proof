@@ -2,6 +2,13 @@
 
 ## Answer
 
+Follow-up: the [pre-home movement audit](rank9a-pre-home-movement.md) now grants
+an extra released Goomba hop before the finishing attack and the ground-pound
+lift on the 100th-coin update. Even that stronger projected branch remains
+below the checked star-placement window; the later startup lifts cannot be
+credited before an ordinary first home sample. Higher supports, renewed
+airborne jumps and other actual pre-home movement remain open.
+
 **No clean gate-side coin trajectory has been constructed, and the complete
 glitch-assisted route is not disproved.** The final attack and coin flight
 now have a stronger, Float32-aware height bound. They cannot by themselves
