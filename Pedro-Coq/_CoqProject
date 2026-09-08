@@ -118,6 +118,9 @@ proofs/DustSpawnParticleExecution.v
 proofs/DustSpawnParticleExecutionJP.v
 proofs/SegmentedPointerBoundary.v
 proofs/DustAllocationBoundary.v
+proofs/N64AddressRefinement.v
+proofs/N64DustImage.v
+proofs/N64AllocationHeader.v
 proofs/TTCDebugBoundary.v
 proofs/TTCRNGWindow.v
 proofs/TTCRNGCensus.v

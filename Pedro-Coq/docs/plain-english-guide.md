@@ -146,6 +146,15 @@ bounce also need their own preserving execution proofs. The current result
 therefore identifies a dust candidate; it does not establish dust creation
 while Mario remains in the actual cog spot.
 
+Knockback also changes what happens to speed. The transition reverses forward
+velocity while retaining position, so it does not itself eject Mario. The next
+knockback handler first clamps forward velocity to `[-32, 32]`. On a flat stored
+floor, its early animation frames apply 0.9 friction; from animation frame 22
+it sets speed to `+0.1` or `-0.1`. It has no ordinary stick acceleration. Slopes
+can change the early-frame calculation, and the stored floor is not necessarily
+the cog floor found by an attempted movement. Continued confinement still needs
+the next ground-step proof. This is not yet a repeatable speed-building loop.
+
 ### Could a cloned object supply the missing floor?
 
 An object has several kinds of data. Its interaction hitbox determines things
@@ -415,9 +424,15 @@ retail game. Sliding calls the external square-root function `sqrtf`; checking
 the retail instruction alone does not supply its formal execution contract.
 Particle allocation reaches an address-conversion helper that performs integer
 operations on an N64 address. CompCert normally represents a pointer as a memory
-block plus an offset. The proof still needs to establish the connection between
-that representation and the game's numeric addresses so that this helper can
-execute correctly in the model.
+block plus an offset. The new local address proof now executes the original
+helper numerically and proves that its result decodes to the same generated
+dust script and byte offset. It uses the authenticated US/JP script addresses
+and sizes, checks all their initializer words and relocations, and connects
+the decoded result to the real allocation-header read. The loader's current
+memory image and the complete allocator's use of this representation bridge
+still need proof. The ordinary symbolic-pointer call remains unsupported in
+standard Clight; the new result keeps the encode/execute/decode boundary
+explicit. See the [address-refinement report](notes/ttc-cog-n64-address-refinement.md).
 
 ## What the all-RNG inventory establishes
 
@@ -473,7 +488,8 @@ still needs:
   `perform_ground_step`, including the actual surface selections;
 - a reachable state satisfying the complete dispatcher's entry conditions,
   airborne slide-kick entry/bounce and the following knockback update;
-- accepted particle allocation, the N64 address connection, and the complete
+- accepted particle allocation, integration of the proved local N64 address
+  connection into the full caller path, and the complete
   dust/star behavior chain in a reachable object-pool and object-list state; and
 - preserving input choices or proved exclusions for all relevant RNG sources,
   with their ordered draws connected to future cog decisions.

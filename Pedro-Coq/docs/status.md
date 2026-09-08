@@ -6,17 +6,22 @@ real no-wall reflection and backward-knockback transition, including nested
 helpers and their preservation properties. With the earlier animation/sound
 proofs, the active caller now retains two helper executions and anchor premises:
 sliding and the full ground step. Dry TTC's sound addend is corrected to 196608.
-The dry dispatcher dust tail is composed after the caller; the water tail and
-already-active dust rejection also execute. The complete dispatcher, entry,
-following knockback update, accepted particles, camera, ordered draws and N64
-allocation refinement remain open. This is not yet an actual cog-state witness.
+The [complete dry dispatcher](notes/ttc-cog-preserving-rng-plan.md) is now
+composed with that conditional caller; the water tail and already-active dust
+rejection also execute. The [local N64 address refinement](notes/ttc-cog-n64-address-refinement.md)
+executes the original numeric converter, decodes the authenticated US/JP dust
+addresses, and executes the real allocation-header/list selection. It checks
+the complete script word/relocation receipts and proves scalar-word agreement
+under a memory injection. Full allocator composition through this explicit
+representation boundary, entry, the following knockback update, accepted
+particles, camera and ordered draws remain open. This is not an actual cog-state witness.
 The [all-RNG source proof](notes/ttc-cog-all-rng.md) now checks every direct primitive
 call, computed-call caller and particle-field writer in 41 generated units per
 version, plus all 18 Mario particle entries. It accounts for 81 pinned
 RNG-bearing C/header files and proves a complete NONE-mode environmental
 update leaves memory unchanged. This closes the source inventory gap, not the
 full preserving-control theorem. Runtime indirect targets, action preservation,
-accepted particle execution and the N64 address refinement remain open.
+accepted particle execution and full N64 address-aware call composition remain open.
 
 The original [slide-kick proof](notes/ttc-cog-slide-kick.md) executes the generated sliding
 handler under seven actual-helper execution premises: a wall-stop result can

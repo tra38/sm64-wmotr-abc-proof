@@ -261,14 +261,25 @@ current request.
         binding and a symbolic behavior pointer, the allocator execution
         premise is impossible in standard Clight, before any object allocation.
         Keep this model limitation distinct from a retail dust impossibility.
+  - [x] Execute the complete generated US/JP numeric address conversion; prove
+        the segment-table bounds, no-wrap KSEG0 result and bounded dust-script
+        decoding. Authenticate the concrete retail placements and every script
+        word/relocation; connect the decoded header to actual allocation-list
+        selection. Prove scalar-word agreement under a standard memory
+        injection. See [the local refinement report](notes/ttc-cog-n64-address-refinement.md).
+  - [ ] Integrate this explicit representation bridge into the full allocator
+        caller/callee execution, including the loader's memory image, stored
+        behavior-pointer representations and native callback resolution. The
+        ordinary symbolic allocator premise remains impossible under its old
+        binding; the local bridge is not a whole-program N64 simulation.
   - [ ] Execute `cur_obj_update`'s complete command loop, list traversal,
         Mario particle dispatch, Mist/Puff spawn/allocation, and WhitePuff1.
         The next WhitePuff2 commands are `ADD_INT` and `END_REPEAT`; the
         downward chain additionally reaches pointer-to-integer arithmetic in
         generated `segmented_to_virtual`, which standard CompCert cannot
-        evaluate from a symbolic global `Vptr`. It needs a proved N64
-        flat-address refinement and a concrete CompCert memory realization of
-        the object/free-list topology.
+        evaluate from a symbolic global `Vptr`. It needs composition through
+        the proved local N64 address bridge and a concrete memory realization
+        of the object/free-list topology.
 - [ ] Prove object-pool and active-particle-flag premises for a reachable tap.
   - [x] Prove the isolated D/D/U allocation trace succeeds iff
         `free + unimportant >= 3`.

@@ -23,8 +23,10 @@ The current capstone does not yet assert that theorem.
    transition alone does not establish a preserving second action update.
 4. Execute Mario particle dispatch, accepted dust allocation and the full
    Mist/Puff command/list paths. The existing symbolic-pointer obstruction in
-   `segmented_to_virtual` requires a proved N64 address refinement. Existing
-   per-call execution premises cannot substitute for that refinement.
+   `segmented_to_virtual` now has a proved local numeric conversion/decoding
+   bridge and allocation-header result. Compose that explicit representation
+   change through the complete callers, stored behavior pointers and loader
+   memory image. The old ordinary symbolic callee premise remains impossible.
 5. Compose the other object, platform and camera updates in their real order;
    account for every RNG draw and both cogs' angle/timer changes. Instantiate
    a legal entry state and compare two preserving controller continuations.
@@ -67,7 +69,13 @@ Clight model does not represent. A proved address-semantics connection is
 required before composing a positive allocation proof. The generated game
 code has not been changed.
 
-The full preserving RNG theorem remains open. Steps 2–5, including the
+The [address follow-up](ttc-cog-n64-address-refinement.md) executes the complete
+numeric conversion, authenticates the concrete US/JP dust-script placements
+and word/relocation contents, proves bounded decoding/read agreement, and
+executes the real allocator header. It separates this local refinement from
+the remaining whole-caller representation and memory-image obligations.
+
+The full preserving RNG theorem remains open. The remaining parts of steps 2–5, including the
 successive knockback body, actual particle acceptance, all ordered draws,
 both cogs and legal entry, are still necessary. No new gameplay replay or
 positive in-spot RNG witness is claimed by this pass.

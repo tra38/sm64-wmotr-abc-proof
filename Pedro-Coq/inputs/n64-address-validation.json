@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "recorded_utc": "2026-09-08T02:56:33.651967+00:00",
+  "branch": "codex/ssl-pyramid-item-proof",
+  "parent_commit": "5fe43acdb7abaf9ff383e50682c4b3a42f346e21",
+  "source_revision": "9921382a68bb0c865e5e45eb594d9c64db59b1af",
+  "versions": [
+    "VERSION_US",
+    "VERSION_JP"
+  ],
+  "toolchain": {
+    "coq": "8.16.1",
+    "compcert": "3.15",
+    "switch": "sm64-item-proof"
+  },
+  "virtual_memory_cap_kib": 3145728,
+  "workspace_source_sha256": {
+    "Pedro-Coq/Makefile": "6763f9771c58028dd8ddb331919fe57a4e892da83b5592327f9828435c060aa1",
+    "Pedro-Coq/_CoqProject": "83efedb44a8ec0806cc49c7c8146a56d5094047e8daeaa59802c66da39ed0f1b",
+    "Pedro-Coq/proofs/N64AddressRefinement.v": "48774fbf826a544334d73e95e987fdfda59596fad7eb1c864761307cc327a8c0",
+    "Pedro-Coq/proofs/N64AllocationHeader.v": "e71c4c75c0c89e02b9377c0bc064967d902156f83d0fe495eb91a3bcf0fa7e71",
+    "Pedro-Coq/proofs/N64DustImage.v": "b67409cfafc64ec04e723d0f1cb4ab64eb8c7510f5fc52d3fb88f267b9bf63d1",
+    "Pedro-Coq/proofs/CogParticleAcceptance.v": "2692cc0f031bcf0cd22bba840221bcbb07bc520e7b38c6a3b447ab5b43b478c8",
+    "Pedro-Coq/proofs/MainTheorem.v": "e3d6b0e63f82aaeeda023d688244c8abd870d4bcc4141e6729ec24b560e33e91",
+    "Pedro-Coq/pipeline/check-n64-dust-addresses.py": "dc96c854441b7e191152ee7f5d7187f45dae69060f0917022594f47ff01f2eb4",
+    "Pedro-Coq/inputs/n64-dust-addresses.json": "596f30b8d0bdbdc3020b5ea63f0233151eb1484b90b280df66d12d3044656e8e",
+    "Pedro-Coq/docs/checklist.md": "6f868a7a5702d3fee2740e02a23693b780b81faea35bce6eaeb88c0658132150",
+    "Pedro-Coq/docs/plain-english-guide.md": "968c1cadaaff62af939dda6c98941398792a701112c960de7bdcf93e8bcb67cf",
+    "Pedro-Coq/docs/status.md": "db5788123bbeaabbd7cf37f7f879782bb7ed963d811dd45e0e21dd63243c9d99",
+    "Pedro-Coq/docs/notes/ttc-cog-preserving-rng-plan.md": "1d42daadde817260970d377aa59d55ab052d5f1f0df2ef681913a57d8b4b2242",
+    "Pedro-Coq/docs/notes/ttc-cog-n64-address-refinement.md": "6fc007d8b13c6a32f64e6bdf6b8e653cbbc36fc7486fb297b3b72c75ff4c4a85",
+    "Pedro-Coq/generated/us_memory.v": "11e82ca69c87d90d3cc387f839023800f12f12b143636ceb90cd71a9d013aabe",
+    "Pedro-Coq/generated/us_behavior_data.v": "92ab7072d4c630876fdb7f2c6906287ebc67919e7308391977f98dd7aa1124a4",
+    "Pedro-Coq/generated/us_spawn_object.v": "05905a0e8e322f34479b048240e96390715f80fb142fac3660ae4a1cce76c556",
+    "Pedro-Coq/generated/jp_memory.v": "8611d166b00d66ace8e631db55591fd42dc0fde8953c54dfe5ce2a9b35c31d89",
+    "Pedro-Coq/generated/jp_behavior_data.v": "2a3e6dd52f1d155b2ac41ade84ee2156253b1c4d55c4b844667337c124019c46",
+    "Pedro-Coq/generated/jp_spawn_object.v": "160983a0e32fc9e68cdbbab8a94ec073889e1aa679b4e0fd2854d604db242598"
+  },
+  "checks": [
+    {
+      "command": "COQ_JOBS=2 bash Pedro-Coq/pipeline/build.sh proofs COQEXTRAFLAGS=-time",
+      "exit_code": 0,
+      "log": "Pedro-Coq/build/n64-address-build.log",
+      "log_sha256": "0c54d7e8c4503a4debadfd8592a8f720832be8614c3d339e6cb3081b6daa0e96"
+    },
+    {
+      "command": "bash Pedro-Coq/pipeline/build.sh no-admitted rng-source-coverage n64-dust-addresses",
+      "exit_code": 0,
+      "log": "Pedro-Coq/build/n64-address-source-checks.log",
+      "log_sha256": "105885cbc49c2b8ec7a253e4798585cbf45aeb5b9c69cc3ad61a732ab89d98bb"
+    },
+    {
+      "command": "SM64_PROOF_SWITCH=sm64-item-proof bash .claude/skills/proof-discipline/discipline_check.sh",
+      "exit_code": 0,
+      "log": "Pedro-Coq/build/n64-address-discipline.log",
+      "log_sha256": "819bae79d93609aaec743b476873074411f25ded3641b15c1f33a4e7a58eac0a"
+    },
+    {
+      "command": "bash Pedro-Coq/pipeline/assumptions.sh Pedro.Proofs.MainTheorem checked_ttc_cog_local_mechanism_us_jp",
+      "exit_code": 0,
+      "log": "Pedro-Coq/build/n64-address-main-assumptions.log",
+      "log_sha256": "649c4dfb867a6c016545c885a436502f8914780184b149d6ec8de83b399b034d"
+    },
+    {
+      "command": "bash Pedro-Coq/pipeline/assumptions.sh Pedro.Proofs.N64AllocationHeader checked_n64_dust_address_frontier_us_jp",
+      "exit_code": 0,
+      "log": "Pedro-Coq/build/n64-address-frontier-assumptions.log",
+      "log_sha256": "649c4dfb867a6c016545c885a436502f8914780184b149d6ec8de83b399b034d"
+    },
+    {
+      "command": "git diff --check -- Pedro-Coq",
+      "exit_code": 0
+    },
+    {
+      "command": "Validate local Markdown links in changed documents",
+      "exit_code": 0,
+      "checked_targets": 47
+    }
+  ],
+  "standard_assumption_names": [
+    "ClassicalDedekindReals.sig_forall_dec",
+    "ClassicalDedekindReals.sig_not_dec",
+    "Classical_Prop.classic",
+    "Events.external_functions_sem",
+    "Events.inline_assembly_sem",
+    "FunctionalExtensionality.functional_extensionality_dep"
+  ],
+  "both_assumption_sets_match_baseline": true,
+  "active_capstone": "Pedro.Proofs.MainTheorem.checked_ttc_cog_local_mechanism_us_jp",
+  "scope": {
+    "discharged": [
+      "Complete original numeric segmented_to_virtual execution in US/JP, with unchanged memory and empty trace",
+      "Bounded behavior segment index, nonwrapping cached virtual address and exact dust-script decode",
+      "Authenticated concrete retail dust-script offsets and complete generated initializer/relocation word receipts",
+      "Same-memory decoded reads and scalar-word correspondence under a CompCert memory injection",
+      "Original create_object header execution after the explicit decoding boundary, selecting lists 8/8/12",
+      "Header word supplied by standard CompCert global initialization"
+    ],
+    "not_established": [
+      "Loader memory image, segment-table value and live symbol bindings in a reachable cog state",
+      "Whole-caller or whole-program simulation through encoded and symbolic pointer representations",
+      "General raw N64 byte-memory or native-callback machine-code refinement",
+      "Ordinary symbolic Clight allocator premise under the unchanged segmented-function binding",
+      "Full allocation/free-list, particle acceptance, behavior/list and ordered RNG execution",
+      "Remaining slide movement helpers, airborne entry/bounce and preserving next knockback update",
+      "Full preserving RNG gameplay theorem"
+    ],
+    "knockback_answer": "The proved transition preserves position/floor and reverses forward velocity. The following handler first clamps to +/-32; on a flat stored floor early frames apply 0.9 friction and frames >=22 set +/-0.1. Slopes can alter early-frame speed. Staying in the spot on the next update remains unproved.",
+    "knockback_speed_answer_is_pinned_source_analysis_not_full_execution_theorem": true,
+    "new_emulator_run": false,
+    "new_generated_ast_regeneration": false,
+    "rom_or_game_memory_modified": false,
+    "root_discipline_audit_targets": "Existing root no-A capstones; Pedro separately checked above."
+  }
+}

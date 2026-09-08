@@ -1,7 +1,7 @@
 SHELL := /usr/bin/env bash
 COQMAKEFILE := CoqMakefile
 
-.PHONY: all generate reproducible configure proofs no-admitted runtime-receipt rng-source-coverage assumptions check clean
+.PHONY: all generate reproducible configure proofs no-admitted runtime-receipt rng-source-coverage n64-dust-addresses assumptions check clean
 
 all: check
 
@@ -27,6 +27,9 @@ runtime-receipt:
 
 rng-source-coverage:
 	python3 pipeline/check-rng-source-coverage.py
+
+n64-dust-addresses:
+	python3 pipeline/check-n64-dust-addresses.py
 
 assumptions: proofs
 	bash pipeline/assumptions.sh \
@@ -60,6 +63,7 @@ check:
 	$(MAKE) reproducible
 	$(MAKE) runtime-receipt
 	$(MAKE) rng-source-coverage
+	$(MAKE) n64-dust-addresses
 	$(MAKE) proofs
 	$(MAKE) no-admitted
 	$(MAKE) assumptions
