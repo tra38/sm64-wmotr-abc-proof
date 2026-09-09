@@ -79,6 +79,7 @@ Read this table from the desired result toward earlier requirements.
 | The high source belongs to Mario's display record | The live Mario-object reference names the expected object. | The selected US and JP field reads and copy arguments are proved. The floor-reset helpers also keep the object reference actually read at their own entry, through their preceding calls. The correct object identity across the wider history remains open. |
 | An old high display survives a downward floor snap | The usual display reset is skipped, or something changes again afterward. | The stop routine and the stationary routine's no-moving-ground branch write the newly read floor height to the display. Their State-only snap leaves the separate collision/display object untouched. The moving-ground branch remains distinct. |
 | The ordinary collision copy leaves a useful height gap | Movement and display already differ when that copy begins. | With the ordinary matching Mario references, the actual height assignment copies the incoming movement height and leaves the incoming display height unchanged. Its four preceding writes preserve both readings. Earlier changes and survival through the remaining statements are still open. |
+| Quicksand sinking enlarges the upward gap | The sink must receive negative depth, or fail the checked storage/finite-value conditions. | The entire actual US/JP sink call preserves movement and raw collision height under ordinary storage separation. Finite nonnegative depth cannot raise its finite display result, including rounding; it cannot supply the gap by lowering the other heights either. A clean negative seed and full entry-condition coverage remain open. |
 | Display remains high while collision touches the warp | Some earlier operation creates and preserves that separation. | Moving only Mario's movement position preserves the prior display/collision gap; the checked collision copy can then transfer an existing movement/display difference into a collision/display gap. The full history and skipped resets still need joint accounting. Stock visual offsets are too small under their checked conditions. |
 | Every ingredient occurs together | One no-A history creates the gap, activates the pillars and reaches the warp while the needed top surface exists. | A clean pillar run is recorded, but it reaches the warp after the top disappears. That recording does not supply the installation. |
 
@@ -215,6 +216,47 @@ to the next lookup still need connecting. In particular, the floor-reset
 result and this copy result are not spliced together as though their endpoints
 were already the same state. No clean Ink producer is established.
 
+## The entire post-action quicksand sink is now checked
+
+This is a direct display-height writer between Mario's action and the ordinary
+collision copy. The [source proof](../../proofs/InkQuicksandSource.v) resolves
+the selected US and JP function and checks its complete body. The
+[execution proof](../../proofs/InkQuicksandExecution.v) derives the object
+reference from the real function argument and its entry memory, follows the
+actual optional drawing-matrix branch, then follows the display write. It
+does not simply assume that the optional earlier write is harmless.
+
+For ordinary separate storage, the whole completed call has an exact effect:
+displayed Y becomes its entry value minus the depth read at entry. Mario's
+movement record, including its position, depth and object reference, is
+unchanged; raw collision Y is unchanged too. The matrix branch's actual write
+address is derived, and its separation from those protected readings is an
+explicit condition. A null matrix needs no such write. If there is a matrix,
+the condition says its written cell is outside MarioState storage and the
+relevant front portion of Mario's object. Establishing that condition for
+every live caller is still work, not a consequence of naming it ordinary.
+
+The [Float32 proof](../../proofs/InkQuicksandArithmetic.v) handles rounding:
+with finite incoming height, finite depth and a finite result, subtracting a
+nonnegative depth cannot raise the displayed height. The
+[combined backward theorem](../../proofs/InkQuicksandBackward.v) applies that
+bound to the actual call and actual final memory read. Thus this call cannot
+enlarge an upward display/movement or display/collision gap with nonnegative
+depth: it neither raises the display nor lowers the other position. Any finite
+upward change under these storage conditions requires a **negative entry
+depth**. This is a necessary condition, not a construction of that seed. The
+separate [negative-depth/dialog search](negative-quicksand-unreanchored-dialog.md)
+remains responsible for finding or excluding it.
+
+This closes one local height-producing alternative, not the installation.
+No bound on the incoming gap is assumed or obtained: a gap created earlier
+can still enter this call. The theorem also does not prove that every live
+input and output is finite, that depth always remains nonnegative, or that
+the correct object and matrix storage persist through the full history.
+The helpers after sinking, the caller's particle write and collision-copy
+tail still need their own effects connected in the same execution. We do
+not join the sink endpoint to the earlier collision-copy entry by assumption.
+
 ## The next useful backward cut
 
 Work backward from the movement/display difference required at the ordinary
@@ -227,6 +269,19 @@ and the path to the next lookup in that same run, retaining the correct live
 object reference. Lowering movement while leaving display high can become a
 collision gap at the checked copy, but only if that difference survives until
 the copy reads it.
+
+The sink result moves its part of the question back to the end of the action:
+if the depth is nonnegative and the storage/finite-value conditions hold,
+the sink cannot be the source of a newly enlarged upward gap. The earlier
+action must supply that difference, or a later operation must create it.
+One concrete place to inspect next is floor alignment during crawling or
+sliding. The generated [US](../../generated/us_mario_actions_moving.v) and
+[JP](../../generated/jp_mario_actions_moving.v) bodies copy the sampled floor
+height into movement Y and then build a drawing matrix; their call sites
+follow the ground-step result. The next proof should determine whether the
+preceding ground step already gave movement and display that same height,
+and account for the intervening helpers. The source inspection alone does
+not establish a retained high display or exclude one.
 
 The other concrete direction is movement during an action that skips the
 usual display reset. Platform movement during a stalled dialog was already
@@ -245,12 +300,13 @@ before spending effort on the star continuations.
 ## Verification and remaining scope
 
 The active SSL `check-ink-backward` target compiles the integrated main proof
-and checks seventeen theorem assumption reports, including the earlier retry
-and floor-reset results plus the collision-copy source, identity test,
-four-write frame and completed-call height cut. No project-specific axiom was added.
+and checks twenty-two theorem assumption reports, including the earlier retry,
+floor-reset and collision-copy results plus the selected sink resolution,
+Float32 bound, matrix-write destination, whole-call effect and actual-call
+backward condition. No project-specific axiom was added.
 `MainTheorem.current_ink_backward_execution_boundary` exposes the strengthened
-`InkRawCopyCheckedBoundary`, which includes all previous cuts and the existing
-selected collision-copy resolution.
+`InkQuicksandCheckedBoundary`, which includes all previous cuts and both
+selected-function resolutions.
 The ultimate impossibility theorem still has its three explicit whole-run
 and route-coverage requirements; this tranche sharpens the real branch/copy/reset
 part of that work rather than removing those requirements. The repository's

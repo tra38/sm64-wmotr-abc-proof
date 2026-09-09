@@ -466,6 +466,18 @@ The new proof modules establish separate, deliberately scoped facts:
 No theorem in these modules proves that a clean US or JP zero-A execution
 installs the gap, reaches either target region, or collects either target star.
 
+## What the backward Ink proof adds
+
+The [backward Ink audit](ink-backward-search.md#the-entire-post-action-quicksand-sink-is-now-checked)
+now follows the entire selected US/JP sink call, including its optional
+drawing-matrix write. With ordinary separate storage, it preserves Mario's
+movement record and raw collision height and subtracts the entry depth from
+the entry display height. For finite values, an upward change requires a
+negative entry depth; rounding with nonnegative depth supplies no alternative.
+This proves a necessary condition in actual call execution, not that the
+negative seed or stalled-dialog history is reachable. The live entry storage,
+finite values, seed provenance and later transport requirements remain open.
+
 ## Decisive remaining obligations
 
 1. Refine every reached clean US/JP Clight step to the checked action/depth

@@ -452,4 +452,10 @@ proofs/InkRawCopyExpressions.v
 proofs/InkRawCopyStores.v
 proofs/InkRawCopyIndex.v
 proofs/InkRawCopyHeight.v
+proofs/InkQuicksandSource.v
+proofs/InkQuicksandArithmetic.v
+proofs/InkQuicksandExpressions.v
+proofs/InkQuicksandStores.v
+proofs/InkQuicksandExecution.v
+proofs/InkQuicksandBackward.v
 proofs/MainTheorem.v

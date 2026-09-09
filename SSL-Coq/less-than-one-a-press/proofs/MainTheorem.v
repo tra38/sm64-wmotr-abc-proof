@@ -46,6 +46,7 @@ From LessThanOneAPress.Proofs Require Import
   ContactConsumerSource ContactConsumerExecution ContactCreditExecution
   SecretContactExecution
   InkBackwardSource InkBackwardExecution InkCopyCaller InkFloorResetCopy InkRawCopyHeight
+  InkQuicksandBackward
   CompCertRouteScope.
 
 Import ListNotations.
@@ -1076,10 +1077,14 @@ Qed.
     identity test and frames its first four stores. Its Y store transfers the
     entry State height without changing the entry display height. This is one
     reached checkpoint with the remaining copy tail retained as actual execution,
-    not yet framed. The stationary moving-ground alternative, earlier live
-    history, intervening action effects and survival to the retry remain open. *)
-Theorem current_ink_backward_execution_boundary : InkRawCopyCheckedBoundary.
-Proof. exact irc_raw_copy_boundary_checked. Qed.
+    not yet framed. The whole selected quicksand sink now has an exact effect:
+    under ordinary matrix/storage separation, it preserves State and raw Y,
+    and subtracts entry depth from entry display Y. A finite display raise
+    requires negative depth. Live storage/sign/finite-value coverage, other
+    action effects, the moving-ground alternative and survival to the retry
+    remain open; the local checkpoints are not an assumed continuous history. *)
+Theorem current_ink_backward_execution_boundary : InkQuicksandCheckedBoundary.
+Proof. exact iq_quicksand_boundary_checked. Qed.
 
 (* The graphical-fallback tranche shows that update order does not by itself
    refute the scheduling shape; it does not execute the branch in Clight or
