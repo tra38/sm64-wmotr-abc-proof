@@ -3,6 +3,13 @@
 The target is a surviving negative seed without a new physical A press, not
 negative depth in all gameplay: the ordinary long-jump case is already known.
 
+**Current status: whole-history connection missing; route not closed.**
+The [shared closure argument](negative-depth-shared-closure.md) now controls
+work selection and reporting for this branch. The local results below are
+reusable evidence, not a continuous execution from the accepted boundary.
+The next priority is surviving-producer coverage in that execution, not
+another independent controller or timer lemma.
+
 One possible shortcut is now excluded: **leaving the ground cannot simply
 carry the old landing timer into the final depth calculation.** The actual
 action change resets the original Mario record's timer to zero. The following
