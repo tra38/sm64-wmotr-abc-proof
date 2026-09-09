@@ -46,7 +46,7 @@ From LessThanOneAPress.Proofs Require Import
   ContactConsumerSource ContactConsumerExecution ContactCreditExecution
   SecretContactExecution
   InkBackwardSource InkBackwardExecution InkCopyCaller InkFloorResetCopy InkRawCopyHeight
-  InkQuicksandBackward InkMovingBackward
+  InkQuicksandBackward InkMovingBackward InkControllerBackward
   CompCertRouteScope.
 
 Import ListNotations.
@@ -1087,12 +1087,18 @@ Qed.
     entry floor height to State Y. Its matrix tail is not yet framed. The
     actual first-negative landing write needs timer >= 4; with the explicit
     stock duration gate it needs long-jump landing and timer 4 or 5. The actual
-    crouch-slide A guard skips launch when the pressed bit is clear. Live
-    timer/gate/controller provenance, floor/State mismatch, intervening effects
-    and survival to the retry remain open. These are not an assumed continuous
-    history, nor a universal proof that negative depth requires an A edge. *)
-Theorem current_ink_backward_execution_boundary : InkMovingCheckedBoundary.
-Proof. exact imb_moving_backward_checked. Qed.
+    crouch-slide A guard skips launch when the pressed bit is clear. The actual
+    controller edge store now matches its sampled new-press bit. One continuous
+    input-body prefix clears old input, frames both metadata writes, and resolves
+    the real button call; without a controller A edge that complete callee
+    leaves the A-pressed bit clear even with held A or other buttons. The real
+    joystick/geometry continuation is retained, not framed by this result.
+    Sampling/start-boundary coherence, the later input/action/timer history,
+    floor/State mismatch, intervening effects and survival to the retry remain
+    open. This is not a universal proof that negative depth needs a physical A
+    press; built-in demo samples and unmatched initial history are distinct. *)
+Theorem current_ink_backward_execution_boundary : InkControllerCheckedBoundary.
+Proof. exact icb_controller_backward_checked. Qed.
 
 (* The graphical-fallback tranche shows that update order does not by itself
    refute the scheduling shape; it does not execute the branch in Clight or

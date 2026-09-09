@@ -197,7 +197,9 @@ that actual execution rather than the older integer arithmetic model.
 | The ordinary landing write first makes depth negative | The timer actually read by that write is at least four. | Proved for the actual US/JP reads, rounded calculation and store. Other reached depth writers still need their full live classification. |
 | A stock landing reaches that late write | It uses the six-frame long-jump landing, at timer four or five. | Proved **if the timer at this write satisfies the stock duration gate**. Deriving that condition across the preceding call and its intervening helpers remains open. |
 | Mario enters long-jump landing | Mario previously entered long jump. | The generated constructor census checks the stock source chain. Its complete live action history still needs connecting. |
-| The ordinary crouch-slide branch starts long jump | Its actual input read has the A-pressed bit set. | The new real-guard proof excludes the branch when that bit is clear. Connecting the bit to a physical A edge, and covering every earlier action/input change, remains open. |
+| The ordinary crouch-slide branch starts long jump | Its actual input read has the A-pressed bit set. | The real-guard proof excludes the branch when that bit is clear. The intervening input/action history still needs connecting. |
+| Mario's button update supplies A-pressed | The controller record reports a new A edge. | One actual reset-to-button-call prefix now clears stale input and excludes a new A flag when the controller's A edge is absent, through the complete callee. Its later joystick/geometry continuation remains unframed. |
+| The controller edge store reports A | The sampled A state is down and its remembered state was up. | Proved from the actual US/JP reads, expression, cast and store. The device sample, remembered-history continuity and transport to Mario's controller read remain separate. |
 
 The [A-guard proof](../../proofs/InkLongJumpGuard.v) derives the tested input
 from MarioState memory; it does not assume the temporary used by the branch.
@@ -225,11 +227,78 @@ different earlier floor sample. Thus the complete exclusion must cover both
 late timers and both floor readings. If that exclusion is proved, the clean
 negative-seed branch is closed before any dialog transport search is needed.
 
-These new cuts are included in
+These cuts are included in
 `MainTheorem.current_ink_backward_execution_boundary` and the active
 `check-ink-backward` build/assumption checks. They retain the earlier
 defined-producer census without promoting its source-shaped action model to
 a completed whole-game execution proof.
+
+## From a game A flag to a physical A press
+
+The new result rules out several tempting explanations at a concrete place
+in the program: **holding A is not enough, B or Z cannot substitute for it,
+and an old Mario input flag does not survive the checked reset into the
+button routine.** The complete routine also cannot manufacture that flag
+through its two button-age counters. This is a proof about the selected
+US/JP Clight execution, including its memory reads and writes, not a claim
+that the whole negative-depth route is closed.
+
+The [continuous preparation proof](../../proofs/InkControllerBackward.v)
+derives the reset, the two intervening bookkeeping writes and the actual
+button-call argument in one execution of `update_mario_inputs`. It resolves
+the call to the selected `update_mario_button_inputs`, proves the no-edge
+result for its complete body, and keeps the remaining joystick/geometry
+continuation as actual execution. It does **not** assume that continuation
+preserves the result. The ordinary Mario record must fit without wrapping
+the address space, and the called function name must not be a local variable;
+the field layout and internal function selection themselves are checked.
+
+The [controller-store proof](../../proofs/InkControllerEdge.v) independently
+derives the A edge from the current pad sample and the controller's remembered
+button state. Both current-sample reads occur before its only write, so they
+read the same value. Casting and storing the result in a 16-bit field does
+not change the A bit. The store and Mario's later controller read have not yet
+been joined by a full live-memory frame.
+
+Three boundary distinctions must stay visible:
+
+- **Coherent held A:** if A was already down in the remembered sample and
+  remains down now, the checked edge store cannot report a new A press.
+  This is the allowed held-A case, not a new physical press.
+- **Unmatched starting history:** A down now with remembered A up produces
+  an edge. The arithmetic is checked, but no clean SSL history causing this
+  mismatch has been exhibited. Do not silently initialize the remembered
+  state to zero when accepting an already-held A boundary.
+- **Built-in demo input:** `run_demo_inputs` can supply A samples without a
+  human pressing A at that instant. Such a sample still counts as an A edge
+  under `InputSemantics` when the previous sample was up. It is not evidence
+  for a no-A SSL route, and it prevents an unrestricted statement equating
+  every game A flag with a physical controller press.
+
+Ordinary-source inspection narrows these distinctions further, without yet
+promoting them to whole-run Coq results. `src/game/game_init.c` assigns the
+controller-data pointers in `init_controllers`, called before the main loop;
+no runtime reassignment was found in the searched game source. Its null-data
+branch clears the button records, but ordinary disconnection is not itself
+shown to take that branch. In `lib/src/osContStartReadData.c`,
+`osContGetReadData` updates pad buttons only on a successful response; an
+error leaves the previous button value, rather than explicitly clearing it.
+This is a source observation about that callee, not a hardware-input proof.
+`src/menu/title_screen.c` clears the demo pointer in `run_level_id_or_demo`
+and enables it only from the idle-title countdown; taking the normal menu
+selection does not meet that branch. The selected Clight unit set does not
+contain that title-screen body, so this observation is not a linked demo
+exclusion theorem. No new clean producer has emerged from this inspection.
+
+The next proof connections are specific: establish the accepted sample and
+remembered-button history; preserve the edge result through the controller
+loop and its calls into Mario's actual controller read; preserve Mario's
+A flag through the remaining input updates; then connect the first long jump,
+its landing, and the timer at the depth write. The late timer is still required
+to satisfy the earlier stock landing limit. Until those connections and the
+remaining depth-writer coverage are derived, **a physical A press being
+universally necessary remains open**, not disproved by held A and not proved
+merely by this local input theorem.
 
 ## The unreanchored action
 

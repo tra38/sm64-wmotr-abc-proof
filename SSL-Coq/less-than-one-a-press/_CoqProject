@@ -468,4 +468,9 @@ proofs/InkLandingExecution.v
 proofs/InkLongJumpGuard.v
 proofs/InkNegativeDepthBackward.v
 proofs/InkMovingBackward.v
+proofs/InkControllerSource.v
+proofs/InkControllerEdge.v
+proofs/InkMarioInputFlag.v
+proofs/InkMarioInputReset.v
+proofs/InkControllerBackward.v
 proofs/MainTheorem.v

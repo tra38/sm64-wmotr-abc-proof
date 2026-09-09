@@ -339,13 +339,28 @@ launch branch, without a memory change, when the A-pressed bit is clear.
 These strengthen the earlier source census; they do not turn that census
 into an already-completed whole-game execution proof.
 
-Thus no alternative clean producer has been found. To prove that a new A
-press is necessary, still connect every reached depth change to the audited
-cases, the actual late write to its earlier duration gate, long-jump landing
-to its first long-jump entry, and the input bit to a physical controller edge.
-Keep the same live Mario record throughout and account for reached outside
-calls. An A button held across the accepted boundary is not automatically a
-new press; its actual input history must be checked. A negative value that is
+The [controller execution cut](../../proofs/InkControllerBackward.v) now
+follows one actual input-preparation prefix: clear the old input, make the two
+unrelated bookkeeping writes, call the selected US/JP button routine with the
+same Mario reference, and reach its real continuation. When the controller
+reports no new A press, the complete button routine leaves Mario's A-pressed
+flag clear. Held A, B/Z input and the button-age counters cannot turn it on
+there. Separately, the [actual controller store](../../proofs/InkControllerEdge.v)
+proves that the new-press bit means the current sample has A down and the
+remembered sample had A up. This includes both reads of the current sample
+and the stored 16-bit result, not just the shape of a C expression.
+
+Thus no alternative clean producer has been found, but the two checked
+pieces are not yet one complete controller-to-landing history. Connect the
+sample store to the controller record read by Mario, frame the joystick,
+geometry and other updates after the checked button call, follow long-jump
+landing back to its first long-jump entry, and connect the late depth write
+to its earlier timer limit. Keep the same live Mario record, classify every
+reached depth change, and account for reached outside calls. A claim about a
+physical press additionally needs coherent remembered input at the accepted
+start and ordinary, non-demo samples. Holding A across a correctly remembered
+boundary does not create a new press; starting with A down but remembered A
+up is a different condition, not a demonstrated clean route. A negative value
 immediately clamped before sinking is not the required surviving seed. The
 [negative-depth audit](negative-quicksand-unreanchored-dialog.md#walking-backward-from-the-first-negative-seed)
 records the chain and its remaining connections.
@@ -392,14 +407,15 @@ before spending effort on the star continuations.
 ## Verification and remaining scope
 
 The active SSL `check-ink-backward` target compiles the integrated main proof
-and checks thirty-one theorem assumption reports, including the earlier retry,
+and checks thirty-eight theorem assumption reports, including the earlier retry,
 floor-reset, collision-copy and sink results, the completed ground-call and
 refresh cuts, the alignment snap, the actual late-landing write, its conditional
-stock-duration consequence, and the actual A-pressed guard. No project-specific
-axiom was added.
+stock-duration consequence, the actual A-pressed guard, controller-edge storage,
+the complete button routine and the continuous reset-to-button-call prefix.
+No project-specific axiom was added.
 `MainTheorem.current_ink_backward_execution_boundary` exposes the strengthened
-`InkMovingCheckedBoundary`, which includes the previous cuts, the selected
-moving/ground function resolutions, and the existing negative-depth census.
+`InkControllerCheckedBoundary`, which retains `InkMovingCheckedBoundary`
+and adds the actual input cuts and selected function resolutions.
 The ultimate impossibility theorem still has its three explicit whole-run
 and route-coverage requirements; this tranche sharpens the real branch/copy/reset
 part of that work rather than removing those requirements. The repository's
