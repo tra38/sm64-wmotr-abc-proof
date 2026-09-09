@@ -473,4 +473,15 @@ proofs/InkControllerEdge.v
 proofs/InkMarioInputFlag.v
 proofs/InkMarioInputReset.v
 proofs/InkControllerBackward.v
+proofs/InkControllerRemembered.v
+proofs/InkFloorHistorySource.v
+proofs/InkFloorHistoryExecution.v
+proofs/InkFloorHistoryCall.v
+proofs/InkFloorHistoryQuery.v
+proofs/InkFloorHistoryBackward.v
+proofs/InkLandingHistorySource.v
+proofs/InkLandingHistoryGate.v
+proofs/InkLandingHistoryReturn.v
+proofs/InkLandingHistory.v
+proofs/InkBackwardHistory.v
 proofs/MainTheorem.v

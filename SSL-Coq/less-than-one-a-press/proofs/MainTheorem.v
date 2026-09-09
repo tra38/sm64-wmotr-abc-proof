@@ -46,7 +46,7 @@ From LessThanOneAPress.Proofs Require Import
   ContactConsumerSource ContactConsumerExecution ContactCreditExecution
   SecretContactExecution
   InkBackwardSource InkBackwardExecution InkCopyCaller InkFloorResetCopy InkRawCopyHeight
-  InkQuicksandBackward InkMovingBackward InkControllerBackward
+  InkQuicksandBackward InkMovingBackward InkControllerBackward InkBackwardHistory
   CompCertRouteScope.
 
 Import ListNotations.
@@ -1093,12 +1093,17 @@ Qed.
     the real button call; without a controller A edge that complete callee
     leaves the A-pressed bit clear even with held A or other buttons. The real
     joystick/geometry continuation is retained, not framed by this result.
-    Sampling/start-boundary coherence, the later input/action/timer history,
-    floor/State mismatch, intervening effects and survival to the retry remain
-    open. This is not a universal proof that negative depth needs a physical A
-    press; built-in demo samples and unmatched initial history are distinct. *)
-Theorem current_ink_backward_execution_boundary : InkControllerCheckedBoundary.
-Proof. exact icb_controller_backward_checked. Qed.
+    The adjacent controller stores now preserve the edge while remembering
+    the same sample. The earlier floor query and high-gap quarter-step choices
+    have actual execution cuts; the blocked tail is not a frame for its earlier
+    queries. The landing duration gate now derives its compared/stored timer
+    and carries its bound to the ordinary cancellation return. Sampling/start
+    coherence, later input/action history, the interval to the depth write,
+    clean floor-gap reachability and survival to the retry remain open. These
+    are separately checked histories, not one clean run or a universal proof
+    that negative depth needs a physical A press. *)
+Theorem current_ink_backward_execution_boundary : InkBackwardHistoryCheckedBoundary.
+Proof. exact ibh_backward_histories_checked. Qed.
 
 (* The graphical-fallback tranche shows that update order does not by itself
    refute the scheduling shape; it does not execute the branch in Clight or

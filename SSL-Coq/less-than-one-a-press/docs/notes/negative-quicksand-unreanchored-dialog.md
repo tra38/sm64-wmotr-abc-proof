@@ -235,6 +235,15 @@ a completed whole-game execution proof.
 
 ## From a game A flag to a physical A press
 
+The [executed landing-duration endpoint](ink-negative-depth-history.md) now
+supplies the earlier timer bound from real US/JP execution: the duration gate
+compares the value it actually stores, and the clear-A/clear-off-floor path
+keeps that value through its zero return. Rejection instead calls the real
+action setter and returns one. This closes the gate-to-return interval,
+including 16-bit wrap, but not the later wrapper, movement, animation and sound
+calls before the depth write. The ordinary descriptor value and flags at the
+gate, and the earlier path into that gate, still have to be derived.
+
 The new result rules out several tempting explanations at a concrete place
 in the program: **holding A is not enough, B or Z cannot substitute for it,
 and an old Mario input flag does not survive the checked reset into the
@@ -259,6 +268,17 @@ button state. Both current-sample reads occur before its only write, so they
 read the same value. Casting and storing the result in a 16-bit field does
 not change the A bit. The store and Mario's later controller read have not yet
 been joined by a full live-memory frame.
+
+The [consecutive-store proof](../../proofs/InkControllerRemembered.v) now joins
+edge detection to the immediately following remembered-button update in one
+actual US/JP execution. With the ordinary separate controller and pad arrays,
+the first write preserves the sample and its pointer, the next write remembers
+that same sample, and the next write does not alter the detected edge. The
+16-bit storage keeps the A bit intact. The remaining analog-helper call is
+retained as a real continuation, not assumed harmless. Entering this branch,
+carrying its result through the remainder of the controller loop, and reaching
+Mario's later read still need proofs; these two consecutive writes cannot by
+themselves turn correctly remembered held A into a new press.
 
 Three boundary distinctions must stay visible:
 
@@ -294,11 +314,11 @@ The next proof connections are specific: establish the accepted sample and
 remembered-button history; preserve the edge result through the controller
 loop and its calls into Mario's actual controller read; preserve Mario's
 A flag through the remaining input updates; then connect the first long jump,
-its landing, and the timer at the depth write. The late timer is still required
-to satisfy the earlier stock landing limit. Until those connections and the
-remaining depth-writer coverage are derived, **a physical A press being
-universally necessary remains open**, not disproved by held A and not proved
-merely by this local input theorem.
+its landing, and the timer at the depth write. The late timer must be connected
+through the later helpers to the now-bounded cancellation endpoint. Until
+those connections and the remaining depth-writer coverage are derived,
+**a physical A press being universally necessary remains open**, not disproved
+by held A and not proved merely by this local input theorem.
 
 ## The unreanchored action
 

@@ -310,14 +310,31 @@ previous quarter step snapped Mario onto the floor. In particular, the
 common moving-action checks and crawling handler do not simply reject every
 off-floor input before reaching this code.
 
+The [floor-history proof](ink-floor-history.md) now connects the primary
+geometry-input query to its actual movement-Y argument and returned-height
+store. Only that last scalar store is proved to preserve movement Y; the
+query's output memory and both preceding wall calls remain explicit. A
+missing primary floor can also trigger the later retry, whose replacement
+result must not be confused with this first result.
+
+The quarter step makes its own new floor query, possibly adjusted for water.
+Its recorded execution now separates a high gap relative to **that new
+floor** into a ceiling block or a left-ground continuation. The blocked tail
+preserves memory only from its post-water checkpoint, not from function
+entry. A high gap against the **older remembered floor** does not imply that
+the new query sees the same gap: selecting a higher new floor may instead
+reach the other ceiling-blocking branch. An earlier missing-floor return is
+also distinct. These two sampled floor heights must therefore be related by
+the live geometry rather than identified by assumption.
+
 The decisive remaining case is a clean, sufficiently large movement/floor
-disagreement that reaches a blocked ground step and then alignment. Trace that
-disagreement back to the earlier floor query and movement, with the actual
-floor, walls, ceiling and action. Also check the helpers between refresh and
-alignment, the matrix-building tail, the remaining collision copy and the
-next retry. The drawing matrix is not the stored display-position record that
-the retry reads. No controller-reachable 960-unit gap has been established,
-and these separately checked calls are not assumed to be adjacent in one run.
+disagreement that reaches a blocked ground step and then alignment. Trace both
+floor readings and the attempted movement through the actual walls, ceiling
+and action. Also check the helpers between refresh and alignment, the
+matrix-building tail, the remaining collision copy and the next retry. The
+drawing matrix is not the stored display-position record that the retry
+reads. No controller-reachable 960-unit gap has been established, and these
+separately checked calls are not assumed to be adjacent in one run.
 
 ## Backward from negative depth to the A requirement
 
@@ -339,6 +356,17 @@ launch branch, without a memory change, when the A-pressed bit is clear.
 These strengthen the earlier source census; they do not turn that census
 into an already-completed whole-game execution proof.
 
+The [landing-history proof](ink-negative-depth-history.md) now establishes
+an earlier concrete endpoint: the actual duration gate increments and stores
+the timer, reads the descriptor's limit, and permits normal continuation only
+below that limit. With A-pressed and off-floor clear, both remaining input
+checks preserve this timer through the cancellation routine's zero return.
+The actual duration-rejection call returns one, so rejection cannot masquerade
+as this zero result. This includes 16-bit wrap; it does not assume that an old
+large timer simply keeps growing. The live descriptor value, earlier checks
+and required input flags remain premises, and later landing helpers still
+separate this bounded endpoint from the negative-depth write.
+
 The [controller execution cut](../../proofs/InkControllerBackward.v) now
 follows one actual input-preparation prefix: clear the old input, make the two
 unrelated bookkeeping writes, call the selected US/JP button routine with the
@@ -350,12 +378,21 @@ proves that the new-press bit means the current sample has A down and the
 remembered sample had A up. This includes both reads of the current sample
 and the stored 16-bit result, not just the shape of a C expression.
 
+The [following remembered-button update](../../proofs/InkControllerRemembered.v)
+is now joined to that edge store in one execution of the actual controller
+branch. The same pad sample becomes the remembered value and the edge remains
+unchanged; the two ordinary arrays are separated using their real global
+identities. The analog helper is still an executed continuation whose effects
+must be checked. This closes the immediate two-write handoff, not the whole
+controller-to-Mario interval or the physical-device history.
+
 Thus no alternative clean producer has been found, but the two checked
 pieces are not yet one complete controller-to-landing history. Connect the
 sample store to the controller record read by Mario, frame the joystick,
 geometry and other updates after the checked button call, follow long-jump
 landing back to its first long-jump entry, and connect the late depth write
-to its earlier timer limit. Keep the same live Mario record, classify every
+to the now-bounded cancellation endpoint through the intervening helpers.
+Keep the same live Mario record, classify every
 reached depth change, and account for reached outside calls. A claim about a
 physical press additionally needs coherent remembered input at the accepted
 start and ordinary, non-demo samples. Holding A across a correctly remembered
@@ -407,15 +444,20 @@ before spending effort on the star continuations.
 ## Verification and remaining scope
 
 The active SSL `check-ink-backward` target compiles the integrated main proof
-and checks thirty-eight theorem assumption reports, including the earlier retry,
+and checks fifty-four theorem assumption reports, including the earlier retry,
 floor-reset, collision-copy and sink results, the completed ground-call and
 refresh cuts, the alignment snap, the actual late-landing write, its conditional
 stock-duration consequence, the actual A-pressed guard, controller-edge storage,
 the complete button routine and the continuous reset-to-button-call prefix.
+It adds the consecutive controller stores, actual queried-floor/high-gap
+quarter-step cuts, and the landing gate-to-return interval with its genuine
+rejection callee.
 No project-specific axiom was added.
 `MainTheorem.current_ink_backward_execution_boundary` exposes the strengthened
-`InkControllerCheckedBoundary`, which retains `InkMovingCheckedBoundary`
-and adds the actual input cuts and selected function resolutions.
+`InkBackwardHistoryCheckedBoundary`, which retains all earlier input/movement
+cuts through `InkLandingHistoryCheckedBoundary` and adds the independently
+checked floor history and consecutive controller stores. The conjunction is
+not evidence that these checkpoints are already connected in one clean run.
 The ultimate impossibility theorem still has its three explicit whole-run
 and route-coverage requirements; this tranche sharpens the real branch/copy/reset
 part of that work rather than removing those requirements. The repository's
