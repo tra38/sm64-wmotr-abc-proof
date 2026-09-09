@@ -440,4 +440,6 @@ proofs/ContactConsumerSource.v
 proofs/ContactConsumerExecution.v
 proofs/ContactCreditExecution.v
 proofs/SecretContactExecution.v
+proofs/InkBackwardSource.v
+proofs/InkBackwardExecution.v
 proofs/MainTheorem.v

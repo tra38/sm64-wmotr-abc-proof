@@ -2,7 +2,7 @@ COQMAKEFILE := CoqMakefile
 COQBIN ?=
 COQMAKEFILE_CMD ?= $(COQBIN)coq_makefile
 
-.PHONY: all generated regenerate verify-generated proofs check check-rank9 check-rank9-timing check-rank9a check-rank9a-prehome check-rank10a check-rank10a-entry check-rank12b check-contact-necessity clean
+.PHONY: all generated regenerate verify-generated proofs check check-rank9 check-rank9-timing check-rank9a check-rank9a-prehome check-rank10a check-rank10a-entry check-rank12b check-contact-necessity check-ink-backward clean
 
 all: proofs
 
@@ -2347,6 +2347,16 @@ check-rank10a: $(COQMAKEFILE)
 	bash pipeline/assumptions.sh \
 	  LessThanOneAPress.Proofs.MainTheorem \
 	  conditional_evidence_bearing_clight_run_impossibility
+
+check-ink-backward: $(COQMAKEFILE)
+	$(MAKE) -f $(COQMAKEFILE) proofs/MainTheorem.vo
+	bash pipeline/check-no-admitted.sh
+	bash pipeline/check-link-hygiene.sh
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkBackwardSource ibk_selected_copy_resolves
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkBackwardExecution ibk_retry_copy_calls_real_body
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkBackwardExecution ibk_backward_execution_boundary_checked
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem current_ink_backward_execution_boundary
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem conditional_evidence_bearing_clight_run_impossibility
 
 check-contact-necessity: $(COQMAKEFILE)
 	$(MAKE) -f $(COQMAKEFILE) proofs/MainTheorem.vo

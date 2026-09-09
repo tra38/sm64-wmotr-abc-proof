@@ -45,6 +45,7 @@ From LessThanOneAPress.Proofs Require Import
   ObjectContactNecessity
   ContactConsumerSource ContactConsumerExecution ContactCreditExecution
   SecretContactExecution
+  InkBackwardSource InkBackwardExecution
   CompCertRouteScope.
 
 Import ListNotations.
@@ -1066,6 +1067,14 @@ Proof.
         -- exact pyramid_top_y51_after_46_float32_rises_checked.
         -- lia.
 Qed.
+
+(** The backward installer cut is now an actual selected-body execution
+    statement: two wall queries and the first floor query precede the real
+    null test, and the vector copy's Y write consumes its actual source read.
+    This sharpens the branch/copy part of Ink's live refinement obligation;
+    it does not supply the earlier Graphics producer or a complete route. *)
+Theorem current_ink_backward_execution_boundary : InkBackwardExecutionBoundary.
+Proof. exact ibk_backward_execution_boundary_checked. Qed.
 
 (* The graphical-fallback tranche shows that update order does not by itself
    refute the scheduling shape; it does not execute the branch in Clight or

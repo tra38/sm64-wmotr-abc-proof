@@ -1,5 +1,8 @@
 # Ink graphical-fallback investigation
 
+For the current endpoint-first investigation and the rules for rejecting
+earlier setup branches, see [working backward from Ink installation](ink-backward-search.md).
+
 ## Verdict
 
 Ink's proposed schedule is **consistent with the inspected source order and is

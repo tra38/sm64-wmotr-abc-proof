@@ -551,6 +551,16 @@ These obligations currently block the clean-retail result.
   its remaining obligation is universalization, not another replay of the
   same schedule.
 
+- [ ] Connect Ink's new [backward execution cuts](notes/ink-backward-search.md)
+  to the live installer: carry the vector copy's actual Y read back across its
+  preceding local/X stores to the entry Graphics cell, derive the caller's
+  Mario-object identity and copy addresses, and follow the last display or raw
+  Object change through the accepted no-A history. `InkBackwardExecution.v`
+  now separates the actual post-first-query floor test, retry call and copy-Y
+  read/write checkpoints; it does not assume the earlier queries harmless or
+  discharge the remaining memory/producer history. A surviving gap must still
+  meet the pillar/top/warp timing and preserve support into Area 2.
+
 - [ ] Finish the live producer decision for Ink's timer-131 retry.  The new
   `InkTimer131ProducerClosure.v` source/geometry boundary rules out both normal
   large-writer stories: every one of the 40 US/JP behavior commands targeting
