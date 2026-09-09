@@ -496,5 +496,10 @@ proofs/InkAnimationDestination.v
 proofs/InkAnimationLoaderFrame.v
 proofs/InkAnimationTimerFrame.v
 proofs/InkLandingLateClosure.v
+proofs/InkAnimationStorageSetup.v
+proofs/InkAnimationNoTransfer.v
+proofs/InkLandingOutcomeFrames.v
+proofs/InkLandingQuietSound.v
+proofs/InkLandingBoundedClosure.v
 proofs/InkBackwardHistory.v
 proofs/MainTheorem.v

@@ -380,9 +380,17 @@ sound flags stay outside the timer, and animation/object/buffer bookkeeping
 stays in the entry destination blocks. With those blocks separate from
 MarioState and with the two named audio-request/animation-transfer frames,
 the continuous later interval cannot create its first negative final depth.
-Live destination provenance and those runtime effects remain open, rather
-than being inferred from the calls' names. Other ground results, earlier depth producers
-and the connection from controller history remain separate obligations.
+The [initialization and no-request extension](ink-negative-depth-history.md#initialization-facts-now-derived-from-execution)
+now derives the reached descriptor assignment and completed buffer-setup
+endpoint. It also removes the audio effect for an already-played sound and
+the loader effect for an actual zero return. The post-ground switch is
+exhaustive: reset on leaving the ground, an extra animation on wall contact,
+or no memory effect otherwise. Under the remaining animation conditions,
+the switch and dust update preserve any timer below four, and the later
+calculation cannot create a first negative value from that bounded timer.
+Live allocation provenance and persistence, effects of requests that really
+execute, earlier movement/depth changes and the controller history remain
+open. None is inferred merely from a helper's name.
 
 The [controller execution cut](../../proofs/InkControllerBackward.v) now
 follows one actual input-preparation prefix: clear the old input, make the two

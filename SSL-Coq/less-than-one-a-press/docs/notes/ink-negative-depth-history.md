@@ -12,9 +12,13 @@ animation or landing-sound call. Their actual game-code writes are now checked:
 the sound helpers update flags, and the animation helper updates the object
 and animation buffer. With the actual entry destinations separate from
 MarioState, only the audio-request and animation-transfer effects still need
-timer frames. Under those explicit conditions the continuous later interval
-cannot produce its first negative final depth. This does not yet exclude
-every landing branch or prove that a physical A press is universally necessary.
+timer frames. The additional results below check initialization writes,
+eliminate the audio request when its once-only flag is already set, and
+eliminate animation-transfer effects when the actual loader returns zero.
+They also cover all three choices in the post-ground switch and extend the
+final-calculation exclusion to any timer below four. The live history that
+delivers these conditions is not yet proved; a physical A press has not been
+shown universally necessary.
 
 The landing-duration bound is now attached to the real US/JP Clight gate,
 not just the stock descriptor census. The duration-proof files are
@@ -94,7 +98,7 @@ negative value created earlier, rather than by this final expression, is
 also a separate depth-writer obligation. Other ground results are not covered
 by the leave-ground reset branch.
 
-## What is still not connected
+## Late helper effects and their remaining conditions
 
 ### The late helpers are no longer black boxes
 
@@ -139,6 +143,71 @@ be connected to the protected timer, or the transfer must be shown absent
 on the relevant execution. This work does not change a running game's memory
 or investigate defects in those services.
 
+### Initialization facts now derived from execution
+
+[`InkAnimationStorageSetup.v`](../../proofs/InkAnimationStorageSetup.v)
+proves two actual US/JP initialization results. At the reached animation-list
+assignment in `init_mario_from_save_file`, the code reads `gMarioState` and
+stores the fixed address of `gMarioAnimsBuf` into that Mario record. If the
+read names the real `gMarioStates` allocation, the descriptor is necessarily
+in a different CompCert block: the two distinct global symbols cannot name
+the same allocation. This is a checked reached assignment, not a proof of
+the entire preceding initialization or its later persistence.
+
+The second result covers a **complete** `setup_dma_table_list` call. Whatever
+the earlier table-loading call does, the final descriptor-buffer store uses
+the original list and buffer arguments. A successful return therefore leaves
+`bufTarget` pointing to that exact original buffer. No harmless-effect premise
+is needed for the earlier loading call to prove this endpoint. This does not
+prove where the original buffer came from, whether the allocator supplied
+separate storage, or whether later execution preserves that pointer. Those
+are still required for the live animation-entry separation result; the
+ordinary object-pool identity must also be carried to that entry.
+
+### Two branches need no outside-call effect
+
+[`InkLandingQuietSound.v`](../../proofs/InkLandingQuietSound.v) proves that
+when the actual entry flags already contain the action-sound bit (`0x10000`),
+the complete landing-sound wrapper and its real action-sound callee leave
+**all memory unchanged** and produce no events. The flag check skips the
+particle/sound helper, so no `play_sound` request executes. This removes the
+audio-effect premise for that branch; it does not assume the flag is set on
+every landing, or rule out the first request. The flag is checked in the
+memory reached **after** the animation call, not in an unrelated snapshot.
+
+[`InkAnimationNoTransfer.v`](../../proofs/InkAnimationNoTransfer.v) proves
+that a completed real `load_patchable_table` call returning zero also leaves
+all memory unchanged and produces no events. This covers its cached-asset
+and rejected-index branches. The transfer branch must set the return value
+to one after its real call and bookkeeping write, so it cannot inhabit this
+zero-return result. The theorem is also connected to the actual loader
+callsite and returned temporary inside `set_mario_animation`. A zero result
+is not automatically a cache hit or a reachable valid animation: that still
+requires the actual table/index history. A transfer that really executes
+still needs its precise runtime effect.
+
+### Every post-ground switch outcome
+
+[`InkLandingOutcomeFrames.v`](../../proofs/InkLandingOutcomeFrames.v)
+exhausts the actual switch without assuming a particular movement result.
+Leaving the ground calls the real action setter and resets the timer. Hitting
+a wall performs exactly the real pushing-animation call. Any other returned
+value takes an empty branch and cannot change memory. Under the existing
+animation storage and transfer conditions, the wall call preserves the
+timer. Thus this switch has no fourth, unchecked timer-changing branch.
+
+[`InkLandingBoundedClosure.v`](../../proofs/InkLandingBoundedClosure.v)
+carries any timer below four through that switch and the following dust
+update. It separately follows the consecutive final animation, sound and
+depth-calculation interval: with the checked animation conditions and either
+the audio frame or the actual already-played flag, the timer stays below
+four, so finite nonnegative depth cannot become finite negative depth in
+the final calculation. Unlike the earlier result, this is not limited to
+timer zero. It still needs the earlier movement interval to deliver that
+small timer, live storage conditions at each animation entry, and
+nonnegative depth immediately before the final calculation. It is not a
+proof that earlier helpers cannot create negative depth.
+
 ### The larger no-A history
 
 The earlier duration endpoint is the end of `common_landing_cancels`, not
@@ -150,11 +219,13 @@ reached point.
 The subsequent wrapper and `common_landing_action` execute genuine helpers:
 an optional wrapper sound, landing acceleration or slope deceleration,
 ground movement, animation, and landing sound. The leave-ground action
-change is now checked to install zero regardless of earlier effects, and its
-continuation is narrowed to the two named late calls above. For the other
-ground results, effects must still be connected in that same run before
-identifying the timer read by the depth expression with the bounded
-cancellation timer. No generic safe-call premise closes those intervals.
+change is now checked to install zero regardless of earlier effects. The
+other post-ground switch branches and dust update are covered above, with
+the wall-animation conditions explicit. For the other ground results, the
+earlier wrapper, acceleration and ground-movement effects must still be
+connected in that same run before identifying the timer at this switch with
+the bounded cancellation timer. No generic safe-call premise closes those
+earlier intervals.
 
 The existing actual depth-write theorem says a finite first negative value
 from finite nonnegative depth needs timer at least four. Combining that with
@@ -195,6 +266,22 @@ For subsequent SSL work, the [active proof audit](../proof-audit.md) now
 provides the legacy audit's mechanical checks using that installed toolchain.
 The legacy failure above is retained as the record of this proof tranche,
 not a requirement to install a second toolchain.
+
+The initialization/no-request/all-outcome extension is included in
+`InkBackwardHistoryCheckedBoundary`, exposed by
+`MainTheorem.current_ink_backward_execution_boundary`. It adds no accepted
+runtime specification and does not discharge the whole-run impossibility
+theorem's three coverage requirements. The active SSL audit is the
+verification mechanism for this extension, including its new theorem
+assumption reports and integrated Main build.
+
+That extension passed the active audit on 2026-09-09: the integrated build,
+nine focused assumption reports, source checks and import-closure checks
+all succeeded, using only the existing Coq/CompCert foundations. The report
+is retained locally at `build/audit/20260909-134536-t58a1sw3/`. All five new
+modules are in Main's import closure. The audit's 26 regression tests also
+passed. This was a Main-and-requested-dependencies build, not a rebuild of
+every standalone proof.
 
 All claims concern successful defined in-bounds Clight execution and ordinary
 gameplay, including glitches within that model. No method for ACE, arbitrary
