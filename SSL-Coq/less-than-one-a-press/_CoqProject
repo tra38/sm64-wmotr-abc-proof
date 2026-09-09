@@ -458,4 +458,14 @@ proofs/InkQuicksandExpressions.v
 proofs/InkQuicksandStores.v
 proofs/InkQuicksandExecution.v
 proofs/InkQuicksandBackward.v
+proofs/InkMovingBackwardSource.v
+proofs/InkFloorAlignmentBackward.v
+proofs/InkGroundBackwardSource.v
+proofs/InkGroundDisplayBackward.v
+proofs/InkGroundCallBackward.v
+proofs/InkLandingArithmetic.v
+proofs/InkLandingExecution.v
+proofs/InkLongJumpGuard.v
+proofs/InkNegativeDepthBackward.v
+proofs/InkMovingBackward.v
 proofs/MainTheorem.v

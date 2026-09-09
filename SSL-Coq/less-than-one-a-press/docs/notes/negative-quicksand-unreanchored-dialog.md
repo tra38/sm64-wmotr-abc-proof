@@ -9,7 +9,10 @@ in each game version, closes source-created Mario-state and landing-descriptor
 aliases, and retains only the late long-jump landing subtraction as a
 potentially negative ordinary write; its stock provenance requires A.  The
 route is therefore closed at the checked source-producer boundary, but not yet
-as a theorem about every live Clight execution or about retail hardware.
+as a theorem about every live Clight execution or about retail hardware. The
+new backward execution cuts prove the actual landing write needs timer four
+or later and the ordinary launch guard skips without the A-pressed bit; the
+live connections between those checkpoints remain open.
 
 Execution-scope note: the two remaining semantic inputs are (1) a projection
 of every reached internal Clight step to one of the checked source cases and
@@ -37,8 +40,8 @@ The three reachability possibilities now have different statuses:
 | A forged action, timer, descriptor, callback, input, or state identity | No concrete clean writer survived the generated-source audit.  There is no untyped/interior derivation, whole-state/descriptor copy, stored or returned pointer of either protected type, or retained descriptor address; the only retained Mario-state initializer alias is the intended base pointer.  The initialized interaction callback and writable action tables are also closed.  A live typed step outside the checked projection or a specified external effect remains the exact in-model escape. |
 | Starting the modeled clean interval in the injected state | Excluded at the stated boundaries: the abstract pyramid contract fixes action `0x1932`; a separate concrete memory postcondition assumes/fixes timer zero and depth `+0.0f`.  The ordinary Area-1 entry memory postcondition separately fixes action `0x1924`, timer zero, and depth `+0.0f`. |
 
-Retail exploitation work first needs linked-step classification, then either a
-reachable forged installer or a failure of one of the named forge exclusions.
+The remaining ordinary-gameplay search needs linked-step classification, or
+one concrete allowed game step outside the current classification.
 The star/dialog/PU analysis remains useful as a characterization of what that
 payload would do, but it is not evidence that ordinary zero-A play can create
 the payload.
@@ -169,6 +172,64 @@ whole-program step classification and exact external effects remain open.  An
 OOB store is retained only as a deferred retail-machine possibility.  The
 source census finds no explicit address-taking of the sensitive scalar fields,
 but that alone does not close the defined escapes.
+
+## Walking backward from the first negative seed
+
+The useful question is whether a **negative depth can survive until the sink
+reads it**, starting from the accepted nonnegative entry. Looking only for a
+negative intermediate calculation is insufficient: the quicksand-jump landing
+path immediately clamps its subtraction back to a positive value. The earlier
+writer inventory already separates that path from the ordinary landing write
+that has no such clamp.
+
+The new [landing execution proof](../../proofs/InkLandingExecution.v) follows
+the real selected US/JP write: read depth, read timer, evaluate the generated
+Float32 expression, and store its result. The
+[arithmetic proof](../../proofs/InkLandingArithmetic.v) shows that timers zero
+through three cannot turn a finite nonnegative depth into a finite negative
+depth, including rounding. The
+[stock-duration consequence](../../proofs/InkNegativeDepthBackward.v) uses
+that actual execution rather than the older integer arithmetic model.
+
+| Walk backward from | Required earlier fact | What is proved, and what is still needed |
+| --- | --- | --- |
+| Sinking raises the displayed position | Its entry depth is negative. | Proved for the complete actual sink under the ordinary storage and finite-value conditions. |
+| The ordinary landing write first makes depth negative | The timer actually read by that write is at least four. | Proved for the actual US/JP reads, rounded calculation and store. Other reached depth writers still need their full live classification. |
+| A stock landing reaches that late write | It uses the six-frame long-jump landing, at timer four or five. | Proved **if the timer at this write satisfies the stock duration gate**. Deriving that condition across the preceding call and its intervening helpers remains open. |
+| Mario enters long-jump landing | Mario previously entered long jump. | The generated constructor census checks the stock source chain. Its complete live action history still needs connecting. |
+| The ordinary crouch-slide branch starts long jump | Its actual input read has the A-pressed bit set. | The new real-guard proof excludes the branch when that bit is clear. Connecting the bit to a physical A edge, and covering every earlier action/input change, remains open. |
+
+The [A-guard proof](../../proofs/InkLongJumpGuard.v) derives the tested input
+from MarioState memory; it does not assume the temporary used by the branch.
+When the pressed bit is clear, the actual guard has no memory effect and
+returns normally to the rest of crouch slide. It cannot execute the launch
+return. This is about the game's **pressed** flag, not merely holding A.
+The controller history at the accepted boundary must determine whether any
+press edge has occurred.
+
+Under the already-checked source and stock-timing rules, long jump remains
+the only surviving ordinary producer of a negative seed, and its first entry
+requires A. **The universal statement that no clean no-A gameplay history can
+produce the seed is still unproved.** Closing it means deriving the same-timer
+duration condition from the actual caller, preserving the real descriptor and
+Mario identity, following the first long-jump entry back through every action
+change to the controller, and accounting for every reached depth writer and
+outside call. These are continuity and coverage requirements, not known
+alternative routes. No arbitrary memory modification is used or developed by
+this search.
+
+Do not narrow the dangerous case to timer five alone. If the earlier floor
+sample resets depth to zero and the later landing test sees quicksand, timer
+four yields `-0.5`; timer five yields `-4`. The older `-2.65` example has a
+different earlier floor sample. Thus the complete exclusion must cover both
+late timers and both floor readings. If that exclusion is proved, the clean
+negative-seed branch is closed before any dialog transport search is needed.
+
+These new cuts are included in
+`MainTheorem.current_ink_backward_execution_boundary` and the active
+`check-ink-backward` build/assumption checks. They retain the earlier
+defined-producer census without promoting its source-shaped action model to
+a completed whole-game execution proof.
 
 ## The unreanchored action
 
@@ -485,8 +546,10 @@ finite values, seed provenance and later transport requirements remain open.
    alias, initialized interaction, and writable-table branches are closed, so
    the first failure must now be a concrete changed descriptor/control value,
    retargeted callback, changed live-state identity, or unclassified typed
-   store.  This includes the `Controller.buttonPressed`-to-`INPUT_A_PRESSED`
-   update and excludes a later forged input-bit writer.
+   store. This includes connecting the actual landing write's timer to the
+   earlier duration gate and the `Controller.buttonPressed`-to-`INPUT_A_PRESSED`
+   update. The local late-timer and A-guard execution cuts above do not yet
+   supply either connection.
 2. Refine both authenticated four-quarter retail frames to linked Clight
    memory, including the exact injected prestate, successor chronology, and
    corrected binary32 endpoints.
@@ -498,8 +561,8 @@ finite values, seed provenance and later transport requirements remain open.
 5. Prove every reached genuine `EF_external` call unreachable or give it the
    exact protected-byte frame for Mario's input/action/timer/depth, the live
    state-pointer cell, and all landing descriptors; any legitimate overlapping
-   effect must instead be refined as a checked writer.  Analyze OOB/ACE only
-   after adding a retail machine model.
+   effect must instead be refined as a checked writer. Outside-model
+   memory/code modification remains deferred and is not part of this search.
 6. Find or exclude the required raw-X/Z transport during the dialog (including
    active platform displacement), warp relocation/substitution, collision
    aliasing, and other post-copy writers before carrying the three-view state

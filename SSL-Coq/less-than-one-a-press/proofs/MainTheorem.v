@@ -46,7 +46,7 @@ From LessThanOneAPress.Proofs Require Import
   ContactConsumerSource ContactConsumerExecution ContactCreditExecution
   SecretContactExecution
   InkBackwardSource InkBackwardExecution InkCopyCaller InkFloorResetCopy InkRawCopyHeight
-  InkQuicksandBackward
+  InkQuicksandBackward InkMovingBackward
   CompCertRouteScope.
 
 Import ListNotations.
@@ -1080,11 +1080,19 @@ Qed.
     not yet framed. The whole selected quicksand sink now has an exact effect:
     under ordinary matrix/storage separation, it preserves State and raw Y,
     and subtracts entry depth from entry display Y. A finite display raise
-    requires negative depth. Live storage/sign/finite-value coverage, other
-    action effects, the moving-ground alternative and survival to the retry
-    remain open; the local checkpoints are not an assumed continuous history. *)
-Theorem current_ink_backward_execution_boundary : InkQuicksandCheckedBoundary.
-Proof. exact iq_quicksand_boundary_checked. Qed.
+    requires negative depth. A completed ground step now reaches the real
+    display refresh using its original State argument and the object read at
+    that cut; it copies the current movement height, not an older display.
+    Floor alignment's initial snap instead retains display/raw Y and copies
+    entry floor height to State Y. Its matrix tail is not yet framed. The
+    actual first-negative landing write needs timer >= 4; with the explicit
+    stock duration gate it needs long-jump landing and timer 4 or 5. The actual
+    crouch-slide A guard skips launch when the pressed bit is clear. Live
+    timer/gate/controller provenance, floor/State mismatch, intervening effects
+    and survival to the retry remain open. These are not an assumed continuous
+    history, nor a universal proof that negative depth requires an A edge. *)
+Theorem current_ink_backward_execution_boundary : InkMovingCheckedBoundary.
+Proof. exact imb_moving_backward_checked. Qed.
 
 (* The graphical-fallback tranche shows that update order does not by itself
    refute the scheduling shape; it does not execute the branch in Clight or
