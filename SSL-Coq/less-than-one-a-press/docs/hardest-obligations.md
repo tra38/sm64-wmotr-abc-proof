@@ -16,6 +16,10 @@ them. The numbers are a reading order, not new route rankings or estimates of
 which trick is most promising. For individual approaches, use the
 [route atlas](no-a-route-atlas.md); for detailed work items, use the
 [checklist](checklist.md).
+The [impossibility-proof progress ledger](impossibility-proof-progress.md)
+maps existing results to the final argument and tracks the still-missing
+connections, including the difference between the accepted outside start and
+the clean inside-pyramid entry used by the current conditional theorem.
 
 ## 1. Follow the real game without skipping important moments
 

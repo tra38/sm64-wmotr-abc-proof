@@ -13,6 +13,9 @@ learned about it, and why it is or is not worth more search time.
 
 For the shared proof gaps that affect many routes at once, see the
 [plain-English guide to the hardest obligations](hardest-obligations.md).
+For what the final impossibility argument actually uses, which local results
+are available to reuse, and which connections remain unproved, see the
+[impossibility-proof progress ledger](impossibility-proof-progress.md).
 
 ### Authoring rule
 

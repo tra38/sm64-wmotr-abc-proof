@@ -8,6 +8,9 @@ entry remains no stronger than its stated caveats.
 For a plain-language, family-by-family explanation of every active and retired
 route idea, including its current evidence, close-out condition, and overall
 counterexample-search rank, see the [no-A route atlas](no-a-route-atlas.md).
+For a consolidated account of which results the impossibility argument uses
+and which live connections remain, see the
+[impossibility-proof progress ledger](impossibility-proof-progress.md).
 Apply the [CompCert execution-scope boundary](compcert-execution-scope.md)
 before adding a corruption obligation: defined aliases and known-function
 retargets stay on this board, reachable unresolved externals first need exact

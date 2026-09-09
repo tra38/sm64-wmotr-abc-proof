@@ -6,7 +6,8 @@ From LessThanOneAPress.Proofs Require Import
   ClightFacts ClightRefinement SelectedClightTarget ClightProjectionChronology
   ArchivedProofIntegration RouteEvidence
   TranscriptRouteModel
-  FirstTargetRefinement JPSlotLifetime JPFirstApply FirstCrossingWriterCoverage
+  FirstTargetRefinement ImpossibilityResiduals
+  JPSlotLifetime JPFirstApply FirstCrossingWriterCoverage
   OrdinaryMotion GoombaRaising PyramidTopPU InkFallback RetailFatalLatch
   InkPayloadInstaller InkTimer131CorruptionClosure InkTimer131ClightTraceBridge
   InkTimer131EntryExecutionClosure Area1PlayerListTailClosure
@@ -1309,6 +1310,36 @@ Proof.
   split.
   - exact (refined_final_matches projection run initial certificate).
   - eapply evidence_bearing_route_cut_blocks_new_target_bits; eauto.
+Qed.
+
+(** Consolidated entry point: reuse the existing collection/cut proof and
+    expose each surviving writer family separately.  The residual record is
+    equivalent to the old closure premise, not a proof of that premise.
+    CleanPyramidEntry and the two execution/classification obligations are
+    unchanged; an Area-1 start does not supply them automatically. *)
+Theorem conditional_consolidated_clight_run_impossibility :
+  forall projection,
+    WholeProgramClightRefinementObligation projection ->
+    EvidenceBearingRouteClassificationRefinementObligation projection ->
+    RemainingNoAWriterObligations projection ->
+    forall run initial,
+      RunUsesProjection projection run ->
+      project_state projection (run_start run) = Some initial ->
+      RunEndsAtSelectedFrameBoundary projection run ->
+      CleanPyramidEntry initial ->
+      fewer_than_one_a_press (project_inputs projection run) ->
+      exists final,
+        project_state projection (run_final run) = Some final /\
+        ~ newly_collected
+            (state_save_flags initial) (state_save_flags final) act3_index /\
+        ~ newly_collected
+            (state_save_flags initial) (state_save_flags final) act6_index.
+Proof.
+  intros projection Hwhole Hclassify Hremaining.
+  eapply conditional_evidence_bearing_clight_run_impossibility.
+  - exact Hwhole.
+  - exact Hclassify.
+  - exact (remaining_no_a_writer_obligations_suffice projection Hremaining).
 Qed.
 
 Theorem conditional_less_than_one_a_press_impossibility :

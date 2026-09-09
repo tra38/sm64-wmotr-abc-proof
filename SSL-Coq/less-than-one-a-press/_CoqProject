@@ -227,6 +227,7 @@ proofs/LowerEntrance.v
 proofs/UpperEntrance.v
 proofs/ArchivedProofIntegration.v
 proofs/FirstTargetRefinement.v
+proofs/ImpossibilityResiduals.v
 proofs/JPSlotLifetime.v
 proofs/JPFirstApply.v
 proofs/JPInstallTimerWindow.v

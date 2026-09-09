@@ -29,7 +29,7 @@ MAIN = NAMESPACE + "MainTheorem"
 DEFAULT_THEOREMS = [
     (MAIN, "current_verified_evidence_and_collection_reduction"),
     (MAIN, "current_ink_backward_execution_boundary"),
-    (MAIN, "conditional_evidence_bearing_clight_run_impossibility"),
+    (MAIN, "conditional_consolidated_clight_run_impossibility"),
 ]
 ALLOWED_AXIOMS = frozenset({
     "Classical_Prop.classic",

@@ -13,15 +13,17 @@ bash pipeline/discipline-check.sh
 
 The normal run builds `MainTheorem` and its dependencies, then checks three
 entry points: the evidence/collection reduction, the current Ink backward
-boundary, and the conditional evidence-bearing whole-run theorem. To replace
-that assumption list with particular theorems, pass module/name pairs:
+boundary, and the consolidated conditional whole-run theorem. The last now
+exposes six separate remaining writer requirements; it does not prove them.
+See the [impossibility-proof progress ledger](impossibility-proof-progress.md).
+To replace that assumption list with particular theorems, pass module/name pairs:
 
 ```sh
 bash pipeline/discipline-check.sh \
   LessThanOneAPress.Proofs.InkLandingLateClosure \
   ilt_checked_late_calls_exclude_first_negative_final_depth \
   LessThanOneAPress.Proofs.MainTheorem \
-  conditional_evidence_bearing_clight_run_impossibility
+  conditional_consolidated_clight_run_impossibility
 ```
 
 The main theorem is still built when a different theorem list is supplied.
