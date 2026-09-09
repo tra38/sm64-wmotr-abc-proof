@@ -2355,6 +2355,9 @@ check-ink-backward: $(COQMAKEFILE)
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkBackwardSource ibk_selected_copy_resolves
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkBackwardExecution ibk_retry_copy_calls_real_body
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkBackwardExecution ibk_backward_execution_boundary_checked
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkCopyEntry ibc_actual_copy_reads_entry_height
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkCopyCaller ibcc_retry_reads_entry_display_height
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkCopyCaller ibcc_retry_stores_entry_display_single
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem current_ink_backward_execution_boundary
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem conditional_evidence_bearing_clight_run_impossibility
 

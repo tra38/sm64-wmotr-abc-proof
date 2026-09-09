@@ -10,9 +10,16 @@ disappears, and apply its movement after entering Area 2. The
 Mario bypasses the elevator and lands on an upper walkway. Its short
 continuation reaches one puzzle secret; a separate existing continuation
 also records conditional Act-6 collection. Creating the supplied positions
-through gameplay and completing an Act-3 continuation remain open. The
+through gameplay remains open; this particular recording does not contain
+an Act-3 collection. The
 [timer-131 note](timer131-surface.md) records both the successful mid-face
 setup and an earlier setup that finds the top but loses it before the warp.
+
+For the present search, reaching the upper walkway is the accepted useful
+downstream boundary, supported by the supplied gameplay videos. We are
+working on creating the Ink setup, not searching for another star route
+after that arrival. This does not turn the videos into a complete Coq proof
+of star collection.
 
 The useful setup has Mario's collision position touching the upper warp,
 his movement position at `(-2200,768,-1024)`, and his stored displayed position
@@ -68,8 +75,8 @@ Read this table from the desired result toward earlier requirements.
 | Useful top movement after the warp | The correct top reference survives the remaining frames and Area-2 entry. | The earlier low side-face setup loses its support and fails this continuation. The supplied mid-face setup survives in the JP recording; a clean installation is open. |
 | Mario remembers the top | A live floor query selects a surface owned by that top. | A high displayed position alone is insufficient. The correct loaded face, list order and later support still matter. |
 | The displayed-position retry runs | The floor pointer read after the first lookup is null. | A non-null pointer at that test skips this retry, even if an older cached floor was null. A clean first miss remains a separate requirement. |
-| The retry starts at the useful height | The vector copy reads the required height from its source. | The copy supplies no upward increment. It cannot turn a low source height into the desired high one by arithmetic. |
-| The high source belongs to Mario's display record | The live Mario-object reference and source coordinates are the expected ones. | Ordinary source syntax identifies this record, but a universal live identity and memory-history connection is still needed. |
+| The retry starts at the useful height | The required height is already in the display record when the retry begins. | For ordinary separate storage, the real copy's local initialization and X write preserve that height; the Y assignment writes it unchanged. The copy itself is not a height producer. |
+| The high source belongs to Mario's display record | The live Mario-object reference names the expected object. | The selected US and JP field reads and copy arguments are now proved, not just read from the source text. Showing that every earlier frame preserves the expected object reference remains open. |
 | Display remains high while collision touches the warp | Some earlier operation creates and preserves that separation. | Moving only Mario's movement position preserves the prior display/collision gap; it does not create one. Stock visual offsets are far below the known required gap under their checked conditions. |
 | Every ingredient occurs together | One no-A history creates the gap, activates the pillars and reaches the warp while the needed top surface exists. | A clean pillar run is recorded, but it reaches the warp after the top disappears. That recording does not supply the installation. |
 
@@ -83,7 +90,7 @@ bound whose premises they do not satisfy.
 
 ## What this tranche adds to the proof
 
-The new [source checkpoints](../../proofs/InkBackwardSource.v) and
+The [source checkpoints](../../proofs/InkBackwardSource.v) and
 [execution proof](../../proofs/InkBackwardExecution.v) replace a source-order
 observation with necessary predecessors in actual executions of the selected
 US and JP code. A completed geometry call has an ordered prefix, the actual
@@ -92,17 +99,37 @@ prefix includes both wall queries and the first floor lookup. Its effects
 are retained as real subexecutions, not assumed harmless.
 
 The retry's vector-copy name resolves to the selected internal game function,
-not an unspecified outside effect. A taken retry also supplies its actual
-object read, copy call and second floor query in sequence. Within that actual
-copy, Y is read from the source and its Float32 value is stored unchanged at
-the Y assignment. The proof retains the
-earlier X operation and later Z operation as distinct parts of the same
-execution. It does not assume that the Y read sees the memory from before X:
-carrying the value back to copy entry still requires the appropriate
-separation and preservation facts.
+not an unspecified outside effect. A taken retry supplies its actual object
+read, copy call and second floor query in sequence. The new
+[copy-entry proof](../../proofs/InkCopyEntry.v) carries the Y read backward
+through both earlier writes. The function really allocates a fresh local
+pointer cell, initializes it from its argument, then copies X to the supplied
+destination. With source and destination in their ordinary separate storage,
+neither write changes the source height. The destination pointer also survives;
+it is not replaced with an assumed temporary value.
+
+The new [caller proof](../../proofs/InkCopyCaller.v) checks the selected US and
+JP field layouts and derives the actual two copy arguments: MarioState's
+position and the named object's display position. MarioState storage and the
+object pool are different globals, so their separation follows from the
+program's symbol rules. Combining these facts proves that the Y assignment
+writes the displayed height already present at retry entry into MarioState's
+Y cell, unchanged. The object read, copy and following floor query still
+belong to one actual branch execution. No animation increment, local-pointer
+initialization or earlier X write inside this copy can supply the missing
+height under these conditions.
+
+This result still requires the caller to be using the ordinary MarioState
+storage and its object field to name a position in the existing object pool.
+It proves exactly where the caller looks and what it copies once those facts hold;
+it does not prove that every preceding gameplay frame supplies them. In
+particular, membership in the object pool alone does not identify Mario's
+correct slot or establish its lifetime. The incoming display height is read
+from memory, not assumed to be low or assumed reachable through controller
+play.
 
 This does **not** yet prove that the first query traverses the expected live
-list, that the copy's source points to the intended live Mario object, or
+list, that every earlier frame keeps the intended live Mario-object reference, or
 that every no-A history keeps the displayed position low. It also does not
 derive a complete small-step frame or retail-machine simulation. Those are
 the connections needed to turn these local backward cuts into a universal
@@ -110,11 +137,10 @@ route verdict.
 
 ## The next useful backward cut
 
-Work backward from the Y value actually read by the copy, first to the
-display record at copy entry and then to its last change or reset. Prove the
-ordinary destination/source separation for the preceding local and X writes;
-establish the Mario-object identity read by the caller; then classify the
-earlier display and raw collision-position changes together. Each proposed
+The copy-entry part is now checked for the ordinary storage case. Work
+backward from that incoming display height to its last change or reset, while
+deriving the live Mario-object reference from the earlier execution. Classify
+the earlier display and raw collision-position changes together. Each proposed
 producer must explain both the gap and why it survives until this lookup.
 Lowering the collision position while leaving the display behind can create
 the same gap as raising the display; a complete exclusion must cover both.
@@ -128,8 +154,10 @@ before spending effort on the star continuations.
 ## Verification and remaining scope
 
 The active SSL `check-ink-backward` target compiles the integrated main proof
-and passes five assumption audits, with no new project-specific axioms.
-`MainTheorem.current_ink_backward_execution_boundary` exposes the new cuts.
+and checks eight theorem assumption reports, including the entry-height,
+caller-height and exact Y-store results. No project-specific axiom was added.
+`MainTheorem.current_ink_backward_execution_boundary` exposes the strengthened
+`InkBackwardCallerBoundary`, which includes all previous cuts.
 The ultimate impossibility theorem still has its three explicit whole-run
 and route-coverage requirements; this tranche sharpens the real branch/copy
 part of that work rather than removing those requirements. The repository's
