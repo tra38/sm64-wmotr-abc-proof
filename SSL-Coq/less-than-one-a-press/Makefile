@@ -2,7 +2,7 @@ COQMAKEFILE := CoqMakefile
 COQBIN ?=
 COQMAKEFILE_CMD ?= $(COQBIN)coq_makefile
 
-.PHONY: all generated regenerate verify-generated proofs check check-rank9 check-rank9-timing check-rank9a check-rank9a-prehome check-rank10a check-rank10a-entry check-rank12b check-contact-necessity check-ink-backward check-ink-negative-timer check-ink-late-helpers clean
+.PHONY: all generated regenerate verify-generated proofs check check-rank9 check-rank9-timing check-rank9a check-rank9a-prehome check-rank10a check-rank10a-entry check-rank12b check-contact-necessity check-ink-backward check-ink-negative-timer check-ink-late-helpers check-discipline test-discipline-audit audit-build clean
 
 all: proofs
 
@@ -19,6 +19,16 @@ $(COQMAKEFILE): _CoqProject
 
 proofs: $(COQMAKEFILE)
 	$(MAKE) -f $(COQMAKEFILE)
+
+AUDIT_VO_TARGETS ?= proofs/MainTheorem.vo
+audit-build: $(COQMAKEFILE)
+	$(MAKE) -f $(COQMAKEFILE) $(AUDIT_VO_TARGETS)
+
+check-discipline:
+	bash pipeline/discipline-check.sh
+
+test-discipline-audit:
+	python3 -m unittest discover -s pipeline/tests -p 'test_discipline_audit.py' -v
 
 check: proofs
 	bash pipeline/check-no-admitted.sh

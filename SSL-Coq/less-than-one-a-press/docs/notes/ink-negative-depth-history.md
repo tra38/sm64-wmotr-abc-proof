@@ -191,6 +191,11 @@ by its missing `sm64-proof` toolchain; it is not counted as a successful build
 or assumption audit. The active SSL run
 uses `sm64-item-proof`.
 
+For subsequent SSL work, the [active proof audit](../proof-audit.md) now
+provides the legacy audit's mechanical checks using that installed toolchain.
+The legacy failure above is retained as the record of this proof tranche,
+not a requirement to install a second toolchain.
+
 All claims concern successful defined in-bounds Clight execution and ordinary
 gameplay, including glitches within that model. No method for ACE, arbitrary
 memory/code modification or out-of-bounds corruption is developed. Emulator,

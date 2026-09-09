@@ -8,9 +8,18 @@ if ! command -v opam >/dev/null 2>&1; then
   return 1 2>/dev/null || exit 1
 fi
 
-eval "$(opam env --switch "$PROOF_SWITCH" --set-switch)"
+if ! proof_environment="$(opam env --switch "$PROOF_SWITCH" --set-switch)"; then
+  echo "Cannot activate proof toolchain '$PROOF_SWITCH'." >&2
+  return 1 2>/dev/null || exit 1
+fi
+eval "$proof_environment"
+
+if ! proof_coq_version="$(coqc --version)" ||
+   ! proof_clight_version="$(clightgen -version 2>&1)"; then
+  echo "Proof toolchain '$PROOF_SWITCH' lacks a working coqc/clightgen." >&2
+  return 1 2>/dev/null || exit 1
+fi
 
 echo "Activated proof toolchain '$PROOF_SWITCH'."
-echo "  coqc:      $(coqc --version | head -1)"
-echo "  clightgen: $(clightgen -version 2>/dev/null | head -1)"
-
+echo "  coqc:      ${proof_coq_version%%$'\n'*}"
+echo "  clightgen: ${proof_clight_version%%$'\n'*}"

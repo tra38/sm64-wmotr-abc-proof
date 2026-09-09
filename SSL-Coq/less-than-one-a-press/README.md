@@ -2149,10 +2149,23 @@ this keeps current claims separate from supporting research notes.
 
 ## Build and regeneration
 
-With Rocq 8.16.1 and CompCert 3.15 available:
+The [active SSL proof audit](docs/proof-audit.md) uses the installed
+`sm64-item-proof` switch, not the legacy WMotR audit's `sm64-proof` switch:
 
 ```sh
-make check
+bash pipeline/discipline-check.sh
+```
+
+It builds the main proof and requested theorem dependencies, rejects proof
+holes and unknown axioms, and reports main-proof versus standalone import
+coverage. Failures and missing reports cannot be counted as successful
+assumption checks. Passing is mechanical hygiene, not completion of the
+remaining gameplay proof. Use `--full-build` to compile all registered modules.
+
+With Rocq 8.16.1 and CompCert 3.15 available, the existing comprehensive check is:
+
+```sh
+bash pipeline/build.sh check
 ```
 
 This builds all committed generated modules and proofs, rejects proof-hole and
@@ -2162,8 +2175,8 @@ the named integration, reduction, route, and conditional theorems.
 Regenerate from a Git checkout containing the pinned commit:
 
 ```sh
-SM64_SOURCE=/path/to/sm64 make regenerate
-SM64_SOURCE=/path/to/sm64 make verify-generated
+SM64_SOURCE=/path/to/sm64 bash pipeline/build.sh regenerate
+SM64_SOURCE=/path/to/sm64 bash pipeline/build.sh verify-generated
 ```
 
 The pipeline exports the pinned commit with `git archive`, so uncommitted files
