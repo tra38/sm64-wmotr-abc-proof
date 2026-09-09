@@ -47,3 +47,37 @@ selected route-specific machine timeline.  Universal exclusion still needs
 all-history protected-step coverage (or the CompCert
 `InkTimer131ReachableStepCoverage` theorem) and a machine-step refinement of
 watchpoint completeness.
+
+## Record the conditional Ink arrival
+
+The later part of this existing fixture supplies the three Mario positions
+once, at top timer 131, and clears the remembered platform. The game itself
+then selects and retains the top, enters Area 2 and applies the displacement.
+This is a supplied test setup, not controller-reachable installation. No
+Area-2 position or camera is supplied by the fixture.
+
+In Ubuntu-24.04, from the active SSL project directory:
+
+```sh
+LIFECYCLE_CAPTURE_FROM=360 bash instrumentation/jp-lifecycle/run.sh /path/to/baserom.jp.z64
+bash instrumentation/jp-lifecycle/render-video.sh /path/to/printed/video.XXXXXX
+```
+
+The recording option creates a fresh `build/instrumentation/jp-lifecycle/video.*`
+directory, including isolated configuration and saves. It captures all 521
+rendered frames from 360 through 880, disables on-screen screenshot notices,
+runs the unchanged receipt checks, rejects a missing frame, and encodes a
+silent 30-fps raw video. The input plugin and controller policy are unchanged.
+It requires the existing emulator/plugins, development headers, Xvfb, FFmpeg
+and FFprobe; rendering captions additionally uses DejaVu Sans.
+
+`render-video.sh` checks the recorded arrival, landing and zero-A outcome,
+then produces a labeled full recording and an 8.73-second half-speed
+highlight. The highlight uses consecutive source frames 480 through 610;
+there are no cuts inside that interval. Captions occupy added black margins,
+not the game image. The exact initial arrival is partly obscured by the
+ordinary game camera, so its coordinates come from the accompanying trace.
+
+The [arrival report](../../docs/notes/ink-area2-arrival-video.md) contains the
+checked-in highlight, exact results and hashes. Full video, screenshots, save
+files and raw logs remain in the ignored build directory; no ROM is included.

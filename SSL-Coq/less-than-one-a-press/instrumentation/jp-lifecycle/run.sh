@@ -15,6 +15,20 @@ state_z="${9:--1024}"
 graphics_x="${10:--1862}"
 graphics_y="${11:-1778}"
 graphics_z="${12:--902}"
+capture_from="${LIFECYCLE_CAPTURE_FROM:-}"
+
+# Recording reuses the existing conditional fixture without changing its
+# controller policy or game-state setup. Never mix captured frames with an
+# older run's screenshots or save files.
+if [ -n "$capture_from" ]; then
+    if ! [[ "$capture_from" =~ ^[0-9]+$ ]] \
+        || [ "$capture_from" -lt 1 ] || [ "$capture_from" -gt 880 ]; then
+        printf '%s\n' "LIFECYCLE_CAPTURE_FROM must be between 1 and 880" >&2
+        exit 2
+    fi
+    command -v ffmpeg >/dev/null
+    command -v ffprobe >/dev/null
+fi
 
 expected_md5="85d61f5525af708c9f1e84dce6dc10e9"
 expected_sha256="9cf7a80db321b07a8d461fe536c02c87b7412433953891cdec9191bfad2db317"
@@ -87,11 +101,22 @@ for coordinate in \
 done
 
 out_dir="$project_dir/build/instrumentation/jp-lifecycle/$boundary_mode-t-$install_timer-x-$route_x-y-$route_y-f-$route_frames-g-$graphics_x-$graphics_y-$graphics_z"
+if [ -n "$capture_from" ]; then
+    mkdir -p "$project_dir/build/instrumentation/jp-lifecycle"
+    out_dir="$(mktemp -d "$project_dir/build/instrumentation/jp-lifecycle/video.XXXXXX")"
+fi
 mkdir -p "$out_dir/config" "$out_dir/data" "$out_dir/shots"
 plugin="$out_dir/jp-lifecycle.so"
 raw_log="$out_dir/jp-lifecycle.raw.log"
 trace="$out_dir/jp-lifecycle.trace.txt"
 spinning_receipt="$out_dir/spinning-post-entry-timer131-receipt.txt"
+testshots=880
+capture_options=()
+if [ -n "$capture_from" ]; then
+    testshots="$(seq -s, "$capture_from" 880)"
+    capture_options=(--noosd)
+    printf 'Capture directory: %s\n' "$out_dir"
+fi
 
 gcc -shared -fPIC -std=c99 -Wall -Wextra -Werror -O2 \
     -DROUTE_STICK_X="$route_x" \
@@ -116,7 +141,8 @@ printf 'bp add 0x802c83f0 0 8\nrun\n' |
         --audio dummy --input "$plugin" \
         --gfx mupen64plus-video-rice.so \
         --rsp mupen64plus-rsp-hle.so \
-        --cheats 6 --sshotdir "$out_dir/shots" --testshots 880 \
+        --cheats 6 --sshotdir "$out_dir/shots" --testshots "$testshots" \
+        "${capture_options[@]}" \
         "$rom" >"$raw_log" 2>&1
 
 # Mupen's core and plugin write the same descriptor concurrently.  A core
@@ -170,3 +196,22 @@ if [ "$route_x" = -127 ] && [ "$route_y" = -96 ] \
     grep -q '^RESULT,armed=1,boundaryInstalled=1,explosionFree=1,area2=1,aPressedFrames=0,aDownFrames=0,controllerAFrames=0,triggerEverInactive=1,initialCounter=0,finalCounter=1,maxCounter=1,breakpointArmed=1,firstApplyEntry=1,firstApplyReturn=1$' "$trace"
 fi
 printf 'Trace: %s\n' "$trace"
+
+if [ -n "$capture_from" ]; then
+    expected_frames=$((881 - capture_from))
+    actual_frames="$(find "$out_dir/shots" -maxdepth 1 -type f -name '*.png' | wc -l)"
+    if [ "$actual_frames" -ne "$expected_frames" ]; then
+        printf 'incomplete video capture: %s of %s frames\n' \
+            "$actual_frames" "$expected_frames" >&2
+        exit 3
+    fi
+    ffmpeg -nostdin -hide_banner -loglevel warning -n -framerate 30 \
+        -i "$out_dir/shots/super_mario_64-%03d.png" \
+        -c:v libx264 -crf 18 -preset medium -pix_fmt yuv420p \
+        -movflags +faststart "$out_dir/ink-arrival-raw.mp4"
+    ffprobe -v error -select_streams v:0 -count_frames \
+        -show_entries stream=width,height,r_frame_rate,nb_read_frames \
+        -show_entries format=duration -of json "$out_dir/ink-arrival-raw.mp4" \
+        >"$out_dir/video-info.json"
+    printf 'Video: %s\n' "$out_dir/ink-arrival-raw.mp4"
+fi

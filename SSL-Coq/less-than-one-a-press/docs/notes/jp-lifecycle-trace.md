@@ -193,7 +193,9 @@ instruction by instruction in CompCert.
 From the first Area-2 poll, the default continuation holds stick `(-127,-96)`
 for 60 polls and then returns to neutral. It never supplies A. The trace
 counts zero `A_BUTTON_PRESSED` frames, zero `A_BUTTON_DOWN` frames, and zero
-controller polls with A set.
+controller polls with A set. The [new video](ink-area2-arrival-video.md)
+reproduces this exact trace and visibly confirms the upper-walkway landing:
+the conditional displacement bypasses the elevator before that landing.
 
 At timer 594 the collision-phase Mario Object sample is:
 
@@ -226,8 +228,10 @@ counter five at timer 945 and spawns the Act-6 star at timer 949 in slot 29
 star by one vertical unit; at timer 1343 `usedObj` equals the spawned pointer,
 the action is `ACT_FALL_AFTER_STAR_GRAB`, and the primary SSL byte changes
 `00 -> 20` while every A counter remains zero. Therefore the stronger
-continuation proves conditional trigger
-exhaustion and star spawn, but still not star overlap or collection. Those
+continuation records conditional trigger exhaustion, star spawn, overlap and
+collection. The earlier stick-only variant stops short of collection; the
+theorem quoted below describes that earlier variant, not this B/Z pickup.
+Neither variant establishes clean installation. Those
 downstream observations are not fields of `JPLifecycleBoundaryTrace`; they
 are documented here to keep the current route status explicit.
 

@@ -2,12 +2,15 @@
 
 ## The destination we are working backward from
 
-Ink has a strong **conditional installation**, not yet a clean no-A route to
-both stars. In the recorded Japanese test, supplying the right three positions
+Ink's known supplied setup **bypasses the elevator**; clean installation
+remains open. In the recorded Japanese test, supplying the right three positions
 makes the game remember the pyramid top, retain that reference when the top
-disappears, and apply its movement after entering Area 2. The continuation
-reaches one puzzle secret. Creating the supplied positions through gameplay,
-and collecting each target star afterward, remain separate tasks. The
+disappears, and apply its movement after entering Area 2. The
+[new recording](ink-area2-arrival-video.md) makes the consequence explicit:
+Mario bypasses the elevator and lands on an upper walkway. Its short
+continuation reaches one puzzle secret; a separate existing continuation
+also records conditional Act-6 collection. Creating the supplied positions
+through gameplay and completing an Act-3 continuation remain open. The
 [timer-131 note](timer131-surface.md) records both the successful mid-face
 setup and an earlier setup that finds the top but loses it before the warp.
 
