@@ -2,7 +2,7 @@ COQMAKEFILE := CoqMakefile
 COQBIN ?=
 COQMAKEFILE_CMD ?= $(COQBIN)coq_makefile
 
-.PHONY: all generated regenerate verify-generated proofs check check-rank9 check-rank9-timing check-rank9a check-rank9a-prehome check-rank10a check-rank10a-entry check-rank12b check-contact-necessity check-ink-backward clean
+.PHONY: all generated regenerate verify-generated proofs check check-rank9 check-rank9-timing check-rank9a check-rank9a-prehome check-rank10a check-rank10a-entry check-rank12b check-contact-necessity check-ink-backward check-ink-negative-timer clean
 
 all: proofs
 
@@ -2403,6 +2403,32 @@ check-ink-backward: $(COQMAKEFILE)
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingHistory ilh_actual_gate_to_zero_return_keeps_bounded_timer
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingHistory ilh_stock_cancel_suffix_returns_timer_below_duration
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingHistory ilh_landing_history_checked
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkActionTimerReset iar_completed_set_action_resets_original_timer
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingContinuationSource ilc_source_cuts
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingDispatch ilc_left_ground_dispatch_resets_timer
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingDispatch ilc_completed_landing_call_reaches_ground_result
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingPostStep ilp_dust_update_preserves_timer
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingPostStep ilp_floor_test_reaches_write_or_preserves_memory
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingPostStep ilp_actual_post_sound_negative_needs_late_timer
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingTimerFrontier ilf_actual_left_ground_isolates_two_later_calls
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingTimerFrontier ilf_completed_landing_has_same_run_timer_frontier
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkBackwardHistory ibh_backward_histories_checked
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem current_ink_backward_execution_boundary
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem conditional_evidence_bearing_clight_run_impossibility
+
+check-ink-negative-timer: $(COQMAKEFILE)
+	$(MAKE) -f $(COQMAKEFILE) proofs/MainTheorem.vo
+	bash pipeline/check-no-admitted.sh
+	bash pipeline/check-link-hygiene.sh
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkActionTimerReset iar_completed_set_action_resets_original_timer
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingContinuationSource ilc_source_cuts
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingDispatch ilc_left_ground_dispatch_resets_timer
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingDispatch ilc_completed_landing_call_reaches_ground_result
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingPostStep ilp_dust_update_preserves_timer
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingPostStep ilp_floor_test_reaches_write_or_preserves_memory
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingPostStep ilp_actual_post_sound_negative_needs_late_timer
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingTimerFrontier ilf_actual_left_ground_isolates_two_later_calls
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingTimerFrontier ilf_completed_landing_has_same_run_timer_frontier
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkBackwardHistory ibh_backward_histories_checked
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem current_ink_backward_execution_boundary
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem conditional_evidence_bearing_clight_run_impossibility

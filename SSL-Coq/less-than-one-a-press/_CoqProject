@@ -483,5 +483,10 @@ proofs/InkLandingHistorySource.v
 proofs/InkLandingHistoryGate.v
 proofs/InkLandingHistoryReturn.v
 proofs/InkLandingHistory.v
+proofs/InkActionTimerReset.v
+proofs/InkLandingContinuationSource.v
+proofs/InkLandingDispatch.v
+proofs/InkLandingPostStep.v
+proofs/InkLandingTimerFrontier.v
 proofs/InkBackwardHistory.v
 proofs/MainTheorem.v

@@ -2,15 +2,19 @@
     execution cuts are proved separately; this does not assert that a clean
     run connects the floor, controller and landing checkpoints. *)
 From LessThanOneAPress.Proofs Require Import
-  InkControllerRemembered InkFloorHistoryBackward InkLandingHistory.
+  InkControllerRemembered InkFloorHistoryBackward InkLandingHistory
+  InkActionTimerReset InkLandingTimerFrontier.
 
 Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkLandingHistoryCheckedBoundary /\
-  InkFloorHistoryCheckedBoundary /\ InkControllerRememberedCut.
+  InkFloorHistoryCheckedBoundary /\ InkControllerRememberedCut /\
+  InkCompletedActionTimerReset /\ InkCompletedLandingTimerFrontier.
 
 Theorem ibh_backward_histories_checked : InkBackwardHistoryCheckedBoundary.
 Proof.
   split; [exact ilh_landing_history_checked|].
   split; [exact ifh_floor_history_boundary_checked|].
-  exact icr_actual_edge_then_remember.
+  split; [exact icr_actual_edge_then_remember|].
+  split; [exact iar_completed_set_action_resets_original_timer|].
+  exact ilf_completed_landing_has_same_run_timer_frontier.
 Qed.

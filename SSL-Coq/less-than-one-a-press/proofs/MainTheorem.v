@@ -1097,8 +1097,13 @@ Qed.
     the same sample. The earlier floor query and high-gap quarter-step choices
     have actual execution cuts; the blocked tail is not a frame for its earlier
     queries. The landing duration gate now derives its compared/stored timer
-    and carries its bound to the ordinary cancellation return. Sampling/start
-    coherence, later input/action history, the interval to the depth write,
+    and carries its bound to the ordinary cancellation return. A completed
+    action setter now leaves the original Mario timer zero. In one completed
+    landing invocation, leaving ground performs that reset and the dust update
+    preserves it: a first negative final depth then requires a timer change in
+    the actual later animation or landing-sound call. Those calls are retained,
+    not framed; the other ground results remain separate. Sampling/start
+    coherence, later input/action history, the remaining interval to the depth write,
     clean floor-gap reachability and survival to the retry remain open. These
     are separately checked histories, not one clean run or a universal proof
     that negative depth needs a physical A press. *)

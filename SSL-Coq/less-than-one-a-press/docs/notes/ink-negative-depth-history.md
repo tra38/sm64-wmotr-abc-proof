@@ -1,4 +1,14 @@
-# Negative depth: the executed landing-duration endpoint
+# Negative depth: landing timer history
+
+One possible shortcut is now excluded: **leaving the ground cannot simply
+carry the old landing timer into the final depth calculation.** The actual
+action change resets the original Mario record's timer to zero. The following
+dust update keeps it zero. If the final calculation nevertheless makes depth
+negative for the first time, the timer must have changed during the later
+animation or landing-sound call. No such change has been demonstrated; proving
+those two calls preserve the timer is the next small closure task. This does
+not yet exclude every landing branch or prove that a physical A press is
+universally necessary.
 
 The landing-duration bound is now attached to the real US/JP Clight gate,
 not just the stock descriptor census. The new files are
@@ -39,6 +49,45 @@ corollary, the live descriptor cell must actually contain the stock count
 (four or six). This tranche does not independently construct that live value
 from initialization and preserve it across the preceding history.
 
+## Leaving the ground: one continuous later interval
+
+[`InkActionTimerReset.v`](../../proofs/InkActionTimerReset.v) proves that every
+completed selected US/JP `set_mario_action` call leaves `actionTimer = 0` in
+the Mario record originally passed to it, and returns one. Its real
+initializer may have effects: the proof does not assume those effects are
+harmless. It follows the original argument through them to the final timer
+store. There are no local allocations to release after that store.
+
+[`InkLandingDispatch.v`](../../proofs/InkLandingDispatch.v) then starts from a
+completed real `common_landing_action` invocation. Its acceleration choice
+and `perform_ground_step` retain their actual effects. The reached ground
+result and the original Mario argument belong to that same execution, not
+separately supplied snapshots. When this result is `GROUND_STEP_LEFT_GROUND`,
+the actual switch resolves and calls the real action setter on that argument.
+
+[`InkLandingPostStep.v`](../../proofs/InkLandingPostStep.v) proves the dust
+update cannot change the timer: the checked particle field and timer field
+are disjoint within the ordinary Mario record. The floor-type tests and
+return cannot change memory. If they execute the final depth calculation,
+the existing Float32 proof still requires timer four or later for a first
+finite negative result from finite nonnegative depth.
+
+[`InkLandingTimerFrontier.v`](../../proofs/InkLandingTimerFrontier.v) connects
+these facts in one completed landing call. It retains every actual memory
+state and trace between the ground result and return, including the two
+remaining calls: `set_mario_animation` and `play_mario_landing_sound_once`.
+The timer is derived to be zero on entry to the first. If depth is still
+finite and nonnegative after the second, but finite and negative on return,
+one of those two calls must have changed the timer reading. This is an exact
+remaining effect to check, **not a claim that either call can do so**.
+
+The offset-fit condition for the ordinary Mario record is explicit. Its
+identity here is the function's original argument; connecting that argument
+to the live game's Mario record is still part of whole-run coverage. A first
+negative value created earlier, rather than by this final expression, is
+also a separate depth-writer obligation. Other ground results are not covered
+by the leave-ground reset branch.
+
 ## What is still not connected
 
 This endpoint is the end of `common_landing_cancels`, not the later depth
@@ -49,11 +98,12 @@ reached point.
 
 The subsequent wrapper and `common_landing_action` execute genuine helpers:
 an optional wrapper sound, landing acceleration or slope deceleration,
-ground movement, a possible action change after leaving the ground,
-animation, and landing sound. Their effects must be connected in that same
-run before identifying the timer read by the depth expression with this
-bounded timer (or proving any intervening reset only installs zero). No
-generic safe-call premise closes that interval here.
+ground movement, animation, and landing sound. The leave-ground action
+change is now checked to install zero regardless of earlier effects, and its
+continuation is narrowed to the two named late calls above. For the other
+ground results, effects must still be connected in that same run before
+identifying the timer read by the depth expression with the bounded
+cancellation timer. No generic safe-call premise closes those intervals.
 
 The existing actual depth-write theorem says a finite first negative value
 from finite nonnegative depth needs timer at least four. Combining that with
@@ -75,8 +125,24 @@ effect must still be classified before claiming universal negative-depth or
 zero-physical-A impossibility. A negative value reset before sinking is not
 a surviving Ink seed.
 
-All claims here concern successful defined in-bounds Clight execution.
-Arbitrary memory/code modification and execution after undefined behavior
-are not methods supplied by this argument.
+## Verification and scope
+
+The focused `check-ink-negative-timer` target builds the integrated
+`MainTheorem` and audits twelve theorem assumption reports, including the
+new action reset, complete landing-call cut and two-call frontier. These
+results strengthen `InkBackwardHistoryCheckedBoundary`; the whole-run
+impossibility theorem's three coverage requirements remain open. The full
+`check-ink-backward` target also includes these nine new reports alongside
+its previous fifty-four. The focused target, not that full sixty-three-report
+suite, is the verification run for this tranche. It passed with all twelve
+reports and only the existing Coq/CompCert foundations. The separate legacy
+discipline audit remains blocked by its missing `sm64-proof` toolchain; it is
+not counted as a successful build or assumption audit. The active SSL run
+uses `sm64-item-proof`.
+
+All claims concern successful defined in-bounds Clight execution and ordinary
+gameplay, including glitches within that model. No method for ACE, arbitrary
+memory/code modification or out-of-bounds corruption is developed. Emulator,
+operating-system and network vulnerabilities are outside this work.
 
 [Return to the negative-depth approach in the atlas](../no-a-route-atlas.md#route-rank-19)

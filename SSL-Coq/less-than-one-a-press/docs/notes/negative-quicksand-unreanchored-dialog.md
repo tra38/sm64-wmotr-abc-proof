@@ -244,6 +244,18 @@ including 16-bit wrap, but not the later wrapper, movement, animation and sound
 calls before the depth write. The ordinary descriptor value and flags at the
 gate, and the earlier path into that gate, still have to be derived.
 
+The [leave-ground continuation](ink-negative-depth-history.md#leaving-the-ground-one-continuous-later-interval)
+is now checked separately within one completed landing invocation. The real
+action setter resets the original Mario argument's timer to zero, even if
+its earlier initializer has effects, and the following dust update preserves
+zero. A first negative result at the final depth expression therefore
+requires a timer change in the actual later `set_mario_animation` or
+`play_mario_landing_sound_once` call. Their effects remain to be checked;
+no such timer change is known. This excludes retaining the old timer through
+the leave-ground action change, not all possible negative-depth producers.
+The other ground results still need their own connection to the earlier
+duration bound.
+
 The new result rules out several tempting explanations at a concrete place
 in the program: **holding A is not enough, B or Z cannot substitute for it,
 and an old Mario input flag does not survive the checked reset into the

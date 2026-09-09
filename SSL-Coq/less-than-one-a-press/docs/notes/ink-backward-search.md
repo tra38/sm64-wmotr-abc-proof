@@ -367,6 +367,17 @@ large timer simply keeps growing. The live descriptor value, earlier checks
 and required input flags remain premises, and later landing helpers still
 separate this bounded endpoint from the negative-depth write.
 
+The [later landing continuation](ink-negative-depth-history.md#leaving-the-ground-one-continuous-later-interval)
+now closes one potential way to retain that timer. In one completed actual
+landing call, the leave-ground branch resets the original Mario argument's
+timer to zero, and the dust update preserves zero. Its acceleration, ground
+movement and action initializer do not need blanket timer frames: their
+effects precede this checked reset. The real animation and landing-sound
+calls still execute afterward. If the final depth expression creates a first
+negative value, one of those two calls must have changed the timer; no such
+effect has been established. Other ground results, earlier depth producers
+and the connection from controller history remain separate obligations.
+
 The [controller execution cut](../../proofs/InkControllerBackward.v) now
 follows one actual input-preparation prefix: clear the old input, make the two
 unrelated bookkeeping writes, call the selected US/JP button routine with the
@@ -444,7 +455,7 @@ before spending effort on the star continuations.
 ## Verification and remaining scope
 
 The active SSL `check-ink-backward` target compiles the integrated main proof
-and checks fifty-four theorem assumption reports, including the earlier retry,
+and now checks sixty-three theorem assumption reports, including the earlier retry,
 floor-reset, collision-copy and sink results, the completed ground-call and
 refresh cuts, the alignment snap, the actual late-landing write, its conditional
 stock-duration consequence, the actual A-pressed guard, controller-edge storage,
@@ -452,11 +463,16 @@ the complete button routine and the continuous reset-to-button-call prefix.
 It adds the consecutive controller stores, actual queried-floor/high-gap
 quarter-step cuts, and the landing gate-to-return interval with its genuine
 rejection callee.
+The nine added reports cover the completed action reset and the later landing
+continuation. This tranche runs the focused `check-ink-negative-timer` target:
+the integrated build plus those nine reports and the three integration/main
+reports, twelve in total. It does not rerun the full sixty-three-report suite.
 No project-specific axiom was added.
 `MainTheorem.current_ink_backward_execution_boundary` exposes the strengthened
 `InkBackwardHistoryCheckedBoundary`, which retains all earlier input/movement
 cuts through `InkLandingHistoryCheckedBoundary` and adds the independently
-checked floor history and consecutive controller stores. The conjunction is
+checked floor history, consecutive controller stores, completed action reset
+and the same-run leave-ground timer frontier. The conjunction is
 not evidence that these checkpoints are already connected in one clean run.
 The ultimate impossibility theorem still has its three explicit whole-run
 and route-coverage requirements; this tranche sharpens the real branch/copy/reset
