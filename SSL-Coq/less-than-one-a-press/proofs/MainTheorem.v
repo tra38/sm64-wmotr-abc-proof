@@ -45,7 +45,7 @@ From LessThanOneAPress.Proofs Require Import
   ObjectContactNecessity
   ContactConsumerSource ContactConsumerExecution ContactCreditExecution
   SecretContactExecution
-  InkBackwardSource InkBackwardExecution InkCopyCaller InkFloorResetCopy
+  InkBackwardSource InkBackwardExecution InkCopyCaller InkFloorResetCopy InkRawCopyHeight
   CompCertRouteScope.
 
 Import ListNotations.
@@ -1072,11 +1072,14 @@ Qed.
     reset cuts derive the object reference cached at entry to each ordinary
     floor-snap helper, preserve it through the actual preceding calls, and
     connect the State floor snap to the display-Y store in one copy execution.
-    The stationary moving-ground alternative is retained. Earlier live object
-    history, later memory effects, skipped resets and a useful gap surviving
-    to the retry remain obligations; no complete controller route is asserted. *)
-Theorem current_ink_backward_execution_boundary : InkFloorResetCheckedBoundary.
-Proof. exact ifrc_floor_reset_boundary_checked. Qed.
+    The collision copy now derives its ordinary zero index from the actual
+    identity test and frames its first four stores. Its Y store transfers the
+    entry State height without changing the entry display height. This is one
+    reached checkpoint with the remaining copy tail retained as actual execution,
+    not yet framed. The stationary moving-ground alternative, earlier live
+    history, intervening action effects and survival to the retry remain open. *)
+Theorem current_ink_backward_execution_boundary : InkRawCopyCheckedBoundary.
+Proof. exact irc_raw_copy_boundary_checked. Qed.
 
 (* The graphical-fallback tranche shows that update order does not by itself
    refute the scheduling shape; it does not execute the branch in Clight or

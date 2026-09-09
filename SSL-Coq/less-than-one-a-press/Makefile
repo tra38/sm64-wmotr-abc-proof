@@ -2363,6 +2363,10 @@ check-ink-backward: $(COQMAKEFILE)
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkFloorResetCopy ifrc_floor_snap_resets_display_to_new_height
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkFloorResetCopy ifrc_completed_stop_call_reaches_reset
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkFloorResetCopy ifrc_completed_stationary_call_retains_choice
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkRawCopySource irc_generated_cuts
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkRawCopyStores irc_before_y_preserves_protected_reads
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkRawCopyIndex irc_index_test_keeps_zero
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkRawCopyHeight irc_completed_copy_has_exact_height_cut
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem current_ink_backward_execution_boundary
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem conditional_evidence_bearing_clight_run_impossibility
 

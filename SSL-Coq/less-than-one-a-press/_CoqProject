@@ -447,4 +447,9 @@ proofs/InkCopyCaller.v
 proofs/InkFloorResetSource.v
 proofs/InkFloorResetExecution.v
 proofs/InkFloorResetCopy.v
+proofs/InkRawCopySource.v
+proofs/InkRawCopyExpressions.v
+proofs/InkRawCopyStores.v
+proofs/InkRawCopyIndex.v
+proofs/InkRawCopyHeight.v
 proofs/MainTheorem.v
