@@ -64,7 +64,7 @@ entry or new IDO-to-Clight start bridge is required under the agreed boundary.
 | --- | --- | --- |
 | Accepted start has zero depth and no prepared long jump | `DefaultArea1StartBoundary`; `ordinary_area1_entry_memory_excludes_prepared_fixture` | Already follows from the agreed boundary; not new initialization work. |
 | The actual useful display adjustment reads negative depth | `iq_actual_sink_raise_requires_negative_depth` | Local reduction checked under its storage and finite-number conditions; live identity and storage connection missing. |
-| The surviving producer is one of the checked depth cases | `NegativeDepthDefinedProducerClosure` and its source inventory | Whole-history connection missing; a source census is not reached-write coverage. |
+| The surviving producer is one of the checked depth cases | `NegativeDepthDefinedProducerClosure`; `InkActionPassHistory` | A five-stage preparation prefix can now be constructed from one completed enabled action pass, with a same-prefix depth-change locator. Accepted-start reachability and actual writer coverage remain missing. |
 | The landing timer has the stock bound at the negative write | `imb_actual_negative_landing_with_stock_gate_requires_long_jump`; landing gate, timer-reset and late-call results | Local cases checked, with explicit conditions; the intervening execution and remaining effects are not closed. |
 | Long-jump landing has a legitimate first constructor | `LongJumpProvenanceBoundary`; `InkCrouchSlideHistory` | Source/guard cases checked; whole action-history connection missing. |
 | The constructor's input comes from a new physical press | Controller edge, remembered-input and complete button-helper results | Local sample processing checked; whole input history and physical-sample authentication missing. |
@@ -81,6 +81,45 @@ in the generated Mario bodies ([US](../../generated/us_mario.v),
 [JP](../../generated/jp_mario_actions_moving.v)). They are source observations,
 not newly proved whole-execution facts.
 
+## Shared preparation prefix now constructed
+
+[`InkActionPassHistory.v`](../../proofs/InkActionPassHistory.v) takes one
+completed execution of the enabled part of the real US or JP
+`execute_mario_action` body. It derives five consecutive stages: the display
+visibility update, body-state reset, input preparation, special-floor
+handling, and interactions. Each stage ends with exactly the memory and
+local values with which the next begins. CompCert's execution correspondence
+then constructs an `ImportedClightRun` with proved individual steps, ending
+at the floor-null check. Neither the continuity of this prefix nor a generic
+claim that its calls are harmless is an additional premise.
+
+If a fixed depth cell has a different reading at the end of this prefix, the
+proof locates the first stage boundary where its reading differs from the
+initial reading, retaining that stage's actual execution and the matching
+prefix and suffix. Failed reads and non-finite values are not silently
+excluded. This locates a stage, not an individual write inside a helper;
+changes undone within a stage need not appear at its boundary. The fixed
+cell has not yet been identified with Mario's live record throughout the
+pass, and the repeated reads of `gMarioState` have not been proved equal.
+
+This is **partial shared-execution work**, not a generated controller trace
+from the agreed start. The completed enabled pass is still a premise. No
+specific useful negative producer has been observed or excluded by this
+result, and the floor check, repeated action dispatch, sinking and remaining
+scheduler are beyond the constructed prefix. Consequently this tranche
+does not yet meet the full producer-classification acceptance test below.
+It sharpens the third row by deriving an internal execution connection;
+it does not discharge that row. The result is consumed by
+`InkBackwardHistoryCheckedBoundary` and
+`MainTheorem.current_ink_backward_execution_boundary`; the whole-run
+impossibility theorem's three coverage obligations remain unchanged.
+
+The active SSL audit passed on 2026-09-09, including the integrated Main
+build, all three requested assumption reports, proof-hole and link checks,
+and source/import coverage. Its local report is
+`build/audit/20260909-175213-cjubz6wg/`. No new foundational axiom or accepted
+runtime effect was added. This was not a full standalone-proof rebuild.
+
 ## Which work comes next
 
 The next selected obligation is **surviving-producer coverage in one live
@@ -91,6 +130,14 @@ dispatch loop, and finally sinking. Follow this actual ordering while carrying
 Mario's identity and the depth value. Include the remainder of the scheduler
 between passes when extending to earlier frames. This is shared execution
 work; another standalone timer or button lemma is not the next deliverable.
+
+Reuse the new five-stage chain when connecting that pass, rather than
+reconstructing its sequence again. Its first visibility write and subsequent
+body-state reset still need their actual destinations classified relative
+to the tracked Mario record. Open the remaining helpers in their recorded
+order, then continue through the floor check and repeated action dispatch
+to the useful read. These are source-identified next checks, not instructions
+already observed in an execution from the agreed start.
 
 Use the existing `ImportedClightRun` and concrete frame-evidence machinery:
 each checkpoint must have actual Clight states, matching memory at adjacent
@@ -125,9 +172,9 @@ also does not close an all-controller-history claim.
 Future tranches must say which row they discharged or sharpened, what proof
 consumes the result, and what remains. Adding another conjunct to
 `InkBackwardHistoryCheckedBoundary` or passing its build is not by itself a
-whole-history connection. This document is a source-backed obligation audit
-and work-selection correction, not a newly discharged execution premise or
-a new Coq closure theorem.
+whole-history connection. The bounded construction above supplies only its
+stated internal prefix connection, not the accepted-start execution or a
+Coq closure theorem for negative depth.
 
 All work remains ordinary successful, defined in-bounds game execution,
 including glitches within that model. Outside-model memory/code modification

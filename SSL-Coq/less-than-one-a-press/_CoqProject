@@ -502,5 +502,6 @@ proofs/InkLandingOutcomeFrames.v
 proofs/InkLandingQuietSound.v
 proofs/InkLandingBoundedClosure.v
 proofs/InkCrouchSlideHistory.v
+proofs/InkActionPassHistory.v
 proofs/InkBackwardHistory.v
 proofs/MainTheorem.v

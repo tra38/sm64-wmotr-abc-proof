@@ -10,6 +10,15 @@ reusable evidence, not a continuous execution from the accepted boundary.
 The next priority is surviving-producer coverage in that execution, not
 another independent controller or timer lemma.
 
+The first [shared action-pass prefix](negative-depth-shared-closure.md#shared-preparation-prefix-now-constructed)
+is now constructed in Coq from one completed enabled pass: five consecutive
+preparation stages, matching memory and traces, and a real small-step run
+ending at the floor check. A net depth change can be located to its first
+changed stage boundary. This does not yet supply a concrete history from
+the accepted start, identify the live Mario record throughout, or classify
+the helpers' writes. The action loop and scheduler history remain open;
+the physical-A implication is not proved.
+
 One possible shortcut is now excluded: **leaving the ground cannot simply
 carry the old landing timer into the final depth calculation.** The actual
 action change resets the original Mario record's timer to zero. The following

@@ -5,7 +5,7 @@ From LessThanOneAPress.Proofs Require Import
   InkControllerRemembered InkFloorHistoryBackward InkLandingHistory
   InkActionTimerReset InkLandingTimerFrontier InkLandingLateClosure
   InkAnimationStorageSetup InkAnimationNoTransfer InkLandingOutcomeFrames
-  InkLandingQuietSound InkLandingBoundedClosure InkCrouchSlideHistory.
+  InkLandingQuietSound InkLandingBoundedClosure InkCrouchSlideHistory InkActionPassHistory.
 
 Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkLandingHistoryCheckedBoundary /\
@@ -15,7 +15,8 @@ Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkAnimationListInitialization /\ InkAnimationNoTransferNoEffect /\
   InkRepeatedLandingSoundNoEffect /\ InkLandingDispatchOutcomeCut /\
   InkLandingDispatchCheckedFrame /\ InkAllGroundOutcomeTimerBound /\
-  InkBoundedLateLandingNegativeClosure /\ InkCrouchWindowNoA /\ InkCrouchSlideEntryCut.
+  InkBoundedLateLandingNegativeClosure /\ InkCrouchWindowNoA /\ InkCrouchSlideEntryCut /\
+  InkActionPassPreparationHistory.
 
 Theorem ibh_backward_histories_checked : InkBackwardHistoryCheckedBoundary.
 Proof.
@@ -34,5 +35,6 @@ Proof.
   split; [exact ilb_all_ground_outcomes_keep_a_small_timer|].
   split; [exact ilb_small_timer_excludes_first_negative_final_depth|].
   split; [exact ich_actual_timer_window_cannot_create_a|].
-  exact ich_actual_crouch_entry_reaches_suffix_without_a.
+  split; [exact ich_actual_crouch_entry_reaches_suffix_without_a|].
+  exact iap_actual_pass_builds_shared_preparation_run.
 Qed.
