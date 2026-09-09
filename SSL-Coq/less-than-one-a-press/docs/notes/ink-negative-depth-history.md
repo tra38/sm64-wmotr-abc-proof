@@ -208,6 +208,45 @@ small timer, live storage conditions at each animation entry, and
 nonnegative depth immediately before the final calculation. It is not a
 proof that earlier helpers cannot create negative depth.
 
+### What the controller/action history would buy us
+
+This history would close the ordinary long-jump seed **without a new physical
+A press**, not prove negative depth impossible in all gameplay. Working
+backward, the useful chain is: first negative landing calculation, landing
+timer four or five, long-jump landing, earlier long jump, the input that
+started it, then the controller sample that supplied that input. The first
+two links still require the same-run timer preservation described above.
+The source census identifies the ordinary crouch-slide constructor and the
+long-jump landing's repeat-jump callback. A repeat jump already presupposes
+the long-jump cycle, so it cannot explain how that cycle first began. An
+exhaustive live classification would let us reason about that **first** entry
+instead of enumerating every possible later jump sequence.
+
+The bounded next connection is
+[`InkCrouchSlideHistory.v`](../../proofs/InkCrouchSlideHistory.v). It follows
+the real US/JP crouch-slide timer window, including its actual timer write.
+That write cannot overlap the input field in the ordinary Mario record.
+If the A-pressed flag was clear before the timer window, it remains clear
+at the long-jump test, which skips the constructor. This works for every
+starting timer that completes this code, not just a chosen sample. A second
+theorem starts at the complete crouch-slide body, with its earlier
+sliding-cancellation flag also clear, and derives the same input and Mario
+reference at the actual continuation after this window. It retains all later
+calls as real, unchecked continuation; it does not claim the rest of the
+action is harmless. The selected body is the one already resolved by
+`imb_selected_bodies_resolve`.
+
+What remains is to deliver that clear flag from the controller in the same
+run, through the remaining input processing and action dispatch, and to
+classify every other possible first entry into the long-jump cycle. Held A
+must not be confused with a new press: the initial remembered sample must
+agree with the accepted starting history, and later samples must be ordinary
+controller input rather than demo input. Completing those links would remove
+the normal long-jump explanation for a no-new-A seed. Other earlier depth
+changes, actual audio/animation effects, storage persistence and survival of
+the negative seed would still need their own checks. There is no claim yet
+that a physical A press is universally necessary.
+
 ### The larger no-A history
 
 The earlier duration endpoint is the end of `common_landing_cancels`, not
@@ -282,6 +321,15 @@ is retained locally at `build/audit/20260909-134536-t58a1sw3/`. All five new
 modules are in Main's import closure. The audit's 26 regression tests also
 passed. This was a Main-and-requested-dependencies build, not a rebuild of
 every standalone proof.
+
+The crouch-slide history extension also passed on 2026-09-09, with its
+single-file check, integrated Main build, four focused assumption reports,
+and source/integration checks. Its report is
+`build/audit/20260909-152327-qihswnbm/`. Both new theorems are consumed by
+`InkBackwardHistoryCheckedBoundary`; no new foundational axiom or accepted
+runtime effect was added. This is a checked local action-history connection,
+not a completed controller-to-landing history or a discharge of the whole-run
+theorem's three coverage requirements. No full standalone rebuild was run.
 
 All claims concern successful defined in-bounds Clight execution and ordinary
 gameplay, including glitches within that model. No method for ACE, arbitrary
