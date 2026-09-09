@@ -444,4 +444,7 @@ proofs/InkBackwardSource.v
 proofs/InkBackwardExecution.v
 proofs/InkCopyEntry.v
 proofs/InkCopyCaller.v
+proofs/InkFloorResetSource.v
+proofs/InkFloorResetExecution.v
+proofs/InkFloorResetCopy.v
 proofs/MainTheorem.v

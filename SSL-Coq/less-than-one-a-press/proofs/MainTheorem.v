@@ -45,7 +45,7 @@ From LessThanOneAPress.Proofs Require Import
   ObjectContactNecessity
   ContactConsumerSource ContactConsumerExecution ContactCreditExecution
   SecretContactExecution
-  InkBackwardSource InkBackwardExecution InkCopyCaller
+  InkBackwardSource InkBackwardExecution InkCopyCaller InkFloorResetCopy
   CompCertRouteScope.
 
 Import ListNotations.
@@ -1068,13 +1068,15 @@ Proof.
         -- lia.
 Qed.
 
-(** The actual selected-body cut now reaches backward through function-entry
-    allocation and X to the caller's display-height read. The caller's checked
-    fields and distinct ordinary globals identify the exact MarioState Y
-    assignment. Live pointer history and the earlier height-gap producer
-    remain obligations; this does not assert a complete controller route. *)
-Theorem current_ink_backward_execution_boundary : InkBackwardCallerBoundary.
-Proof. exact ibcc_backward_caller_boundary_checked. Qed.
+(** The retry cut retains the real incoming display height. The new backward
+    reset cuts derive the object reference cached at entry to each ordinary
+    floor-snap helper, preserve it through the actual preceding calls, and
+    connect the State floor snap to the display-Y store in one copy execution.
+    The stationary moving-ground alternative is retained. Earlier live object
+    history, later memory effects, skipped resets and a useful gap surviving
+    to the retry remain obligations; no complete controller route is asserted. *)
+Theorem current_ink_backward_execution_boundary : InkFloorResetCheckedBoundary.
+Proof. exact ifrc_floor_reset_boundary_checked. Qed.
 
 (* The graphical-fallback tranche shows that update order does not by itself
    refute the scheduling shape; it does not execute the branch in Clight or

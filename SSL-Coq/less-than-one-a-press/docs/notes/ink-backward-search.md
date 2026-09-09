@@ -76,8 +76,9 @@ Read this table from the desired result toward earlier requirements.
 | Mario remembers the top | A live floor query selects a surface owned by that top. | A high displayed position alone is insufficient. The correct loaded face, list order and later support still matter. |
 | The displayed-position retry runs | The floor pointer read after the first lookup is null. | A non-null pointer at that test skips this retry, even if an older cached floor was null. A clean first miss remains a separate requirement. |
 | The retry starts at the useful height | The required height is already in the display record when the retry begins. | For ordinary separate storage, the real copy's local initialization and X write preserve that height; the Y assignment writes it unchanged. The copy itself is not a height producer. |
-| The high source belongs to Mario's display record | The live Mario-object reference names the expected object. | The selected US and JP field reads and copy arguments are now proved, not just read from the source text. Showing that every earlier frame preserves the expected object reference remains open. |
-| Display remains high while collision touches the warp | Some earlier operation creates and preserves that separation. | Moving only Mario's movement position preserves the prior display/collision gap; it does not create one. Stock visual offsets are far below the known required gap under their checked conditions. |
+| The high source belongs to Mario's display record | The live Mario-object reference names the expected object. | The selected US and JP field reads and copy arguments are proved. The floor-reset helpers also keep the object reference actually read at their own entry, through their preceding calls. The correct object identity across the wider history remains open. |
+| An old high display survives a downward floor snap | The usual display reset is skipped, or something changes again afterward. | The stop routine and the stationary routine's no-moving-ground branch write the newly read floor height to the display. Their State-only snap leaves the separate collision/display object untouched. The moving-ground branch remains distinct. |
+| Display remains high while collision touches the warp | Some earlier operation creates and preserves that separation. | Moving only Mario's movement position preserves the prior display/collision gap; it does not create one. A later copy into raw collision, or movement while display resets are skipped, still needs joint accounting. Stock visual offsets are too small under their checked conditions. |
 | Every ingredient occurs together | One no-A history creates the gap, activates the pillars and reaches the warp while the needed top surface exists. | A clean pillar run is recorded, but it reaches the warp after the top disappears. That recording does not supply the installation. |
 
 The 960-unit figure belongs to the **known capture-preserving mid-face
@@ -88,7 +89,7 @@ must establish its own floor result and support lifetime. Signed-coordinate
 wrapping and a different selected surface cannot be dismissed by applying a
 bound whose premises they do not satisfy.
 
-## What this tranche adds to the proof
+## What the checked retry copy establishes
 
 The [source checkpoints](../../proofs/InkBackwardSource.v) and
 [execution proof](../../proofs/InkBackwardExecution.v) replace a source-order
@@ -100,7 +101,7 @@ are retained as real subexecutions, not assumed harmless.
 
 The retry's vector-copy name resolves to the selected internal game function,
 not an unspecified outside effect. A taken retry supplies its actual object
-read, copy call and second floor query in sequence. The new
+read, copy call and second floor query in sequence. The
 [copy-entry proof](../../proofs/InkCopyEntry.v) carries the Y read backward
 through both earlier writes. The function really allocates a fresh local
 pointer cell, initializes it from its argument, then copies X to the supplied
@@ -108,7 +109,7 @@ destination. With source and destination in their ordinary separate storage,
 neither write changes the source height. The destination pointer also survives;
 it is not replaced with an assumed temporary value.
 
-The new [caller proof](../../proofs/InkCopyCaller.v) checks the selected US and
+The [caller proof](../../proofs/InkCopyCaller.v) checks the selected US and
 JP field layouts and derives the actual two copy arguments: MarioState's
 position and the named object's display position. MarioState storage and the
 object pool are different globals, so their separation follows from the
@@ -135,15 +136,66 @@ derive a complete small-step frame or retail-machine simulation. Those are
 the connections needed to turn these local backward cuts into a universal
 route verdict.
 
+## A downward floor snap is now checked
+
+The new [source checkpoints](../../proofs/InkFloorResetSource.v),
+[saved-object proof](../../proofs/InkFloorResetExecution.v), and
+[reset execution proof](../../proofs/InkFloorResetCopy.v) cover two ordinary
+US and JP paths: the stop-and-snap routine, and the stationary-ground routine
+when its actual test does **not** select moving-ground movement. The latter
+can choose another branch; the proof records that choice rather than treating
+both branches as a reset. No numerical bound on the sampled floor height is
+needed for this result.
+
+Each routine first remembers the object named by MarioState. The proof follows
+that actual read and establishes that the same saved reference reaches the
+reset, even across the preceding helper calls. Those calls retain their actual
+memory effects: the result concerns the caller's saved reference,
+not a claim that the calls leave all memory unchanged. Identifying this object
+as the intended live Mario throughout an earlier gameplay history remains a
+separate requirement; the reset theorem also requires its allocation to remain
+valid at the reached cut.
+
+At the reset, the game first writes the sampled floor height to Mario's
+movement position. With the ordinary separate storage, this write leaves
+every read from the collision/display object's allocation unchanged. The
+following real vector copy then writes that **new floor height** to the
+display's Y cell. Its local setup and earlier X write cannot substitute the
+old display height. Thus a large downward snap cannot explain retaining the
+old high display through this particular Y assignment: the display is reset
+along with the movement position, however large the drop.
+
+This does not prove that the sampled floor is low. A legitimately high floor
+could still supply a high display, while raw collision has not yet caught up.
+That possibility must explain the actual selected floor and the subsequent
+collision update; the theorem does not declare every reset gap-free.
+
+This is an exact checkpoint, not a promise about every later operation. The
+proof keeps the copy's entry, earlier statements, Y read and write, remaining
+statements, return, and caller's remaining statements in one memory-linked
+execution. Keeping those later operations in the same execution does **not**
+yet prove that they preserve the new display height. The later angle helper,
+raw collision-position copy, other action paths, and following frames still
+need their own effects checked. This tranche finds no clean Ink producer and
+does not close the whole route.
+
 ## The next useful backward cut
 
-The copy-entry part is now checked for the ordinary storage case. Work
-backward from that incoming display height to its last change or reset, while
-deriving the live Mario-object reference from the earlier execution. Classify
-the earlier display and raw collision-position changes together. Each proposed
-producer must explain both the gap and why it survives until this lookup.
-Lowering the collision position while leaving the display behind can create
-the same gap as raising the display; a complete exclusion must cover both.
+Find the last display change before the retry and classify the collision
+changes after it. If it is one of the checked floor resets, trace the required
+height back to the floor it actually sampled, rather than to the old display.
+Then follow the later collision-position copy and the next lookup in the same
+run, while retaining the correct live object reference. Lowering collision
+while leaving display behind can create the same gap as raising display; the
+State-only snap is not itself that collision write.
+
+The other concrete direction is movement during an action that skips the
+usual display reset. Platform movement during a stalled dialog was already
+identified in the [dialog audit](negative-quicksand-unreanchored-dialog.md);
+this is not a new demonstrated route. It still needs an actual movement and
+collision history that creates a useful gap and preserves it until the retry.
+The stationary routine's moving-ground branch and any later changes also
+remain open, rather than being excluded by the no-moving-ground reset proof.
 
 A wall push may unlock the retry, but the retry still needs
 something useful to copy. If every allowed earlier producer is too small or
@@ -154,12 +206,13 @@ before spending effort on the star continuations.
 ## Verification and remaining scope
 
 The active SSL `check-ink-backward` target compiles the integrated main proof
-and checks eight theorem assumption reports, including the entry-height,
-caller-height and exact Y-store results. No project-specific axiom was added.
+and checks thirteen theorem assumption reports, including the earlier retry
+results and the new source selection, saved reference, floor reset, and two
+full-call cuts. No project-specific axiom was added.
 `MainTheorem.current_ink_backward_execution_boundary` exposes the strengthened
-`InkBackwardCallerBoundary`, which includes all previous cuts.
+`InkFloorResetCheckedBoundary`, which includes all previous cuts.
 The ultimate impossibility theorem still has its three explicit whole-run
-and route-coverage requirements; this tranche sharpens the real branch/copy
+and route-coverage requirements; this tranche sharpens the real branch/copy/reset
 part of that work rather than removing those requirements. The repository's
 separate legacy build check still cannot run because its `sm64-proof`
 toolchain is absent; the successful SSL checks use `sm64-item-proof`.
