@@ -19,6 +19,13 @@ the accepted start, identify the live Mario record throughout, or classify
 the helpers' writes. The action loop and scheduler history remain open;
 the physical-A implication is not proved.
 
+The subsequent [constructed call-start tranche](negative-depth-shared-closure.md#constructed-call-start-and-first-store-exclusion)
+no longer assumes a completed pass for its initial interval: it derives the
+real call entry, action test and two object references from the accepted
+memory. It then excludes the first graphical-flag store as a negative seed
+at that same endpoint. The missing scheduler-to-call connection remains
+explicit; this is not the complete accepted-start history.
+
 One possible shortcut is now excluded: **leaving the ground cannot simply
 carry the old landing timer into the final depth calculation.** The actual
 action change resets the original Mario record's timer to zero. The following

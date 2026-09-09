@@ -64,7 +64,7 @@ entry or new IDO-to-Clight start bridge is required under the agreed boundary.
 | --- | --- | --- |
 | Accepted start has zero depth and no prepared long jump | `DefaultArea1StartBoundary`; `ordinary_area1_entry_memory_excludes_prepared_fixture` | Already follows from the agreed boundary; not new initialization work. |
 | The actual useful display adjustment reads negative depth | `iq_actual_sink_raise_requires_negative_depth` | Local reduction checked under its storage and finite-number conditions; live identity and storage connection missing. |
-| The surviving producer is one of the checked depth cases | `NegativeDepthDefinedProducerClosure`; `InkActionPassHistory` | A five-stage preparation prefix can now be constructed from one completed enabled action pass, with a same-prefix depth-change locator. Accepted-start reachability and actual writer coverage remain missing. |
+| The surviving producer is one of the checked depth cases | `NegativeDepthDefinedProducerClosure`; `InkActionPassHistory`; `InkActionVisibilityFrame` | An action-call start is now constructed from the accepted memory, and its first graphical store is excluded as a seed. The scheduler-to-call connection, later helpers and remaining writer coverage are still missing. |
 | The landing timer has the stock bound at the negative write | `imb_actual_negative_landing_with_stock_gate_requires_long_jump`; landing gate, timer-reset and late-call results | Local cases checked, with explicit conditions; the intervening execution and remaining effects are not closed. |
 | Long-jump landing has a legitimate first constructor | `LongJumpProvenanceBoundary`; `InkCrouchSlideHistory` | Source/guard cases checked; whole action-history connection missing. |
 | The constructor's input comes from a new physical press | Controller edge, remembered-input and complete button-helper results | Local sample processing checked; whole input history and physical-sample authentication missing. |
@@ -120,6 +120,59 @@ and source/import coverage. Its local report is
 `build/audit/20260909-175213-cjubz6wg/`. No new foundational axiom or accepted
 runtime effect was added. This was not a full standalone-proof rebuild.
 
+## Constructed call start and first-store exclusion
+
+[`InkActionPassStart.v`](../../proofs/InkActionPassStart.v) now constructs a
+short execution without assuming a completed action pass. It starts at the
+ordinary `execute_mario_action` call with the accepted boundary's memory and
+Mario object as its argument. The proof derives the function's empty local
+storage, argument binding, ordinary nonzero action test, and both subsequent
+reads of Mario's object reference. Its endpoint is the graphical-flag read
+at the beginning of the visibility update. Memory has not changed, both
+references name the boundary's Mario slot, and depth is still zero.
+[`InkActionPassResolution.v`](../../proofs/InkActionPassResolution.v) checks
+that this is the actual function selected by both linked US and JP programs.
+
+[`InkActionVisibilityFrame.v`](../../proofs/InkActionVisibilityFrame.v) then
+classifies the first store at that same constructed endpoint. Every successful
+execution of the visibility update writes only the object's graphical flag
+field. The actual selected-program symbols establish that MarioState and
+the object pool are different memory blocks; this is not an added separation
+assumption. Therefore this store cannot change Mario's depth from zero. The
+proof retains the real flag read and store, rather than assuming that the
+entire action pass or its helpers are harmless. `InkActionStartFirstWrite`
+is consumed by the current Ink boundary in `MainTheorem`.
+
+**Local case closed:** the first graphical-flag store is not a negative-depth
+producer in this entry case. The previous completed-pass premise is removed
+for the constructed call-start interval. **Whole-history connection missing:**
+the chosen call start is not yet derived from the actual scheduler continuation
+at the agreed boundary. `DefaultArea1StartBoundary` constrains memory, not
+the next instruction or saved call stack; `DefaultArea1ActiveSelectedRun`
+does not fix those either. The new construction does not silently strengthen
+either interface or claim that its chosen call is the next scheduled event.
+It is a symbolic instruction-level prefix, not a controller movie or a
+complete run from the agreed control boundary.
+
+Two different limits remain. To construct further steps, the boundary must
+supply or derive the actual graphical-flag read and write permissions; the
+current construction stops before that read. To classify further effects in
+a successful continuation, the next helper is `mario_reset_bodystate`, which
+reads `marioBodyState` and resets its cap, eye, hand, model and wing fields,
+then clears a Mario flag. The ordinary initialization assigns that reference
+to `gBodyStates[0]`, but its value and persistence are not supplied by the
+present start-memory contract. Neither an unexpected reading nor an
+unclassified helper is a discovered gameplay counterexample. No complete
+controller/action history or physical-A necessity theorem is established.
+
+Verification passed the active SSL audit on 2026-09-09: the integrated Main
+build, four requested assumption reports, proof-hole and link checks, and
+source/import coverage. The report is retained locally at
+`build/audit/20260909-183120-6aljljx5/`. All three new modules are consumed
+on the Ink boundary's proof path. No new foundational axiom or accepted
+outside-call effect was added, and the whole-run theorem's three coverage
+obligations remain unchanged. This was not a full standalone-proof rebuild.
+
 ## Which work comes next
 
 The next selected obligation is **surviving-producer coverage in one live
@@ -131,12 +184,14 @@ Mario's identity and the depth value. Include the remainder of the scheduler
 between passes when extending to earlier frames. This is shared execution
 work; another standalone timer or button lemma is not the next deliverable.
 
-Reuse the new five-stage chain when connecting that pass, rather than
-reconstructing its sequence again. Its first visibility write and subsequent
-body-state reset still need their actual destinations classified relative
-to the tracked Mario record. Open the remaining helpers in their recorded
-order, then continue through the floor check and repeated action dispatch
-to the useful read. These are source-identified next checks, not instructions
+Reuse the five-stage chain and the constructed call start when connecting
+that pass, rather than reconstructing their sequences again. The visibility
+write is classified for the derived entry references; carry those references
+and the protected readings forward before applying that result to later
+passes. Connect the real scheduler control point and open the subsequent
+body-state reset and remaining helpers in their recorded order, then continue
+through the floor check and repeated action dispatch to the useful read.
+The later helper checks are source-identified next work, not instructions
 already observed in an execution from the agreed start.
 
 Use the existing `ImportedClightRun` and concrete frame-evidence machinery:
