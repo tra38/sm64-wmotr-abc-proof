@@ -250,9 +250,14 @@ action setter resets the original Mario argument's timer to zero, even if
 its earlier initializer has effects, and the following dust update preserves
 zero. A first negative result at the final depth expression therefore
 requires a timer change in the actual later `set_mario_animation` or
-`play_mario_landing_sound_once` call. Their effects remain to be checked;
-no such timer change is known. This excludes retaining the old timer through
-the leave-ground action change, not all possible negative-depth producers.
+`play_mario_landing_sound_once` call. The [late-helper execution proof](ink-negative-depth-history.md#the-late-helpers-are-no-longer-black-boxes)
+now checks their ordinary writes and the animation loader's bookkeeping.
+Given the actual entry object, descriptor and buffer in blocks separate from
+MarioState, and timer-preserving effects for the final audio request and
+animation transfer, the same later interval keeps zero and excludes a first
+negative final calculation. Those live storage and runtime effects remain
+obligations; no timer-changing gameplay effect has been found. This sharpens
+the leave-ground branch, not all possible negative-depth producers.
 The other ground results still need their own connection to the earlier
 duration bound.
 

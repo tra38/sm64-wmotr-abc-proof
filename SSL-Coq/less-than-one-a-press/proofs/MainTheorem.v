@@ -1101,8 +1101,12 @@ Qed.
     action setter now leaves the original Mario timer zero. In one completed
     landing invocation, leaving ground performs that reset and the dust update
     preserves it: a first negative final depth then requires a timer change in
-    the actual later animation or landing-sound call. Those calls are retained,
-    not framed; the other ground results remain separate. Sampling/start
+    the actual later animation or landing-sound call. The real sound chain and
+    animation/loader writes now preserve that timer under the named audio-request
+    and animation-transfer effects and actual entry destination separation.
+    Those conditions exclude a first negative final depth in the same three-stage
+    continuation; the runtime effects and live separation are not supplied by
+    this theorem. The other ground results remain separate. Sampling/start
     coherence, later input/action history, the remaining interval to the depth write,
     clean floor-gap reachability and survival to the retry remain open. These
     are separately checked histories, not one clean run or a universal proof

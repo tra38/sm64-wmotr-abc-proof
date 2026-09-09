@@ -2,7 +2,7 @@ COQMAKEFILE := CoqMakefile
 COQBIN ?=
 COQMAKEFILE_CMD ?= $(COQBIN)coq_makefile
 
-.PHONY: all generated regenerate verify-generated proofs check check-rank9 check-rank9-timing check-rank9a check-rank9a-prehome check-rank10a check-rank10a-entry check-rank12b check-contact-necessity check-ink-backward check-ink-negative-timer clean
+.PHONY: all generated regenerate verify-generated proofs check check-rank9 check-rank9-timing check-rank9a check-rank9a-prehome check-rank10a check-rank10a-entry check-rank12b check-contact-necessity check-ink-backward check-ink-negative-timer check-ink-late-helpers clean
 
 all: proofs
 
@@ -2415,6 +2415,17 @@ check-ink-backward: $(COQMAKEFILE)
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkBackwardHistory ibh_backward_histories_checked
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem current_ink_backward_execution_boundary
 	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.MainTheorem conditional_evidence_bearing_clight_run_impossibility
+
+check-ink-late-helpers: check-ink-negative-timer
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLateHelperSource ill_selected_helpers_resolve
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLateWriteFrame ilw_checked_body_frame
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLateCallExecution ilh_actual_named_call
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingSoundFrame ils_landing_sound_chain_preserves_timer
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkAnimationDestination iad_other_block_assignment
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkAnimationLoaderFrame ial_actual_loader_preserves_timer
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkAnimationTimerFrame iaf_actual_prefix_reads
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkAnimationTimerFrame iaf_actual_animation_preserves_timer
+	bash pipeline/assumptions.sh LessThanOneAPress.Proofs.InkLandingLateClosure ilt_checked_late_calls_exclude_first_negative_final_depth
 
 check-ink-negative-timer: $(COQMAKEFILE)
 	$(MAKE) -f $(COQMAKEFILE) proofs/MainTheorem.vo

@@ -488,5 +488,13 @@ proofs/InkLandingContinuationSource.v
 proofs/InkLandingDispatch.v
 proofs/InkLandingPostStep.v
 proofs/InkLandingTimerFrontier.v
+proofs/InkLateHelperSource.v
+proofs/InkLateWriteFrame.v
+proofs/InkLateCallExecution.v
+proofs/InkLandingSoundFrame.v
+proofs/InkAnimationDestination.v
+proofs/InkAnimationLoaderFrame.v
+proofs/InkAnimationTimerFrame.v
+proofs/InkLandingLateClosure.v
 proofs/InkBackwardHistory.v
 proofs/MainTheorem.v

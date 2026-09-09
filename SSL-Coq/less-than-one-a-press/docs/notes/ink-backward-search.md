@@ -375,7 +375,13 @@ movement and action initializer do not need blanket timer frames: their
 effects precede this checked reset. The real animation and landing-sound
 calls still execute afterward. If the final depth expression creates a first
 negative value, one of those two calls must have changed the timer; no such
-effect has been established. Other ground results, earlier depth producers
+effect has been established. Their [actual helper writes are now checked](ink-negative-depth-history.md#the-late-helpers-are-no-longer-black-boxes):
+sound flags stay outside the timer, and animation/object/buffer bookkeeping
+stays in the entry destination blocks. With those blocks separate from
+MarioState and with the two named audio-request/animation-transfer frames,
+the continuous later interval cannot create its first negative final depth.
+Live destination provenance and those runtime effects remain open, rather
+than being inferred from the calls' names. Other ground results, earlier depth producers
 and the connection from controller history remain separate obligations.
 
 The [controller execution cut](../../proofs/InkControllerBackward.v) now
@@ -463,16 +469,20 @@ the complete button routine and the continuous reset-to-button-call prefix.
 It adds the consecutive controller stores, actual queried-floor/high-gap
 quarter-step cuts, and the landing gate-to-return interval with its genuine
 rejection callee.
-The nine added reports cover the completed action reset and the later landing
-continuation. This tranche runs the focused `check-ink-negative-timer` target:
-the integrated build plus those nine reports and the three integration/main
-reports, twelve in total. It does not rerun the full sixty-three-report suite.
+The previous nine added reports cover the completed action reset and the
+later landing continuation. This tranche runs `check-ink-late-helpers`:
+the twelve-report `check-ink-negative-timer` target plus nine reports covering
+real helper resolution, sound/animation/loader writes and the connected
+late-depth exclusion, twenty-one in total. It does not rerun the full
+sixty-three-report suite.
 No project-specific axiom was added.
 `MainTheorem.current_ink_backward_execution_boundary` exposes the strengthened
 `InkBackwardHistoryCheckedBoundary`, which retains all earlier input/movement
 cuts through `InkLandingHistoryCheckedBoundary` and adds the independently
 checked floor history, consecutive controller stores, completed action reset
-and the same-run leave-ground timer frontier. The conjunction is
+and the same-run leave-ground timer frontier. It also includes the conditional
+exclusion for the actual animation-to-sound-to-final-calculation interval.
+The conjunction is
 not evidence that these checkpoints are already connected in one clean run.
 The ultimate impossibility theorem still has its three explicit whole-run
 and route-coverage requirements; this tranche sharpens the real branch/copy/reset

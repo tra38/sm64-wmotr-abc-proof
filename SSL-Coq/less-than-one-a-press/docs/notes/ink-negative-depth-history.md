@@ -1,17 +1,23 @@
 # Negative depth: landing timer history
 
+The target is a surviving negative seed without a new physical A press, not
+negative depth in all gameplay: the ordinary long-jump case is already known.
+
 One possible shortcut is now excluded: **leaving the ground cannot simply
 carry the old landing timer into the final depth calculation.** The actual
 action change resets the original Mario record's timer to zero. The following
 dust update keeps it zero. If the final calculation nevertheless makes depth
 negative for the first time, the timer must have changed during the later
-animation or landing-sound call. No such change has been demonstrated; proving
-those two calls preserve the timer is the next small closure task. This does
-not yet exclude every landing branch or prove that a physical A press is
-universally necessary.
+animation or landing-sound call. Their actual game-code writes are now checked:
+the sound helpers update flags, and the animation helper updates the object
+and animation buffer. With the actual entry destinations separate from
+MarioState, only the audio-request and animation-transfer effects still need
+timer frames. Under those explicit conditions the continuous later interval
+cannot produce its first negative final depth. This does not yet exclude
+every landing branch or prove that a physical A press is universally necessary.
 
 The landing-duration bound is now attached to the real US/JP Clight gate,
-not just the stock descriptor census. The new files are
+not just the stock descriptor census. The duration-proof files are
 [`InkLandingHistorySource.v`](../../proofs/InkLandingHistorySource.v),
 [`InkLandingHistoryGate.v`](../../proofs/InkLandingHistoryGate.v),
 [`InkLandingHistoryReturn.v`](../../proofs/InkLandingHistoryReturn.v), and
@@ -90,8 +96,53 @@ by the leave-ground reset branch.
 
 ## What is still not connected
 
-This endpoint is the end of `common_landing_cancels`, not the later depth
-write. It does not yet establish that every complete cancellation call
+### The late helpers are no longer black boxes
+
+[`InkLandingSoundFrame.v`](../../proofs/InkLandingSoundFrame.v) executes the
+selected US/JP landing-sound wrapper, action-sound helper, and particle/sound
+helper. It resolves their real internal calls and follows the original Mario
+argument. Their only ordinary writes are to the flags and particle-flags
+words, at offsets 4 and 8, away from the two-byte timer at offset 26. Even the
+helper named `play_sound_and_spawn_particles` only sets particle flags here;
+it does not allocate a particle object in this call. The remaining sound
+premise is the timer effect of the actual final `play_sound` request.
+
+[`InkAnimationTimerFrame.v`](../../proofs/InkAnimationTimerFrame.v) follows
+the real animation call's first reads: Mario's object, animation descriptor,
+and descriptor's buffer. The remembered object and buffer references remain
+the destinations even after the loader returns. Every later scalar animation
+write is proved to stay in one of those two blocks. The proof explicitly
+requires the three entry blocks (object, descriptor, buffer) to differ from
+the protected MarioState block; it does not derive their live provenance.
+[`InkAnimationLoaderFrame.v`](../../proofs/InkAnimationLoaderFrame.v) also
+executes the real loader: its own bookkeeping write stays in the descriptor
+block. The remaining animation premise is the effect of `dma_read` at this
+particular callsite, with its destination derived from that buffer read and
+proved separate from MarioState. It does not require arbitrary transfers to
+arbitrary destinations to preserve the timer.
+
+[`InkLandingLateClosure.v`](../../proofs/InkLandingLateClosure.v) applies
+these results to the actual consecutive animation call, landing-sound call,
+and final depth calculation. The same memories and original Mario reference
+connect all three. Given the earlier derived zero timer, ordinary entry
+destinations, and the two named runtime frames, the timer stays zero. A first
+finite negative final calculation would require at least four, so that case
+is impossible. These are conditional execution theorems, not assumptions
+that the entire helpers preserve the timer.
+
+The two remaining effect premises are **not discharged or silently accepted**.
+The selected programs leave `play_sound` abstract; ordinary audio source
+queues a request, but that source observation is not yet its Clight effect
+specification. The animation-transfer wrapper reaches abstract cache,
+transfer, and message-service calls. Their ordinary specified effects must
+be connected to the protected timer, or the transfer must be shown absent
+on the relevant execution. This work does not change a running game's memory
+or investigate defects in those services.
+
+### The larger no-A history
+
+The earlier duration endpoint is the end of `common_landing_cancels`, not
+the later depth write. It does not yet establish that every complete cancellation call
 reaches this suffix: the steep-floor, sliding and first-person checks precede
 it. Nor does it establish all required input and descriptor facts at that
 reached point.
@@ -127,17 +178,17 @@ a surviving Ink seed.
 
 ## Verification and scope
 
-The focused `check-ink-negative-timer` target builds the integrated
-`MainTheorem` and audits twelve theorem assumption reports, including the
-new action reset, complete landing-call cut and two-call frontier. These
-results strengthen `InkBackwardHistoryCheckedBoundary`; the whole-run
-impossibility theorem's three coverage requirements remain open. The full
-`check-ink-backward` target also includes these nine new reports alongside
-its previous fifty-four. The focused target, not that full sixty-three-report
-suite, is the verification run for this tranche. It passed with all twelve
-reports and only the existing Coq/CompCert foundations. The separate legacy
-discipline audit remains blocked by its missing `sm64-proof` toolchain; it is
-not counted as a successful build or assumption audit. The active SSL run
+The focused `check-ink-late-helpers` target builds the integrated
+`MainTheorem` and audits twenty-one theorem assumption reports: the twelve
+earlier timer reports plus nine helper-resolution, actual-write, animation,
+sound and final-calculation reports. The connected late-call result extends
+`InkBackwardHistoryCheckedBoundary`; the whole-run impossibility theorem's
+three coverage requirements remain open. This focused target, not the full
+sixty-three-report `check-ink-backward` suite, is the verification run for
+this tranche. It passed all twenty-one reports, using only the existing
+Coq/CompCert foundations. The separate legacy discipline audit remains blocked
+by its missing `sm64-proof` toolchain; it is not counted as a successful build
+or assumption audit. The active SSL run
 uses `sm64-item-proof`.
 
 All claims concern successful defined in-bounds Clight execution and ordinary
