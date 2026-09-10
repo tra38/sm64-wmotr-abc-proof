@@ -1,5 +1,11 @@
 # Negative depth: one shared-history closure
 
+**Planning update, 2026-09-10:** pausing the full same-history effort is now
+recommended pending a bounded review of the overall proof design. See the
+[pause recommendation](negative-depth-same-history-pause.md). The technical
+next steps below record unfinished work; they are not a recommendation to
+continue helper-by-helper expansion. The route remains open.
+
 ## The claim we need
 
 Starting from the agreed SSL Area-1 boundary, any first useful negative-depth
