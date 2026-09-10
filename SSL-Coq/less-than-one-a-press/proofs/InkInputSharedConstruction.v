@@ -9,7 +9,7 @@ From LessThanOneAPress.Proofs Require Import GameTypes ClightRefinement
   InkBodyResetConstruction InkPreparationConstruction InkAcceptedInitialStorage
   InkScheduledSharedHistory InkSharedReadings InkInputPrefixConstruction
   InkControllerSource InkMarioInputReset ObjectContactNecessity
-  DefaultArea1StartBoundary OrdinaryArea1EntryMemory SelectedClightTarget.
+  DefaultArea1StartBoundary OrdinaryArea1EntryMemory SelectedClightTarget InputSemantics.
 Import ListNotations.
 Import Clightdefs.ClightNotations.
 Local Open Scope Z_scope.
@@ -114,7 +114,9 @@ Theorem iih_action_reaches_buttons : forall version m a le global k,
       (Callstate (Internal (ics_body version ICButtons)) [Vptr (area1_state_storage_block a) Ptrofs.zero]
         (iih_button_cont version ready (iih_input_cont version le (area1_state_storage_block a) k)) after) /\
     InkSameReadings a m after /\
-    Mem.load Mint16unsigned after (area1_state_storage_block a) 2 = Some (Vint Int.zero).
+    Mem.load Mint16unsigned after (area1_state_storage_block a) 2 = Some (Vint Int.zero) /\
+    (forall chunk b offset, b <> area1_state_storage_block a ->
+      Mem.load chunk after b offset = Mem.load chunk m b offset).
 Proof.
   intros version m a le global k Hstorage Hsymbol Hglobal.
   destruct (iic_construct_input_prefix version m _ _ _
@@ -126,8 +128,11 @@ Proof.
     rewrite iic_source.
     eapply star_trans; [eapply iap_chain_steps; exact Hchain| |reflexivity].
     apply iih_frontier_calls_buttons. exact Hm.
-  - split; [|exact Hzero]. intros cell Hin. apply Hframe.
-    apply iih_shared_cell_outside; [exact (iic_state_object_separate _ _ _ _ Hstorage)|exact Hin].
+  - split.
+    + intros cell Hin. apply Hframe.
+      apply iih_shared_cell_outside; [exact (iic_state_object_separate _ _ _ _ Hstorage)|exact Hin].
+    + split; [exact Hzero|]. intros chunk b offset Hseparate.
+      exact (Hframe (ink_cell chunk b offset) (or_introl Hseparate)).
 Qed.
 
 (** Additional normal writable INITIAL fields; the old contents of input,
@@ -149,7 +154,12 @@ Definition InkAcceptedInitialInputConstruction : Prop :=
     run_final run = Callstate (Internal (ics_body version ICButtons))
       [Vptr (area1_state_storage_block a) Ptrofs.zero] button_k after /\
     InkSameReadings a m after /\ InkInitialProducerReadings after a /\
-    Mem.load Mint16unsigned after (area1_state_storage_block a) 2 = Some (Vint Int.zero).
+    Mem.load Mint16unsigned after (area1_state_storage_block a) 2 = Some (Vint Int.zero) /\
+    Mem.load Mint32 after (area1_state_storage_block a) 156 =
+      Some (Vptr (area1_controller_storage_block a) Ptrofs.zero) /\
+    Mem.load Mint16unsigned after (area1_controller_storage_block a) 18 =
+      Some (Vint (edge_pressed current previous)) /\
+    Int.testbit (edge_pressed current previous) 15 = false.
 
 Theorem iih_accepted_initial_action_reaches_buttons : InkAcceptedInitialInputConstruction.
 Proof.
@@ -167,7 +177,7 @@ Proof.
       exact (jp_area1_state_pointer_symbol _ _ Hsymbols)]. }
   destruct (ipc_construct_preparation version m a _ body ready (Kseq (ias_return version) k)
     Hprep Hsymbol (ordinary_area1_state_global_pointer _ _ _ _ _ _ Hmemory) Ho1 Ho2)
-    as (middle & prepared & Hprepsteps & Hprepframe & Hglobal & Hvalid & Hflags & Hcollision).
+    as (middle & prepared & Hprepsteps & Hprepframe & Hglobal & Hvalid & Hflags & Hcollision & Hother).
   assert (InkInputPrefixStorage middle (area1_state_storage_block a) (area1_object_pool_block a)
     (Ptrofs.repr (mario_object_base a))) as Hinput'.
   { constructor.
@@ -183,7 +193,7 @@ Proof.
     - exact Hflags.
     - eapply Forall_impl; [|exact Hinput]. intros item Hitem. apply Hvalid. exact Hitem. }
   destruct (iih_action_reaches_buttons version middle a prepared _ (Kseq (ias_return version) k)
-    Hinput' Hsymbol Hglobal) as (after & button_ready & Hinputsteps & Hinputframe & Hzero).
+    Hinput' Hsymbol Hglobal) as (after & button_ready & Hinputsteps & Hinputframe & Hzero & Hinputother).
   assert (star Clight.step2 (Clight.globalenv (selected_clight_target version))
     (run_final prefix) E0 (Callstate (Internal (ics_body version ICButtons))
       [Vptr (area1_state_storage_block a) Ptrofs.zero]
@@ -197,6 +207,32 @@ Proof.
   assert (InkSameReadings a m after) as Hframe by (eapply ink_same_readings_trans; eauto).
   split; [exact Hjp|]. split; [rewrite Hjs; exact Hs|].
   split; [rewrite Hjt, Ht; reflexivity|]. split; [exact Hjf|]. split; [exact Hframe|].
-  split; [|exact Hzero]. eapply ink_same_readings_keep_initial_producers; [exact Hframe|].
-  exact (ink_accepted_start_initializes_both_producers _ _ _ _ _ Hstart).
+  split.
+  - eapply ink_same_readings_keep_initial_producers; [exact Hframe|].
+    exact (ink_accepted_start_initializes_both_producers _ _ _ _ _ Hstart).
+  - split; [exact Hzero|]. split.
+    + change (ink_read after (ink_cell Mint32 (area1_state_storage_block a) 156) =
+        Some (Vptr (area1_controller_storage_block a) Ptrofs.zero)).
+      rewrite Hframe.
+      * exact (ordinary_area1_state_controller_pointer _ _ _ _ _ _ Hmemory).
+      * cbn [ink_shared_cells In]. auto 20.
+    + split; [|exact (default_area1_start_no_a_edge _ _ _ _ _ _ Hstart)].
+      assert (Genv.find_symbol (Clight.globalenv (selected_clight_target version)) IBM._gControllers =
+        Some (area1_controller_storage_block a)) as Hcontrollers.
+      { destruct version; [exact (us_area1_controller_storage_symbol _ _ Hsymbols)|
+          exact (jp_area1_controller_storage_symbol _ _ Hsymbols)]. }
+      assert (area1_controller_storage_block a <> area1_state_storage_block a /\
+        area1_controller_storage_block a <> area1_object_pool_block a) as [Hcs Hcp].
+      { destruct version.
+        - destruct (us_area1_entry_storage_blocks_pairwise_distinct _ _ Hsymbols) as (Hsc & Hsp & Hcp).
+          split; [intro Heq; apply Hsc; symmetry; exact Heq|exact Hcp].
+        - destruct (jp_area1_entry_storage_blocks_pairwise_distinct _ _ Hsymbols) as (Hsc & Hsp & Hcp).
+          split; [intro Heq; apply Hsc; symmetry; exact Heq|exact Hcp]. }
+      assert (area1_controller_storage_block a <> body) as Hcb.
+      { eapply Genv.global_addresses_distinct with
+          (id1 := IBM._gControllers) (id2 := IBM._gBodyStates); [discriminate|exact Hcontrollers|].
+        exact (ini_body_symbol _ _ _ _ Hstorage). }
+      rewrite Hinputother by exact Hcs.
+      rewrite Hother by assumption.
+      exact (ordinary_area1_controller_pressed _ _ _ _ _ _ Hmemory).
 Qed.

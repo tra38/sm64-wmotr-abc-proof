@@ -523,6 +523,8 @@ proofs/InkPreparationConstruction.v
 proofs/InkAcceptedInitialStorage.v
 proofs/InkInputPrefixConstruction.v
 proofs/InkInputSharedConstruction.v
+proofs/InkButtonTailFrame.v
+proofs/InkInitialControllerGuard.v
 proofs/InkBackwardHistory.v
 proofs/ObjectContactReadback.v
 proofs/ObjectContactPhaseReadback.v

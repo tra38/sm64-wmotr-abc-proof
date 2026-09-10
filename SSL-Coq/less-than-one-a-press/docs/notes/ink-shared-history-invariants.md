@@ -162,11 +162,50 @@ old input word need not be assumed harmless; it is actually overwritten.
 
 **What this does not prove:** these action-call fragments have not yet been
 joined to every intervening post-boundary world update. The native extension
-still needs its reached command readings. The remaining button processing,
-joystick/geometry helpers, special floors, interactions, repeated action
+still needs its reached command readings. Returning from button processing,
+the joystick/geometry helpers, special floors, interactions, repeated action
 loop, sinking and later scheduler effects still require their same-history
 connections. No first useful negative seed has been found or universally
 excluded. This is a removed local execution premise, not route closure.
+
+## Controller history at that same call
+
+The controller's initial new-press word now survives the eleven preparation
+writes by a derived storage frame. The proof uses the actual controller,
+body-array, MarioState and object-pool symbols to establish their separation;
+it does not add a premise saying that the intervening operations leave the
+controller alone. The word read at the button call is exactly the accepted
+current/previous sample's new-press word, and MarioState still points to that
+same controller. Held A remains permitted.
+
+`InkInitialControllerGuard.v` extends the constructed action history through
+the button helper's real entry, controller-reference read, new-press-word
+read and A-pressed test. The A-pressed branch is not taken and memory remains
+unchanged. An explicit same-run cut retains the preceding button-call entry.
+The existing complete-button no-new-A theorem is then instantiated at that
+exact call with its now-derived input and controller readings: every
+successful completion of that call still has the A-pressed input bit clear.
+This is not a separate hypothetical controller snapshot.
+
+`InkButtonTailFrame.v` classifies every statement in the actual remaining
+US/JP button tail using its checked source structure. Its only writes are
+the input word and the two button-age bytes. At the reached tail, every
+successful execution therefore preserves depth, action and the action
+timer. The age counters themselves are allowed to change; this is not a
+claim that all 24 original readings survive the entire button helper.
+No sound, animation, other outside-call effect or later controller sample
+is assumed safe by this result. The constructed prefix ends after the first
+A-pressed guard, not after the entire input helper, and the whole-history
+negative-depth claim remains open.
+
+A read-only check for the later sampling obligation also locates the normal
+demo-input switch: `src/menu/title_screen.c:run_level_id_or_demo` clears the
+demo pointer and can install a demo at the idle title screen;
+`src/game/game_init.c` consumes/advances an already active demo. This source
+observation is not a proved exclusion of every later title/demo path. The
+later controller-history proof must distinguish those paths from ordinary
+physical samples, rather than labeling generated demo input as a physical
+press or assuming the demo gate stays inactive forever.
 
 ## Milestone helper extension
 
@@ -277,6 +316,16 @@ in Main's closure, 94 standalone modules, and zero hygiene/integration
 problems. All six new modules are on Main's proof path. The accepted initial
 storage contracts are explicit hypotheses, as authorized by the user;
 the later universal coverage conditions are still unproved.
+
+The controller-connection tranche passed its individual checks and the
+integrated audit at `build/audit/20260910-140239-um8kiqs_/`. Main compiled and
+all three assumption reports passed. The new same-history guard theorem
+uses seven existing allowed foundations; no new initial assumption or
+outside-call effect was needed beyond the preceding tranche's accepted
+normal storage. The audit found 527 sources, 357 of 451 proof modules in
+Main's closure, 94 standalone modules, and zero hygiene/integration problems.
+Both new modules are consumed at the shared Ink boundary. This verifies the
+stated initial-call connection and button effects, not universal route closure.
 
 [Floor history](ink-floor-history.md) ·
 [Negative-depth closure argument](negative-depth-shared-closure.md) ·

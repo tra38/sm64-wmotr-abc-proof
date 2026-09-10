@@ -1160,7 +1160,11 @@ Qed.
     concrete reads and permissions, visibility and the complete body reset
     are constructed, not assumed completed. The initial action-call execution
     continues through the four input-prefix writes to the resolved button
-    call, preserving all 24 shared readings and clearing input. The surrounding
+    call, preserving all 24 shared readings and clearing input. It now carries
+    the initial controller reading through those stores and executes the real
+    no-A-edge guard. The complete-button no-new-A theorem is instantiated at
+    that reached call; the actual remaining tail cannot change depth, action
+    or the action timer. The surrounding
     post-boundary scheduler, later controller/action history, and live storage
     at later calls remain coverage obligations; startup reconstruction and
     floor alignment's separate height bound are not the current task. *)

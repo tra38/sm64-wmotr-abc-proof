@@ -92,7 +92,9 @@ Theorem ipc_construct_preparation : forall version m a global body le k,
       Mem.valid_access after chunk b offset permission) /\
     (exists flags, Mem.load Mint32 after (area1_state_storage_block a) 4 = Some (Vint flags)) /\
     Mem.load Mint32 after (area1_object_pool_block a) (mario_object_base a + 112) =
-      Mem.load Mint32 m (area1_object_pool_block a) (mario_object_base a + 112).
+      Mem.load Mint32 m (area1_object_pool_block a) (mario_object_base a + 112) /\
+    (forall chunk b offset, b <> area1_state_storage_block a -> b <> body ->
+      b <> area1_object_pool_block a -> Mem.load chunk after b offset = Mem.load chunk m b offset).
 Proof.
   intros version m a global body le k Hstorage Hsymbol Hglobal Ho1 Ho2.
   destruct Hstorage as [Hslots Hstatepool Hglobalpool Hglobalstate Hglobalbody Hbodypool
@@ -133,7 +135,18 @@ Proof.
     + apply Forall_forall. intros. unfold ibr_body_disjoint, ibr_cell_disjoint. left. exact Hglobalbody.
     + unfold ibr_cell_disjoint. left. exact Hglobalstate.
   - split; [intros; apply Hvalid; eapply Mem.store_valid_access_1; eauto|].
-    split; [exact Htyped|].
+    split; [exact Htyped|]. split.
+    2: {
+      intros chunk b offset Hbstate Hbbody Hbpool.
+      destruct (ibr_completed_reset_exact_frame version middle _ body Ptrofs.zero E0 after Vundef
+        (ibc_body_reference _ _ _ Hbody') Hcall) as (_ & Hresetframe).
+      change (ink_read after (ink_cell chunk b offset) = ink_read m (ink_cell chunk b offset)).
+      rewrite Hresetframe.
+      - unfold ink_read, ink_cell. cbn [ink_cell_block ink_cell_offset ink_cell_chunk].
+        eapply Mem.load_store_other; [exact Hstore|left; exact Hbpool].
+      - apply Forall_forall. intros. unfold ibr_body_disjoint, ibr_cell_disjoint. left. exact Hbbody.
+      - unfold ibr_cell_disjoint. left. exact Hbstate.
+    }
     destruct (ibr_completed_reset_exact_frame version middle _ body Ptrofs.zero E0 after Vundef
       (ibc_body_reference _ _ _ Hbody') Hcall) as (_ & Hresetframe).
     change (ink_read after (ink_cell Mint32 (area1_object_pool_block a) (mario_object_base a + 112)) =
