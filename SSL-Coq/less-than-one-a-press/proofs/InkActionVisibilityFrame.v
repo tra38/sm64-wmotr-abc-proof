@@ -69,12 +69,13 @@ Proof.
   intros v'' Hv''. eapply ibcc_deref_struct; eauto.
 Qed.
 
-Theorem iav_first_graphical_store_preserves_other_blocks :
+Theorem iav_first_graphical_store_exact :
   forall version e le m t le' m' out pool ofs,
   le ! (ias_o1 version) = Some (Vptr pool ofs) ->
   ocn_exec (Clight.globalenv (selected_clight_target version)) e le m
     (ias_flag_frontier version) t le' m' out ->
-  forall chunk b offset, b <> pool -> Mem.load chunk m' b offset = Mem.load chunk m b offset.
+  exists value, Mem.store Mint16signed m pool
+    (Ptrofs.unsigned (Ptrofs.add ofs (Ptrofs.repr 2))) value = Some m'.
 Proof.
   intros version e le m t le' m' out pool ofs Hobject Hrun.
   rewrite iav_source in Hrun.
@@ -98,8 +99,20 @@ Proof.
     inversion Ha; subst; try discriminate end.
   match goal with Hmode : access_mode _ = By_value _ |- _ =>
     cbn in Hmode; inversion Hmode; subst end.
-  intros chunk b offset Hdistinct. eapply Mem.load_store_other; [eassumption|].
-  left; congruence.
+  eexists; eassumption.
+Qed.
+
+Theorem iav_first_graphical_store_preserves_other_blocks :
+  forall version e le m t le' m' out pool ofs,
+  le ! (ias_o1 version) = Some (Vptr pool ofs) ->
+  ocn_exec (Clight.globalenv (selected_clight_target version)) e le m
+    (ias_flag_frontier version) t le' m' out ->
+  forall chunk b offset, b <> pool -> Mem.load chunk m' b offset = Mem.load chunk m b offset.
+Proof.
+  intros version e le m t le' m' out pool ofs Hobject Hrun chunk b offset Hdistinct.
+  destruct (iav_first_graphical_store_exact _ _ _ _ _ _ _ _ _ _ Hobject Hrun)
+    as [value Hstore].
+  eapply Mem.load_store_other; [exact Hstore|left; congruence].
 Qed.
 
 (** The write case is attached to the exact endpoint constructed above,

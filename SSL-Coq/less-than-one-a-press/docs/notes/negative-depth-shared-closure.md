@@ -175,6 +175,16 @@ obligations remain unchanged. This was not a full standalone-proof rebuild.
 
 ## Which work comes next
 
+The [joint Ink invariant ledger](ink-shared-history-invariants.md) now defines
+the shared, floor-alignment and negative-depth requirements. The common
+prefix extension opens the entire body-state reset and joins it to the
+visibility update in the same action-call execution. Under the explicit live
+body-storage separation condition, both preserve the 24 tracked readings,
+including zero depth and the three initially matching heights. This removes
+the reset helper's unknown frame; it does not establish the missing body
+reference at the accepted start or select the call in the real scheduler.
+The later `update_mario_inputs` stage, action loop and scheduler remain open.
+
 The next selected obligation is **surviving-producer coverage in one live
 history** (the third row above), starting with the action pass that reaches
 the useful read. In the decompile, `execute_mario_action` orders input
@@ -188,8 +198,8 @@ Reuse the five-stage chain and the constructed call start when connecting
 that pass, rather than reconstructing their sequences again. The visibility
 write is classified for the derived entry references; carry those references
 and the protected readings forward before applying that result to later
-passes. Connect the real scheduler control point and open the subsequent
-body-state reset and remaining helpers in their recorded order, then continue
+passes. Connect the real scheduler control point and body-state reference, use
+the checked reset frame, and open the remaining helpers in their recorded order, then continue
 through the floor check and repeated action dispatch to the useful read.
 The later helper checks are source-identified next work, not instructions
 already observed in an execution from the agreed start.

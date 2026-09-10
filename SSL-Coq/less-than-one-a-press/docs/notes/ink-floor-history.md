@@ -123,4 +123,12 @@ All five leaves pass the active `pipeline/check.sh` wrapper with Coq 8.16.1,
 CompCert 3.15 and the `sm64-item-proof` switch. These checks establish the local
 execution cuts above, not the still-open clean-history connections.
 
+The [joint same-history invariant ledger](ink-shared-history-invariants.md)
+now specifies the shared execution/storage rules and the separate floor and
+negative-depth obligations. Its first common prefix extension carries the
+cached floor and all three position records unchanged through the visibility
+update and body-state reset, under the explicit body-storage condition. This
+does not yet execute the later ground queries or establish the relation
+between the remembered floor and a new quarter-step floor.
+
 [Return to the Ink approach in the atlas](../no-a-route-atlas.md#route-rank-2)

@@ -507,6 +507,10 @@ proofs/InkActionPassHistory.v
 proofs/InkActionPassResolution.v
 proofs/InkActionPassStart.v
 proofs/InkActionVisibilityFrame.v
+proofs/InkSharedReadings.v
+proofs/InkBodyResetFrame.v
+proofs/InkBodyResetResolution.v
+proofs/InkBodyResetHistory.v
 proofs/InkBackwardHistory.v
 proofs/ObjectContactReadback.v
 proofs/ObjectContactPhaseReadback.v
