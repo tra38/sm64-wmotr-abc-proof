@@ -102,7 +102,7 @@ Proof.
   set (a := default_area1_entry_addresses world) in *.
   destruct (iih_accepted_initial_action_reaches_buttons version m world previous current body k
     Hstart Hstorage Hinput)
-    as (prefix & after & button_k & Hp & Hs & Ht & Hf & Hframe & Hinitial & Hzero & Hcontroller & Hpressed & Hclear).
+    as (prefix & after & button_k & Hp & Hs & Ht & Hf & Hframe & Hinitial & Hzero & Hcontroller & Hpressed & Hclear & Hcontext).
   pose proof (icg_call_passes_no_edge_guard version after (area1_state_storage_block a)
     (area1_controller_storage_block a) (edge_pressed current previous) button_k
     Hcontroller Hpressed Hclear) as Hsteps.

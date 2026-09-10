@@ -162,10 +162,11 @@ old input word need not be assumed harmless; it is actually overwritten.
 
 **What this does not prove:** these action-call fragments have not yet been
 joined to every intervening post-boundary world update. The native extension
-still needs its reached command readings. Returning from button processing,
-the joystick/geometry helpers, special floors, interactions, repeated action
-loop, sinking and later scheduler effects still require their same-history
-connections. No first useful negative seed has been found or universally
+still needs its reached command readings. The continuation through successful
+button and joystick calls is now connected below; their completion has not
+yet been constructed from the initial storage. Geometry queries, special
+floors, interactions, the repeated action loop, sinking and later scheduler
+effects still require their same-history connections. No first useful negative seed has been found or universally
 excluded. This is a removed local execution premise, not route closure.
 
 ## Controller history at that same call
@@ -206,6 +207,48 @@ observation is not a proved exclusion of every later title/demo path. The
 later controller-history proof must distinguish those paths from ordinary
 physical samples, rather than labeling generated demo input as a physical
 press or assuming the demo gate stays inactive forever.
+
+## Consecutive button and joystick calls to the first wall query
+
+`InkInputGeometryHistory.v` now keeps the saved input-function continuation
+from the constructed prefix. Given actual, consecutive completed button
+and joystick calls, it follows both returns, the next named calls, and
+geometry-function entry in one `ImportedClightRun`. The endpoint is the
+first `f32_find_wall_collision` statement, with the original Mario pointer,
+the actual accumulated memory and the full caller stack. A same-run cut
+retains the earlier button-call entry; the two helpers cannot be taken from
+executions with mismatched intermediate memory.
+
+`InkInputAngleFrame.v` resolves `atan2s` and `atan2_lookup` in both selected
+programs and proves their complete successful calls leave memory unchanged,
+including entry and return. No outside-effect specification is assumed for
+either. `InkJoystickFrame.v` checks every branch of the real joystick body:
+the only writes are intended magnitude, intended yaw and an input update
+that cannot set A-pressed. Together with the completed button-call frame,
+the extension derives zero depth, the unchanged initial action and timer,
+and clear A-pressed at the first wall-query statement. The result does not
+need to choose particular stick directions or assume finite stick readings
+just to obtain this memory-effect classification. An unsuccessful or undefined
+execution is not turned into a successful gameplay continuation.
+
+**What was removed:** an unclassified joystick/angle-helper effect, plus the
+missing call/return connection between the reached button call and geometry.
+**What remains:** the actual completed button and joystick executions are
+still premises of this extension; they have not been constructed from the
+initial storage or extracted from an arbitrary start-to-use history. For a
+universal proof, extracting them from that same history is sufficient;
+constructing one selected controller run alone would not establish coverage
+of every execution. The first wall-query effect is not yet classified here.
+Later samples, geometry and action transitions, the landing calculation,
+and world updates before and between Mario passes remain unconnected.
+The initial action-call fragment is still not proof that the surrounding
+post-initialization scheduler reaches that call in that exact memory.
+
+This is a local classification and same-history extension, not closure of
+the negative-depth route. The source review identifies the next concrete
+work inside the wall query: a temporary collision record, the two wall-list
+traversals, a diagnostic counter and the X/Y/Z copy-back. Their effects must
+be proved in the selected execution, not accepted from this description.
 
 ## Milestone helper extension
 
@@ -265,9 +308,11 @@ the preceding debug callback and the script's first-time setup cannot be
 skipped merely because the desired callback's initializer is known. The
 post-boundary scheduler writes and later live references remain unproved;
 normal initial facts are accepted rather than reconstructed. After the now
-constructed input prefix, the button helper, remaining input processing,
-special floors, interactions, action loop, sinking and the rest of the
-scheduler still need coverage.
+constructed input prefix, the completed button and joystick effects are
+classified and their consecutive execution is connected to geometry. Their
+completion from the initial storage, the geometry queries, remaining input
+processing, special floors, interactions, action loop, sinking and the rest
+of the scheduler still need coverage.
 
 This discharges a concrete **internal call-chain construction**, not the
 accepted-start reachability premise or the all-history producer classifier.
@@ -326,6 +371,19 @@ normal storage. The audit found 527 sources, 357 of 451 proof modules in
 Main's closure, 94 standalone modules, and zero hygiene/integration problems.
 Both new modules are consumed at the shared Ink boundary. This verifies the
 stated initial-call connection and button effects, not universal route closure.
+
+The joystick/geometry tranche passed its individual module checks and Main
+build. The first audit, `build/audit/20260910-152521-jdh463lx/`, verified both
+new theorem assumption reports (seven existing allowed foundations each),
+but failed overall because both Main queries exceeded the 180-second limit.
+The bounded retry at `build/audit/20260910-154309-4t_4iqhd/` passed with a
+360-second per-query limit: the shared Ink boundary uses the same nine
+allowed foundations and the consolidated conditional theorem uses six.
+No proof assumptions or memory limits were changed for the retry. The audit
+counted 531 sources, 361 of 455 proof modules in Main's closure, 94 standalone
+modules, and zero inventory, proof-hole, link or integration problems. All
+four new modules feed the shared Ink boundary. This is not an all-standalone
+build, a constructed full gameplay history, or a route-closure result.
 
 [Floor history](ink-floor-history.md) ·
 [Negative-depth closure argument](negative-depth-shared-closure.md) ·

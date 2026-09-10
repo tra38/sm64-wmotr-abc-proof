@@ -8,7 +8,7 @@ From LessThanOneAPress.Proofs Require Import
   InkLandingQuietSound InkLandingBoundedClosure InkCrouchSlideHistory InkActionPassHistory
   InkActionVisibilityFrame InkBodyResetHistory InkStarDialogFrame InkStarDialogCall
   InkScheduledSharedHistory InkPreparationConstruction InkAcceptedInitialStorage
-  InkInputSharedConstruction InkInitialControllerGuard.
+  InkInputSharedConstruction InkInitialControllerGuard InkInputGeometryHistory.
 
 Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkLandingHistoryCheckedBoundary /\
@@ -22,7 +22,8 @@ Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkActionPassPreparationHistory /\ InkActionStartFirstWrite /\ InkSharedActionPrefixConstruction /\
   InkMilestoneCheckFrame /\ InkMilestoneNamedCallFrame /\ InkNativeSharedHistoryExtension /\
   InkConstructedNativePreparation /\ InkAcceptedInitialActionConstruction /\
-  InkAcceptedInitialInputConstruction /\ InkInitialControllerGuardConstruction.
+  InkAcceptedInitialInputConstruction /\ InkInitialControllerGuardConstruction /\
+  InkInitialInputGeometryHistory.
 
 Theorem ibh_backward_histories_checked : InkBackwardHistoryCheckedBoundary.
 Proof.
@@ -51,5 +52,6 @@ Proof.
   split; [exact ipc_native_preparation_is_constructed|].
   split; [exact ini_accepted_action_prefix_constructed|].
   split; [exact iih_accepted_initial_action_reaches_buttons|].
-  exact icg_initial_history_passes_real_a_guard.
+  split; [exact icg_initial_history_passes_real_a_guard|].
+  exact iig_initial_history_connects_buttons_joystick_geometry.
 Qed.

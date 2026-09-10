@@ -525,6 +525,10 @@ proofs/InkInputPrefixConstruction.v
 proofs/InkInputSharedConstruction.v
 proofs/InkButtonTailFrame.v
 proofs/InkInitialControllerGuard.v
+proofs/InkInputContinuationSource.v
+proofs/InkInputAngleFrame.v
+proofs/InkJoystickFrame.v
+proofs/InkInputGeometryHistory.v
 proofs/InkBackwardHistory.v
 proofs/ObjectContactReadback.v
 proofs/ObjectContactPhaseReadback.v

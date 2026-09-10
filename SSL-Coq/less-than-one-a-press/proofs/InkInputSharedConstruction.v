@@ -116,7 +116,8 @@ Theorem iih_action_reaches_buttons : forall version m a le global k,
     InkSameReadings a m after /\
     Mem.load Mint16unsigned after (area1_state_storage_block a) 2 = Some (Vint Int.zero) /\
     (forall chunk b offset, b <> area1_state_storage_block a ->
-      Mem.load chunk after b offset = Mem.load chunk m b offset).
+      Mem.load chunk after b offset = Mem.load chunk m b offset) /\
+    ready ! IBM._m = Some (Vptr (area1_state_storage_block a) Ptrofs.zero).
 Proof.
   intros version m a le global k Hstorage Hsymbol Hglobal.
   destruct (iic_construct_input_prefix version m _ _ _
@@ -131,7 +132,7 @@ Proof.
   - split.
     + intros cell Hin. apply Hframe.
       apply iih_shared_cell_outside; [exact (iic_state_object_separate _ _ _ _ Hstorage)|exact Hin].
-    + split; [exact Hzero|]. intros chunk b offset Hseparate.
+    + split; [exact Hzero|]. split; [|exact Hm]. intros chunk b offset Hseparate.
       exact (Hframe (ink_cell chunk b offset) (or_introl Hseparate)).
 Qed.
 
@@ -159,7 +160,10 @@ Definition InkAcceptedInitialInputConstruction : Prop :=
       Some (Vptr (area1_controller_storage_block a) Ptrofs.zero) /\
     Mem.load Mint16unsigned after (area1_controller_storage_block a) 18 =
       Some (Vint (edge_pressed current previous)) /\
-    Int.testbit (edge_pressed current previous) 15 = false.
+    Int.testbit (edge_pressed current previous) 15 = false /\
+    (exists input_ready input_k,
+      button_k = iih_button_cont version input_ready input_k /\
+      input_ready ! IBM._m = Some (Vptr (area1_state_storage_block a) Ptrofs.zero)).
 
 Theorem iih_accepted_initial_action_reaches_buttons : InkAcceptedInitialInputConstruction.
 Proof.
@@ -193,7 +197,7 @@ Proof.
     - exact Hflags.
     - eapply Forall_impl; [|exact Hinput]. intros item Hitem. apply Hvalid. exact Hitem. }
   destruct (iih_action_reaches_buttons version middle a prepared _ (Kseq (ias_return version) k)
-    Hinput' Hsymbol Hglobal) as (after & button_ready & Hinputsteps & Hinputframe & Hzero & Hinputother).
+    Hinput' Hsymbol Hglobal) as (after & button_ready & Hinputsteps & Hinputframe & Hzero & Hinputother & Hready).
   assert (star Clight.step2 (Clight.globalenv (selected_clight_target version))
     (run_final prefix) E0 (Callstate (Internal (ics_body version ICButtons))
       [Vptr (area1_state_storage_block a) Ptrofs.zero]
@@ -216,7 +220,9 @@ Proof.
       rewrite Hframe.
       * exact (ordinary_area1_state_controller_pointer _ _ _ _ _ _ Hmemory).
       * cbn [ink_shared_cells In]. auto 20.
-    + split; [|exact (default_area1_start_no_a_edge _ _ _ _ _ _ Hstart)].
+    + split.
+      2: { split; [exact (default_area1_start_no_a_edge _ _ _ _ _ _ Hstart)|].
+        eexists; eexists. split; [reflexivity|exact Hready]. }
       assert (Genv.find_symbol (Clight.globalenv (selected_clight_target version)) IBM._gControllers =
         Some (area1_controller_storage_block a)) as Hcontrollers.
       { destruct version; [exact (us_area1_controller_storage_symbol _ _ Hsymbols)|

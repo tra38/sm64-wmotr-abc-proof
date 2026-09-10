@@ -1164,7 +1164,13 @@ Qed.
     the initial controller reading through those stores and executes the real
     no-A-edge guard. The complete-button no-new-A theorem is instantiated at
     that reached call; the actual remaining tail cannot change depth, action
-    or the action timer. The surrounding
+    or the action timer. Consecutive successful button and joystick calls
+    now extend that same action history, including both returns and the
+    geometry entry, up to its first wall-query statement. The angle lookup
+    is resolved and read-only; all joystick stores are classified. Depth,
+    action, timer and no-A-pressed survive. Completion of those two calls
+    is still execution evidence, not yet constructed from initial storage.
+    The surrounding
     post-boundary scheduler, later controller/action history, and live storage
     at later calls remain coverage obligations; startup reconstruction and
     floor alignment's separate height bound are not the current task. *)
