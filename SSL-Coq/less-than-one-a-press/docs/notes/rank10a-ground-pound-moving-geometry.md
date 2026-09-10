@@ -138,6 +138,24 @@ same base. It also finds no stock hangable ceiling above the bucket. Live
 timing, selected-surface agreement and ceiling freshness remain explicit
 obligations; the local checks are not a complete gameplay execution.
 
+## Height alone cannot replace departure (2026-09-10)
+
+The [shared contact-readback proof](rank12b-cross-barrier-contact.md#same-call-memory-connection-2026-09-10)
+now starts with the actual object readings and follows a complete US/JP
+contact call. With the normal target positions and radii, every finite X/Z
+inside the stock elevator footprint misses every required secret and settled
+target star, regardless of Mario's Y, provided the reached distance calculation
+returns the ordinary square-root result. The horizontal miss occurs before
+the function reads either hitbox height.
+
+This strengthens the reason to search for a useful sideways departure:
+ground-pound startup's height window cannot by itself collect a target from
+inside the unchanged footprint. It does **not** prove that Mario's collision
+Object stays there. His movement record, display record and collision Object
+must not be conflated; moving geometry, an interaction or a later copy can
+change what the contact call actually reads. Those histories and the clean
+ground-pound entry remain open. No new controller trajectory is claimed.
+
 ## Remaining useful searches
 
 1. Find a controller-reachable eligible predecessor at the actual gate.

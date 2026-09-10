@@ -508,4 +508,6 @@ proofs/InkActionPassResolution.v
 proofs/InkActionPassStart.v
 proofs/InkActionVisibilityFrame.v
 proofs/InkBackwardHistory.v
+proofs/ObjectContactReadback.v
+proofs/ObjectContactPhaseReadback.v
 proofs/MainTheorem.v

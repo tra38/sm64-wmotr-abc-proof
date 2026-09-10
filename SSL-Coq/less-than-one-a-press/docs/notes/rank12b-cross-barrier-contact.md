@@ -38,6 +38,47 @@ Evidence comes from the pinned revision
 `levels/ssl/script.c`, and Area 2's macro/collision initializers. The Coq
 proof reads the corresponding generated US/JP definitions.
 
+## Same-call memory connection (2026-09-10)
+
+The new [contact readback proof](../../proofs/ObjectContactReadback.v) moves
+the horizontal exclusion back from already-calculated local values to the
+actual Object readings at function entry. It follows the selected US/JP
+function through its two argument bindings, ten field reads, Float32
+arithmetic, square-root call, comparison and return. The prefix and suffix
+belong to the same supplied execution; a result from another run cannot be
+substituted. It covers every completed call satisfying these entry readings,
+not merely a finite set of controller samples.
+
+The ten reads are each object's X, Y, Z, radius and downward hitbox offset.
+The proof checks their addresses against the selected composite layout. Both
+radii and horizontal coordinate differences are saved before `sqrtf` runs.
+Consequently, once that reached call returns the ordinary square root of its
+actual argument, the gate-interior case returns zero before reading heights
+or updating the contact lists. **No memory-preservation assumption about
+`sqrtf` is required for this horizontal rejection.** This does not say that
+an unspecified outside effect cannot independently change other game state.
+
+The companion [successful-contact proof](../../proofs/ObjectContactPhaseReadback.v)
+also executes the two later height reads and derives all six values formerly
+supplied by `ObjectContactReadbackObligation`. It needs the same numeric result
+and precisely two additional facts: the call preserves each object's height
+reading. The two bottoms come from the earlier reads; the two tops use the
+later heights, matching the source order. These conditions refer to the
+specific entry memory and square-root argument, not all hypothetical calls.
+The result supplies the overlap predicate used by the existing star/secret
+accounting, with object roles, list counts, registration and scheduler timing
+still explicit.
+
+**What remains:** derive the relevant live object identities, positions and
+sizes from gameplay; justify `sqrtf`'s exact effect in the selected execution
+model; and connect contact to credit/collection in that same history. The
+generated declaration is an abstract external, not an automatically specified
+math builtin. Its C signature alone does not prove these effects. A missing
+specification is not evidence that normal gameplay can change the square-root
+answer. The full no-A routes, rim approach and airborne-secret approach remain
+open. The consolidated impossibility theorem still retains its whole-history
+and six writer-family obligations.
+
 ## Direct contact from inside either gate
 
 The two generous horizontal rectangles are:
@@ -64,8 +105,9 @@ generated post-distance tail** in both selected programs. Given the checked
 radius and distance in its temporary values, it returns zero with identical
 memory: no contact is registered. The selected generated configurations
 explicitly return zero on this branch. This is not yet execution of the
-preceding raw-object reads or a specification of `sqrtf`; those still need
-their actual memory values and an exact reached-call result/effect.
+preceding raw-object reads: the newer `ocr_gate_call_returns_zero` theorem
+adds that full-call connection, conditional on the actual entry readings
+and reached `sqrtf` result described above.
 
 ## Whole static-mesh census
 
@@ -154,8 +196,11 @@ those alternatives; it may not simply assume that all contacts cross a gate.
   binary32 exclusion, generated-body resolution, real Clight rejection tail,
   whole-mesh census, rim witness, and underside-clearance theorem.
 - [MainTheorem.v](../../proofs/MainTheorem.v) consumes the results through
-  `current_rank12b_cross_barrier_contact_boundary`. The global impossibility
-  theorem remains conditional on the existing linked-execution obligations.
+  `current_rank12b_cross_barrier_contact_boundary`,
+  `current_gate_contact_call_rejects_from_memory`, and
+  `current_memory_contact_supplies_collection_geometry`. The global
+  impossibility theorem remains conditional on the existing linked-execution
+  obligations.
 - [Offline checker](../../instrumentation/rank12b-contact/check.js): run
   `node instrumentation/rank12b-contact/check.js`; add `--verbose` for source
   vertices and nearby solid faces. It only reads source and computes values.
@@ -176,3 +221,23 @@ command. They introduce no project-local axioms; the documented conditional
 execution premises and standard Coq/CompCert foundations remain. The offline
 checker, all 45 atlas anchors, backlinks, and the three single-paragraph
 Rank-12B sections were also checked.
+
+Validation completed on 2026-09-10 for the same-call extension: the active
+SSL discipline audit `build/audit/20260910-083334-8vi5_2_q` passed source
+inventory, integrated compilation, proof-hole, link-hygiene, and integration
+checks. The two new leaf theorems and the new collection-geometry interface
+each passed with seven allowed Coq/CompCert foundations; the conditional
+global impossibility theorem retained its six. No project-local axiom was
+introduced. Both 10A and 12B offline checkers passed, as did all 45 atlas
+anchors, backlinks and four single-paragraph route sections. These are
+mechanical and local checks, not closure of either gameplay route.
+
+To reproduce this extension's Coq checks using the active SSL wrapper:
+
+```sh
+bash pipeline/discipline-check.sh \
+  LessThanOneAPress.Proofs.ObjectContactReadback ocr_gate_call_returns_zero \
+  LessThanOneAPress.Proofs.ObjectContactPhaseReadback ocp_successful_body_overlap_from_memory \
+  LessThanOneAPress.Proofs.MainTheorem current_memory_contact_supplies_collection_geometry \
+  LessThanOneAPress.Proofs.MainTheorem conditional_consolidated_clight_run_impossibility
+```

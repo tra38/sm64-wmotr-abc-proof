@@ -32,7 +32,7 @@ These are stable tracking IDs, not percentages or equally sized tasks.
 | --- | --- | --- | --- |
 | B0 — Starting boundary | Connect the accepted Area-1 start to the state required by the final argument, or extend that argument to cover a different entry. Keep the same history throughout. | The accepted outside start fixes useful position, input and memory facts. The existing final theorem instead takes a clean **inside-pyramid** entry, with its specified objects and entry snapshot. Those are different conditions. | **Connection open.** An unusual entry must not be discarded merely because it fails the clean-entry conditions. No castle-entry proof is required. |
 | E1 — Faithful execution | Account for the actual inputs, movement, object changes and relevant checks, in order, for every allowed history. | A framework for recording real execution, local call proofs, and authenticated finite recordings. | **Whole-history connection open.** Recorded frames and independently constructed call prefixes are not universal coverage. |
-| C1 — First useful contact | Connect the actual star award or secret credit to its contact, then explain the first useful contact without assuming the familiar pole or elevator route. | Collection bookkeeping, necessary contact tests, and checked contact-search and credit-call pieces. | **Live connection and exhaustive classification open.** This includes contact within a frame or across a barrier. |
+| C1 — First useful contact | Connect the actual star award or secret credit to its contact, then explain the first useful contact without assuming the familiar pole or elevator route. | Collection bookkeeping, contact-search and credit-call pieces; the new same-call proof derives contact calculations from actual object readings rather than supplied intermediate values. | **Live connection and exhaustive classification open.** Object identity/position history and the exact distance-helper effect remain; general successful overlap also needs two height readings preserved. |
 | W1–W6 — Remaining ways through | Exclude every remaining movement family at that first useful contact, using the local results only where their conditions really hold. | The six separate requirements below, now connected to the conditional final theorem. | **All six family-wide requirements remain open.** Local exclusions within them are real progress, but not family-wide closure. |
 
 B0 deserves particular attention: the agreed boundary is not permission to
@@ -41,6 +41,15 @@ what several Ink and platform approaches seek. The current final theorem
 cannot reject those approaches just by requiring its usual entry snapshot.
 Likewise, a statement that begins with a clean entry is not yet the complete
 Area-1-start claim.
+
+The 2026-09-10 [contact-memory connection](notes/rank12b-cross-barrier-contact.md#same-call-memory-connection-2026-09-10)
+removes the six intermediate-value assumptions from a stronger construction
+interface in `MainTheorem.v`. Those values now follow from actual entry
+reads, the reached distance-helper call and the later height reads in the
+same execution. It also moves the gate-interior exclusion to a complete
+contact call. This is a local C1 refinement, **not** a discharge of E1 or any
+of W1–W6; importing this interface does not automatically instantiate the
+final theorem's execution/classification obligations.
 
 ## Results already used by the final argument
 

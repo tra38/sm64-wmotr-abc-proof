@@ -43,7 +43,7 @@ From LessThanOneAPress.Proofs Require Import
   Area2Rank10AGroundPound Area2Rank12BContact Area2Rank9UpperStarDance Area2Rank9StarTiming
   Area2Rank9APreHomeMovement
   Area2Rank10AEntryChecks
-  ObjectContactNecessity
+  ObjectContactNecessity ObjectContactReadback ObjectContactPhaseReadback
   ContactConsumerSource ContactConsumerExecution ContactCreditExecution
   SecretContactExecution
   InkBackwardSource InkBackwardExecution InkCopyCaller InkFloorResetCopy InkRawCopyHeight
@@ -866,6 +866,24 @@ Proof. split; [exact rank10a_ground_pound_boundary_checked |
 Theorem current_rank12b_cross_barrier_contact_boundary : Rank12BContactBoundary.
 Proof. exact rank12b_contact_boundary_checked. Qed.
 
+(** Full-call improvement over the old post-sqrt tail: arguments, local
+    initialization, ten Object reads, arithmetic and return are connected.
+    Only the exact reached square-root input still needs its numeric effect.
+    At any Y this also excludes a height-only Rank-10A contact shortcut while
+    the ACTUAL Object X/Z and target readings retain the stated gate facts. *)
+Theorem current_gate_contact_call_rejects_from_memory :
+  forall version gate target position memory ab ao bb bo trace final_memory result,
+  ocr_sqrt_numeric_effect version memory
+    (ocr_squared_distance position (rank12b_target_position target)) ->
+  rank12b_in_gate_xz gate position ->
+  ocr_object_inputs memory ab ao position mario_standard_hitbox_f32 ->
+  ocr_object_inputs memory bb bo (rank12b_target_position target) (rank12b_target_hitbox target) ->
+  ClightBigstep.Clight2.eval_funcall
+    (Clight.globalenv (selected_clight_target version)) memory
+    (Internal (rank12b_body version)) [Vptr ab ao; Vptr bb bo] trace final_memory result ->
+  result = Vint Int.zero.
+Proof. exact ocr_gate_call_returns_zero. Qed.
+
 (** Hardest obligation 2: this necessity result starts from the WHOLE selected
     US/JP contact body returning one, not from a granted successful overlap or
     a gate-crossing assumption. The actual input/height/registration executions
@@ -898,6 +916,29 @@ Theorem current_source_contact_supplies_collection_geometry :
     final_locals final_memory phase ->
   ocn_other_phase_facts phase -> collision_phase_overlap phase.
 Proof. exact ocn_successful_body_supplies_collision_phase_overlap. Qed.
+
+(** The six reported temporary values are no longer a premise in this
+    stronger construction interface. They follow from actual entry loads,
+    the same reached sqrtf call, and the two subsequent height reads. Roles,
+    registration, scheduler chronology and the exact sqrtf effects remain
+    visible obligations; this is not whole-program refinement by itself. *)
+Theorem current_memory_contact_supplies_collection_geometry :
+  forall version environment locals memory ab ao bb bo trace final_locals final_memory phase,
+  ocr_sqrt_numeric_effect version memory
+    (ocr_squared_distance (collision_mario_position phase) (collision_target_position phase)) ->
+  ocp_sqrt_height_frame version memory
+    (ocr_squared_distance (collision_mario_position phase) (collision_target_position phase)) ab ao bb bo ->
+  environment ! RC._sqrtf = None ->
+  locals ! RC._a = Some (Vptr ab ao) -> locals ! RC._b = Some (Vptr bb bo) ->
+  ocr_object_inputs memory ab ao (collision_mario_position phase) (collision_mario_hitbox phase) ->
+  ocr_object_inputs memory bb bo (collision_target_position phase) (collision_target_hitbox phase) ->
+  ocp_height_read memory ab ao = Some (Vsingle (hitbox_height (collision_mario_hitbox phase))) ->
+  ocp_height_read memory bb bo = Some (Vsingle (hitbox_height (collision_target_hitbox phase))) ->
+  ocn_exec (Clight.globalenv (selected_clight_target version)) environment locals memory
+    (fn_body (rank12b_body version)) trace final_locals final_memory
+    (Out_return (Some (Vint Int.one, tint))) ->
+  ocn_other_phase_facts phase -> collision_phase_overlap phase.
+Proof. exact ocp_memory_reads_supply_collection_geometry. Qed.
 
 (** Backward collection refinement: the real consumers are read-only even
     across function entry/return. These facts do not grant the provenance of
