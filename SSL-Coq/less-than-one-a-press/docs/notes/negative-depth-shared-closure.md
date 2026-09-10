@@ -193,6 +193,18 @@ the reset helper's unknown frame; it does not establish the missing body
 reference at the accepted start or select the call in the real scheduler.
 The later `update_mario_inputs` stage, action loop and scheduler remain open.
 
+The common history now also constructs the actual native behavior command
+and Mario callback before this action prefix. It keeps their memory and
+caller continuations and can append them to the exact endpoint of an
+existing run, with an explicit trace cut. The active-action branch is no
+longer restricted to the initial spawn action. This removes assumed
+completed executions of those internal calls from this prefix construction,
+but does not supply the preceding level-select/scheduler run or prove its
+live command, object and body-storage readings. Those are the next earlier
+connections, not newly accepted assumptions. See the
+[shared execution ledger](ink-shared-history-invariants.md#behavior-command-to-the-shared-action-prefix)
+for the exact constructed segment and remaining entry conditions.
+
 The next selected obligation is **surviving-producer coverage in one live
 history** (the third row above), starting with the action pass that reaches
 the useful read. In the decompile, `execute_mario_action` orders input

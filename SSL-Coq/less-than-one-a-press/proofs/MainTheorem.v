@@ -1152,7 +1152,13 @@ Qed.
     coherence, later input/action history, the remaining interval to the depth write,
     clean floor-gap reachability and survival to the retry remain open. These
     are separately checked histories, not one clean run or a universal proof
-    that negative depth needs a physical A press. *)
+    that negative depth needs a physical A press. The shared prefix now
+    constructs the real native-command and Mario-callback calls before the
+    action, retaining their exact memory and nested continuations. It can
+    extend an existing run at its actual endpoint and attach the checked
+    visibility/body reset with an explicit trace cut. Reaching that command
+    from fresh entry, its live readings, the reset's storage/completion facts,
+    and the remaining action/scheduler coverage are still not derived. *)
 Theorem current_ink_backward_execution_boundary : InkBackwardHistoryCheckedBoundary.
 Proof. exact ibh_backward_histories_checked. Qed.
 

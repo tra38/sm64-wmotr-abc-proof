@@ -154,10 +154,11 @@ Proof.
         -- constructor.
 Qed.
 
-Lemma ias_body_reaches_flag_read : forall version le memory cell mario object k,
+Lemma ias_active_body_reaches_flag_read : forall version le memory cell mario object action k,
   Genv.find_symbol (Clight.globalenv (selected_clight_target version)) IBM._gMarioState = Some cell ->
   Mem.load Mint32 memory cell 0 = Some (Vptr mario Ptrofs.zero) ->
-  Mem.load Mint32 memory mario 12 = Some (Vint spin_airborne_entry_action) ->
+  Mem.load Mint32 memory mario 12 = Some action ->
+  bool_val action tuint memory = Some true ->
   Mem.load Mint32 memory mario 136 = Some object ->
   exists ready,
   @Smallstep.star _ _ Clight.step2 (Clight.globalenv (selected_clight_target version))
@@ -167,7 +168,7 @@ Lemma ias_body_reaches_flag_read : forall version le memory cell mario object k,
       empty_env ready memory) /\
   ready ! (ias_o1 version) = Some object /\ ready ! (ias_o2 version) = Some object.
 Proof.
-  intros version le memory cell mario object k Hsymbol Hglobal Haction Hobject.
+  intros version le memory cell mario object action k Hsymbol Hglobal Haction Hactive Hobject.
   destruct (ias_generated_start version) as (_ & Hbody & Hvisible).
   eexists. split.
   - rewrite Hbody. eapply star_left; [apply step_seq| |reflexivity].
@@ -183,9 +184,9 @@ Proof.
         [apply ias_selected_action_field|reflexivity|apply PTree.gss|exact Haction].
     + eapply star_left; [apply step_skip_seq| |reflexivity].
       eapply star_left.
-      * eapply step_ifthenelse with (v1 := Vint spin_airborne_entry_action) (b := true).
+      * eapply step_ifthenelse with (v1 := action) (b := true).
         -- apply eval_Etempvar. apply PTree.gss.
-        -- reflexivity.
+        -- exact Hactive.
       * rewrite Hvisible. eapply star_left; [apply step_seq| |reflexivity].
         eapply iap_chain_steps. eapply ias_pointer_chain; eauto.
       * reflexivity.
@@ -195,6 +196,24 @@ Proof.
       assert (ias_m2 version <> ias_o1 version) by (destruct version; discriminate).
       rewrite PTree.gso by congruence. rewrite PTree.gso by congruence. apply PTree.gss.
     + apply PTree.gss.
+Qed.
+
+Lemma ias_body_reaches_flag_read : forall version le memory cell mario object k,
+  Genv.find_symbol (Clight.globalenv (selected_clight_target version)) IBM._gMarioState = Some cell ->
+  Mem.load Mint32 memory cell 0 = Some (Vptr mario Ptrofs.zero) ->
+  Mem.load Mint32 memory mario 12 = Some (Vint spin_airborne_entry_action) ->
+  Mem.load Mint32 memory mario 136 = Some object ->
+  exists ready,
+  @Smallstep.star _ _ Clight.step2 (Clight.globalenv (selected_clight_target version))
+    (State (iap_body version) (fn_body (iap_body version)) k empty_env le memory) E0
+    (State (iap_body version) (ias_flag_frontier version)
+      (Kseq (ias_after_visibility version) (Kseq (ias_return version) k))
+      empty_env ready memory) /\
+  ready ! (ias_o1 version) = Some object /\ ready ! (ias_o2 version) = Some object.
+Proof.
+  intros version le memory cell mario object k Hsymbol Hglobal Haction Hobject.
+  eapply ias_active_body_reaches_flag_read with (action := Vint spin_airborne_entry_action);
+    eauto; reflexivity.
 Qed.
 
 Theorem ias_boundary_constructs_action_call_start : InkActionCallStartConstruction.

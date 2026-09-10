@@ -43,8 +43,10 @@ message pending.
 
 For exactly one newly earned star, the popup-producing starting totals are
 therefore **0, 2, 7, 29, 49, and 69**. Other starting totals give the
-non-milestone case. Collecting a previously saved reward need not increase
-the total; that case must not be silently treated as a new star. The normal
+non-milestone case. This is the user's clarified allowance: for example,
+**enter at 29, then earn the star to reach 30**, not enter at 30 and treat
+the 30-star milestone as pending. Collecting a previously saved reward need
+not increase the total; that case must not be silently treated as a new star. The normal
 100-coin save prompt and the later milestone message are different dialogs:
 absence of a milestone does not remove the ordinary save prompt.
 

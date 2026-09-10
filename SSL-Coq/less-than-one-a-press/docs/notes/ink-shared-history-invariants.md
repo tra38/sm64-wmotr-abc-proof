@@ -15,8 +15,9 @@ not prove that all reachable executions satisfy it. If a case fails, retain
 the actual instruction and readings as an unresolved case; do not discard it.
 
 There is now also an explicitly [granted 100-coin reward setup](ink-conditional-100-coin-setup.md).
-For that conditional investigation, both milestone and non-milestone totals
-are allowed and coin/placement provenance is postponed. This does not grant
+For that conditional investigation, both milestone-triggering starting totals
+and ordinary starting totals are allowed and coin/placement provenance is
+postponed. This does not grant
 negative depth, move Mario, replace the normal collection/dialog rules, or
 turn the missing initialization and scheduler proofs into assumptions.
 
@@ -136,6 +137,61 @@ Both are consumed by `InkBackwardHistoryCheckedBoundary`. This classifies
 one real effect relevant to R3/R5 for both star-count outcomes; it does not
 connect the reward setup or the surrounding star dance to the accepted start.
 
+## Behavior command to the shared action prefix
+
+The shared construction now starts two real calls earlier. It follows the
+native behavior command's fresh command-pointer read, callback-operand
+read and conversion, the indirect call into Mario's callback, that
+callback's fresh current-object read, and its direct call into
+`execute_mario_action`. The action then reads MarioState and Mario's object
+from that same memory. Both linked US and JP functions are resolved from
+their actual definitions; no outside-call frame is assumed for these calls.
+The new steps change only local temporaries and the call stack, not memory.
+
+This is not restricted to the spawn action. The action prefix now accepts
+any actual action reading for which the real branch test succeeds. The
+original spawn-specific theorem is recovered as a special case. The
+callback's passed object and MarioState's object need not be assumed equal
+for this prefix: its action code reads the latter. A defined argument
+conversion is still required, and the callback's later stores after the
+action returns are **not** covered by this observation.
+
+`InkScheduledSharedHistory.v` attaches these constructed steps to the exact
+final state of a supplied `ImportedClightRun`. It retains that run's start,
+all preceding events, the full memory, and both nested caller continuations.
+It also constructs an `InkRunCut` recording the actual prefix and suffix,
+so a matching-looking snapshot from another run cannot be substituted.
+The already checked visibility/body-reset extension is then attached at
+its actual endpoint, with its existing storage and successful-completion
+conditions, to reach the input-preparation frontier. It transports all 24
+observations for both height-producer branches, including failed or
+non-finite height readings. Initial zero depth and equal heights survive
+if they held at the reached command boundary.
+
+| Connection | What is now derived | What is still required |
+| --- | --- | --- |
+| Native command → Mario callback | The actual operand read, conversion, internal-function resolution and call steps, with unchanged memory. | Reach the command with the live pointer and operand shown in `InkNativeEntryReadings`. The stock operand receipt is not proof of its later load. |
+| Mario callback → action prefix | The actual fresh argument read, call, MarioState/object reads and successful action branch, with both callers retained. | Establish the actual global readings and defined argument conversion at this boundary. No equality between the two object readings is needed for this prefix alone. |
+| Existing run → extended run | Exact endpoint equality, trace concatenation and a same-run cut; no completed callback/action is assumed. | Supply the earlier execution. The constructor does not manufacture a run from level select or prove that all histories reach this command. |
+| Prefix → input preparation | The previous two checked stages compose with the new call stack and preserve the shared readings. | Derive live body storage/separation and successful stage completions from initialization, then classify the next input-preparation call. |
+
+The first earlier unconnected source boundary is still the behavior
+interpreter in `cur_obj_update`: its assignment from the current object's
+saved command pointer, the command-table selection, and the preceding
+commands must be connected to the scheduler/list traversal. In the stock
+Mario script the callback command is at byte 36 and its operand at byte 40;
+the preceding debug callback and the script's first-time setup cannot be
+skipped merely because the desired callback's initializer is known. The
+fresh-entry run, scheduler writes and live body reference remain unproved.
+After the reset, `update_mario_inputs`, special floors, interactions, the
+action loop, sinking and the rest of the scheduler still need coverage.
+
+This discharges a concrete **internal call-chain construction**, not the
+accepted-start reachability premise or the all-history producer classifier.
+It finds no negative seed or useful floor-alignment mismatch, and neither
+Ink branch is closed. The granted reward is not inserted anywhere in these
+ordinary Clight steps.
+
 ## Verification
 
 The individual Coq checks and the integrated active SSL audit passed on
@@ -156,6 +212,17 @@ standalone modules, and no inventory or integration problems. The new
 helper/call theorems use only seven existing allowed foundations; no new
 project axiom or outside-call frame was accepted. This also was not an
 all-standalone build or a route-closure result.
+
+The behavior/callback shared-history extension passed its individual checks
+and the integrated audit at `build/audit/20260910-115116-31zwthl9/`. Main
+compiled; all five requested assumption reports passed. Both new execution
+theorems use seven existing allowed foundations. The audit counted 519
+sources, with 349 of 443 proof modules in Main's import closure and 94
+standalone modules, and found no inventory, proof-hole, link or integration
+problems. All four new modules feed the shared Ink boundary. No new project
+axiom, accepted outside-call effect, or whole-run coverage assumption was
+added. The explicit command-entry and reset/storage premises above still
+need to be established; passing these checks is not a route-closure result.
 
 [Floor history](ink-floor-history.md) ·
 [Negative-depth closure argument](negative-depth-shared-closure.md) ·

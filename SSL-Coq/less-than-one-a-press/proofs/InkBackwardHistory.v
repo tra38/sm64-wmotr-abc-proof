@@ -6,7 +6,8 @@ From LessThanOneAPress.Proofs Require Import
   InkActionTimerReset InkLandingTimerFrontier InkLandingLateClosure
   InkAnimationStorageSetup InkAnimationNoTransfer InkLandingOutcomeFrames
   InkLandingQuietSound InkLandingBoundedClosure InkCrouchSlideHistory InkActionPassHistory
-  InkActionVisibilityFrame InkBodyResetHistory InkStarDialogFrame InkStarDialogCall.
+  InkActionVisibilityFrame InkBodyResetHistory InkStarDialogFrame InkStarDialogCall
+  InkScheduledSharedHistory.
 
 Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkLandingHistoryCheckedBoundary /\
@@ -18,7 +19,7 @@ Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkLandingDispatchCheckedFrame /\ InkAllGroundOutcomeTimerBound /\
   InkBoundedLateLandingNegativeClosure /\ InkCrouchWindowNoA /\ InkCrouchSlideEntryCut /\
   InkActionPassPreparationHistory /\ InkActionStartFirstWrite /\ InkSharedActionPrefixConstruction /\
-  InkMilestoneCheckFrame /\ InkMilestoneNamedCallFrame.
+  InkMilestoneCheckFrame /\ InkMilestoneNamedCallFrame /\ InkNativeSharedHistoryExtension.
 
 Theorem ibh_backward_histories_checked : InkBackwardHistoryCheckedBoundary.
 Proof.
@@ -42,5 +43,6 @@ Proof.
   split; [exact iav_constructed_start_excludes_first_flag_store_seed|].
   split; [exact ibr_accepted_call_extends_through_body_reset|].
   split; [exact isd_milestone_check_preserves_shared_readings|].
-  exact isd_named_call_preserves_shared_readings.
+  split; [exact isd_named_call_preserves_shared_readings|].
+  exact ish_native_prefix_and_reset_extend_one_history.
 Qed.
