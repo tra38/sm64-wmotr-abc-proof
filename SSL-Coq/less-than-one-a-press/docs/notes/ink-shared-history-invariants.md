@@ -8,7 +8,13 @@ the displayed position, and lowering the movement position while the display
 stays behind. The known installation uses a 960-unit gap; that is not a
 universal threshold for every possible installation point.
 
-These are **proof requirements, not newly accepted assumptions**. “Invariant”
+The user has now accepted complete normal starting-state facts at the
+post-initialization boundary. Startup reconstruction is no longer required.
+The current priority is the first useful negative depth; floor alignment's
+separate height bound is deferred, not ruled out.
+
+The preservation rules below are **proof requirements, not assumptions about
+later gameplay**. “Invariant”
 here means a rule preserved at its specified program checkpoints. Several
 rules need different cases at different instructions. Defining the list does
 not prove that all reachable executions satisfy it. If a case fails, retain
@@ -19,16 +25,16 @@ For that conditional investigation, both milestone-triggering starting totals
 and ordinary starting totals are allowed and coin/placement provenance is
 postponed. This does not grant
 negative depth, move Mario, replace the normal collection/dialog rules, or
-turn the missing initialization and scheduler proofs into assumptions.
+turn later scheduler or preservation obligations into assumptions.
 
 ## Shared rules
 
 | ID | Precise rule to carry | Where it must be established |
 | --- | --- | --- |
 | H1 — One execution | Every checkpoint has an actual Clight state. Its preceding and following steps belong to the same selected US or JP execution, with identical memory and control stack at each join. No independently chosen snapshots. | From the accepted boundary through the retry, including the scheduler between Mario updates. |
-| H2 — Start and control | The initial depth is zero, the three position records agree, the initial action and timer are the accepted ones, and the first scheduled call really uses that memory. The accepted memory boundary does not itself specify the next instruction or call stack. | Initial state and the first action call. |
+| H2 — Start and control | Normal initial depth, positions, action, timer and storage are accepted at the post-initialization boundary. Every game step after that boundary must still have its actual control point and continuation; the memory contract alone is not a scheduler execution. | Accepted initial state, then the first and later game updates; no startup reconstruction. |
 | H3 — Live identities | Each fresh global, MarioState, object, controller, body-state, floor-owner and animation-buffer reference names the intended live record. Record changes of slot or lifetime explicitly; do not replace a fresh read by an old reference. | At each dereference, call and object/area lifetime change. |
-| H4 — Storage and effects | Every reached write has its actual destination and size. It either misses the tracked cells or is a checked update to them. Copies, indirect calls and outside calls need their own reached effects. Body-state and animation/audio destinations must be proved separate, not assumed so because of their names. | Every intervening instruction, not merely helper returns. |
+| H4 — Storage and effects | Every reached write has its actual destination and size. It either misses the tracked cells or is a checked update to them. Copies, indirect calls and outside calls need their own reached effects. Normal initial references are accepted; initial separation follows from actual storage names, and later destinations require preservation proofs. | Every intervening instruction, not merely helper returns. |
 | H5 — Readings | Preserve the exact Float32 values and failed or unexpected reads until classified. A finite-number lemma applies only after finiteness is derived. Pointer offsets, signed-16 conversions and overlap tests use the selected program's real layout. | Every height/depth read, comparison, conversion and copy. |
 | H6 — Order | Carry the real phase: controller sampling, Mario preparation, special floors, interactions, repeated action dispatch, sinking, object copying, remaining object/camera/audio work and the next update. A repeated dispatch is not a new controller sample. Time stop, skipped updates and area transitions are explicit branches. | Each phase transition and callback. |
 | H7 — Last producer and survival | For every changed height or depth, identify its last actual writer in this execution and the intervening resets or frames. A changed value at a helper boundary is insufficient if it was changed and restored inside the helper. | Backward from the useful sink read or Graphics retry. |
@@ -111,13 +117,15 @@ before `update_mario_inputs`, with the same 24 readings and the initial zero
 depth and equal Y values. This is a shared H1/H4/H7 preservation step for both
 branches, rather than another standalone landing/button calculation.
 
-**The conditions matter.** The result is quantified over actual successful
+**Earlier result, now strengthened below.** This original result was quantified over actual successful
 completions of these two stages; it does not generate their completions from
 the accepted memory alone. The body pointer must load successfully and name
 storage separate from MarioState and the object pool. Those facts and the
 real scheduler control point are **not** fields of the accepted start, and
-were not added to it. Establishing them from initialization and carrying them
-through the scheduler is still required. The theorem's first later unchecked
+were not fields of that original boundary. The user has since accepted the
+normal initial facts, and the construction below removes both completed-stage
+premises. Carrying storage through later game updates is still required.
+That original theorem's first later unchecked
 stage is the actual `update_mario_inputs(gMarioState)` call, not a promise
 that its effects or the later action loop are safe.
 
@@ -125,6 +133,40 @@ The invariant families above were defined before that extension. The checked
 local reset case does not establish H1–H7, F1–F6 or N1–N6 for every game history.
 The branch status remains **whole-history connection missing**, not
 **route closed**. The capstone retains its whole-run coverage obligations.
+
+## Accepted initial storage and constructed preparation
+
+`InkAcceptedInitialStorage.v` states the normal initial body reference,
+integer flags and writable cells used so far. It derives separation between
+the body array, MarioState, object pool and Mario pointer cell from the
+selected program's actual global names. These are explicitly accepted
+starting conditions, not new project axioms or promises about later calls.
+No particular later action, timer, depth or height is supplied.
+
+`InkVisibilityConstruction.v` and `InkBodyResetConstruction.v` construct the
+visibility store and all six body-reset stores, including their reads,
+casts, write permissions and real internal call. `InkPreparationConstruction.v`
+joins them to the native-command/action prefix with its original continuation.
+There is no longer a premise that either stage successfully completed. The
+result also derives the fresh Mario pointer, integer status flags, unchanged
+collision metadata and surviving permissions needed by the next helper.
+
+`InkInputPrefixConstruction.v` constructs the next four writes: clearing
+particles, clearing input, copying the object's collision metadata and
+masking Mario's status flags. `InkInputSharedConstruction.v` connects their
+actual input-function entry and resolved button call to the initial action
+prefix. This gives one uninterrupted action-call execution through eleven
+writes. All 24 tracked readings, including zero depth and matching initial
+heights, survive, and the input word is zero at the button-call entry. The
+old input word need not be assumed harmless; it is actually overwritten.
+
+**What this does not prove:** these action-call fragments have not yet been
+joined to every intervening post-boundary world update. The native extension
+still needs its reached command readings. The remaining button processing,
+joystick/geometry helpers, special floors, interactions, repeated action
+loop, sinking and later scheduler effects still require their same-history
+connections. No first useful negative seed has been found or universally
+excluded. This is a removed local execution premise, not route closure.
 
 ## Milestone helper extension
 
@@ -161,9 +203,9 @@ final state of a supplied `ImportedClightRun`. It retains that run's start,
 all preceding events, the full memory, and both nested caller continuations.
 It also constructs an `InkRunCut` recording the actual prefix and suffix,
 so a matching-looking snapshot from another run cannot be substituted.
-The already checked visibility/body-reset extension is then attached at
-its actual endpoint, with its existing storage and successful-completion
-conditions, to reach the input-preparation frontier. It transports all 24
+The original visibility/body-reset extension attached successful stage
+executions at that endpoint. The newer `InkPreparationConstruction.v`
+constructs both completions from their concrete storage facts. It transports all 24
 observations for both height-producer branches, including failed or
 non-finite height readings. Initial zero depth and equal heights survive
 if they held at the reached command boundary.
@@ -172,8 +214,8 @@ if they held at the reached command boundary.
 | --- | --- | --- |
 | Native command → Mario callback | The actual operand read, conversion, internal-function resolution and call steps, with unchanged memory. | Reach the command with the live pointer and operand shown in `InkNativeEntryReadings`. The stock operand receipt is not proof of its later load. |
 | Mario callback → action prefix | The actual fresh argument read, call, MarioState/object reads and successful action branch, with both callers retained. | Establish the actual global readings and defined argument conversion at this boundary. No equality between the two object readings is needed for this prefix alone. |
-| Existing run → extended run | Exact endpoint equality, trace concatenation and a same-run cut; no completed callback/action is assumed. | Supply the earlier execution. The constructor does not manufacture a run from level select or prove that all histories reach this command. |
-| Prefix → input preparation | The previous two checked stages compose with the new call stack and preserve the shared readings. | Derive live body storage/separation and successful stage completions from initialization, then classify the next input-preparation call. |
+| Existing run → extended run | Exact endpoint equality, trace concatenation and a same-run cut; no completed callback/action is assumed. | Supply any preceding post-boundary gameplay execution. Startup reconstruction is excluded, but ordinary scheduler steps cannot be replaced by independent calls. |
+| Prefix → input preparation | Visibility and body reset are now constructed, preserve the readings and supply the next helper's metadata. The initial action-call case continues through input reset to the actual button call. | Initial normal storage is accepted. Establish its live counterparts at later calls, then connect the remaining input/action/scheduler effects. |
 
 The first earlier unconnected source boundary is still the behavior
 interpreter in `cur_obj_update`: its assignment from the current object's
@@ -182,9 +224,11 @@ commands must be connected to the scheduler/list traversal. In the stock
 Mario script the callback command is at byte 36 and its operand at byte 40;
 the preceding debug callback and the script's first-time setup cannot be
 skipped merely because the desired callback's initializer is known. The
-fresh-entry run, scheduler writes and live body reference remain unproved.
-After the reset, `update_mario_inputs`, special floors, interactions, the
-action loop, sinking and the rest of the scheduler still need coverage.
+post-boundary scheduler writes and later live references remain unproved;
+normal initial facts are accepted rather than reconstructed. After the now
+constructed input prefix, the button helper, remaining input processing,
+special floors, interactions, action loop, sinking and the rest of the
+scheduler still need coverage.
 
 This discharges a concrete **internal call-chain construction**, not the
 accepted-start reachability premise or the all-history producer classifier.
@@ -223,6 +267,16 @@ problems. All four new modules feed the shared Ink boundary. No new project
 axiom, accepted outside-call effect, or whole-run coverage assumption was
 added. The explicit command-entry and reset/storage premises above still
 need to be established; passing these checks is not a route-closure result.
+
+The constructed-preparation tranche passed the individual checks and the
+integrated audit at `build/audit/20260910-134435-p9ojec6r/`. Main compiled;
+all four requested assumption reports passed. The two new execution results
+use seven existing foundations, with no project-specific axiom or new
+outside-call effect. The audit found 525 sources, 355 of 449 proof modules
+in Main's closure, 94 standalone modules, and zero hygiene/integration
+problems. All six new modules are on Main's proof path. The accepted initial
+storage contracts are explicit hypotheses, as authorized by the user;
+the later universal coverage conditions are still unproved.
 
 [Floor history](ink-floor-history.md) ·
 [Negative-depth closure argument](negative-depth-shared-closure.md) ·

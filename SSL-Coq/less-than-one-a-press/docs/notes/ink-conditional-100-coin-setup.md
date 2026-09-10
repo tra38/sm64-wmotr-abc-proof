@@ -5,9 +5,13 @@
 The user selected a **fresh, normally initialized level-select entry into
 SSL Area 1** on 2026-09-10. Earlier gameplay carrying a prepared action,
 timer, negative depth, or height gap into SSL is not part of this starting
-case. A normal saved star total may vary. We still have to derive the live
-storage references and first scheduled update from that initialization;
-the user's choice does not prove those implementation facts.
+case. A normal saved star total may vary. The user subsequently accepted
+complete normal starting-state facts at the post-initialization boundary:
+reconstructing startup is no longer a proof task. The proof spells out the
+initial facts it uses in `InkAcceptedInitialStorage` and
+`InkAcceptedInitialInputStorage`. Their preservation through later gameplay
+and the ordering of the first and later game updates must still be proved;
+normal starting facts are not permanent assumptions.
 
 For this conditional investigation, we may skip proving how the earlier
 coins were collected or brought into position. We grant a valid coin and

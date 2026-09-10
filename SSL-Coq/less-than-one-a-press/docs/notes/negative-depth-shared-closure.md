@@ -7,6 +7,13 @@ value must have a history containing a new physical A press. This is the
 single closure target for this branch. Unrelated route exploration is paused.
 The existing proof collection does **not** establish this claim.
 
+The user has accepted complete normal initial facts at the agreed
+post-initialization boundary. Do not reconstruct startup or an ordinary
+castle entry. Accept those facts only at the boundary, then prove the
+effects and ordering of subsequent gameplay. Floor alignment's independent
+height-bound question is deferred. In particular, do not assume that every
+later operation preserves nonnegative depth: that is the target conclusion.
+
 The user has now fixed that start to fresh, normally initialized level-select
 entry. There is also a [conditional 100-coin setup allowance](ink-conditional-100-coin-setup.md):
 postpone coin/placement provenance and retain both milestone and non-milestone
@@ -71,7 +78,7 @@ entry or new IDO-to-Clight start bridge is required under the agreed boundary.
 | --- | --- | --- |
 | Accepted start has zero depth and no prepared long jump | `DefaultArea1StartBoundary`; `ordinary_area1_entry_memory_excludes_prepared_fixture` | Already follows from the agreed boundary; not new initialization work. |
 | The actual useful display adjustment reads negative depth | `iq_actual_sink_raise_requires_negative_depth` | Local reduction checked under its storage and finite-number conditions; live identity and storage connection missing. |
-| The surviving producer is one of the checked depth cases | `NegativeDepthDefinedProducerClosure`; `InkActionPassHistory`; `InkActionVisibilityFrame` | An action-call start is now constructed from the accepted memory, and its first graphical store is excluded as a seed. The scheduler-to-call connection, later helpers and remaining writer coverage are still missing. |
+| The surviving producer is one of the checked depth cases | `NegativeDepthDefinedProducerClosure`; `InkInputSharedConstruction`; the earlier action and landing results | From accepted normal initial storage, one action-call execution now constructs visibility, the complete body reset and the four input-prefix writes up to the actual button call. All eleven writes preserve the tracked depth and heights; input is reset. Post-boundary scheduler coverage, later helpers and surviving-producer classification are still missing. |
 | The landing timer has the stock bound at the negative write | `imb_actual_negative_landing_with_stock_gate_requires_long_jump`; landing gate, timer-reset and late-call results | Local cases checked, with explicit conditions; the intervening execution and remaining effects are not closed. |
 | Long-jump landing has a legitimate first constructor | `LongJumpProvenanceBoundary`; `InkCrouchSlideHistory` | Source/guard cases checked; whole action-history connection missing. |
 | The constructor's input comes from a new physical press | Controller edge, remembered-input and complete button-helper results | Local sample processing checked; whole input history and physical-sample authentication missing. |
@@ -199,9 +206,9 @@ caller continuations and can append them to the exact endpoint of an
 existing run, with an explicit trace cut. The active-action branch is no
 longer restricted to the initial spawn action. This removes assumed
 completed executions of those internal calls from this prefix construction,
-but does not supply the preceding level-select/scheduler run or prove its
-live command, object and body-storage readings. Those are the next earlier
-connections, not newly accepted assumptions. See the
+but does not supply the preceding post-boundary scheduler run or prove its
+later live command and object readings. Normal initial storage has since
+been accepted, so startup reconstruction is no longer required. See the
 [shared execution ledger](ink-shared-history-invariants.md#behavior-command-to-the-shared-action-prefix)
 for the exact constructed segment and remaining entry conditions.
 
@@ -215,11 +222,11 @@ between passes when extending to earlier frames. This is shared execution
 work; another standalone timer or button lemma is not the next deliverable.
 
 Reuse the five-stage chain and the constructed call start when connecting
-that pass, rather than reconstructing their sequences again. The visibility
-write is classified for the derived entry references; carry those references
-and the protected readings forward before applying that result to later
-passes. Connect the real scheduler control point and body-state reference, use
-the checked reset frame, and open the remaining helpers in their recorded order, then continue
+that pass, rather than reconstructing their sequences again. The latest
+construction already executes eleven preparation writes through the real
+button-call entry. Carry its derived references and readings forward before
+using those results in later passes. Connect the post-boundary scheduler and
+later live references, and open the remaining helpers in their recorded order, then continue
 through the floor check and repeated action dispatch to the useful read.
 The later helper checks are source-identified next work, not instructions
 already observed in an execution from the agreed start.

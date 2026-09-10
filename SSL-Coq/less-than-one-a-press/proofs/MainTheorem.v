@@ -1155,10 +1155,15 @@ Qed.
     that negative depth needs a physical A press. The shared prefix now
     constructs the real native-command and Mario-callback calls before the
     action, retaining their exact memory and nested continuations. It can
-    extend an existing run at its actual endpoint and attach the checked
-    visibility/body reset with an explicit trace cut. Reaching that command
-    from fresh entry, its live readings, the reset's storage/completion facts,
-    and the remaining action/scheduler coverage are still not derived. *)
+    extend an existing run at its actual endpoint with an explicit trace cut.
+    Normal initial storage is now explicitly accepted by the user. From its
+    concrete reads and permissions, visibility and the complete body reset
+    are constructed, not assumed completed. The initial action-call execution
+    continues through the four input-prefix writes to the resolved button
+    call, preserving all 24 shared readings and clearing input. The surrounding
+    post-boundary scheduler, later controller/action history, and live storage
+    at later calls remain coverage obligations; startup reconstruction and
+    floor alignment's separate height bound are not the current task. *)
 Theorem current_ink_backward_execution_boundary : InkBackwardHistoryCheckedBoundary.
 Proof. exact ibh_backward_histories_checked. Qed.
 

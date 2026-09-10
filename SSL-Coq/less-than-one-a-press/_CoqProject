@@ -509,6 +509,8 @@ proofs/InkActionPassStart.v
 proofs/InkActionVisibilityFrame.v
 proofs/InkSharedReadings.v
 proofs/InkBodyResetFrame.v
+proofs/InkBodyResetConstruction.v
+proofs/InkVisibilityConstruction.v
 proofs/InkBodyResetResolution.v
 proofs/InkBodyResetHistory.v
 proofs/InkStarDialogFrame.v
@@ -517,6 +519,10 @@ proofs/InkScheduledActionSource.v
 proofs/InkMarioCallbackHistory.v
 proofs/InkNativeActionHistory.v
 proofs/InkScheduledSharedHistory.v
+proofs/InkPreparationConstruction.v
+proofs/InkAcceptedInitialStorage.v
+proofs/InkInputPrefixConstruction.v
+proofs/InkInputSharedConstruction.v
 proofs/InkBackwardHistory.v
 proofs/ObjectContactReadback.v
 proofs/ObjectContactPhaseReadback.v
