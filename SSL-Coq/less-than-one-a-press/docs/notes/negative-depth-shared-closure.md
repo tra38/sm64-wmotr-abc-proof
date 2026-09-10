@@ -7,6 +7,13 @@ value must have a history containing a new physical A press. This is the
 single closure target for this branch. Unrelated route exploration is paused.
 The existing proof collection does **not** establish this claim.
 
+The user has now fixed that start to fresh, normally initialized level-select
+entry. There is also a [conditional 100-coin setup allowance](ink-conditional-100-coin-setup.md):
+postpone coin/placement provenance and retain both milestone and non-milestone
+counts, but keep the actual collection and dialog history. It does not grant
+a negative seed. The known popup mechanism accumulates a height gap using an
+already-negative depth; it is not a demonstrated way to create that depth.
+
 “Useful” here starts with a negative depth actually read by the sinking code
 to raise Mario's display or display matrix. A stronger result excluding every
 negative depth at that use point would suffice; we need not also solve the
@@ -68,6 +75,7 @@ entry or new IDO-to-Clight start bridge is required under the agreed boundary.
 | The landing timer has the stock bound at the negative write | `imb_actual_negative_landing_with_stock_gate_requires_long_jump`; landing gate, timer-reset and late-call results | Local cases checked, with explicit conditions; the intervening execution and remaining effects are not closed. |
 | Long-jump landing has a legitimate first constructor | `LongJumpProvenanceBoundary`; `InkCrouchSlideHistory` | Source/guard cases checked; whole action-history connection missing. |
 | The constructor's input comes from a new physical press | Controller edge, remembered-input and complete button-helper results | Local sample processing checked; whole input history and physical-sample authentication missing. |
+| A granted 100-coin setup does not hide a seed in the milestone check | `InkStarDialogFrame`; `InkStarDialogCall` | The complete helper and resolved named call preserve depth and the shared height/action readings. The surrounding star collection, dance, dialog and scheduler history remain open. |
 
 The [detailed history notes](ink-negative-depth-history.md) retain individual
 theorem statements and verification records. Their checked conditions must

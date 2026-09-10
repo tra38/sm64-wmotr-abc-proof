@@ -511,6 +511,8 @@ proofs/InkSharedReadings.v
 proofs/InkBodyResetFrame.v
 proofs/InkBodyResetResolution.v
 proofs/InkBodyResetHistory.v
+proofs/InkStarDialogFrame.v
+proofs/InkStarDialogCall.v
 proofs/InkBackwardHistory.v
 proofs/ObjectContactReadback.v
 proofs/ObjectContactPhaseReadback.v

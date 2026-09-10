@@ -1,7 +1,9 @@
 # Ink: one-history invariants for both height producers
 
 The objective is still to reach the conditional Ink installation from the
-accepted SSL Area-1 start. We must follow both ways of creating a gap: raising
+accepted fresh, normally initialized level-select SSL Area-1 start. The user
+confirmed this scope on 2026-09-10; earlier gameplay carrying prepared state
+into SSL is not required. We must follow both ways of creating a gap: raising
 the displayed position, and lowering the movement position while the display
 stays behind. The known installation uses a 960-unit gap; that is not a
 universal threshold for every possible installation point.
@@ -11,6 +13,12 @@ here means a rule preserved at its specified program checkpoints. Several
 rules need different cases at different instructions. Defining the list does
 not prove that all reachable executions satisfy it. If a case fails, retain
 the actual instruction and readings as an unresolved case; do not discard it.
+
+There is now also an explicitly [granted 100-coin reward setup](ink-conditional-100-coin-setup.md).
+For that conditional investigation, both milestone and non-milestone totals
+are allowed and coin/placement provenance is postponed. This does not grant
+negative depth, move Mario, replace the normal collection/dialog rules, or
+turn the missing initialization and scheduler proofs into assumptions.
 
 ## Shared rules
 
@@ -48,9 +56,26 @@ the actual instruction and readings as an unresolved case; do not discard it.
 
 ## Proof construction order
 
-Start with the common action prefix, preserving exact readings for both
-branches. Open `mario_reset_bodystate`, then input preparation, special-floor
-handling and interactions. Continue through every action-loop case and the
+### Additional reward-history rules
+
+| ID | Rule to carry | Status |
+| --- | --- | --- |
+| R1 — Exact allowance | Mark where coin/100-coin-star placement is granted, and keep the preceding Mario pose, action, timer, depth, input history and three positions. Do not label that unproved preparation an ordinary Clight step. | User-approved conditional boundary; its formal execution interface is not yet constructed. |
+| R2 — Normal availability | The reward is a normal no-exit star, not a moved Mario, instant award, or unlimited repeated reward. Keep the spawn lifecycle, time stop, ordinary coin/star contact, and any delay before collection. | Placement provenance is granted; execution and timing remain obligations. |
+| R3 — Real star totals | Initial current and remembered totals agree. Cover a newly saved star and a duplicate reward separately; identify the actual count reads and save result at collection. The milestone choice is derived from those counts, not chosen independently. | Initialization source and one-star threshold arithmetic checked; live save/count history remains open. |
+| R4 — Distinct dialogs | Separate the ordinary 100-coin save prompt during star dance from the later automatic milestone message. Cover both the milestone and ordinary-idle continuations, including B-based dialog progression with no new A edge. | Source chronology known; complete reached effects and input chronology open. |
+| R5 — Seed versus accumulation | The stalled sink can amplify an existing negative-depth height effect. Trace the depth back before the star contact, through any intervening landing/clamp/reset, rather than assuming the popup produces it. Track the floor-alignment alternative simultaneously. | The full milestone-check helper is now framed; surrounding actions and scheduler are not. |
+| R6 — Honest result scope | A successful granted route is conditional until its setup is reached cleanly. An impossibility theorem must cover every permitted setup and history, and show that the stock cases under discussion are included. | Neither a full granted-route witness nor an impossibility theorem is established. |
+
+These are additional obligations, not proved invariants. The grant changes
+the search boundary; it does not discharge the shared H or branch F/N rules.
+
+### Shared execution construction
+
+Reuse the checked common action prefix and `mario_reset_bodystate` frame,
+establishing their remaining entry/storage conditions. Then open input
+preparation, special-floor handling and interactions while preserving exact
+readings for both branches. Continue through every action-loop case and the
 sink. Close the remainder of the scheduler and the controller sampling edge
 before inducting over successive passes. At each stage reuse the existing
 floor, landing and controller theorems at their actual memory endpoints.
@@ -100,6 +125,17 @@ local reset case does not establish H1–H7, F1–F6 or N1–N6 for every game h
 The branch status remains **whole-history connection missing**, not
 **route closed**. The capstone retains its whole-run coverage obligations.
 
+## Milestone helper extension
+
+`InkStarDialogFrame.v` derives the complete milestone helper's single
+two-byte store to the remembered count and proves it preserves depth and all
+24 shared readings. Its count-search loop has no memory write or outside
+call. `InkStarDialogCall.v` resolves the actual callee in each selected
+program and carries the same frame through the named call instruction.
+Both are consumed by `InkBackwardHistoryCheckedBoundary`. This classifies
+one real effect relevant to R3/R5 for both star-count outcomes; it does not
+connect the reward setup or the surrounding star dance to the accepted start.
+
 ## Verification
 
 The individual Coq checks and the integrated active SSL audit passed on
@@ -111,6 +147,15 @@ No new project-specific axiom or accepted outside-call effect was added.
 The report is retained locally at `build/audit/20260910-103603-vh50_sqf/`.
 This was not a rebuild of every standalone proof and is not a full-game
 impossibility verdict.
+
+The later milestone-helper extension passed both individual module checks
+and the integrated audit at `build/audit/20260910-111113-mrtooyyg/`. The audit
+built Main and its requested dependencies, checked five assumption reports,
+and reported 345 of 439 proof modules in Main's import closure, 94 retained
+standalone modules, and no inventory or integration problems. The new
+helper/call theorems use only seven existing allowed foundations; no new
+project axiom or outside-call frame was accepted. This also was not an
+all-standalone build or a route-closure result.
 
 [Floor history](ink-floor-history.md) ·
 [Negative-depth closure argument](negative-depth-shared-closure.md) ·
