@@ -1173,7 +1173,13 @@ Qed.
     The surrounding
     post-boundary scheduler, later controller/action history, and live storage
     at later calls remain coverage obligations; startup reconstruction and
-    floor alignment's separate height bound are not the current task. *)
+    floor alignment's separate height bound are not the current task.
+    The conditional post-dialog result now follows a whole ground-step call
+    to its completed display copy, including all three stores and the local
+    return/free. No incoming height or speed bound is used. With explicit
+    display/movement read continuity to the later sink, finite nonnegative
+    depth cannot restore an upward gap. Those interval facts and the earlier
+    geometry/platform transport cases remain open; this is not route closure. *)
 Theorem current_ink_backward_execution_boundary : InkBackwardHistoryCheckedBoundary.
 Proof. exact ibh_backward_histories_checked. Qed.
 

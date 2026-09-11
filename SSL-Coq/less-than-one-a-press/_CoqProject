@@ -463,7 +463,9 @@ proofs/InkMovingBackwardSource.v
 proofs/InkFloorAlignmentBackward.v
 proofs/InkGroundBackwardSource.v
 proofs/InkGroundDisplayBackward.v
+proofs/InkCopyCompletion.v
 proofs/InkGroundCallBackward.v
+proofs/InkPostDialogGroundReset.v
 proofs/InkLandingArithmetic.v
 proofs/InkLandingExecution.v
 proofs/InkLongJumpGuard.v
