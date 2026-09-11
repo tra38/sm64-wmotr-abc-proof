@@ -136,6 +136,47 @@ warp preserves. Later negative-depth sinking may create a new offset. This close
 named stopping/reset producer at its copy checkpoint, not every continuation
 from the warp or every floor-alignment producer.
 
+### One update earlier: the remembered platform
+
+The proposed platform departure has a specific predecessor. At the end of
+an ordinary update, `update_mario_platform` queries Mario's raw position.
+The next update reaches surface clearing and terrain updates before the
+platform dispatcher; time-stop guards determine which work runs. Object
+contacts and Mario's geometry preparation follow. Thus platform movement is early enough to be
+useful, but its pointer must survive the preceding final floor check.
+
+The [new backward proof](../../proofs/InkPlatformDeparture.v) follows the
+actual US/JP nearby-floor branch. Given the local floor pointer and a null
+owner field at its owner-test checkpoint, it derives both clearing stores:
+the global remembered platform and Mario's object platform become null.
+It also proves the effects on other memory cells, including separated actual
+and displayed positions. The complete next displacement dispatcher, when
+it reads a null platform, changes no memory, regardless of its defined
+time-stop and Mario-object tests. These are actual generated-body results;
+the earlier floor lookup is not replaced by an assumed intact live list.
+
+The connection works backward without assuming that later code preserves
+the pointer: if that later dispatcher changes Mario's position, something
+must have replaced the cleared pointer before it ran. Simply remembering a
+platform from before arrival and waiting for time stop to end cannot supply
+the departure after this clearing branch. The ordinary scheduler shown in
+the source provides no second platform-capture call in that interval; the
+existing linked source census identifies the final platform update as the
+installer. A complete execution proof must still cover the intervening
+calls and derive which floor the earlier query actually selected.
+
+This moves the useful predecessor farther back. A moving-support candidate
+needs a real owned floor at the dialog endpoint, before that final query,
+or a specific ordinary event that replaces the cleared pointer afterward.
+The ordinary upper-warp floor is ownerless. The existing stock geometry
+classification also excludes a moving-floor capture at the same low warp
+position, but its refinement to every live controller history remains open.
+For a support-loss candidate, clearing moving surfaces alone does not remove
+the static warp floor: the source clears the dynamic partition. A different
+actual position, earlier moving support, or retained alignment mismatch
+still has to be constructed. No gameplay producer is established by this
+tranche, and these local obstructions are not a complete impossibility proof.
+
 The source and existing proofs narrow the predecessor search:
 
 | Earlier operation | What it can supply, and the remaining obstacle |
@@ -145,7 +186,7 @@ The source and existing proofs narrow the predecessor search:
 | Finishing the dialog | The handler changes to idle at state 25 and returns false. It does not request an idle movement pass in the same update. That leaves a possible next-update window, but does not move Mario into a floorless position. |
 | Closing the dialog while standing on unchanged static support | The next first query still finds that floor. At `(-2200,1280,-1024)` the static floor is already eligible, so the raised display is not used by the retry. Waiting alone at this pose is insufficient. |
 | Pre-action wall correction | The normal wall code changes X/Z, not Y. The checked west wall pushes the nearby `X=-2199` sample to `-2099`; it ignores `-2200`. That wall does not supply the proposed downward move or the required westward step. Other full wall sequences need their own check. |
-| Remembered-platform movement after time resumes | This runs before object contacts and the geometry queries, making it a possible place for actual position to change before display refresh. It needs a real earlier platform capture. The top's yaw motion does not add its vertical speed directly; a low static floor supplies no platform owner. |
+| Remembered-platform movement after time resumes | This runs early enough, but the preceding ownerless-floor branch clears both platform references. The complete null-platform dispatcher then changes no memory. A departure needs an earlier owned-floor result or a later replacement of the cleared pointer; neither is supplied by waiting on the static warp floor. |
 | Ordinary walking, crawling or sliding | A completed ground step refreshes display from the movement position. Stored speed cannot be spent before the pre-action query. A failed quarter-step query is a different event and does not substitute for this retry. |
 | A retained floor-alignment mismatch | Alignment can lower actual Y after the ground step has copied a higher movement position to display. The large movement/floor disagreement and its surviving floorless endpoint remain unconstructed; this stays a separate candidate. |
 
@@ -155,9 +196,11 @@ closes that local case. Changing to idle later in the same update cannot
 retroactively process the earlier contact. A dialog-based producer needs a
 usable contact after release, together with the useful gap and first miss.
 
-The next concrete connection is a supported dialog endpoint followed by a
-named pre-action change in position or support, or a reachable floor-alignment
-mismatch. No such controller sequence is established. Negative depth may
+The next concrete connection is an earlier dialog endpoint with usable moving
+support, a specific replacement of the cleared platform pointer, a checked
+wall/support change, or a reachable floor-alignment mismatch. The ordinary
+static-support endpoint supplies none of these by itself. No such controller
+sequence is established. Negative depth may
 still be granted while testing that transfer; producing it without A is a
 separate obligation. Startup reconstruction and a new star-suffix search
 are not prerequisites.
@@ -181,5 +224,13 @@ build and integration, no proof holes, and only existing allowed foundations
 (nine for the main boundary, seven for the stopping theorem, four for the
 finite floor certificate). It checks the new entry-to-copy connection; it
 does not turn the remaining gameplay-producer question into a disproof.
+
+The platform-predecessor audit passed at
+`build/audit/20260911-153834-26px5yoi/`: 544 registered sources, successful
+build and integration, no proof holes, and only existing allowed foundations
+(nine for the main boundary, seven for the new connection, four for the
+finite floor certificate). The new connection is used by the main boundary.
+It checks the ownerless clearing branch and complete null-platform
+dispatcher, not the earlier live floor selection or the intervening history.
 
 [Return to the atlas](../no-a-route-atlas.md#route-rank-2)

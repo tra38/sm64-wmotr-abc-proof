@@ -1202,6 +1202,11 @@ Qed.
     checkpoint: its velocity setter cannot change position or cached floor,
     X/Z remain the helper's entry X/Z, and both State Y and display Y equal
     its entry floor height. The remaining angle call is retained explicitly.
+    The predecessor platform case now derives both null stores from the real
+    ownerless-floor branch and proves that the next complete dispatcher with
+    a null platform changes no memory. A later nontrivial displacement thus
+    requires replacing that cleared pointer; no intervening frame is assumed.
+    Live ownerless-floor selection and the intervening scheduler remain open.
     Clean arrival with the needed display, contact, depth and timing remains
     open; these results do not exclude all controller-reachable producers. *)
 Theorem current_ink_backward_execution_boundary : InkBackwardHistoryCheckedBoundary.

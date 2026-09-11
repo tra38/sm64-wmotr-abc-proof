@@ -78,6 +78,23 @@ These obligations currently block the clean-retail result.
   a separate obligation. Startup and further star-suffix work are not current
   prerequisites.
 
+- [x] Trace the proposed remembered-platform departure one update backward.
+  The [actual US/JP owner test and clearing branch](../proofs/InkPlatformDeparture.v)
+  clear both platform pointers from an ownerless nearby floor, with the other
+  memory effects accounted for. The complete next null-platform dispatcher
+  changes no memory. A later displacement therefore requires replacing the
+  cleared pointer; this result assumes no frame for the intervening code.
+  It does not derive the earlier live floor selection or a gameplay producer.
+
+- [ ] Find an earlier usable moving support or a specific ordinary replacement
+  of the cleared platform pointer before displacement. Waiting on the static
+  upper-warp floor does not supply either. Check the intervening scheduler
+  calls, actual final floor/owner and display retention together. A loss of
+  moving support is a separate candidate; the dynamic-surface clearing call
+  does not itself remove the static warp floor. Keep the floor-alignment
+  mismatch and other checked wall/support changes open until their producers
+  are derived.
+
 ### Linked retail program and memory simulation
 
 - [ ] Complete the remaining work in the seven-step linked gap-closure tranche.
