@@ -240,13 +240,17 @@ effect works or the next test succeeds. A range such as 2–5% means a weak but
 concrete lead; <1% means a particularly weak lead, not a proved probability
 bound. Routes overlap, so do not add or multiply these estimates. N/A is
 deliberate for continuations needing a separate bypass and the different-start
-entry. Deferred outside-model modification is not included. This review adds
-judgment, not new execution evidence.
+entry. Deferred outside-model modification is not included. Supplied positions,
+negative depth and dialog checkpoints can establish conditional effects, but
+do not count as clean route setup in these estimates. Finite searches are not
+random samples of all possible routes, so their success or failure counts do
+not provide these percentages. This review adds judgment, not new execution
+evidence.
 
 | Overall | Family | Approach | Current counterexample promise | % Chance of Counterexample |
 |---:|---|---|---|---|
 | 1 | JP stale-platform lineage | 🎮 [Different collision/query samples, then read the inactive unreused top payload](#route-rank-1) | Very low currently; exact high-payoff JP mechanism if another clean history breaks a checked boundary | 1–2% |
-| 2 | Ink installation | 🎮 [Timer-131 non-null Graphics retry](#route-rank-2) | Very low for a clean route; midpoint and vertical-only JP bypasses recorded, gameplay creation of the gap remains open | 1–2% |
+| 2 | Ink installation | 🎮 [Timer-131 non-null Graphics retry](#route-rank-2) | Very low for a clean route; supplied setups work, but all 68 dialog-support trials find a floor and refresh the display without a useful retry | <1% |
 | 3 | State-first installation | 🎮 [Finite signed-16 nonlocal-State alias](#route-rank-3) | Very low in the audited stock model; exact injected payload | <1% |
 | 4 | JP stale-platform lineage | 🎮 [Move the warp/top or create a collision-preserving clone](#route-rank-4) | Very low on the checked clean route; the warp never moves or gains collision, and every top-slot reuse first loses the top collision | <1% |
 | 5 | State-first installation | 🎮 [Post-copy State-only writer in a later callback or descendant](#route-rank-5) | Very low on the checked clean run; another history must expose the first late write, wrong receiver, or lifetime failure | <1% |
@@ -271,7 +275,7 @@ judgment, not new execution evidence.
 | 16 | Goomba / PU transport | 🎮 [Goomba raising, PU transport, and Spindel handoff](#route-rank-16) | Very low; both finite top-window timing classes are refuted, and the generous revised case reaches only Y=1017 | <1% |
 | 17 | JP stale-platform lineage | 🎮 [Fresh same-slot replacement payload](#route-rank-17) | Low abstractly; absent in the authenticated best trace | <1% |
 | 18 | State-first installation | 🎮 [Skipped, wrong-index, or redirected State-to-Object copy](#route-rank-18) | Very low; tested copies are exact, and the second-state read cannot succeed in the initialized proof model | <1% |
-| 19 | Ink installation | 🎮 [Negative quicksand depth plus stalled automatic dialog](#route-rank-19) | Very low for a clean route; supplied display works, but the post-dialog floorless arrival remains open | <1% |
+| 19 | Ink installation | 🎮 [Negative quicksand depth plus stalled automatic dialog](#route-rank-19) | Very low for a clean route; conditional gap creation and brief retention during movement work, but neither a useful first floor miss nor a clean negative seed is known | <1% |
 | 20 | Ink installation | 🎮 [Mario behavior flag plus a large graphical Y offset](#route-rank-20) | Very low; ordinary stock writers are excluded | <1% |
 | 21 | Ink installation | 🎮 [Non-stock Graphics anchor or spawned anchor actor](#route-rank-21) | Very low; the required parent actors are absent from stock Area 1 | <1% |
 | 22 | Eyerok | 🎮 [Second-hand ceiling to the Area-2 Y=1280 tier](#route-rank-22) | Very low under the checked height and speed bounds | <1% |
@@ -306,12 +310,23 @@ sideways departure; unusual contact geometry might avoid the usual gate.
 still left the star too low. All three remain unlikely, and their overlapping
 ranges are not a precise ordering of success probabilities.
 
-**1, 2, 11 and 15 are roughly 1–2% leads**, each with a concrete conditional
+**1, 11 and 15 are roughly 1–2% leads**, each with a concrete conditional
 payoff and a difficult missing setup. Most other gameplay leads are below 1%.
 Rank 14's stated stock construction is already closed under its audited
 conditions; its residual estimate concerns different defined histories outside
 that classification. The numerical ranks remain stable research priorities,
 not a sorting of the subjective odds.
+
+**Rank 2 drops from 1–2% to below 1% in this review; Rank 19 stays below 1%.**
+The [three-second support search](notes/ink-vertical-installation.md#three-seconds-after-dialog-release)
+finds actual movement while the raised display survives in 56 of 68 trials
+from supplied dialog checkpoints. That is a real conditional effect, but every trial finds a floor
+and refreshes the display on the first update after release; none produces a
+pre-action floor miss during the 90-update continuation. I now give this route
+less weight because even the granted setup has not produced the required
+combination of movement, floor loss and contact. This does not rule out other
+poses, timings, actions or floor-alignment histories, and the trials do not
+establish a numerical probability bound.
 
 **For finishing the impossibility argument, prioritize the shared
 connections** in the [proof-progress ledger](impossibility-proof-progress.md):
@@ -320,12 +335,13 @@ Rank 19's negative-depth history is valuable as possible branch closure, not
 because a clean negative seed looks likely. An open proof condition is not
 positive evidence of a counterexample.
 
-**The vertical-only Ink setup now works conditionally in JP.** The focused
-task is to walk backward toward gameplay creation: obtain the raised display,
-finish the dialog under an eligible action, and change actual position or
-support before ordinary movement refreshes the display. A negative seed may
-still be granted while testing that transfer. See the
-[vertical-installation note](notes/ink-vertical-installation.md).
+**The vertical-only Ink setup works conditionally in JP.** The backward search
+now needs movement or support loss that also makes the first floor lookup fail
+while preserving the useful display, warp contact and top timing. Finding
+movement before the display refresh is no longer the missing step by itself.
+A negative seed may still be granted while testing that transfer; a complete
+clean route must account for its creation and the real reward collection.
+See the [vertical-installation note](notes/ink-vertical-installation.md).
 
 **7 and 8 remain valuable downstream continuations; 9 stays parked until an
 independent no-A elevator escape exists.** They have no independent bypass
@@ -585,7 +601,7 @@ producer; midpoint and vertical-only conditional payoffs recorded.**
 
 **What closes it.** Find a gameplay predecessor whose movement or support loss also makes the first query fail while preserving the useful display, warp contact and top timing. The tested moving-top departure is too high and still finds a floor; merely finding more movement is insufficient. Starting at the warp centre still needs the westward departure, which a floor-height snap does not supply. Other support poses, action changes and a retained floor-alignment mismatch remain open, as does recovering the supplied dialog checkpoint from a real reward collection. Negative depth may be granted while testing transfer. The finite search is not an all-controller-history exclusion, and clean reachability and the whole route remain open. Startup reconstruction and another downstream-star search are not prerequisites.
 
-**Are counterexamples likely?** Unlikely, despite a concrete payoff from the supplied setup. A large difference between Mario's display and collision heights must first arise cleanly and survive until the retry. Floor alignment and negative depth are candidates, not demonstrated producers.
+**Are counterexamples likely?** Very unlikely; my current complete-route estimate is below 1%. The supplied installation works, and the dialog-support search shows that actual movement can briefly preserve the raised display. But all 68 trials still find a floor and refresh the display on the first update after release, so they do not produce the useful retry. A clean setup that combines the gap, first floor miss, warp contact and timing remains missing. Other support or floor-alignment histories remain open; this estimate is not a disproof or a statistical bound from the trials.
 
 [Back to the at-a-glance ranking](#at-a-glance-ranking)
 
@@ -602,7 +618,7 @@ the supplied display works, but its post-dialog producer remains open.**
 
 **What closes it.** Find a post-dialog movement or loss of support that actually triggers the useful retry, then recover its starting checkpoint from a real reward collection. The tested moving-top departure preserves the display briefly but still finds a floor; unchanged static support also fails to trigger the retry. Starting at Y=1280 needs a 512-unit actual drop for the proposed low endpoint, while starting at the warp centre instead needs a 152-unit sideways departure. Other support poses, timings and action histories remain outside the finite search. The resulting depth and remaining state must support the continuation. Negative depth may be granted for this investigation; later prove or refute its no-A creation from the accepted normal SSL start. The post-dialog producer and whole route remain open.
 
-**Are counterexamples likely?** Very unlikely, but not yet disproved across the full input history. Local landing and controller results do not yet show that the first useful negative depth always requires a new A press. Even a surviving seed would still need useful dialog timing and transport.
+**Are counterexamples likely?** Very unlikely; the complete-route estimate stays below 1%. The game can build and briefly retain the gap from a supplied negative-depth dialog checkpoint, but the tested support departures still find a floor and reset the display. Both a useful floorless arrival and a clean no-A seed remain missing. Neither the finite search nor the local seed checks exclude every controller history.
 
 [Back to the at-a-glance ranking](#at-a-glance-ranking)
 
