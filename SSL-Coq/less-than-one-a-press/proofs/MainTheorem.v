@@ -1187,7 +1187,13 @@ Qed.
     Y=768 misses, Y=1202 admits a static floor only, and Y=1861 also admits the
     timer-131 top above that floor. A second candidate copies the exact
     computed top height 1938.8648681640625, avoiding a subsequent Y snap.
-    These are not live floor-list executions.
+    These are not live floor-list selection results. The completed retry now
+    derives that the copied X/Y/Z survive the real floor callee and the
+    floorHeight assignment: both list traversals, the possible intangible
+    requery, stack allocation/free and named counter writes are accounted for.
+    This position result does not require assuming harmless callee effects.
+    The primary query and its height store also preserve actual X/Y/Z, so
+    those statements cannot supply the needed change of actual position.
     Clean arrival with the needed display height, the live list/owner result,
     and the later top/warp continuation remain unproved. *)
 Theorem current_ink_backward_execution_boundary : InkBackwardHistoryCheckedBoundary.

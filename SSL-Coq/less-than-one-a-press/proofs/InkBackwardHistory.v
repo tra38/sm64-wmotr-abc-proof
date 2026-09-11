@@ -9,7 +9,7 @@ From LessThanOneAPress.Proofs Require Import
   InkActionVisibilityFrame InkBodyResetHistory InkStarDialogFrame InkStarDialogCall
   InkScheduledSharedHistory InkPreparationConstruction InkAcceptedInitialStorage
   InkInputSharedConstruction InkInitialControllerGuard InkInputGeometryHistory InkPostDialogGroundReset
-  InkRetryCompletion InkRetryQuery InkVerticalRetryGeometry.
+  InkRetryCompletion InkRetryQuery InkVerticalRetryGeometry InkRetryCallCompletion.
 
 Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkLandingHistoryCheckedBoundary /\
@@ -25,7 +25,8 @@ Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkConstructedNativePreparation /\ InkAcceptedInitialActionConstruction /\
   InkAcceptedInitialInputConstruction /\ InkInitialControllerGuardConstruction /\
   InkInitialInputGeometryHistory /\ InkPostDialogGroundResetBoundary /\
-  InkRetryCompletedPosition /\ InkRetrySameRunFloorCall /\ InkVerticalRetryGeometryBoundary.
+  InkRetryCompletedPosition /\ InkRetrySameRunFloorCall /\ InkVerticalRetryGeometryBoundary /\
+  InkPrimaryQueryPositionFrame /\ InkRetryCompletedQueryPosition.
 
 Theorem ibh_backward_histories_checked : InkBackwardHistoryCheckedBoundary.
 Proof.
@@ -59,5 +60,7 @@ Proof.
   split; [exact ipg_post_dialog_ground_reset_checked|].
   split; [exact irc_taken_retry_completes_before_second_query|].
   split; [exact irq_retry_connects_display_to_real_floor_call|].
-  exact ivr_vertical_retry_geometry_checked.
+  split; [exact ivr_vertical_retry_geometry_checked|].
+  split; [exact ircq_first_query_preserves_actual_position|].
+  exact ircq_retry_finishes_at_the_copied_display.
 Qed.

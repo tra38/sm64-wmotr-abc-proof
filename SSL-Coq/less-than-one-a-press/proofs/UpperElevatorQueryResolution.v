@@ -40,6 +40,7 @@ Inductive UpperElevatorQueryNative :=
 | UEQRVecCeil
 | UEQRFindWall
 | UEQRFindFloor
+| UEQRFindFloorFromList
 | UEQRFindCeil.
 
 Definition ueqr_native_ident native : ident :=
@@ -50,6 +51,7 @@ Definition ueqr_native_ident native : ident :=
   | UEQRVecCeil => UEQR_UM._vec3f_find_ceil
   | UEQRFindWall => UEQR_UC._find_wall_collisions
   | UEQRFindFloor => UEQR_UC._find_floor
+  | UEQRFindFloorFromList => UEQR_UC._find_floor_from_list
   | UEQRFindCeil => UEQR_UC._find_ceil
   end.
 
@@ -67,6 +69,8 @@ Definition ueqr_native_body version native : function :=
   | VersionJP, UEQRFindWall => UEQR_JC.f_find_wall_collisions
   | VersionUS, UEQRFindFloor => UEQR_UC.f_find_floor
   | VersionJP, UEQRFindFloor => UEQR_JC.f_find_floor
+  | VersionUS, UEQRFindFloorFromList => UEQR_UC.f_find_floor_from_list
+  | VersionJP, UEQRFindFloorFromList => UEQR_JC.f_find_floor_from_list
   | VersionUS, UEQRFindCeil => UEQR_UC.f_find_ceil
   | VersionJP, UEQRFindCeil => UEQR_JC.f_find_ceil
   end.
@@ -75,14 +79,14 @@ Definition ueqr_source_unit_index native : nat :=
   match native with
   | UEQRPerformAirStep | UEQRPerformAirQuarterStep => 9
   | UEQRResolveWall | UEQRVecCeil => 1
-  | UEQRFindWall | UEQRFindFloor | UEQRFindCeil => 31
+  | UEQRFindWall | UEQRFindFloor | UEQRFindFloorFromList | UEQRFindCeil => 31
   end.
 
 Definition ueqr_us_source_definitions native :=
   match native with
   | UEQRPerformAirStep | UEQRPerformAirQuarterStep => UEQR_US.global_definitions
   | UEQRResolveWall | UEQRVecCeil => UEQR_UM.global_definitions
-  | UEQRFindWall | UEQRFindFloor | UEQRFindCeil => UEQR_UC.global_definitions
+  | UEQRFindWall | UEQRFindFloor | UEQRFindFloorFromList | UEQRFindCeil => UEQR_UC.global_definitions
   end.
 
 Fixpoint ueqr_definition_index (id : ident)

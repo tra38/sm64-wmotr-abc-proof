@@ -534,6 +534,9 @@ proofs/InkInputGeometryHistory.v
 proofs/InkVerticalRetryGeometry.v
 proofs/InkRetryCompletion.v
 proofs/InkRetryQuery.v
+proofs/InkFloorListEffects.v
+proofs/InkFloorCallEffects.v
+proofs/InkRetryCallCompletion.v
 proofs/InkBackwardHistory.v
 proofs/ObjectContactReadback.v
 proofs/ObjectContactPhaseReadback.v
