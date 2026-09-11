@@ -196,14 +196,59 @@ closes that local case. Changing to idle later in the same update cannot
 retroactively process the earlier contact. A dialog-based producer needs a
 usable contact after release, together with the useful gap and first miss.
 
-The next concrete connection is an earlier dialog endpoint with usable moving
-support, a specific replacement of the cleared platform pointer, a checked
-wall/support change, or a reachable floor-alignment mismatch. The ordinary
-static-support endpoint supplies none of these by itself. No such controller
-sequence is established. Negative depth may
-still be granted while testing that transfer; producing it without A is a
-separate obligation. Startup reconstruction and a new star-suffix search
-are not prerequisites.
+The next concrete connection needs a position or support change that also
+makes the first query fail at a useful warp contact. The conditional moving-top
+test below now supplies an earlier position change while the display survives,
+but its first query still succeeds. A different support change or a reachable
+floor-alignment mismatch remains open. Negative depth may still be granted
+while testing transfer; producing it without A is a separate obligation.
+Startup reconstruction and a new star-suffix search are not prerequisites.
+
+### Three seconds after dialog release
+
+The [bounded search](../../instrumentation/jp-dialog-support-search/README.md)
+tests candidate predecessors for 90 game updates after dialog release,
+nominally three seconds. It uses the original JP game, with a declared
+extra assumption: the starting position and automatic-dialog checkpoint
+are supplied. This is stronger than the valid coin/star-opportunity allowance;
+it does not construct a star collection or a clean arrival at that checkpoint.
+Actual and displayed positions initially agree, and the supplied depth is
+`-0.5`. The game itself builds the gap, releases the dialog, captures the
+support and performs the continuation. The preceding wait is outside the
+three-second search window.
+
+All 68 trials passed their receipt checks, covering 6,120 continuation
+updates. They test the two static starts, four top phases and three sampled
+Tox Box faces with declared stick/B/Z policies. In 56 trials, platform
+movement changed actual position while the raised display remained intact.
+Every trial still found a floor and refreshed display on the first update
+after release; none recorded a pre-action floor miss during its continuation.
+This is a finite negative search result, not an exclusion of other starting
+poses, phases, controller histories or ways of reaching the dialog.
+
+The phase-130 moving-top trial demonstrates the earlier change concretely:
+
+| Checkpoint | Actual position | Display position |
+| --- | --- | --- |
+| Dialog released | `(-2200,1899.65039,-1024)` | `(-2200,1939.15039,-1024)` |
+| Platform displacement returns | `(-2181.51172,1899.65039,-961.052002)` | `(-2200,1939.15039,-1024)` |
+
+The selected live top was captured by the game, and its movement changes
+actual X/Z before geometry preparation while preserving the raised display.
+This answers that local possibility positively under the supplied checkpoint.
+It does not supply the low target: actual Y stays high, the first floor query
+finds a floor, and the following action refreshes the display during the same
+update. The useful missing connection is therefore more specific than
+"some earlier movement": it needs movement or support loss that also creates
+the first miss with the required contact and timing. No earlier star/contact
+history or general impossibility follows from these trials.
+
+The complete saved search archive passes its checker, and all 12 validator
+mutation tests pass. The existing Coq boundary passed the baseline audit at
+`build/audit/20260911-155048-rn8o8gfg/`, with 544 registered sources and the
+same nine allowed foundations for the main boundary. This search changes no
+Coq theorem or axiom: its contribution is an original-game experiment and
+reproducible finite evidence about the missing moving-support connection.
 
 ## Verification and limits
 

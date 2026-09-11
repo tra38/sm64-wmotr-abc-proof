@@ -86,14 +86,21 @@ These obligations currently block the clean-retail result.
   cleared pointer; this result assumes no frame for the intervening code.
   It does not derive the earlier live floor selection or a gameplay producer.
 
-- [ ] Find an earlier usable moving support or a specific ordinary replacement
-  of the cleared platform pointer before displacement. Waiting on the static
-  upper-warp floor does not supply either. Check the intervening scheduler
-  calls, actual final floor/owner and display retention together. A loss of
-  moving support is a separate candidate; the dynamic-surface clearing call
-  does not itself remove the static warp floor. Keep the floor-alignment
-  mismatch and other checked wall/support changes open until their producers
-  are derived.
+- [x] Run and check the three-second conditional support search: 68 trials,
+  each with 90 updates after dialog release. In 56, actual position changes
+  while the raised display survives; all still find a floor and refresh display
+  on the first update. The saved receipts and 12 validator tests pass. This is
+  finite runtime evidence, not a new Coq theorem or a clean-reachability result.
+
+- [ ] Turn the conditional moving-support departure into a useful first miss.
+  The [three-second search](../instrumentation/jp-dialog-support-search/README.md)
+  now observes the top moving actual X/Z while its dialog-raised display stays
+  in place. The first query still finds a floor, and the following action
+  refreshes display. The supplied dialog checkpoint is an extra diagnostic
+  assumption, not a constructed reward collection. Other support poses and
+  phases, action changes, and a retained floor-alignment mismatch remain open.
+  The needed continuation must preserve the useful display and contact while
+  actually losing the first floor result; more movement alone is insufficient.
 
 ### Linked retail program and memory simulation
 
