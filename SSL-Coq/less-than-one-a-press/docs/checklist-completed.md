@@ -601,6 +601,24 @@ Completed work is grouped by subject. Each item retains its original scope warni
 
 ## Ink, quicksand, and clean-entry reductions
 
+- [x] Complete the real US/JP display-to-State retry copy and connect it to
+  the second floor call. `InkFloorListEffects.v`, `InkFloorCallEffects.v`
+  and `InkRetryCallCompletion.v` derive position preservation through the
+  actual floor calls and height-result store. `InkVerticalRetryGeometry.v`
+  checks the distinct static-floor and top thresholds and exact-height
+  candidate at X=-2200, Z=-1024. These close local copy/effect and finite
+  geometry cases, not live floor selection or a reachable installation.
+
+- [x] Check the active-dialog interaction obstruction.
+  `InkDialogInteractionGate.v` uses the actual selected US/JP
+  `mario_process_interactions` bodies and constructs the transition past
+  their handler loop when the action read is `ACT_READING_AUTOMATIC_DIALOG`.
+  The local transition makes no memory change and calls no handler, even if
+  a warp contact was cached. It is consumed by the main Ink boundary. The
+  action at this read is an explicit premise; the post-dialog boundary and
+  later capture/retention remain open. See the
+  [conditional installation note](notes/ink-vertical-installation.md).
+
 - [x] Prove that arbitrary prefixes already refined to State-only preserve
   the collision Object/Graphics Y gap exactly and therefore cannot create
   the timer-131 midpoint sample from synchronized entry.

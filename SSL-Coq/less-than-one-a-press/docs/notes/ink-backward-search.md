@@ -1,5 +1,12 @@
 # Working backward from Ink installation
 
+The current task first checks [conditional usefulness of the vertical-only
+setup](ink-vertical-installation.md). The earlier controller history and
+negative seed may be left open while that forward question is answered.
+The historical backward cuts below remain useful for the later clean-route
+question. The full retry copy and floor-call position effects are now checked;
+live floor selection, an eligible warp action and support lifetime remain.
+
 ## The destination we are working backward from
 
 Ink's known supplied setup **bypasses the elevator**; clean installation
@@ -427,7 +434,10 @@ immediately clamped before sinking is not the required surviving seed. The
 [negative-depth audit](negative-quicksand-unreanchored-dialog.md#walking-backward-from-the-first-negative-seed)
 records the chain and its remaining connections.
 
-## The next useful backward cut
+## The later clean-reachability question
+
+Resume this backward search after deciding the supplied candidate's usefulness.
+It is not a prerequisite for the current conditional installation check.
 
 Work backward from the movement/display difference required at the ordinary
 collision copy's entry. Find the last display change and account for every

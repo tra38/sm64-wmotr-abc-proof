@@ -1,5 +1,10 @@
 # Timer-131 pyramid-top surface
 
+For the newer same-X/Z exact-height candidate and the current conditional
+installation question, see [the vertical-installation note](ink-vertical-installation.md).
+The recorded midpoint and low side-face continuations below do not test that
+different point.
+
 ## Result
 
 The timer-131 value-level surface calculation is now closed for both selected

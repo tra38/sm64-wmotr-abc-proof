@@ -27,6 +27,32 @@ Priority means:
 
 These obligations currently block the clean-retail result.
 
+### Current focus: conditional vertical Ink installation
+
+- [ ] Decide whether the [vertical-only candidate](notes/ink-vertical-installation.md)
+  installs a useful JP platform: collision and first-query position
+  `(-2200,768,-1024)`, display `(-2200,1938.8648681640625,-1024)`, at the
+  timer-131 top pose. The low point already satisfies the checked warp-contact
+  geometry. Derive the live ordered floor results and top owner, execute an
+  eligible warp interaction, and check final platform capture and retention
+  through explosion and the warp. The known midpoint recording does not test
+  this different face. Proving the earlier controller history is not required
+  for this conditional decision.
+
+- [ ] Include an eligible action in the supplied conditional setup. The actual US/JP
+  gate now provably skips every handler while the automatic dialog action is
+  still active; changing to idle later in the action loop is too late for that
+  update's interaction pass. Recovering that post-dialog boundary from the
+  actual dialog, with the display still raised, belongs to the later producer
+  question rather than being granted by the action choice.
+
+- [ ] After conditional usefulness is decided, return to clean reachability:
+  a useful negative seed or separate floor-alignment mismatch, the surviving
+  display, wall corrections, top activation and timing. Negative depth may
+  be granted in the immediate usefulness test, even if its seed used A; that
+  does not establish a no-A producer or route. Startup reconstruction and
+  further star-suffix work are not current prerequisites.
+
 ### Linked retail program and memory simulation
 
 - [ ] Complete the remaining work in the seven-step linked gap-closure tranche.
@@ -554,15 +580,14 @@ These obligations currently block the clean-retail result.
   its remaining obligation is universalization, not another replay of the
   same schedule.
 
-- [ ] Connect Ink's new [backward execution cuts](notes/ink-backward-search.md)
-  to the live installer: carry the vector copy's actual Y read back across its
-  preceding local/X stores to the entry Graphics cell, derive the caller's
-  Mario-object identity and copy addresses, and follow the last display or raw
-  Object change through the accepted no-A history. `InkBackwardExecution.v`
-  now separates the actual post-first-query floor test, retry call and copy-Y
-  read/write checkpoints; it does not assume the earlier queries harmless or
-  discharge the remaining memory/producer history. A surviving gap must still
-  meet the pillar/top/warp timing and preserve support into Area 2.
+- [ ] Connect Ink's [backward execution cuts](notes/ink-backward-search.md)
+  to a live installer. The full display-to-State copy, its connection to the
+  real second floor call, and position preservation through both floor calls
+  and the height-result store are checked under their stated storage
+  conditions. Remaining work is live floor selection and ownership, the
+  action/contact gate, and useful platform retention. The last display/raw
+  Object changes and their clean history remain a separate later task; do not
+  repeat the completed copy or query-effect proofs as new progress.
 
 - [ ] Finish the live producer decision for Ink's timer-131 retry.  The new
   `InkTimer131ProducerClosure.v` source/geometry boundary rules out both normal
@@ -763,7 +788,9 @@ These obligations currently block the clean-retail result.
 - [ ] Prove complete current-program writer coverage before using the
   parallel-universe alias-gap subcase globally.
 
-- [ ] Prove or refute the five narrow Ink obligations:
+- [ ] Resolve the remaining older Ink interfaces below after the current
+  conditional vertical test. Their midpoint gap figures do not describe the
+  newer exact-height candidate. For the five narrow Ink obligations,
   the surface, prestate, and writer forms are now proved predicate-sensitive
   schemas rather than closed retail statements.  The older home-pose schema
   requires at least a `973`-unit Graphics-minus-Object Y gap but is rejected at

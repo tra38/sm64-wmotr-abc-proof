@@ -37,6 +37,13 @@ running game**. Ordinary gameplay and defined, in-bounds glitches remain
 the implementation scope. No memory-corruption or code-modification method
 is being developed.
 
+For the current [conditional installation test](ink-vertical-installation.md),
+negative depth may also be granted separately, even if creating that seed
+used A. We first ask whether the supplied raised-position setup would be
+useful. This does not grant a no-A seed, a reachable mismatch, or preservation
+through later gameplay. The earlier-history requirements below apply when
+recovering clean reachability; they do not block this conditional test.
+
 ## Both star-count cases remain available
 
 The game checks whether the new total **crossed** a threshold that the
@@ -70,7 +77,8 @@ depth**. Repeated sinking while the automatic dialog waits can then raise
 the displayed Mario position without repeatedly resetting it. What
 accumulates is the display/position gap, not a newly generated negative
 depth. Thus a helpful star arrangement and a milestone are worth retaining,
-but neither is permission to assume the missing negative seed.
+but neither creates the missing negative seed. The current conditional test
+grants that seed separately as described above.
 
 The grounded star-dance action also calls the ordinary floor/position reset.
 Consequently the common star dance and its save prompt cannot simply be

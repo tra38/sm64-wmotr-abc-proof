@@ -9,7 +9,8 @@ From LessThanOneAPress.Proofs Require Import
   InkActionVisibilityFrame InkBodyResetHistory InkStarDialogFrame InkStarDialogCall
   InkScheduledSharedHistory InkPreparationConstruction InkAcceptedInitialStorage
   InkInputSharedConstruction InkInitialControllerGuard InkInputGeometryHistory InkPostDialogGroundReset
-  InkRetryCompletion InkRetryQuery InkVerticalRetryGeometry InkRetryCallCompletion.
+  InkRetryCompletion InkRetryQuery InkVerticalRetryGeometry InkRetryCallCompletion
+  InkDialogInteractionGate.
 
 Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkLandingHistoryCheckedBoundary /\
@@ -26,7 +27,8 @@ Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkAcceptedInitialInputConstruction /\ InkInitialControllerGuardConstruction /\
   InkInitialInputGeometryHistory /\ InkPostDialogGroundResetBoundary /\
   InkRetryCompletedPosition /\ InkRetrySameRunFloorCall /\ InkVerticalRetryGeometryBoundary /\
-  InkPrimaryQueryPositionFrame /\ InkRetryCompletedQueryPosition.
+  InkPrimaryQueryPositionFrame /\ InkRetryCompletedQueryPosition /\
+  InkDialogInteractionGateBoundary.
 
 Theorem ibh_backward_histories_checked : InkBackwardHistoryCheckedBoundary.
 Proof.
@@ -62,5 +64,6 @@ Proof.
   split; [exact irq_retry_connects_display_to_real_floor_call|].
   split; [exact ivr_vertical_retry_geometry_checked|].
   split; [exact ircq_first_query_preserves_actual_position|].
-  exact ircq_retry_finishes_at_the_copied_display.
+  split; [exact ircq_retry_finishes_at_the_copied_display|].
+  exact idg_automatic_dialog_skips_handler_loop.
 Qed.
