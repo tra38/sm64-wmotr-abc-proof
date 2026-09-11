@@ -543,3 +543,4 @@ proofs/ObjectContactReadback.v
 proofs/ObjectContactPhaseReadback.v
 proofs/MainTheorem.v
 proofs/InkVerticalLiveSelection.v
+proofs/InkWarpStop.v

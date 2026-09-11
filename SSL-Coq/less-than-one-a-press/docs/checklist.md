@@ -49,12 +49,28 @@ These obligations currently block the clean-retail result.
   actual dialog, with the display still raised, belongs to the later producer
   question rather than being granted by the action choice.
 
+- [x] Connect the warp's stopping helper to its completed display reset.
+  The [new proof](../proofs/InkWarpStop.v) checks that the actual speed-setting
+  call leaves position and recorded floor height unchanged. At the copy checkpoint, actual
+  X/Z equal entry X/Z, and actual Y and display Y both equal entry floor
+  height. The helper cannot supply the 152-unit westward departure there.
+  Earlier animation, the remaining angle call, later sinking and the whole
+  gameplay predecessor still need their own checks when used.
+
 - [ ] Construct a gameplay predecessor for the successful setup. The dialog
   exit leaves a possible next-update window, but unchanged static support
   still defeats the first-miss trigger. Check a named pre-action change in
   position or support, or the separate floor-alignment mismatch. The checked
   half-unit sinking calculation raises display from 1280 to 1939 after 1,318
-  operations; it supplies no history and still needs a 512-unit actual drop.
+  operations; that particular candidate supplies no history and still needs
+  a 512-unit actual drop. Starting instead at the upper warp centre
+  `(-2048,768,-1024)` requires a 152-unit westward move, not a vertical drop.
+  The low target alone is insufficient: retain the useful display coordinates,
+  eligible collision contact and top timing. An accepted warp interaction
+  changes the action before walking or crawling; an ordinary quarter-step
+  that finds no floor rejects its attempted endpoint. Floor alignment can
+  retain an incoming mismatch after a blocked step, but supplies neither
+  that mismatch nor the westward displacement by itself.
   Ordinary walls do not lower Y, and the checked west wall pushes the nearby
   sample away from the desired X. Track the produced depth as well: the
   successful supplied fixture had zero depth. Negative depth may be granted

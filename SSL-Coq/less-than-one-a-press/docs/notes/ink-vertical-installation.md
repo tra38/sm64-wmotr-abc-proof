@@ -81,6 +81,61 @@ still finds the static floor. This candidate producer must also lower actual
 Mario by 512 units to Y=768 without losing the display. A large display
 height by itself does not solve that step.
 
+That 512-unit drop belongs only to the proposed Y=1280 starting pose. It is
+not a necessary step in every possible producer. Starting at the upper warp
+centre `(-2048,768,-1024)` instead makes the proposed journey a **152-unit
+westward move at the same height**, ending at `(-2200,768,-1024)`.
+
+### Working backward to the upper warp
+
+The successful endpoint includes more than Mario's low coordinates. The
+stored display must also have the useful high position, and the earlier raw
+collision position must produce an eligible warp contact at the right top
+timing. The retry copies all three display coordinates. Moving actual Mario
+west while leaving display X at the warp centre would therefore be a
+different candidate, requiring its own floor and contact check.
+
+For ordinary contact, the upper warp does not randomly stop Mario. Once its
+non-fading handler accepts the contact, it sets the disappeared action before
+ordinary action movement. That action stops Mario and snaps him to his
+cached floor, then copies the result to display. Walking or crawling is not
+an extra movement opportunity after that accepted contact. The pre-action
+geometry preparation happens earlier, which is why the supplied successful
+retry can still work before the stopping action.
+
+Suppressing that interaction does not by itself supply a path west. If an
+ordinary ground quarter-step queries the low target and finds no floor, it
+returns before committing the attempted position. If a step instead leaves
+the ground, the crawling and sliding callers skip floor alignment. A blocked
+step can retain an incoming movement/floor mismatch, but that mismatch still
+needs a producer. Alignment's floor snap changes Y; it cannot supply the
+152-unit X change. Its terrain matrix is separate from the stored display
+position used by the retry.
+
+The useful search is therefore for a named change **before** the first
+geometry query or before an eligible warp interaction: for example a real
+platform displacement, a checked wall correction, a loss of support, or a
+different action/contact history that creates and retains the mismatch.
+The checked nearby west wall pushes Mario east and ignores the target point;
+it is not such a producer. These are remaining obligations, not established
+ways to reach the endpoint. The two coordinates alone do not establish either
+reachability or impossibility for all gameplay states at the upper warp.
+
+The [stopping-helper proof](../../proofs/InkWarpStop.v) follows the actual
+US/JP helper from entry through its speed setter, floor snap and completed
+display copy. It derives the speed setter's effects instead of assuming it
+leaves position alone. At that copy checkpoint, actual X/Z still equal the
+helper's entry X/Z, and actual Y and display Y both equal its entry floor
+height. With entry X=-2048 and floor height 768, that reset cannot supply
+either X=-2200 or the old high display. If the helper instead receives the
+top's floor height after a successful retry, the same snap puts actual and
+displayed Y at that height; stopping is compatible with the installation.
+The proof retains the remaining angle-setting call without assuming its
+effects. It does not establish what an earlier animation call or the later
+warp preserves. Later negative-depth sinking may create a new offset. This closes the
+named stopping/reset producer at its copy checkpoint, not every continuation
+from the warp or every floor-alignment producer.
+
 The source and existing proofs narrow the predecessor search:
 
 | Earlier operation | What it can supply, and the remaining obstacle |
@@ -119,5 +174,12 @@ build and integration, no proof holes, and only existing allowed foundations
 Runtime success, the finite snapshot certificate, and the earlier local
 Clight proofs are separate results. Clean reachability and the whole route
 remain open.
+
+The later stopping-helper audit passed at
+`build/audit/20260911-134733-hxn2pcvu/`: 542 registered sources, successful
+build and integration, no proof holes, and only existing allowed foundations
+(nine for the main boundary, seven for the stopping theorem, four for the
+finite floor certificate). It checks the new entry-to-copy connection; it
+does not turn the remaining gameplay-producer question into a disproof.
 
 [Return to the atlas](../no-a-route-atlas.md#route-rank-2)

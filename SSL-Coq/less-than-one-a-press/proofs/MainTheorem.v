@@ -1194,8 +1194,16 @@ Qed.
     This position result does not require assuming harmless callee effects.
     The primary query and its height store also preserve actual X/Y/Z, so
     those statements cannot supply the needed change of actual position.
-    Clean arrival with the needed display height, the live list/owner result,
-    and the later top/warp continuation remain unproved. *)
+    A finite recorded JP floor-list certificate now checks the vertical
+    candidate's top selection. A separate conditional JP runtime receipt
+    observes the installation and first Area-2 displacement; it is not a
+    full Clight execution of those live lists or the warp continuation.
+    The warp's stopping helper now has a real entry-to-completed-copy
+    checkpoint: its velocity setter cannot change position or cached floor,
+    X/Z remain the helper's entry X/Z, and both State Y and display Y equal
+    its entry floor height. The remaining angle call is retained explicitly.
+    Clean arrival with the needed display, contact, depth and timing remains
+    open; these results do not exclude all controller-reachable producers. *)
 Theorem current_ink_backward_execution_boundary : InkBackwardHistoryCheckedBoundary.
 Proof. exact ibh_backward_histories_checked. Qed.
 
