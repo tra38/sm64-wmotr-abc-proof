@@ -1,11 +1,14 @@
 # Working backward from Ink installation
 
-The current task first checks [conditional usefulness of the vertical-only
-setup](ink-vertical-installation.md). The earlier controller history and
-negative seed may be left open while that forward question is answered.
-The historical backward cuts below remain useful for the later clean-route
-question. The full retry copy and floor-call position effects are now checked;
-live floor selection, an eligible warp action and support lifetime remain.
+The [vertical-only setup](ink-vertical-installation.md) now succeeds in a
+conditional original-JP test: the actual first miss, live top selection,
+idle-to-warp interaction, retention and true first Area-2 displacement are
+recorded. Coq separately checks its complete ordered floor snapshot. The
+current task walks backward toward gameplay creation of the display gap and
+floorless actual position. Negative depth may still be granted during that
+transfer investigation; a no-A seed remains separate. The older cuts below
+are retained, and their midpoint coordinates should not be confused with
+the new vertical-only target.
 
 ## The destination we are working backward from
 

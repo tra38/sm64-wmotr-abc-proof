@@ -1,116 +1,123 @@
-# Would the raised-position setup install Ink?
+# The vertical Ink setup works conditionally in JP
 
-## The question now
+The supplied vertical-only setup now has a successful original-JP test.
+The first floor query misses, the retry selects the live pyramid top, Mario
+processes the warp, and the top remains his remembered platform through its
+explosion and the warp. The first Area-2 platform update moves him outside
+the elevator. This answers the conditional usefulness question. It does not
+establish that gameplay creates the supplied state or that either target
+star can be collected without a new A press.
 
-First decide whether a supplied setup is useful. We do not need to prove its
-earlier controller history to answer that conditional question. Negative
-depth may be granted for this test even if obtaining it used A. A successful
-test would establish a conditional mechanism; recovering a clean no-A setup
-would be a separate task. The grant does not make later floor selection,
-warp activation or platform retention automatic.
+## The tested starting state
 
-The older [midpoint setup](ink-area2-arrival-video.md) already has a recorded
-conditional JP elevator bypass. The newer vertical-only point below has not
-been validated through that continuation. Its initial geometry is promising,
-but coordinates alone do not specify an Ink installation.
+All positions are **(X, Y, Z)**. Immediately before the timer-131 top update:
 
-## The vertical-only candidate
-
-All positions are **(X, Y, Z)**. At the relevant timer-131 update, consider:
-
-| Reading | Candidate position |
+| Reading | Supplied position |
 | --- | --- |
-| Raw collision position, when object contacts are collected | `(-2200, 768, -1024)` |
-| Actual position, after the two wall corrections and before the first floor query | `(-2200, 768, -1024)` |
-| Stored display position, when a failed first query starts the retry | `(-2200, 1938.8648681640625, -1024)` |
+| Raw collision position | `(-2200, 768, -1024)` |
+| Actual position | `(-2200, 768, -1024)` |
+| Stored display position | `(-2200, 1938.8648681640625, -1024)` |
 
-The low point can itself overlap the upper warp: it is 152 units from the
-warp centre, within the combined radius `150 + 37 = 187`, with overlapping
-heights. A separate horizontal difference between collision and actual
-position is therefore **not required by this contact test**. This does not
-establish that the warp is active, both objects are tangible, collision-list
-space is available, or the contact is processed.
+The test reuses the existing declared fixture to complete the pillar puzzle
+and supply these positions, with the remembered platform cleared. It inherits
+idle from the game and observes quicksand depth zero. It supplies no floor,
+surface owner, disappeared action or warp outcome. Thus this receipt tests
+the raised-display boundary, not a negative-depth or dialog history. A future
+producer must also account for the depth and other state it actually leaves.
 
-The checked static mesh and timer-131 top both miss the first low query.
-At the high query, the checked top face is eligible and higher than the
-checked static floor. The display height is exactly that face's binary32
-height, bits `0x44f25bad`; the required display/actual gap is
-`1170.8648681640625`. The real retry copy transfers all three coordinates,
-and the completed floor call and height-result store preserve them.
-These results still leave live floor-list contents, order and ownership open.
+The low point is 152 units from the upper warp centre, inside the combined
+collision radius of 187. Both collision and actual position use the low
+point; no separate collision-centre placement is needed. The displayed Y has
+bits `0x44f25bad` and is exactly the checked top height. Its gap above actual
+Y is `1170.8648681640625`.
 
-The high point is on a different face from the recorded midpoint
-`(-1862,1778,-902)`. That recording's successful retention cannot be assigned
-to this new point without checking its continuation.
+## What the game did
 
-## An active dialog blocks the warp interaction
+The read-only query observations show that the wall calls leave the low
+point unchanged. The first query returns no floor. The retry then queries
+the exact high point and returns a surface owned by the top. The final
+platform query in that update also returns the top; Mario's action is now
+disappeared. These are observations of the actual calls, not deductions
+from a later position sample.
 
-`ACT_READING_AUTOMATIC_DIALOG` includes the intangible flag. When the
-interaction gate reads that action, it skips the entire handler loop,
-including any cached warp contact. The new
-[interaction-gate proof](../../proofs/InkDialogInteractionGate.v) constructs
-that transition in the actual selected US/JP body, with no memory change
-and no handler call. It assumes the action value at this particular read;
-it does not assume that earlier calls preserve it.
+The complete ordered lists at the first two query returns contain four
+dynamic floors and 26 static floors, with matching links and surface data.
+The new [Coq certificate](../../proofs/InkVerticalLiveSelection.v) checks
+their order and mesh identity, evaluates the floor-test expressions extracted
+from the generated US/JP code, and checks the real dynamic-versus-static
+comparison. At Y=768 both lists miss; at the raised query the top wins over
+the static floor at Y=1280. This closes the finite snapshot-selection question.
+It is not a full Clight execution proof of traversing the live memory lists.
 
-Interactions run before the action loop. Consequently, an update that is
-still reading the automatic dialog at the interaction gate cannot use a
-change to idle later in that update to retroactively process the warp.
-The conditional setup must provide an action that permits the warp handler
-when interactions are checked, or establish a later valid warp contact.
-This closes the active-dialog interaction case, not the post-dialog route.
+All 21 recorded Area-1 polls from 493 through 513 retain the top. On poll 513
+the top is inactive and in the free list. The actual first Area-2 platform
+call, on timer 515, still uses that retired top and moves Mario from
+`(0,5500,256)` to `(365.5927734375,5500,-1096.8026123046875)`. The later short
+stick continuation reaches one puzzle secret. No A press or held A is
+observed after the supplied boundary. This recording does not collect a
+target star, and the JP result does not transfer to US, whose entry code
+clears the remembered platform.
 
-## What must follow the retry
+The [probe, saved receipt and checker](../../instrumentation/jp-vertical-retry/README.md)
+make this reproducible with the authenticated original JP ROM. The earlier
+successful midpoint and failed lower side-face tests remain useful contrasts;
+their outcomes are no longer being substituted for this new point's outcome.
 
-The useful sequence is: the first query fails; the retry selects the live
-top; an eligible cached warp interaction selects the disappeared action;
-that action snaps actual Y to the returned floor and refreshes the display;
-the ordinary collision-position copy follows; and the final platform query
-selects a top-owned floor within four units of Mario. That last query sets
-the remembered platform. The floor retry alone does not set it.
+## Working backward toward a gameplay producer
 
-Exact-height display removes the initial vertical contact discrepancy if the
-checked top is selected. Display Y=1861 merely enters the 78-unit floor-search
-allowance, leaving Mario about 77.865 units below the face until some later
-operation snaps him. The disappeared action is such an operation when it
-actually executes. Reaching actual Y=1202 instead already makes the checked
-static floor eligible and removes the proposed failed-first-query trigger.
+The upward transfer is the failed-floor retry itself. The successful test
+starts idle with neutral input in Area 1; it needs no jump or ordinary upward
+movement once the raised display exists. Working backward therefore means
+finding where that display came from and how actual Mario becomes floorless
+before an ordinary action replaces it.
 
-After initial capture, check this point through spinning timers 131 to 150,
-the explosion update, the final queries and the delayed warp. An older low
-side-face test captured the top initially but lost it at timer 138, so this
-is a substantive test. The successful supplied midpoint has JP retention
-and an Area-2 displacement; US clears the remembered platform on entry and
-does not inherit that JP result.
+A concrete arithmetic target is now checked: with depth `-0.5`, 1,318
+uninterrupted sink subtractions raise display from Y=1280 to Y=1939. The
+recorded floor lists still select the same top at Y=1939, just over 0.135 units
+below the display and inside the four-unit contact tolerance. This is a
+finite binary32 calculation, not a claim that 1,318 gameplay updates with
+those conditions have been constructed. At the same X/Z, actual Y=1280
+still finds the static floor. This candidate producer must also lower actual
+Mario by 512 units to Y=768 without losing the display. A large display
+height by itself does not solve that step.
 
-## Next decision and evidence
+The source and existing proofs narrow the predecessor search:
 
-The next deliverable is a conditional forward check of this exact candidate:
-identify the live ordered floor results and top owner, process the warp under
-an eligible action, then determine whether support survives to the JP warp
-continuation. List any required remaining state explicitly. Creating the
-negative seed, preserving the raised display while reaching the low pose,
-and finding a no-A controller history remain open, but are not prerequisites
-for this conditional test.
+| Earlier operation | What it can supply, and the remaining obstacle |
+| --- | --- |
+| Milestone dialog with existing negative depth | Repeated sinking can raise display while the dialog has no direct position refresh. The star dance refreshes display before the automatic-dialog interval; that refresh is the starting point to track. A valid reward contact and surviving negative depth are still required. |
+| Waiting during the dialog | Time stop can freeze ordinary terrain updates, so waiting need not consume the top's spinning timer. It also disables remembered-platform displacement while active. The actual stop flags and object state must support that schedule. |
+| Finishing the dialog | The handler changes to idle at state 25 and returns false. It does not request an idle movement pass in the same update. That leaves a possible next-update window, but does not move Mario into a floorless position. |
+| Closing the dialog while standing on unchanged static support | The next first query still finds that floor. At `(-2200,1280,-1024)` the static floor is already eligible, so the raised display is not used by the retry. Waiting alone at this pose is insufficient. |
+| Pre-action wall correction | The normal wall code changes X/Z, not Y. The checked west wall pushes the nearby `X=-2199` sample to `-2099`; it ignores `-2200`. That wall does not supply the proposed downward move or the required westward step. Other full wall sequences need their own check. |
+| Remembered-platform movement after time resumes | This runs before object contacts and the geometry queries, making it a possible place for actual position to change before display refresh. It needs a real earlier platform capture. The top's yaw motion does not add its vertical speed directly; a low static floor supplies no platform owner. |
+| Ordinary walking, crawling or sliding | A completed ground step refreshes display from the movement position. Stored speed cannot be spent before the pre-action query. A failed quarter-step query is a different event and does not substitute for this retry. |
+| A retained floor-alignment mismatch | Alignment can lower actual Y after the ground step has copied a higher movement position to display. The large movement/floor disagreement and its surviving floorless endpoint remain unconstructed; this stays a separate candidate. |
 
-The position and finite-geometry results are in
-[InkRetryCallCompletion.v](../../proofs/InkRetryCallCompletion.v) and
-[InkVerticalRetryGeometry.v](../../proofs/InkVerticalRetryGeometry.v).
-The low-point warp-contact arithmetic already appears in
-`ink_geometry_kernel_checked` in [InkFallback.v](../../proofs/InkFallback.v).
-The recorded retention contrast is in [the timer-131 note](timer131-surface.md).
-Source review used the actual generated US/JP interaction and platform
-bodies, alongside `mario.c`, `interaction.c`, `mario_actions_cutscene.c`,
-`object_collision.c` and `platform_displacement.c` in the decompilation.
-The local C warp file also contains a conditional TAS-only block; the
-generated warp bodies used here have the ordinary radius calculation and
-do not contain that block.
+An active automatic dialog also skips object interaction handlers, including
+the warp. The [generated interaction-gate proof](../../proofs/InkDialogInteractionGate.v)
+closes that local case. Changing to idle later in the same update cannot
+retroactively process the earlier contact. A dialog-based producer needs a
+usable contact after release, together with the useful gap and first miss.
 
-The selected pipeline audit passed on 2026-09-11, including the integrated
-main boundary, the new dialog gate, completed retry and finite geometry.
-Its report is `build/audit/20260911-103945-yu1k_vpo/`; all 540 registered
-source files passed the inventory and discipline checks, and the four
-assumption reports use only existing allowed foundations. This verifies the
-stated local results, not the new point's installation or clean reachability.
+The next concrete connection is a supported dialog endpoint followed by a
+named pre-action change in position or support, or a reachable floor-alignment
+mismatch. No such controller sequence is established. Negative depth may
+still be granted while testing that transfer; producing it without A is a
+separate obligation. Startup reconstruction and a new star-suffix search
+are not prerequisites.
+
+## Verification and limits
+
+The runtime checker passes the saved receipt and rejects altered first-query,
+owner, list-link, retention, first-displacement and A-input evidence. The
+finite Coq certificate is consumed by `InkBackwardHistory` and the selected
+main boundary. The selected pipeline audit passed at
+`build/audit/20260911-112438-k20_z7no/`: 541 registered sources, successful
+build and integration, no proof holes, and only existing allowed foundations
+(nine for the main boundary, four for the new certificate).
+Runtime success, the finite snapshot certificate, and the earlier local
+Clight proofs are separate results. Clean reachability and the whole route
+remain open.
 
 [Return to the atlas](../no-a-route-atlas.md#route-rank-2)

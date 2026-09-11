@@ -29,29 +29,38 @@ These obligations currently block the clean-retail result.
 
 ### Current focus: conditional vertical Ink installation
 
-- [ ] Decide whether the [vertical-only candidate](notes/ink-vertical-installation.md)
+- [x] Decide whether the [vertical-only candidate](notes/ink-vertical-installation.md)
   installs a useful JP platform: collision and first-query position
   `(-2200,768,-1024)`, display `(-2200,1938.8648681640625,-1024)`, at the
-  timer-131 top pose. The low point already satisfies the checked warp-contact
-  geometry. Derive the live ordered floor results and top owner, execute an
-  eligible warp interaction, and check final platform capture and retention
-  through explosion and the warp. The known midpoint recording does not test
-  this different face. Proving the earlier controller history is not required
-  for this conditional decision.
+  timer-131 top pose. The original-JP receipt now observes the first miss,
+  live top selection, warp interaction, 21 retained Area-1 polls, explosion
+  and the true first Area-2 displacement. The new Coq certificate checks all
+  four dynamic and 26 static floors in the recorded ordered lists against
+  generated expressions and the existing meshes. This is conditional runtime
+  success plus a finite certificate, not a complete Clight traversal or
+  gameplay construction of the supplied state.
 
-- [ ] Include an eligible action in the supplied conditional setup. The actual US/JP
-  gate now provably skips every handler while the automatic dialog action is
+- [x] Include an eligible action in the supplied conditional setup. The test
+  inherits idle and observes zero depth; no action or floor is supplied.
+  Area 1 uses neutral controls and the continuation observes no A.
+  The actual US/JP gate provably skips every handler while the automatic dialog action is
   still active; changing to idle later in the action loop is too late for that
   update's interaction pass. Recovering that post-dialog boundary from the
   actual dialog, with the display still raised, belongs to the later producer
   question rather than being granted by the action choice.
 
-- [ ] After conditional usefulness is decided, return to clean reachability:
-  a useful negative seed or separate floor-alignment mismatch, the surviving
-  display, wall corrections, top activation and timing. Negative depth may
-  be granted in the immediate usefulness test, even if its seed used A; that
-  does not establish a no-A producer or route. Startup reconstruction and
-  further star-suffix work are not current prerequisites.
+- [ ] Construct a gameplay predecessor for the successful setup. The dialog
+  exit leaves a possible next-update window, but unchanged static support
+  still defeats the first-miss trigger. Check a named pre-action change in
+  position or support, or the separate floor-alignment mismatch. The checked
+  half-unit sinking calculation raises display from 1280 to 1939 after 1,318
+  operations; it supplies no history and still needs a 512-unit actual drop.
+  Ordinary walls do not lower Y, and the checked west wall pushes the nearby
+  sample away from the desired X. Track the produced depth as well: the
+  successful supplied fixture had zero depth. Negative depth may be granted
+  while investigating transfer, even if its seed used A; a no-A seed remains
+  a separate obligation. Startup and further star-suffix work are not current
+  prerequisites.
 
 ### Linked retail program and memory simulation
 
@@ -584,10 +593,12 @@ These obligations currently block the clean-retail result.
   to a live installer. The full display-to-State copy, its connection to the
   real second floor call, and position preservation through both floor calls
   and the height-result store are checked under their stated storage
-  conditions. Remaining work is live floor selection and ownership, the
-  action/contact gate, and useful platform retention. The last display/raw
-  Object changes and their clean history remain a separate later task; do not
-  repeat the completed copy or query-effect proofs as new progress.
+  conditions. The vertical-only JP receipt now observes live selection,
+  an idle-to-warp interaction and useful retention; its complete ordered
+  snapshot has a source-linked Coq certificate. The remaining formal lift is
+  the live traversal and continuous execution, while the current gameplay
+  search concerns creation of the last display/raw-Object difference. Do not
+  repeat completed copy, query-effect or supplied-pose tests as new progress.
 
 - [ ] Finish the live producer decision for Ink's timer-131 retry.  The new
   `InkTimer131ProducerClosure.v` source/geometry boundary rules out both normal

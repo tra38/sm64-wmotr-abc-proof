@@ -10,7 +10,7 @@ From LessThanOneAPress.Proofs Require Import
   InkScheduledSharedHistory InkPreparationConstruction InkAcceptedInitialStorage
   InkInputSharedConstruction InkInitialControllerGuard InkInputGeometryHistory InkPostDialogGroundReset
   InkRetryCompletion InkRetryQuery InkVerticalRetryGeometry InkRetryCallCompletion
-  InkDialogInteractionGate.
+  InkDialogInteractionGate InkVerticalLiveSelection.
 
 Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkLandingHistoryCheckedBoundary /\
@@ -28,7 +28,7 @@ Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkInitialInputGeometryHistory /\ InkPostDialogGroundResetBoundary /\
   InkRetryCompletedPosition /\ InkRetrySameRunFloorCall /\ InkVerticalRetryGeometryBoundary /\
   InkPrimaryQueryPositionFrame /\ InkRetryCompletedQueryPosition /\
-  InkDialogInteractionGateBoundary.
+  InkDialogInteractionGateBoundary /\ InkVerticalLiveSelectionBoundary.
 
 Theorem ibh_backward_histories_checked : InkBackwardHistoryCheckedBoundary.
 Proof.
@@ -65,5 +65,6 @@ Proof.
   split; [exact ivr_vertical_retry_geometry_checked|].
   split; [exact ircq_first_query_preserves_actual_position|].
   split; [exact ircq_retry_finishes_at_the_copied_display|].
-  exact idg_automatic_dialog_skips_handler_loop.
+  split; [exact idg_automatic_dialog_skips_handler_loop|].
+  exact ivl_vertical_live_selection_checked.
 Qed.

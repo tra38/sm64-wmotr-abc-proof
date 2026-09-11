@@ -542,3 +542,4 @@ proofs/InkBackwardHistory.v
 proofs/ObjectContactReadback.v
 proofs/ObjectContactPhaseReadback.v
 proofs/MainTheorem.v
+proofs/InkVerticalLiveSelection.v

@@ -177,11 +177,12 @@ The detailed sections are organized as:
   displacement, including the three upper-warp frames; only a materially
   different clean history or an all-history proof remains for ranks 5 and 5A.
 - **Ink is the leading concrete installer design:** its timer-131 Graphics
-  retry has a recorded conditional JP elevator bypass from the supplied
-  midpoint setup. The current question is whether a different, vertical-only
-  setup also works. Its low point can touch the warp, but the action must
-  permit interaction and the top must remain captured. Clean creation of
-  either setup remains open.
+  retry now has recorded conditional JP elevator bypasses from both the
+  supplied midpoint and vertical-only setups. The latter starts idle, selects
+  the live top, and retains it through the explosion and warp without A.
+  The current question is how gameplay creates the display gap and a failed
+  first floor lookup before the display is refreshed. Clean creation remains
+  open.
 - **The signed-16 State alias remains rank 3 for proof value, not because a
   stock installation looks likely:** its exact payload works, but every
   installation in the audited stock scheduler and surface-owner model fails.
@@ -245,7 +246,7 @@ judgment, not new execution evidence.
 | Overall | Family | Approach | Current counterexample promise | % Chance of Counterexample |
 |---:|---|---|---|---|
 | 1 | JP stale-platform lineage | 🎮 [Different collision/query samples, then read the inactive unreused top payload](#route-rank-1) | Very low currently; exact high-payoff JP mechanism if another clean history breaks a checked boundary | 1–2% |
-| 2 | Ink installation | 🎮 [Timer-131 non-null Graphics retry](#route-rank-2) | Very low for a clean route; midpoint bypass recorded, vertical-only setup still needs a conditional capture-and-retention check | 1–2% |
+| 2 | Ink installation | 🎮 [Timer-131 non-null Graphics retry](#route-rank-2) | Very low for a clean route; midpoint and vertical-only JP bypasses recorded, gameplay creation of the gap remains open | 1–2% |
 | 3 | State-first installation | 🎮 [Finite signed-16 nonlocal-State alias](#route-rank-3) | Very low in the audited stock model; exact injected payload | <1% |
 | 4 | JP stale-platform lineage | 🎮 [Move the warp/top or create a collision-preserving clone](#route-rank-4) | Very low on the checked clean route; the warp never moves or gains collision, and every top-slot reuse first loses the top collision | <1% |
 | 5 | State-first installation | 🎮 [Post-copy State-only writer in a later callback or descendant](#route-rank-5) | Very low on the checked clean run; another history must expose the first late write, wrong receiver, or lifetime failure | <1% |
@@ -270,7 +271,7 @@ judgment, not new execution evidence.
 | 16 | Goomba / PU transport | 🎮 [Goomba raising, PU transport, and Spindel handoff](#route-rank-16) | Very low; both finite top-window timing classes are refuted, and the generous revised case reaches only Y=1017 | <1% |
 | 17 | JP stale-platform lineage | 🎮 [Fresh same-slot replacement payload](#route-rank-17) | Low abstractly; absent in the authenticated best trace | <1% |
 | 18 | State-first installation | 🎮 [Skipped, wrong-index, or redirected State-to-Object copy](#route-rank-18) | Very low; tested copies are exact, and the second-state read cannot succeed in the initialized proof model | <1% |
-| 19 | Ink installation | 🎮 [Negative quicksand depth plus stalled automatic dialog](#route-rank-19) | Very low for a clean route; depth may be granted for the usefulness test, but the active dialog blocks warp interactions | <1% |
+| 19 | Ink installation | 🎮 [Negative quicksand depth plus stalled automatic dialog](#route-rank-19) | Very low for a clean route; supplied display works, but the post-dialog floorless arrival remains open | <1% |
 | 20 | Ink installation | 🎮 [Mario behavior flag plus a large graphical Y offset](#route-rank-20) | Very low; ordinary stock writers are excluded | <1% |
 | 21 | Ink installation | 🎮 [Non-stock Graphics anchor or spawned anchor actor](#route-rank-21) | Very low; the required parent actors are absent from stock Area 1 | <1% |
 | 22 | Eyerok | 🎮 [Second-hand ceiling to the Area-2 Y=1280 tier](#route-rank-22) | Very low under the checked height and speed bounds | <1% |
@@ -319,10 +320,11 @@ Rank 19's negative-depth history is valuable as possible branch closure, not
 because a clean negative seed looks likely. An open proof condition is not
 positive evidence of a counterexample.
 
-**The current focused task is conditional Ink usefulness:** grant the
-negative depth and candidate raised display, then check whether the supplied
-pose leads to capture and useful retention. Earlier no-A reachability is a
-separate question to resume after that decision. See the
+**The vertical-only Ink setup now works conditionally in JP.** The focused
+task is to walk backward toward gameplay creation: obtain the raised display,
+finish the dialog under an eligible action, and change actual position or
+support before ordinary movement refreshes the display. A negative seed may
+still be granted while testing that transfer. See the
 [vertical-installation note](notes/ink-vertical-installation.md).
 
 **7 and 8 remain valuable downstream continuations; 9 stays parked until an
@@ -575,13 +577,13 @@ Technical background: [Ink fallback](notes/ink-fallback.md),
 ### 🎮 Timer-131 non-null Graphics retry
 
 **Overall rank: 2. Family priority: 1. Likelihood: very low for a clean
-producer; midpoint payoff recorded, vertical-only continuation open.**
+producer; midpoint and vertical-only conditional payoffs recorded.**
 
 **In plain language.** Let Mario touch the upper warp at a low position where his first floor lookup fails, while his stored display position is high on the spinning top. The retry moves him to the display position. If he can process the warp interaction and keep the top as his platform, JP can carry its leftover movement into the pyramid.
 
-**What is already known.** The supplied midpoint setup [bypasses the elevator in JP](notes/ink-area2-arrival-video.md); an earlier lower point captures the top but loses it before the warp. The [vertical-only candidate](notes/ink-vertical-installation.md) uses low position `(-2200,768,-1024)` and display `(-2200,1938.8648681640625,-1024)`. The low point can itself touch the warp, and the raised point matches the checked top height. The retry copy and floor calls preserve the transferred coordinates, but live floor selection and this point's later support remain unproved. An active automatic dialog skips warp interactions. Ordinary ground movement refreshes the display; the pre-action retry comes earlier. No clean producer of the required gap is known.
+**What is already known.** Both the supplied midpoint and the [vertical-only setup](notes/ink-vertical-installation.md) now bypass the elevator in JP. The latter uses actual and collision position `(-2200,768,-1024)` and display `(-2200,1938.8648681640625,-1024)`. Starting idle, the real retry selects the live top, retains it through the explosion and warp, and applies its leftover movement in Area 2 without A input. Coq separately checks the recorded floor lists against the generated code and existing mesh results. The setup was supplied with zero depth; it is not a dialog-produced state. Ordinary ground movement refreshes the display, while the pre-action retry comes earlier. No clean producer of the required gap is known.
 
-**What closes it.** First answer the conditional question: with the candidate positions supplied, check the live top selection, an action that permits the cached warp contact, and platform retention through the timed disappearance and JP entry. This does not require proving the earlier controller history or negative seed. If the setup works, return to whether normal gameplay can create it and preserve the raised display through wall corrections and top timing without a new A press. Negative depth and floor alignment remain separate possible producers. A failed candidate closes only that candidate; closing the whole route requires covering every surviving producer. Startup reconstruction and another downstream-star search are not prerequisites.
+**What closes it.** Work backward from the successful setup to a gameplay producer: a raised display, an eligible warp contact, and actual position or support changing before the next first floor lookup. Waiting on unchanged static support does not trigger the retry, and walking normally replaces the display. Negative depth and a retained floor-alignment mismatch remain separate candidates. The produced state's depth, wall corrections and top timing must also fit the successful continuation. The conditional test is complete; clean reachability and the whole route remain open. Closing the route requires covering every surviving producer, not merely failing to find one. Startup reconstruction and another downstream-star search are not prerequisites.
 
 **Are counterexamples likely?** Unlikely, despite a concrete payoff from the supplied setup. A large difference between Mario's display and collision heights must first arise cleanly and survive until the retry. Floor alignment and negative depth are candidates, not demonstrated producers.
 
@@ -592,13 +594,13 @@ producer; midpoint payoff recorded, vertical-only continuation open.**
 ### 🎮 Negative quicksand depth plus stalled automatic dialog
 
 **Overall rank: 19. Family priority: 2. Likelihood: very low for a clean seed;
-conditional post-dialog installation remains open.**
+the supplied display works, but its post-dialog producer remains open.**
 
 **In plain language.** Make quicksand depth negative, then remain in a dialog state that repeatedly raises Mario's displayed position without snapping it back; this can build either the large Ink gap needed in Area 1 or, hypothetically, the much smaller height needed below an Area-2 star, but the displayed height must still be copied into Mario's real collision position before it can collect anything.
 
-**What is already known.** A stalled milestone dialog can amplify an existing negative-depth display gap, but no clean no-A negative seed is known. The [reward allowance](notes/ink-conditional-100-coin-setup.md) retains valid coin/star contact and both milestone outcomes; negative depth is separately granted for the current usefulness test. The real pre-action retry can transfer a raised display into actual position before ordinary movement refreshes it. However, while the automatic dialog action remains active, its interaction gate skips every object handler, including the warp. Changing to idle later in that update does not rerun interactions. The useful post-dialog pose and its continuation remain open.
+**What is already known.** A stalled milestone dialog can amplify an existing negative-depth display gap, but no clean no-A negative seed is known. The [reward allowance](notes/ink-conditional-100-coin-setup.md) retains valid coin/star contact and both milestone outcomes. The [supplied vertical display](notes/ink-vertical-installation.md) now gives a useful JP installation, tested from idle with zero depth. During the actual automatic dialog, warp interactions are skipped; its final change to idle does not run ordinary movement in that same update. This leaves a possible next-update transfer window, but neither the floorless actual position nor its coexistence with the raised display has been derived from gameplay.
 
-**What closes it.** For the current conditional test, grant the negative seed and decide whether the resulting raised display can support the [vertical installation](notes/ink-vertical-installation.md) with an eligible action, live top and useful retention. A full earlier no-A history is unnecessary for that decision. If it works, recover the post-dialog timing and preserved gap, then prove or refute clean creation of the seed from the accepted normal SSL start. The earlier landing and controller results remain available for that later reachability question. The active-dialog interaction case is closed; the post-dialog producer and whole route are not.
+**What closes it.** Recover the post-dialog transfer before returning to the seed question. Track the last display refresh, the stalled dialog and its release, then find a real pre-action movement or loss of support that triggers the useful retry. A checked half-unit sinking example can reach a suitable display height from supported Y=1280, but still needs actual Mario lowered by 512 units without erasing that display. The resulting depth and remaining state must support the continuation. Negative depth may be granted for this investigation; later prove or refute its no-A creation from the accepted normal SSL start. The active-dialog interaction case is closed; the post-dialog producer and whole route are not.
 
 **Are counterexamples likely?** Very unlikely, but not yet disproved across the full input history. Local landing and controller results do not yet show that the first useful negative depth always requires a new A press. Even a surviving seed would still need useful dialog timing and transport.
 
