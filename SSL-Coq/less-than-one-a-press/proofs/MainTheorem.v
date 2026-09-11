@@ -42,7 +42,7 @@ From LessThanOneAPress.Proofs Require Import
   Area2Rank9ACoinProducers Area2Rank9ACoinLaunch Area2Rank9ACoinFlight
   Area2Rank10AGroundPound Area2Rank12BContact Area2Rank9UpperStarDance Area2Rank9StarTiming
   Area2Rank9APreHomeMovement
-  Area2Rank10AEntryChecks
+  Area2Rank10AEntryChecks Area2Rank10ASupportChange
   ObjectContactNecessity ObjectContactReadback ObjectContactPhaseReadback
   ContactConsumerSource ContactConsumerExecution ContactCreditExecution
   SecretContactExecution
@@ -851,11 +851,17 @@ Qed.
     The new nominal-cycle check covers start/stop jolts and waits, and the
     actual floor-distance guard executes its false branch under the stated
     same-base projection. All six stock hangable faces miss the bucket.
-    Live timing/base agreement and a fresh ceiling remain obligations. *)
+    The backward support census now excludes high static supports within the
+    bucket interior and proves base coverage. The actual floor arbitration
+    selects and writes the dynamic answer when its loaded height dominates.
+    Live base availability, rounded static heights, timing and fresh ceiling
+    selection remain obligations; the geometry certificate is not a route. *)
 Theorem current_rank10a_ground_pound_moving_geometry_boundary :
-  Rank10AGroundPoundBoundary /\ Rank10AEntryChecksBoundary.
-Proof. split; [exact rank10a_ground_pound_boundary_checked |
-  exact rank10e_entry_checks_boundary_checked]. Qed.
+  Rank10AGroundPoundBoundary /\ Rank10AEntryChecksBoundary /\ Rank10ASupportChangeBoundary.
+Proof.
+  split; [exact rank10a_ground_pound_boundary_checked|].
+  split; [exact rank10e_entry_checks_boundary_checked|exact rank10s_support_boundary_checked].
+Qed.
 
 (** Rank 12B does not presume that target contact entails a gate crossing.
     The actual selected radius-test tail rejects every standard target from

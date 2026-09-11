@@ -1002,6 +1002,21 @@ These obligations materially strengthen the proof but are not the shortest route
   Graphics-minus-Object bound of at most `45` or the conservative modeled
   relation bound of at most `208` for every reachable writer.
 
+- [x] Work backward on Rank 10A's alternative static support: the complete
+  source-mesh census finds only low static candidates inside the bucket, the
+  two base triangles cover that interior, and the actual US/JP floor-choice
+  segment selects and writes the higher dynamic answer under explicit loaded
+  height and storage conditions. See the
+  [backward support note](notes/rank10a-backward-support.md).
+
+- [ ] Connect Rank 10A's first lost-support event to gameplay. Derive the live
+  base's loading, transform, cell/list membership, query acceptance and rounded
+  height, accounting for other dynamic owners, wall corrections and earlier
+  position changes. A skipped collision load does not alone erase the base:
+  follow dynamic clearing and the time-stop flag at both calls. Then derive
+  eligible freefall, Z input and a useful sideways departure; the finite
+  geometry and conditional selection segment do not supply that history.
+
 ### Negative-quicksand/star installer branch
 
 - [x] Discharge `ActionTablePrivateClightStepCoverage` for the reached states

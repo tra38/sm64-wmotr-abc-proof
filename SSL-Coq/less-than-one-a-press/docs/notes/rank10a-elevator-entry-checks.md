@@ -83,6 +83,12 @@ does not establish a pre-gate installer.
 
 ## What remains worth searching
 
+The [backward support follow-up](rank10a-backward-support.md) now checks the
+entire static mesh inside the bucket, proves base coverage, and executes the
+real floor-choice segment from loaded answers through its output store. A
+lost-support proposal must identify why the live base is missing or rejected;
+merely pointing to the lower static floor does not supply the change.
+
 Find the first actual event that supplies an eligible airborne action before
 the gate: a different support, an ordinary interaction, a genuine missed
 reanchor or an unusual but defined ceiling history. Then account for a useful

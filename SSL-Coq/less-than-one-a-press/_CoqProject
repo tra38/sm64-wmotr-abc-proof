@@ -546,3 +546,4 @@ proofs/InkVerticalLiveSelection.v
 proofs/InkWarpStop.v
 proofs/InkPlatformDeparture.v
 proofs/InkPlatformSource.v
+proofs/Area2Rank10ASupportChange.v
