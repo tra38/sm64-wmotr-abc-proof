@@ -8,7 +8,8 @@ From LessThanOneAPress.Proofs Require Import
   InkLandingQuietSound InkLandingBoundedClosure InkCrouchSlideHistory InkActionPassHistory
   InkActionVisibilityFrame InkBodyResetHistory InkStarDialogFrame InkStarDialogCall
   InkScheduledSharedHistory InkPreparationConstruction InkAcceptedInitialStorage
-  InkInputSharedConstruction InkInitialControllerGuard InkInputGeometryHistory InkPostDialogGroundReset.
+  InkInputSharedConstruction InkInitialControllerGuard InkInputGeometryHistory InkPostDialogGroundReset
+  InkRetryCompletion InkRetryQuery InkVerticalRetryGeometry.
 
 Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkLandingHistoryCheckedBoundary /\
@@ -23,7 +24,8 @@ Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkMilestoneCheckFrame /\ InkMilestoneNamedCallFrame /\ InkNativeSharedHistoryExtension /\
   InkConstructedNativePreparation /\ InkAcceptedInitialActionConstruction /\
   InkAcceptedInitialInputConstruction /\ InkInitialControllerGuardConstruction /\
-  InkInitialInputGeometryHistory /\ InkPostDialogGroundResetBoundary.
+  InkInitialInputGeometryHistory /\ InkPostDialogGroundResetBoundary /\
+  InkRetryCompletedPosition /\ InkRetrySameRunFloorCall /\ InkVerticalRetryGeometryBoundary.
 
 Theorem ibh_backward_histories_checked : InkBackwardHistoryCheckedBoundary.
 Proof.
@@ -54,5 +56,8 @@ Proof.
   split; [exact iih_accepted_initial_action_reaches_buttons|].
   split; [exact icg_initial_history_passes_real_a_guard|].
   split; [exact iig_initial_history_connects_buttons_joystick_geometry|].
-  exact ipg_post_dialog_ground_reset_checked.
+  split; [exact ipg_post_dialog_ground_reset_checked|].
+  split; [exact irc_taken_retry_completes_before_second_query|].
+  split; [exact irq_retry_connects_display_to_real_floor_call|].
+  exact ivr_vertical_retry_geometry_checked.
 Qed.

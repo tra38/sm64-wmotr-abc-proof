@@ -531,6 +531,9 @@ proofs/InkInputContinuationSource.v
 proofs/InkInputAngleFrame.v
 proofs/InkJoystickFrame.v
 proofs/InkInputGeometryHistory.v
+proofs/InkVerticalRetryGeometry.v
+proofs/InkRetryCompletion.v
+proofs/InkRetryQuery.v
 proofs/InkBackwardHistory.v
 proofs/ObjectContactReadback.v
 proofs/ObjectContactPhaseReadback.v

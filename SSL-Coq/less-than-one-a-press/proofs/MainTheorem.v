@@ -1179,7 +1179,17 @@ Qed.
     return/free. No incoming height or speed bound is used. With explicit
     display/movement read continuity to the later sink, finite nonnegative
     depth cannot restore an upward gap. Those interval facts and the earlier
-    geometry/platform transport cases remain open; this is not route closure. *)
+    geometry/platform transport cases remain open; this is not route closure.
+    The taken pre-action retry now derives the complete display-to-State copy
+    and the resolved second find_floor call in one trace, using exactly the
+    copied X/Y/Z values. Its floorHeight assignment is not a Y snap. A separate
+    generated-mesh/binary32 certificate finds same-X/Z samples: at (-2200,-1024),
+    Y=768 misses, Y=1202 admits a static floor only, and Y=1861 also admits the
+    timer-131 top above that floor. A second candidate copies the exact
+    computed top height 1938.8648681640625, avoiding a subsequent Y snap.
+    These are not live floor-list executions.
+    Clean arrival with the needed display height, the live list/owner result,
+    and the later top/warp continuation remain unproved. *)
 Theorem current_ink_backward_execution_boundary : InkBackwardHistoryCheckedBoundary.
 Proof. exact ibh_backward_histories_checked. Qed.
 
