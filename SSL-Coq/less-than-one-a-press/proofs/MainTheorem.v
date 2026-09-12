@@ -42,7 +42,7 @@ From LessThanOneAPress.Proofs Require Import
   Area2Rank9ACoinProducers Area2Rank9ACoinLaunch Area2Rank9ACoinFlight
   Area2Rank10AGroundPound Area2Rank12BContact Area2Rank9UpperStarDance Area2Rank9StarTiming
   Area2Rank9APreHomeMovement
-  Area2Rank10AEntryChecks Area2Rank10ASupportChange
+  Area2Rank10AEntryChecks Area2Rank10ASupportChange Area2ElevatorCoins
   ObjectContactNecessity ObjectContactReadback ObjectContactPhaseReadback
   ContactConsumerSource ContactConsumerExecution ContactCreditExecution
   SecretContactExecution
@@ -855,12 +855,17 @@ Qed.
     bucket interior and proves base coverage. The actual floor arbitration
     selects and writes the dynamic answer when its loaded height dominates.
     Live base availability, rounded static heights, timing and fresh ceiling
-    selection remain obligations; the geometry certificate is not a route. *)
+    selection remain obligations; the geometry certificate is not a route.
+    Fixed coin layouts also miss the elevator. A dropped coin's actual floor
+    write and below-base geometry leave a conditional catcher, but no live
+    coin producer, collection or action interruption is installed. *)
 Theorem current_rank10a_ground_pound_moving_geometry_boundary :
-  Rank10AGroundPoundBoundary /\ Rank10AEntryChecksBoundary /\ Rank10ASupportChangeBoundary.
+  Rank10AGroundPoundBoundary /\ Rank10AEntryChecksBoundary /\
+  Rank10ASupportChangeBoundary /\ Area2ElevatorCoinBoundary.
 Proof.
   split; [exact rank10a_ground_pound_boundary_checked|].
-  split; [exact rank10e_entry_checks_boundary_checked|exact rank10s_support_boundary_checked].
+  split; [exact rank10e_entry_checks_boundary_checked|].
+  split; [exact rank10s_support_boundary_checked|exact ec_elevator_coin_boundary_checked].
 Qed.
 
 (** Rank 12B does not presume that target contact entails a gate crossing.

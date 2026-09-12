@@ -1009,6 +1009,20 @@ These obligations materially strengthen the proof but are not the shortest route
   height and storage conditions. See the
   [backward support note](notes/rank10a-backward-support.md).
 
+- [x] Check the Area-2 coins against the elevator itself, separately from the
+  pole shaft. All 41 stock fixed-layout actors miss the footprint and a
+  generous contact margin. A moving Goomba drop retains a conditional catch:
+  the checked bottom base accepts a below-base query, and the actual later
+  object Y-copy writes a supplied floor height. The local execution and
+  explicit formation-offset implication are connected to Main. See the
+  [elevator coin note](notes/rank10a-elevator-coins.md).
+
+- [ ] Supply a moving coin to the elevator through gameplay while Mario is
+  still confined. Derive the enemy position, attack, drop timing and lifetime,
+  live floor choice, complete coin movement, tangibility and contact. If a
+  100-coin-star interruption is intended, also derive its placement and the
+  useful action change. The conditional catcher supplies none of that setup.
+
 - [ ] Connect Rank 10A's first lost-support event to gameplay. Derive the live
   base's loading, transform, cell/list membership, query acceptance and rounded
   height, accounting for other dynamic owners, wall corrections and earlier

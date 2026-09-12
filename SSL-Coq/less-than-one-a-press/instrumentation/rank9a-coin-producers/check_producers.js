@@ -72,7 +72,42 @@ function inventory(version) {
   assert.equal(formations.reduce((sum, entry) => sum + entry.children.length, 0), 23);
   assert.equal(fixed.length, 18); // 15 yellow + 3 switched blue actors, not coin VALUE.
   assert(fixed.every(outside));
-  return { fixedActors: fixed.length, formationActors: 23, formations };
+  // Separate elevator test: the earlier rectangle is the SECOND POLE.
+  // Read the actual elevator spawn command and base vertices, rather than
+  // treating the two obstacles as if they had the same footprint.
+  const script = initializer(version, "ssl_script", "script_func_local_4");
+  const elevatorCommand = script.match(/Init_int32 \(Int\.repr (\d+)\) ::\s*Init_int32 \(Int\.repr (\d+)\) ::\s*Init_int32 \(Int\.repr (\d+)\) ::\s*Init_int32 \(Int\.repr (\d+)\) ::\s*Init_int32 \(Int\.repr (\d+)\) ::\s*Init_addrof _bhvPyramidElevator \(Ptrofs.repr 0\)/);
+  assert(elevatorCommand, "Missing stock elevator spawn command");
+  const command = elevatorCommand.slice(1).map(Number);
+  assert.equal(command[0] >>> 24, 0x24); // OBJECT command
+  const s16 = x => (x << 16) >> 16;
+  const elevatorSpawn = [s16(command[1] >>> 16), s16(command[1]), s16(command[2] >>> 16)];
+  assert.deepEqual(elevatorSpawn, [0, 4966, 256]);
+  assert.equal(command[2] & 65535, 0); // pitch
+  assert.equal(command[3], 0); // yaw and roll
+  const collision = signedWords(initializer(version, "ssl_collision", "ssl_seg7_collision_pyramid_elevator"));
+  assert.deepEqual(collision.slice(0, 2), [64, 20]);
+  assert.deepEqual(collision.slice(94, 102), [11, 2, 0, 1, 2, 0, 2, 3]);
+  const base = Array.from({length: 4}, (_, i) => collision.slice(2+3*i, 5+3*i));
+  assert(base.every(p => p[1] === 0));
+  const footprint = [Math.min(...base.map(p => p[0])) + elevatorSpawn[0],
+    Math.max(...base.map(p => p[0])) + elevatorSpawn[0],
+    Math.min(...base.map(p => p[2])) + elevatorSpawn[2],
+    Math.max(...base.map(p => p[2])) + elevatorSpawn[2]];
+  assert.deepEqual(footprint, [-511, 512, -255, 768]);
+  const allCoins = [...fixed, ...formations.flatMap(entry => entry.children)];
+  const gapToBase = ([x, , z]) => [Math.max(footprint[0]-x, 0, x-footprint[1]),
+    Math.max(footprint[2]-z, 0, z-footprint[3])];
+  const distances = allCoins.map(p => Math.hypot(...gapToBase(p)));
+  assert.equal(allCoins.length, 41);
+  assert(allCoins.every(p => gapToBase(p).some(gap => gap > 150)));
+  assert.equal(Math.min(...distances), 345);
+  assert(formations.every(({parent, children}) => children.every(p =>
+    Math.abs(p[0]-parent[0]) <= 320 && Math.abs(p[2]-parent[2]) <= 320)));
+  return { fixedActors: fixed.length, formationActors: 23, formations,
+    elevator: {spawn: elevatorSpawn, footprint, fixedActorsTested: allCoins.length,
+      minimumHorizontalGap: Math.min(...distances), excludedMargin: 150,
+      nearestCoins: allCoins.filter((p, i) => distances[i] === 345)} };
 }
 
 // Exhaust all 16-bit random RETURN VALUES, not all RNG histories/controller

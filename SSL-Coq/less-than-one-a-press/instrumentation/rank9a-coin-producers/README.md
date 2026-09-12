@@ -21,6 +21,14 @@ post-RNG load/store fragment; it does not trust this JavaScript as a theorem.
 
 See [the proof notes](../../docs/notes/rank9a-ordinary-coin-producers.md).
 
+The same checker now performs a separate elevator test. It decodes the
+generated elevator spawn command and base vertices, checks all 41 fixed coin
+positions against the full footprint enlarged by 150 per horizontal side,
+and checks the 320-unit formation-offset bound used by `Area2ElevatorCoins.v`.
+The closest fixed coins are 345 horizontal units from the full base. This
+does not extend the fixed-position result to Goomba drops or prove that live
+positions never change; see the [elevator follow-up](../../docs/notes/rank10a-elevator-coins.md).
+
 ## Finishing-attack and coin-flight diagnostic
 
 Run `node instrumentation/rank9a-coin-producers/check_flight.js` for the
