@@ -1017,10 +1017,20 @@ These obligations materially strengthen the proof but are not the shortest route
   explicit formation-offset implication are connected to Main. See the
   [elevator coin note](notes/rank10a-elevator-coins.md).
 
+- [x] Check passive Goomba death as a possible elevator-coin supplier.
+  The complete generated US/JP automatic-death helper returns false without
+  effects under explicit dry movement flags; the finite Area-2 mesh census
+  has no lava and its terrain footer provides no water regions. The generated
+  deletion body only clears active flags. Source review finds no ordinary
+  crush-to-coin mechanism in the moving-block handlers. These are connected
+  local/source results, not a universal live-state invariant. See the
+  [elevator coin note](notes/rank10a-elevator-coins.md#could-the-goomba-die-without-mario-attacking-it).
+
 - [ ] Supply a moving coin to the elevator through gameplay while Mario is
-  still confined. Derive the enemy position, attack, drop timing and lifetime,
-  live floor choice, complete coin movement, tangibility and contact. If a
-  100-coin-star interruption is intended, also derive its placement and the
+  still confined. Derive the enemy position, attack or other concrete death
+  trigger, drop timing and lifetime, live floor choice, complete coin
+  movement, tangibility and contact. If a 100-coin-star interruption is
+  intended, also derive its placement and the
   useful action change. The conditional catcher supplies none of that setup.
 
 - [ ] Connect Rank 10A's first lost-support event to gameplay. Derive the live

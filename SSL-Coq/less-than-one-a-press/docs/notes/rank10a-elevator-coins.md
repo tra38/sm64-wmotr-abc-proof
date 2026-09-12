@@ -8,6 +8,13 @@ the conditions below. The fixed coins do not offer an ordinary relocation
 mechanism, and none lies on the elevator's path. This does not justify saying
 that every gameplay method of supplying a coin is impossible.
 
+Granting favorable Goomba movement and coin-launch choices still leaves the
+death trigger. The reviewed stock Area-2 code supplies no ordinary passive
+coin drop from quicksand, the moving blocks or despawning. Lava and drowning
+can kill a Goomba elsewhere, but the checked Area-2 terrain provides neither
+lava surfaces nor water regions. This narrows the proposal; it does not prove
+that Mario cannot defeat a Goomba while remaining inside the elevator.
+
 For Rank 10A, the hard part is supplying the drop while Mario is still
 confined to the elevator. A method that first leaves the bucket to move or
 defeat an enemy does not supply the missing first escape. Simply collecting
@@ -79,31 +86,83 @@ and bounce state. Any useful catch must be followed until the coin is
 tangible and Mario actually overlaps it. A coin caught only after the
 elevator has stopped supplies no descending-support height window by itself.
 
+## Could the Goomba die without Mario attacking it?
+
+The regular Goomba's hitbox sets its health to zero and its loot count to
+one. Zero health is normal for this enemy: it is not a countdown that kills
+it automatically. A death handler still has to run before the moving yellow
+coin is spawned. The relevant code is in
+[Goomba behavior](../../../../../reference-sm64-decomp/src/game/behaviors/goomba.inc.c)
+and the [shared enemy handlers](../../../../../reference-sm64-decomp/src/game/obj_behaviors_2.c).
+
+| Proposed trigger | What the reviewed code does | Does this supply the drop? |
+| --- | --- | --- |
+| Walk above lava | The automatic death check calls the loot-spawning handler | Yes in suitable terrain; the checked Area-2 meshes have no lava surfaces |
+| Drown | Standing underwater can call that handler when the water is at least 150 units above the Goomba and gravity plus buoyancy is nonpositive | No ordinary Area-2 water region is provided |
+| Walk into quicksand or fall | Neither is a separate trigger in the Goomba's automatic death check | No ordinary passive drop established |
+| Be squeezed by a Grindel, Spindel, moving wall or elevator | These handlers move their own collision surfaces; the Goomba's ordinary movement has no Mario-style ceiling-crush death check | No ordinary crush-to-coin mechanism in the reviewed handlers |
+| Touch another Goomba or an Amp | Goomba collision resolution separates objects; the Amp's shock interaction concerns Mario | No enemy-to-enemy kill found in these handlers |
+| Despawn or unload | Marking for deletion clears the active flags; it does not call the loot routine | Removal itself produces no coin |
+
+There is a misleading nearby case: wall or ground contact can finish a
+Goomba's **knockback** death. That requires the Goomba to be in an attacked
+action already. Likewise, the squished action follows an attack; an object
+visually compressing the Goomba does not automatically choose that action.
+The shared handlers distinguish ordinary walking from those death states.
+Triplet unloading also does not end the rest of that update immediately, so
+the deletion result alone is not a theorem about every later operation in
+that frame.
+
+The new [Coq result](../../proofs/Area2GoombaDeath.v) executes the complete
+generated US/JP automatic-death helper, using the selected program's actual
+Object layout. When the underwater-on-ground, above-lava and entered-water
+bits are clear, it returns false with the same memory and no calls or trace.
+Other movement bits, including wall contact, are unrestricted. The separate
+finite certificate reads all 1,558 static triangles and eight named interior
+collision meshes, checks the absence of the burning surface type, and reaches
+the exact terrain footer: four special-object records followed by the end
+marker, with no water-region command. Deletion's complete generated body is
+also checked to be only the active-flag write.
+
+Those are a **local execution result and a finite source-data certificate**,
+not a theorem that every reachable Goomba always has dry flags and stock
+live floor lists. The movement code uses a missing-water sentinel, so the
+absence of water boxes alone must not stand in for a proof about arbitrarily
+low or unusual support histories. The moving-object and interaction cases
+above are source review, not a completed whole-callgraph preservation proof.
+No passive coin-producing counterexample was constructed.
+
 ## The next missing connection
 
-Find a controller-reachable Goomba position, finishing attack and coin path
+Find a controller-reachable Goomba position, a coin-producing defeat and a path
 that brings the live drop into the elevator's footprint at the right height
 and time. Work backward from a late-descent catch or from the bottom example
 above, checking whether Mario can arrange the enemy and attack without
-already leaving the bucket. A prearranged drop needs its real lifetime and
-the area-transition/object-reset history; a coin does not survive such a
-history merely because its coordinates are useful. Then check live floor
+already leaving the bucket, or identify another concrete death trigger.
+Favorable RNG choices do not supply that trigger. A prearranged drop needs
+its real lifetime and the area-transition/object-reset history; a coin does
+not survive such a history merely because its coordinates are useful. Then check live floor
 selection, the complete movement update, tangibility, contact and, if this
 is the 100th coin, the star's placement and interruption timing.
 
 The current Rank 10A full-route estimate remains **2–5%**, a subjective
 judgment rather than a measured probability. The catcher is a conditional
 positive result, but the gameplay producer and useful action change are
-still missing. This tranche neither installs a coin nor closes Rank 10A.
+still missing. The passive-death check weakens that particular supplier idea;
+it does not settle the remaining entry and departure possibilities or warrant
+a new numerical estimate. This tranche neither installs a coin nor closes Rank 10A.
 
 ## Checks
 
-[Area2ElevatorCoins.v](../../proofs/Area2ElevatorCoins.v) is consumed by
+[Area2ElevatorCoins.v](../../proofs/Area2ElevatorCoins.v) and
+[Area2GoombaDeath.v](../../proofs/Area2GoombaDeath.v) are consumed by
 `current_rank10a_ground_pound_moving_geometry_boundary`. It reuses the existing
-coin census, generated elevator mesh and exact Float32 floor calculations.
-Its local execution begins at the actual floor-height copy after the
-preceding flag handling; the guard, callers and earlier floor effects are
-not silently assumed discharged.
+coin census, generated meshes and exact Float32 floor calculations. The coin
+execution starts at the floor-height copy after its preceding flag handling;
+its guard, callers and earlier floor effects remain separate. The new death
+execution covers the whole automatic-death helper from explicit memory reads
+and dry flags, including its early return. Neither result supplies its live
+gameplay predecessor.
 
 Run `node instrumentation/rank9a-coin-producers/check_producers.js` from the
 active SSL project to reproduce the US/JP fixed-coin/elevator census. Use
@@ -111,13 +170,14 @@ active SSL project to reproduce the US/JP fixed-coin/elevator census. Use
 path canonicalization fails. This is an offline diagnostic, not an emulator
 run or a controller search.
 
-The targeted module and Main compiled with Coq 8.16.1 and CompCert 3.15
+The new death module and Main compiled with Coq 8.16.1 and CompCert 3.15
 through the installed `sm64-item-proof` pipeline. The selected audit passed
-on 2026-09-11 at `build/audit/20260911-222027-kuhx9m6v/`: 546 registered
+on 2026-09-11 at `build/audit/20260911-230409-faot3mxu/`: 547 registered
 sources, passing proof-hole/link checks and no integration problems. Both
-the combined Rank 10A boundary and the new coin boundary use seven existing
-allowed foundations, with no new axiom. The US/JP diagnostic, local links,
-atlas paragraphs and whitespace checks also passed. This is checked local
-progress, not a completed coin installation or a no-A route.
+the combined Rank 10A boundary and the death-test execution use seven
+existing allowed foundations; the finite terrain certificate uses none.
+There is no new axiom. Local links, the atlas's single-paragraph sections and
+whitespace checks also passed. This is checked local progress, not a completed
+coin installation, universal passive-death exclusion or no-A route.
 
 [Back to Rank 10A](../no-a-route-atlas.md#route-rank-10a)

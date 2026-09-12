@@ -548,3 +548,4 @@ proofs/InkPlatformDeparture.v
 proofs/InkPlatformSource.v
 proofs/Area2Rank10ASupportChange.v
 proofs/Area2ElevatorCoins.v
+proofs/Area2GoombaDeath.v

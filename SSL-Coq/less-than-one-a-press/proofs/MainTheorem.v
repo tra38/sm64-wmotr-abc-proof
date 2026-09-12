@@ -42,7 +42,7 @@ From LessThanOneAPress.Proofs Require Import
   Area2Rank9ACoinProducers Area2Rank9ACoinLaunch Area2Rank9ACoinFlight
   Area2Rank10AGroundPound Area2Rank12BContact Area2Rank9UpperStarDance Area2Rank9StarTiming
   Area2Rank9APreHomeMovement
-  Area2Rank10AEntryChecks Area2Rank10ASupportChange Area2ElevatorCoins
+  Area2Rank10AEntryChecks Area2Rank10ASupportChange Area2ElevatorCoins Area2GoombaDeath
   ObjectContactNecessity ObjectContactReadback ObjectContactPhaseReadback
   ContactConsumerSource ContactConsumerExecution ContactCreditExecution
   SecretContactExecution
@@ -858,14 +858,18 @@ Qed.
     selection remain obligations; the geometry certificate is not a route.
     Fixed coin layouts also miss the elevator. A dropped coin's actual floor
     write and below-base geometry leave a conditional catcher, but no live
-    coin producer, collection or action interruption is installed. *)
+    coin producer, collection or action interruption is installed. The complete
+    automatic death helper returns without effects under explicit dry flags;
+    the checked Area-2 collision tags contain no lava. Live flags and any
+    other gameplay death trigger remain separate obligations. *)
 Theorem current_rank10a_ground_pound_moving_geometry_boundary :
   Rank10AGroundPoundBoundary /\ Rank10AEntryChecksBoundary /\
-  Rank10ASupportChangeBoundary /\ Area2ElevatorCoinBoundary.
+  Rank10ASupportChangeBoundary /\ Area2ElevatorCoinBoundary /\ Area2GoombaDeathBoundary.
 Proof.
   split; [exact rank10a_ground_pound_boundary_checked|].
   split; [exact rank10e_entry_checks_boundary_checked|].
-  split; [exact rank10s_support_boundary_checked|exact ec_elevator_coin_boundary_checked].
+  split; [exact rank10s_support_boundary_checked|].
+  split; [exact ec_elevator_coin_boundary_checked|exact gd_environmental_death_boundary_checked].
 Qed.
 
 (** Rank 12B does not presume that target contact entails a gate crossing.
