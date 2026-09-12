@@ -1038,6 +1038,11 @@ These obligations materially strengthen the proof but are not the shortest route
   [approach result](notes/rank10a-elevator-coins.md#can-a-goomba-get-close-enough-to-be-defeated).
 
 - [ ] Reach a useful Goomba attack position while Mario stays in the bucket.
+  The [stock western approach](notes/rank10a-elevator-coins.md#can-a-stock-goomba-reach-the-west-wall-position)
+  now has a checked support outline through the raised rim into the pit.
+  The short-step graph misses ordinary walking resumed during a rebound;
+  a timed rim departure and pair transfer remain candidates, not reached
+  actor paths. Getting to the low floor alone does not supply contact height.
   Supply a hard landing near the base, a route onto the neighboring roofs,
   or another concrete position/support change. Account for walls, action
   changes, partial updates, repeated pushes and live floor selection; neither

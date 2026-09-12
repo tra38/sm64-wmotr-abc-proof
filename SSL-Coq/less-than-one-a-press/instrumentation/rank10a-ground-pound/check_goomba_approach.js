@@ -40,6 +40,14 @@ function arc(y,v,count) {
   return result;
 }
 const jump=arc(-101,25,7), hardBounce=arc(-101,f(-76*-.5),10);
+// Isolated flat-floor arithmetic, used with source review of the distinct
+// LANDED / ON_GROUND tests. No full action or wall execution is simulated.
+const ordinaryLanding = arc(0,25,12).at(-1);
+assert.deepEqual(ordinaryLanding,{y:-12,v:-23});
+const ordinaryRebound = f(ordinaryLanding.v * -.5);
+assert.equal(ordinaryRebound,11.5);
+const resumedWalkRise = arc(0,ordinaryRebound,2);
+assert.deepEqual(resumedWalkRise,[{y:7.5,v:7.5},{y:11,v:3.5}]);
 assert.equal(Math.max(...jump.map(p=>p.y)),-35);
 assert.equal(Math.max(...hardBounce.map(p=>p.y)),61);
 assert.equal(Math.max(...hardBounce.map(p=>p.y))+75,136);
@@ -62,6 +70,9 @@ assert(141*141+33*33 < 145*145);
 console.log(JSON.stringify({scope:'finite geometry and vertical arithmetic; no live reachability',
   versions:['US','JP'],contactBox,...reference,
   normalJump:{feet:-35,head:40,lowestNominalMario:118},
+  normalLanding:{unclamped:ordinaryLanding,rebound:ordinaryRebound,
+    nextTwoIsolatedUpdates:resumedWalkRise,
+    scope:'arithmetic only; source action can resume WALK on LANDED before ON_GROUND is set'},
   hardLandingCandidate:{impact:-76,rebound:38,landingFloor:-101,
     peakFeet:61,peakHead:136,baseLookupThreshold:50},
   budgetScope:'55 movements of at most 30 per axis plus total extra displacement at most 216 per axis; not an all-history bound',

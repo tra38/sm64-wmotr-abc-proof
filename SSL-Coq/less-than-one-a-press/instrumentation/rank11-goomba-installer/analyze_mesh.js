@@ -2,12 +2,14 @@
 "use strict";
 
 // Source-mesh diagnostic for the Rank-11 Goomba installer.  This deliberately
-// does not simulate Mario or claim controller reachability.  It answers the
-// narrower question whether a regular Goomba's stock floor movement is
-// separated from the second-pole ring by the static collision topology.
+// does not simulate Mario or claim controller reachability. It computes
+// static-floor candidate graphs. These do not cover every ordinary update,
+// including walking resumed during a landing rebound.
 
 const fs = require("fs");
 const path = require("path");
+const assert = require("node:assert/strict");
+const { mesh } = require("../rank10a-ground-pound/check_support.js");
 
 const root = path.resolve(__dirname, "../../../..");
 const cliArguments = process.argv.slice(2);
@@ -47,6 +49,13 @@ for (const line of text.split(/\r?\n/)) {
       surface,
     });
   }
+}
+
+// Keep this diagnostic tied to both actual generated collision arrays.
+for (const version of ["us", "jp"]) {
+  const generated = mesh(version, "v_ssl_seg7_area_2_collision");
+  assert.deepEqual(vertices, generated.vertices);
+  assert.deepEqual(triangles.map(t => t.indices), generated.faces.map(t => t.indices));
 }
 
 function subtract(a, b) {
@@ -634,6 +643,77 @@ const pairAbstractPaths = spawnReport.map((spawn) => {
   };
 });
 
+// The later elevator analysis identified source triangle 1314 as a concrete
+// place where a terminal-speed rebound would overlap Mario inside the bucket.
+// Check whether any stock Goomba can first reach that triangle's static-floor
+// component through the same deliberately permissive movement graphs.
+const elevatorCandidateTriangleOrdinal = 1314;
+const elevatorCandidateFloorIndex = floorSurfaces.indexOf(
+  triangles[elevatorCandidateTriangleOrdinal]
+);
+if (elevatorCandidateFloorIndex < 0) {
+  throw new Error("Elevator candidate triangle is not a floor");
+}
+const elevatorCandidateComponent = component[elevatorCandidateFloorIndex];
+const elevatorCandidatePaths = spawnReport.map((spawn) => {
+  const reachable = spawn.component === null ? [] : reachableComponents(spawn.component);
+  const nearest = reachable.map((id) => ({
+    component: id,
+    ...componentBoundary(components[id], components[elevatorCandidateComponent]),
+  })).sort((a, b) => a.distance - b.distance)[0] || null;
+  return {
+    origin: spawn.origin,
+    startComponent: spawn.component,
+    ordinaryPath: spawn.component === null ? null
+      : shortestCombinedPath(spawn.component, [elevatorCandidateComponent]),
+    pairPath: spawn.component === null ? null
+      : shortestPathWithEdges(spawn.component, [elevatorCandidateComponent], pairEdges),
+    nearestOrdinaryReachable: nearest === null ? null : {
+      component: nearest.component,
+      distanceXZ: nearest.distance,
+      sourceHeight: nearest.firstHeight,
+      candidateHeight: nearest.secondHeight,
+      sourcePoint: nearest.first,
+      candidatePoint: nearest.second,
+    },
+  };
+});
+
+// This is a finite ideal-plane sample, not movement or live floor selection.
+// It locates the support change on a proposed path from a stock western actor.
+const westSpawn = goombaSpawns.find(s => s.origin === "singleton-3").point;
+const westWaypoints = [[westSpawn[0], westSpawn[2]], [-2800,1928], [-551,-187]];
+const westLine = [];
+let westQueryHeight = westSpawn[1];
+for (let segment = 1; segment < westWaypoints.length; segment++) {
+  const [a,b] = [westWaypoints[segment-1],westWaypoints[segment]];
+  for (let i = segment === 1 ? 0 : 1; i <= 4096; i++) {
+    const x = Math.trunc(a[0] + (b[0]-a[0]) * i / 4096);
+    const z = Math.trunc(a[1] + (b[1]-a[1]) * i / 4096);
+    const floor = floorCandidates(x, Math.trunc(westQueryHeight), z)[0];
+    assert(floor, "West-line sample has no eligible static floor");
+    westLine.push({x, z, height: floor.height, component: component[floor.index]});
+    westQueryHeight = floor.height;
+  }
+}
+const westLineChanges = westLine.flatMap((p, i) => i &&
+  p.component !== westLine[i-1].component ? [{from: westLine[i-1], to: p}] : []);
+assert.deepEqual(westLineChanges, [
+  {from:{x:-3113,z:1928,height:0,component:0},
+   to:{x:-3112,z:1928,height:72,component:58}},
+  {from:{x:-3071,z:1928,height:113,component:58},
+   to:{x:-3070,z:1928,height:-101,component:66}},
+]);
+assert.equal(westLine.length, 8193);
+assert.equal(Math.min(...westLine.map(p => p.height)), -170);
+assert.equal(Math.max(...westLine.map(p => p.height)), 113);
+assert.equal(westLine.at(-1).component, elevatorCandidateComponent);
+assert(westLine.at(-1).height > -113 && westLine.at(-1).height < -112);
+assert.equal(elevatorCandidateComponent, 66);
+assert(elevatorCandidatePaths.every(p => p.ordinaryPath === null));
+assert.deepEqual(elevatorCandidatePaths.map(p => p.pairPath),
+  [[47,66],[0,66],[0,66],[46,66],[45,66],[0,66],[0,66],[0,66],[0,66]]);
+
 const report = {
   source: path.relative(root, source).replaceAll("\\", "/"),
   vertexCount: vertices.length,
@@ -666,6 +746,21 @@ const report = {
   combinedStaticPaths: spawnCombinedPaths,
   pairSeparationLimit,
   pairAbstractPaths,
+  elevatorCandidate: {
+    triangleOrdinal: elevatorCandidateTriangleOrdinal,
+    indices: triangles[elevatorCandidateTriangleOrdinal].indices,
+    component: elevatorCandidateComponent,
+    paths: elevatorCandidatePaths,
+    westLine: {
+      scope: "8193 ideal-plane samples at integer X/Z, using the preceding selected height as query Y; no movement, wall, dynamic-floor or controller check",
+      from: westSpawn,
+      waypointsXZ: westWaypoints,
+      toXZ: [-551,-187],
+      changes: westLineChanges,
+      minHeight: Math.min(...westLine.map(p => p.height)),
+      maxHeight: Math.max(...westLine.map(p => p.height)),
+    },
+  },
   scope: "Shared-edge topology over every static face classified as a floor (normalY > 0.01); no controller, wall, dynamic-surface, room, list-order, or live-execution claim.",
 };
 
@@ -773,7 +868,9 @@ if (checkExpected) {
   if (JSON.stringify(compactReport) !== JSON.stringify(expectedCompactReport)) {
     throw new Error("Rank-11 Goomba installer receipt mismatch");
   }
-  process.stdout.write("Rank-11 Goomba installer receipt: OK\n");
+  process.stdout.write("Rank-11 Goomba installer receipt and elevator component paths: OK\n");
+} else if (cliArguments.includes("--elevator")) {
+  process.stdout.write(`${JSON.stringify(report.elevatorCandidate, null, 2)}\n`);
 } else {
   process.stdout.write(`${JSON.stringify(compactOutput ? compactReport : report, null, 2)}\n`);
 }

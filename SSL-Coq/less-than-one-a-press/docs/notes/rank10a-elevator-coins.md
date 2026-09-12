@@ -216,6 +216,43 @@ check sooner. This gives a concrete death mechanism to investigate after
 arrival, but does not establish the coin's birth position or its return to
 the elevator.
 
+## Can a stock Goomba reach the west-wall position?
+
+No stock actor starts at X=-551, Z=-187, and no gameplay arrival there has
+been constructed. The direct diagnostic places its floor, source face 1314,
+in component 66. None of the nine starts reaches that component through the
+listed short-step graph, but every start has a path in the deliberately
+permissive pair-transfer graph. A graph path does not arrange the second
+actor, the collision or the subsequent walking.
+
+The stock western singleton at `(-3638,0,1928)` supplies a concrete next
+test. A proposed support outline runs east to X=-2800 at Z=1928, then toward
+`(-551,-187)`. Its 8,193 integer-coordinate samples, using the preceding
+selected height as the next query Y, encounter the raised rim at Y=72..113
+and then a 214-unit drop from `(-3071,113,1928)` to the pit at
+`(-3070,-101,1928)`. The samples end on the candidate floor; both generated
+US/JP meshes agree. These are ideal-plane floor selections, not execution:
+the 72-unit entry, walls, motion between samples, real floor order, legal
+turns, home behavior and activation still need checking with Mario confined.
+
+The drop restriction is not a complete obstruction. The generated
+`cur_obj_move_xz` checks `ON_GROUND`, whereas `goomba_act_jump` returns to
+walking on either `LANDED` or `ON_GROUND`. On an unchanged flat floor, the
+isolated normal jump first crosses below the floor at vertical speed -23;
+the -0.5 bounce coefficient gives +11.5. The following update can switch to
+walking while rising to +7.5 and clearing `LANDED`; the next walking update
+can accelerate while `ON_GROUND` remains clear. Thus a timed rebound near
+the rim is a concrete candidate for entering the pit without a second
+Goomba. This is source review and checked arithmetic, not a reached action
+sequence. It corrects any inference that the short-step graph rules out
+ordinary arrival. Reaching the low floor would still not supply the
+terminal-speed rebound needed for the earlier elevator-contact candidate.
+
+Validation: `analyze_mesh.js --check` checks the new component paths, support
+samples and agreement with the generated geometry; the existing approach
+diagnostic also checks the normal-landing arithmetic. No Coq theorem or
+capstone premise was changed or discharged by this diagnostic tranche.
+
 ## The next missing connection
 
 Find a controller-reachable Goomba position, a coin-producing defeat and a path
