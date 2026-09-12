@@ -112,3 +112,40 @@ Coq execution proofs.
 
 A detour, a stock-to-stock meeting and useful push, or a changed support
 remains open. No route to the rim, pit, elevator contact or defeat is proved.
+
+## Watch the recorded path
+
+[The path replay](../../docs/media/western-goomba-path-replay.mp4) reconstructs
+the existing diagnostic's 901 recorded positions against the actual generated
+Area-2 collision mesh. It is not emulator footage. It runs at 30 updates per
+second, pauses for three seconds at update 847, then shows the rest of the
+trace and holds its final frame for two seconds. The Goomba artwork and foot
+motion are schematic; its feet position and jump height come from the CSV.
+The clipped mesh hides upper floors and ceilings to make the path visible.
+The two context markers are stock starting positions for the southern Goomba
+and western Grindel, not additional actors participating in this replay.
+
+`export_video_data.js` checks that the US/JP meshes and CSVs agree, restores
+the CSV coordinates to Float32, checks all 901 consecutive update numbers
+and the exact update-847 waypoint, and records the CSV's SHA-256. After
+`check.sh`, run it from this project directory with Node. On the restricted
+Windows runtime use `node --preserve-symlinks --preserve-symlinks-main`.
+Then run `render_video.py` with a Python installation containing Pillow;
+`--preview` generates five stills instead. The bundled desktop Python has
+Pillow. All intermediate files stay under the ignored diagnostic build folder.
+
+Encode the numbered frames with the installed WSL FFmpeg:
+
+```sh
+ffmpeg -nostdin -n -framerate 30 \
+  -i build/instrumentation/western-goomba-rng/video/frames/%04d.png \
+  -c:v libx264 -crf 18 -preset medium -pix_fmt yuv420p -movflags +faststart \
+  build/instrumentation/western-goomba-rng/video/western-goomba-path-replay.mp4
+```
+
+The saved video is 1280 by 800, with 1,051 frames at 30 fps and duration
+35.033333 seconds. Both existing native replay binaries were rerun and their
+outputs matched the original CSVs byte for byte. The shared CSV SHA-256 is
+`8cac5f724f89efa1ea725342853f6637547f54bf672a1b1092f6715450ad3763`.
+Encoded frames were inspected. This is a presentation of the existing result;
+it adds no gameplay reachability or impossibility theorem.

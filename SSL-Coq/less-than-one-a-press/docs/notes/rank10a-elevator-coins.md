@@ -301,6 +301,11 @@ the rim. US and JP replays agree. The bounded search has not found a route
 around the southern end. It prunes states and does not cover every random
 choice or world history, so this is not a detour impossibility proof.
 
+[Watch this exact path](../media/western-goomba-path-replay.mp4). The video
+reconstructs the recorded diagnostic positions against the collision mesh,
+with a pause at update 847. It is not emulator footage; nearby stock enemies
+are context markers, not participants in this isolated test.
+
 The next useful connection is a detour, a stock-to-stock meeting and useful
 push, or a changed support that bypasses the entry wall. A rebound from the
 rim still presupposes getting onto it. The earlier contact-producing hard
