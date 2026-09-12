@@ -43,7 +43,7 @@ From LessThanOneAPress.Proofs Require Import
   Area2Rank10AGroundPound Area2Rank12BContact Area2Rank9UpperStarDance Area2Rank9StarTiming
   Area2Rank9APreHomeMovement
   Area2Rank10AEntryChecks Area2Rank10ASupportChange Area2ElevatorCoins Area2GoombaDeath
-  Area2GoombaApproach
+  Area2GoombaApproach Area2WesternGoombaRng
   ObjectContactNecessity ObjectContactReadback ObjectContactPhaseReadback
   ContactConsumerSource ContactConsumerExecution ContactCreditExecution
   SecretContactExecution
@@ -870,13 +870,14 @@ Qed.
 Theorem current_rank10a_ground_pound_moving_geometry_boundary :
   Rank10AGroundPoundBoundary /\ Rank10AEntryChecksBoundary /\
   Rank10ASupportChangeBoundary /\ Area2ElevatorCoinBoundary /\ Area2GoombaDeathBoundary /\
-  Area2GoombaApproachBoundary.
+  Area2GoombaApproachBoundary /\ Area2WesternGoombaRngBoundary.
 Proof.
   split; [exact rank10a_ground_pound_boundary_checked|].
   split; [exact rank10e_entry_checks_boundary_checked|].
   split; [exact rank10s_support_boundary_checked|].
   split; [exact ec_elevator_coin_boundary_checked|].
-  split; [exact gd_environmental_death_boundary_checked|exact ga_approach_boundary_checked].
+  split; [exact gd_environmental_death_boundary_checked|].
+  split; [exact ga_approach_boundary_checked|exact wgr_rng_boundary_checked].
 Qed.
 
 (** Rank 12B does not presume that target contact entails a gate crossing.

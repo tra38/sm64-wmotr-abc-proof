@@ -550,3 +550,4 @@ proofs/Area2Rank10ASupportChange.v
 proofs/Area2ElevatorCoins.v
 proofs/Area2GoombaDeath.v
 proofs/Area2GoombaApproach.v
+proofs/Area2WesternGoombaRng.v

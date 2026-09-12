@@ -231,9 +231,9 @@ test. A proposed support outline runs east to X=-2800 at Z=1928, then toward
 selected height as the next query Y, encounter the raised rim at Y=72..113
 and then a 214-unit drop from `(-3071,113,1928)` to the pit at
 `(-3070,-101,1928)`. The samples end on the candidate floor; both generated
-US/JP meshes agree. These are ideal-plane floor selections, not execution:
-the 72-unit entry, walls, motion between samples, real floor order, legal
-turns, home behavior and activation still need checking with Mario confined.
+US/JP meshes agree. These are ideal-plane floor selections, not execution.
+The straight entry-wall check below now blocks that isolated approach;
+detours, other actors and changing support still need a gameplay route.
 
 The drop restriction is not a complete obstruction. The generated
 `cur_obj_move_xz` checks `ON_GROUND`, whereas `goomba_act_jump` returns to
@@ -252,6 +252,61 @@ Validation: `analyze_mesh.js --check` checks the new component paths, support
 samples and agreement with the generated geometry; the existing approach
 diagnostic also checks the normal-landing arithmetic. No Coq theorem or
 capstone premise was changed or discharged by this diagnostic tranche.
+
+## What can favorable RNG actually do? (2026-09-12)
+
+**The proposed straight approach fails in the isolated source check, even
+with favorable random choices. A complete RNG-only impossibility result
+has not been proved.** We grant any individually available random outcome;
+finding an RNG schedule is no longer an obligation for this investigation.
+This does not grant arbitrary speed, steering, jumps or actor placement.
+
+The western Goomba's home is more than 3000 horizontal units from Mario
+throughout the bucket footprint. Its normal walking helper therefore uses
+a deliberately large distance value and does not enter the fast chase
+branch. Its normal target speed is 2. Random choices turn by 45 degrees with
+a timer of 100..199, or start a stationary jump and turn by 135 degrees.
+Beyond 1000 units from home it is directed back, except while a collision
+avoidance turn is already in progress. That exception is why the home test
+alone is not a proof of an absolute movement limit.
+
+The former support outline omitted a wall: at Z=1928, X=-3112 has a vertical
+face from Y=0 to 72, before the slope to the 113-high rim. With its 40-unit
+wall radius, a low Goomba is pushed to X=-3152. A normal jump clears forward
+speed. The new [generated-code proof](../../proofs/Area2WesternGoombaRng.v)
+executes the two velocity writes, derives forward speed zero and vertical
+speed 25, and frames other cells. It starts after the sound call and action
+assignment, under explicit scale, storage and separation conditions. It also
+checks the two wall triangles in both generated meshes. This improves the
+earlier source-shape check without claiming the full caller has been proved.
+
+The [source diagnostic](../../instrumentation/western-goomba-rng/README.md)
+loads all static faces using the actual loading and floor-list routines.
+Its 2,457 low wall fixtures push to -3152; 5,320 nearby floor queries return
+zero. A separate flat-floor closure grants a jump on every walking update,
+even when the real timer forbids it, and speed 2 without drag. Without pauses,
+it finds no moving query above Y=11. With arbitrary partial-update pauses,
+a moving hop can reach Y=66, but the maximum advance beyond the wall-clearance
+position is only 8 units, versus 40 needed to cross. Stationary height alone
+does not overcome this obstruction. Both finite state sets are closed under
+their stated choices, but their complete refinement to linked Clight and
+the live world remains unproved. These are isolated diagnostic results,
+not all-controller-history theorems.
+
+A separate branch search retains the actual random timers, turns, home
+behavior, wall checks and distance activation. In its static one-actor world,
+with Mario fixed at `(-410,128,700)`, a checked sequence reaches
+`(-3196.341552734375,0,2895.0380859375)` after 847 updates, still outside
+the rim. US and JP replays agree. The bounded search has not found a route
+around the southern end. It prunes states and does not cover every random
+choice or world history, so this is not a detour impossibility proof.
+
+The next useful connection is a detour, a stock-to-stock meeting and useful
+push, or a changed support that bypasses the entry wall. A rebound from the
+rim still presupposes getting onto it. The earlier contact-producing hard
+fall, attack, death and coin delivery remain unconstructed. The overall
+Rank 10A estimate stays **2–5%**, a subjective judgment: this weakens one
+supplier proposal without settling the other entry and departure ideas.
 
 ## The next missing connection
 
@@ -318,5 +373,14 @@ four. No new axiom was added. Both US/JP diagnostics, local links, the
 atlas's single-paragraph sections and whitespace checks passed. The checked
 result is conditional contact geometry and local execution; the Goomba's
 arrival, attack, death and useful coin delivery remain unproved.
+
+The western-RNG tranche passed on 2026-09-12 at
+`build/audit/20260912-113103-7h9wg08e/`: 549 registered sources, a successful
+Main/new-module build, passing proof-hole and link checks, and no integration
+problems. Main and the velocity-tail execution use seven existing allowed
+foundations; the wall geometry uses none. No new axiom was added. The US/JP
+native wall, floor, vertical-closure and legal-choice replay checks also pass
+with undefined-behavior checking. These native results retain the limited
+scope stated above; the audit does not turn them into a live route proof.
 
 [Back to Rank 10A](../no-a-route-atlas.md#route-rank-10a)
