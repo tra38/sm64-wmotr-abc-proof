@@ -43,6 +43,7 @@ From LessThanOneAPress.Proofs Require Import
   Area2Rank10AGroundPound Area2Rank12BContact Area2Rank9UpperStarDance Area2Rank9StarTiming
   Area2Rank9APreHomeMovement
   Area2Rank10AEntryChecks Area2Rank10ASupportChange Area2ElevatorCoins Area2GoombaDeath
+  Area2GoombaApproach
   ObjectContactNecessity ObjectContactReadback ObjectContactPhaseReadback
   ContactConsumerSource ContactConsumerExecution ContactCreditExecution
   SecretContactExecution
@@ -496,9 +497,10 @@ Proof. exact rank11_handstand_damage_boundary_holds. Qed.
     mesh receipt finds no route from any stock spawn through ordinary walking,
     144-unit jump-floor snaps, or even 216-unit pair separation.  The only
     low-tier vertical Grindel has no upper discharge floor and tops out far
-    below the ring.  This is the ordinary source-mesh boundary, not a linked
-    Clight execution theorem or a closure of H/F/R, stale/forged actors,
-    outside writers, OOB, DMA, or ACE. *)
+    below the ring. Coverage of long airborne transfers, hard-fall rebounds
+    and repeated pushes is unproved; the short-transfer graph is not a
+    disproof of ordinary gameplay installation. H/F/R and other position
+    or support changes also remain separate. *)
 Theorem current_rank11_goomba_installer_boundary :
   Area2Rank11OrdinaryGoombaInstallerBoundary.
 Proof. exact area2_rank11_ordinary_goomba_installer_boundary_holds. Qed.
@@ -861,15 +863,20 @@ Qed.
     coin producer, collection or action interruption is installed. The complete
     automatic death helper returns without effects under explicit dry flags;
     the checked Area-2 collision tags contain no lava. Live flags and any
-    other gameplay death trigger remain separate obligations. *)
+    other gameplay death trigger remain separate obligations. The expanded
+    contact footprint has only low static support or the two roof levels;
+    the real landing code also permits a stronger rebound than a normal
+    jump. Reaching either a useful roof or the hard landing is still open. *)
 Theorem current_rank10a_ground_pound_moving_geometry_boundary :
   Rank10AGroundPoundBoundary /\ Rank10AEntryChecksBoundary /\
-  Rank10ASupportChangeBoundary /\ Area2ElevatorCoinBoundary /\ Area2GoombaDeathBoundary.
+  Rank10ASupportChangeBoundary /\ Area2ElevatorCoinBoundary /\ Area2GoombaDeathBoundary /\
+  Area2GoombaApproachBoundary.
 Proof.
   split; [exact rank10a_ground_pound_boundary_checked|].
   split; [exact rank10e_entry_checks_boundary_checked|].
   split; [exact rank10s_support_boundary_checked|].
-  split; [exact ec_elevator_coin_boundary_checked|exact gd_environmental_death_boundary_checked].
+  split; [exact ec_elevator_coin_boundary_checked|].
+  split; [exact gd_environmental_death_boundary_checked|exact ga_approach_boundary_checked].
 Qed.
 
 (** Rank 12B does not presume that target contact entails a gate crossing.

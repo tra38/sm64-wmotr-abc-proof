@@ -1026,6 +1026,23 @@ These obligations materially strengthen the proof but are not the shortest route
   local/source results, not a universal live-state invariant. See the
   [elevator coin note](notes/rank10a-elevator-coins.md#could-the-goomba-die-without-mario-attacking-it).
 
+- [x] Narrow the Goomba's approach to an attack from inside the elevator.
+  The enlarged contact footprint has 53 static floor candidates, all low
+  except the neighboring 384/896 roofs. The ordinary low-ground jump misses;
+  the generated US/JP landing code permits a stronger hard-fall rebound.
+  A concrete exterior floor beside the west wall gives a conditional contact
+  position after a terminal-speed landing; its gameplay approach is unproved.
+  A separate finite check excludes the 640-height ledges within an explicit
+  1866-unit displacement budget, not every movement history. Correct the older
+  Rank 11 notes where short-transfer graph coverage was overstated. See the
+  [approach result](notes/rank10a-elevator-coins.md#can-a-goomba-get-close-enough-to-be-defeated).
+
+- [ ] Reach a useful Goomba attack position while Mario stays in the bucket.
+  Supply a hard landing near the base, a route onto the neighboring roofs,
+  or another concrete position/support change. Account for walls, action
+  changes, partial updates, repeated pushes and live floor selection; neither
+  a favorable RNG choice nor the finite graph supplies this predecessor.
+
 - [ ] Supply a moving coin to the elevator through gameplay while Mario is
   still confined. Derive the enemy position, attack or other concrete death
   trigger, drop timing and lifetime, live floor choice, complete coin

@@ -41,6 +41,8 @@ function overlaps(face, box) {
     Math.max(...face.vertices.map(p => p[axis])) >= box[2*i] &&
     Math.min(...face.vertices.map(p => p[axis])) <= box[2*i+1]);
 }
+module.exports = {mesh, positiveY, overlaps};
+if (require.main === module) {
 const expected = [1267,1268,1269,1270,1271,1274,1275,1276,1277,1278,
   1303,1304,1305,1306,1307,1311,1312,1314,1339,1340,1341,1342,1343,
   1346,1347,1348,1349,1350,1381,1382,1383,1384,1385,1387];
@@ -70,3 +72,4 @@ for (const version of ['us','jp']) {
 }
 console.log(JSON.stringify({scope: 'finite source geometry; no live-list or controller claim',
   versions: ['US','JP'], ...reference}, null, 2));
+}

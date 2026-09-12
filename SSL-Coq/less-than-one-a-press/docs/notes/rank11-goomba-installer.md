@@ -2,7 +2,7 @@
 
 ## Result
 
-No clean stock Goomba installation was found. More importantly, the ordinary installation family is now finite and negative: none of Area 2's nine real damaging Goombas can reach the second-pole ring through stock walking, ordinary jumps and floor selection, Goomba-to-Goomba separation, or the accessible vertical Grindel lift in the checked source-mesh model. This does **not** close the larger Rank 11 family. The Goomba H/F/R partial-update glitch, a stale or relocated actor, an outside writer, or a different shove/support mechanism remains separate.
+No clean stock Goomba installation was found. The finite graph gives no path from any of Area 2's nine damaging Goombas to the second-pole ring under its listed short-transfer rules. It does **not** prove that those rules cover every ordinary gameplay approach. The later [elevator approach check](rank10a-elevator-coins.md#can-a-goomba-get-close-enough-to-be-defeated) confirms that hard falls can give Goombas rebounds stronger than their normal jump; long airborne transfers and repeated collision pushes need their own coverage. The Goomba H/F/R partial-update glitch and other position or support changes also remain separate.
 
 ## Why a correctly installed Goomba would work
 
@@ -52,18 +52,19 @@ This graph does not assume that a Goomba stays near home. The source's chase-ext
 
 ## Moving-support audit
 
-The only plausible low-tier lift is the vertical Grindel at `(3297, 0, 95)`. Its collision top spans X=`3073..3521`, Z=`-129..319`, and local Y=`450`. Granting the favorable case in which pair separation places a Y=`640` Goomba on it as the top passes that height, the stock raise reaches base Y=`695`, so the highest top is Y=`1145`. Every static floor component within `250` horizontal units of that footprint is at Y=`-101`, `0`, `72`, or `640`; there is no upper discharge floor. The `250` search radius already exceeds both ordinary movement (`30`) and the deliberately generous pair transfer (`216`). Riding the lift therefore cannot turn its temporary height into progress toward Y=`3942`.
+The reviewed low-tier lift is the vertical Grindel at `(3297, 0, 95)`. Its collision top spans X=`3073..3521`, Z=`-129..319`, and local Y=`450`. Granting the favorable case in which pair separation places a Y=`640` Goomba on it as the top passes that height, the stock raise reaches base Y=`695`, so the highest top is Y=`1145`. Every static floor component within `250` horizontal units of that footprint is at Y=`-101`, `0`, `72`, or `640`; there is no upper discharge floor. The `250` search radius exceeds both ordinary movement (`30`) and the deliberately generous single pair transfer (`216`). This excludes a nearby discharge in the checked graph; it does not cover every airborne departure from the lift.
 
-The lower horizontal Grindel begins with its top too high for a Y=`0` Goomba's `144`-unit floor-snap limit, while the upper horizontal Grindel, Spindel, moving walls, and elevator belong to higher tiers that the negative static/pair graph never reaches. The elevator moves downward only after Mario is already on it. None supplies a stock low-to-ring chain.
+The lower horizontal Grindel begins with its top too high for a Y=`0` Goomba's ordinary jump plus `78`-unit query allowance, while the upper horizontal Grindel, Spindel, moving walls, and elevator belong to higher tiers that the finite static/pair graph never reaches. The elevator moves downward only after Mario is already on it. No stock low-to-ring chain was found in this graph.
 
 ## What is proved, and what is not
 
 `Area2Rank11GoombaInstaller.v` mechanically checks the selected US/JP roster, absence of huge/tiny variants, regular hitbox initializer, regular property prefix, jump source constants, the `78`-unit floor-query constant, and that Goomba pair resolution does not directly assign Y. It also checks the contact arithmetic and the reviewed finite mesh/lift receipt. `analyze_mesh.js --check` recomputes that receipt from the pinned collision source and fails if any reviewed count, component, spawn floor, reachable set, or path result changes.
 
-The result closes this explicit envelope: stock actors, valid objects, ordinary behavior updates, the static floor graph, normal jump snapping, generous pair separation, and the accessible stock lift. It is not a one-trace CompCert proof from lower entrance to every actor update, because the connected-component computation is an external source diagnostic. A full live-memory projection could strengthen that bridge, but it cannot create a geometric edge absent from the over-approximation.
+The negative result applies to paths in the stated finite graph. Coverage of actual ordinary updates remains unproved: an airborne Goomba can cross more than one short-transfer radius before its next landing, and a hard landing can produce a stronger rebound than the normal jump. The checked constants and graph receipt remain useful, but proving that all relevant live trajectories map to graph edges is a separate obligation. A missing graph edge is not a gameplay impossibility result.
 
 The following remain outside this verdict:
 
+- long airborne departures, hard-fall rebounds and repeated collision pushes not represented by the graph's transfer rules;
 - H/F/R raising, which needs a same-frame cached collision followed by a clean raw-Mario departure of more than `4000` units and can add `21` units per successful cycle;
 - a stale, relocated, forged, or type-confused object or floor owner;
 - an in-bounds alias or specified outside call that writes actor position, velocity, floor, action, or collision state;
@@ -71,4 +72,4 @@ The following remain outside this verdict:
 - a non-Goomba shove, clip, changing support, or outside effect;
 - a live trace that falsifies one of the source-to-mesh premises.
 
-Because the ordinary installer fails before contact, there is no honest ordinary lower-entry-to-star input movie to connect. Any surviving counterexample must first exhibit one of the exact escapes above; after that, it must carry one live actor through contact, damage, every collision quarter, ring landing, and star collection without staging writes.
+There is no ordinary lower-entry-to-star input movie to connect. A surviving counterexample must first supply a real actor approach, including any fall, rebound or support transfer absent from the graph; after that, it must carry that actor through contact, damage, every collision quarter, ring landing and star collection without staging writes.

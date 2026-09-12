@@ -12,10 +12,11 @@
     The mesh receipt is produced by
     [instrumentation/rank11-goomba-installer/analyze_mesh.js].  Coq checks the
     receipt and its consequences; it does not pretend that the JavaScript
-    connected-component computation is a Clight execution theorem.  Thus the
-    conclusion closes the stated ordinary stock installation envelope, not
-    H/F/R partial updates, a stale or forged object, an outside writer, OOB,
-    DMA, or ACE. *)
+    connected-component computation is a Clight execution theorem. The
+    negative receipt concerns the stated graph, whose coverage of actual
+    airborne transfers, hard-fall rebounds and repeated pushes is unproved.
+    It does not close ordinary gameplay installation or H/F/R partial updates.
+    See Area2GoombaApproach for the generated landing rebound. *)
 
 From Coq Require Import Bool Lia List ZArith.
 From compcert Require Import AST Clight Floats Integers.

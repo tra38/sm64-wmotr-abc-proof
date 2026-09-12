@@ -15,6 +15,12 @@ can kill a Goomba elsewhere, but the checked Area-2 terrain provides neither
 lava surfaces nor water regions. This narrows the proposal; it does not prove
 that Mario cannot defeat a Goomba while remaining inside the elevator.
 
+The backward approach check has not found a reachable Goomba contact either.
+An ordinary jump from the low ground beside the bucket is too low. However,
+Goombas rebound after hard falls, so the normal jump height cannot prove
+that every approach fails. The precise remaining candidates and their
+limitations are below.
+
 For Rank 10A, the hard part is supplying the drop while Mario is still
 confined to the elevator. A method that first leaves the bucket to move or
 defeat an enemy does not supply the missing first escape. Simply collecting
@@ -132,6 +138,84 @@ low or unusual support histories. The moving-object and interaction cases
 above are source review, not a completed whole-callgraph preservation proof.
 No passive coin-producing counterexample was constructed.
 
+## Can a Goomba get close enough to be defeated?
+
+**No gameplay arrival has been constructed; the ordinary low-ground jump
+fails, but a hard-fall rebound is a real unresolved alternative.** Favorable
+movement choices remove the need to reject an idea merely because a Goomba
+normally turns home. They do not supply an earlier high position, an impact
+speed, repeated collision pushes or a live floor result.
+
+The new generated-mesh check enlarges the **whole** elevator base by the
+combined Goomba/Mario contact radii, 145 units, giving X=`[-656,657]`,
+Z=`[-400,913]`. All 1,558 static faces are considered. There are 53
+positive-Y face boxes meeting that rectangle: their support is at or below
+Y=`-101`, except for four flat faces on the neighboring roofs at Y=`384`
+and Y=`896`. This is wider than the earlier bucket-interior census; those
+roofs must not be silently omitted. Getting a stock Goomba onto a roof is
+itself an unproved predecessor. Floors outside this rectangle can also be
+departure points for airborne approaches.
+These are source geometry bounds; they do not establish the live floor
+lists or a bound on every rounded floor-height calculation.
+
+| Backward candidate | Checked result | What remains |
+| --- | --- | --- |
+| Ordinary jump from support at or below -101 | The 66-unit jump puts its feet at most at -35 and its head at 40, below even the nominal bucket jolt at 118 | This particular standing/jumping contact fails |
+| Hard landing on floor -101 at vertical speed -76 | The real bounce multiplier gives upward speed 38; isolated gravity updates reach feet 61 and head 136 | Supply the impact near the bucket, then follow actual movement, walls, floor selection and attack |
+| Departure from either neighboring roof | The source mesh has roof faces at 384 and 896 beside the north edge | Get a stock Goomba there while Mario remains confined, then show a useful departure |
+| Direct approach from the stock 640-height ledges | All 14 flat source faces at 640 lie outside the contact rectangle enlarged by 1866 per axis | A path exceeding that allowance or using another support is not excluded |
+
+The hard-bounce case comes from the real Goomba physics command, whose
+coefficient is **-0.5**. The new Coq execution reads the falling vertical
+speed, takes the negative-speed branch and writes its product with that
+coefficient. For the stated -76 impact this is 38. The following fixed
+arithmetic sequence reaches feet 61, high enough both for possible vertical
+contact at bottom height 128 and for the base's 78-unit query allowance.
+Those are conditional opportunities, not an installed Goomba. The execution
+starts after the preceding floor-height copy and flag handling; supplying
+that checkpoint, retaining the rebound through the Goomba's action code,
+and obtaining the useful live floor are still obligations.
+
+The -101 example uses a favorable height bound, not the floor at every
+point beside the bucket. A concrete exterior candidate puts Mario at
+`(-410,128,-154)` and the Goomba at X=`-551`, Z=`-187`, where static face
+1314 has a loaded floor height between -113 and -112 (about -112.85).
+A granted terminal-speed landing at -78 rebounds at 39; the isolated
+Float32 sequence then reaches feet between 58 and 59, with its head above
+Mario's feet at 128.
+Their horizontal separation squared is 20,970, below the combined-radius
+square of 21,025. These coordinates respect the nominal 50-unit Mario and
+40-unit Goomba wall clearances. The Goomba remains outside the base, so this
+is a candidate for an attack **from inside**, rather than a Goomba already
+standing on the elevator. Supplying that fall, the live collision record,
+the attack and the coin drop is still unproved.
+
+The 1866-unit check grants 55 movements of at most 30 per horizontal axis,
+plus total extra displacement of 216 per axis. It is a **stated movement
+budget**, not a proved limit on all histories. The companion diagnostic
+examines a generous flight from height 1145 with upward speed 39, followed
+by one low-ground rebound, to guide that test. These isolated arithmetic
+fixtures do not cover intervening supports, repeated pushes, action changes
+or partial updates. In particular, the older Rank 11 component graph's
+short-transfer edges cannot stand in for complete airborne coverage.
+
+The Goomba's movement checks a wall radius of 40, smaller than its 108-unit
+interaction radius. The reviewed attack code also does not add a second,
+smaller-hurtbox test before accepting a valid punch: that smaller test sets
+an invincibility-delay flag, while the punch branch calls `attack_object`
+before consulting the flag. This is source review, not a completed attack
+execution. Mario's action and facing, the collision records and the enemy's
+death update still need checking. No controller arrival or coin-producing
+defeat was constructed.
+
+An accepted attack also needs to be followed through death. A punch selects
+horizontal knockback; a grounded kick or trip selects vertical knockback,
+with initial vertical speed 50 and a death check once its timer reaches 9,
+even while airborne. Earlier ground, wall or water contact can trigger that
+check sooner. This gives a concrete death mechanism to investigate after
+arrival, but does not establish the coin's birth position or its return to
+the elevator.
+
 ## The next missing connection
 
 Find a controller-reachable Goomba position, a coin-producing defeat and a path
@@ -139,7 +223,10 @@ that brings the live drop into the elevator's footprint at the right height
 and time. Work backward from a late-descent catch or from the bottom example
 above, checking whether Mario can arrange the enemy and attack without
 already leaving the bucket, or identify another concrete death trigger.
-Favorable RNG choices do not supply that trigger. A prearranged drop needs
+For the Goomba proposal, first resolve an arrival through the nearby roofs,
+a sufficiently hard landing near the bucket, or another concrete position or
+support change. Favorable RNG choices do not supply that arrival or the
+death trigger. A prearranged drop needs
 its real lifetime and the area-transition/object-reset history; a coin does
 not survive such a history merely because its coordinates are useful. Then check live floor
 selection, the complete movement update, tangibility, contact and, if this
@@ -155,22 +242,27 @@ a new numerical estimate. This tranche neither installs a coin nor closes Rank 1
 ## Checks
 
 [Area2ElevatorCoins.v](../../proofs/Area2ElevatorCoins.v) and
-[Area2GoombaDeath.v](../../proofs/Area2GoombaDeath.v) are consumed by
+[Area2GoombaDeath.v](../../proofs/Area2GoombaDeath.v), together with the
+[approach check](../../proofs/Area2GoombaApproach.v), are consumed by
 `current_rank10a_ground_pound_moving_geometry_boundary`. It reuses the existing
 coin census, generated meshes and exact Float32 floor calculations. The coin
 execution starts at the floor-height copy after its preceding flag handling;
 its guard, callers and earlier floor effects remain separate. The new death
 execution covers the whole automatic-death helper from explicit memory reads
-and dry flags, including its early return. Neither result supplies its live
+and dry flags, including its early return. The approach proof adds the rebound
+and a concrete exterior contact position. None of these results supplies its
 gameplay predecessor.
 
 Run `node instrumentation/rank9a-coin-producers/check_producers.js` from the
 active SSL project to reproduce the US/JP fixed-coin/elevator census. Use
 `node --preserve-symlinks-main` on the restricted Windows runtime if its entry
 path canonicalization fails. This is an offline diagnostic, not an emulator
-run or a controller search.
+run or a controller search. The approach diagnostic is
+`instrumentation/rank10a-ground-pound/check_goomba_approach.js`; use both
+`--preserve-symlinks --preserve-symlinks-main` with Node on the restricted
+Windows runtime because it imports the existing mesh parser.
 
-The new death module and Main compiled with Coq 8.16.1 and CompCert 3.15
+The earlier death module and Main compiled with Coq 8.16.1 and CompCert 3.15
 through the installed `sm64-item-proof` pipeline. The selected audit passed
 on 2026-09-11 at `build/audit/20260911-230409-faot3mxu/`: 547 registered
 sources, passing proof-hole/link checks and no integration problems. Both
@@ -179,5 +271,15 @@ existing allowed foundations; the finite terrain certificate uses none.
 There is no new axiom. Local links, the atlas's single-paragraph sections and
 whitespace checks also passed. This is checked local progress, not a completed
 coin installation, universal passive-death exclusion or no-A route.
+
+The approach tranche passed the same pipeline on 2026-09-12, recorded at
+`build/audit/20260912-005604-6z3mlcib/`. It checked 548 registered sources,
+Main and the new module, proof holes, link hygiene and integration. Main and
+the rebound execution use seven existing allowed foundations, the full-mesh
+certificate uses none, and the exterior Float32 contact certificate uses
+four. No new axiom was added. Both US/JP diagnostics, local links, the
+atlas's single-paragraph sections and whitespace checks passed. The checked
+result is conditional contact geometry and local execution; the Goomba's
+arrival, attack, death and useful coin delivery remain unproved.
 
 [Back to Rank 10A](../no-a-route-atlas.md#route-rank-10a)
