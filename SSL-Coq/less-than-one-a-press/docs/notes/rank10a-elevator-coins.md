@@ -216,6 +216,47 @@ check sooner. This gives a concrete death mechanism to investigate after
 arrival, but does not establish the coin's birth position or its return to
 the elevator.
 
+## Were all stock Goombas checked for elevator access?
+
+**All nine potential stock actors were inventoried and screened geometrically;
+none has a completed gameplay approach to the elevator. The western Goomba
+is not established as the only candidate.** Its later detailed movement test
+does not exclude the other actors. The source roster consists of six regular
+singletons plus three regular children of one triplet spawner; counting the
+children does not establish that the spawner activates while Mario is confined.
+
+| Stock actor | Starting position `(X, Y, Z)` | Extent of the elevator investigation |
+| --- | --- | --- |
+| Western singleton | `(-3638, 0, 1928)` | Geometry screen, detailed native wall/jump check and the recorded outside approach; no elevator arrival |
+| Southern singleton | `(-2100, 0, 3316)` | Geometry screen; no checked complete RNG-choice approach |
+| Eastern low singleton | `(3389, 0, -1978)` | Geometry screen; no checked complete RNG-choice approach |
+| Eastern raised singleton 1 | `(3263, 778, 3157)` | Geometry screen and shared 640-height departure bounds; no complete movement route |
+| Eastern raised singleton 2 | `(3263, 652, 2200)` | Geometry screen and shared 640-height departure bounds; no complete movement route |
+| Eastern raised singleton 3 | `(3431, 673, -1373)` | Geometry screen and shared 640-height departure bounds; no complete movement route |
+| Triplet child 0 | `(3681, 0, 3587)` | Geometry screen; activation and movement route unconstructed |
+| Triplet child 1 | `(2932, 0, 4020)` | Geometry screen; activation and movement route unconstructed |
+| Triplet child 2 | `(2931, 0, 3155)` | Geometry screen; activation and movement route unconstructed |
+
+The [shared geometry audit](rank11-goomba-installer.md) also checks the lower
+floor containing the west-wall contact candidate. Its short-transfer graph
+finds no path there for any of the nine starts, while its graph allowing a
+generous hypothetical push finds a path for every start. Neither result is
+a complete gameplay verdict: the first misses some airborne behavior, and
+the second does not arrange another Goomba or a real collision. The western,
+southern and eastern low singletons start on the same connected floor family
+in that coarse screen. That does not supply legal walking between them, but
+it prevents treating the screen as evidence that only the western actor can
+approach. The existing `analyze_mesh.js --check` and `--elevator` results were
+rerun on 2026-09-12 and agree with the recorded nine-actor receipt.
+
+Reaching the floor beside the bucket, overlapping Mario for an attack, and
+standing inside the elevator are distinct requirements. None has a completed
+stock-Goomba gameplay route here. For the coin proposal, a defeat within
+Mario's reach from inside may suffice; the Goomba itself need not enter the
+bucket. Every candidate still needs the actual approach, useful height,
+collision, death and coin delivery. This coverage review adds no new proof
+and does not change the route's likelihood estimate.
+
 ## Can a stock Goomba reach the west-wall position?
 
 No stock actor starts at X=-551, Z=-187, and no gameplay arrival there has

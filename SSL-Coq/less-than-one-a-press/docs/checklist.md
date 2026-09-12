@@ -1038,6 +1038,10 @@ These obligations materially strengthen the proof but are not the shortest route
   [approach result](notes/rank10a-elevator-coins.md#can-a-goomba-get-close-enough-to-be-defeated).
 
 - [ ] Reach a useful Goomba attack position while Mario stays in the bucket.
+  The [nine-actor coverage review](notes/rank10a-elevator-coins.md#were-all-stock-goombas-checked-for-elevator-access)
+  distinguishes the shared geometric screen from the detailed western test.
+  No stock actor has a completed approach; the others are not excluded by
+  the western result. Include triplet activation before using those children.
   The [stock western approach](notes/rank10a-elevator-coins.md#can-a-stock-goomba-reach-the-west-wall-position)
   has a floor-only outline, but its straight entry meets a 72-unit wall.
   The isolated source check fails even with favorable random choices and
