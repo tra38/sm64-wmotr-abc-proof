@@ -558,3 +558,6 @@ proofs/Area2TripletCommand.v
 proofs/ReadOnlyClightPaths.v
 proofs/Area2TripletEngine.v
 proofs/Area2TripletGraphics.v
+proofs/Area2RolloutActionGate.v
+proofs/Area2RolloutSource.v
+proofs/Area2RolloutDispatch.v

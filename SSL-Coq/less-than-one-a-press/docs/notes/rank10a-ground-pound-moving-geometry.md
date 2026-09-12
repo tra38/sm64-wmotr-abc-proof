@@ -156,6 +156,47 @@ must not be conflated; moving geometry, an interaction or a later copy can
 change what the contact call actually reads. Those histories and the clean
 ground-pound entry remain open. No new controller trajectory is claimed.
 
+## Rollout animation ending cannot supply entry (2026-09-12)
+
+**Finishing a rollout animation does not turn Mario's move into freefall or
+ground pound.** This now follows the actual generated US/JP execution, beyond
+the earlier list of direct ground-pound requesters. Both rollout endings can
+change only the two bytes of their animation substate; the action, position
+and every other disjoint readable cell are preserved. The forward rollout's
+real animation-end helper is resolved in the selected program and proved
+read-only through its complete call, including entry and return.
+
+The [connected proof](../../proofs/Area2RolloutDispatch.v) then uses that output
+memory for the actual airborne action selector. Every successful selector
+read still reads the rollout action, excluding both freefall and ground pound,
+and a constructed Clight execution reaches the real rollout callback. A
+separate whole-call result proves that every successful forward or backward
+rollout call returns false, the value used to stop immediate action-loop
+repetition. Its earlier calls keep their actual effects; they are not assumed
+harmless. These results are consumed by the Rank-10A boundary in Main.
+
+The memory-preservation result starts at the ending, after movement and its
+collision response. It does not prove which action those earlier operations
+leave, or that another frame preserves the result until its dispatch. Thus it
+closes the automatic animation-ending handoff, not every possible sequence of
+waiting and pressing Z. A different earlier or intervening action change,
+interaction or loss of support remains a separate gameplay obligation.
+
+The supplied Pyramid Tragedy transcript places its ground-pound/star-dance
+method after elevator escape. Its repeated ground pounds instead rely on a
+Tick Tock Clock pendulum's squish cancellations. Neither supplies this missing
+elevator entry. The transcript guides the investigation; its broad
+impossibility claim is not an assumption of the proof. The next search should
+identify an actual entry event before extending a granted ground pound or
+investigating how to deliver its proposed coin or enemy.
+
+The active SSL audit passed on 2026-09-12 at
+`build/audit/20260912-184127-20waybrf`. It compiled the integrated Main boundary,
+checked 559 registered sources, and passed the hole, link and integration
+checks. Main and all four selected rollout theorems each use the same seven
+allowed foundations; no new axiom was added. The documentation check also
+passed 107 local links and all four single-paragraph Rank-10A sections.
+
 ## Remaining useful searches
 
 1. Find a controller-reachable eligible predecessor at the actual gate.

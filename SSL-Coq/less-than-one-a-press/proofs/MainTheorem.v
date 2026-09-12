@@ -43,7 +43,7 @@ From LessThanOneAPress.Proofs Require Import
   Area2Rank10AGroundPound Area2Rank12BContact Area2Rank9UpperStarDance Area2Rank9StarTiming
   Area2Rank9APreHomeMovement
   Area2Rank10AEntryChecks Area2Rank10ASupportChange Area2ElevatorCoins Area2GoombaDeath
-  Area2GoombaApproach Area2WesternGoombaRng Area2TripletEngine
+  Area2GoombaApproach Area2WesternGoombaRng Area2TripletEngine Area2RolloutDispatch
   ObjectContactNecessity ObjectContactReadback ObjectContactPhaseReadback
   ContactConsumerSource ContactConsumerExecution ContactCreditExecution
   SecretContactExecution
@@ -866,12 +866,16 @@ Qed.
     other gameplay death trigger remain separate obligations. The expanded
     contact footprint has only low static support or the two roof levels;
     the real landing code also permits a stronger rebound than a normal
-    jump. Reaching either a useful roof or the hard landing is still open. *)
+    jump. Reaching either a useful roof or the hard landing is still open.
+    Finishing either rollout now has an execution-level exclusion: its actual
+    animation ending preserves the action and position, that retained action
+    dispatches to the real rollout again, and complete rollout calls return
+    false. Earlier action changes and later frame preservation remain open. *)
 Theorem current_rank10a_ground_pound_moving_geometry_boundary :
   Rank10AGroundPoundBoundary /\ Rank10AEntryChecksBoundary /\
   Rank10ASupportChangeBoundary /\ Area2ElevatorCoinBoundary /\ Area2GoombaDeathBoundary /\
   Area2GoombaApproachBoundary /\ Area2WesternGoombaRngBoundary /\
-  Area2TripletSpawnerBoundary.
+  Area2TripletSpawnerBoundary /\ RolloutActionGateBoundary.
 Proof.
   split; [exact rank10a_ground_pound_boundary_checked|].
   split; [exact rank10e_entry_checks_boundary_checked|].
@@ -879,7 +883,8 @@ Proof.
   split; [exact ec_elevator_coin_boundary_checked|].
   split; [exact gd_environmental_death_boundary_checked|].
   split; [exact ga_approach_boundary_checked|].
-  split; [exact wgr_rng_boundary_checked|exact te_triplet_spawner_boundary_checked].
+  split; [exact wgr_rng_boundary_checked|].
+  split; [exact te_triplet_spawner_boundary_checked|exact rgr_rollout_action_gate_checked].
 Qed.
 
 (** Fresh-triplet live distance-call/store and native-command connections,

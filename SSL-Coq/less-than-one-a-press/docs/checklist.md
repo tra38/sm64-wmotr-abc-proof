@@ -1002,6 +1002,13 @@ These obligations materially strengthen the proof but are not the shortest route
   Graphics-minus-Object bound of at most `45` or the conservative modeled
   relation bound of at most `208` for every reachable writer.
 
+- [x] Exclude Rank 10A's automatic rollout-animation handoff through actual
+  US/JP execution. Both endings preserve the action and position, including
+  the real animation helper's effects. Reading that retained action selects
+  rollout again, not freefall or ground pound; full rollout calls return
+  false. Earlier movement and intervening action changes remain outside this
+  local result. See the [rollout entry proof](notes/rank10a-ground-pound-moving-geometry.md#rollout-animation-ending-cannot-supply-entry-2026-09-12).
+
 - [x] Work backward on Rank 10A's alternative static support: the complete
   source-mesh census finds only low static candidates inside the bucket, the
   two base triangles cover that interior, and the actual US/JP floor-choice
