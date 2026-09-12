@@ -12,7 +12,7 @@ bash instrumentation/western-goomba-rng/check.sh
 
 Outputs remain in the active project's ignored
 `build/instrumentation/western-goomba-rng/` directory. The script extracts
-54 C functions unchanged, compares each slice with the revision pinned by
+57 C functions unchanged, compares each slice with the revision pinned by
 `pipeline/generate-clight.sh`, and records a manifest. Both generated US/JP
 collision initializers must agree. The real static loading, cell insertion,
 floor selection, wall correction, walking, jumping and movement functions
@@ -149,3 +149,80 @@ outputs matched the original CSVs byte for byte. The shared CSV SHA-256 is
 `8cac5f724f89efa1ea725342853f6637547f54bf672a1b1092f6715450ad3763`.
 Encoded frames were inspected. This is a presentation of the existing result;
 it adds no gameplay reachability or impossibility theorem.
+
+The [home-range guide](../../docs/media/western-goomba-home-range.png) and
+[overlaid replay](../../docs/media/western-goomba-home-range.mp4) add the
+1,000-unit home threshold and the direct bearing to the original rim target.
+The helper measures distance in all three coordinates; the drawn circle is
+its Y=0 cross-section, not a hard movement boundary. The target is 567 units
+away horizontally and about 578 including Y, inside that threshold. The old
+replay searched toward X=-3200, Z=2925 near the wall's southern end, not for
+a shortest route to the rim. `export_video_data.js` checks the threshold's
+actual generated US/JP call and the helper's three squared coordinate terms.
+Run `render_video.py --home-range` to write these frames into the separate
+`video/home-range/` output directory, then encode as above.
+
+## All actors and the elevator clock
+
+Run the new comparison with:
+
+```sh
+bash instrumentation/western-goomba-rng/check_elevator.sh
+```
+
+It checks the six singleton placements, triplet parent, two poles and elevator
+from matching generated US/JP initializers, including the actual preset table.
+The new native slices are `find_floor_height`, `bhv_pole_init` and the complete
+`bhv_pyramid_elevator_loop`. The loop uses the source timer-reset convention;
+it first detects Mario's platform pointer at frame 0. Its 901-row trace includes
+both jolts and parking. The caller, live platform attachment and collision
+loading are not a linked execution proof. The stock actor fixtures implement
+the declared post-initialization fields: the real floor call at placement
+Y+200 supplies the floor, home is set afterward, and `ON_GROUND` is set.
+The older outside replay keeps its original initialization fixture unchanged.
+
+Each singleton search grants favorable individual RNG outcomes, retains a
+128-state beam for eight decisions, and stops each branch after at most 900
+updates. It aims at the nearest point of the full base rectangle. Mario's X/Z
+are fixed at the interior corner facing that actor, and his Y follows the
+source elevator trace. The source's distance activation still applies;
+partial updates may become full updates as the elevator descends. Pose and
+carriage are conditions, and the world contains static terrain and one Goomba.
+No other actor or dynamic collision surface is silently declared harmless.
+No searched sample enters even the base rectangle expanded by 145 units.
+That is finite search evidence, not an all-RNG impossibility theorem.
+
+The separate western test aims at the original rim target, with four
+decisions, a 256-state beam, and Mario fixed at `(-410,128,667)`. It produces
+the [direct-rim replay](../../docs/media/western-goomba-direct-rim.mp4), whose
+353 saved updates are displayed once each, with a 90-frame pause at update
+271 and a 60-frame final hold. The result stops outside the entry wall.
+Neither distance-based beam pruning nor the selected trace proves global
+shortest-path optimality. The source geometry and prior wall closure explain
+the direct obstruction without that claim.
+
+The stock triplet parent is more than 3,000 horizontal units from every point
+in the full bucket footprint. A fresh parent remaining there cannot load its
+children while Mario is confined. Those three are inventoried but not treated
+as existing actors in the new searches. Previously loaded children or a
+changed parent position remain different conditions.
+
+The [readable result](../../docs/notes/goomba-elevator-timing.md) includes all
+nine height comparisons, the pit arrivals and the elevator timing. Reproduce
+the presentation after both checks above with:
+
+```sh
+node instrumentation/western-goomba-rng/export_video_data.js
+python instrumentation/western-goomba-rng/export_elevator_analysis.py
+python instrumentation/western-goomba-rng/render_elevator_analysis.py
+python instrumentation/western-goomba-rng/render_video.py --direct-rim --home-range
+```
+
+On the restricted Windows runtime use the Node flags documented above and
+the bundled Python with Pillow. The exporter requires identical US/JP logs
+and CSVs, restores Float32 coordinates and checks the scene height for every
+recorded update. All intermediate files remain in the ignored
+`build/instrumentation/western-goomba-rng/elevator-analysis/` directory.
+Encode `video-direct/frames/%04d.png` there at 30 fps. The new replay is 503
+frames, 16.766667 seconds, at 1280 by 800. No Coq result or capstone premise
+changes in this diagnostic/presentation tranche.

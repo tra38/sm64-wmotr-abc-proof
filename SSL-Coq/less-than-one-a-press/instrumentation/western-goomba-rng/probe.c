@@ -1,10 +1,12 @@
 /* Native source-mechanics probe, NOT the selected Clight program or a
  * controller witness. The selected movement/AI/collision functions below are
  * extracted unchanged. This driver supplies normal western-Goomba fields,
- * a stationary Mario in the bucket, static terrain and no other actors.
+ * a declared Mario pose in the bucket, static terrain and no other actors.
  * Sound has no output here. Object scheduling, dynamic owners, attacks,
- * elevator motion and other actors' RNG calls are not simulated. Optional
- * distance activation uses the end-of-update test, with pre-movement distance.
+ * live elevator collision and other actors' RNG calls are not simulated.
+ * The stock-search mode can make Mario's height follow the extracted elevator
+ * loop's trace, conditional on carriage. Optional distance activation uses
+ * the end-of-update test, with pre-movement distance.
  */
 #include <assert.h>
 #include <stdio.h>
@@ -71,6 +73,7 @@ static void verify_granted_outcomes(void) {
 }
 #include "source_functions.inc"
 #include "source_mesh.inc"
+#include "source_roster.inc"
 
 static struct Surface surfaces[2300];
 static struct SurfaceNode nodes[7000];
@@ -79,6 +82,10 @@ static struct MarioState mario_state;
 static int distance_activation;
 static float start_x=-3638, start_y=0, start_z=1928;
 static float mario_x=-410, mario_y=128, mario_z=-154;
+static int follow_elevator, stock_mode;
+static unsigned scene_frame, search_horizon=100000;
+static float elevator_y[901];
+static float last_wall_dx,last_wall_dz;
 
 static void load_mesh(void) {
     TerrainData *p=source_mesh+2, *v=p;
@@ -111,13 +118,16 @@ static void start(unsigned seed) {
 }
 
 static float prepare(void) {
+    if(follow_elevator) mario.oPosY=elevator_y[scene_frame<901 ? scene_frame : 900];
     float dx=o->oPosX-mario.oPosX, dy=o->oPosY-mario.oPosY;
     float dz=o->oPosZ-mario.oPosZ;
     float distance=sqrtf(dx*dx+dy*dy+dz*dz);
     o->oDistanceToMario=distance;
     o->oAngleToMario=atan2s(-dz,-dx);
     obj_update_blinking(&o->oGoombaBlinkTimer,30,50,5);
+    float before_x=o->oPosX,before_z=o->oPosZ;
     cur_obj_update_floor_and_walls();
+    last_wall_dx=o->oPosX-before_x;last_wall_dz=o->oPosZ-before_z;
     return distance;
 }
 static void act_move(float distance) {
@@ -234,9 +244,12 @@ static int vertical_closure(int pauses) {
     return 0;
 }
 
+#include "elevator_analysis.inc.c"
 #include "search.inc.c"
 
 int main(int argc, char **argv) {
+    if(argc>1 && !strcmp(argv[1],"--scene")) return report_scene(argc>2 ? argv[2] : NULL);
+    if(argc>1 && !strcmp(argv[1],"--stock-choices")) {stock_mode=1;verify_granted_outcomes();return choice_search(argc,argv);}
     if(argc>1 && !strcmp(argv[1],"--choices")) {verify_granted_outcomes();return choice_search(argc,argv);}
     if(argc>1 && !strcmp(argv[1],"--replay-west")) {verify_granted_outcomes();return replay_west(argc>2?argv[2]:NULL);}
     if(argc>1 && !strcmp(argv[1],"--vertical")) return vertical_closure(0);

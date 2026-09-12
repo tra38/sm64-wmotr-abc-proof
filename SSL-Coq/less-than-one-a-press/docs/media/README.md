@@ -16,3 +16,19 @@ from its matching US/JP position traces and generated collision mesh. It is
 not emulator footage. The three-second pause at update 847 shows the outside
 waypoint; the trace does not reach the rim. Other stock actors appear only as
 context markers. The linked diagnostic documents reproduction and checks.
+
+`western-goomba-home-range.png` and `western-goomba-home-range.mp4` overlay
+the original replay with the source's 1,000-unit home threshold and the
+direct bearing to the rim. The circle is a height slice of a three-dimensional
+steering test, not a hard movement limit.
+
+`western-goomba-direct-rim.mp4` reconstructs a new source diagnostic aimed
+at the original rim target. It reaches the entry wall and turns away, without
+reaching the rim. Its positions are recorded native outputs, not emulator
+footage or a proved shortest gameplay route.
+
+`goomba-elevator-map.png` shows all nine potential stock actors and the six
+new isolated RNG-choice replays. `goomba-elevator-height.png` compares their
+starting floor heights with the second pole and the source elevator clock.
+The [comparison note](../notes/goomba-elevator-timing.md) states the bounds,
+activation condition, pit arrivals and remaining gameplay obligations.

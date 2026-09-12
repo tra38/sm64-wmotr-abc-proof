@@ -23,7 +23,7 @@ FUNCTIONS = {
         'surface_has_force', 'surf_has_no_cam_collision', 'load_static_surfaces'],
     'src/engine/surface_collision.c': ['find_wall_collisions_from_list',
         'find_wall_collisions', 'find_floor_from_list', 'find_floor',
-        'find_water_level'],
+        'find_water_level', 'find_floor_height'],
     'src/game/object_helpers.c': ['abs_angle_diff', 'approach_s16_symmetric', 'clear_move_flag',
         'cur_obj_rotate_yaw_toward', 'cur_obj_reflect_move_angle_off_wall',
         'apply_drag_to_value', 'cur_obj_apply_drag_xz', 'cur_obj_move_xz',
@@ -40,6 +40,8 @@ FUNCTIONS = {
         'treat_far_home_as_mario'],
     'src/game/behaviors/goomba.inc.c': ['goomba_begin_jump', 'goomba_act_walk',
         'goomba_act_jump'],
+    'src/game/behaviors/pyramid_elevator.inc.c': ['bhv_pyramid_elevator_loop'],
+    'src/game/behaviors/pole.inc.c': ['bhv_pole_init'],
 }
 
 
@@ -98,6 +100,56 @@ def main():
     (args.output / 'source_mesh.inc').write_text(
         'static TerrainData source_mesh[] = {\n' +
         ','.join(map(str,meshes[0])) + '\n};\n')
+    def generated(version, unit, name):
+        text = (PROJECT / f'generated/{version}_{unit}.v').read_text()
+        begin = text.index(f'Definition v_{name} :=')
+        return text[begin:text.index('gvar_readonly', begin)]
+
+    def words16(text):
+        return [int(a or b) for a, b in re.findall(
+            r'Init_int16 \(Int\.repr (?:\((-?\d+)\)|(-?\d+))\)', text)]
+
+    inventories = []
+    for version in ('us', 'jp'):
+        words = words16(generated(version, 'ssl_area2_macro', 'ssl_seg7_area_2_macro_objs'))
+        assert len(words) == 251 and words[-1] == 30
+        presets = re.findall(r'Init_addrof _(\w+) \(Ptrofs.repr 0\) ::\s*'
+            r'Init_int16 \(Int.repr (\d+)\) ::\s*Init_int16 \(Int.repr (\d+)\)',
+            generated(version, 'macro_special_objects', 'sMacroObjectPresets'))
+        assert presets[37][0] == 'bhvGoomba' and presets[37][2] == '0'
+        assert presets[32][0] == 'bhvGoombaTripletSpawner' and presets[32][2] == '0'
+        rows = [words[i:i+5] for i in range(0,250,5)]
+        singletons = [row[1:4] for row in rows if (row[0] & 511)-31 == 37]
+        parents = [row[1:4] for row in rows if (row[0] & 511)-31 == 32]
+        assert len(singletons) == 6 and len(parents) == 1
+        assert all(row[0] & 0xfe00 == 0 and row[4] == 0 for row in rows
+                   if (row[0] & 511)-31 in (32,37))
+        script = generated(version, 'ssl_script', 'script_func_local_4')
+        tokens = re.findall(r'Init_int32 \(Int.repr (?:\((-?\d+)\)|(-?\d+))\)|'
+                            r'Init_addrof _(\w+) \(Ptrofs.repr 0\)', script)
+        tokens = [name or int(a or b) for a,b,name in tokens]
+        commands = []
+        for i,token in enumerate(tokens):
+            if token in ('bhvPyramidElevator','bhvPoleGrabbing'):
+                cmd = tokens[i-5:i]
+                assert cmd[0] >> 24 == 0x24
+                def s16(n): return (n+32768) % 65536-32768
+                pos = [s16(cmd[1] >> 16), s16(cmd[1]), s16(cmd[2] >> 16)]
+                commands.append((token, pos, cmd[4]))
+        assert commands == [('bhvPoleGrabbing',[2867,640,2867],77<<16),
+                            ('bhvPoleGrabbing',[0,3200,1331],92<<16),
+                            ('bhvPyramidElevator',[0,4966,256],0)]
+        inventories.append((singletons, parents, commands))
+    assert inventories[0] == inventories[1]
+    singletons, parents, commands = inventories[0]
+    def array(name, values):
+        return f'static const s16 {name}[][3] = {{' + ','.join(
+            '{'+','.join(map(str,p))+'}' for p in values) + '};\n'
+    (args.output / 'source_roster.inc').write_text(
+        array('source_singletons', singletons) + array('source_triplet_parent', parents) +
+        array('source_poles', [c[1] for c in commands[:2]]) +
+        'static const u32 source_pole_params[] = {5046272,6029312};\n' +
+        array('source_elevator', [commands[2][1]]))
     (args.output / 'source-manifest.json').write_text(json.dumps(dict(
         scope='unchanged source slices; native diagnostic, not Clight execution',
         revision=REVISION, functions=manifest, meshWords=len(meshes[0])), indent=2) + '\n')

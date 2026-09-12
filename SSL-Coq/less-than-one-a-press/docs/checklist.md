@@ -1039,9 +1039,12 @@ These obligations materially strengthen the proof but are not the shortest route
 
 - [ ] Reach a useful Goomba attack position while Mario stays in the bucket.
   The [nine-actor coverage review](notes/rank10a-elevator-coins.md#were-all-stock-goombas-checked-for-elevator-access)
-  distinguishes the shared geometric screen from the detailed western test.
-  No stock actor has a completed approach; the others are not excluded by
-  the western result. Include triplet activation before using those children.
+  now includes [bounded source searches and elevator timing](notes/goomba-elevator-timing.md)
+  for every singleton. Three eastern raised actors reach the low pit in
+  isolated replays, but no actor reaches the elevator. All stock starts are
+  below the second pole; a fresh triplet parent at its stock X/Z cannot
+  activate from inside the bucket. Longer routes, other actors and changed
+  support are not excluded. A useful high escape needs a raised supplier.
   The [stock western approach](notes/rank10a-elevator-coins.md#can-a-stock-goomba-reach-the-west-wall-position)
   has a floor-only outline, but its straight entry meets a 72-unit wall.
   The isolated source check fails even with favorable random choices and

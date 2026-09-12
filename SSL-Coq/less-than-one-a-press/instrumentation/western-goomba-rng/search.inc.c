@@ -22,6 +22,9 @@ static unsigned current_count,best_count,current_frame,best_frame;
 static float best_x,best_y,best_z;
 static FILE *choice_trace;
 static int reached_rim;
+static unsigned beam_limit=SEARCH_BEAM,selected_actor;
+static float minimum_base_gap=1e20f,highest_y=-1e20f;
+static unsigned near_base_samples;
 
 static void observe(void) {
     float dx=o->oPosX-target_x, dz=o->oPosZ-target_z;
@@ -33,9 +36,18 @@ static void observe(void) {
     }
     if(o->oPosX>=-3112 && o->oPosX<=-3071 &&
        o->oPosZ>=1434 && o->oPosZ<=2970 && o->oFloorHeight>=72) reached_rim=1;
-    if(choice_trace) fprintf(choice_trace,"%u,%.9g,%.9g,%.9g,%d,%d,%d,%u,%.9g,%d\n",
+    float gap=base_gap(o->oPosX,o->oPosZ);
+    if(gap<minimum_base_gap) minimum_base_gap=gap;
+    if(o->oPosY>highest_y) highest_y=o->oPosY;
+    if(o->oPosX>=-656 && o->oPosX<=657 && o->oPosZ>=-400 && o->oPosZ<=913) near_base_samples++;
+    if(choice_trace) {
+        fprintf(choice_trace,"%u,%.9g,%.9g,%.9g,%d,%d,%d,%u,%.9g,%d",
         current_frame,o->oPosX,o->oPosY,o->oPosZ,(s16)o->oMoveAngleYaw,
         o->oAction,o->oGoombaWalkTimer,o->oMoveFlags,o->oFloorHeight,o->activeFlags);
+        if(stock_mode) fprintf(choice_trace,",%.9g,%.9g,%.9g,%.9g,%.9g,%d",
+            mario.oPosY,gap,o->oForwardVel,last_wall_dx,last_wall_dz,o->oGoombaTurningAwayFromWall);
+        fputc('\n',choice_trace);
+    }
 }
 static int decision(void) {
     float dx=o->oPosX-o->oHomeX, dy=o->oPosY-o->oHomeY, dz=o->oPosZ-o->oHomeZ;
@@ -52,6 +64,8 @@ static void choose(struct Choice c) {
 /* Stop after preparation, immediately before a genuine random choice. */
 static int advance(struct SearchNode *result) {
     for(unsigned i=0;i<4096;i++) {
+        if(current_frame>=search_horizon) return 0;
+        scene_frame=current_frame;
         grant_count=grant_at=0;
         float distance=prepare();
         if(decision()) {
@@ -64,7 +78,7 @@ static int advance(struct SearchNode *result) {
         }
         /* With a fixed Mario and no other actors, a far actor cannot move
          * back into range. This branch is abandoned, not treated as a win. */
-        if(distance_activation && (o->activeFlags&ACTIVE_FLAG_FAR_AWAY) && distance>4000)
+        if(!follow_elevator && distance_activation && (o->activeFlags&ACTIVE_FLAG_FAR_AWAY) && distance>4000)
             return 0;
         act_move(distance); current_frame++; observe();
     }
@@ -78,6 +92,12 @@ static unsigned long long node_key(const struct SearchNode *n) {
         (int)(p->oForwardVel*10),(int)(p->oVelY*2) };
     unsigned long long h=1469598103934665603ull;
     for(unsigned i=0;i<sizeof(fields)/sizeof(fields[0]);i++) {h^=(unsigned)fields[i];h*=1099511628211ull;}
+    if(stock_mode) {
+        h^=n->frames;h*=1099511628211ull;
+        h^=(unsigned)p->activeFlags;h*=1099511628211ull;
+        h^=(unsigned)p->oAction;h*=1099511628211ull;
+        h^=(unsigned)p->oGoombaTargetYaw;h*=1099511628211ull;
+    }
     return h ? h : 1;
 }
 static int new_key(unsigned long long h) {
@@ -100,7 +120,22 @@ static int choice_search(int argc,char **argv) {
     mario_z=700; distance_activation=1; grant_rng=1;
     if(argc>5 && !strcmp(argv[5],"south")) {start_x=-2100;start_z=3316;}
     if(argc>6) distance_activation=atoi(argv[6]);
-    load_mesh(); start(0);
+    load_mesh();
+    if(stock_mode) {
+        assert(argc>5);selected_actor=strtoul(argv[5],NULL,10);assert(selected_actor<9);
+        build_scene();
+        /* One fixed, interior Mario X/Z per actor, on the side facing it.
+         * This pose/carriage is a declared condition, not a controller route. */
+        mario_x=fminf(411,fmaxf(-410,stock[selected_actor].x));
+        mario_z=fminf(667,fmaxf(-154,stock[selected_actor].z));
+        if(argc>8) beam_limit=strtoul(argv[8],NULL,10);
+        if(argc>9) search_horizon=strtoul(argv[9],NULL,10);
+        if(argc>10) follow_elevator=atoi(argv[10]);
+        assert(beam_limit>0 && beam_limit<=SEARCH_BEAM && search_horizon>0 && search_horizon<=100000);
+        start_stock(selected_actor);
+        printf("STOCK_SEARCH,actor=%u,beam=%u,horizon=%u,followElevator=%d,marioX=%.9g,marioZ=%.9g,tripletPreloaded=%d\n",
+            selected_actor,beam_limit,search_horizon,follow_elevator,mario_x,mario_z,stock[selected_actor].triplet);
+    } else start(0);
     struct SearchNode *a=beam_a,*b=beam_b;
     unsigned count=advance(&a[0]);
     assert(count==1);
@@ -114,12 +149,14 @@ static int choice_search(int argc,char **argv) {
             goomba=a[i].object; gCurrentObject=&goomba;
             memset(&gNumCalls,0,sizeof(gNumCalls));gNumFindFloorMisses=0;
             current_frame=a[i].frames; current_count=a[i].count;
+            scene_frame=current_frame;
+            if(follow_elevator) mario.oPosY=elevator_y[scene_frame<901 ? scene_frame : 900];
             memcpy(current_path,a[i].path,sizeof(current_path));
             current_path[current_count++]=c;
             choose(c); act_move(a[i].distance); current_frame++; observe();
             struct SearchNode next;
             if(!advance(&next) || !new_key(node_key(&next))) continue;
-            if(kept<SEARCH_BEAM) b[kept++]=next;
+            if(kept<beam_limit) b[kept++]=next;
             else {
                 unsigned worst=0;
                 for(unsigned j=1;j<kept;j++) if(b[j].score>b[worst].score) worst=j;
@@ -136,17 +173,22 @@ static int choice_search(int argc,char **argv) {
     for(unsigned i=0;i<best_count;i++)
         printf(",%s:%d:%u",best_path[i].jump?"jump":"walk",best_path[i].sign,best_path[i].duration);
     printf("\n");
+    if(stock_mode) printf("SEARCH_COVERAGE,minBaseGap=%.9g,highestY=%.9g,nearBaseSamples=%u,rim=%d\n",
+        minimum_base_gap,highest_y,near_base_samples,reached_rim);
     if(argc>7) {
         choice_trace=fopen(argv[7],"w"); assert(choice_trace);
-        fprintf(choice_trace,"frame,x,y,z,yaw,action,timer,flags,floor,active\n");
-        start(0); current_count=0;current_frame=0;
+        fprintf(choice_trace,"frame,x,y,z,yaw,action,timer,flags,floor,active");
+        if(stock_mode) fprintf(choice_trace,",mario_y,base_gap,forward,wall_dx,wall_dz,turning");
+        fputc('\n',choice_trace);
+        if(stock_mode) start_stock(selected_actor);else start(0);
+        current_count=0;current_frame=0;
         struct SearchNode ready;
         assert(advance(&ready));
         unsigned replay_count=best_count;
         struct Choice replay_path[SEARCH_DEPTH];memcpy(replay_path,best_path,sizeof(replay_path));
         for(unsigned i=0;i<replay_count;i++) {
             choose(replay_path[i]);act_move(ready.distance);current_frame++;observe();
-            advance(&ready);
+            if(!advance(&ready)) break;
         }
         fclose(choice_trace);
     }

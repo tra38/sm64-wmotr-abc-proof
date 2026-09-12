@@ -11,12 +11,21 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / 'build/instrumentation/western-goomba-rng/video'
-DATA = json.loads((OUT / 'data.json').read_text())
+BASE_OUT = ROOT / 'build/instrumentation/western-goomba-rng/video'
+parser=argparse.ArgumentParser()
+parser.add_argument('--preview',action='store_true')
+parser.add_argument('--home-range',action='store_true')
+parser.add_argument('--direct-rim',action='store_true')
+args=parser.parse_args()
+if args.direct_rim: BASE_OUT=ROOT/'build/instrumentation/western-goomba-rng/elevator-analysis/video-direct'
+DATA = json.loads((BASE_OUT / 'data.json').read_text())
+OUT = BASE_OUT / 'home-range' if args.home_range and not args.direct_rim else BASE_OUT
 ROWS = DATA['frames']
+PAUSE=DATA['waypoint']['frame']-1
 W, H = 1280, 800
 BG, FG, MUTED = '#101c26', '#edf2f2', '#abbcc7'
 AMBER, RED, BLUE = '#ffcc68', '#ee7766', '#75bfce'
+MINT = '#8ed7ba'
 FONT = Path('C:/Windows/Fonts/segoeui.ttf')
 if not FONT.exists():
     FONT = Path('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
@@ -59,13 +68,19 @@ def star(d,p,r=8,color=RED):
     d.polygon(pts,fill=color)
 def ring(d,p,r=6,color=AMBER):
     x,y=p;d.ellipse((x-r,y-r,x+r,y+r),outline=color,width=2)
+def dashed(d,points,color,width=2,period=8):
+    for i,(a,b) in enumerate(zip(points,points[1:])):
+        if i%period<period//2:d.line((a,b),fill=color,width=width)
+def home_circle(projection):
+    x,y,z=DATA['home']['center'];r=DATA['home']['radius']
+    return [projection([x+r*math.cos(i*math.tau/240),y,z+r*math.sin(i*math.tau/240)]) for i in range(241)]
 
 base=Image.new('RGB',(W,H),BG);d=ImageDraw.Draw(base)
-d.text((32,20),'Western Goomba — the exact diagnostic path',font=F30,fill=FG)
+d.text((32,20),'Western Goomba — direct approach to the original rim' if args.direct_rim else 'Western Goomba — the exact diagnostic path',font=F30,fill=FG)
 d.text((32,61),'Recorded native positions • favorable RNG outcomes • reconstructed view',font=F20,fill=MUTED)
 d.line((32,102,1248,102),fill='#304553',width=1)
-d.text((32,119),'Collision-mesh cutaway',font=F20,fill=FG)
-d.text((32,145),'Upper floors hidden; Goomba artwork is schematic.',font=F18,fill=MUTED)
+d.text((32,119),'Home range and direct approach' if args.home_range else 'Collision-mesh cutaway',font=F20,fill=FG)
+d.text((32,145),'Mint: 1,000-unit home threshold at Y=0  •  white: direct bearing' if args.home_range else 'Upper floors hidden; Goomba artwork is schematic.',font=F18,fill=MUTED)
 
 polys=[]
 for face in DATA['mesh']['faces']:
@@ -89,6 +104,11 @@ for _,poly,color in sorted(polys,key=lambda x:x[0]):
 
 start=project([-3638,0,1928]);target=project(DATA['originalRimTarget'])
 waypoint=project(DATA['waypoint']['position'])
+if args.home_range:
+    dashed(d,home_circle(project),MINT,2)
+    bearing=[project([-3638+567*i/100,0,1928]) for i in range(101)]
+    dashed(d,bearing,FG,2,10)
+    d.line((bearing[-1],target),fill=FG,width=1)
 ring(d,start,7);label(d,(155,531),'Start  (-3638, 0, 1928)',AMBER)
 d.line((start[0],start[1]+8,280,526),fill=AMBER,width=1)
 star(d,target)
@@ -96,7 +116,7 @@ label(d,(635,475),'Original rim target',RED)
 label(d,(635,499),'(-3071, 113, 1928)',RED)
 d.line((target[0]+9,target[1],625,487),fill=RED,width=1)
 ring(d,waypoint,7,BLUE)
-label(d,(680,304),'Update 847',BLUE)
+label(d,(680,304),f'Update {PAUSE+1}',BLUE)
 label(d,(680,328),'Outside the rim',BLUE)
 d.line((waypoint[0]+9,waypoint[1],672,328),fill=BLUE,width=1)
 wall=project([-3112,50,2240])
@@ -136,13 +156,14 @@ for obj in DATA['stockContext']:
         label(d,(x+14,y-10),'Grindel',BLUE)
     else:label(d,(x-15,y+12),'Southern Goomba',BLUE,anchor='mt')
 mx,my=mini([-3638,0,1928]);ring(d,(mx,my),5,AMBER)
+if args.home_range:dashed(d,home_circle(mini),MINT,1)
 label(d,(mx+15,my-9),'This Goomba',AMBER)
 d.text((943,579),'N  ↑     X →',font=F18,fill=MUTED)
 d.text((943,607),'Z increases downward',font=F18,fill=MUTED)
 
 d.line((32,650,1248,650),fill='#304553',width=1)
-d.text((32,744),'Static terrain • Mario fixed at (-410, 128, 700) • other actors absent',font=F18,fill=MUTED)
-d.text((32,770),'This reconstructs the tested path. It is not an emulator recording or a complete gameplay route.',font=F18,fill=MUTED)
+d.text((32,744),f"Static terrain • Mario fixed at {tuple(DATA['grantedMario'])} • other actors absent",font=F18,fill=MUTED)
+d.text((32,770),'Cutaway and schematic Goomba; traced positions, not emulator footage. Home range is not a hard limit.' if args.home_range else 'This reconstructs the tested path. It is not an emulator recording or a complete gameplay route.',font=F18,fill=MUTED)
 
 def goomba(draw,feet,row):
     x,y=feet
@@ -168,23 +189,80 @@ def frame(index,hold=False):
     goomba(dr,feet,row)
     mp=mini(row[1:4]);dr.ellipse((mp[0]-4,mp[1]-4,mp[0]+4,mp[1]+4),fill=AMBER)
     action='Jumping' if row[5]==2 else 'Walking'
-    title='Waypoint pause — still outside the rim' if hold else f'{action}   |   update {row[0]:03d} / 901   |   {row[0]/30:.2f} s'
+    title='Closest recorded point — rim not reached' if hold and args.direct_rim else 'Waypoint pause — still outside the rim' if hold else f'{action}   |   update {row[0]:03d} / {len(ROWS)}   |   {row[0]/30:.2f} s'
     dr.text((32,666),title,font=F24,fill=AMBER if not hold else BLUE)
     dr.text((32,704),f'(X, Y, Z) = ({row[1]:.2f}, {row[2]:.2f}, {row[3]:.2f})',font=F20,fill=FG)
-    dr.line((670,716,1248,716),fill='#304553',width=5)
-    dr.line((670,716,670+578*row[0]/901,716),fill=AMBER,width=5)
+    if args.home_range:
+        dist=DATA['home']['distances'][index]
+        dr.text((884,666),f'Home distance: {dist:.1f}',font=F20,fill=MINT)
+        dr.text((884,704),'Beyond threshold' if dist>1000 else 'Within threshold',font=F20,fill=MINT)
+    else:
+        dr.line((670,716,1248,716),fill='#304553',width=5)
+        dr.line((670,716,670+578*row[0]/len(ROWS),716),fill=AMBER,width=5)
     return im
 
-parser=argparse.ArgumentParser();parser.add_argument('--preview',action='store_true');args=parser.parse_args()
+def home_overview():
+    """Equal-scale overhead view; not a geometric reachability certificate."""
+    im=Image.new('RGB',(1280,850),BG);dr=ImageDraw.Draw(im)
+    dr.text((32,23),'The rim target is inside the Goomba\'s home range',font=F30,fill=FG)
+    dr.text((32,66),'Overhead view • same recorded path • all positions shown in game X/Z coordinates',font=F20,fill=MUTED)
+    center=(387,431);scale=.285;home=DATA['home']['center']
+    def p(v): return (center[0]+(v[0]-home[0])*scale,center[1]+(v[2]-home[2])*scale)
+    layer=Image.new('RGBA',im.size,(0,0,0,0));ld=ImageDraw.Draw(layer)
+    for face in sorted(DATA['mesh']['faces'],key=lambda f:sum(v[1] for v in f['vertices'])):
+        if normal(face['vertices'])[1]<=0 or max(v[1] for v in face['vertices'])>180:continue
+        poly=face['vertices']
+        for axis,low,high in ((0,-4738,-2538),(2,828,3028)):
+            poly=clipped(poly,axis,low,True)
+            if poly:poly=clipped(poly,axis,high,False)
+            if not poly:break
+        if len(poly)>2:
+            color=(124,106,69,100) if sum(v[1] for v in poly)/len(poly)<-20 else (119,145,143,65)
+            ld.polygon([p(v) for v in poly],fill=color)
+    im=Image.alpha_composite(im.convert('RGBA'),layer).convert('RGB');dr=ImageDraw.Draw(im)
+    # The circle is the Y=0 cross-section of the actual three-dimensional test.
+    dashed(dr,home_circle(p),MINT,3)
+    x,y=center;dr.line((x,y,x+1000*scale,y),fill=MINT,width=1)
+    label(dr,(x+175,y-23),'1,000',MINT)
+    start=p(home);end=p(DATA['originalRimTarget']);way=p(DATA['waypoint']['position'])
+    points=[p([r[1],0,r[3]]) for r in ROWS]
+    dr.line(points,fill=AMBER,width=3)
+    dashed(dr,[(x+(end[0]-x)*i/100,y) for i in range(101)],FG,3,10)
+    # Actual highlighted collision faces project to this same vertical edge.
+    for face in DATA['mesh']['faces']:
+        if face['ordinal'] in (336,337):
+            a,b,c=map(p,face['vertices']);dr.line((a,b,c,a),fill=RED,width=4)
+    ring(dr,start,7,AMBER);star(dr,end,10,RED);ring(dr,way,8,BLUE)
+    label(dr,(start[0]-8,start[1]-43),'Home / start',AMBER,anchor='rt')
+    label(dr,(start[0]-8,start[1]-17),'(-3638, 0, 1928)',AMBER,anchor='rt')
+    dr.line((end[0],end[1],702,369),fill=RED,width=1)
+    label(dr,(706,336),'Original rim target',RED)
+    label(dr,(706,363),'567 horizontally; 578 including Y',RED)
+    dr.line((way[0],way[1],707,637),fill=BLUE,width=1)
+    label(dr,(713,615),'Replay waypoint (update 847)',BLUE)
+    label(dr,(713,642),'1,063 units from home',BLUE)
+    label(dr,(713,673),'Outside the rim; beyond home threshold',BLUE)
+    dr.text((744,145),'Why the curve?',font=F24,fill=FG)
+    for j,t in enumerate(['The replay aimed near the wall\'s','southern end, at X=-3200, Z=2925.','It is one available RNG sequence,','not a shortest path to the rim.']):
+        dr.text((744,183+27*j),t,font=F20,fill=MUTED)
+    dr.text((744,419),'The direct obstacle is the wall.',font=F24,fill=FG)
+    for j,t in enumerate(['The original target is well inside','the 1,000-unit home threshold.','Crossing the entry wall failed in','the isolated movement check.']):
+        dr.text((744,458+27*j),t,font=F20,fill=MUTED)
+    dr.text((74,747),'N / -Z ↑       +X →',font=F18,fill=MUTED)
+    dr.text((32,795),'Mint: home threshold at Y=0    Amber: recorded path    White: direct bearing    Red: wall and target',font=F18,fill=FG)
+    dr.text((32,824),'The home test uses all three coordinates. It steers behavior; it does not clamp position to the circle.',font=F18,fill=MUTED)
+    return im
+
 OUT.mkdir(parents=True,exist_ok=True)
+if args.home_range and not args.direct_rim:home_overview().save(OUT/'western-goomba-home-range.png')
 if args.preview:
-    for i in (0,400,700,846,900):frame(i,i==846).save(OUT/f'preview-{i+1}.png')
+    for i in sorted({0,len(ROWS)//3,len(ROWS)*2//3,PAUSE,len(ROWS)-1}):frame(i,i==PAUSE).save(OUT/f'preview-{i+1}.png')
 else:
     frames=OUT/'frames';frames.mkdir(exist_ok=True)
-    # All 901 rows appear once at 30 updates/s. Pause 90 display frames at 847.
-    sequence=[(i,False) for i in range(847)]+[(846,True)]*90+[(i,False) for i in range(847,901)]+[(900,False)]*60
+    # Every source row appears once at 30 updates/s, with a three-second pause.
+    sequence=[(i,False) for i in range(PAUSE+1)]+[(PAUSE,True)]*90+[(i,False) for i in range(PAUSE+1,len(ROWS))]+[(len(ROWS)-1,False)]*60
     for out_index,(row,hold) in enumerate(sequence):
         frame(row,hold).save(frames/f'{out_index:04d}.png',compress_level=1)
         if out_index%150==0:print(f'Rendered {out_index}/{len(sequence)}',flush=True)
-    (OUT/'render-receipt.json').write_text(json.dumps({'frames':len(sequence),'fps':30,'traceRows':901,'waypointPauseFrames':90,'finalHoldFrames':60,'csvSha256':DATA['csvSha256'],'dimensions':[W,H]},indent=2))
+    (OUT/'render-receipt.json').write_text(json.dumps({'frames':len(sequence),'fps':30,'traceRows':len(ROWS),'waypointPauseFrames':90,'finalHoldFrames':60,'csvSha256':DATA['csvSha256'],'dimensions':[W,H],'homeRangeOverlay':args.home_range},indent=2))
     print(f'Frames: {frames}',flush=True)
