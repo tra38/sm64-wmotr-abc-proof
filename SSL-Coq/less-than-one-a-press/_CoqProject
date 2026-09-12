@@ -552,6 +552,9 @@ proofs/Area2GoombaDeath.v
 proofs/Area2GoombaApproach.v
 proofs/Area2WesternGoombaRng.v
 proofs/Area2TripletSpawner.v
+proofs/Area2TripletDistance.v
+proofs/Area2TripletDistanceUpdate.v
+proofs/Area2TripletCommand.v
 proofs/ReadOnlyClightPaths.v
 proofs/Area2TripletEngine.v
 proofs/Area2TripletGraphics.v

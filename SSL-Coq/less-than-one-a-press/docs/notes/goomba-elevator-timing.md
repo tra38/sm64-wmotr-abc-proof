@@ -59,8 +59,10 @@ does not grant either.
 The [fresh-triplet follow-up](fresh-triplet-spawning.md) now checks the
 Float32 bound over the entire rectangle and proves preservation through
 the inactive callback, graphics helper and relevant collision/movement
-gates. The complete live-history connection remains open; these results
-must not be read as a proof that every actual spawning check has those inputs.
+gates. It also follows the live distance helper, its caller's store and the
+native-command dispatcher. The library-model and full-update preservation
+gaps remain; these results do not prove that every spawning check has the
+required inputs.
 
 ## Does the direct western approach work?
 

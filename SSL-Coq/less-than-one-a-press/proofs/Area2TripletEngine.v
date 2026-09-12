@@ -8,7 +8,8 @@ From compcert Require Import AST Clight ClightBigstep Clightdefs Cop Ctypes
 From LessThanOneAPress.Generated Require Import us_behavior_data jp_behavior_data
   us_behavior_script jp_behavior_script us_object_collision jp_object_collision.
 From LessThanOneAPress.Proofs Require Import ASTFacts GameTypes Area2TripletSpawner
-  Area2TripletGraphics Area2Rank9ACoinFlight
+  Area2TripletGraphics Area2TripletDistance Area2TripletDistanceUpdate
+  Area2TripletCommand Area2Rank9ACoinFlight
   EyerokRank15LiveMovement ReadOnlyClightPaths SelectedClightTarget.
 Import ListNotations.
 Import Clightdefs.ClightNotations.
@@ -169,29 +170,29 @@ Proof.
   - constructor.
 Qed.
 
-(** The boundary records proved program cases, not a presumed exhaustive
-    gameplay transition. The distance caller, interpreter and intervening
-    live-object updates must still be connected before an all-history claim. *)
+(** The distance caller now resolves the real helper and exposes its exact
+    sqrtf call and store. The complete CALL_NATIVE command also resolves
+    and frames the spawner callback. The numerical sqrtf premise, loop
+    return and intervening live-object updates are not discharged here. *)
 Definition Area2TripletSpawnerBoundary : Prop :=
   TripletNativeCallPreservation /\ TripletGraphicsPreservation /\
+  TripletLiveDistanceStore /\ TripletNativeCommandPreservation /\
   TripletCollisionGatePreservation /\
   (forall version which e le m,
     (which < 3)%nat -> le ! TE._objFlags = Some (Vint (Int.repr 65)) ->
     readonly_path (Clight.globalenv (selected_clight_target version)) e m le
       (te_movement_gate version which) le) /\
-  (forall x z dy, ts_in_base x z -> rank9cf_finite dy ->
-    (-16384 <= rank9cf_real dy <= 16384)%R ->
-    Float32.cmp Clt
-      (ts_distance (Float32.sub (ts_float 3181) x) dy
-        (Float32.sub (ts_float 3587) z)) ts_threshold = false) /\
+  TripletLiveElevatorDistanceRejection /\
   (forall version, te_script version = te_script VersionUS).
 
 Theorem te_triplet_spawner_boundary_checked : Area2TripletSpawnerBoundary.
 Proof.
   split; [exact ts_complete_native_call_preserves_existing_cells|].
   split; [exact tg_graphics_update_preserves_raw_fields|].
+  split; [exact tdu_live_distance_reaches_field_store|].
+  split; [exact tcn_native_command_preserves_parent_and_advances|].
   split; [exact te_intangible_collision_gates_preserve_memory|].
   split; [exact te_stock_flags_skip_movement|].
-  split; [exact ts_elevator_distance_rejects_native_guard|].
+  split; [exact td_live_elevator_distance_rejects|].
   intros version. rewrite !te_exact_stock_script. reflexivity.
 Qed.

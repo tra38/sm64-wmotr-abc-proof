@@ -3,9 +3,12 @@
 The stock triplet parent is too far from the elevator to activate at its
 original position. Its own inactive update cannot move it, and its script
 does not enable movement. The new proofs check the distance and several
-actual update paths. **The complete theorem covering every live spawning
-check from fresh entry is still open.** In particular, these results must
-not be described as an exhaustive gameplay-history proof.
+actual update paths. The live distance helper, its caller's store and the
+complete native-command dispatch are now connected. **The complete theorem
+covering every spawning check from fresh entry is still open.** A missing
+library model prevents treating the checked distance formula as an
+unconditional fact about the current Clight execution. This is a limitation
+of the proof, and supplies no stock-game route to those children.
 
 ## Why this parent is a poor supplier
 
@@ -46,28 +49,47 @@ they do not assume that all other calls preserve the parent.
 
 There is a first-update detail: the engine calculates distance before the
 script first enables that calculation. Allocation initializes the distance
-field to 19000, which also fails the spawning test. Subsequent enabled
-calculations must be connected to their actual reads and return value.
-RNG does not appear on the rejected native path. Waiting or suspending an
-update supplies no movement through any of the proved cases.
+field to 19000, which also fails the spawning test. For subsequent enabled
+calculations, the engine's call now resolves to the real linked distance
+helper. Its six Object reads supply the three differences, and the complete
+helper returns exactly the square-root call's value and memory. The engine
+then stores that value through the current-object pointer it reads after
+the call. The proof keeps this later read visible; it does not presume
+that the external call preserved the pointer. RNG does not appear on the
+rejected native path.
+
+The complete native-command dispatcher is checked too. When its live
+operand identifies this spawner and the unloaded parent's distance rejects
+spawning, it calls the real linked callback, preserves every existing cell
+outside the command-pointer cell, advances by two words and returns the
+interpreter's continue result. For the stock script this reaches the
+end-loop command. This includes the callback's local allocation and cleanup.
+It does not yet establish the return through the loop and the next engine
+update.
 
 ## What remains to finish the requested closure
 
 The engine's distance helper reads **Mario's raw Object position**. A claim
 that Mario remains in the elevator must establish the rectangle for those
-reads, not just for MarioState or the displayed position. The exact caller,
-behavior-script dispatch, collision-list traversal and intervening actor
-updates still need to carry the same fresh parent's fields between checks.
-The proved gates and helper frames are ingredients for that argument;
-they are not a substitute for it. Already loaded children, a different
+reads, not just for MarioState or the displayed position. The remaining
+state-preservation work includes the interpreter's loop return and command
+table, the rest of the object's engine update, collision-list traversal and
+intervening actors. Each must carry the same fresh parent's fields to the
+next check. A proof about consecutive calls with those fields simply
+assumed again would not close this gap. Already loaded children, a different
 entry history, or leaving the rectangle are outside the fresh-confinement
 claim.
 
 The real `sqrtf` implementation is a return plus a `sqrt.s` instruction in
 the return's delay slot, with no memory store. The current generated Clight
-program nevertheless exposes it as an unresolved external. Its numeric
-result and memory effect must be linked to that implementation before the
-Float32 formula can be asserted as the result of the live distance call.
+program nevertheless exposes it as an unresolved external. CompCert's
+generic external-call rules do not say that a function named `sqrtf`
+computes square root or preserves writable object storage. The live-call
+proof has reduced the helper's entire effect to this exact library call;
+its remaining contract cannot be derived from the C declaration alone.
+The machine implementation must be connected to the execution model, or
+the model must be explicitly refined and its transfer proved. Another
+geometry check or induction that assumes this contract cannot finish it.
 No new axiom or blanket external-call frame is used to skip this step.
 
 The result therefore narrows the preservation work and establishes exact
@@ -78,7 +100,7 @@ estimate, not a probability supplied by this proof.
 
 ## Proofs and checks
 
-The new modules are [Area2TripletSpawner.v](../../proofs/Area2TripletSpawner.v),
+The initial modules are [Area2TripletSpawner.v](../../proofs/Area2TripletSpawner.v),
 [Area2TripletEngine.v](../../proofs/Area2TripletEngine.v) and
 [Area2TripletGraphics.v](../../proofs/Area2TripletGraphics.v).
 [ReadOnlyClightPaths.v](../../proofs/ReadOnlyClightPaths.v) proves that each
@@ -87,15 +109,23 @@ capstone consumes these results through
 `current_fresh_triplet_spawner_execution_boundary` and the existing
 combined Rank 10A boundary.
 
+[Area2TripletDistance.v](../../proofs/Area2TripletDistance.v) now connects the
+complete helper to the reached square-root call, including its memory
+effect. [Area2TripletDistanceUpdate.v](../../proofs/Area2TripletDistanceUpdate.v)
+resolves the engine's call and follows its distance-field store.
+[Area2TripletCommand.v](../../proofs/Area2TripletCommand.v) proves the complete
+native-command frame and advance. The main boundary uses these results;
+its distance-rejection component now concerns a live helper call with the
+square-root numerical premise stated explicitly.
+
 The selected audit passed on 2026-09-12 at
-`build/audit/20260912-154422-vcpt8a96/`, using Coq 8.16.1 and CompCert 3.15
-through the established pipeline and memory limit. It checked 553 registered
-sources, built Main and the new modules, and passed proof-hole, link and
-integration checks. The combined boundary, complete callback and graphics
-frame each use seven existing allowed foundations; the universal Float32
-bound uses four. No new axiom was added. The 128 local documentation links,
-the atlas's three single-paragraph sections and whitespace checks also pass.
-These checks validate the stated local results, not the unfinished live
-confinement theorem.
+`build/audit/20260912-171553-cstgvtwa/`, using Coq 8.16.1 and CompCert 3.15
+through the established pipeline and memory limit. It checked 556 registered
+sources, built Main and the three new modules, and passed proof-hole, link
+and integration checks. All five selected entry points use seven existing
+allowed foundations. No new axiom was added. The 131 local links in the five
+edited documents, the atlas's three single-paragraph sections and whitespace
+checks also pass. These checks validate the stated connections, not the
+unfinished confinement theorem.
 
 [Back to Rank 10A](../no-a-route-atlas.md#route-rank-10a).

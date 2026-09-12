@@ -882,9 +882,11 @@ Proof.
   split; [exact wgr_rng_boundary_checked|exact te_triplet_spawner_boundary_checked].
 Qed.
 
-(** Fresh-triplet native-call and graphics frames, collision/movement gates,
-    and the Float32 distance cut. This is not an assumed scheduler invariant:
-    linking the live distance caller and successive parent updates is open. *)
+(** Fresh-triplet live distance-call/store and native-command connections,
+    plus the earlier callback/graphics frames and collision/movement gates.
+    The distance rejection now concerns an actual helper call, conditional
+    on the named sqrtf numerical effect. That external refinement and the
+    preservation between complete successive updates remain open. *)
 Theorem current_fresh_triplet_spawner_execution_boundary : Area2TripletSpawnerBoundary.
 Proof. exact te_triplet_spawner_boundary_checked. Qed.
 

@@ -390,8 +390,10 @@ a new numerical estimate. This tranche neither installs a coin nor closes Rank 1
 The [fresh-triplet follow-up](fresh-triplet-spawning.md) strengthens the
 parent-position case with a universal Float32 distance bound, the complete
 inactive callback, graphics-field preservation and the actual collision
-and movement gates. It leaves the connection across all live checks open,
-including the distance caller and Mario's raw position at its reads.
+and movement gates. The live distance helper, its caller's store and the
+native-command dispatcher are now connected. The square-root implementation
+still needs a proved connection to the model, and preservation across full
+updates remains open, including Mario's raw position at the distance reads.
 
 [Area2ElevatorCoins.v](../../proofs/Area2ElevatorCoins.v) and
 [Area2GoombaDeath.v](../../proofs/Area2GoombaDeath.v), together with the

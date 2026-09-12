@@ -1045,9 +1045,14 @@ These obligations materially strengthen the proof but are not the shortest route
   the relevant operations. These are local execution results, not an
   all-history exclusion.
 - [ ] Finish fresh-triplet exclusion across every live spawning check.
-  Connect the actual distance reads and square-root call, script dispatch,
-  collision traversal and intervening actors to the same fresh parent.
-  Confinement must bound Mario's raw Object coordinates at the distance read.
+  The complete distance helper, its caller's store and the native-command
+  dispatch are now connected. Link the actual square-root implementation
+  to the execution model, then carry the same parent through loop return,
+  engine updates, collision traversal and intervening actors. CompCert's
+  unresolved external declaration does not supply the missing numeric or
+  memory contract. Confinement must bound Mario's raw Object coordinates
+  at the distance read; repeating those readings as assumptions is not a
+  proof of preservation.
 - [ ] Reach a useful Goomba attack position while Mario stays in the bucket.
   The [nine-actor coverage review](notes/rank10a-elevator-coins.md#were-all-stock-goombas-checked-for-elevator-access)
   now includes [bounded source searches and elevator timing](notes/goomba-elevator-timing.md)
