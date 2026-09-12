@@ -387,6 +387,12 @@ a new numerical estimate. This tranche neither installs a coin nor closes Rank 1
 
 ## Checks
 
+The [fresh-triplet follow-up](fresh-triplet-spawning.md) strengthens the
+parent-position case with a universal Float32 distance bound, the complete
+inactive callback, graphics-field preservation and the actual collision
+and movement gates. It leaves the connection across all live checks open,
+including the distance caller and Mario's raw position at its reads.
+
 [Area2ElevatorCoins.v](../../proofs/Area2ElevatorCoins.v) and
 [Area2GoombaDeath.v](../../proofs/Area2GoombaDeath.v), together with the
 [approach check](../../proofs/Area2GoombaApproach.v), are consumed by

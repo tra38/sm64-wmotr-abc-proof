@@ -1037,13 +1037,24 @@ These obligations materially strengthen the proof but are not the shortest route
   Rank 11 notes where short-transfer graph coverage was overstated. See the
   [approach result](notes/rank10a-elevator-coins.md#can-a-goomba-get-close-enough-to-be-defeated).
 
+- [x] Check the [fresh triplet's distance and specific update paths](notes/fresh-triplet-spawning.md).
+  The bound covers all fractional Float32 coordinates in the full base
+  rectangle, with the stated vertical-difference bound. The complete inactive
+  callback preserves existing cells, including its local allocation and cleanup;
+  the graphics helper preserves raw fields, and intangible/movement gates skip
+  the relevant operations. These are local execution results, not an
+  all-history exclusion.
+- [ ] Finish fresh-triplet exclusion across every live spawning check.
+  Connect the actual distance reads and square-root call, script dispatch,
+  collision traversal and intervening actors to the same fresh parent.
+  Confinement must bound Mario's raw Object coordinates at the distance read.
 - [ ] Reach a useful Goomba attack position while Mario stays in the bucket.
   The [nine-actor coverage review](notes/rank10a-elevator-coins.md#were-all-stock-goombas-checked-for-elevator-access)
   now includes [bounded source searches and elevator timing](notes/goomba-elevator-timing.md)
   for every singleton. Three eastern raised actors reach the low pit in
   isolated replays, but no actor reaches the elevator. All stock starts are
-  below the second pole; a fresh triplet parent at its stock X/Z cannot
-  activate from inside the bucket. Longer routes, other actors and changed
+  below the second pole; the triplet's stock position is outside spawning
+  range, with the live-history qualification above. Longer routes, other actors and changed
   support are not excluded. A useful high escape needs a raised supplier.
   The [stock western approach](notes/rank10a-elevator-coins.md#can-a-stock-goomba-reach-the-west-wall-position)
   has a floor-only outline, but its straight entry meets a 72-unit wall.

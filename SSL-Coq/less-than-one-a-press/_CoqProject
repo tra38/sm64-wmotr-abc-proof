@@ -551,3 +551,7 @@ proofs/Area2ElevatorCoins.v
 proofs/Area2GoombaDeath.v
 proofs/Area2GoombaApproach.v
 proofs/Area2WesternGoombaRng.v
+proofs/Area2TripletSpawner.v
+proofs/ReadOnlyClightPaths.v
+proofs/Area2TripletEngine.v
+proofs/Area2TripletGraphics.v

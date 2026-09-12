@@ -56,6 +56,12 @@ children while Mario remains within that rectangle. Already loaded children
 or a changed parent position would be a different setup; the roster alone
 does not grant either.
 
+The [fresh-triplet follow-up](fresh-triplet-spawning.md) now checks the
+Float32 bound over the entire rectangle and proves preservation through
+the inactive callback, graphics helper and relevant collision/movement
+gates. The complete live-history connection remains open; these results
+must not be read as a proof that every actual spawning check has those inputs.
+
 ## Does the direct western approach work?
 
 [Watch the direct approach](../media/western-goomba-direct-rim.mp4).
