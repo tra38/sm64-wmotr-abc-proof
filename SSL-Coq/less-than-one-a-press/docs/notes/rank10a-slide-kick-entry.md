@@ -6,6 +6,11 @@ Z.” It does not close every way of entering ground pound inside the cage.
 
 ## The catch in the action code
 
+Normally Mario jumps with A, then starts a ground pound with Z. Walking off
+a ledge into ordinary freefall also allows Z, without a new A press. The
+elevator problem is reaching that eligible action before escaping the cage.
+Being airborne in a slide kick does not by itself allow the same Z command.
+
 A slide kick does have a way to become ordinary freefall. After incrementing
 its timer, the game requires both a timer greater than 30 and Mario more than
 500 units above his selected floor. Waiting alone is not enough. Once ordinary
@@ -79,13 +84,49 @@ full freefall-to-ground-pound continuation
 are separate obligations. Successful ground-pound entry would still leave
 the sideways escape problem. Rank 10A remains open.
 
+## Work backward through the launch
+
+A downward speed from an earlier action cannot simply become the hard
+slide-kick fall. The ordinary airborne initializer overwrites vertical
+speed with 12. It also applies the forward-speed minimum and updates the
+peak-height and flag fields. Those writes do not move Mario or change his
+selected floor, floor height or horizontal velocity components.
+
+The new [initializer proof](../../proofs/Area2SlideKickInitializer.v) follows
+the complete generated US/JP airborne-initializer call, including parameter
+binding, the initial tests, the chosen switch case, its remaining stores
+and the return. It starts from unsquished, zero-depth memory with readable
+position, flags and forward speed, and four specified writable cells. It
+does not assume an incoming vertical speed, a harmless callback, or the
+desired returned state. A separate execution proof covers the real outer
+action setter's remaining code: its writes stay in the control fields and
+preserve the launch speed, position and support data.
+
+The launch value agrees exactly with the vertical certificate's speed of
+12. It differs from both the supplied downward speed of -75 and the rebound
+speed of 37.5. This removes inherited speed as that setup; it does not remove
+the possibility of accelerating downward later. The call and caller-suffix
+results do not yet derive a whole controller-reachable transition from
+crouch sliding through every subsequent frame. The useful next predecessor
+is still a concrete event after launch that lets Mario fall much farther,
+changes the selected support, or changes his action while he is confined.
+
 ## Validation
 
 The 2026-09-13 SSL pipeline audit in
 `build/audit/20260913-195349-lzrrm0j0` passed compilation, proof-hole checks,
 link checks, integration and all four selected assumption audits. Each
-selected theorem used seven allowed foundations. The new boundary is
+selected theorem used seven allowed foundations. The entry boundary is
 consumed by `current_rank10a_ground_pound_moving_geometry_boundary` in Main.
 These checks do not discharge the live-support or controller-history gaps.
+
+The complete launch call and remaining-setter proof passed the later selected
+audit `build/audit/20260913-211426-5ukri3ea`, also on 2026-09-13. It checked
+562 registered source files, compilation, proof holes, generated link hygiene
+and integration. Main's 10A boundary, the complete initializer call, the
+remaining-setter preservation theorem and their combined launch boundary
+each used seven allowed foundations. Main now consumes that launch boundary
+as well. The new call proof does not close the later-flight or whole-route
+obligations.
 
 [Back to Rank 10A](../no-a-route-atlas.md#route-rank-10a)

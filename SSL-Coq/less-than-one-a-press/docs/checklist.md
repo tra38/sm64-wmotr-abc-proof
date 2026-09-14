@@ -1017,6 +1017,14 @@ These obligations materially strengthen the proof but are not the shortest route
   creation while confined remains open. See the
   [slide-kick entry check](notes/rank10a-slide-kick-entry.md).
 
+- [x] Connect Rank 10A's slide-kick launch to the complete real airborne
+  initializer call. Under the stated ordinary input-memory and writable-cell
+  conditions, it produces vertical speed 12 without assuming the incoming
+  speed, and frames position and selected support. The actual outer setter's
+  remaining writes also preserve those cells. Later flight, live support and
+  controller reachability remain open. See the
+  [launch connection](notes/rank10a-slide-kick-entry.md#work-backward-through-the-launch).
+
 - [x] Work backward on Rank 10A's alternative static support: the complete
   source-mesh census finds only low static candidates inside the bucket, the
   two base triangles cover that interior, and the actual US/JP floor-choice

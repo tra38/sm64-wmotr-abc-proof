@@ -563,3 +563,4 @@ proofs/Area2RolloutSource.v
 proofs/Area2RolloutDispatch.v
 proofs/Area2SlideKickEntry.v
 proofs/Area2SlideKickEnvelope.v
+proofs/Area2SlideKickInitializer.v

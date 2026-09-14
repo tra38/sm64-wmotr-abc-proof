@@ -44,7 +44,7 @@ From LessThanOneAPress.Proofs Require Import
   Area2Rank9APreHomeMovement
   Area2Rank10AEntryChecks Area2Rank10ASupportChange Area2ElevatorCoins Area2GoombaDeath
   Area2GoombaApproach Area2WesternGoombaRng Area2TripletEngine Area2RolloutDispatch
-  Area2SlideKickEnvelope
+  Area2SlideKickEnvelope Area2SlideKickInitializer
   ObjectContactNecessity ObjectContactReadback ObjectContactPhaseReadback
   ContactConsumerSource ContactConsumerExecution ContactCreditExecution
   SecretContactExecution
@@ -871,12 +871,16 @@ Qed.
     Finishing either rollout now has an execution-level exclusion: its actual
     animation ending preserves the action and position, that retained action
     dispatches to the real rollout again, and complete rollout calls return
-    false. Earlier action changes and later frame preservation remain open. *)
+    false. The complete ordinary slide-kick airborne-initializer call now
+    establishes its launch speed and preserves position and support; the
+    actual outer setter suffix also frames those cells. Earlier action
+    changes, caller composition and later frame preservation remain open. *)
 Theorem current_rank10a_ground_pound_moving_geometry_boundary :
   Rank10AGroundPoundBoundary /\ Rank10AEntryChecksBoundary /\
   Rank10ASupportChangeBoundary /\ Area2ElevatorCoinBoundary /\ Area2GoombaDeathBoundary /\
   Area2GoombaApproachBoundary /\ Area2WesternGoombaRngBoundary /\
-  Area2TripletSpawnerBoundary /\ RolloutActionGateBoundary /\ SlideKickEntryBoundary.
+  Area2TripletSpawnerBoundary /\ RolloutActionGateBoundary /\ SlideKickEntryBoundary /\
+  SlideKickLaunchBoundary.
 Proof.
   split; [exact rank10a_ground_pound_boundary_checked|].
   split; [exact rank10e_entry_checks_boundary_checked|].
@@ -886,7 +890,8 @@ Proof.
   split; [exact ga_approach_boundary_checked|].
   split; [exact wgr_rng_boundary_checked|].
   split; [exact te_triplet_spawner_boundary_checked|].
-  split; [exact rgr_rollout_action_gate_checked|exact sk_slide_kick_entry_boundary_checked].
+  split; [exact rgr_rollout_action_gate_checked|].
+  split; [exact sk_slide_kick_entry_boundary_checked|exact ski_launch_boundary_checked].
 Qed.
 
 (** Fresh-triplet live distance-call/store and native-command connections,
