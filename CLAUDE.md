@@ -42,3 +42,16 @@ The active **spine** is the transitive closure of the goal capstone
 `Unwired/` dir: compiled, but **not load-bearing**. CI's firewall forbids the
 spine from importing `Unwired/`, so the only way to "use" Unwired work is to
 promote it. See `proofs/README.md` and `docs/RENAMING.md`.
+
+## Standing reporting instruction
+
+For every future response about the pyramid proof project, keep
+`SSL-Coq/less-than-one-a-press/docs/no-a-route-atlas.md` and the private
+<https://pyramid-proof-fine-print.tra38.chatgpt.site> consistent with the
+findings, corrections and decisions being reported. The site source is in
+the sibling `pyramid-proof-assumptions-site` project. Update and publish
+changed site content before the final reply, using the Sites skills and
+preserving its private access. If nothing changed, do not invent progress.
+Keep the atlas's three summary sections as single paragraphs, retain honest
+proof boundaries, and copy its subjective counterexample estimates accurately.
+Do not publish conversation exports.
