@@ -1025,6 +1025,13 @@ These obligations materially strengthen the proof but are not the shortest route
   controller reachability remain open. See the
   [launch connection](notes/rank10a-slide-kick-entry.md#work-backward-through-the-launch).
 
+- [ ] Establish Rank 10A's separate grounded and airborne invariants. For
+  grounded entry, connect live base selection to the 100-unit height bound
+  at pre-action and movement-quarter queries, including early blocked returns
+  that skip the normal floor snap. Do not apply that bound to the permitted
+  airborne episodes, or assume every intervening action preserves it. See
+  the [invariant review](notes/rank10a-backward-support.md#invariants-for-entry-and-what-walking-off-would-mean).
+
 - [x] Work backward on Rank 10A's alternative static support: the complete
   source-mesh census finds only low static candidates inside the bucket, the
   two base triangles cover that interior, and the actual US/JP floor-choice

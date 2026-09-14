@@ -13,6 +13,74 @@ This does not supply a ground pound or disprove every Rank-10A route. It adds
 a complete finite source-mesh certificate and a conditional execution of the
 actual US/JP selection code. No new controller run is claimed.
 
+## Invariants for entry, and what walking off would mean
+
+Walking off a ledge is one way to reach ordinary freefall, not the only
+ground-pound predecessor in the game. The [generated action census](rank10a-ground-pound-moving-geometry.md#eligible-predecessors)
+also contains jump, flying and ceiling-hanging actions. Their existence in
+the source does not make them reachable inside this elevator without a new
+A press. Freefall itself can start when support changes beneath Mario;
+there need not be a literal edge beside him.
+
+The most useful proposed invariants depend on which action is running:
+
+| Proposed invariant | What it would exclude | What is checked, and what is missing |
+|---|---|---|
+| The actual floor queries after wall correction stay over the base and return that live base. | An interior hole or an unexplained switch to a much lower floor. | The base covers the checked interior, and the floor-choice proof preserves a successfully returned higher base. Live loading, traversal, query coordinates and acceptance remain open. |
+| While grounded, both the pre-action query and each attempted movement quarter keep Mario at most 100 units above the selected floor. | The ordinary off-floor input and the walking step's leave-ground branch. | The nominal elevator cycle and same-base height tests are checked. Preservation through actual movement, blocked returns and intervening updates is not. |
+| Each permitted airborne episode has its own bounds on height, velocity, timer and bounce state. | The corresponding height- or timer-based handoff into freefall. | The ordinary slide-kick flight and bounce miss their freefall gate, and rollout endings preserve their action. Other launches, collisions, interactions and support histories still need coverage. |
+
+These are proposed proof obligations, not newly established gameplay
+invariants. A universal 100-unit height bound would be false even in the
+ordinary checked slide-kick episode: its first flight and bounce reach gaps
+of 142 and 206 at the timeout checks. The grounded bound must therefore be
+kept separate from the airborne bounds. A complete exclusion also needs the
+actual action transitions to preserve the appropriate case from the accepted
+start, including interactions; assuming that preservation would assume away
+the central question. Breaking one proposed invariant would only identify a
+candidate. It would not by itself prove ground-pound entry or escape.
+
+The pre-action argument also needs the current frame's input reset and any
+other input writes. The existing false-guard proof says that this test does
+not add the off-floor flag; it does not clear a previously supplied flag.
+
+The walking code makes the geometric problem concrete. Each movement quarter
+first corrects its proposed position against walls and queries a floor. A
+null floor returns a stopped-step result. With a floor present, leaving the
+ground requires the proposed Y to exceed the returned floor height plus 100,
+and proposed Y plus 160 to be below the ceiling. The comparisons use the
+game's Float32 arithmetic. The walking action responds to the leave-ground
+result by requesting ordinary freefall. A later eligible Z check can then
+request ground pound, subject to the earlier action checks.
+
+The existing [source cuts](../../proofs/InkFloorHistorySource.v),
+[missing-floor proof](../../proofs/InkFloorHistoryBackward.v) and
+[high-gap proof](../../proofs/InkFloorHistoryExecution.v) already expose those
+real US/JP branches. This review reuses them; it adds no new Coq theorem and
+does not construct the full walking-to-ground-pound continuation.
+
+There is no ledge within the checked bucket interior: the flat base covers
+it, and the base's outer edge lies beyond the inner walls. Simply walking
+around on that base cannot manufacture the required drop. Reaching the rim
+or crossing the enclosing wall first requires its own explanation, so it
+cannot be silently supplied as the starting point of the escape.
+
+One precise remaining case is an early blocked movement return. Ordinary
+accepted ground movement snaps Y to its selected floor before processing
+the final wall response, so merely pushing against a wall is not a reason
+to retain the old height. A null-floor or insufficient-headroom return can
+occur before that snap. To use this, a real continuation would have to keep
+Mario from reanchoring while the base continues descending, accounting for
+the next pre-action query, platform movement, action changes and later
+movement attempts. Neither that repeated obstruction nor its impossibility
+has been established. This is distinct from the pre-action failed-floor
+retry, which has its own display-copy recovery.
+
+The next useful invariant proof should cover those actual blocked and
+accepted ground steps with the live base, then connect the separate
+airborne cases. Rank 10A remains open and its subjective 2–5% estimate is
+unchanged.
+
 ## The backward chain
 
 1. Ground-pound startup has the already-checked height window, but starting
