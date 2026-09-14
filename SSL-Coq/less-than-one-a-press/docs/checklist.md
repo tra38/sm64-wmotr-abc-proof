@@ -1027,10 +1027,20 @@ These obligations materially strengthen the proof but are not the shortest route
 
 - [ ] Establish Rank 10A's separate grounded and airborne invariants. For
   grounded entry, connect live base selection to the 100-unit height bound
-  at pre-action and movement-quarter queries, including early blocked returns
-  that skip the normal floor snap. Do not apply that bound to the permitted
+  at pre-action and movement-quarter queries, including missing-floor returns
+  and completion of the floor snap. The ordinary low-gap ceiling stall now
+  has a conditional exclusion. Do not apply the grounded bound to permitted
   airborne episodes, or assume every intervening action preserves it. See
   the [invariant review](notes/rank10a-backward-support.md#invariants-for-entry-and-what-walking-off-would-mean).
+
+- [x] Classify the real US/JP low-gap ground-quarter tail and check the
+  ceilings over the bucket. All 18 static candidates are horizontal at 5222
+  or higher; the real low-gap test reaches alignment under explicit loaded
+  bounds. The actual ceiling-list guard rejects the elevator underside under
+  the stated query/plane bounds. A blanket 100-unit bound is refuted in the
+  existing slide-kick certificate. Live lists, other dynamic owners and
+  repeated-frame preservation remain open. See the
+  [blocked-step result](notes/rank10a-blocked-steps.md).
 
 - [x] Work backward on Rank 10A's alternative static support: the complete
   source-mesh census finds only low static candidates inside the bucket, the

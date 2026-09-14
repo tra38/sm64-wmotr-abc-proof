@@ -564,3 +564,5 @@ proofs/Area2RolloutDispatch.v
 proofs/Area2SlideKickEntry.v
 proofs/Area2SlideKickEnvelope.v
 proofs/Area2SlideKickInitializer.v
+proofs/Area2Rank10ABlockedStep.v
+proofs/Area2Rank10ACeilingReject.v

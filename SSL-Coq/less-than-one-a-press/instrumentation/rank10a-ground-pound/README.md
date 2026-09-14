@@ -26,3 +26,11 @@ hangable static triangles against the full outer bucket footprint. It also
 checks that the four stock moving meshes contain no hangable triangles.
 The [entry note](../../docs/notes/rank10a-elevator-entry-checks.md) states the
 remaining timing, selected-base and ceiling-history obligations.
+
+`node instrumentation/rank10a-ground-pound/check_blocked_steps.js` checks
+all static ceiling candidates over the interior and the elevator underside.
+It also checks the underside rejection at every integer base height from
+128 through 4966. The [blocked-step note](../../docs/notes/rank10a-blocked-steps.md)
+separates these finite checks from the actual Coq branch executions and the
+remaining live-query and frame-preservation obligations. No stalled Mario
+run or ground-pound entry is produced by this checker.

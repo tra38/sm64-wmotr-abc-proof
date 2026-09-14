@@ -27,11 +27,11 @@ The most useful proposed invariants depend on which action is running:
 | Proposed invariant | What it would exclude | What is checked, and what is missing |
 |---|---|---|
 | The actual floor queries after wall correction stay over the base and return that live base. | An interior hole or an unexplained switch to a much lower floor. | The base covers the checked interior, and the floor-choice proof preserves a successfully returned higher base. Live loading, traversal, query coordinates and acceptance remain open. |
-| While grounded, both the pre-action query and each attempted movement quarter keep Mario at most 100 units above the selected floor. | The ordinary off-floor input and the walking step's leave-ground branch. | The nominal elevator cycle and same-base height tests are checked. Preservation through actual movement, blocked returns and intervening updates is not. |
+| While grounded, both the pre-action query and each attempted movement quarter keep Mario at most 100 units above the selected floor. | The ordinary off-floor input and the walking step's leave-ground branch. | The nominal elevator cycle is checked. The new low-gap execution proof reaches alignment under explicit returned-height bounds, and the ceiling census rules out ordinary static headroom as the obstruction. Live queries, alignment completion and frame preservation remain open. |
 | Each permitted airborne episode has its own bounds on height, velocity, timer and bounce state. | The corresponding height- or timer-based handoff into freefall. | The ordinary slide-kick flight and bounce miss their freefall gate, and rollout endings preserve their action. Other launches, collisions, interactions and support histories still need coverage. |
 
-These are proposed proof obligations, not newly established gameplay
-invariants. A universal 100-unit height bound would be false even in the
+These remain proof obligations, not established whole-game
+invariants. A universal 100-unit height bound is formally refuted in the
 ordinary checked slide-kick episode: its first flight and bounce reach gaps
 of 142 and 206 at the timeout checks. The grounded bound must therefore be
 kept separate from the airborne bounds. A complete exclusion also needs the
@@ -56,8 +56,9 @@ request ground pound, subject to the earlier action checks.
 The existing [source cuts](../../proofs/InkFloorHistorySource.v),
 [missing-floor proof](../../proofs/InkFloorHistoryBackward.v) and
 [high-gap proof](../../proofs/InkFloorHistoryExecution.v) already expose those
-real US/JP branches. This review reuses them; it adds no new Coq theorem and
-does not construct the full walking-to-ground-pound continuation.
+real US/JP branches. The [blocked-step proof](rank10a-blocked-steps.md) now
+adds the low-gap execution case and ceiling checks. It does not construct
+the full walking-to-ground-pound continuation.
 
 There is no ledge within the checked bucket interior: the flat base covers
 it, and the base's outer edge lies beyond the inner walls. Simply walking
@@ -72,9 +73,12 @@ to retain the old height. A null-floor or insufficient-headroom return can
 occur before that snap. To use this, a real continuation would have to keep
 Mario from reanchoring while the base continues descending, accounting for
 the next pre-action query, platform movement, action changes and later
-movement attempts. Neither that repeated obstruction nor its impossibility
-has been established. This is distinct from the pre-action failed-floor
-retry, which has its own display-copy recovery.
+movement attempts. The new [ceiling census and execution proofs](rank10a-blocked-steps.md)
+exclude the low-gap ceiling return under the ordinary loaded-height bounds:
+the 18 static candidates are high, and the underside is rejected. Missing
+live floors, other moving surfaces and actual query/frame preservation
+remain open. This is distinct from the pre-action failed-floor retry, which
+has its own display-copy recovery.
 
 The next useful invariant proof should cover those actual blocked and
 accepted ground steps with the live base, then connect the separate

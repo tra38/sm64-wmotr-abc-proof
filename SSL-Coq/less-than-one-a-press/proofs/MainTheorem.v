@@ -44,7 +44,7 @@ From LessThanOneAPress.Proofs Require Import
   Area2Rank9APreHomeMovement
   Area2Rank10AEntryChecks Area2Rank10ASupportChange Area2ElevatorCoins Area2GoombaDeath
   Area2GoombaApproach Area2WesternGoombaRng Area2TripletEngine Area2RolloutDispatch
-  Area2SlideKickEnvelope Area2SlideKickInitializer
+  Area2SlideKickEnvelope Area2SlideKickInitializer Area2Rank10ABlockedStep Area2Rank10ACeilingReject
   ObjectContactNecessity ObjectContactReadback ObjectContactPhaseReadback
   ContactConsumerSource ContactConsumerExecution ContactCreditExecution
   SecretContactExecution
@@ -874,13 +874,17 @@ Qed.
     false. The complete ordinary slide-kick airborne-initializer call now
     establishes its launch speed and preserves position and support; the
     actual outer setter suffix also frames those cells. Earlier action
-    changes, caller composition and later frame preservation remain open. *)
+    changes, caller composition and later frame preservation remain open.
+    The low-gap ground-quarter tail now reaches the real alignment code
+    under explicit loaded floor/ceiling bounds. A complete static ceiling
+    census and the actual underside-rejection guard narrow early stalls;
+    neither proves live list contents or repeated-frame preservation. *)
 Theorem current_rank10a_ground_pound_moving_geometry_boundary :
   Rank10AGroundPoundBoundary /\ Rank10AEntryChecksBoundary /\
   Rank10ASupportChangeBoundary /\ Area2ElevatorCoinBoundary /\ Area2GoombaDeathBoundary /\
   Area2GoombaApproachBoundary /\ Area2WesternGoombaRngBoundary /\
   Area2TripletSpawnerBoundary /\ RolloutActionGateBoundary /\ SlideKickEntryBoundary /\
-  SlideKickLaunchBoundary.
+  SlideKickLaunchBoundary /\ Rank10ABlockedStepBoundary /\ Rank10ACeilingRejectionBoundary.
 Proof.
   split; [exact rank10a_ground_pound_boundary_checked|].
   split; [exact rank10e_entry_checks_boundary_checked|].
@@ -891,7 +895,9 @@ Proof.
   split; [exact wgr_rng_boundary_checked|].
   split; [exact te_triplet_spawner_boundary_checked|].
   split; [exact rgr_rollout_action_gate_checked|].
-  split; [exact sk_slide_kick_entry_boundary_checked|exact ski_launch_boundary_checked].
+  split; [exact sk_slide_kick_entry_boundary_checked|].
+  split; [exact ski_launch_boundary_checked|].
+  split; [exact rank10b_blocked_step_boundary_checked|exact rank10c_ceiling_rejection_boundary_checked].
 Qed.
 
 (** Fresh-triplet live distance-call/store and native-command connections,
