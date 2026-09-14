@@ -1,0 +1,91 @@
+# Rank 10A: can a slide kick unlock ground pound?
+
+The ordinary slide kick and its first bounce fail in the checked elevator
+episode. This closes a more specific idea than “Mario is airborne, so press
+Z.” It does not close every way of entering ground pound inside the cage.
+
+## The catch in the action code
+
+A slide kick does have a way to become ordinary freefall. After incrementing
+its timer, the game requires both a timer greater than 30 and Mario more than
+500 units above his selected floor. Waiting alone is not enough. Once ordinary
+freefall is available, its Z check requests ground pound, provided the earlier
+B check does not take priority. That last observation comes from the existing
+generated-source entry census; the new work concerns getting to freefall.
+
+This is a different test from the more-than-100-unit floor gap that can turn
+grounded motion into freefall. It also uses the selected floor, not necessarily
+the elevator's base. Losing the base would therefore change the question.
+
+## Include the bounce
+
+The selected source gives slide kick an upward speed of 12 and gravity of 2
+units per update. On its first falling landing, it reverses and halves the
+downward speed, marks the bounce used, and resets the timer. Gravity has
+already run in the air-step helper when that bounce reads the speed.
+
+The new certificate starts Mario and the selected base at Y=4000, moves the
+base down 10 units before each Mario update, and checks the four movement
+quarters and landing test with Float32 arithmetic. It supplies clear headroom
+and continued selection of that base. It does not simulate horizontal wall
+responses, other actors, or the whole action dispatcher.
+
+| Episode | Landing update within this flight | Bounce speed afterward | Largest gap at the timeout check |
+|---|---:|---:|---:|
+| Initial slide kick | 23 | 17 | 142 |
+| Its one bounce | 28 | No second bounce | 206 |
+
+Both flights land before their timer can exceed 30, and their gaps stay far
+below 500. The second landing selects the slide-kick slide action. The
+certificate stops there; later ground movement still needs its own support
+accounting. Starting another ordinary episode does not by itself prove that
+every intervening controller history has these same conditions.
+
+## A hard fall would be different
+
+The same source permits a bounce speed of 37.5 if the first landing reads
+downward speed -75. In a separate conditional vertical calculation, that
+bounce over a base descending 10 units per update produces a 565-unit gap
+at the start of update 31. Both timeout tests then succeed. This calculation
+starts the bounce at Y=2000 with clear headroom; it does not construct the
+fall that supplies it.
+
+So we cannot replace the open entry problem with “slide kicks can never
+help.” The useful backward question is whether Mario can get that harder
+fall, lose or change support, or receive another action change while still
+confined. The ordinary short flight supplies none of those conditions.
+
+## Exactly what is checked
+
+[Area2SlideKickEntry.v](../../proofs/Area2SlideKickEntry.v) extracts the real
+US/JP timeout decision and resolves the actual slide-kick function. It
+executes the timer read, increment, narrowing, store and height checks from
+Mario's memory. The timer write preserves his action and position. A failed
+height test then executes the skip with unchanged memory for any timer value.
+A passed test calls the real action setter with freefall and argument 2; the theorem
+retains the setter's actual call and memory effects and proves the enclosing
+return is one when that call completes.
+
+[Area2SlideKickEnvelope.v](../../proofs/Area2SlideKickEnvelope.v) checks the
+source's launch, gravity and bounce expressions, the 51-update ordinary
+vertical episode, and the separate hard-bounce candidate. It connects every
+ordinary certificate sample to the real timeout decision. Neither module
+assumes a predicate saying that all elevator histories are covered. The
+vertical certificate checks arithmetic; the Clight execution theorem covers
+the timeout gate. It does not execute all the movement helper calls.
+
+Live floor selection, action scheduling, creation of a hard fall, and the
+full freefall-to-ground-pound continuation
+are separate obligations. Successful ground-pound entry would still leave
+the sideways escape problem. Rank 10A remains open.
+
+## Validation
+
+The 2026-09-13 SSL pipeline audit in
+`build/audit/20260913-195349-lzrrm0j0` passed compilation, proof-hole checks,
+link checks, integration and all four selected assumption audits. Each
+selected theorem used seven allowed foundations. The new boundary is
+consumed by `current_rank10a_ground_pound_moving_geometry_boundary` in Main.
+These checks do not discharge the live-support or controller-history gaps.
+
+[Back to Rank 10A](../no-a-route-atlas.md#route-rank-10a)

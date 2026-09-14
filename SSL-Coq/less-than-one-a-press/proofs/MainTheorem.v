@@ -44,6 +44,7 @@ From LessThanOneAPress.Proofs Require Import
   Area2Rank9APreHomeMovement
   Area2Rank10AEntryChecks Area2Rank10ASupportChange Area2ElevatorCoins Area2GoombaDeath
   Area2GoombaApproach Area2WesternGoombaRng Area2TripletEngine Area2RolloutDispatch
+  Area2SlideKickEnvelope
   ObjectContactNecessity ObjectContactReadback ObjectContactPhaseReadback
   ContactConsumerSource ContactConsumerExecution ContactCreditExecution
   SecretContactExecution
@@ -875,7 +876,7 @@ Theorem current_rank10a_ground_pound_moving_geometry_boundary :
   Rank10AGroundPoundBoundary /\ Rank10AEntryChecksBoundary /\
   Rank10ASupportChangeBoundary /\ Area2ElevatorCoinBoundary /\ Area2GoombaDeathBoundary /\
   Area2GoombaApproachBoundary /\ Area2WesternGoombaRngBoundary /\
-  Area2TripletSpawnerBoundary /\ RolloutActionGateBoundary.
+  Area2TripletSpawnerBoundary /\ RolloutActionGateBoundary /\ SlideKickEntryBoundary.
 Proof.
   split; [exact rank10a_ground_pound_boundary_checked|].
   split; [exact rank10e_entry_checks_boundary_checked|].
@@ -884,7 +885,8 @@ Proof.
   split; [exact gd_environmental_death_boundary_checked|].
   split; [exact ga_approach_boundary_checked|].
   split; [exact wgr_rng_boundary_checked|].
-  split; [exact te_triplet_spawner_boundary_checked|exact rgr_rollout_action_gate_checked].
+  split; [exact te_triplet_spawner_boundary_checked|].
+  split; [exact rgr_rollout_action_gate_checked|exact sk_slide_kick_entry_boundary_checked].
 Qed.
 
 (** Fresh-triplet live distance-call/store and native-command connections,

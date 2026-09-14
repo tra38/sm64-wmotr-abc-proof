@@ -1009,6 +1009,14 @@ These obligations materially strengthen the proof but are not the shortest route
   false. Earlier movement and intervening action changes remain outside this
   local result. See the [rollout entry proof](notes/rank10a-ground-pound-moving-geometry.md#rollout-animation-ending-cannot-supply-entry-2026-09-12).
 
+- [x] Check Rank 10A's slide-kick timeout and first bounce. The generated
+  US/JP decision requires both a timer above 30 and a selected-floor gap above
+  500. The ordinary vertical certificate returns to the elevator in 23
+  updates, bounces at speed 17, and lands again after 28; it never passes
+  either threshold. A separate hard-fall bounce can pass them, but its
+  creation while confined remains open. See the
+  [slide-kick entry check](notes/rank10a-slide-kick-entry.md).
+
 - [x] Work backward on Rank 10A's alternative static support: the complete
   source-mesh census finds only low static candidates inside the bucket, the
   two base triangles cover that interior, and the actual US/JP floor-choice
