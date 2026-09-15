@@ -1,0 +1,36 @@
+{
+  "date": "2026-09-14",
+  "kind": "finite native unchanged-C diagnostic; not a controller or Clight execution proof",
+  "sourceRevision": "9921382a68bb0c865e5e45eb594d9c64db59b1af",
+  "extractedFunctionCount": 39,
+  "compilerFlags": "-O2 -ffp-contract=off -fno-fast-math -fno-strict-aliasing -fsanitize=undefined -fno-sanitize-recover=all",
+  "versions": [
+    "US",
+    "JP"
+  ],
+  "result": {
+    "versions": "compiled US or JP",
+    "baseHeights": 4839,
+    "floorQueries": 23855421,
+    "quarterSteps": 23855421,
+    "ledgeChecks": 23855421,
+    "floorFailures": 0,
+    "correctedOutsideInterior": 0,
+    "earlyStops": 4770,
+    "lowGapStops": 0,
+    "firstHighGapStopBase": 4952,
+    "alignmentFailures": 0,
+    "ledgeTransitions": 0,
+    "correctedXZ": [
+      -410,
+      411,
+      -154,
+      667
+    ],
+    "timeStopRetainsLoadedFloor": true,
+    "frozenSchedulerCases": 64,
+    "otherSupportTransforms": 12293,
+    "nearestGrindelMaximumX": -584,
+    "elevenDescentPaths": 9
+  }
+}

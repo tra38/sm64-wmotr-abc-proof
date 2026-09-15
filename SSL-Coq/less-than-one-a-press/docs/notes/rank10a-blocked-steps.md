@@ -1,5 +1,11 @@
 # Rank 10A: can blocked steps leave Mario behind as the elevator descends?
 
+The [follow-up check of all four proposed causes](rank10a-live-support.md)
+now runs real collision loading and ground quarters. It finds no missing
+base or outward correction in the finite sample. It also distinguishes a
+real ceiling stop with an already-supplied 110-unit gap from a way to create
+that gap. The results below remain the earlier conditional Coq boundary.
+
 ## Result
 
 The ordinary ceiling explanation now has a checked conditional exclusion.
@@ -107,7 +113,7 @@ query conditions above, a low-gap quarter cannot keep taking the early
 ceiling return even once. Repetition cannot be obtained from that return
 without first breaking one of those conditions.
 
-The concrete unresolved alternatives are a missing/rejected live base, a
+The concrete alternatives to resolve across full gameplay histories are a missing/rejected live base, a
 wall correction that moves the query outside this interior, another live
 dynamic ceiling, a differently positioned Mario, or an intervening action
 or interaction. The static geometry does not supply an interior floor hole

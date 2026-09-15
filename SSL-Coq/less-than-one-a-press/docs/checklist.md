@@ -1033,6 +1033,17 @@ These obligations materially strengthen the proof but are not the shortest route
   airborne episodes, or assume every intervening action preserves it. See
   the [invariant review](notes/rank10a-backward-support.md#invariants-for-entry-and-what-walking-off-would-mean).
 
+- [x] Investigate the four concrete blocked-step causes with actual loading
+  and movement code. Both versions check 23,855,421 queried quarters without
+  a missing base, outward correction or failed low-gap alignment. Nine
+  eleven-descent sequences realign every time; 12,293 other-mesh transforms
+  miss the corridor at stock transverse coordinates. Coq proves the complete
+  empty static corridor and the real time-stop clearing body's unchanged
+  memory. A positive ceiling stop needs an already-supplied 110-unit gap.
+  These are finite checks and local proofs, not all-controller closure;
+  full rendering/loading histories, moving-owner preservation and special
+  interactions remain open. See the [live-support check](notes/rank10a-live-support.md).
+
 - [x] Classify the real US/JP low-gap ground-quarter tail and check the
   ceilings over the bucket. All 18 static candidates are horizontal at 5222
   or higher; the real low-gap test reaches alignment under explicit loaded

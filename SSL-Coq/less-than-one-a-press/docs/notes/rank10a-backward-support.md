@@ -152,6 +152,14 @@ The theorem assumes no intact-list or whole-frame preservation predicate.
 
 ## The next concrete predecessor to check
 
+The [live-support follow-up](rank10a-live-support.md) now executes the actual
+loader, wall queries and ground quarter on a stated finite domain in both
+versions. It finds no missing base, outward correction or low-gap alignment
+failure. New Coq work excludes every static triangle from the enlarged
+wall-query corridor and proves that active time stop does not erase
+collision. Full-frame preservation, all corrected queries and the other
+owners' movement histories remain open.
+
 Follow one actual dynamic query backward through surface loading and the
 earlier position updates. Establish the live elevator identity and transform,
 its base's presence and order in the queried cell, query coordinates and Y
