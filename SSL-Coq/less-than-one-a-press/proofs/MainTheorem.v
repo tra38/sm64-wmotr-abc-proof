@@ -45,7 +45,7 @@ From LessThanOneAPress.Proofs Require Import
   Area2Rank10AEntryChecks Area2Rank10ASupportChange Area2ElevatorCoins Area2GoombaDeath
   Area2GoombaApproach Area2WesternGoombaRng Area2TripletEngine Area2RolloutDispatch
   Area2SlideKickEnvelope Area2SlideKickInitializer Area2Rank10ABlockedStep Area2Rank10ACeilingReject
-  Area2Rank10AStallSources
+  Area2Rank10AStallSources Area2Rank10AGroundHold
   ObjectContactNecessity ObjectContactReadback ObjectContactPhaseReadback
   ContactConsumerSource ContactConsumerExecution ContactCreditExecution
   SecretContactExecution
@@ -882,14 +882,16 @@ Qed.
     neither proves live list contents or repeated-frame preservation. The
     expanded wall-query corridor now has no static triangle at all, and
     the actual collision-clearing body preserves memory during time stop.
-    Scheduler preservation and other dynamic owners remain separate. *)
+    The contracted ground-quarter calls now complete the actual alignment
+    and exclude the eleven-descent hold. Applicability of their explicit
+    query and interlude contracts to all gameplay remains separate. *)
 Theorem current_rank10a_ground_pound_moving_geometry_boundary :
   Rank10AGroundPoundBoundary /\ Rank10AEntryChecksBoundary /\
   Rank10ASupportChangeBoundary /\ Area2ElevatorCoinBoundary /\ Area2GoombaDeathBoundary /\
   Area2GoombaApproachBoundary /\ Area2WesternGoombaRngBoundary /\
   Area2TripletSpawnerBoundary /\ RolloutActionGateBoundary /\ SlideKickEntryBoundary /\
   SlideKickLaunchBoundary /\ Rank10ABlockedStepBoundary /\ Rank10ACeilingRejectionBoundary /\
-  Rank10AStallSourcesBoundary.
+  Rank10AStallSourcesBoundary /\ Rank10AGroundHoldBoundary.
 Proof.
   split; [exact rank10a_ground_pound_boundary_checked|].
   split; [exact rank10e_entry_checks_boundary_checked|].
@@ -903,7 +905,8 @@ Proof.
   split; [exact sk_slide_kick_entry_boundary_checked|].
   split; [exact ski_launch_boundary_checked|].
   split; [exact rank10b_blocked_step_boundary_checked|].
-  split; [exact rank10c_ceiling_rejection_boundary_checked|exact rank10t_stall_sources_boundary_checked].
+  split; [exact rank10c_ceiling_rejection_boundary_checked|].
+  split; [exact rank10t_stall_sources_boundary_checked|exact rank10h_ground_hold_boundary_checked].
 Qed.
 
 (** Fresh-triplet live distance-call/store and native-command connections,

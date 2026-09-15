@@ -567,3 +567,6 @@ proofs/Area2SlideKickInitializer.v
 proofs/Area2Rank10ABlockedStep.v
 proofs/Area2Rank10ACeilingReject.v
 proofs/Area2Rank10AStallSources.v
+proofs/Area2GroundVectorSetSource.v
+proofs/Area2Rank10AGroundAlignment.v
+proofs/Area2Rank10AGroundHold.v

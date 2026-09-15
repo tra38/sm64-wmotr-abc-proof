@@ -1028,10 +1028,20 @@ These obligations materially strengthen the proof but are not the shortest route
 - [ ] Establish Rank 10A's separate grounded and airborne invariants. For
   grounded entry, connect live base selection to the 100-unit height bound
   at pre-action and movement-quarter queries, including missing-floor returns
-  and completion of the floor snap. The ordinary low-gap ceiling stall now
-  has a conditional exclusion. Do not apply the grounded bound to permitted
+  and entry into each grounded update. The actual ground-quarter snap and
+  repeated eleven-descent hold now have the conditional closure below. Do not apply the grounded bound to permitted
   airborne episodes, or assume every intervening action preserves it. See
   the [invariant review](notes/rank10a-backward-support.md#invariants-for-entry-and-what-walking-off-would-mean).
+
+- [x] Prove the conditional Rank 10A eleven-descent hold exclusion. The real
+  US/JP quarter now completes its position setter, floor bookkeeping, wall
+  handling and local cleanup. Under explicit non-null current-base and
+  ceiling answers, no shell override, and the stated Y-carry/query-input
+  contract, induction proves alignment after every ten-unit descent. Alignment
+  is derived, not assumed. The world may update between calls; those updates
+  are constrained by the explicit contract, not claimed as a verified whole
+  scheduler. Whole 10A and applicability to every grounded action remain open.
+  See the [conditional result](notes/rank10a-live-support.md#conditional-eleven-descent-exclusion).
 
 - [x] Investigate the four concrete blocked-step causes with actual loading
   and movement code. Both versions check 23,855,421 queried quarters without

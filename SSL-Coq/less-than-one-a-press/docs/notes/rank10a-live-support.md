@@ -1,6 +1,12 @@
 # Rank 10A: what could actually make Mario miss the descending base?
 
-The ordinary blocked-step proposal now looks substantially less promising.
+The eleven-descent ground-quarter hold is now **conditionally excluded**.
+Starting aligned, Mario ends each contracted ground-quarter call at the
+current base height. The proof follows the real US/JP call through its
+position write, wall handling and return; it does not assume alignment.
+The live query and between-call conditions are stated below.
+
+The earlier ordinary blocked-step diagnostic remains separate evidence.
 The new native source check really loads the elevator's collision, corrects
 positions against walls, finds its floor and executes the ground quarter.
 Every tested gap up to 100 realigns Mario. No missing base or outward
@@ -43,17 +49,75 @@ needs a classification of the immediate mechanisms.
 A sound finite abstraction can also cover more choices than the game allows,
 but its coverage needs proof; a sample alone does not provide it.
 
-For the user's conditional question, the recommended next target is narrower:
-exclude the eleven-descent ordinary-ground hold from an initially aligned
-pose under explicit collision-loading, transform and action contracts.
-Those contracts must be spelled out against the real program and exposed
-as premises. The proof must derive alignment and the resulting bound;
-assuming that every frame aligns would assume the answer. Special
-interactions outside the contract would remain separate questions.
+For the user's conditional question, that narrower target is now proved.
+The proof below closes the stated hold mechanism under explicit conditions.
+It does not require proving those conditions for every controller history.
 
-This is a clarification of the proposed proof scope, not a new theorem or
-a claim that the contracts already hold for all gameplay. The last checked
-results and the subjective 2–5% estimate for all of 10A are unchanged.
+## Conditional eleven-descent exclusion
+
+**Proved:** an initially aligned Mario cannot remain at his starting height
+through eleven ten-unit descents in the contracted ground-quarter sequence.
+The stronger theorem proves alignment after any number of these calls while
+the base remains in the specified range. It is an induction over actual
+selected-program calls, rather than a generalization from the nine sampled
+eleven-descent paths.
+
+The conditions are precise:
+
+- The initial base height is an integer from 238 to 4966 for the eleven-step
+  result, and each descent lowers it by ten, staying at or above 128.
+- Each interval contains a completed call to the real
+  `perform_ground_quarter_step` with ordinary MarioState and next-position
+  pointers. After its actual query prefix, the floor pointer is non-null and
+  the returned floor height is the **current** base height. A stale or lower
+  floor answer does not satisfy this condition.
+- The returned ceiling is finite and at least 5222. The actual action's
+  riding-shell bit is clear, excluding the water-floor override.
+- Between calls, the world may update, including moving the elevator and
+  reloading collision, while Mario's Y is carried unchanged. The next
+  proposed query Y is that carried value. This is the scoped hold proposal's
+  vertical-input contract, not an assumption that he follows the floor.
+
+After a descent, that carried height is only ten above the new base. The
+real leave-ground comparison is false, and the separate floor/ceiling
+comparison cannot stop the quarter. The actual vector setter then writes
+the new base height into MarioState. Its temporary allocation, all three
+coordinate writes and cleanup are covered. The following floor bookkeeping
+does not overwrite Y, and the already-proved internal `atan2s` call leaves
+memory unchanged. The outer quarter's local cleanup also preserves Y.
+
+This rules out the first missed alignment under the contract. Repeating
+the argument keeps the gap from accumulating: after eleven calls Mario is
+110 units lower, aligned with the base, rather than held at the old height.
+Wall contact is allowed; its post-alignment handling is included.
+
+**Still conditional:** the relation between calls exposes the Y-carry
+condition and allows other world data to change. It does not pretend to
+execute or verify the whole intervening scheduler. The loading and transform
+requirements are expressed by the actual query answers they must supply;
+this tranche does not prove that every reachable rendering/loading history
+supplies them. Omitted ground calls, different actions or vertical inputs,
+and missing or stale floor answers remain outside this closure. Whole 10A,
+ground-pound entry by other means and a useful sideways departure remain
+open. Its subjective 2–5% estimate is unchanged.
+
+The proof is in [GroundAlignment](../../proofs/Area2Rank10AGroundAlignment.v)
+and [GroundHold](../../proofs/Area2Rank10AGroundHold.v), using the
+[selected setter source](../../proofs/Area2GroundVectorSetSource.v).
+`rank10h_completed_quarter_aligns` proves the complete call result;
+`rank10h_no_first_missed_alignment` supplies the one-step invariant;
+`rank10h_every_contracted_descent_realigns` proves the induction; and
+`rank10h_eleven_descent_hold_impossible` gives the requested exclusion.
+MainTheorem consumes the new conditional boundary.
+
+The selected audit passed on 2026-09-14 in
+`build/audit/20260914-222711-3xxviy24/`: 568 registered sources, 398 of 492
+proof modules in Main's import closure, and 94 standalone modules. The Main
+boundary, complete vector setter, complete ground quarter and eleven-descent
+exclusion have respectively 7, 6, 7 and 7 allowed foundations. Compilation,
+proof-hole, link and integration checks passed. These counts do not count
+the explicit conditional premises above, and the audit is not a whole-game
+proof or a rebuild of every standalone module.
 
 ## What the actual loader checks
 
@@ -174,7 +238,7 @@ PROBE_VERSION=JP bash instrumentation/rank10a-live-support/run.sh
 The [harness](../../instrumentation/rank10a-live-support/probe.c) and
 [extractor](../../instrumentation/rank10a-live-support/build_probe.py) state
 their fixtures and omissions. Outputs remain under `build/instrumentation`.
-The selected audit passed on 2026-09-14 in
+The earlier static-corridor and time-stop audit passed on 2026-09-14 in
 `build/audit/20260914-211059-50uvwm4u/`: 565 registered sources, 395 of 489
 proof modules in Main's import closure, and 94 standalone modules. The Main
 boundary, new static-corridor theorem, new time-stop theorem and existing
