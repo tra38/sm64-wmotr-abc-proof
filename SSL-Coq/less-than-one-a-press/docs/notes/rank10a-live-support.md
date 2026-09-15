@@ -27,6 +27,34 @@ pound, a useful sideways departure and the whole no-A route remain open.
 The atlas's subjective estimate for all of 10A stays at 2–5%; this narrower
 ordinary-ground stall is less promising than it was.
 
+## Why mention gameplay histories?
+
+The missing history connection means that the conditions used in a local
+check must hold when real gameplay reaches it. It does not demand a replay
+of every button sequence. The diagnostic supplies ordinary elevator fields
+and a fresh transform reset; a general exclusion must justify their continued
+applicability, or account for the ways they can fail.
+
+There are shorter proof methods. An invariant establishes the conditions at
+entry and proves that each allowed update preserves them. A backward argument
+examines the first loss of a required condition, including alignment. The
+earlier updates satisfy the chosen conditions, so their first failure
+needs a classification of the immediate mechanisms.
+A sound finite abstraction can also cover more choices than the game allows,
+but its coverage needs proof; a sample alone does not provide it.
+
+For the user's conditional question, the recommended next target is narrower:
+exclude the eleven-descent ordinary-ground hold from an initially aligned
+pose under explicit collision-loading, transform and action contracts.
+Those contracts must be spelled out against the real program and exposed
+as premises. The proof must derive alignment and the resulting bound;
+assuming that every frame aligns would assume the answer. Special
+interactions outside the contract would remain separate questions.
+
+This is a clarification of the proposed proof scope, not a new theorem or
+a claim that the contracts already hold for all gameplay. The last checked
+results and the subjective 2–5% estimate for all of 10A are unchanged.
+
 ## What the actual loader checks
 
 The elevator's behavior script calls its movement routine and then
