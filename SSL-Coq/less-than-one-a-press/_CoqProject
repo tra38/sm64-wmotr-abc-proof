@@ -581,3 +581,4 @@ proofs/InkPlatformMovementSource.v
 proofs/InkPlatformMovement.v
 proofs/InkPlatformDistance.v
 proofs/InkCourseEntryReset.v
+proofs/InkStockSeedConditional.v

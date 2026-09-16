@@ -117,11 +117,14 @@ These obligations currently block the clean-retail result.
   inactive-guard alternative. This is a reset barrier, not a frame for later
   entry calls or a proof that all entry histories have been covered.
 
+- [x] Assemble the [conditional stock seed-to-A chain](notes/conditional-stock-negative-seed.md): a finite connected history of classified writer outcomes, with the stock landing gates, legitimate first constructors and physical-edge refinement, cannot finish negative without a physical A press. These coverage premises remain explicit; their application to all gameplay is not proved.
+
 - [ ] Establish or refute a useful negative seed with A never pressed,
   including the newly requested cross-course search. A seed cannot persist
   unchanged through the proved reset; a proposed import must explain a
   bypass, a later producer or a live-record change. The stock late-landing
-  and first-long-jump restrictions remain local results. No negative seed
+  and first-long-jump restrictions are now composed conditionally; the writer,
+  action and physical-input refinements still need gameplay coverage. No negative seed
   is granted for this question.
 
 - [ ] Turn the conditional moving-support departure into a useful first miss.

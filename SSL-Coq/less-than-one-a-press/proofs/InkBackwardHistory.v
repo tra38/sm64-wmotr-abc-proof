@@ -11,7 +11,7 @@ From LessThanOneAPress.Proofs Require Import
   InkInputSharedConstruction InkInitialControllerGuard InkInputGeometryHistory InkPostDialogGroundReset
   InkRetryCompletion InkRetryQuery InkVerticalRetryGeometry InkRetryCallCompletion
   InkDialogInteractionGate InkVerticalLiveSelection InkWarpStop InkPlatformDeparture
-  InkPlatformMovement InkPlatformDistance InkCourseEntryReset.
+  InkPlatformMovement InkPlatformDistance InkCourseEntryReset InkStockSeedConditional.
 
 Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkLandingHistoryCheckedBoundary /\
@@ -31,7 +31,7 @@ Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkPrimaryQueryPositionFrame /\ InkRetryCompletedQueryPosition /\
   InkDialogInteractionGateBoundary /\ InkVerticalLiveSelectionBoundary /\
   InkWarpStopCopyCheckpoint /\ InkPlatformDepartureBoundary /\ InkPlatformMovementBoundary /\
-  InkPlatformDistanceBoundary /\ InkCourseEntryResetBoundary.
+  InkPlatformDistanceBoundary /\ InkCourseEntryResetBoundary /\ InkStockSeedConditionalBoundary.
 
 Theorem ibh_backward_histories_checked : InkBackwardHistoryCheckedBoundary.
 Proof.
@@ -74,5 +74,6 @@ Proof.
   split; [exact ipd_backward_platform_departure_checked|].
   split; [exact ipm_moving_support_backward_checked|].
   split; [exact ipdist_platform_distance_checked|].
-  exact ier_course_entry_reset_checked.
+  split; [exact ier_course_entry_reset_checked|].
+  exact isc_useful_negative_seed_requires_physical_a.
 Qed.
