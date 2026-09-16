@@ -580,3 +580,4 @@ proofs/InkPlatformWriteFrame.v
 proofs/InkPlatformMovementSource.v
 proofs/InkPlatformMovement.v
 proofs/InkPlatformDistance.v
+proofs/InkCourseEntryReset.v

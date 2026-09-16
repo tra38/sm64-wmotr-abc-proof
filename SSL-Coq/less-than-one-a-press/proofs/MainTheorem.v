@@ -1287,6 +1287,11 @@ Qed.
     and the timer-131 top all fail the exact distance test. These start at the
     post-query test, not at a proved live-list selection. The earlier floor
     result and intervening scheduler/pointer replacement remain open.
+    The wider seed search now includes a course-entry reset checkpoint:
+    every completed init_mario call executes the real zero-depth store.
+    The complete warp initializer either takes its actual inactive guard or
+    reaches that checkpoint through the selected internal call. Earlier
+    call effects are retained; no frame for the remaining entry is assumed.
     Clean arrival with the needed display, contact, depth and timing remains
     open; these results do not exclude all controller-reachable producers. *)
 Theorem current_ink_backward_execution_boundary : InkBackwardHistoryCheckedBoundary.

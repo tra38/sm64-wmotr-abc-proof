@@ -108,6 +108,22 @@ These obligations currently block the clean-retail result.
   for every continuation. The saved 68-trial archive and 12 validator tests
   were also rechecked successfully.
 
+- [x] Check whether a seed made in another course can pass unchanged through
+  normal Mario initialization. The [cross-course review](notes/negative-depth-course-transfer.md)
+  finds the same depth writers in the other quicksand courses. The new
+  [US/JP proof](../proofs/InkCourseEntryReset.v) derives a zero-depth checkpoint
+  in every completed initialization and connects the active warp branch to
+  that real internal call. The complete warp initializer retains its actual
+  inactive-guard alternative. This is a reset barrier, not a frame for later
+  entry calls or a proof that all entry histories have been covered.
+
+- [ ] Establish or refute a useful negative seed with A never pressed,
+  including the newly requested cross-course search. A seed cannot persist
+  unchanged through the proved reset; a proposed import must explain a
+  bypass, a later producer or a live-record change. The stock late-landing
+  and first-long-jump restrictions remain local results. No negative seed
+  is granted for this question.
+
 - [ ] Turn the conditional moving-support departure into a useful first miss.
   The [three-second search](../instrumentation/jp-dialog-support-search/README.md)
   now observes the top moving actual X/Z while its dialog-raised display stays

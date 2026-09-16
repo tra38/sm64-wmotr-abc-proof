@@ -1,5 +1,12 @@
 # Negative depth: one shared-history closure
 
+**Current scope, 2026-09-16:** the user has asked to investigate a seed with A
+never pressed, including creation elsewhere and transfer into SSL. The
+[cross-course review](negative-depth-course-transfer.md) records the wider
+source search and the checked initialization reset barrier. No clean no-A
+seed is known. The earlier pause and accepted-start plan below remain
+historical context; they do not restrict this newly requested investigation.
+
 **Planning update, 2026-09-10:** pausing the full same-history effort is now
 recommended pending a bounded review of the overall proof design. See the
 [pause recommendation](negative-depth-same-history-pause.md). The technical
