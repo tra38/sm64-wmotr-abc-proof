@@ -10,7 +10,8 @@ From LessThanOneAPress.Proofs Require Import
   InkScheduledSharedHistory InkPreparationConstruction InkAcceptedInitialStorage
   InkInputSharedConstruction InkInitialControllerGuard InkInputGeometryHistory InkPostDialogGroundReset
   InkRetryCompletion InkRetryQuery InkVerticalRetryGeometry InkRetryCallCompletion
-  InkDialogInteractionGate InkVerticalLiveSelection InkWarpStop InkPlatformDeparture.
+  InkDialogInteractionGate InkVerticalLiveSelection InkWarpStop InkPlatformDeparture
+  InkPlatformMovement.
 
 Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkLandingHistoryCheckedBoundary /\
@@ -29,7 +30,7 @@ Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkRetryCompletedPosition /\ InkRetrySameRunFloorCall /\ InkVerticalRetryGeometryBoundary /\
   InkPrimaryQueryPositionFrame /\ InkRetryCompletedQueryPosition /\
   InkDialogInteractionGateBoundary /\ InkVerticalLiveSelectionBoundary /\
-  InkWarpStopCopyCheckpoint /\ InkPlatformDepartureBoundary.
+  InkWarpStopCopyCheckpoint /\ InkPlatformDepartureBoundary /\ InkPlatformMovementBoundary.
 
 Theorem ibh_backward_histories_checked : InkBackwardHistoryCheckedBoundary.
 Proof.
@@ -69,5 +70,6 @@ Proof.
   split; [exact idg_automatic_dialog_skips_handler_loop|].
   split; [exact ivl_vertical_live_selection_checked|].
   split; [exact iws_stop_copies_floor_without_horizontal_departure|].
-  exact ipd_backward_platform_departure_checked.
+  split; [exact ipd_backward_platform_departure_checked|].
+  exact ipm_moving_support_backward_checked.
 Qed.

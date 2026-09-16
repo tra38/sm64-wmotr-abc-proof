@@ -250,6 +250,39 @@ same nine allowed foundations for the main boundary. This search changes no
 Coq theorem or axiom: its contribution is an original-game experiment and
 reproducible finite evidence about the missing moving-support connection.
 
+### Moving Mario does not move the collision record
+
+The next backward step is now proved for the complete platform-movement
+phase in both generated US and JP programs. Mario has three relevant
+positions: his actual movement position in MarioState, his displayed
+position, and the position in his Object that collision checks use. The
+[new proof](../../proofs/InkPlatformMovement.v) establishes that platform
+movement preserves the last two for Mario stored in the normal Object pool.
+This includes the dispatcher, every
+possible helper call, arbitrary platform rotation, and local allocation
+and freeing. It uses a defined, completed execution and an existing valid
+Object-pool block; it does not assume that the callees are harmless.
+
+This gives a concrete backward requirement. If the collision record after
+platform movement is `(-2200,768,-1024)`, it was already that tuple before
+the phase. A ride that moves actual Mario down from a high support cannot,
+by itself, create the low collision record needed to touch the warp. In
+the phase-130 sample above, that record stays at Y=`1899.65039`. The stock
+upper warp's height test reaches only Y=`818` for Mario's bottom with zero
+hitbox offset. This height comparison is a source-based consequence, not
+a new proof of the complete collision call or its live hitbox values.
+
+So the moving-support search needs an earlier low collision position while
+the useful display and an available moving platform coexist, or a named
+ordinary writer outside this phase that creates the contact before it is
+checked. The earlier ownerless-floor clearing result remains an obstacle
+to retaining a platform at the low warp. Wall correction and a first floor
+miss must still be followed at Mario's actual position. The new theorem
+does not frame the surrounding terrain updates or collision pass, exclude
+all earlier support changes, or construct the dialog checkpoint from a real
+reward. Negative depth and a valid coin opportunity may still be granted;
+the useful combination is still open. No additional finite trials were run.
+
 ## Verification and limits
 
 The runtime checker passes the saved receipt and rejects altered first-query,
@@ -277,5 +310,12 @@ build and integration, no proof holes, and only existing allowed foundations
 finite floor certificate). The new connection is used by the main boundary.
 It checks the ownerless clearing branch and complete null-platform
 dispatcher, not the earlier live floor selection or the intervening history.
+
+The complete platform-phase proof passed the selected audit at
+`build/audit/20260916-105941-37frfijy/`: 577 registered sources, successful
+build, proof-hole/link checks and integration, with nine allowed foundations
+for the main Ink boundary and seven for each new platform theorem. The
+new result is consumed by `InkBackwardHistory` and `MainTheorem`; the audit
+does not establish the earlier gameplay producer or a complete route.
 
 [Return to the atlas](../no-a-route-atlas.md#route-rank-2)

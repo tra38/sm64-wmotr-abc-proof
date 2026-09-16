@@ -1273,6 +1273,12 @@ Qed.
     ownerless-floor branch and proves that the next complete dispatcher with
     a null platform changes no memory. A later nontrivial displacement thus
     requires replacing that cleared pointer; no intervening frame is assumed.
+    The full generated platform dispatcher now preserves every Object-pool
+    cell, including Mario's raw collision position and displayed position.
+    Its five possible helper callees, local allocation/free and arbitrary
+    platform rotation are accounted for. Movement of MarioState during this
+    phase therefore cannot create a new low raw collision sample: that sample
+    must already exist on entry, or come from a separate surrounding writer.
     Live ownerless-floor selection and the intervening scheduler remain open.
     Clean arrival with the needed display, contact, depth and timing remains
     open; these results do not exclude all controller-reachable producers. *)

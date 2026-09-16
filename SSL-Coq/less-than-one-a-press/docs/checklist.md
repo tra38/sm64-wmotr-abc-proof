@@ -100,7 +100,19 @@ These obligations currently block the clean-retail result.
   assumption, not a constructed reward collection. Other support poses and
   phases, action changes, and a retained floor-alignment mismatch remain open.
   The needed continuation must preserve the useful display and contact while
-  actually losing the first floor result; more movement alone is insufficient.
+  actually losing the first floor result. Platform movement preserves the
+  collision position, so the low warp-contact position must already exist
+  before that phase or come from a separate surrounding writer. More movement
+  alone is insufficient.
+
+- [x] Prove that the complete US/JP platform-movement phase preserves Mario's
+  collision position and display. The [generated execution proof](../proofs/InkPlatformMovement.v)
+  resolves and executes all five possible helper callees, including the
+  rotation calculations, and accounts for local allocation and freeing.
+  Every cell in the existing Object pool is unchanged, whether the dispatcher
+  skips movement or takes it. This replaces an assumed harmless-call frame
+  for this phase; it does not frame the surrounding terrain/collision work
+  or supply the earlier low pose, owned floor, first miss or dialog history.
 
 ### Linked retail program and memory simulation
 

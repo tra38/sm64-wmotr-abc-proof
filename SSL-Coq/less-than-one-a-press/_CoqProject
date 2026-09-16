@@ -576,3 +576,6 @@ proofs/SqrtfClightBinding.v
 proofs/SqrtfTargetResolution.v
 proofs/Area2TripletBoundDistance.v
 proofs/Area2TripletSqrt.v
+proofs/InkPlatformWriteFrame.v
+proofs/InkPlatformMovementSource.v
+proofs/InkPlatformMovement.v
