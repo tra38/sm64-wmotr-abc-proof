@@ -571,4 +571,7 @@ proofs/Area2GroundVectorSetSource.v
 proofs/Area2Rank10AGroundAlignment.v
 proofs/Area2Rank10AGroundHold.v
 proofs/SqrtfMachine.v
+proofs/SqrtfClightBinding.v
+proofs/SqrtfTargetResolution.v
+proofs/Area2TripletBoundDistance.v
 proofs/Area2TripletSqrt.v

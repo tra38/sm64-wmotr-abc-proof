@@ -911,12 +911,13 @@ Qed.
 
 (** Fresh-triplet live distance-call/store and native-command connections,
     plus the earlier callback/graphics frames and collision/movement gates.
-    The distance rejection now concerns an actual helper call, conditional
-    on the named sqrtf numerical effect. The authentic instruction fragment
-    now supplies that value and RAM frame for a matching machine call, and
-    the reached C argument has a proved nonexceptional range. The binding
-    of the abstract external to that realization and preservation between
-    complete successive updates remain open. *)
+    The old Clight-oracle result keeps its numerical premise. The explicit
+    linked-runtime result now executes the complete generated US/JP helper
+    through the authenticated sqrtf routine, with exact argument/result
+    marshalling and normal control bits; it needs no same-call realization
+    premise. This local execution model is stated openly, not equated with
+    the unspecified oracle. Transport from wider gameplay/control history
+    and preservation between complete successive updates remain open. *)
 Theorem current_fresh_triplet_spawner_execution_boundary : Area2TripletSpawnerBoundary.
 Proof. exact te_triplet_spawner_boundary_checked. Qed.
 

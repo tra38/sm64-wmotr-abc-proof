@@ -8,9 +8,11 @@ complete native-command dispatch are now connected. **The complete theorem
 covering every spawning check from fresh entry is still open.** The actual
 square-root routine now has a local instruction proof of its rounded result
 and unchanged RAM, and the reached triplet argument is in its supported
-range. Binding that implementation to the current Clight external remains
-open. This is a limitation of the proof, and supplies no stock-game route
-to those children.
+range. An explicit local library binding now executes the complete generated
+helper through that routine and rejects the distance test. The old external
+oracle is not equated with this runtime; broader game/OS control history and
+composition through every update remain open. Those limits supply no
+stock-game route to the children.
 
 ## Why this parent is a poor supplier
 
@@ -88,11 +90,15 @@ the correctly rounded result and unchanged RAM. The actual triplet input
 is finite and between 15,070,322 and 536,870,912. This excludes the tiny
 subnormal inputs that make the older “finite, nonnegative” wording too broad.
 The routine proof uses explicit ordinary CPU controls; it is a local
-instruction result, not a complete console semantics. The current generated
-Clight program still exposes `sqrtf` as an unresolved external. Its binding
-to that concrete machine invocation remains a premise of the new caller
-corollary. The declaration alone cannot supply this connection. No new axiom
-or blanket external-call frame is used to skip it.
+instruction result, not a complete console semantics. A concrete local
+library binding now checks the exact selected US/JP declaration, passes the
+C argument to the instruction routine, and returns its result and memory.
+The complete generated helper has a constructed linked execution that
+rejects the distance test. The binding's external result is unique; no
+matching-machine-call premise is needed. The old unspecified-call semantics
+is not equated with this runtime. Composition with the surrounding engine
+and preservation of the entry controls through earlier game/OS activity
+remain explicit work. No new axiom or blanket external-call frame is used.
 
 The result therefore narrows the preservation work and establishes exact
 local exclusions. It does not yet close these three actors for every
@@ -123,8 +129,9 @@ square-root numerical premise stated explicitly.
 The later [implementation tranche](sqrtf-implementation.md) adds the
 decoded instruction result, RAM frame and reached-input domain proof.
 Its selected audit passed on 2026-09-15 with 570 registered sources and
-five allowed-foundation reports. The exact remaining binding is described
-there; the earlier numerical premise is not silently discharged.
+five allowed-foundation reports. The subsequent concrete-binding tranche
+is described there as well; the earlier oracle-conditional premise is not
+silently discharged by changing execution models.
 
 The earlier distance/store/dispatch audit passed on 2026-09-12 at
 `build/audit/20260912-171553-cstgvtwa/`, using Coq 8.16.1 and CompCert 3.15
