@@ -60,9 +60,10 @@ The [fresh-triplet follow-up](fresh-triplet-spawning.md) now checks the
 Float32 bound over the entire rectangle and proves preservation through
 the inactive callback, graphics helper and relevant collision/movement
 gates. It also follows the live distance helper, its caller's store and the
-native-command dispatcher. The library-model and full-update preservation
-gaps remain; these results do not prove that every spawning check has the
-required inputs.
+native-command dispatcher. A conditional sequence theorem now connects any
+finite number of checks under explicit field-preservation, raw-Mario and
+named-library conditions. Deriving those conditions at every check of a
+whole gameplay episode remains separate.
 
 ## Does the direct western approach work?
 

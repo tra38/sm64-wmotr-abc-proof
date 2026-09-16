@@ -1,18 +1,56 @@
 # Fresh triplet spawning from the elevator
 
-The stock triplet parent is too far from the elevator to activate at its
-original position. Its own inactive update cannot move it, and its script
-does not enable movement. The new proofs check the distance and several
-actual update paths. The live distance helper, its caller's store and the
-complete native-command dispatch are now connected. **The complete theorem
-covering every spawning check from fresh entry is still open.** The actual
-square-root routine now has a local instruction proof of its rounded result
-and unchanged RAM, and the reached triplet argument is in its supported
-range. An explicit local library binding now executes the complete generated
-helper through that routine and rejects the distance test. The old external
-oracle is not equated with this runtime; broader game/OS control history and
-composition through every update remain open. Those limits supply no
-stock-game route to the children.
+**The fresh triplet cannot spawn during the specified conditional sequence
+of checks.** The first check rejects the initialized distance of 19,000;
+every later check calculates a distance of at least 3,882 and rejects too.
+The proof carries the same parent's unloaded state through any finite
+number of checks. It assumes the stated parent preservation, raw Mario
+position bounds and named library contract. Establishing those conditions
+through every intervening part of ordinary gameplay remains separate.
+This closes the requested conditional claim, not all Goomba access or
+Rank 10A.
+
+## The conditional result
+
+The proof begins at the first native-command check, after the stock
+script's setup. The parent has its stock X/Z, action zero, flags 65,
+intangible timer -1 and initialized distance 19,000. It follows the actual
+generated US and JP code. Later checks include the real six-coordinate
+distance calculation, the post-call current-object read, the distance-field
+write and the complete native-command dispatch and return.
+
+Between checks, the contract preserves five parent fields: flags,
+intangible timer, X, Z and action. Between a distance write and its check,
+it also preserves the stored distance. The current-object pointer and live
+script operand must identify this parent and its real callback at the
+stated boundaries. Ordinary storage conditions keep the distance write
+away from the retained fields and the command-pointer global separate
+from the parent. Mario's **raw Object** coordinates at each calculation
+must lie in the full elevator rectangle; the rounded vertical difference
+must be finite and within the proved range.
+
+The named square-root contract requires the correct result for the reached
+argument and preservation of the current-object pointer and those five
+parent fields. It assumes nothing about unrelated calls. The instruction
+and explicit local binding proofs separately give a stronger unchanged-RAM
+result under their processor controls; this theorem does not silently
+identify that runtime with the older Clight external oracle.
+
+The key distinction is that the interlude contract preserves the previous
+action value; it does not assume action zero anew at every check. The
+actual distance write preserves that value, and the actual callback rejects
+spawning and preserves it again. Induction carries the initial unloaded
+state through the sequence. Each callback has a proved path containing no
+calls or writes, so its child-creation code is not reached. Its local
+allocation and cleanup and the native dispatcher's command advance are
+included in the existing execution proofs used here.
+
+The theorem covers every check in any supplied finite sequence satisfying
+these conditions, with no sample count or time limit. It does not certify
+that a selected list contains every check of an arbitrary gameplay run.
+Applying it to a whole confinement episode still requires the contracts
+at all of that episode's checks. Children created before this starting
+boundary and the six singleton Goombas are outside the claim.
 
 ## Why this parent is a poor supplier
 
@@ -68,10 +106,11 @@ spawning, it calls the real linked callback, preserves every existing cell
 outside the command-pointer cell, advances by two words and returns the
 interpreter's continue result. For the stock script this reaches the
 end-loop command. This includes the callback's local allocation and cleanup.
-It does not yet establish the return through the loop and the next engine
-update.
+The conditional sequence now connects this return to the next distance
+stage through the explicit five-field preservation contract. The loop and
+the next whole engine update have not themselves been proved to supply it.
 
-## What remains to finish the requested closure
+## What remains beyond the conditional closure
 
 The engine's distance helper reads **Mario's raw Object position**. A claim
 that Mario remains in the elevator must establish the rectangle for those
@@ -79,10 +118,10 @@ reads, not just for MarioState or the displayed position. The remaining
 state-preservation work includes the interpreter's loop return and command
 table, the rest of the object's engine update, collision-list traversal and
 intervening actors. Each must carry the same fresh parent's fields to the
-next check. A proof about consecutive calls with those fields simply
-assumed again would not close this gap. Already loaded children, a different
-entry history, or leaving the rectangle are outside the fresh-confinement
-claim.
+next check. The new theorem uses that preservation as the user's explicit
+condition and proves what follows; it does not claim to have derived the
+condition from the scheduler. Already loaded children, a different entry
+history, or leaving the rectangle are outside the fresh-confinement claim.
 
 The [square-root implementation proof](sqrtf-implementation.md) now decodes
 the authentic two-word routine, follows its return delay slot and derives
@@ -96,17 +135,35 @@ C argument to the instruction routine, and returns its result and memory.
 The complete generated helper has a constructed linked execution that
 rejects the distance test. The binding's external result is unique; no
 matching-machine-call premise is needed. The old unspecified-call semantics
-is not equated with this runtime. Composition with the surrounding engine
-and preservation of the entry controls through earlier game/OS activity
-remain explicit work. No new axiom or blanket external-call frame is used.
+is not equated with this runtime. Preservation of the entry controls
+through earlier game/OS activity and transport of the surrounding engine
+to this local runtime remain explicit work. The conditional sequence instead
+retains its precise named-call premise in the older Clight semantics.
+No new axiom or blanket external-call frame is used.
 
-The result therefore narrows the preservation work and establishes exact
-local exclusions. It does not yet close these three actors for every
-controller history, close the six singleton approaches, or close Rank 10A.
+The result therefore closes the named conditional fresh-triplet claim.
+It does not close these three actors for every controller history, close
+the six singleton approaches, or close Rank 10A.
 The overall Rank 10A estimate remains 2–5%; that is a subjective route
 estimate, not a probability supplied by this proof.
 
 ## Proofs and checks
+
+[Area2TripletChecks.v](../../proofs/Area2TripletChecks.v) contains
+`tcs_fresh_triplet_never_spawns_under_contract`. Its `TripletFreshChecks`
+input spells out the real calls, boundary reads and interlude contracts.
+The conclusion certifies every listed callback and preserves the parent's
+five fields through the last return. The Main and combined Rank 10A
+boundaries consume this result through `Area2TripletSpawnerBoundary`.
+
+The selected audit passed on 2026-09-15 at
+`build/audit/20260915-225949-v9qy04zh/`: 574 registered sources, successful
+Main build, proof-hole and link checks, and no integration problems.
+The Main boundary, live distance-stage connection, conditional sequence
+and callback-path consequence each use seven existing allowed foundations.
+The run used Coq 8.16.1 and CompCert 3.15 with the established memory limit.
+No new axiom or admitted proof was added. These checks validate the
+conditional result; they do not prove its gameplay premises.
 
 The initial modules are [Area2TripletSpawner.v](../../proofs/Area2TripletSpawner.v),
 [Area2TripletEngine.v](../../proofs/Area2TripletEngine.v) and
@@ -141,6 +198,6 @@ and integration checks. All five selected entry points use seven existing
 allowed foundations. No new axiom was added. The 131 local links in the five
 edited documents, the atlas's three single-paragraph sections and whitespace
 checks also pass. These checks validate the stated connections, not the
-unfinished confinement theorem.
+unfinished unconditional confinement theorem.
 
 [Back to Rank 10A](../no-a-route-atlas.md#route-rank-10a).

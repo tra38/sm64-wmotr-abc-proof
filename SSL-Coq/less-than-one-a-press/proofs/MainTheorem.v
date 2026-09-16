@@ -916,8 +916,11 @@ Qed.
     through the authenticated sqrtf routine, with exact argument/result
     marshalling and normal control bits; it needs no same-call realization
     premise. This local execution model is stated openly, not equated with
-    the unspecified oracle. Transport from wider gameplay/control history
-    and preservation between complete successive updates remain open. *)
+    the unspecified oracle. The conditional repeated-check result now
+    composes the actual distance/store and complete native command while
+    carrying unloaded action from the initial check. It frames five named
+    parent fields across interludes and states the reached sqrtf contract.
+    Applicability to all gameplay/control history remains separate. *)
 Theorem current_fresh_triplet_spawner_execution_boundary : Area2TripletSpawnerBoundary.
 Proof. exact te_triplet_spawner_boundary_checked. Qed.
 

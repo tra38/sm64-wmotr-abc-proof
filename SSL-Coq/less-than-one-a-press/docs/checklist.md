@@ -1121,16 +1121,21 @@ These obligations materially strengthen the proof but are not the shortest route
   No numerical-effect or same-call-realization premise appears in that new
   result. The old opaque-oracle semantics is not equated with the new runtime;
   arbitrary prior game/OS control preservation is not proved.
-- [ ] Finish fresh-triplet exclusion across every live spawning check.
-  The complete distance helper, its caller's store and the native-command
-  dispatch are now connected in the earlier model. Compose the new concrete
-  distance binding with the surrounding engine results, establish its entry
-  controls from the relevant history, then carry the same parent through
-  loop return, engine updates, collision traversal and intervening actors.
-  CompCert's old unresolved external is not automatically the linked routine.
-  Confinement must bound Mario's raw Object coordinates
-  at the distance read; repeating those readings as assumptions is not a
-  proof of preservation.
+- [x] Close the [fresh-triplet conditional sequence](notes/fresh-triplet-spawning.md#the-conditional-result).
+  Starting unloaded with distance 19,000, every supplied check rejects
+  spawning under the stated parent-preservation, raw-Mario bounds and named
+  square-root contract. The actual distance stage/store and complete native
+  command compose across any finite number of checks. Unloaded action is
+  carried by induction, not assumed anew. The interludes frame five named
+  fields, with the stored distance also framed until its check.
+- [ ] Establish those contracts at every spawning check of an ordinary
+  confinement episode. This is applicability beyond the conditional result:
+  loop return, other engine updates and intervening actors must preserve the
+  stated fields, and confinement must bound Mario's raw Object at the actual
+  distance reads. A selected list is not certified coverage of a whole run.
+  Using the concrete linked square-root runtime throughout the surrounding
+  engine also requires its entry controls and semantics connection;
+  CompCert's old unresolved external is not automatically that routine.
 - [ ] Reach a useful Goomba attack position while Mario stays in the bucket.
   The [nine-actor coverage review](notes/rank10a-elevator-coins.md#were-all-stock-goombas-checked-for-elevator-access)
   now includes [bounded source searches and elevator timing](notes/goomba-elevator-timing.md)

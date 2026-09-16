@@ -555,6 +555,7 @@ proofs/Area2TripletSpawner.v
 proofs/Area2TripletDistance.v
 proofs/Area2TripletDistanceUpdate.v
 proofs/Area2TripletCommand.v
+proofs/Area2TripletChecks.v
 proofs/ReadOnlyClightPaths.v
 proofs/Area2TripletEngine.v
 proofs/Area2TripletGraphics.v

@@ -9,7 +9,7 @@ From LessThanOneAPress.Generated Require Import us_behavior_data jp_behavior_dat
   us_behavior_script jp_behavior_script us_object_collision jp_object_collision.
 From LessThanOneAPress.Proofs Require Import ASTFacts GameTypes Area2TripletSpawner
   Area2TripletGraphics Area2TripletDistance Area2TripletDistanceUpdate
-  Area2TripletCommand Area2TripletSqrt Area2TripletBoundDistance Area2Rank9ACoinFlight
+  Area2TripletCommand Area2TripletChecks Area2TripletSqrt Area2TripletBoundDistance Area2Rank9ACoinFlight
   EyerokRank15LiveMovement ReadOnlyClightPaths SelectedClightTarget.
 Import ListNotations.
 Import Clightdefs.ClightNotations.
@@ -178,7 +178,9 @@ Qed.
     elevator case with normal controls, without a numerical-effect or
     matching-machine-call premise. The old opaque-oracle execution is not
     silently identified with this linked runtime. Wider control/history
-    transport, loop return and intervening object updates remain separate. *)
+    transport remains separate. Successive real checks now compose under
+    the explicit five-field interlude and named sqrtf contracts; the
+    unloaded state is derived throughout that conditional sequence. *)
 Definition Area2TripletSpawnerBoundary : Prop :=
   TripletNativeCallPreservation /\ TripletGraphicsPreservation /\
   TripletLiveDistanceStore /\ TripletNativeCommandPreservation /\
@@ -190,6 +192,7 @@ Definition Area2TripletSpawnerBoundary : Prop :=
   TripletLiveElevatorDistanceRejection /\
   TripletSqrtImplementationBoundary /\
   TripletBoundSqrtBoundary /\
+  TripletConditionalChecksExclusion /\
   (forall version, te_script version = te_script VersionUS).
 
 Theorem te_triplet_spawner_boundary_checked : Area2TripletSpawnerBoundary.
@@ -203,5 +206,6 @@ Proof.
   split; [exact td_live_elevator_distance_rejects|].
   split; [exact tsp_sqrt_implementation_boundary_checked|].
   split; [exact tbd_bound_sqrt_boundary_checked|].
+  split; [exact tcs_fresh_triplet_never_spawns_under_contract|].
   intros version. rewrite !te_exact_stock_script. reflexivity.
 Qed.

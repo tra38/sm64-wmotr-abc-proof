@@ -109,7 +109,12 @@ theorems. The new theorem supplies a concrete alternative for the distance
 segment; transporting and composing the surrounding engine and interpreter
 results under that explicit runtime remains work. Parent preservation,
 raw Mario bounds at successive checks and other actors are still separate
-parts of the fresh-triplet question.
+parts of the fresh-triplet question. The later
+[conditional sequence theorem](fresh-triplet-spawning.md#the-conditional-result)
+now composes the actual distance stage/store and native commands under
+precise field frames and a named square-root premise in the older semantics.
+It derives rejection at every supplied check without claiming the runtime
+transport or gameplay applicability conditions have been proved.
 
 ## Checked artifacts
 
@@ -151,4 +156,5 @@ passed. No new axiom or admitted proof was added.
 
 The subjective estimate for whole Rank 10A remains 2–5%. This removes
 uncertainty about the local calculation under its conditions, without
-constructing a Goomba route or finishing all successive spawning checks.
+constructing a Goomba route or establishing the conditions of every ordinary
+gameplay check. The conditional repeated-check result is recorded separately.
