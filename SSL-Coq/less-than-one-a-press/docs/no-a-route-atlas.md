@@ -306,6 +306,8 @@ exact conditional mechanisms, not because any has a likely clean producer.
 
 ### Which ranks are most promising now?
 
+The [Fine Print proof review](notes/fine-print-proof-promotions.md) promotes eight existing results into the site's proof section: the Ink retry, dialog gate, stopping copy and ownerless-platform clearing; pole-pickup selection and rising ledge rejection; and the bounded coin-flight and stock Amp-shock models. Each keeps its own conditions and open continuation. This recognizes completed parts of Ranks 2, 19, 9A and 12; it does not retire those routes or change any of the estimates below.
+
 **10A and 12B are the strongest remaining searches**, at roughly **2–5% each**:
 ground-pound startup has a real height window but lacks a clean entry and
 sideways departure; unusual contact geometry might avoid the usual gate.

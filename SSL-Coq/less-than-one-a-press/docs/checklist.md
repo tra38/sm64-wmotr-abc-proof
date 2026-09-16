@@ -11,6 +11,10 @@ counterexample-search rank, see the [no-A route atlas](no-a-route-atlas.md).
 For a consolidated account of which results the impossibility argument uses
 and which live connections remain, see the
 [impossibility-proof progress ledger](impossibility-proof-progress.md).
+The [Fine Print promotion review](notes/fine-print-proof-promotions.md)
+identifies eight more completed local/model claims now shown with the proofs.
+Their wider gameplay connections remain on this board; no route is closed
+merely by moving an existing result into that section.
 Apply the [CompCert execution-scope boundary](compcert-execution-scope.md)
 before adding a corruption obligation: defined aliases and known-function
 retargets stay on this board, reachable unresolved externals first need exact
