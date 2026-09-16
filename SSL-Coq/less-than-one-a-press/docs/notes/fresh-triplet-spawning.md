@@ -5,10 +5,12 @@ original position. Its own inactive update cannot move it, and its script
 does not enable movement. The new proofs check the distance and several
 actual update paths. The live distance helper, its caller's store and the
 complete native-command dispatch are now connected. **The complete theorem
-covering every spawning check from fresh entry is still open.** A missing
-library model prevents treating the checked distance formula as an
-unconditional fact about the current Clight execution. This is a limitation
-of the proof, and supplies no stock-game route to those children.
+covering every spawning check from fresh entry is still open.** The actual
+square-root routine now has a local instruction proof of its rounded result
+and unchanged RAM, and the reached triplet argument is in its supported
+range. Binding that implementation to the current Clight external remains
+open. This is a limitation of the proof, and supplies no stock-game route
+to those children.
 
 ## Why this parent is a poor supplier
 
@@ -80,17 +82,17 @@ assumed again would not close this gap. Already loaded children, a different
 entry history, or leaving the rectangle are outside the fresh-confinement
 claim.
 
-The real `sqrtf` implementation is a return plus a `sqrt.s` instruction in
-the return's delay slot, with no memory store. The current generated Clight
-program nevertheless exposes it as an unresolved external. CompCert's
-generic external-call rules do not say that a function named `sqrtf`
-computes square root or preserves writable object storage. The live-call
-proof has reduced the helper's entire effect to this exact library call;
-its remaining contract cannot be derived from the C declaration alone.
-The machine implementation must be connected to the execution model, or
-the model must be explicitly refined and its transfer proved. Another
-geometry check or induction that assumes this contract cannot finish it.
-No new axiom or blanket external-call frame is used to skip this step.
+The [square-root implementation proof](sqrtf-implementation.md) now decodes
+the authentic two-word routine, follows its return delay slot and derives
+the correctly rounded result and unchanged RAM. The actual triplet input
+is finite and between 15,070,322 and 536,870,912. This excludes the tiny
+subnormal inputs that make the older “finite, nonnegative” wording too broad.
+The routine proof uses explicit ordinary CPU controls; it is a local
+instruction result, not a complete console semantics. The current generated
+Clight program still exposes `sqrtf` as an unresolved external. Its binding
+to that concrete machine invocation remains a premise of the new caller
+corollary. The declaration alone cannot supply this connection. No new axiom
+or blanket external-call frame is used to skip it.
 
 The result therefore narrows the preservation work and establishes exact
 local exclusions. It does not yet close these three actors for every
@@ -118,7 +120,13 @@ native-command frame and advance. The main boundary uses these results;
 its distance-rejection component now concerns a live helper call with the
 square-root numerical premise stated explicitly.
 
-The selected audit passed on 2026-09-12 at
+The later [implementation tranche](sqrtf-implementation.md) adds the
+decoded instruction result, RAM frame and reached-input domain proof.
+Its selected audit passed on 2026-09-15 with 570 registered sources and
+five allowed-foundation reports. The exact remaining binding is described
+there; the earlier numerical premise is not silently discharged.
+
+The earlier distance/store/dispatch audit passed on 2026-09-12 at
 `build/audit/20260912-171553-cstgvtwa/`, using Coq 8.16.1 and CompCert 3.15
 through the established pipeline and memory limit. It checked 556 registered
 sources, built Main and the three new modules, and passed proof-hole, link

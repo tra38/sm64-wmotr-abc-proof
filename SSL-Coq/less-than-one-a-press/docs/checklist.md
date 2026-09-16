@@ -1105,10 +1105,18 @@ These obligations materially strengthen the proof but are not the shortest route
   the graphics helper preserves raw fields, and intangible/movement gates skip
   the relevant operations. These are local execution results, not an
   all-history exclusion.
+- [x] Prove the local square-root implementation and the supported triplet
+  input. The authentic two-word routine has a Coq instruction proof of its
+  correctly rounded result, return and unchanged RAM, with explicit ordinary
+  CPU controls and a normal-or-zero operand. A constructive execution proves
+  the local conditions are satisfiable. The real US/JP distance helper's
+  argument is finite and at least 15,070,322 under the existing position
+  bounds. Its Clight-to-machine binding remains open; this does not close
+  every spawning check. See the [square-root proof](notes/sqrtf-implementation.md).
 - [ ] Finish fresh-triplet exclusion across every live spawning check.
   The complete distance helper, its caller's store and the native-command
-  dispatch are now connected. Link the actual square-root implementation
-  to the execution model, then carry the same parent through loop return,
+  dispatch are now connected. Bind the reached square-root external to the
+  newly proved instruction routine, then carry the same parent through loop return,
   engine updates, collision traversal and intervening actors. CompCert's
   unresolved external declaration does not supply the missing numeric or
   memory contract. Confinement must bound Mario's raw Object coordinates

@@ -28,9 +28,10 @@ Theorem ts_stock_parent :
 Proof. split; [exact rank11_area2_goomba_roster_source_shape_checked|reflexivity]. Qed.
 
 Definition ts_float z := Float32.of_int (Int.repr z).
-Definition ts_distance dx dy dz := Float32.sqrt
-  (Float32.add (Float32.add (Float32.mul dx dx) (Float32.mul dy dy))
-    (Float32.mul dz dz)).
+Definition ts_squared dx dy dz :=
+  Float32.add (Float32.add (Float32.mul dx dx) (Float32.mul dy dy))
+    (Float32.mul dz dz).
+Definition ts_distance dx dy dz := Float32.sqrt (ts_squared dx dy dz).
 Definition ts_squared_expression := Ebinop Oadd
   (Ebinop Oadd
     (Ebinop Omul (Etempvar TD._dx tfloat) (Etempvar TD._dx tfloat) tfloat)
@@ -92,15 +93,16 @@ Qed.
 (** dy is the already rounded vertical difference used by the real helper.
     Its generous bound includes the entire stock elevator journey. This
     theorem does not assert that a live distance field already has this value. *)
-Theorem ts_every_base_position_is_out_of_range : forall x z dy,
+(** Expose the input to the actual square-root call, including all
+    rounded subtraction, multiplication and addition bounds. *)
+Theorem ts_squared_input_range : forall x z dy,
   ts_in_base x z -> rank9cf_finite dy ->
   (-16384 <= rank9cf_real dy <= 16384)%R ->
-  let distance := ts_distance (Float32.sub (ts_float 3181) x) dy
+  let squared := ts_squared (Float32.sub (ts_float 3181) x) dy
     (Float32.sub (ts_float 3587) z) in
-  rank9cf_finite distance /\ (3882 <= rank9cf_real distance <= 32768)%R /\
-  Float32.cmp Clt distance (ts_float 3000) = false.
+  rank9cf_finite squared /\ (15070322 <= rank9cf_real squared <= 536870912)%R.
 Proof.
-  intros x z dy (Fx & Fz & Hx & Hz) Fy Hy distance.
+  intros x z dy (Fx & Fz & Hx & Hz) Fy Hy.
   destruct (rank9cf_integer_exact 3181 ltac:(lia)) as [Rpx Fpx].
   destruct (rank9cf_integer_exact 3587 ltac:(lia)) as [Rpz Fpz].
   destruct (rank12b_sub_range (ts_float 3181) x 2669 3692
@@ -122,11 +124,21 @@ Proof.
     ltac:(lia) ltac:(lia) Sxx Sxy ltac:(lra)) as [Fxy Hxy].
   destruct (rank12b_add_range _ _ 15070322 536870912 Fxy Fzz
     ltac:(lia) ltac:(lia) Ssum Slarge ltac:(lra)) as [Fs Hs].
-  set (squared := Float32.add
-    (Float32.add (Float32.mul (Float32.sub (ts_float 3181) x)
-      (Float32.sub (ts_float 3181) x)) (Float32.mul dy dy))
-    (Float32.mul (Float32.sub (ts_float 3587) z)
-      (Float32.sub (ts_float 3587) z))) in *.
+  exact (conj Fs Hs).
+Qed.
+
+Theorem ts_every_base_position_is_out_of_range : forall x z dy,
+  ts_in_base x z -> rank9cf_finite dy ->
+  (-16384 <= rank9cf_real dy <= 16384)%R ->
+  let distance := ts_distance (Float32.sub (ts_float 3181) x) dy
+    (Float32.sub (ts_float 3587) z) in
+  rank9cf_finite distance /\ (3882 <= rank9cf_real distance <= 32768)%R /\
+  Float32.cmp Clt distance (ts_float 3000) = false.
+Proof.
+  intros x z dy Hbase Fy Hy distance.
+  destruct (ts_squared_input_range x z dy Hbase Fy Hy) as [Fs Hs].
+  set (squared := ts_squared (Float32.sub (ts_float 3181) x) dy
+    (Float32.sub (ts_float 3587) z)) in *.
   pose proof (Bsqrt_correct 24 128 eq_refl eq_refl Float32.unop_nan
     mode_NE squared) as [Hr _].
   change (rank9cf_real distance = rank9cf_round (sqrt (rank9cf_real squared))) in Hr.

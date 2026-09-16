@@ -912,8 +912,11 @@ Qed.
 (** Fresh-triplet live distance-call/store and native-command connections,
     plus the earlier callback/graphics frames and collision/movement gates.
     The distance rejection now concerns an actual helper call, conditional
-    on the named sqrtf numerical effect. That external refinement and the
-    preservation between complete successive updates remain open. *)
+    on the named sqrtf numerical effect. The authentic instruction fragment
+    now supplies that value and RAM frame for a matching machine call, and
+    the reached C argument has a proved nonexceptional range. The binding
+    of the abstract external to that realization and preservation between
+    complete successive updates remain open. *)
 Theorem current_fresh_triplet_spawner_execution_boundary : Area2TripletSpawnerBoundary.
 Proof. exact te_triplet_spawner_boundary_checked. Qed.
 

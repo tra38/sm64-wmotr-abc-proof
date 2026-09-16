@@ -570,3 +570,5 @@ proofs/Area2Rank10AStallSources.v
 proofs/Area2GroundVectorSetSource.v
 proofs/Area2Rank10AGroundAlignment.v
 proofs/Area2Rank10AGroundHold.v
+proofs/SqrtfMachine.v
+proofs/Area2TripletSqrt.v

@@ -9,7 +9,7 @@ From LessThanOneAPress.Generated Require Import us_behavior_data jp_behavior_dat
   us_behavior_script jp_behavior_script us_object_collision jp_object_collision.
 From LessThanOneAPress.Proofs Require Import ASTFacts GameTypes Area2TripletSpawner
   Area2TripletGraphics Area2TripletDistance Area2TripletDistanceUpdate
-  Area2TripletCommand Area2Rank9ACoinFlight
+  Area2TripletCommand Area2TripletSqrt Area2Rank9ACoinFlight
   EyerokRank15LiveMovement ReadOnlyClightPaths SelectedClightTarget.
 Import ListNotations.
 Import Clightdefs.ClightNotations.
@@ -172,8 +172,10 @@ Qed.
 
 (** The distance caller now resolves the real helper and exposes its exact
     sqrtf call and store. The complete CALL_NATIVE command also resolves
-    and frames the spawner callback. The numerical sqrtf premise, loop
-    return and intervening live-object updates are not discharged here. *)
+    and frames the spawner callback. The authentic sqrtf instruction fragment
+    now proves its numerical and RAM effect, and the reached argument is in
+    its ordinary domain. Its binding to the abstract external, loop return
+    and intervening live-object updates remain separate. *)
 Definition Area2TripletSpawnerBoundary : Prop :=
   TripletNativeCallPreservation /\ TripletGraphicsPreservation /\
   TripletLiveDistanceStore /\ TripletNativeCommandPreservation /\
@@ -183,6 +185,7 @@ Definition Area2TripletSpawnerBoundary : Prop :=
     readonly_path (Clight.globalenv (selected_clight_target version)) e m le
       (te_movement_gate version which) le) /\
   TripletLiveElevatorDistanceRejection /\
+  TripletSqrtImplementationBoundary /\
   (forall version, te_script version = te_script VersionUS).
 
 Theorem te_triplet_spawner_boundary_checked : Area2TripletSpawnerBoundary.
@@ -194,5 +197,6 @@ Proof.
   split; [exact te_intangible_collision_gates_preserve_memory|].
   split; [exact te_stock_flags_skip_movement|].
   split; [exact td_live_elevator_distance_rejects|].
+  split; [exact tsp_sqrt_implementation_boundary_checked|].
   intros version. rewrite !te_exact_stock_script. reflexivity.
 Qed.
