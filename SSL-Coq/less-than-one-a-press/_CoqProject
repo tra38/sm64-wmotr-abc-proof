@@ -579,3 +579,4 @@ proofs/Area2TripletSqrt.v
 proofs/InkPlatformWriteFrame.v
 proofs/InkPlatformMovementSource.v
 proofs/InkPlatformMovement.v
+proofs/InkPlatformDistance.v

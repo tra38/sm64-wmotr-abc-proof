@@ -1279,7 +1279,14 @@ Qed.
     platform rotation are accounted for. Movement of MarioState during this
     phase therefore cannot create a new low raw collision sample: that sample
     must already exist on entry, or come from a separate surrounding writer.
-    Live ownerless-floor selection and the intervening scheduler remain open.
+    The earlier platform distance test now executes its real absf call and
+    clears both platform references when the tolerance fails. A null floor
+    clears them for any returned binary32 height, including a retained
+    intangible-floor height. The next dispatcher cannot move with the cleared
+    pointer unchanged. At sampled raw Y=768, returned heights -11000, 1280
+    and the timer-131 top all fail the exact distance test. These start at the
+    post-query test, not at a proved live-list selection. The earlier floor
+    result and intervening scheduler/pointer replacement remain open.
     Clean arrival with the needed display, contact, depth and timing remains
     open; these results do not exclude all controller-reachable producers. *)
 Theorem current_ink_backward_execution_boundary : InkBackwardHistoryCheckedBoundary.

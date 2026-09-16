@@ -283,6 +283,39 @@ all earlier support changes, or construct the dialog checkpoint from a real
 reward. Negative depth and a valid coin opportunity may still be granted;
 the useful combination is still open. No additional finite trials were run.
 
+### A missing floor cannot keep an old platform by itself
+
+For this investigation, negative depth and a valid coin/star opportunity
+are granted. They do not imply that Mario must stay still while the display
+survives. The existing moving-top receipt demonstrates that local motion
+from its extra supplied dialog checkpoint. It still does not construct that
+checkpoint from the two agreed grants.
+
+[InkPlatformDistance.v](../../proofs/InkPlatformDistance.v) closes another
+part of the predecessor. Starting at the generated US/JP platform check's
+distance-test checkpoint, the proof resolves and executes the real `absf`
+call, follows the switch and derives both null platform stores. A failed
+distance test clears support. A null floor pointer also clears it even when
+the distance test passes, for every binary32 returned height. This matters
+because the C floor finder does not always return -11000 with a null pointer.
+The proof does not assume that all null results share that sentinel.
+
+For sampled collision Y=768, a returned height of -11000, 1280 or the exact
+timer-131 top height fails the distance test. These are checked arithmetic
+cases, not a claim that those three heights exhaust the live lists or that
+the low query can select the high top. The proof allows any display and
+quicksand depth and frames the cells outside the two platform-pointer stores.
+
+The next complete displacement dispatcher cannot move Mario if it still
+reads the cleared pointer. Equivalently, movement after such a support check
+requires a replacement of that pointer before the dispatcher reads it. This
+closes retaining an old support unchanged through a missing-floor check.
+It does not close losing support later, an earlier nearby owned floor, a
+different position writer, or the real reward/dialog predecessor. The live
+floor query and intervening scheduler are not silently assumed harmless.
+Movement while the display survives remains locally possible; producing
+the useful floor loss, contact and timing remains open.
+
 ## Verification and limits
 
 The runtime checker passes the saved receipt and rejects altered first-query,
@@ -317,5 +350,15 @@ build, proof-hole/link checks and integration, with nine allowed foundations
 for the main Ink boundary and seven for each new platform theorem. The
 new result is consumed by `InkBackwardHistory` and `MainTheorem`; the audit
 does not establish the earlier gameplay producer or a complete route.
+
+The support-distance and missing-floor tranche passed the selected audit at
+`build/audit/20260916-154258-uxxqapau/`: 578 registered sources, successful
+build, proof-hole/link checks and integration, with nine allowed foundations
+for the main Ink boundary and seven each for the new distance boundary and
+missing-floor departure theorem. The new module is registered and consumed
+by `InkBackwardHistory` and `MainTheorem`. The saved conditional search
+archive rechecks all 6,120 updates, with 56 early-moving trials and no useful
+first miss; all 12 validator mutation tests pass. No new gameplay trials
+were run, and neither the audit nor those receipts establish clean reachability.
 
 [Return to the atlas](../no-a-route-atlas.md#route-rank-2)

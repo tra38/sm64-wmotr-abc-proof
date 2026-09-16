@@ -96,6 +96,18 @@ These obligations currently block the clean-retail result.
   on the first update. The saved receipts and 12 validator tests pass. This is
   finite runtime evidence, not a new Coq theorem or a clean-reachability result.
 
+- [x] Follow the previous platform check through its real distance calculation.
+  [InkPlatformDistance.v](../proofs/InkPlatformDistance.v) resolves and proves
+  the US/JP `absf` call, then both clearing stores. A missing floor clears
+  support for any returned height; a failed distance test also clears it.
+  At sampled Y=768, returned heights -11000, 1280 and the timer-131 top all
+  fail that test. No premise bounds the raised display or quicksand depth.
+  The next dispatcher cannot move Mario while its pointer stays cleared.
+  Live floor selection, an intervening pointer replacement, and support loss
+  after the previous check remain open; this is not a no-movement theorem
+  for every continuation. The saved 68-trial archive and 12 validator tests
+  were also rechecked successfully.
+
 - [ ] Turn the conditional moving-support departure into a useful first miss.
   The [three-second search](../instrumentation/jp-dialog-support-search/README.md)
   now observes the top moving actual X/Z while its dialog-raised display stays
