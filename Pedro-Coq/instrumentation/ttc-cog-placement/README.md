@@ -2,11 +2,16 @@
 
 The user authorized a local placement experiment after providing the cog video.
 This is a separate test build, not a controller-only entry witness. Its only
-source changes configure TTC as the initial level, RANDOM clock mode, Mario's
+source changes configure TTC as the initial level, the clock mode, Mario's
 chosen spawn, and ordinary idle initialization
 instead of the castle-opening cutscene. `prepare.py` exports the exact pinned
 source into an isolated build copy and checks that only those three files differ.
 The complete patch and configuration are saved in `build/cog-placement/`.
+
+The default is RANDOM mode. `--clock-mode stopped` on both preparation and
+execution selects the ordinary STOPPED setting in a separate `<setup>_stopped`
+build. It is a stationary-geometry diagnostic, not a RANDOM-mode preservation
+witness. Neither mode changes cog behavior or forces poses after initialization.
 
 The observer supplies ordinary controller input. State observation uses
 `DebugMemRead32`, `DebugMemRead16`, and a const view of the CPU register bank.
@@ -108,6 +113,23 @@ their storage can be reused. `CAIR` also distinguishes the original intended
 point (`ix/iy/iz`) from the wall-resolved query (`qx/qy/qz`). Every additional
 observed routine is authenticated against the exact test ELF before a run.
 
+`--trace-ground-pound` includes `--trace-path` and observes ground-pound
+startup/descent, ground-pound-land, freefall, the aggregate air step, the
+mist-circle initializer and its particle helper. `report-ground-pound.py TRIAL`
+reports each episode, all first-descent quarter steps, actual impacts, and
+their complete following updates. It keeps endpoint preservation separate
+from movement at internal boundaries, and records actual floor support,
+selected cog surfaces, fixed cog poses, mist requests and initializer calls.
+Incomplete successors fail the check. Empty candidate lists do not exclude
+other placements or action histories; the ground-pound check has no positive
+preserving-impact example yet.
+
+`sweep-ground-pound.py FRESH_NAME --suite ledge|inner` runs respectively seven
+corrected-detour or three inner-rim Z timings, always in RANDOM mode. Use
+`--z-frames 138 --version jp` for a selected independent replay. It expands
+compressed input intervals before replacing one frame, then verifies the
+actual observed Z press. Recipes, reports and hashes remain in the build tree.
+
 `check-trace.py TRIAL` checks the complete observed RNG recurrence/chain and
 Pedro branch effects, and requires one controller record and Mario snapshot
 for every observed TTC frame. `--compare OTHER_TRIAL` compares observed logical fields
@@ -126,9 +148,11 @@ It requires repeated off-floor close-gap rejections of nonzero intended motion,
 complete action updates, fixed Mario position and both relevant cog poses.
 It excludes supporting-floor impacts and ground-pound paths. Other actions
 need their own complete preserving-path analysis. `--allow-upper-rotation`
-produces a separately labeled weaker diagnostic. Neither mode has a validated
-positive gameplay example yet; an empty witness list is not an impossibility
-proof. Reports go to `preservation.json` or `preservation-lower-only.json`.
+produces a separately labeled weaker diagnostic. The strict check now accepts
+30 successive updates in the separate STOPPED inner-rim control, in US and JP.
+Reports label the clock setting explicitly; this does not fill the RANDOM-mode
+entry gap. An empty witness list is not an impossibility proof. Reports go to
+`preservation.json` or `preservation-lower-only.json`.
 
 For video capture, pass `--capture-from 350 --video-frames 600` to save every
 rendered frame in that inclusive range. This uses the emulator's screenshot
@@ -148,6 +172,13 @@ and ground-step paths, accepted dust requests, and their ordered RNG calls.
 No trial may force a cog pose/speed, RNG seed, or action after initialization.
 
 See [the recorded results](../../docs/notes/ttc-cog-placement-results.md).
+
+The [ground-pound impact-and-successor report](../../docs/notes/ttc-cog-ground-pound-successor.md)
+records the new positive stationary control and failed Z continuation, plus
+ten RANDOM-mode timing trials. `results/ground-pound-successor.json` retains
+the selected boundaries, surfaces, hashes and checks. Replay the control with
+`inputs/inner-rim-recorded-inward-us.csv`; use
+`inputs/inner-rim-ground-pound-z4.csv` for Z after four confirmed Pedro updates.
 
 The [slide-kick follow-up](../../docs/notes/ttc-cog-slide-kick.md) records six US
 timing trials and one JP comparison using this same controller/observer

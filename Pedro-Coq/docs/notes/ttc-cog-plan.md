@@ -181,10 +181,21 @@ Pinned source: `9921382a68bb0c865e5e45eb594d9c64db59b1af`.
 The [successive-update check](ttc-cog-successive-updates.md) now tests complete
 action boundaries, bracketing Mario/cog poses, off-floor geometry, nonzero
 attempted motion and repeated close-gap returns. Thirty-five further route
-trials and a 4296-event US/JP ordinary-air replay still provide no sustained
-witness. The single new return is followed by supporting-floor geometry.
-Keep entry and preserving input/RNG control open; the check is discovery
-tooling and has no validated positive gameplay example yet.
+trials and a 4296-event US/JP ordinary-air replay provided no sustained
+RANDOM-mode witness. The single new return was followed by supporting-floor
+geometry. Keep normal entry and preserving input/RNG control open.
+
+The later [ground-pound investigation](ttc-cog-ground-pound-successor.md)
+adds a positive diagnostic: in the ordinary STOPPED clock setting, 30
+successive off-floor Pedro updates preserve Mario and both cog poses in US/JP.
+Ground pound after four matched updates then holds through 15 startup calls
+but loses the cog floor query on its first descent. It enters backward air
+knockback without landing, and the following update also moves out. This
+isolates a failure while both cogs remain stopped at the tested geometry.
+Ten further RANDOM-mode Z timings produce no preserving impact/successor.
+The stopped diagnostic does not establish a RANDOM-mode phase or normal-entry
+history; other poses and already-descending entries remain open. These are
+finite observations, with no new Clight execution theorem.
 
 The [controller-detour follow-up](ttc-cog-detour-followup.md) completes 48
 bounded route/phase searches and adds complete action/surface observations.

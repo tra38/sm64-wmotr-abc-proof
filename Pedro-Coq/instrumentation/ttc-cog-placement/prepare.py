@@ -33,6 +33,12 @@ EXPECTED = {
 }
 
 
+def experiment_dir(setup, clock_mode="random"):
+    if clock_mode == "stopped":
+        return OUT / f"{setup}_stopped"
+    return OUT if setup == "ledge" else OUT / setup
+
+
 def sha(data):
     return hashlib.sha256(data).hexdigest()
 
@@ -54,9 +60,11 @@ def replace_once(text, old, new):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--setup", choices=PRESETS, default="ledge")
+    parser.add_argument("--clock-mode", choices=("random", "stopped"), default="random",
+                        help="stopped is a separate stock-mode collision diagnostic")
     args = parser.parse_args()
     preset = PRESETS[args.setup]
-    out = OUT if args.setup == "ledge" else OUT / args.setup
+    out = experiment_dir(args.setup, args.clock_mode)
     dest = out / "source"
     if not dest.resolve().is_relative_to((PROJECT / "build").resolve()):
         raise RuntimeError("experiment destination must be inside Pedro-Coq/build")
@@ -109,7 +117,7 @@ def main():
         "s32 init_level(void) {\n    s32 val4 = FALSE;\n\n"
         "    /* Declared placement experiment: initialize the chosen clock mode. */\n"
         "    if (gCurrLevelNum == LEVEL_TTC) {\n"
-        "        gTTCSpeedSetting = TTC_SPEED_RANDOM;\n    }")
+        f"        gTTCSpeedSetting = TTC_SPEED_{args.clock_mode.upper()};\n    }}")
     new = replace_once(new,
         "if (save_file_exists(gCurrSaveFileNum - 1)) {",
         "if (gCurrLevelNum == LEVEL_TTC || save_file_exists(gCurrSaveFileNum - 1)) {")
@@ -136,7 +144,9 @@ def main():
     manifest = {
         "purpose": "user-authorized near-cog placement discovery; not stock entry",
         "source_pin": PIN, "versions": ["VERSION_US", "VERSION_JP"],
-        "setup": args.setup, "level": "TTC", "mode": "RANDOM", **preset,
+        "setup": args.setup, "level": "TTC", "mode": args.clock_mode.upper(), **preset,
+        "mode_scope": ("active RANDOM-mode target" if args.clock_mode == "random"
+                       else "stationary-geometry diagnostic; not a RANDOM-mode witness"),
         "initial_action": "ordinary idle initialization",
         "changed_source_files": changed,
         "patch_sha256": sha((out / "initialization.patch").read_bytes()),

@@ -57,8 +57,20 @@ current request.
       ordinary off-floor return in US/JP; record the failure of the following
       update to preserve the Pedro state in the
       [successive-update report](notes/ttc-cog-successive-updates.md).
-- [ ] Validate the observation check's acceptance path on a successful
-      gameplay trace; no positive witness is currently available.
+- [x] Validate the ordinary-air observation check's acceptance path on a
+      separate STOPPED-clock diagnostic: 30 successive off-floor returns with
+      fixed Mario and both cog poses, independently matching in US/JP.
+- [ ] Obtain a corresponding sustained RANDOM-mode entry; the stopped
+      diagnostic does not establish the active target's reachability.
+- [x] Trigger ground pound after four matched Pedro updates in that diagnostic;
+      check startup, all first-descent quarter steps, and the following
+      complete knockback update in US/JP. Record the failure before landing in
+      the [impact-and-successor report](notes/ttc-cog-ground-pound-successor.md).
+- [x] Check ten RANDOM-mode Z timings and independently replay ledge Z138 in
+      JP; retain mist-producing but non-preserving impacts and their successors.
+- [ ] Demonstrate a complete preserving ground-pound impact and successor in
+      another authenticated geometry/history, or prove a properly scoped
+      exclusion. The checked failure is not universal impossibility.
 - [ ] Only after preservation, compare input continuations and their ordered
       RNG draws; then instantiate the linked execution obligations.
 - [x] Enumerate direct literal dust writers in the generated moving/airborne

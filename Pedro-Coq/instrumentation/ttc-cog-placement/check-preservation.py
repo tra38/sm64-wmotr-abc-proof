@@ -138,6 +138,8 @@ def inspect(trial, minimum=2, require_upper_fixed=True):
             runs.append([frame])
     result = {
         "trace_sha256": consistency["trace_sha256"], "version": manifest["version"],
+        "clock_mode": manifest["initialization"]["mode"],
+        "random_mode_target": manifest["initialization"]["mode"] == "RANDOM",
         "minimum_successive_updates": minimum,
         "require_upper_fixed": require_upper_fixed,
         "longest_checked_run": max(map(len, runs), default=0),

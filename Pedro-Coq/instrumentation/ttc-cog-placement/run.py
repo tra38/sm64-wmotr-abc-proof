@@ -7,7 +7,7 @@ import os
 from pathlib import Path
 import re
 import subprocess
-from prepare import PRESETS
+from prepare import PRESETS, experiment_dir
 
 HERE = Path(__file__).resolve().parent
 PROJECT = HERE.parents[1]
@@ -36,6 +36,14 @@ PATH_ROUTINES = {
     "perform_ground_step": True,
     "execute_mario_action": True,
     "spawn_particle": False,
+}
+GROUND_POUND_ROUTINES = {
+    "act_ground_pound": True,
+    "act_ground_pound_land": True,
+    "act_freefall": True,
+    "perform_air_step": True,
+    "bhv_pound_white_puffs_init": False,
+    "cur_obj_spawn_particles": False,
 }
 
 
@@ -104,6 +112,7 @@ def main():
     parser.add_argument("version", choices=["us", "jp"])
     parser.add_argument("name", help="new trial name; letters, digits, underscores")
     parser.add_argument("--setup", choices=PRESETS, default="ledge")
+    parser.add_argument("--clock-mode", choices=("random", "stopped"), default="random")
     parser.add_argument("--inputs", type=Path, default=HERE / "idle.csv")
     parser.add_argument("--waypoints", type=Path,
                         help="optional controller steering targets; actual inputs are logged")
@@ -114,14 +123,19 @@ def main():
                         help="observe RNG and air-quarter-step entries/returns")
     parser.add_argument("--trace-path", action="store_true",
                         help="also observe geometry, action, ground-step and particle paths")
+    parser.add_argument("--trace-ground-pound", action="store_true",
+                        help="include ground-pound, successor and mist-helper boundaries")
     args = parser.parse_args()
+    args.trace_path = args.trace_path or args.trace_ground_pound
     args.trace_calls = args.trace_calls or args.trace_path
     if not args.name.isidentifier() or not 300 <= args.video_frames <= 12000:
         parser.error("invalid trial name or video-frame limit")
     if args.capture_from is not None and not 1 <= args.capture_from <= args.video_frames:
         parser.error("capture-from must be between 1 and the video-frame limit")
-    experiment = EXPERIMENT if args.setup == "ledge" else EXPERIMENT / args.setup
+    experiment = experiment_dir(args.setup, args.clock_mode)
     initialization = json.loads((experiment / "initialization.json").read_text())
+    if initialization["mode"] != args.clock_mode.upper():
+        raise RuntimeError("prepared clock mode differs from the requested mode")
     source = experiment / "source"
     rom = source / f"build/{args.version}/sm64.{args.version}.z64"
     elf = source / f"build/{args.version}/sm64.{args.version}.elf"
@@ -176,7 +190,10 @@ def main():
     header += "struct path_point { unsigned pc; const char *routine; int leaving, returns_value; };\n"
     header += "static const struct path_point path_points[] = {\n"
     path_checks = []
-    for routine, returns_value in PATH_ROUTINES.items():
+    path_routines = dict(PATH_ROUTINES)
+    if args.trace_ground_pound:
+        path_routines.update(GROUND_POUND_ROUTINES)
+    for routine, returns_value in path_routines.items():
         words, disassembly = routine_words(elf, routine)
         start = min(words)
         if sorted(words) != list(range(start, max(words) + 4, 4)):
@@ -234,6 +251,7 @@ def main():
         "waypoints_sha256": sha(waypoint_copy) if waypoint_copy else None,
         "trace_calls": args.trace_calls,
         "trace_path": args.trace_path,
+        "trace_ground_pound": args.trace_ground_pound,
         "runner_sha256": sha(Path(__file__)),
         "captured_render_frames": capture_frames,
         "symbols": symbols, "command": command,

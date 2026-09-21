@@ -100,6 +100,12 @@ and ground bonk without landing dust. Ground-pound mist occurs only after
 Mario falls to a lower platform. Neither tested continuation preserves the
 spot, and neither establishes a general impossibility result for that action.
 
+The [ground-pound RNG review](ttc-cog-ground-pound-rng.md) explains the
+remaining candidate: mist is requested in the air action's impact branch,
+but startup removes the inward speed and takes 15 updates with the normal
+animation. A four-frame stop cannot accommodate a fresh normal startup.
+An earlier startup or a different preserving geometry remains unproved.
+
 ## Remaining entry and action work
 
 The [detour follow-up](ttc-cog-detour-followup.md) now records actual/intended/

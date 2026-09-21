@@ -331,12 +331,14 @@ while its two random calls advance the seed to 54874. This establishes one
 stationary update from the stated memory conditions. Reaching those conditions
 and keeping both relevant cogs fixed across successive frames remain open.
 
-Recorded experiments have reached individual close-gap air returns, but the
-checked full paths fail to preserve the required Mario and cog state across
-successive updates. Ground-pound startup that holds Mario still, or an impact
-with an ordinary supporting floor, does not fill that gap. The
+Recorded RANDOM-mode experiments have reached individual close-gap air
+returns, but the checked full paths fail to preserve the required Mario and
+cog state across successive updates. The
 [successive-update report](notes/ttc-cog-successive-updates.md) records these
-limitations.
+limitations. A later, separate STOPPED-clock diagnostic now checks 30 successive
+off-floor Pedro returns with both cogs fixed. That is a positive finite
+stationary-geometry control; it does not establish a RANDOM-mode entry or
+RNG-controlled still interval.
 
 A short stationary window, such as four frames, could be useful if a preserving
 action can produce an accepted RNG effect in time. Its length alone does not
@@ -344,6 +346,25 @@ establish that. Cogs update before Mario and the dust objects in the checked
 object order, so dust cannot change a cog's earlier draw on the same frame.
 The remaining argument must connect entry, action preservation, accepted
 particles and every intervening RNG draw to the later cog decisions.
+
+The [ground-pound investigation](notes/ttc-cog-ground-pound-successor.md) now
+tests Z after four confirmed Pedro updates in that stationary control. In
+both US and JP, Mario stays still during 15 startup calls, then loses the
+inward floor query on descent. He drops 50 units, is pushed outward by wall
+resolution, and enters backward air knockback without a ground-pound landing
+or mist request. The following update moves him farther out. Both cogs remain
+still, so more still time alone does not rescue this particular continuation.
+Ten RANDOM-mode timings also produce no preserving impact and successor;
+their mist-producing impacts occur after preservation has failed.
+
+Other cog angles, positions and earlier-started descents remain open. The
+[source review](notes/ttc-cog-ground-pound-rng.md) explains why an actual impact
+could request mist without ordinary landing-dust speed requirements. Particles
+advance RNG rather than resetting it; a useful sequence would still need both
+cog decisions and all intervening draws accounted for. These are source
+analysis and finite observations, not a new Coq proof or normal-entry witness.
+The matching report is on the dedicated private
+[Pedro-Coq research site](https://pedro-proof-notes.tra38.chatgpt.site).
 
 ## The proved TTC Pedro interval
 
