@@ -1,13 +1,38 @@
 # Which Fine Print results belong with the proofs?
 
-The 16 September 2026 review compares the site's 50 open-ledger entries
-with its 16 existing result cards. Eight more claims deserve their own
-cards in "01 / WE DO HAVE PROOFS": six local execution results and two
-explicitly limited model results. These are existing theorems made easier
-to find, not eight new proofs or eight closed routes. The open entries stay
-in place and link to the completed parts.
+The review refreshed on 20 September 2026 checks all 50 ledger entries and
+six assumption recommendations. One further result belongs in "01 / WE DO
+HAVE PROOFS": the conditional stock negative-depth argument. There are now
+27 result cards. The other sections retain the conditions and gameplay
+questions outside those results, with links to the completed parts. This
+review changes their presentation, not the proofs or route verdicts.
 
-## The eight promoted claims
+## The new promotion
+
+[InkStockSeedConditional.v](../../proofs/InkStockSeedConditional.v) proves
+`isc_useful_negative_seed_requires_physical_a` and its no-A corollary.
+From finite, nonnegative depth, a finite connected history satisfying the
+explicit stock writer, landing, action and input conditions cannot finish
+negative without a physical A press. The generated US/JP landing execution,
+late long-jump restriction and first-action argument are now composed.
+Temporary negatives immediately clamped within a writer are not useful
+endpoints of this theorem.
+
+The complete conditional implication moves into Section 01. Section 02
+keeps its substantive applicability conditions: every relevant completed
+writer must fit the classification, the stock landing gates must hold, and
+legitimate action edges must have physical controller witnesses. Section 03
+keeps the actual no-A seed search, including other courses. Neither a source
+inventory nor the existence of the conditional theorem proves that every
+gameplay history satisfies its conditions.
+
+The course-entry reset, missing/ownerless support clearing, complete platform
+frame, square-root binding, repeated triplet exclusion and eleven-descent
+hold exclusion already have Section 01 cards. Their larger gameplay claims
+are not new promotions. Finite geometry and recorded fixtures keep their
+explicitly limited badges; bounded trials do not become universal proofs.
+
+## Eight earlier promotions, still valid at their stated scope
 
 | Claim | What is proved | What is still outside it |
 | --- | --- | --- |
@@ -44,9 +69,13 @@ need work. No route estimate changes as a result of this presentation review.
 
 The review reads the theorem statements and their explicit conditions,
 rather than interpreting an empty proof-hole scan as route closure. The
-selected pipeline audit passed at `build/audit/20260916-124958-uh_niex7/`:
+earlier selected pipeline audit passed at `build/audit/20260916-124958-uh_niex7/`:
 577 registered sources, successful build, proof-hole/link checks and
 integration, and only allowed foundations (nine for the Ink boundary,
 seven for the coin-star boundary and four for the stock Amp model).
-No Coq definition, theorem, axiom or generated game source was changed by
-this review.
+The latest seed theorem and its main boundary connection passed the selected
+audit at `build/audit/20260916-172120-axj4da7v/`: 580 registered sources,
+successful compilation and discipline checks, nine allowed foundations for
+the main boundary and seven each for the seed implication and no-A corollary.
+This review reuses that checked proof snapshot. No Coq definition, theorem,
+axiom or generated game source was changed, and no new proof audit is claimed.

@@ -1,6 +1,6 @@
 # No-A two-star route atlas
 
-> Status snapshot: 2026-09-16.  Rankings are intentionally revisable as linked
+> Status snapshot: 2026-09-20.  Rankings are intentionally revisable as linked
 > execution evidence or new counterexamples arrive.
 
 ## Purpose and scope
@@ -10,6 +10,11 @@ to pursue the two target stars without a new A-button press.  It complements
 the [open checklist](checklist.md): the checklist says what proof obligation is
 next, while this atlas says what the gameplay idea is, what has already been
 learned about it, and why it is or is not worth more search time.
+
+The [Fine Print review](notes/fine-print-proof-promotions.md) now puts the
+conditional stock negative-seed argument with the proved results. Its gameplay
+conditions and the clean seed search remain open; this presentation change
+does not change any route verdict or counterexample estimate.
 
 For the shared proof gaps that affect many routes at once, see the
 [plain-English guide to the hardest obligations](hardest-obligations.md).

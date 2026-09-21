@@ -12,7 +12,8 @@ For a consolidated account of which results the impossibility argument uses
 and which live connections remain, see the
 [impossibility-proof progress ledger](impossibility-proof-progress.md).
 The [Fine Print promotion review](notes/fine-print-proof-promotions.md)
-identifies eight more completed local/model claims now shown with the proofs.
+now includes the conditional stock negative-seed argument among the site's
+27 established-result summaries, alongside the earlier local/model claims.
 Their wider gameplay connections remain on this board; no route is closed
 merely by moving an existing result into that section.
 Apply the [CompCert execution-scope boundary](compcert-execution-scope.md)
