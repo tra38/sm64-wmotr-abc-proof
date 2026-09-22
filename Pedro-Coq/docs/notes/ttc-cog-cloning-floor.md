@@ -115,6 +115,12 @@ preserving cog dust event or universally exclude every cloning setup.
 
 ## Remaining gameplay obligations
 
+The separate [Bob-omb/coin/camera investigation](ttc-cog-alternative-rng.md)
+also distinguishes a collectible coin from a running coin behavior. Installing
+the carry script on an ordinary non-holdable coin stops its normal sparkle
+creation path; hands-free holding and collection alone do not establish RNG
+consumption. That source analysis adds no cloning gameplay witness.
+
 To use a clone as a dust-enabling floor, a witness must establish all of these:
 
 1. A reachable allocation/lifetime sequence puts the intended TTC object in

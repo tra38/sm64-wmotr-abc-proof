@@ -457,6 +457,41 @@ explicit. See the [address-refinement report](notes/ttc-cog-n64-address-refineme
 
 ## What the all-RNG inventory establishes
 
+### Bob-ombs, coins and the camera
+
+A [reference video](https://www.youtube.com/watch?v=qoc4i4S4N5Q) demonstrates
+switching a Bob-omb's activity by slightly changing Mario's height at a
+red-coin **spinner** Pedro spot. The Bob-omb updates inside a 4,000-unit
+radius, so crossing that boundary can change RNG consumption. The check uses
+Mario's graphical root position; in the ordinary air-step path this is copied
+from his actual position. Blinking does not necessarily draw RNG on every
+active frame: an ongoing blink advances its timer without a new draw.
+
+The known stationary-cog control keeps Mario at a fixed height on the same
+flat cog top. Its repeated Pedro returns therefore do not supply the video's
+height switch. The spinner demonstration does not establish the same control
+at the cogs. Different actions or selected surfaces remain open candidates
+whose whole preserving paths need checking.
+
+Coin collection has a separate qualification. The ordinary coin-interaction
+handler does not need a landing or move Mario. A live coin's own behavior then
+creates sparkles, which consume RNG. But the standard non-holdable cloning
+path replaces that coin behavior with a carry script. Such a coin can remain
+collectible without running the sparkle-creation code. Hands-free holding
+alone therefore does not establish a preserving coin-sparkle RNG source.
+The 100-coin-star threshold is a separate branch, not covered by this ordinary
+collection conclusion.
+
+TTC does not enable snow or the proposed camera-dependent environmental
+particles. Moving the camera does not change its environmental mode from NONE.
+The existing NONE-mode execution theorem is described below. Other camera
+shake paths must still be accounted for separately. These source findings add
+no new Coq theorem or complete preserving gameplay witness; see the
+[three-method investigation](notes/ttc-cog-alternative-rng.md) for the exact
+conditions and remaining tests.
+
+### The inventory and its execution boundary
+
 The source inventory now covers 41 generated C compilation units per version,
 including every Mario action group, interactions, camera and environmental
 effects. Its structural checks account for 282 direct RNG call sites, 16

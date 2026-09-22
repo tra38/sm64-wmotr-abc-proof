@@ -172,6 +172,26 @@ current request.
 
 ## Pipeline and scope
 
+### Alternative RNG routes reviewed on 2026-09-21
+
+- [x] Identify the supplied Bob-omb clip as a red-coin spinner demonstration;
+      check the graphical-root activation gate and the fixed-height limitation
+      of the known ordinary-air cog control.
+- [x] Distinguish normal live-coin sparkle creation from collection of a
+      non-holdable clone running a replacement carry script. Record the
+      hands-free release and 100-coin-star qualifications.
+- [x] Check TTC's NONE environmental mode against the existing US/JP execution
+      theorem. Record these as source analysis in the
+      [alternative-RNG note](notes/ttc-cog-alternative-rng.md), not new proofs.
+- [ ] Execute a preserving cog input pair that changes a settled Bob-omb's
+      activation test and its accepted, ordered RNG draws, or exclude the
+      relevant complete action family.
+- [ ] Establish a controllable preserving live-coin interaction or another
+      coin-related RNG path, including runtime behavior, overlap, release,
+      particle acceptance and the following update.
+
+### Existing pipeline validation
+
 - [x] Pin decomp commit `9921382a68bb0c865e5e45eb594d9c64db59b1af`.
 - [x] Generate only `VERSION_US` and `VERSION_JP` Clight units.
 - [x] Record the exact `clightgen -normalize` command and preprocessing flags.
