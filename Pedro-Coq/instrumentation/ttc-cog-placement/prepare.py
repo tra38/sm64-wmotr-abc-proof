@@ -26,6 +26,7 @@ PRESETS = {
     "edge": {"position": [1456, -2088, -1178], "yaw_degrees": 341},
     "rim": {"position": [1456, -2088, -1139], "yaw_degrees": 341},
     "inner_rim": {"position": [1313, -2088, -1098], "yaw_degrees": 90},
+    "search_edge_a": {"position": [1308, -2088, -1088], "yaw_degrees": 60},
 }
 EXPECTED = {
     "us": "17ce077343c6133f8c9f2d6d6d9a4ab62c8cd2aa57c40aea1f490b4c8bb21d91",

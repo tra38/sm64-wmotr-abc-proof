@@ -68,6 +68,20 @@ current request.
       the [impact-and-successor report](notes/ttc-cog-ground-pound-successor.md).
 - [x] Check ten RANDOM-mode Z timings and independently replay ledge Z138 in
       JP; retain mist-producing but non-preserving impacts and their successors.
+- [x] Run an authenticated native collision search over four selected cog pairs,
+      64 yaws per cog and a stated edge-offset grid in US/JP. Record 35,684,352
+      samples per version, 987,984 ordinary-air/refresh candidates and zero
+      preserving first-quarter ground-pound candidates in the limited scene.
+      See the [geometry search report](notes/ttc-cog-geometry-search.md).
+- [x] Check one newly selected geometry in the complete US/JP game: 94 successive
+      ordinary-air Pedro updates at `(1308, -2088, -1088)` in STOPPED mode.
+      Reproduce the steering run using recorded controller input.
+- [x] Execute its Z4 continuation through startup, all first-descent quarters
+      and the following complete update; retain the failed, impact-free path
+      and compare all 2,970 normalized US/JP observations.
+- [ ] Extend beyond the sampled fixed-XYZ/zero-horizontal-descent family as
+      warranted; account for other dynamic objects and establish gameplay
+      reachability before promoting a geometry candidate to the active target.
 - [ ] Demonstrate a complete preserving ground-pound impact and successor in
       another authenticated geometry/history, or prove a properly scoped
       exclusion. The checked failure is not universal impossibility.
