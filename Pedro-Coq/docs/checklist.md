@@ -76,6 +76,10 @@ current request.
 - [x] Check one newly selected geometry in the complete US/JP game: 94 successive
       ordinary-air Pedro updates at `(1308, -2088, -1088)` in STOPPED mode.
       Reproduce the steering run using recorded controller input.
+- [x] Extend that identical STOPPED control to 1,200 successive game-logic
+      frames (about 40 nominal seconds) in US/JP. Check every complete update,
+      the original 94-frame prefix and all 38,132 normalized observations;
+      retain the [long-hold receipt](notes/ttc-cog-1200-frame-hold.md).
 - [x] Execute its Z4 continuation through startup, all first-descent quarters
       and the following complete update; retain the failed, impact-free path
       and compare all 2,970 normalized US/JP observations.

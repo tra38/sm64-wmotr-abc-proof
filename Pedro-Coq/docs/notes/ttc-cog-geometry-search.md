@@ -17,6 +17,11 @@ after four matched updates enters ground pound, but its first descent leaves
 the spot and becomes knockback without an impact. The following full update
 moves Mario farther out. Independent US/JP replays agree.
 
+The [1,200-frame follow-up](ttc-cog-1200-frame-hold.md) extends that same
+ordinary-air control successfully in both versions. The original 94 updates
+were a recording cutoff, not an observed maximum. This report retains the
+original short-run counts and ground-pound comparison.
+
 The emulator uses the stock **STOPPED clock setting** and the previously
 authorized near-cog initialization method. It does not establish normal entry,
 a naturally occurring RANDOM-mode still interval, or preserving RNG control.

@@ -15,6 +15,12 @@ and zero preserving first-quarter ground-pound candidates. A full-game check
 of **one** selected new position gives 94 successive ordinary-air updates,
 but ground pound leaves it on first descent without an impact.
 
+The [long-hold follow-up](../../docs/notes/ttc-cog-1200-frame-hold.md) extends
+that same ordinary-air control to 1,200 checked frames in US/JP. The original
+94-frame duration was the recording cutoff, not an observed failure. Its
+input and checks are `control-a-1200.csv` and `report-long-hold.py`, with
+receipts in `results-1200.json`. The STOPPED/RANDOM-mode distinction remains.
+
 ## Native search
 
 Run from the proof repository in Ubuntu-24.04 with Python 3.12, Git and GCC.

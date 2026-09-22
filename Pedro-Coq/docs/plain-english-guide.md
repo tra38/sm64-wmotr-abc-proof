@@ -35,10 +35,12 @@ See [the cog plan](notes/ttc-cog-plan.md) and
 A new [bounded geometry search](notes/ttc-cog-geometry-search.md) finds 987,984
 ordinary-air candidates among 35,684,352 sampled position-and-pose combinations
 per version. None passes its first-quarter ground-pound preservation filter.
-One newly selected position is separately verified in the emulator for 94
-successive Pedro updates with the cogs stopped; ground pound leaves that spot
-on its first descent. These are finite discovery results, not new Coq proofs
-or a complete search of reachable states.
+One newly selected position was separately verified in the emulator for 94
+successive Pedro updates with the cogs stopped; its extended replay now passes
+[1,200 successive game frames](notes/ttc-cog-1200-frame-hold.md), about 40 seconds
+at normal speed, in both versions. Ground pound still leaves that spot on its
+first descent. These are finite discovery results, not new Coq proofs or a
+complete search of reachable states.
 
 ## The game ideas first
 
@@ -344,9 +346,10 @@ returns, but the checked full paths fail to preserve the required Mario and
 cog state across successive updates. The
 [successive-update report](notes/ttc-cog-successive-updates.md) records these
 limitations. Separate STOPPED-clock diagnostics check 30 successive off-floor
-Pedro returns at the earlier position and now 94 at a newly searched position,
-with both cogs fixed. These are positive finite stationary-geometry controls;
-they do not establish a RANDOM-mode entry or RNG-controlled still interval.
+Pedro returns at the earlier position and now 1,200 at a newly searched
+position, with both cogs fixed. These are positive finite stationary-geometry
+controls; they do not establish a RANDOM-mode entry or RNG-controlled still
+interval.
 
 A short stationary window, such as four frames, could be useful if a preserving
 action can produce an accepted RNG effect in time. Its length alone does not
@@ -377,9 +380,16 @@ every candidate's complete game history or cover all positions and angles.
 
 One selected position, `(1308, -2088, -1088)`, is then tested in the full
 emulator in both versions. With the clock stopped and a constant stick input,
-Mario stays there for 94 checked updates while forward speed rises from zero
-to about 41.31. Pressing Z after four matched updates instead gives fifteen
-startup calls, then a descent that loses the cog floor and becomes backward
+the first recording checks 94 updates while forward speed rises from zero
+to about 41.31. That recording ends at its chosen cutoff, not because Mario
+leaves. An [extended recording](notes/ttc-cog-1200-frame-hold.md) now checks
+1,200 complete updates at the same XYZ, with forward speed reaching about
+205.57. At the normal 30 game updates per second, those durations are about
+3.13 seconds and 40 seconds. STOPPED mode already keeps the initialized cogs
+still; it does not require or demonstrate RNG control.
+
+Pressing Z after four matched updates in the earlier recording instead gives
+fifteen startup calls, then a descent that loses the cog floor and becomes backward
 air knockback. The following update carries him farther away. There is no
 ground-pound impact or mist request in that failure. Thus the search has found
 another valid stationary hold, but still no preserving ground-pound impact.
