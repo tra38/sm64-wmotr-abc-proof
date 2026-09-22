@@ -37,7 +37,7 @@ static ptr_DebugSetRunState SetRunState;
 static ptr_DebugGetCPUDataPtr GetCPUData;
 static ptr_DebugBreakpointCommand BreakpointCommand;
 static int trace_calls, trace_path, trace_installed, rng_pending, air_pending;
-static unsigned rng_index, air_index, path_index;
+static unsigned rng_index, air_index, path_index, cog_update_index;
 static uint32_t rng_caller, rng_object, rng_behavior;
 static uint16_t rng_before;
 static uint32_t air_action, air_floor, air_input, air_arg;
@@ -93,6 +93,22 @@ static int observe_path(uint32_t pc, const int64_t *registers) {
         const struct path_point *point = &path_points[i];
         uint32_t floor, ceil, mario_object = R32(A_MARIO_OBJECT);
         if (pc != point->pc) continue;
+        if (strcmp(point->routine, "bhv_ttc_cog_update") == 0) {
+            uint32_t object = R32(A_CURRENT_OBJECT);
+            if (!valid_object(object)) {
+                fprintf(stderr, "COG_ERROR,reason=cog-update-object\n");
+                return 1;
+            }
+            fprintf(stderr, "CGSTEP,%s,seq=%u,rel=%u,timer=%u,phase=%s,object=%08x,"
+                    "slot=%u,mode=%u,yaw=%d,speed=%.9g,target=%.9g,dir=%.9g,"
+                    "seed=%u,rngNext=%u\n", VERSION_NAME, cog_update_index++,
+                    R32(A_GLOBAL_TIMER) - start_timer, R32(A_GLOBAL_TIMER),
+                    point->leaving ? "exit" : "enter", object,
+                    (object - A_OBJECT_POOL) / 0x260, R16(A_TTC_SPEED_SETTING),
+                    (int32_t) R32(object + 212), rf(object + 248), rf(object + 252),
+                    rf(object + 244), R16(A_RANDOM_SEED16), rng_index);
+            return 1;
+        }
         floor = R32(m + 0x68); ceil = R32(m + 0x64);
         fprintf(stderr, "CPATH,%s,seq=%u,rel=%u,timer=%u,routine=%s,phase=%s,"
                 "action=%08x,prevAction=%08x,actionState=%u,actionTimer=%u,input=%04x,"

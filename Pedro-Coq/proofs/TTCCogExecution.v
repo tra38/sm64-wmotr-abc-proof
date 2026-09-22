@@ -250,6 +250,139 @@ Proof.
   - repeat split; cog_memory_load.
 Qed.
 
+(** A complete nonzero-target update. Its entry fields match the first
+    observed lower/upper RANDOM updates, but the genv/memory correspondence
+    to those observations is still a premise. No RNG binding or execution
+    premise is needed: the generated caller skips that branch. *)
+Definition cog_departure_update_execution_claim (version : GameVersion) : Prop :=
+  forall lower (ge : Clight.genv) before current mode object seed seed_value
+      approach_code object_co raw_co,
+    Genv.find_symbol ge U._gCurrentObject = Some current ->
+    Genv.find_symbol ge U._gTTCSpeedSetting = Some mode ->
+    Genv.find_symbol ge U._approach_f32_ptr = Some approach_code ->
+    Genv.find_funct_ptr ge approach_code = Some (Internal U.f_approach_f32_ptr) ->
+    (genv_cenv ge) ! U._Object = Some object_co ->
+    field_offset (genv_cenv ge) U._rawData (co_members object_co) =
+      OK (136, Full) ->
+    (genv_cenv ge) ! (cog_raw_union version) = Some raw_co ->
+    union_field_offset (genv_cenv ge) U._asF32 (co_members raw_co) =
+      OK (0, Full) ->
+    union_field_offset (genv_cenv ge) U._asS32 (co_members raw_co) =
+      OK (0, Full) ->
+    current <> object -> mode <> object -> seed <> object ->
+    Mem.load Mptr before current 0 = Some (Vptr object Ptrofs.zero) ->
+    Mem.load Mint16signed before mode 0 = Some (Vint (Int.repr 2)) ->
+    Mem.load Mint16unsigned before seed 0 = Some seed_value ->
+    Mem.load Mfloat32 before object 244 = Some (Vsingle (Float32.of_int Int.one)) ->
+    Mem.load Mfloat32 before object 248 = Some cog_zero ->
+    Mem.load Mfloat32 before object 252 = Some (cog_departure_target lower) ->
+    Mem.load Mint32 before object 212 = Some (Vint Int.zero) ->
+    Mem.valid_access before Mfloat32 object 248 Writable ->
+    Mem.valid_access before Mint32 object 280 Writable ->
+    Mem.valid_access before Mint32 object 212 Writable ->
+    exists after,
+      eval_funcall function_entry2 ge before
+        (Internal (cog_update_function version)) [] E0 after Vundef /\
+      Mem.load Mint32 after object 212 = Some (Vint (Int.repr 50)) /\
+      Mem.load Mint32 after object 280 = Some (Vint (Int.repr 50)) /\
+      Mem.load Mfloat32 after object 248 = Some cog_fifty /\
+      Mem.load Mfloat32 after object 252 = Some (cog_departure_target lower) /\
+      Mem.load Mint16unsigned after seed 0 = Some seed_value.
+
+Lemma cog_departure_speed_product :
+  forall (ge : Clight.genv) m,
+    sem_binary_operation (genv_cenv ge) Omul cog_fifty tfloat
+      (Vsingle (Float32.of_int Int.one)) tfloat m = Some cog_fifty.
+Proof.
+  intros ge m.
+  change (Some (Vsingle (Float32.mul
+    (Float32.of_bits (Int.repr 1112014848)) (Float32.of_int Int.one))) =
+    Some cog_fifty).
+  rewrite <- (Float32.of_to_bits (Float32.mul _ _)).
+  vm_compute; reflexivity.
+Qed.
+
+Lemma cog_departure_yaw_cast :
+  forall m, sem_cast cog_fifty tfloat tint m = Some (Vint (Int.repr 50)).
+Proof. intros; vm_compute; reflexivity. Qed.
+
+Ltac cog_departure_rhs :=
+  lazymatch goal with
+  | |- eval_expr _ _ _ _ (Ecast (Ebinop Omul _ _ _) _) _ =>
+      eapply eval_Ecast with (v1 := cog_fifty);
+      [eapply eval_Ebinop with (v1 := cog_fifty)
+         (v2 := Vsingle (Float32.of_int Int.one));
+       [cog_expr | cog_expr | apply cog_departure_speed_product]
+      |apply cog_departure_yaw_cast]
+  | _ => cog_expr
+  end.
+
+(** This branch has no early return other than the switch break. Keep its
+    derivation deterministic instead of searching alternative sequence exits. *)
+Ltac cog_departure_stmt :=
+  lazymatch goal with
+  | |- exec_stmt _ _ _ _ _ Sskip _ _ _ _ => constructor
+  | |- exec_stmt _ _ _ _ _ Sbreak _ _ _ _ => constructor
+  | |- exec_stmt _ _ _ _ _ (Ssequence Sbreak _) _ _ _ _ =>
+      eapply exec_Sseq_2; [constructor | discriminate]
+  | |- exec_stmt _ _ _ _ _ (Ssequence _ _) _ _ _ _ =>
+      eapply exec_Sseq_1 with (t1 := E0) (t2 := E0);
+      [cog_departure_stmt | cog_departure_stmt]
+  | |- exec_stmt _ _ _ _ _ (Sset _ _) _ _ _ _ =>
+      eapply exec_Sset; cog_expr
+  | |- exec_stmt _ _ _ _ _ (Sassign _ _) _ _ _ _ =>
+      eapply exec_Sassign;
+      [cog_lvalue | cog_departure_rhs | cbn; reflexivity |
+       eapply assign_loc_value; [reflexivity | cbn; cog_memory_store]]
+  | |- exec_stmt _ _ _ _ _ (Sifthenelse _ _ _) _ _ _ _ =>
+      eapply exec_Sifthenelse;
+      [cog_expr | cbn; reflexivity | cog_reduce_statement; cog_departure_stmt]
+  | |- exec_stmt _ _ _ _ _ (Sswitch _ _) _ _ _ _ =>
+      eapply exec_Sswitch with (out := Out_break) (n := 2);
+      [cog_expr | cbn; reflexivity | cog_reduce_statement; cog_departure_stmt]
+  | |- exec_stmt _ _ _ _ _ (Scall _ _ _) _ _ _ _ =>
+      eapply exec_Scall;
+      [reflexivity | cog_expr | cog_arguments |
+       eapply cog_find_funct_zero; eassumption | reflexivity | eassumption]
+  end.
+
+Ltac cog_departure_funcall :=
+  eapply eval_funcall_internal;
+  [eapply function_entry2_intro;
+   [cbn; apply Coqlib.list_norepet_nil | cbn; cog_norepet |
+    vm_compute; intros x y Hx Hy Heq; subst y; intuition congruence |
+    cbn; apply alloc_variables_nil | cbn; reflexivity]
+  |simpl fn_body; cog_departure_stmt
+  |cbn; first [reflexivity | split; [discriminate | reflexivity]]
+  |cbn; reflexivity].
+
+Theorem generated_cog_departure_update_executes_us_jp :
+  forall version, cog_departure_update_execution_claim version.
+Proof.
+  intros version lower ge before current mode object seed seed_value
+    approach_code object_co raw_co Hcurrent Hmode Happroach Happroach_code
+    Hobject_co Hraw_offset Hraw_co Hf32_offset Hs32_offset
+    Hcurrent_object Hmode_object Hseed_object Hcurrent_load Hmode_load Hseed_load
+    Hdir_load Hspeed_load Htarget_load Hyaw_load Hspeed_write Hangvel_write Hyaw_write.
+  destruct (Mem.valid_access_store before Mfloat32 object 248 cog_fifty
+    ltac:(cog_memory_access)) as [m1 Hs1].
+  destruct (Mem.valid_access_store m1 Mint32 object 280 (Vint (Int.repr 50))
+    ltac:(cog_memory_access)) as [m2 Hs2].
+  destruct (Mem.valid_access_store m2 Mint32 object 212 (Vint (Int.repr 50))
+    ltac:(cog_memory_access)) as [after Hs3].
+  pose proof (generated_cog_approach_departure_with_store lower ge before object
+    m1 Hspeed_load Hs1) as Happroach_execution.
+  destruct version.
+  all: cbn [cog_raw_union] in Hraw_co.
+  all: exists after; split.
+  all: lazymatch goal with
+    | |- eval_funcall _ _ _ _ _ _ _ _ => idtac
+    | _ => repeat split; cog_memory_load
+    end.
+  all: cbn [cog_update_function].
+  all: cog_departure_funcall.
+Qed.
+
 (** Kept in the cog module as well as exposed through MainTheorem, so this
     concrete result can be checked independently of the older whole-TTC census.
     It remains conditional local execution plus separate geometry/arithmetic;
@@ -257,9 +390,11 @@ Qed.
 Theorem checked_ttc_cog_local_mechanism_us_jp :
   ttc_cog_geometry_reduction_claim /\
   ttc_cog_rng_reduction_claim /\
-  (forall version, cog_zero_update_execution_claim version).
+  (forall version, cog_zero_update_execution_claim version) /\
+  (forall version, cog_departure_update_execution_claim version).
 Proof.
   exact (conj checked_ttc_cog_geometry_reduction_us_jp
     (conj checked_ttc_cog_rng_reduction_us_jp
-      generated_cog_zero_update_executes_us_jp)).
+      (conj generated_cog_zero_update_executes_us_jp
+        generated_cog_departure_update_executes_us_jp))).
 Qed.

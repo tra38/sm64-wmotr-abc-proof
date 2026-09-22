@@ -142,6 +142,19 @@ matching triangle description for every selected floor/ceiling observation.
 window with its events in original order. A particle request alone is not
 proof of a new allocation or of preserving RNG control.
 
+`--trace-cogs` adds read-only entry/return records for all actual
+`bhv_ttc_cog_update` calls, including their speeds, targets, yaw and ordered
+RNG boundaries. It implies the existing path and RNG tracing. It leaves the
+old event indices unchanged; a transparency replay reproduces the original
+3,007-event control after dropping only the added `CGSTEP` records. The
+[RANDOM-control checker](../ttc-cog-geometry/report-random-control.py) checks
+these records against the stock update arithmetic and bracketing snapshots,
+and verifies the observed pre-Mario order and intervening draws. Its scope is
+finite observations, not formal scheduler execution.
+
+Longer traces can use `--timeout-seconds` (30–900; default 180) to set an
+explicit host-runtime limit. The selected limit is recorded in the manifest.
+
 `check-preservation.py TRIAL --minimum 2` applies the narrow successive-update
 check described in the [follow-up report](../../docs/notes/ttc-cog-successive-updates.md).
 It requires repeated off-floor close-gap rejections of nonzero intended motion,

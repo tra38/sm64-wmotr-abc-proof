@@ -85,7 +85,9 @@ Proof.
 Qed.
 
 (** The full generated cog update executes both real RNG draws and preserves
-    yaw from the specified zero-speed image. The separate recurrence window
+    yaw from the specified zero-speed/zero-target image. Its departure branch
+    also executes from zero speed with either observed target 800 or 200:
+    speed and yaw become 50, with the disjoint seed cell unchanged. The separate recurrence window
     illustrates a four-draw choice; it is not an executed dust/frame schedule.
     Legal reachability of the memory image, actual collision query selection,
     the second cog's execution, and repeated controller control remain open. *)
@@ -93,16 +95,17 @@ Theorem checked_ttc_cog_local_mechanism_us_jp :
   ttc_cog_geometry_reduction_claim /\
   ttc_cog_rng_reduction_claim /\
   (forall version, cog_zero_update_execution_claim version) /\
+  (forall version, cog_departure_update_execution_claim version) /\
   ttc_cog_dust_action_frontier_claim /\
   ttc_cog_rng_source_frontier_claim /\
   ttc_cog_clone_floor_frontier_claim.
 Proof.
   destruct TTCCogExecution.checked_ttc_cog_local_mechanism_us_jp
-    as [Hgeometry [Hrng Hexecution]].
-  exact (conj Hgeometry (conj Hrng (conj Hexecution
+    as [Hgeometry [Hrng [Hexecution Hdeparture]]].
+  exact (conj Hgeometry (conj Hrng (conj Hexecution (conj Hdeparture
     (conj checked_ttc_cog_dust_action_frontier_us_jp
       (conj checked_ttc_cog_rng_source_frontier_us_jp
-        checked_ttc_cog_clone_floor_frontier_us_jp))))).
+        checked_ttc_cog_clone_floor_frontier_us_jp)))))).
 Qed.
 
 (** Initial source-and-arithmetic capstone. Every conjunct is tied either to a

@@ -42,6 +42,14 @@ at normal speed, in both versions. Ground pound still leaves that spot on its
 first descent. These are finite discovery results, not new Coq proofs or a
 complete search of reachable states.
 
+The [RANDOM-mode follow-up](notes/ttc-cog-random-1200.md) still finds no
+1,200-frame RNG strategy. The same initialization already has nonzero cog
+targets in RANDOM mode, so both cogs rotate before Mario's first controlled
+action. A smaller stick, a dive followed immediately by a rollout, and an R
+camera toggle can preserve the STOPPED spot in the checked windows, but their
+ordered RNG draws match the unchanged-input control. Preserving position and
+controlling RNG are separate requirements.
+
 ## The game ideas first
 
 Super Mario 64 represents Mario's position with three coordinates: X, Y, and Z.
@@ -341,6 +349,18 @@ while its two random calls advance the seed to 54874. This establishes one
 stationary update from the stated memory conditions. Reaching those conditions
 and keeping both relevant cogs fixed across successive frames remain open.
 
+The new RANDOM-mode replay exposes a different starting condition: speed and
+yaw are zero, but the two targets are already 800 and 200. Both cogs accelerate
+to 50 and rotate by 50 before Mario acts. Neither cog requests a new target
+on that update. The seed can affect a future target choice; it cannot change
+a target already being approached. This failed start is recorded identically
+in both US and JP and does not supply a stationary RANDOM-mode window.
+The complete generated cog function is also proved to make that transition
+from the stated memory conditions, preserving the disjoint RNG seed cell.
+This new local execution result is part of the cog capstone; connecting the
+retail snapshot to that formal memory and finding a successful starting phase
+remain separate obligations.
+
 Recorded RANDOM-mode experiments have reached individual close-gap air
 returns, but the checked full paths fail to preserve the required Mario and
 cog state across successive updates. The
@@ -387,6 +407,21 @@ leaves. An [extended recording](notes/ttc-cog-1200-frame-hold.md) now checks
 205.57. At the normal 30 game updates per second, those durations are about
 3.13 seconds and 40 seconds. STOPPED mode already keeps the initialized cogs
 still; it does not require or demonstrate RNG control.
+
+The [input comparisons](notes/ttc-cog-random-1200.md) distinguish those two
+requirements experimentally. Reducing the raw stick to `(40,15)` at frame 100
+preserves the same position for 1,200 complete updates in US and ends at speed
+31.25, but all 2,104 RNG draws match the original control. B on frame 4 followed
+by A on frame 5 produces a dive and immediate forward rollout; it preserves
+224 complete updates in US and JP, with all 391 draws matching the control.
+An R camera toggle also preserves that 224-update window in US without changing
+RNG. These are particular checked recipes, not all possible controller choices.
+
+B without the following A loses the spot during the next dive-slide update.
+The ground step initially retains the position, but the later floor-alignment
+code places Mario at his distant floor height, -8191. That update requests
+vertical stars while ending outside the Pedro spot. This does not establish
+preserving RNG control, and it does not rule out the separate slide-kick path.
 
 Pressing Z after four matched updates in the earlier recording instead gives
 fifteen startup calls, then a descent that loses the cog floor and becomes backward

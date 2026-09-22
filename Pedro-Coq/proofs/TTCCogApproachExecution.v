@@ -15,6 +15,12 @@ Definition cog_zero : val := Vsingle Float32.zero.
 Definition cog_fifty : val :=
   Vsingle (Float32.of_bits (Int.repr 1112014848)).
 
+(** Targets observed before the first controlled RANDOM-mode update of the
+    near-cog experiment: lower cog 800, upper cog 200. These are entry values,
+    not an assertion that a retail trace has been refined to CompCert memory. *)
+Definition cog_departure_target (lower : bool) : val :=
+  Vsingle (Float32.of_int (Int.repr (if lower then 800 else 200))).
+
 (** These constructor tactics only assemble standard ClightBigstep derivations.
     Every load and store is discharged by an explicit CompCert memory fact. *)
 Ltac cog_scalar_expr :=
@@ -139,3 +145,35 @@ Theorem generated_cog_approach_zero_executes_jp :
         E0 memory_after (Vint Int.one) /\
       Mem.load Mfloat32 memory_after object_block 248 = Some cog_zero.
 Proof. exact generated_cog_approach_zero_executes. Qed.
+
+(** Execute the same generated helper from zero speed toward either observed
+    nonzero target. It returns false after the one store of 50; the caller
+    therefore does not choose a new target on this update. *)
+Lemma generated_cog_approach_departure_with_store :
+  forall lower (ge : Clight.genv) before object after,
+    Mem.load Mfloat32 before object 248 = Some cog_zero ->
+    Mem.store Mfloat32 before object 248 cog_fifty = Some after ->
+    eval_funcall function_entry2 ge before
+      (Internal C.f_approach_f32_ptr)
+      [Vptr object (Ptrofs.repr 248); cog_departure_target lower; cog_fifty]
+      E0 after (Vint Int.zero).
+Proof.
+  intros lower ge before object after Hload Hstore.
+  pose proof (Mem.load_store_same _ _ _ _ _ _ Hstore) as Hload50.
+  cbn in Hload50.
+  destruct lower; eapply eval_funcall_internal.
+  all: try solve [eapply function_entry2_intro;
+    [ constructor
+    | cbn; apply Coqlib.list_norepet_cons;
+      [ cbn; intuition discriminate
+      | apply Coqlib.list_norepet_cons;
+        [ cbn; intuition discriminate
+        | apply Coqlib.list_norepet_cons;
+          [ cbn; tauto | apply Coqlib.list_norepet_nil ] ] ]
+    | vm_compute; intros x y Hx Hy Heq; subst y; intuition congruence
+    | constructor
+    | reflexivity ]].
+  all: try solve [simpl fn_body; cog_scalar_stmt].
+  all: try solve [cbn; split; [discriminate | reflexivity]].
+  all: cbn; reflexivity.
+Qed.

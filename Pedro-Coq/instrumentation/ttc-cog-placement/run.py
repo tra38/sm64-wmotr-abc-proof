@@ -58,7 +58,7 @@ def fields(line):
 def observer_records(raw):
     """Keep complete observer records, including a known console log collision."""
     prefixes = ("CINPUT,", "CFRAME,", "CCOG,", "CWALL,", "CAIR,", "CRNG,",
-                "CPATH,", "CSURFACE,", "COG_ERROR,")
+                "CPATH,", "CSURFACE,", "CGSTEP,", "COG_ERROR,")
     records, recovered = [], 0
     for line in raw.splitlines():
         if line.startswith(prefixes):
@@ -117,6 +117,8 @@ def main():
     parser.add_argument("--waypoints", type=Path,
                         help="optional controller steering targets; actual inputs are logged")
     parser.add_argument("--video-frames", type=int, default=1000)
+    parser.add_argument("--timeout-seconds", type=int, default=180,
+                        help="bounded host runtime for longer call-traced replays")
     parser.add_argument("--capture-from", type=int,
                         help="save every rendered frame from this index through --video-frames")
     parser.add_argument("--trace-calls", action="store_true",
@@ -125,11 +127,15 @@ def main():
                         help="also observe geometry, action, ground-step and particle paths")
     parser.add_argument("--trace-ground-pound", action="store_true",
                         help="include ground-pound, successor and mist-helper boundaries")
+    parser.add_argument("--trace-cogs", action="store_true",
+                        help="also observe complete cog updates and their RNG boundaries")
     args = parser.parse_args()
-    args.trace_path = args.trace_path or args.trace_ground_pound
+    args.trace_path = args.trace_path or args.trace_ground_pound or args.trace_cogs
     args.trace_calls = args.trace_calls or args.trace_path
     if not args.name.isidentifier() or not 300 <= args.video_frames <= 12000:
         parser.error("invalid trial name or video-frame limit")
+    if not 30 <= args.timeout_seconds <= 900:
+        parser.error("timeout-seconds must be between 30 and 900")
     if args.capture_from is not None and not 1 <= args.capture_from <= args.video_frames:
         parser.error("capture-from must be between 1 and the video-frame limit")
     experiment = experiment_dir(args.setup, args.clock_mode)
@@ -193,6 +199,8 @@ def main():
     path_routines = dict(PATH_ROUTINES)
     if args.trace_ground_pound:
         path_routines.update(GROUND_POUND_ROUTINES)
+    if args.trace_cogs:
+        path_routines["bhv_ttc_cog_update"] = False
     for routine, returns_value in path_routines.items():
         words, disassembly = routine_words(elf, routine)
         start = min(words)
@@ -252,8 +260,10 @@ def main():
         "trace_calls": args.trace_calls,
         "trace_path": args.trace_path,
         "trace_ground_pound": args.trace_ground_pound,
+        "trace_cogs": args.trace_cogs,
         "runner_sha256": sha(Path(__file__)),
         "captured_render_frames": capture_frames,
+        "timeout_seconds": args.timeout_seconds,
         "symbols": symbols, "command": command,
         "boundary": "input polls; state observation precedes the returned input"}
     (out / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
@@ -262,7 +272,7 @@ def main():
     with (out / "emulator-stdout.log").open("w") as stdout, \
             (out / "observer-stderr.log").open("w") as stderr:
         result = subprocess.run(command, env=env, input="run\n", text=True,
-                                stdout=stdout, stderr=stderr, timeout=180)
+                                stdout=stdout, stderr=stderr, timeout=args.timeout_seconds)
     raw = (out / "observer-stderr.log").read_text(errors="replace") + "\n" \
         + (out / "emulator-stdout.log").read_text(errors="replace")
     (out / "raw.log").write_text(raw)

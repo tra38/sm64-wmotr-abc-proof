@@ -91,6 +91,22 @@ current request.
       exclusion. The checked failure is not universal impossibility.
 - [ ] Only after preservation, compare input continuations and their ordered
       RNG draws; then instantiate the linked execution obligations.
+  - [x] Compare the preserved prefixes of the smaller-stick, dive/rollout and
+        R-toggle recipes against the identical STOPPED control. Their ordered
+        RNG draws agree; record the failed uncancelled dive-slide separately.
+        See the [RANDOM-mode follow-up](notes/ttc-cog-random-1200.md).
+  - [x] Trace all eight complete cog updates, their actual RNG boundaries and
+        pre-Mario order; reproduce the original control after stripping only
+        the new observer records. Independently compare RANDOM and rollout
+        replays in US/JP.
+  - [x] Execute the complete generated RANDOM cog update from zero speed/yaw
+        and either observed target 800 or 200. Prove speed/yaw 50 and unchanged
+        target and disjoint seed cell; consume the result in the cog capstone.
+        Retail-memory refinement and a successful initial phase remain open.
+  - [ ] Supply a natural RANDOM-mode state with suitable geometry and a
+        preserving input choice that changes RNG, then verify the complete
+        interleaved schedule and Mario continuation through 1,200 updates.
+        The tested initialization instead rotates both cogs on update 0.
 - [x] Enumerate direct literal dust writers in the generated moving/airborne
       units (11 and 2 functions) with a finite Coq syntax check for US/JP.
 - [x] Execute the generated ground-gap suffix at heights -2088/-1934 and

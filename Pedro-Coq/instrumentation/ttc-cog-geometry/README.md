@@ -48,6 +48,9 @@ a normal-entry route. The stock STOPPED setting is a geometry diagnostic,
 separate from RANDOM-mode reachability. All subsequent control uses ordinary
 inputs. The existing observer is unchanged and only reads guest state.
 
+That statement applies to the original geometry replay. The later RANDOM
+follow-up below adds an optional read-only cog-update observation.
+
 ```sh
 python3 Pedro-Coq/instrumentation/ttc-cog-placement/prepare.py --setup search_edge_a --clock-mode stopped
 make -C Pedro-Coq/build/cog-placement/search_edge_a_stopped/source VERSION=us COMPARE=0 -j2
@@ -76,3 +79,42 @@ ground-pound checks, compares full normalized traces and the pre-Z prefix,
 and writes [results.json](results.json). It does not infer a successful impact
 from stationary startup frames. The finite negative result leaves broader
 state families and complete semantic proofs open.
+
+## RANDOM-mode and input-choice follow-up
+
+The [detailed report](../../docs/notes/ttc-cog-random-1200.md) and
+[receipt](results-random-control.json) retain the failed RANDOM-mode start,
+preserving STOPPED input alternatives with unchanged RNG draws, and the
+non-preserving dive-slide. This is not a 1,200-frame RANDOM-mode solution.
+
+Prepare and build the separately declared RANDOM initialization:
+
+```sh
+P=Pedro-Coq/instrumentation/ttc-cog-placement
+G=Pedro-Coq/instrumentation/ttc-cog-geometry
+python3 "$P/prepare.py" --setup search_edge_a --clock-mode random
+make -C Pedro-Coq/build/cog-placement/search_edge_a/source VERSION=us COMPARE=0 -j2
+make -C Pedro-Coq/build/cog-placement/search_edge_a/source VERSION=jp COMPARE=0 -j2
+python3 "$P/run.py" us geometry_a_random_us --setup search_edge_a --clock-mode random --inputs "$G/control-a-1200.csv" --trace-ground-pound --trace-cogs --video-frames 500
+python3 "$P/run.py" jp geometry_a_random_jp --setup search_edge_a --clock-mode random --inputs "$G/control-a-1200.csv" --trace-ground-pound --trace-cogs --video-frames 500
+```
+
+Using the existing STOPPED builds and fresh trial directories:
+
+```sh
+python3 "$P/run.py" us geometry_a_tickcontrol_us --setup search_edge_a --clock-mode stopped --inputs "$G/control-a-1200.csv" --trace-ground-pound --trace-cogs --video-frames 470
+python3 "$P/run.py" us geometry_a_analog1200_us --setup search_edge_a --clock-mode stopped --inputs "$G/analog-after100.csv" --trace-ground-pound --trace-cogs --video-frames 1576 --timeout-seconds 360
+python3 "$P/run.py" us geometry_a_b4_us --setup search_edge_a --clock-mode stopped --inputs "$G/b4.csv" --trace-ground-pound --video-frames 600
+python3 "$P/run.py" us geometry_a_b4a5_us --setup search_edge_a --clock-mode stopped --inputs "$G/b4-a5.csv" --trace-ground-pound --trace-cogs --video-frames 600
+python3 "$P/run.py" jp geometry_a_b4a5_jp --setup search_edge_a --clock-mode stopped --inputs "$G/b4-a5.csv" --trace-ground-pound --trace-cogs --video-frames 600
+python3 "$P/run.py" us geometry_a_r4_us --setup search_edge_a --clock-mode stopped --inputs "$G/r4.csv" --trace-ground-pound --trace-cogs --video-frames 600
+python3 "$G/report-random-control.py"
+```
+
+The last command also requires the original `geometry_a_1200_us` baseline
+and `geometry_a_replay_us` transparency control. The checker accepts explicit
+`--trial` paths relative to `build/cog-placement` for inspecting subsets or
+freshly named reruns; the default inventory produces the recorded receipt.
+It requires complete off-floor action paths and a close-gap return on every
+accepted update, while allowing a ceiling-rejected rising quarter during
+rollout. It compares all ordered RNG events only inside the preserved prefix.
