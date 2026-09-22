@@ -155,7 +155,10 @@ identical, containing the same six standard Coq/CompCert assumptions. The
 new complete cog-update theorem has that same footprint. This audit says
 nothing by itself about gameplay reachability or closing the 1,200-frame goal.
 
-The private site was checked: it remains owner-only, with no external
-visitors, and its overall open verdict agrees. Publication of these newer
-findings is pending because the required Sites skill/helper bundle is absent;
-no site source or access setting was changed.
+Publication follow-up, 2026-09-21: the official Sites bundle was recovered
+through the connected resource catalog. Version 3 of the owner-only
+[private site](https://pedro-proof-notes.tra38.chatgpt.site) now includes these
+input comparisons, the actual cog ordering, the local departure proof and an
+exact copy of the receipt. The 1,200-frame RANDOM-mode strategy remains
+unproved in both reports. Access was verified after publication: one owner,
+no groups or external viewers. See the [publication record](ttc-cog-site-publication.md).

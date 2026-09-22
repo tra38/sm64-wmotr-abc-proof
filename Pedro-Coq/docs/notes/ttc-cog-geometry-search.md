@@ -193,8 +193,9 @@ game, followed by normal-entry/RANDOM-mode reachability and particle/RNG
 execution. Expanding the angle/position samples alone would not prove those
 remaining obligations or universal impossibility.
 
-Private-site publication is pending: the Sites skill/helper bundle is absent
-from the available skill locations. The private site still carries the earlier
-ground-pound result; its broad verdict agrees that preserving ground-pound RNG
-control is unestablished, but it does not yet contain these new counts. No
-site source or access setting was changed by this investigation.
+Publication follow-up, 2026-09-21: the official Sites bundle was recovered
+through the connected resource catalog. Version 3 of the owner-only
+[private site](https://pedro-proof-notes.tra38.chatgpt.site) now includes these
+bounded search counts, the failed ground-pound continuation and an exact copy
+of the receipt. The limits and open verdict agree with this report. See the
+[publication record](ttc-cog-site-publication.md).

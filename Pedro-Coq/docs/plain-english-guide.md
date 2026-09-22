@@ -436,11 +436,14 @@ advance RNG rather than resetting it; a useful sequence would still need both
 cog decisions and all intervening draws accounted for. These are source
 analysis and finite observations, not a new Coq proof or normal-entry witness.
 The dedicated private
-[Pedro-Coq research site](https://pedro-proof-notes.tra38.chatgpt.site) still
-shows the earlier ground-pound report. Its overall open verdict agrees, but
-publication of the latest geometry and alternative-RNG findings is pending
-because the Sites skill/helper bundle is unavailable. No site access settings
-have changed.
+[Pedro-Coq research site](https://pedro-proof-notes.tra38.chatgpt.site) now
+includes the geometry search, 1,200-update STOPPED hold, preserving-input
+comparisons, local cog-departure proof and alternative-RNG findings. Version 3
+was published on 2026-09-21 and verified to remain owner-only, with no groups
+or external viewers. Its verdict agrees with this guide: a preserving
+1,200-frame RANDOM-mode RNG strategy remains unproved. The official Sites
+bundle was recovered through the connected resource catalog; the earlier
+publication blocker is resolved. See the [publication record](notes/ttc-cog-site-publication.md).
 
 ## The proved TTC Pedro interval
 

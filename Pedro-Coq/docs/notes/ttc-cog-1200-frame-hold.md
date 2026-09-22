@@ -104,8 +104,9 @@ python3 "$P/run.py" jp geometry_a_1200_jp --setup search_edge_a --clock-mode sto
 python3 "$G/report-long-hold.py"
 ```
 
-The private site still contains the earlier 30-frame diagnostic. Its overall
-verdict that preserving cog RNG control remains open agrees with this report,
-but the 94-frame and 1,200-frame follow-ups are not yet published there: the
-required Sites skill/helper bundle remains unavailable. No site source or
-access setting was changed.
+Publication follow-up, 2026-09-21: the official Sites bundle was recovered
+through the connected resource catalog. Version 3 of the owner-only
+[private site](https://pedro-proof-notes.tra38.chatgpt.site) now reports this
+1,200-update result and carries an exact copy of its receipt. Its verdict
+agrees: the STOPPED hold does not establish preserving RANDOM-mode RNG
+control. See the [publication record](ttc-cog-site-publication.md).
