@@ -287,3 +287,8 @@ the ledge, so this still does not answer the in-spot preservation query.
 Published in owner-only [site version 5](https://pedro-proof-notes.tra38.chatgpt.site/#scheduler-tractability);
 the [publication record](ttc-cog-site-publication.md) identifies the exact
 source snapshots and private-access check.
+
+The measured-cost follow-up is published in owner-only
+[site version 9](https://pedro-proof-notes.tra38.chatgpt.site/#brute-force-cost).
+The guide, note and site agree that these projections do not supply a runtime
+bound or resolve the preserving 1,200-update RANDOM target.

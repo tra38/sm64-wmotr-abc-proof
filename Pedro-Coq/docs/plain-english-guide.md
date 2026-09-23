@@ -440,7 +440,8 @@ The dedicated private
 includes the geometry search, 1,200-update STOPPED hold, preserving-input
 comparisons, local cog-departure proof, alternative-RNG findings and the video
 review with exact scalar RNG checks, conditional scheduler-search bounds and
-the historical STOPPED-derived and corrected RANDOM-phase seed-sweep results.
+the historical STOPPED-derived and corrected RANDOM-phase seed-sweep results,
+the one-cog/two-cog diagnosis and conditional brute-force runtime estimates.
 The [publication record](notes/ttc-cog-site-publication.md)
 identifies the published version and owner-only access check. Its verdict
 agrees with this guide: a preserving

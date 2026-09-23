@@ -197,3 +197,36 @@ The saved archive's content hash is
 `ed045ec52ecc547c55e564113513b58878974f9ea8d71985071ab48c21fd68e4`.
 No ROM/RAM data, credentials or conversation exports were published. No SSL
 report or site was changed, and no new Coq theorem was claimed.
+
+## Version 9 publication
+
+**Version 9 is live and remains owner-only**, published on 2026-09-23,
+America/Chicago (deployment timestamp `2026-09-23T10:21:53.825720+00:00`).
+The [brute-force cost analysis](https://pedro-proof-notes.tra38.chatgpt.site/#brute-force-cost)
+separates SAT expressibility and complexity from measured runtime. The RANDOM
+sweep's approximately 288.43-second US/JP pair supplies conditional projections:
+100 comparable preparation pairs take about eight hours, and 1,000 take about
+3.34 days. All measured candidates fail by the fourth update under the two-cog
+ledge predicate; the text explicitly withholds a bound for longer continuations,
+the actual Pedro-preservation predicate and unrestricted preparations. There
+is no implemented complete TTC SAT encoding or measured solver speedup. The
+guide, note and site retain the open preserving 1,200-update RANDOM verdict.
+
+Proof evidence snapshot: `60c3f891ab22227be71ef010de6712baa65b1884`.
+Site source commit: `fdc45b6e4397699e2259fee8163caca9dc67face`.
+Both were pushed before publication. The official workflow packaged the clean
+site source; the owner-private save-and-deploy returned terminal `succeeded`.
+The saved version identifies the exact source commit. The subsequent access
+read confirmed one owner, no groups, no external visitors and unchanged policy
+revision 1. No sharing changes were made.
+
+The runtime table was recalculated from the committed RANDOM receipt. All 17
+pinned evidence links, unique anchors and local assets were checked. All eight
+downloadable receipts match the proof checkout byte for byte and the pinned
+Git blobs after LF/CRLF normalization; the first three differ from their Git
+blobs only in line endings. The site README now states that distinction.
+The saved archive content hash is
+`11d9658b1af075949e9db2ce3f34a4cd0fcfdb68f2b7ff642925b040797ad838`.
+This update adds analysis and reporting only: no gameplay executions, new Coq
+proofs or discharged capstone premises. No ROM/RAM data, credentials or
+conversation exports were published, and no SSL report or site was changed.
