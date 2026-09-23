@@ -67,7 +67,7 @@ settings did not change global Git configuration or the published audience.
 
 ## Version 4 publication
 
-**Version 4 is live and remains owner-only**, published on 2026-09-22,
+**Version 4 was published with owner-only access** on 2026-09-22,
 America/Chicago (deployment timestamp `2026-09-23T02:19:30.737247+00:00`).
 The [video argument section](https://pedro-proof-notes.tra38.chatgpt.site/#video-argument)
 now explains the video's scheduling warning, the exhaustive scalar RNG
@@ -87,3 +87,27 @@ All nine pinned proof-source links and local asset references were checked.
 The fifth JSON download, the scalar RNG receipt, matches the proof record
 byte for byte. This publication adds no Coq theorem and does not change the
 SSL atlas or Pyramid Fine Print site.
+
+## Version 5 publication
+
+**Version 5 is live and remains owner-only**, published on 2026-09-22,
+America/Chicago (deployment timestamp `2026-09-23T04:03:09.599623+00:00`).
+The [scheduler bounds section](https://pedro-proof-notes.tra38.chatgpt.site/#scheduler-tractability)
+distinguishes the conditional 78,643,200 frame-evaluation bound for a fixed
+non-RNG setup and input continuation from the search over preparations, for
+which no practical guarantee is established. No wall-clock guarantee,
+implemented scheduler, Coq theorem
+or new gameplay witness is claimed. The site and guide retain the same open
+1,200-frame RANDOM-mode verdict.
+
+Proof evidence snapshot: `8a505d2e10b799ada1919a644096ad47101a5f72`.
+Site source commit: `7524bee71b16d9ec8c7194743bccdbcc1616de12`.
+Both source states were pushed; the official Sites workflow packaged the
+clean site source, and the private save-and-deploy operation returned terminal
+status `succeeded`. The saved version reports the exact site commit above.
+The subsequent access read confirmed a single owner, no allowed groups and
+zero external visitors, with the original access-policy revision unchanged.
+
+All ten pinned proof-source links, internal anchors and local assets were
+checked. The five existing downloadable receipts were preserved. No SSL
+report or site was changed.

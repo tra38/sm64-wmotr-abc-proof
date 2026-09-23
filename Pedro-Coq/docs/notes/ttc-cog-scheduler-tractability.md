@@ -177,3 +177,7 @@ implementation, is supplied. No game or emulator state was changed. The
 repository discipline audit passed in Ubuntu's configured login environment
 with `SM64_PROOF_SWITCH=sm64-item-proof`; no proof statements or assumptions
 were changed, and no capstone obligation was discharged.
+
+Published in owner-only [site version 5](https://pedro-proof-notes.tra38.chatgpt.site/#scheduler-tractability);
+the [publication record](ttc-cog-site-publication.md) identifies the exact
+source snapshots and private-access check.

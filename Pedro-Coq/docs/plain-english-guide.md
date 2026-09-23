@@ -439,7 +439,8 @@ The dedicated private
 [Pedro-Coq research site](https://pedro-proof-notes.tra38.chatgpt.site) now
 includes the geometry search, 1,200-update STOPPED hold, preserving-input
 comparisons, local cog-departure proof, alternative-RNG findings and the video
-review with exact scalar RNG checks. Version 4 was published on 2026-09-22
+review with exact scalar RNG checks and conditional scheduler-search bounds.
+Version 5 was published on 2026-09-22
 and verified to remain owner-only, with no groups
 or external viewers. Its verdict agrees with this guide: a preserving
 1,200-frame RANDOM-mode RNG strategy remains unproved. The official Sites
