@@ -19,6 +19,8 @@ Choose a version, allowed start, actor/action domain and named claim before expa
 
 A useful batch can (1) prove the named mechanism impossible under stated, meaningful conditions; (2) grant a clearly stated diagnostic setup and prove its payoff cannot help the target; or (3) produce a reproducible candidate and explain exactly which condition it breaks. A failed finite search reports only its tested domain. State which conditions were derived, which remain assumed and which ranked dependencies are actually discharged. Do not assume the desired useful combination merely to make a theorem tractable.
 
+Keep that finish line fixed. Completing a conditional theorem does not require proving its entry conditions throughout the game. That applicability claim is a separate extension. The F02 follow-up list previously bundled several such extensions into one “bounded” batch; this understated the work. An imported result or a larger checked package is not, by itself, a discharged route obligation. Report the exact conditional closure and any wider claim separately.
+
 The scope remains ordinary controller gameplay and defined, in-bounds glitches. No new A edge is the core input rule; the useful-negative-seed investigation specifically asks for A never pressed. Already-held-A variants need their real input predecessor. ACE, arbitrary state/code modification, invalid memory access and emulator/OS/network vulnerability methods are outside this workboard.
 
 ## All ranks, grouped
@@ -76,7 +78,7 @@ Sources: [The four possible stall causes, checked](../../docs/notes/rank10a-live
 
 **What is already known.** The supplied JP Ink setup works through the warp. All 2,462 frames of the clean pillar run lack the useful split. The full platform phase preserves display and collision coordinates, and the wrong second-state copy is excluded in the initialized model. The particle-copy tail preserves Mario when the spawned particle occupies a different valid slot. The complete nonempty US/JP allocator now returns its entry free-list slot, and the full initializer protects all other Object slots as well as separate State storage. Entry flags give a conditional separation test; the full-pool lookup is read-only. A “child” is a spawned effect, not a second Mario. Preservation during earlier graph/list operations and live ownership remain open.
 
-**First compute batch.** Next, prove the earlier list/graph maintenance and full-pool eviction effects; establish live ownership at allocation; and carry the returned slot through the remaining spawning wrappers. Then cover the remaining reached callbacks through collision. The initializer's same-pool bounds, nonempty allocator return and read-only lookup are completed pieces; their proofs do not grant safety to the rest of allocation.
+**First compute batch.** The initializer bounds and nonempty-return batch is complete under its stated conditions. Earlier list/graph effects, live ownership, full-pool eviction, spawning wrappers and later callbacks are separate extensions, not one bounded follow-up. Before selecting another batch, fix its exact execution interval, concrete entry conditions and required conclusion, and state which route obligation it would discharge. Do not reopen the completed initializer claim merely because the broader F02 question remains open.
 
 **What a negative result would settle.** Show that the chosen interval cannot create a useful split from synchronized records. A separate pre-action or dialog interval needs its own proof; combine them only when their boundaries match.
 
@@ -84,7 +86,7 @@ Sources: [The four possible stall causes, checked](../../docs/notes/rank10a-live
 
 **What stays open.** Do not try to disprove movement while the display survives: conditional trials already show that. The unresolved claim is the useful combination of floor loss, contact, display and timing.
 
-**Work size.** Moderate to broad; start with one actual update interval rather than every writer in the game.
+**Work size.** The completed local claims have a fixed scope. The remaining family is broad, and we do not have a justified estimate for completing its universal gameplay claim.
 
 **Also helps [3](../no-a-route-atlas.md#route-rank-3).** The distant-coordinate proposal still needs movement and collision positions to disagree.
 

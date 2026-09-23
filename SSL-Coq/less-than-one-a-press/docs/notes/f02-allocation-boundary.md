@@ -46,6 +46,14 @@ execution. This does not prove the full pool can never be reached.
 
 ## What these results do not settle
 
+The initializer and nonempty-return claims above are finished conditional
+theorems. Their conditions are part of their statements, not unfinished
+steps inside those proofs. Showing that every relevant gameplay call
+satisfies those conditions is a larger, separate claim. The last batch did
+not close the complete allocator or F02, and its connection to the Rank-5
+boundary collects these checked facts rather than discharging the whole
+route obligation.
+
 The valid-slot and entry flag conditions are explicit. We have not proved
 that every relevant gameplay allocation reaches the call with an inactive
 free-list head and an active Mario slot, or that earlier graph and list
@@ -64,6 +72,24 @@ through collision still need their own execution connection.
 No whole-list integrity, future preservation, or universal callback safety
 is granted here. There is no new gameplay witness and no route closure.
 The atlas's subjective counterexample estimates are unchanged.
+
+## Why the work list grew
+
+The investigation moved from a particle's copy, to its initialization, to
+the allocator that supplies its slot, and then to ownership across gameplay.
+Each extension asks a stronger question. The earlier description bundled
+list maintenance, ownership, eviction and later callbacks into one “next
+bounded step”; that understated its scope. These are dependencies of the
+broader claim, not evidence of newly discovered gameplay glitches.
+
+Before another proof batch, fix its entry and exit, its explicit conditions,
+the exact conclusion and the route obligation it will discharge. A proved
+conditional claim stays complete at that scope. Proving its conditions for
+all histories is a separately scoped extension; it should not silently
+become the new finish line. Conditions must still describe concrete program
+facts rather than assume the desired position preservation or route failure.
+This reporting correction adds no theorem, route closure or probability
+change.
 
 ## Checked interfaces
 

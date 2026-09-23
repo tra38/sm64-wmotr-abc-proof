@@ -18,6 +18,11 @@ same-pool bounds and the complete nonempty allocator's returned-slot
 connection are now proved. Live ownership, earlier graph/list effects,
 eviction, the spawning wrappers and the remaining post-copy interval are
 still open. “Child” here means a spawned particle, not another Mario.
+Those initializer and return theorems are complete under their stated
+conditions. The remaining list is a set of separately scoped extensions,
+not one bounded batch or evidence of additional gameplay glitches. Fix the
+claim and its conditions before more proof work; importing a local result
+does not itself discharge a route obligation.
 For a consolidated account of which results the impossibility argument uses
 and which live connections remain, see the
 [impossibility-proof progress ledger](impossibility-proof-progress.md).
