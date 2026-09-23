@@ -173,3 +173,7 @@ actual command loop, and prove which other objects can use scheduling-only
 keys without feeding back into preservation. A kernel-checked version also
 needs actual Clight execution/refinement for this finite transition table.
 No new Coq lemma has been added merely to repackage the host result.
+
+Published in owner-only [site version 11](https://pedro-proof-notes.tra38.chatgpt.site/#state-reductions).
+The [publication record](ttc-cog-site-publication.md) identifies the exact
+source, receipt checks and unchanged private audience.

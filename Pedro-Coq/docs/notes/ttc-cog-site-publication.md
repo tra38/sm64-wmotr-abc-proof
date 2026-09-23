@@ -263,3 +263,35 @@ archive content hash is
 No new game executions, Coq proofs or discharged capstone premises are claimed.
 No ROM/RAM images, video frames, credentials or conversation exports were
 published; no SSL report or site was changed.
+
+## Version 11 publication
+
+**Version 11 is live and remains owner-only**, published on 2026-09-23,
+America/Chicago (deployment timestamp `2026-09-23T11:40:16.058929+00:00`).
+The [state-reduction section](https://pedro-proof-notes.tra38.chatgpt.site/#state-reductions)
+reports exhaustive local generated-AST/native-C checks: cog speed/target
+pairs reduce from 637 to 480 scheduling states; recurrent spinner combinations
+from 608 to 121, or 930 to 122 in the broader timer-zero domain. All 447,296
+output comparisons pass, and finite-table partition refinement finds exactly
+those classes. A seed-38 example rejects a simple absolute-sign cog merge;
+additional examples demonstrate different motion under the same scheduling
+key. The site, detailed report and guide distinguish local scheduling evidence
+from full-game coverage, noninterference, geometry preservation and Coq
+execution refinement. The preserving 1,200-update RANDOM target remains open.
+
+Proof evidence snapshot: `82418e891fd6f2496b435da11cb6b07aedd1c6b9`.
+Site source commit: `9cc5ffcb8e55a52c64eab48a9b69acc081238083`.
+Both were pushed before publication. The official workflow packaged the clean
+source; the owner-private operation returned terminal `succeeded`. The saved
+version confirms that exact source commit. Access readback confirms one owner,
+no groups, no external visitors and unchanged policy revision 1.
+
+All 20 pinned evidence links, 16 unique anchors and local assets were checked.
+All ten downloadable receipts match the proof checkout byte for byte and the
+pinned Git content allowing LF/CRLF normalization. The saved archive content
+hash is `469c3bf6ad07a37acb6d5865ba542163c025b5d89543c67d85198fde019cde76`.
+The final publication record does not alter the pinned finite results.
+The prior stale short evidence hash in the page footer was corrected to the
+current pinned snapshot. No ROM/RAM images, credentials, video frames or
+conversation exports were published; no SSL report or site was changed.
+No new Coq theorem or discharged capstone premise is claimed.

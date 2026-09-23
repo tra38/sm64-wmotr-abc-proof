@@ -3,6 +3,8 @@
 Checked source-reduction items mean the corresponding recognizer and theorem
 have been authored against a pinned-source inspection and passed the pipeline
 audits below.
+Items explicitly labelled finite or host checks remain evidence, not new
+Coq theorems or discharged capstone premises.
 
 ## Active TTC cog target
 
@@ -14,8 +16,8 @@ current request.
 - [x] Publish the geometry, 1,200-update STOPPED, input-comparison, local
       cog-departure, video/RNG sequence, scheduler-tractability, historical
       STOPPED-derived sweep, corrected RANDOM-phase sweep and one-cog/two-cog
-      diagnosis, conditional brute-force costs and preparation counts to the
-      dedicated Pedro site; verify version 10
+      diagnosis, conditional brute-force costs, preparation counts and local
+      RNG-schedule state reductions to the dedicated Pedro site; verify version 11
       remains owner-only and its open RANDOM-mode verdict matches this guide.
       Record [bundle recovery and publication](notes/ttc-cog-site-publication.md).
 - [x] Audit the existing capstone statements and identify the cog/spinner
