@@ -90,7 +90,7 @@ SSL atlas or Pyramid Fine Print site.
 
 ## Version 5 publication
 
-**Version 5 is live and remains owner-only**, published on 2026-09-22,
+**Version 5 was published with owner-only access** on 2026-09-22,
 America/Chicago (deployment timestamp `2026-09-23T04:03:09.599623+00:00`).
 The [scheduler bounds section](https://pedro-proof-notes.tra38.chatgpt.site/#scheduler-tractability)
 distinguishes the conditional 78,643,200 frame-evaluation bound for a fixed
@@ -111,3 +111,31 @@ zero external visitors, with the original access-policy revision unchanged.
 All ten pinned proof-source links, internal anchors and local assets were
 checked. The five existing downloadable receipts were preserved. No SSL
 report or site was changed.
+
+## Version 6 publication
+
+**Version 6 is live and remains owner-only**, published on 2026-09-23,
+America/Chicago (deployment timestamp `2026-09-23T05:08:33.569862+00:00`).
+The [bounded seed-sweep section](https://pedro-proof-notes.tra38.chatgpt.site/#seed-sweep)
+reports 393,216 offline cases from three STOPPED-derived snapshot times in
+each version. All were rejected by cog movement; the longest complete
+preserving prefix was three updates. The site and guide explicitly retain
+the hypothetical RANDOM initialization, fixed controller input, external-system
+model, four separate unknown device-I/O calibration cases, and open broader
+RANDOM-mode target. This is no Coq impossibility theorem or all-preparation
+exclusion.
+
+Proof evidence snapshot: `1baad9513bb3a258cbf6ce3ffac14ba100274537`.
+Site source commit: `b97ac3afdbc9e9477b0608ff52a51bb56676c568`.
+Both were pushed before publication. The official Sites workflow packaged
+the exact clean source, and the private save-and-deploy operation returned
+terminal status `succeeded`. The saved version reports that exact site commit.
+The subsequent access read confirmed a single owner, no groups and zero
+external visitors, with access-policy revision 1 unchanged.
+
+All 12 pinned proof-source links, unique anchors and local assets were checked.
+The sixth downloadable receipt, the bounded seed-sweep metadata, is byte-identical
+to the proof-repository record. The five prior receipts were preserved. No RAM
+images, ROM data, credentials or conversation exports were published. No SSL
+report or site was changed. The archive's recorded SHA-256 is
+`c6284959236e439f35f5cd39b84eb908156eb7dd3834cd1090237b99cebc6bb1`.

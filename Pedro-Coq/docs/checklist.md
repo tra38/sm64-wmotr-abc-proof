@@ -12,8 +12,8 @@ retained as prior work, and enumerating every stock Pedro spot is outside the
 current request.
 
 - [x] Publish the geometry, 1,200-update STOPPED, input-comparison, local
-      cog-departure, video/RNG sequence and scheduler-tractability results to
-      the dedicated Pedro site; verify version 5
+      cog-departure, video/RNG sequence, scheduler-tractability and bounded
+      seed-sweep results to the dedicated Pedro site; verify version 6
       remains owner-only and its open RANDOM-mode verdict matches this guide.
       Record [bundle recovery and publication](notes/ttc-cog-site-publication.md).
 - [x] Audit the existing capstone statements and identify the cog/spinner
@@ -30,9 +30,10 @@ current request.
       enumerate fixed-gap maxima and implement an exact prescribed-schedule
       seed filter. Keep those [finite checks](notes/ttc-cog-video-rng-sequence.md)
       distinct from a complete TTC scheduler or impossibility theorem.
-- [ ] Derive candidate draw schedules from the actual RNG-dependent object
-      transitions and update order, with explicit preparation/reachability
-      coverage; do not hold one observed schedule fixed while varying seeds.
+- [ ] Establish per-seed schedules for gameplay-reachable RANDOM preparations
+      through a validated full execution/refinement boundary. The bounded
+      offline family below has explicit hypothetical preparation coverage;
+      it does not establish those reachable-state premises.
 - [x] Investigate [scheduler tractability](notes/ttc-cog-scheduler-tractability.md):
       derive the conditional seed-only frame-count bound, distinguish the
       larger preparation/input search, and identify the unproved transition

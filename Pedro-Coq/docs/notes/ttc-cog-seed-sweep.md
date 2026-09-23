@@ -148,3 +148,7 @@ execution/refinement and reachability arguments, not merely these counts.
 No generated Clight, Coq statement or proof assumption changed. No capstone
 obligation was discharged. The work supplies experimental search infrastructure
 and a precisely scoped negative result. It remains separate from the SSL proof.
+
+Published in owner-only [site version 6](https://pedro-proof-notes.tra38.chatgpt.site/#seed-sweep).
+The [publication record](ttc-cog-site-publication.md) identifies the exact source
+commits, successful deployment and unchanged private audience.
