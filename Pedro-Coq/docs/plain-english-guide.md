@@ -489,6 +489,33 @@ give a stronger bound, but neither is established for the full TTC search.
 The subsequent bounded experiment implements that enumeration under an explicit
 external-system model; it does not establish a full N64/Clight refinement.
 
+### Why did both sweeps report only three updates?
+
+**The video and the sweeps use different success conditions.** The video
+counts one cog staying still; our sweeps require both selected cogs to keep
+their yaws fixed. The [diagnostic comparison](notes/ttc-cog-sweep-diagnosis.md)
+confirms this matters: from the same captured RANDOM phase, seed 13372 keeps
+the lower cog still for four complete updates, and seed 48274 keeps the upper
+cog still for five, while the other cog moves. Both were rejected after three
+updates by the original two-cog condition. These examples agree in US/JP;
+they do not establish that Mario remains in the spot when the other cog moves.
+
+The video is also right that other objects' states create more combinations.
+Changing their timers, phases or activation changes which RNG values reach
+the cog. We varied seeds within very few starting configurations. For any
+one fixed configuration and input continuation, each seed determines all
+later draws and object decisions; extra calls are not freely selectable
+independent choices. The seed sweep includes them, but does not enumerate
+all the other initial-state combinations.
+
+The repeated maximum is therefore not evidence for a universal three-frame
+limit. The counts differ: 37 seeds reach three updates in the earlier family,
+versus 25 in the corrected family. A rough independent-uniform estimate also
+makes two simultaneous zero targets much rarer than one (`1/49` versus `1/7`
+per extension), but this is intuition, not a proved probability model.
+We need to identify the necessary cog constraint and check the actual spot
+under the other cog's motion before comparing with the video's longer streaks.
+
 ### What happened when we actually swept the seeds?
 
 **The first sweep used the wrong preparation family for the request:** it
@@ -496,7 +523,7 @@ changed STOPPED snapshots to RANDOM offline. The
 [corrected experiment](notes/ttc-cog-random-seed-sweep.md) instead captures an
 already-RANDOM phase, preserving its cog angles, speeds, targets and object
 timers, and varies only the seed. It checks **all 65,536 seeds in each of US
-and JP: 131,072 cases**. All fail by cog movement; the longest stationary
+and JP: 131,072 cases**. All fail by cog movement; the longest **two-cog** stationary
 prefix is **three complete updates**, with zero unknown cases. Per version,
 64,185 seeds last one update, 1,326 last two and 25 last three. The two
 versions agree, and enumeration took about 4 minutes 48 seconds with two

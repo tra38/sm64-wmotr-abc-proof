@@ -55,6 +55,13 @@ current request.
 - [x] Sample the recorded RANDOM cog angles with pinned collision code: 319
       close-gap candidates among 2,178 points, 257 stable under immediate
       geometry refresh in both versions. No full action or entry is established.
+- [x] Diagnose the repeated three-update maximum: replay all longest cases
+      with the original two-cog predicate, compare selected single-cog paths,
+      and record the video's distinct one-cog criterion and preparation scope.
+      Captured RANDOM examples reach four lower-cog or five upper-cog stationary
+      updates, with the other cog moving; these are not Pedro holds.
+- [ ] Determine which cog must remain still in the video's geometry, and
+      check whether movement of the other cog preserves the complete spot.
 - [ ] Capture a complete RANDOM state after permitted entry into valid cog
       geometry, restore Mario preservation to the seed-sweep predicate, and
       broaden the family of object preparations. Establish normal-entry

@@ -102,3 +102,16 @@ The metadata-only committed receipt is
 `docs/notes/ttc-cog-random-seed-sweep-results.json`. Results and limitations are
 explained in the adjacent Markdown note. The previous sweep's historical
 receipt remains unchanged and clearly labeled STOPPED-derived.
+
+## Investigating the three-update maximum
+
+`python3 Pedro-Coq/instrumentation/ttc-cog-random-seed-sweep/diagnose.py` reuses
+the prior longest seeds, recompiles the shared evaluator with both-cog,
+lower-only and upper-only yaw predicates, and compares their continuations
+for at most 20 updates. The single-cog variants omit Mario preservation.
+They execute the other cog normally and allow it to move; they never force
+a pose. This is a selected diagnostic sample, not an exhaustive single-cog
+sweep. All original-predicate sample results must match the earlier CSVs.
+Read-only detailed hooks must preserve outcomes and match the recorded RANDOM
+baseline's individual RNG calls. Unknown continuations remain explicit.
+The compact receipt is `docs/notes/ttc-cog-sweep-diagnosis-results.json`.

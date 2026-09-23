@@ -1,0 +1,3579 @@
+{
+  "date": "2026-09-23",
+  "source_pin": "9921382a68bb0c865e5e45eb594d9c64db59b1af",
+  "scope": "diagnostic sample of the previous longest seeds; no whole-state or single-cog exhaustive bound",
+  "cases": [
+    {
+      "family": "stopped",
+      "version": "us",
+      "seeds": 37,
+      "horizon": 20,
+      "seed_sample": [
+        32,
+        828,
+        2075,
+        2378,
+        3087,
+        11880,
+        12517,
+        14306,
+        17899,
+        21341,
+        23078,
+        24606,
+        25034,
+        28226,
+        28971,
+        29586,
+        29982,
+        31118,
+        38216,
+        38681,
+        39969,
+        40546,
+        41465,
+        41681,
+        43330,
+        46071,
+        46465,
+        47082,
+        49440,
+        50820,
+        51964,
+        52910,
+        53608,
+        54335,
+        60399,
+        60582,
+        61269
+      ],
+      "masks": {
+        "3": "both fixed, original predicate",
+        "1": "lower only, no Mario predicate",
+        "2": "upper only, no Mario predicate"
+      },
+      "histograms": {
+        "3": {
+          "3": 37
+        },
+        "1": {
+          "3": 32,
+          "4": 4,
+          "5": 1
+        },
+        "2": {
+          "3": 34,
+          "4": 3
+        }
+      },
+      "statuses": {
+        "3": {
+          "rejected": 37
+        },
+        "1": {
+          "rejected": 37
+        },
+        "2": {
+          "rejected": 36,
+          "unknown": 1
+        }
+      },
+      "source_build_sha256": "67022eb34db04e460cc413011ac2b779b38111d6ac1bf6e44ef55dbb18299c28",
+      "source_csv_sha256": "32121773de1f10903a6c4539031c463ed46b6e3b0584ad3e1b8def4b9e070197",
+      "example_seed": 32,
+      "longest_sampled_by_mask": {
+        "3": {
+          "seed": "32",
+          "status": "rejected",
+          "complete_updates": "3",
+          "rng_calls": "77",
+          "final_seed": "42063",
+          "rng_hash": "10b9901175ca0b71",
+          "reason": "cog-moved",
+          "pc": "ffffffff80307958",
+          "dma_calls": "0"
+        },
+        "1": {
+          "seed": "32",
+          "status": "rejected",
+          "complete_updates": "5",
+          "rng_calls": "87",
+          "final_seed": "54103",
+          "rng_hash": "6b6b10fdbaf0f021",
+          "reason": "cog-moved",
+          "pc": "ffffffff80307958",
+          "dma_calls": "0"
+        },
+        "2": {
+          "seed": "3087",
+          "status": "rejected",
+          "complete_updates": "4",
+          "rng_calls": "78",
+          "final_seed": "54690",
+          "rng_hash": "6cf5323178ee9e98",
+          "reason": "cog-moved",
+          "pc": "ffffffff80307958",
+          "dma_calls": "0"
+        }
+      },
+      "unknown_cases": {
+        "3": [],
+        "1": [],
+        "2": [
+          {
+            "seed": "828",
+            "status": "unknown",
+            "complete_updates": "3",
+            "rng_calls": "78",
+            "final_seed": "53112",
+            "rng_hash": "00cc0aa5a1d64b3d",
+            "reason": "Invalid memory read (UC_ERR_READ_UNMAPPED)",
+            "pc": "ffffffff80327d24",
+            "dma_calls": "0"
+          }
+        ]
+      },
+      "example": {
+        "3": {
+          "result": {
+            "seed": "32",
+            "status": "rejected",
+            "complete_updates": "3",
+            "rng_calls": "77",
+            "final_seed": "42063",
+            "rng_hash": "10b9901175ca0b71",
+            "reason": "cog-moved",
+            "pc": "ffffffff80307958",
+            "dma_calls": "0"
+          },
+          "frames": [
+            {
+              "update": 0,
+              "rng_calls": 63,
+              "rng_calls_by_object": {
+                "8": 3,
+                "9": 3,
+                "10": 2,
+                "11": 2,
+                "12": 2,
+                "29": 2,
+                "30": 2,
+                "31": 2,
+                "32": 2,
+                "33": 2,
+                "34": 2,
+                "35": 2,
+                "36": 1,
+                "39": 2,
+                "40": 2,
+                "41": 2,
+                "42": 2,
+                "43": 2,
+                "44": 2,
+                "45": 2,
+                "46": 2,
+                "47": 2,
+                "48": 2,
+                "49": 2,
+                "50": 2,
+                "51": 2,
+                "52": 2,
+                "68": 2,
+                "69": 2,
+                "94": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  13,
+                  29,
+                  41490,
+                  59710
+                ],
+                [
+                  14,
+                  29,
+                  59710,
+                  24917
+                ],
+                [
+                  19,
+                  32,
+                  37648,
+                  30289
+                ],
+                [
+                  20,
+                  32,
+                  30289,
+                  22210
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": -0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 1,
+              "rng_calls": 6,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  64,
+                  29,
+                  3375,
+                  63434
+                ],
+                [
+                  65,
+                  29,
+                  63434,
+                  7124
+                ],
+                [
+                  66,
+                  32,
+                  7124,
+                  5299
+                ],
+                [
+                  67,
+                  32,
+                  5299,
+                  10080
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": -0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 2,
+              "rng_calls": 6,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  70,
+                  29,
+                  24517,
+                  33404
+                ],
+                [
+                  71,
+                  29,
+                  33404,
+                  56951
+                ],
+                [
+                  72,
+                  32,
+                  56951,
+                  17827
+                ],
+                [
+                  73,
+                  32,
+                  17827,
+                  45348
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": 1000.0
+                }
+              ]
+            },
+            {
+              "update": 3,
+              "rng_calls": 2,
+              "rng_calls_by_object": {
+                "29": 2
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  76,
+                  29,
+                  55067,
+                  60809
+                ],
+                [
+                  77,
+                  29,
+                  60809,
+                  42063
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 50,
+                  "speed": 50.0,
+                  "target": 1000.0
+                }
+              ]
+            }
+          ],
+          "full_trace_sha256": "b2794bdbf467520ec74e133d8545743fa772a5827420350f0f969b8d3ac9ff90"
+        },
+        "1": {
+          "result": {
+            "seed": "32",
+            "status": "rejected",
+            "complete_updates": "5",
+            "rng_calls": "87",
+            "final_seed": "54103",
+            "rng_hash": "6b6b10fdbaf0f021",
+            "reason": "cog-moved",
+            "pc": "ffffffff80307958",
+            "dma_calls": "0"
+          },
+          "frames": [
+            {
+              "update": 0,
+              "rng_calls": 63,
+              "rng_calls_by_object": {
+                "8": 3,
+                "9": 3,
+                "10": 2,
+                "11": 2,
+                "12": 2,
+                "29": 2,
+                "30": 2,
+                "31": 2,
+                "32": 2,
+                "33": 2,
+                "34": 2,
+                "35": 2,
+                "36": 1,
+                "39": 2,
+                "40": 2,
+                "41": 2,
+                "42": 2,
+                "43": 2,
+                "44": 2,
+                "45": 2,
+                "46": 2,
+                "47": 2,
+                "48": 2,
+                "49": 2,
+                "50": 2,
+                "51": 2,
+                "52": 2,
+                "68": 2,
+                "69": 2,
+                "94": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  13,
+                  29,
+                  41490,
+                  59710
+                ],
+                [
+                  14,
+                  29,
+                  59710,
+                  24917
+                ],
+                [
+                  19,
+                  32,
+                  37648,
+                  30289
+                ],
+                [
+                  20,
+                  32,
+                  30289,
+                  22210
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": -0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 1,
+              "rng_calls": 6,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  64,
+                  29,
+                  3375,
+                  63434
+                ],
+                [
+                  65,
+                  29,
+                  63434,
+                  7124
+                ],
+                [
+                  66,
+                  32,
+                  7124,
+                  5299
+                ],
+                [
+                  67,
+                  32,
+                  5299,
+                  10080
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": -0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 2,
+              "rng_calls": 6,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  70,
+                  29,
+                  24517,
+                  33404
+                ],
+                [
+                  71,
+                  29,
+                  33404,
+                  56951
+                ],
+                [
+                  72,
+                  32,
+                  56951,
+                  17827
+                ],
+                [
+                  73,
+                  32,
+                  17827,
+                  45348
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": 1000.0
+                }
+              ]
+            },
+            {
+              "update": 3,
+              "rng_calls": 4,
+              "rng_calls_by_object": {
+                "29": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  76,
+                  29,
+                  55067,
+                  60809
+                ],
+                [
+                  77,
+                  29,
+                  60809,
+                  42063
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 50,
+                  "speed": 50.0,
+                  "target": 1000.0
+                }
+              ]
+            },
+            {
+              "update": 4,
+              "rng_calls": 8,
+              "rng_calls_by_object": {
+                "29": 2,
+                "30": 2,
+                "35": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  80,
+                  29,
+                  9163,
+                  34123
+                ],
+                [
+                  81,
+                  29,
+                  34123,
+                  50648
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": 1000.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 150,
+                  "speed": 100.0,
+                  "target": 1000.0
+                }
+              ]
+            },
+            {
+              "update": 5,
+              "rng_calls": 0,
+              "rng_calls_by_object": {},
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 50,
+                  "speed": 50.0,
+                  "target": 1000.0
+                }
+              ]
+            }
+          ],
+          "full_trace_sha256": "da8d049d06e066315bafe4f26153ab2e63f69218326aa1b8b1fafbc58245171f"
+        },
+        "2": {
+          "result": {
+            "seed": "32",
+            "status": "rejected",
+            "complete_updates": "3",
+            "rng_calls": "77",
+            "final_seed": "42063",
+            "rng_hash": "10b9901175ca0b71",
+            "reason": "cog-moved",
+            "pc": "ffffffff80307958",
+            "dma_calls": "0"
+          },
+          "frames": [
+            {
+              "update": 0,
+              "rng_calls": 63,
+              "rng_calls_by_object": {
+                "8": 3,
+                "9": 3,
+                "10": 2,
+                "11": 2,
+                "12": 2,
+                "29": 2,
+                "30": 2,
+                "31": 2,
+                "32": 2,
+                "33": 2,
+                "34": 2,
+                "35": 2,
+                "36": 1,
+                "39": 2,
+                "40": 2,
+                "41": 2,
+                "42": 2,
+                "43": 2,
+                "44": 2,
+                "45": 2,
+                "46": 2,
+                "47": 2,
+                "48": 2,
+                "49": 2,
+                "50": 2,
+                "51": 2,
+                "52": 2,
+                "68": 2,
+                "69": 2,
+                "94": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  13,
+                  29,
+                  41490,
+                  59710
+                ],
+                [
+                  14,
+                  29,
+                  59710,
+                  24917
+                ],
+                [
+                  19,
+                  32,
+                  37648,
+                  30289
+                ],
+                [
+                  20,
+                  32,
+                  30289,
+                  22210
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": -0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 1,
+              "rng_calls": 6,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  64,
+                  29,
+                  3375,
+                  63434
+                ],
+                [
+                  65,
+                  29,
+                  63434,
+                  7124
+                ],
+                [
+                  66,
+                  32,
+                  7124,
+                  5299
+                ],
+                [
+                  67,
+                  32,
+                  5299,
+                  10080
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": -0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 2,
+              "rng_calls": 6,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  70,
+                  29,
+                  24517,
+                  33404
+                ],
+                [
+                  71,
+                  29,
+                  33404,
+                  56951
+                ],
+                [
+                  72,
+                  32,
+                  56951,
+                  17827
+                ],
+                [
+                  73,
+                  32,
+                  17827,
+                  45348
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": 1000.0
+                }
+              ]
+            },
+            {
+              "update": 3,
+              "rng_calls": 2,
+              "rng_calls_by_object": {
+                "29": 2
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  76,
+                  29,
+                  55067,
+                  60809
+                ],
+                [
+                  77,
+                  29,
+                  60809,
+                  42063
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 50,
+                  "speed": 50.0,
+                  "target": 1000.0
+                }
+              ]
+            }
+          ],
+          "full_trace_sha256": "b2794bdbf467520ec74e133d8545743fa772a5827420350f0f969b8d3ac9ff90"
+        }
+      }
+    },
+    {
+      "family": "stopped",
+      "version": "jp",
+      "seeds": 37,
+      "horizon": 20,
+      "seed_sample": [
+        32,
+        828,
+        2075,
+        2378,
+        3087,
+        11880,
+        12517,
+        14306,
+        17899,
+        21341,
+        23078,
+        24606,
+        25034,
+        28226,
+        28971,
+        29586,
+        29982,
+        31118,
+        38216,
+        38681,
+        39969,
+        40546,
+        41465,
+        41681,
+        43330,
+        46071,
+        46465,
+        47082,
+        49440,
+        50820,
+        51964,
+        52910,
+        53608,
+        54335,
+        60399,
+        60582,
+        61269
+      ],
+      "masks": {
+        "3": "both fixed, original predicate",
+        "1": "lower only, no Mario predicate",
+        "2": "upper only, no Mario predicate"
+      },
+      "histograms": {
+        "3": {
+          "3": 37
+        },
+        "1": {
+          "3": 32,
+          "4": 4,
+          "5": 1
+        },
+        "2": {
+          "3": 34,
+          "4": 3
+        }
+      },
+      "statuses": {
+        "3": {
+          "rejected": 37
+        },
+        "1": {
+          "rejected": 37
+        },
+        "2": {
+          "rejected": 36,
+          "unknown": 1
+        }
+      },
+      "source_build_sha256": "5bdc516fd01bac05cadc428dd837810618a7c1f37f671f27f2cad9cf13cbf6a5",
+      "source_csv_sha256": "4badd1b6e5c47de0c5259443bc9bac1028508971a64678cc40ad8cfe5add1571",
+      "example_seed": 32,
+      "longest_sampled_by_mask": {
+        "3": {
+          "seed": "32",
+          "status": "rejected",
+          "complete_updates": "3",
+          "rng_calls": "77",
+          "final_seed": "42063",
+          "rng_hash": "10b9901175ca0b71",
+          "reason": "cog-moved",
+          "pc": "ffffffff80306874",
+          "dma_calls": "0"
+        },
+        "1": {
+          "seed": "32",
+          "status": "rejected",
+          "complete_updates": "5",
+          "rng_calls": "87",
+          "final_seed": "54103",
+          "rng_hash": "6b6b10fdbaf0f021",
+          "reason": "cog-moved",
+          "pc": "ffffffff80306874",
+          "dma_calls": "0"
+        },
+        "2": {
+          "seed": "3087",
+          "status": "rejected",
+          "complete_updates": "4",
+          "rng_calls": "78",
+          "final_seed": "54690",
+          "rng_hash": "6cf5323178ee9e98",
+          "reason": "cog-moved",
+          "pc": "ffffffff80306874",
+          "dma_calls": "0"
+        }
+      },
+      "unknown_cases": {
+        "3": [],
+        "1": [],
+        "2": [
+          {
+            "seed": "828",
+            "status": "unknown",
+            "complete_updates": "3",
+            "rng_calls": "78",
+            "final_seed": "53112",
+            "rng_hash": "00cc0aa5a1d64b3d",
+            "reason": "Invalid memory read (UC_ERR_READ_UNMAPPED)",
+            "pc": "ffffffff80326da4",
+            "dma_calls": "0"
+          }
+        ]
+      },
+      "example": {
+        "3": {
+          "result": {
+            "seed": "32",
+            "status": "rejected",
+            "complete_updates": "3",
+            "rng_calls": "77",
+            "final_seed": "42063",
+            "rng_hash": "10b9901175ca0b71",
+            "reason": "cog-moved",
+            "pc": "ffffffff80306874",
+            "dma_calls": "0"
+          },
+          "frames": [
+            {
+              "update": 0,
+              "rng_calls": 63,
+              "rng_calls_by_object": {
+                "8": 3,
+                "9": 3,
+                "10": 2,
+                "11": 2,
+                "12": 2,
+                "29": 2,
+                "30": 2,
+                "31": 2,
+                "32": 2,
+                "33": 2,
+                "34": 2,
+                "35": 2,
+                "36": 1,
+                "39": 2,
+                "40": 2,
+                "41": 2,
+                "42": 2,
+                "43": 2,
+                "44": 2,
+                "45": 2,
+                "46": 2,
+                "47": 2,
+                "48": 2,
+                "49": 2,
+                "50": 2,
+                "51": 2,
+                "52": 2,
+                "68": 2,
+                "69": 2,
+                "94": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  13,
+                  29,
+                  41490,
+                  59710
+                ],
+                [
+                  14,
+                  29,
+                  59710,
+                  24917
+                ],
+                [
+                  19,
+                  32,
+                  37648,
+                  30289
+                ],
+                [
+                  20,
+                  32,
+                  30289,
+                  22210
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": -0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 1,
+              "rng_calls": 6,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  64,
+                  29,
+                  3375,
+                  63434
+                ],
+                [
+                  65,
+                  29,
+                  63434,
+                  7124
+                ],
+                [
+                  66,
+                  32,
+                  7124,
+                  5299
+                ],
+                [
+                  67,
+                  32,
+                  5299,
+                  10080
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": -0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 2,
+              "rng_calls": 6,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  70,
+                  29,
+                  24517,
+                  33404
+                ],
+                [
+                  71,
+                  29,
+                  33404,
+                  56951
+                ],
+                [
+                  72,
+                  32,
+                  56951,
+                  17827
+                ],
+                [
+                  73,
+                  32,
+                  17827,
+                  45348
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": 1000.0
+                }
+              ]
+            },
+            {
+              "update": 3,
+              "rng_calls": 2,
+              "rng_calls_by_object": {
+                "29": 2
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  76,
+                  29,
+                  55067,
+                  60809
+                ],
+                [
+                  77,
+                  29,
+                  60809,
+                  42063
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 50,
+                  "speed": 50.0,
+                  "target": 1000.0
+                }
+              ]
+            }
+          ],
+          "full_trace_sha256": "fab04de588bfb32e52ce4202e5b66d676cd5be470878547edf5bb24e1f9cc315"
+        },
+        "1": {
+          "result": {
+            "seed": "32",
+            "status": "rejected",
+            "complete_updates": "5",
+            "rng_calls": "87",
+            "final_seed": "54103",
+            "rng_hash": "6b6b10fdbaf0f021",
+            "reason": "cog-moved",
+            "pc": "ffffffff80306874",
+            "dma_calls": "0"
+          },
+          "frames": [
+            {
+              "update": 0,
+              "rng_calls": 63,
+              "rng_calls_by_object": {
+                "8": 3,
+                "9": 3,
+                "10": 2,
+                "11": 2,
+                "12": 2,
+                "29": 2,
+                "30": 2,
+                "31": 2,
+                "32": 2,
+                "33": 2,
+                "34": 2,
+                "35": 2,
+                "36": 1,
+                "39": 2,
+                "40": 2,
+                "41": 2,
+                "42": 2,
+                "43": 2,
+                "44": 2,
+                "45": 2,
+                "46": 2,
+                "47": 2,
+                "48": 2,
+                "49": 2,
+                "50": 2,
+                "51": 2,
+                "52": 2,
+                "68": 2,
+                "69": 2,
+                "94": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  13,
+                  29,
+                  41490,
+                  59710
+                ],
+                [
+                  14,
+                  29,
+                  59710,
+                  24917
+                ],
+                [
+                  19,
+                  32,
+                  37648,
+                  30289
+                ],
+                [
+                  20,
+                  32,
+                  30289,
+                  22210
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": -0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 1,
+              "rng_calls": 6,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  64,
+                  29,
+                  3375,
+                  63434
+                ],
+                [
+                  65,
+                  29,
+                  63434,
+                  7124
+                ],
+                [
+                  66,
+                  32,
+                  7124,
+                  5299
+                ],
+                [
+                  67,
+                  32,
+                  5299,
+                  10080
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": -0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 2,
+              "rng_calls": 6,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  70,
+                  29,
+                  24517,
+                  33404
+                ],
+                [
+                  71,
+                  29,
+                  33404,
+                  56951
+                ],
+                [
+                  72,
+                  32,
+                  56951,
+                  17827
+                ],
+                [
+                  73,
+                  32,
+                  17827,
+                  45348
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": 1000.0
+                }
+              ]
+            },
+            {
+              "update": 3,
+              "rng_calls": 4,
+              "rng_calls_by_object": {
+                "29": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  76,
+                  29,
+                  55067,
+                  60809
+                ],
+                [
+                  77,
+                  29,
+                  60809,
+                  42063
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 50,
+                  "speed": 50.0,
+                  "target": 1000.0
+                }
+              ]
+            },
+            {
+              "update": 4,
+              "rng_calls": 8,
+              "rng_calls_by_object": {
+                "29": 2,
+                "30": 2,
+                "35": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  80,
+                  29,
+                  9163,
+                  34123
+                ],
+                [
+                  81,
+                  29,
+                  34123,
+                  50648
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": 1000.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 150,
+                  "speed": 100.0,
+                  "target": 1000.0
+                }
+              ]
+            },
+            {
+              "update": 5,
+              "rng_calls": 0,
+              "rng_calls_by_object": {},
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 50,
+                  "speed": 50.0,
+                  "target": 1000.0
+                }
+              ]
+            }
+          ],
+          "full_trace_sha256": "0e422213ddd9cd9ca4252946c0c8d5f31a2a7fbba8e25a3bb63c7e57ec58909e"
+        },
+        "2": {
+          "result": {
+            "seed": "32",
+            "status": "rejected",
+            "complete_updates": "3",
+            "rng_calls": "77",
+            "final_seed": "42063",
+            "rng_hash": "10b9901175ca0b71",
+            "reason": "cog-moved",
+            "pc": "ffffffff80306874",
+            "dma_calls": "0"
+          },
+          "frames": [
+            {
+              "update": 0,
+              "rng_calls": 63,
+              "rng_calls_by_object": {
+                "8": 3,
+                "9": 3,
+                "10": 2,
+                "11": 2,
+                "12": 2,
+                "29": 2,
+                "30": 2,
+                "31": 2,
+                "32": 2,
+                "33": 2,
+                "34": 2,
+                "35": 2,
+                "36": 1,
+                "39": 2,
+                "40": 2,
+                "41": 2,
+                "42": 2,
+                "43": 2,
+                "44": 2,
+                "45": 2,
+                "46": 2,
+                "47": 2,
+                "48": 2,
+                "49": 2,
+                "50": 2,
+                "51": 2,
+                "52": 2,
+                "68": 2,
+                "69": 2,
+                "94": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  13,
+                  29,
+                  41490,
+                  59710
+                ],
+                [
+                  14,
+                  29,
+                  59710,
+                  24917
+                ],
+                [
+                  19,
+                  32,
+                  37648,
+                  30289
+                ],
+                [
+                  20,
+                  32,
+                  30289,
+                  22210
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": -0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 1,
+              "rng_calls": 6,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  64,
+                  29,
+                  3375,
+                  63434
+                ],
+                [
+                  65,
+                  29,
+                  63434,
+                  7124
+                ],
+                [
+                  66,
+                  32,
+                  7124,
+                  5299
+                ],
+                [
+                  67,
+                  32,
+                  5299,
+                  10080
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": -0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 2,
+              "rng_calls": 6,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  70,
+                  29,
+                  24517,
+                  33404
+                ],
+                [
+                  71,
+                  29,
+                  33404,
+                  56951
+                ],
+                [
+                  72,
+                  32,
+                  56951,
+                  17827
+                ],
+                [
+                  73,
+                  32,
+                  17827,
+                  45348
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 0,
+                  "speed": -0.0,
+                  "target": 1000.0
+                }
+              ]
+            },
+            {
+              "update": 3,
+              "rng_calls": 2,
+              "rng_calls_by_object": {
+                "29": 2
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  76,
+                  29,
+                  55067,
+                  60809
+                ],
+                [
+                  77,
+                  29,
+                  60809,
+                  42063
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 0,
+                  "speed": 0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": 50,
+                  "speed": 50.0,
+                  "target": 1000.0
+                }
+              ]
+            }
+          ],
+          "full_trace_sha256": "fab04de588bfb32e52ce4202e5b66d676cd5be470878547edf5bb24e1f9cc315"
+        }
+      }
+    },
+    {
+      "family": "random",
+      "version": "us",
+      "seeds": 25,
+      "horizon": 20,
+      "seed_sample": [
+        2620,
+        4397,
+        5125,
+        5235,
+        7254,
+        11984,
+        12493,
+        13372,
+        14187,
+        22012,
+        27234,
+        30729,
+        34000,
+        34131,
+        34795,
+        36291,
+        41037,
+        44314,
+        45127,
+        48274,
+        48425,
+        48628,
+        48860,
+        52031,
+        64035
+      ],
+      "masks": {
+        "3": "both fixed, original predicate",
+        "1": "lower only, no Mario predicate",
+        "2": "upper only, no Mario predicate"
+      },
+      "histograms": {
+        "3": {
+          "3": 25
+        },
+        "1": {
+          "3": 24,
+          "4": 1
+        },
+        "2": {
+          "3": 20,
+          "4": 4,
+          "5": 1
+        }
+      },
+      "statuses": {
+        "3": {
+          "rejected": 25
+        },
+        "1": {
+          "rejected": 25
+        },
+        "2": {
+          "rejected": 25
+        }
+      },
+      "source_build_sha256": "cd2c37ad0189d4fc2be2fbaa47ec3960d98cb7ee3a14530d130e90a8f10c5a19",
+      "source_csv_sha256": "3b4c4fdd80128f24d012ccdcb3c8724fa77fdff860d73c20f884141cf70b71ae",
+      "example_seed": 48274,
+      "longest_sampled_by_mask": {
+        "3": {
+          "seed": "2620",
+          "status": "rejected",
+          "complete_updates": "3",
+          "rng_calls": "21",
+          "final_seed": "8596",
+          "rng_hash": "90e24f27692db475",
+          "reason": "cog-moved",
+          "pc": "ffffffff80307958",
+          "dma_calls": "1"
+        },
+        "1": {
+          "seed": "13372",
+          "status": "rejected",
+          "complete_updates": "4",
+          "rng_calls": "25",
+          "final_seed": "29762",
+          "rng_hash": "4a3d51dd87911a9f",
+          "reason": "cog-moved",
+          "pc": "ffffffff80307958",
+          "dma_calls": "1"
+        },
+        "2": {
+          "seed": "48274",
+          "status": "rejected",
+          "complete_updates": "5",
+          "rng_calls": "32",
+          "final_seed": "57357",
+          "rng_hash": "ab3bdc2564ba1016",
+          "reason": "cog-moved",
+          "pc": "ffffffff80307958",
+          "dma_calls": "1"
+        }
+      },
+      "unknown_cases": {
+        "3": [],
+        "1": [],
+        "2": []
+      },
+      "example": {
+        "3": {
+          "result": {
+            "seed": "48274",
+            "status": "rejected",
+            "complete_updates": "3",
+            "rng_calls": "21",
+            "final_seed": "14456",
+            "rng_hash": "f3eb4a72db7faed7",
+            "reason": "cog-moved",
+            "pc": "ffffffff80307958",
+            "dma_calls": "1"
+          },
+          "frames": [
+            {
+              "update": 0,
+              "rng_calls": 7,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "38": 1,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  1,
+                  29,
+                  48274,
+                  43505
+                ],
+                [
+                  2,
+                  29,
+                  43505,
+                  38953
+                ],
+                [
+                  3,
+                  32,
+                  38953,
+                  27377
+                ],
+                [
+                  4,
+                  32,
+                  27377,
+                  1596
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 45000,
+                  "speed": -0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": -0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 1,
+              "rng_calls": 7,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "58": 1,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  8,
+                  29,
+                  41118,
+                  45045
+                ],
+                [
+                  9,
+                  29,
+                  45045,
+                  39468
+                ],
+                [
+                  10,
+                  32,
+                  39468,
+                  62979
+                ],
+                [
+                  11,
+                  32,
+                  62979,
+                  32761
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 45000,
+                  "speed": 0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": -0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 2,
+              "rng_calls": 6,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  15,
+                  29,
+                  51693,
+                  38411
+                ],
+                [
+                  16,
+                  29,
+                  38411,
+                  31685
+                ],
+                [
+                  17,
+                  32,
+                  31685,
+                  33390
+                ],
+                [
+                  18,
+                  32,
+                  33390,
+                  55148
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 45000,
+                  "speed": 0.0,
+                  "target": -400.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": -0.0,
+                  "target": 0.0
+                }
+              ]
+            },
+            {
+              "update": 3,
+              "rng_calls": 1,
+              "rng_calls_by_object": {
+                "4": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 44950,
+                  "speed": -50.0,
+                  "target": -400.0
+                }
+              ]
+            }
+          ],
+          "full_trace_sha256": "683340021f631adb32f38fea70125b307b84fc293aad812160a7f93bbc7e9d38"
+        },
+        "1": {
+          "result": {
+            "seed": "48274",
+            "status": "rejected",
+            "complete_updates": "3",
+            "rng_calls": "21",
+            "final_seed": "14456",
+            "rng_hash": "f3eb4a72db7faed7",
+            "reason": "cog-moved",
+            "pc": "ffffffff80307958",
+            "dma_calls": "1"
+          },
+          "frames": [
+            {
+              "update": 0,
+              "rng_calls": 7,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "38": 1,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  1,
+                  29,
+                  48274,
+                  43505
+                ],
+                [
+                  2,
+                  29,
+                  43505,
+                  38953
+                ],
+                [
+                  3,
+                  32,
+                  38953,
+                  27377
+                ],
+                [
+                  4,
+                  32,
+                  27377,
+                  1596
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 45000,
+                  "speed": -0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": -0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 1,
+              "rng_calls": 7,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "58": 1,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  8,
+                  29,
+                  41118,
+                  45045
+                ],
+                [
+                  9,
+                  29,
+                  45045,
+                  39468
+                ],
+                [
+                  10,
+                  32,
+                  39468,
+                  62979
+                ],
+                [
+                  11,
+                  32,
+                  62979,
+                  32761
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 45000,
+                  "speed": 0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": -0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 2,
+              "rng_calls": 6,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  15,
+                  29,
+                  51693,
+                  38411
+                ],
+                [
+                  16,
+                  29,
+                  38411,
+                  31685
+                ],
+                [
+                  17,
+                  32,
+                  31685,
+                  33390
+                ],
+                [
+                  18,
+                  32,
+                  33390,
+                  55148
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 45000,
+                  "speed": 0.0,
+                  "target": -400.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": -0.0,
+                  "target": 0.0
+                }
+              ]
+            },
+            {
+              "update": 3,
+              "rng_calls": 1,
+              "rng_calls_by_object": {
+                "4": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 44950,
+                  "speed": -50.0,
+                  "target": -400.0
+                }
+              ]
+            }
+          ],
+          "full_trace_sha256": "683340021f631adb32f38fea70125b307b84fc293aad812160a7f93bbc7e9d38"
+        },
+        "2": {
+          "result": {
+            "seed": "48274",
+            "status": "rejected",
+            "complete_updates": "5",
+            "rng_calls": "32",
+            "final_seed": "57357",
+            "rng_hash": "ab3bdc2564ba1016",
+            "reason": "cog-moved",
+            "pc": "ffffffff80307958",
+            "dma_calls": "1"
+          },
+          "frames": [
+            {
+              "update": 0,
+              "rng_calls": 7,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "38": 1,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  1,
+                  29,
+                  48274,
+                  43505
+                ],
+                [
+                  2,
+                  29,
+                  43505,
+                  38953
+                ],
+                [
+                  3,
+                  32,
+                  38953,
+                  27377
+                ],
+                [
+                  4,
+                  32,
+                  27377,
+                  1596
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 45000,
+                  "speed": -0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": -0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 1,
+              "rng_calls": 7,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "58": 1,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  8,
+                  29,
+                  41118,
+                  45045
+                ],
+                [
+                  9,
+                  29,
+                  45045,
+                  39468
+                ],
+                [
+                  10,
+                  32,
+                  39468,
+                  62979
+                ],
+                [
+                  11,
+                  32,
+                  62979,
+                  32761
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 45000,
+                  "speed": 0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": -0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 2,
+              "rng_calls": 6,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  15,
+                  29,
+                  51693,
+                  38411
+                ],
+                [
+                  16,
+                  29,
+                  38411,
+                  31685
+                ],
+                [
+                  17,
+                  32,
+                  31685,
+                  33390
+                ],
+                [
+                  18,
+                  32,
+                  33390,
+                  55148
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 45000,
+                  "speed": 0.0,
+                  "target": -400.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": -0.0,
+                  "target": 0.0
+                }
+              ]
+            },
+            {
+              "update": 3,
+              "rng_calls": 5,
+              "rng_calls_by_object": {
+                "4": 1,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  22,
+                  32,
+                  14456,
+                  56364
+                ],
+                [
+                  23,
+                  32,
+                  56364,
+                  63008
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 44950,
+                  "speed": -50.0,
+                  "target": -400.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": 0.0,
+                  "target": 0.0
+                }
+              ]
+            },
+            {
+              "update": 4,
+              "rng_calls": 4,
+              "rng_calls_by_object": {
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  26,
+                  32,
+                  25048,
+                  4740
+                ],
+                [
+                  27,
+                  32,
+                  4740,
+                  41659
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 44850,
+                  "speed": -100.0,
+                  "target": -400.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": 0.0,
+                  "target": 200.0
+                }
+              ]
+            },
+            {
+              "update": 5,
+              "rng_calls": 3,
+              "rng_calls_by_object": {
+                "9": 3
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 44700,
+                  "speed": -150.0,
+                  "target": -400.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21750,
+                  "speed": 50.0,
+                  "target": 200.0
+                }
+              ]
+            }
+          ],
+          "full_trace_sha256": "3d70c14494616ac57340808ab64b508a45bcf300dbcadc800229d4c9c0042557"
+        }
+      }
+    },
+    {
+      "family": "random",
+      "version": "jp",
+      "seeds": 25,
+      "horizon": 20,
+      "seed_sample": [
+        2620,
+        4397,
+        5125,
+        5235,
+        7254,
+        11984,
+        12493,
+        13372,
+        14187,
+        22012,
+        27234,
+        30729,
+        34000,
+        34131,
+        34795,
+        36291,
+        41037,
+        44314,
+        45127,
+        48274,
+        48425,
+        48628,
+        48860,
+        52031,
+        64035
+      ],
+      "masks": {
+        "3": "both fixed, original predicate",
+        "1": "lower only, no Mario predicate",
+        "2": "upper only, no Mario predicate"
+      },
+      "histograms": {
+        "3": {
+          "3": 25
+        },
+        "1": {
+          "3": 24,
+          "4": 1
+        },
+        "2": {
+          "3": 20,
+          "4": 4,
+          "5": 1
+        }
+      },
+      "statuses": {
+        "3": {
+          "rejected": 25
+        },
+        "1": {
+          "rejected": 25
+        },
+        "2": {
+          "rejected": 25
+        }
+      },
+      "source_build_sha256": "7bd457106c9bfeb1bd65e829b061a4c81a05c69ad8b1fbea1fbd229e59ed399a",
+      "source_csv_sha256": "e36da713830dcbe3cbc4c45b8a9c53ff8cb88abda5785b75dfd8aeaacef0ecdf",
+      "example_seed": 48274,
+      "longest_sampled_by_mask": {
+        "3": {
+          "seed": "2620",
+          "status": "rejected",
+          "complete_updates": "3",
+          "rng_calls": "21",
+          "final_seed": "8596",
+          "rng_hash": "90e24f27692db475",
+          "reason": "cog-moved",
+          "pc": "ffffffff80306874",
+          "dma_calls": "1"
+        },
+        "1": {
+          "seed": "13372",
+          "status": "rejected",
+          "complete_updates": "4",
+          "rng_calls": "25",
+          "final_seed": "29762",
+          "rng_hash": "4a3d51dd87911a9f",
+          "reason": "cog-moved",
+          "pc": "ffffffff80306874",
+          "dma_calls": "1"
+        },
+        "2": {
+          "seed": "48274",
+          "status": "rejected",
+          "complete_updates": "5",
+          "rng_calls": "32",
+          "final_seed": "57357",
+          "rng_hash": "ab3bdc2564ba1016",
+          "reason": "cog-moved",
+          "pc": "ffffffff80306874",
+          "dma_calls": "1"
+        }
+      },
+      "unknown_cases": {
+        "3": [],
+        "1": [],
+        "2": []
+      },
+      "example": {
+        "3": {
+          "result": {
+            "seed": "48274",
+            "status": "rejected",
+            "complete_updates": "3",
+            "rng_calls": "21",
+            "final_seed": "14456",
+            "rng_hash": "f3eb4a72db7faed7",
+            "reason": "cog-moved",
+            "pc": "ffffffff80306874",
+            "dma_calls": "1"
+          },
+          "frames": [
+            {
+              "update": 0,
+              "rng_calls": 7,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "38": 1,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  1,
+                  29,
+                  48274,
+                  43505
+                ],
+                [
+                  2,
+                  29,
+                  43505,
+                  38953
+                ],
+                [
+                  3,
+                  32,
+                  38953,
+                  27377
+                ],
+                [
+                  4,
+                  32,
+                  27377,
+                  1596
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 45000,
+                  "speed": -0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": -0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 1,
+              "rng_calls": 7,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "58": 1,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  8,
+                  29,
+                  41118,
+                  45045
+                ],
+                [
+                  9,
+                  29,
+                  45045,
+                  39468
+                ],
+                [
+                  10,
+                  32,
+                  39468,
+                  62979
+                ],
+                [
+                  11,
+                  32,
+                  62979,
+                  32761
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 45000,
+                  "speed": 0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": -0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 2,
+              "rng_calls": 6,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  15,
+                  29,
+                  51693,
+                  38411
+                ],
+                [
+                  16,
+                  29,
+                  38411,
+                  31685
+                ],
+                [
+                  17,
+                  32,
+                  31685,
+                  33390
+                ],
+                [
+                  18,
+                  32,
+                  33390,
+                  55148
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 45000,
+                  "speed": 0.0,
+                  "target": -400.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": -0.0,
+                  "target": 0.0
+                }
+              ]
+            },
+            {
+              "update": 3,
+              "rng_calls": 1,
+              "rng_calls_by_object": {
+                "4": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 44950,
+                  "speed": -50.0,
+                  "target": -400.0
+                }
+              ]
+            }
+          ],
+          "full_trace_sha256": "e3295f0cf0d546b7d8ed4356569721e36a8470b912adbd1e8cde8c6429864ab0"
+        },
+        "1": {
+          "result": {
+            "seed": "48274",
+            "status": "rejected",
+            "complete_updates": "3",
+            "rng_calls": "21",
+            "final_seed": "14456",
+            "rng_hash": "f3eb4a72db7faed7",
+            "reason": "cog-moved",
+            "pc": "ffffffff80306874",
+            "dma_calls": "1"
+          },
+          "frames": [
+            {
+              "update": 0,
+              "rng_calls": 7,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "38": 1,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  1,
+                  29,
+                  48274,
+                  43505
+                ],
+                [
+                  2,
+                  29,
+                  43505,
+                  38953
+                ],
+                [
+                  3,
+                  32,
+                  38953,
+                  27377
+                ],
+                [
+                  4,
+                  32,
+                  27377,
+                  1596
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 45000,
+                  "speed": -0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": -0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 1,
+              "rng_calls": 7,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "58": 1,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  8,
+                  29,
+                  41118,
+                  45045
+                ],
+                [
+                  9,
+                  29,
+                  45045,
+                  39468
+                ],
+                [
+                  10,
+                  32,
+                  39468,
+                  62979
+                ],
+                [
+                  11,
+                  32,
+                  62979,
+                  32761
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 45000,
+                  "speed": 0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": -0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 2,
+              "rng_calls": 6,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  15,
+                  29,
+                  51693,
+                  38411
+                ],
+                [
+                  16,
+                  29,
+                  38411,
+                  31685
+                ],
+                [
+                  17,
+                  32,
+                  31685,
+                  33390
+                ],
+                [
+                  18,
+                  32,
+                  33390,
+                  55148
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 45000,
+                  "speed": 0.0,
+                  "target": -400.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": -0.0,
+                  "target": 0.0
+                }
+              ]
+            },
+            {
+              "update": 3,
+              "rng_calls": 1,
+              "rng_calls_by_object": {
+                "4": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 44950,
+                  "speed": -50.0,
+                  "target": -400.0
+                }
+              ]
+            }
+          ],
+          "full_trace_sha256": "e3295f0cf0d546b7d8ed4356569721e36a8470b912adbd1e8cde8c6429864ab0"
+        },
+        "2": {
+          "result": {
+            "seed": "48274",
+            "status": "rejected",
+            "complete_updates": "5",
+            "rng_calls": "32",
+            "final_seed": "57357",
+            "rng_hash": "ab3bdc2564ba1016",
+            "reason": "cog-moved",
+            "pc": "ffffffff80306874",
+            "dma_calls": "1"
+          },
+          "frames": [
+            {
+              "update": 0,
+              "rng_calls": 7,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "38": 1,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  1,
+                  29,
+                  48274,
+                  43505
+                ],
+                [
+                  2,
+                  29,
+                  43505,
+                  38953
+                ],
+                [
+                  3,
+                  32,
+                  38953,
+                  27377
+                ],
+                [
+                  4,
+                  32,
+                  27377,
+                  1596
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 45000,
+                  "speed": -0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": -0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 1,
+              "rng_calls": 7,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "58": 1,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  8,
+                  29,
+                  41118,
+                  45045
+                ],
+                [
+                  9,
+                  29,
+                  45045,
+                  39468
+                ],
+                [
+                  10,
+                  32,
+                  39468,
+                  62979
+                ],
+                [
+                  11,
+                  32,
+                  62979,
+                  32761
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 45000,
+                  "speed": 0.0,
+                  "target": 0.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": -0.0,
+                  "target": -0.0
+                }
+              ]
+            },
+            {
+              "update": 2,
+              "rng_calls": 6,
+              "rng_calls_by_object": {
+                "29": 2,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  15,
+                  29,
+                  51693,
+                  38411
+                ],
+                [
+                  16,
+                  29,
+                  38411,
+                  31685
+                ],
+                [
+                  17,
+                  32,
+                  31685,
+                  33390
+                ],
+                [
+                  18,
+                  32,
+                  33390,
+                  55148
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 45000,
+                  "speed": 0.0,
+                  "target": -400.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": -0.0,
+                  "target": 0.0
+                }
+              ]
+            },
+            {
+              "update": 3,
+              "rng_calls": 5,
+              "rng_calls_by_object": {
+                "4": 1,
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  22,
+                  32,
+                  14456,
+                  56364
+                ],
+                [
+                  23,
+                  32,
+                  56364,
+                  63008
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 44950,
+                  "speed": -50.0,
+                  "target": -400.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": 0.0,
+                  "target": 0.0
+                }
+              ]
+            },
+            {
+              "update": 4,
+              "rng_calls": 4,
+              "rng_calls_by_object": {
+                "32": 2,
+                "91": 1,
+                "92": 1
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [
+                [
+                  26,
+                  32,
+                  25048,
+                  4740
+                ],
+                [
+                  27,
+                  32,
+                  4740,
+                  41659
+                ]
+              ],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 44850,
+                  "speed": -100.0,
+                  "target": -400.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21800,
+                  "speed": 0.0,
+                  "target": 200.0
+                }
+              ]
+            },
+            {
+              "update": 5,
+              "rng_calls": 3,
+              "rng_calls_by_object": {
+                "9": 3
+              },
+              "cog_draw_columns": [
+                "global_draw_index",
+                "slot",
+                "before_seed",
+                "result"
+              ],
+              "cog_draws": [],
+              "cog_exits": [
+                {
+                  "slot": 29,
+                  "yaw": 44700,
+                  "speed": -150.0,
+                  "target": -400.0
+                },
+                {
+                  "slot": 32,
+                  "yaw": -21750,
+                  "speed": 50.0,
+                  "target": 200.0
+                }
+              ]
+            }
+          ],
+          "full_trace_sha256": "e139d30458daf78fd10b73f8c7d715fd815d049bd11a3f2b551429a42f4681dc"
+        }
+      }
+    }
+  ],
+  "sweep_source_sha256": "7840405d66942755993618555501f7aa99cf81def0a45bc544b48cb7f6c913a5",
+  "diagnostic_source_sha256": "42906f6739d1769a588bc8e2197297d682c03b0ed8ca8ce65df30ec4c26ddbb5",
+  "video_comparison": "video counts one stationary cog; previous sweeps require both slots 29 and 32 fixed",
+  "limits": "Same external-system execution model; single-cog success does not establish Mario preservation or other-cog collision adequacy."
+}

@@ -8,6 +8,13 @@ and model the bounded animation-ROM transfer. Default flags preserve this
 older experiment's predicate and external boundary; the CSV now additionally
 records `dma_calls` (zero for this default configuration).
 
+The optional compile-time `REQUIRED_COG_MASK` selects lower (1), upper (2),
+or both (3, the unchanged default) yaw requirements. This changes only the
+acceptance predicate, never cog execution. `SWEEP_TRACE=1` adds read-only
+per-draw and cog-entry/exit diagnostics for single-seed runs. The comparison
+driver in `ttc-cog-random-seed-sweep/diagnose.py` uses these to audit the
+one-cog versus two-cog distinction; it does not change earlier receipts.
+
 This is an **offline finite experiment**, not a Coq theorem or a complete N64
 emulator. It executes captured, compiled US/JP game-thread code with Unicorn
 2.1.4. It never connects to a running game and never writes a ROM or savestate.

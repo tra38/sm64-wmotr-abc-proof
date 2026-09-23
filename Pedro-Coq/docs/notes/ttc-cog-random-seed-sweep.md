@@ -12,12 +12,17 @@ remains valid within its stated hypothetical family, but does not answer the
 user's request for actual RANDOM starting states.
 
 **Result: 131,072 seed cases, all rejected by cog movement, maximum three
-complete stationary updates, zero unknown cases.** This is one RANDOM phase
+complete two-cog stationary updates, zero unknown cases.** This is one RANDOM phase
 per version with Mario on the ledge. It is not a Pedro-preserving run, a Coq
 theorem, or an exclusion of other RANDOM preparations. The
 [metadata receipt](ttc-cog-random-seed-sweep-results.json) and
 [reproduction instructions](../../instrumentation/ttc-cog-random-seed-sweep/README.md)
 record the exact family and execution boundary.
+
+The subsequent [three-update diagnosis](ttc-cog-sweep-diagnosis.md) explains
+why this is not directly comparable to the video's one-cog streaks. Selected
+single-cog continuations from this same phase last four or five updates while
+the other cog moves; full Pedro preservation under that motion remains open.
 
 ## How the RANDOM state was obtained
 

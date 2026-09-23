@@ -18,6 +18,12 @@
 #ifndef COG_SCHEDULE_ONLY
 #define COG_SCHEDULE_ONLY 0
 #endif
+#ifndef REQUIRED_COG_MASK
+#define REQUIRED_COG_MASK 3
+#endif
+#if REQUIRED_COG_MASK < 1 || REQUIRED_COG_MASK > 3
+#error REQUIRED_COG_MASK must select lower, upper, or both cogs
+#endif
 
 #define RAM_SIZE 0x800000u
 #define RETURN_SENTINEL 0x80001000u
@@ -25,6 +31,7 @@ static uc_engine *vm;
 static unsigned char *ram, *original;
 static unsigned halted, unknown, rejected, baseline, draws, pedro, frame_done;
 static unsigned dma_calls;
+static unsigned trace_enabled, trial_update, rng_pending, rng_before, rng_slot;
 #ifdef ANIMATION_DMA
 static unsigned char *rom;
 static size_t rom_size;
@@ -110,7 +117,18 @@ static void point(uc_engine *u, uint64_t a, uint32_t size, void *data) {
         ++draws;
         draw_hash = (draw_hash ^ r16(A_RANDOM_SEED16)) * 1099511628211ULL;
         draw_hash = (draw_hash ^ ((r32(A_CURRENT_OBJECT)-A_OBJECT_POOL)/0x260)) * 1099511628211ULL;
+        if (trace_enabled) {
+            if (rng_pending) { inconclusive("nested-rng-trace"); return; }
+            rng_pending = 1; rng_before = r16(A_RANDOM_SEED16);
+            rng_slot = (r32(A_CURRENT_OBJECT)-A_OBJECT_POOL)/0x260;
+        }
         return;
+    }
+    if (trace_enabled && pc == PC_RNG_EXIT) {
+        if (!rng_pending) { inconclusive("unpaired-rng-trace"); return; }
+        fprintf(stderr, "DRAW,%u,%u,%u,%u,%u,%u\n", trial_update, draws, rng_slot,
+                rng_before, r16(A_RANDOM_SEED16), (unsigned)reg(UC_MIPS_REG_V0)&65535u);
+        rng_pending = 0; return;
     }
     if (pc == start->finish) {
         frame_done = 1; halted = 1;
@@ -124,7 +142,8 @@ static void point(uc_engine *u, uint64_t a, uint32_t size, void *data) {
             }
             for (unsigned j = 0; j < 2; ++j) {
                 if (cog_updates[j] != 1) inconclusive("cog-update-count");
-                if (r32(A_OBJECT_POOL+(j?32:29)*0x260+0xd4) != cog_yaws[j]) reject("cog-moved");
+                if ((REQUIRED_COG_MASK & (1u<<j))
+                    && r32(A_OBJECT_POOL+(j?32:29)*0x260+0xd4) != cog_yaws[j]) reject("cog-moved");
             }
         }
         checked(uc_emu_stop(vm)); return;
@@ -137,12 +156,18 @@ static void point(uc_engine *u, uint64_t a, uint32_t size, void *data) {
             && r32(c+0x2c) == A_OBJECT_POOL+32*0x260) ++pedro;
     }
     for (unsigned i = 0; i < sizeof(path_points)/sizeof(path_points[0]); ++i) {
+        if (trace_enabled && pc == path_points[i].pc && !strcmp(path_points[i].routine, "bhv_ttc_cog_update")) {
+            uint32_t object = r32(A_CURRENT_OBJECT);
+            fprintf(stderr, "COG,%u,%s,%u,%d,%.9g,%.9g\n", trial_update,
+                    path_points[i].leaving ? "exit" : "enter", (object-A_OBJECT_POOL)/0x260,
+                    (int32_t)r32(object+0xd4), rf(object+0xf8), rf(object+0xfc));
+        }
         if (pc != path_points[i].pc || !path_points[i].leaving) continue;
         if (!strcmp(path_points[i].routine, "bhv_ttc_cog_update")) {
             uint32_t object = r32(A_CURRENT_OBJECT);
             for (unsigned j = 0; j < 2; ++j) if (object == A_OBJECT_POOL+(j?32:29)*0x260) {
                 ++cog_updates[j];
-                if (baseline != 1 && r32(object+0xd4) != cog_yaws[j]) reject("cog-moved");
+                if (baseline != 1 && (REQUIRED_COG_MASK & (1u<<j)) && r32(object+0xd4) != cog_yaws[j]) reject("cog-moved");
             }
         }
         if (baseline != 1 && !COG_SCHEDULE_ONLY && !strcmp(path_points[i].routine, "execute_mario_action")) position_check();
@@ -191,6 +216,8 @@ int main(int argc, char **argv) {
         || count > 65536-first || !horizon || horizon > 1200 || baseline > 2 || (baseline && count != 1)) return 2;
     if (getenv("SWEEP_FUEL")) fuel_limit = number(getenv("SWEEP_FUEL"));
     if (!fuel_limit || fuel_limit > 5000000) return 2;
+    if (getenv("SWEEP_TRACE")) trace_enabled = number(getenv("SWEEP_TRACE"));
+    if (trace_enabled > 1 || (trace_enabled && count != 1)) return 2;
     start = &starts[which]; char path[4096];
     if (snprintf(path, sizeof(path), "%s/%u-enter.ram", argv[1], start->frame) >= (int)sizeof(path)) return 2;
     FILE *in = fopen(path, "rb"); original = malloc(RAM_SIZE); ram = malloc(RAM_SIZE);
@@ -211,6 +238,7 @@ int main(int argc, char **argv) {
     }
     uc_hook hook; checked(uc_hook_add(vm, &hook, UC_HOOK_BLOCK, (void *)block, NULL, 1, 0));
     hook_point(A_RANDOM_U16); hook_point(PC_AIR_EXIT); hook_point(RETURN_SENTINEL);
+    if (trace_enabled) hook_point(PC_RNG_EXIT);
 #ifdef ANIMATION_DMA
     hook_point(ANIMATION_DMA);
 #endif
@@ -221,13 +249,14 @@ int main(int argc, char **argv) {
     printf("seed,status,complete_updates,rng_calls,final_seed,rng_hash,reason,pc,dma_calls\n");
     for (unsigned seed = first; seed < first+count; ++seed) {
         memcpy(ram, original, RAM_SIZE); setup_cpu();
-        unknown = rejected = draws = dma_calls = 0; reason = "none"; draw_hash = 14695981039346656037ULL;
+        unknown = rejected = draws = dma_calls = rng_pending = 0; reason = "none"; draw_hash = 14695981039346656037ULL;
         if (!baseline) {
             w16(A_RANDOM_SEED16, (uint16_t)seed);
             if (!KEEP_CLOCK_MODE) w16(A_TTC_SPEED_SETTING, 2);
         }
         unsigned input_seed = r16(A_RANDOM_SEED16), complete = 0;
         while (complete < horizon) {
+            trial_update = complete;
             pedro = frame_done = 0; cog_updates[0] = cog_updates[1] = 0;
             run(start->entry);
             if (unknown || rejected || !frame_done) break;
