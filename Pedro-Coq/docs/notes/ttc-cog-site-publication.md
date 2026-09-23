@@ -114,7 +114,7 @@ report or site was changed.
 
 ## Version 6 publication
 
-**Version 6 is live and remains owner-only**, published on 2026-09-23,
+**Version 6 was published with owner-only access** on 2026-09-23,
 America/Chicago (deployment timestamp `2026-09-23T05:08:33.569862+00:00`).
 The [bounded seed-sweep section](https://pedro-proof-notes.tra38.chatgpt.site/#seed-sweep)
 reports 393,216 offline cases from three STOPPED-derived snapshot times in
@@ -139,3 +139,32 @@ to the proof-repository record. The five prior receipts were preserved. No RAM
 images, ROM data, credentials or conversation exports were published. No SSL
 report or site was changed. The archive's recorded SHA-256 is
 `c6284959236e439f35f5cd39b84eb908156eb7dd3834cd1090237b99cebc6bb1`.
+
+## Version 7 publication
+
+**Version 7 is live and remains owner-only**, published on 2026-09-23,
+America/Chicago (deployment timestamp `2026-09-23T05:57:10.662544+00:00`).
+The [corrected RANDOM sweep](https://pedro-proof-notes.tra38.chatgpt.site/#seed-sweep)
+now leads with an already-RANDOM frame-836 capture, its 131,072 seed-only cases,
+maximum three stationary updates, and zero unknowns. It explicitly says Mario
+is on the ledge, separates 257 refresh-stable geometry samples from a full
+entry/preservation witness, and records the animation-DMA/OS execution limits.
+The previous STOPPED-derived experiment is retained as historical and labeled
+as the wrong preparation family for the request. The guide and site agree:
+preserving in-spot RNG control and a 1,200-frame RANDOM hold remain open.
+
+Proof evidence snapshot: `7cba0678fb839609b94a74288cd8dc0daca16b43`.
+Site source commit: `05f9ff816ee7cfebd683110435a089c726af59e4`.
+Both were pushed before publication. The official workflow packaged the clean
+site source, and the owner-private save-and-deploy call returned terminal
+status `succeeded`. The saved version reports that exact site commit. The
+subsequent access read confirms one owner, no groups, zero external visitors,
+and unchanged access-policy revision 1.
+
+All 14 pinned proof-source links, unique anchors and local assets were checked.
+All seven downloadable receipts match their proof-repository records byte for
+byte. No ROM/RAM images, credentials or conversation exports were published;
+no SSL report or site was changed. The local compressed package SHA-256 is
+`acf090383edb128de87f9af86a0309a5dc29053fcdb1ae56b102a50f7c5c972c`;
+the saved archive reports content hash
+`7514d7e222f874927cc1bb8aa181271de06eb12eabde1cee221cf13fe49dbfc6`.
