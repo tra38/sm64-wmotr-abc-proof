@@ -28,13 +28,19 @@ immediately after the upper SSL warp is accepted, still in Area 1 and before
 the disappearing action executes. Test disagreement there and report the
 subsequent Area-1 platform capture separately. The scope does not require
 the gap to survive into Area 2 or establish star collection.
+The first acceptance batch is checked: the real US/JP final action call
+preserves the three position records, and the clean JP replay has all three
+equal at the exact accepted return, with no top captured afterward. The
+proof starts after the handler's stop-riding call; the earlier producer and
+the full gameplay question remain open. See the completed-task archive for
+the local proof and finite replay separately.
 For a consolidated account of which results the impossibility argument uses
 and which live connections remain, see the
 [impossibility-proof progress ledger](impossibility-proof-progress.md).
 The [Fine Print promotion review](notes/fine-print-proof-promotions.md)
 now includes the conditional stock negative-seed argument among the site's
-29 established-result summaries, including the conditional child-copy and
-allocator results alongside the earlier local/model claims.
+30 established-result summaries, including the final warp-action call,
+conditional child-copy and allocator results alongside earlier local/model claims.
 Their wider gameplay connections remain on this board; no route is closed
 merely by moving an existing result into that section.
 Apply the [CompCert execution-scope boundary](compcert-execution-scope.md)

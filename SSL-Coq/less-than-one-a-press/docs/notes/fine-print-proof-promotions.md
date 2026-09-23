@@ -1,13 +1,23 @@
 # Which Fine Print results belong with the proofs?
 
 The 20 September 2026 review checked all 50 ledger entries and six
-assumption recommendations. The 23 September F02 batch adds a new proved
-conditional child-copy result and a follow-up allocator result to
-"01 / WE DO HAVE PROOFS", taking it to 29 result cards. The other sections retain the conditions and gameplay
+assumption recommendations. The 23 September F02 batches add the proved
+conditional child-copy, allocator and final warp-action results to
+"01 / WE DO HAVE PROOFS", taking it to 30 result cards. The other sections retain the conditions and gameplay
 questions outside those results, with links to the completed parts. No
 whole-route verdict changes.
 
 ## F02: a new local execution proof
+
+The [accepted-warp result](f02-warp-acceptance-target.md) belongs in Section
+01 with a precise starting point: after the stop-riding call, the actual
+US/JP final action-setting call and return preserve all three position
+records. A split afterward exists exactly when it existed beforehand.
+The real setter and its cutscene initializer are proved, rather than
+assigned an assumed frame. Earlier handler calls and clean creation of the
+gap stay in Section 03. The new read-only clean JP replay has no gap at the
+exact accepted return and no final platform capture; that is finite evidence,
+not the theorem's universal gameplay interpretation. No route is promoted.
 
 The [child-copy result](f02-postcopy-child-frame.md) belongs in Section 01:
 the actual US/JP position-and-angle copy and the particle tail after

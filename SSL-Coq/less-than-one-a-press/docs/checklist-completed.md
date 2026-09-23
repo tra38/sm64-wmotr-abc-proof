@@ -4,6 +4,23 @@
 
 Completed work is grouped by subject. Each item retains its original scope warning; conditional models and runtime fixtures are not promoted to linked retail proofs.
 
+## F02 accepted-warp checkpoint
+
+- [x] Prove the actual generated US/JP final accepted-warp action call and
+  return preserve movement, collision and display. A split after this tail
+  exists exactly when it existed before the tail. The real setter and its
+  cutscene initializer are opened; no outside-call frame is assumed. The
+  tail starts after `mario_stop_riding_object`. Earlier handler calls,
+  controller reachability and final platform capture remain outside this
+  theorem. See [the proof and boundary](notes/f02-warp-acceptance-target.md).
+- [x] Observe all nine position cells at the chosen accepted-return
+  checkpoint in the existing clean zero-A JP four-pillar replay. All three
+  vectors equal `(-2033.87939453125,768,-1037.05859375)` there. No active top
+  remains and the final Area-1 platform is null. Seven ordered snapshots,
+  unchanged prior audit receipts and checker tests pass. This closes this
+  replay as an Ink candidate, not every gameplay history or the separate
+  supplied installation. The all-history F02 question remains open.
+
 ## F02 child-copy execution
 
 - [x] Connect the generated US/JP particle allocation-and-copy segment to its

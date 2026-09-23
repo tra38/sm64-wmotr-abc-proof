@@ -1317,6 +1317,13 @@ Qed.
 Theorem current_ink_backward_execution_boundary : InkBackwardHistoryCheckedBoundary.
 Proof. exact ibh_backward_histories_checked. Qed.
 
+(** At the chosen accepted-warp return, the final action-setting tail has
+    preserved all three position records. A disagreement there already
+    existed after the preceding stop-riding call. This does not frame that
+    earlier call or its predecessors, produce the split, or prove capture. *)
+Theorem current_f02_warp_acceptance_boundary : InkWarpAcceptance.InkWarpAcceptanceBoundary.
+Proof. exact InkWarpAcceptance.iwa_warp_acceptance_boundary_checked. Qed.
+
 (* The graphical-fallback tranche shows that update order does not by itself
    refute the scheduling shape; it does not execute the branch in Clight or
    settle clean-entry reachability.  It provides local and PU conditional

@@ -595,3 +595,4 @@ proofs/Area1SlotExpressions.v
 proofs/Area1SlotWriteCheck.v
 proofs/Area1AllocationSlotFrame.v
 proofs/Area1AllocationReturn.v
+proofs/InkWarpAcceptance.v
