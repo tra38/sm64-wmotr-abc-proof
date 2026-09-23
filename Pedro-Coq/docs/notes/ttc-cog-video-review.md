@@ -1,5 +1,11 @@
 # TTC cog video review — 2026-09-06
 
+Follow-up: the [2026-09-22 RNG argument review](ttc-cog-video-rng-sequence.md)
+re-examines the full on-screen explanation, including the state-count table,
+simulator claims and waiting-time extrapolation, against the generated US/JP
+functions. It adds bounded exhaustive sequence checks without treating them
+as a complete TTC scheduler or gameplay impossibility proof.
+
 The user supplied `YTDown.com_YouTube_TTC-Pedro-Spot-on-Cogs-Update_Media_X4k5NGUjTWs_001_1080p.mp4`.
 Its SHA-256 is `5e2673ec71721d3c1bea0df8391b2b93b136ec11c016c8a5229d672a1990e302`.
 `ffprobe` reports 1920×1080, 30000/1001 video frames per second, and duration

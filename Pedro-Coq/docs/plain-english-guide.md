@@ -445,6 +445,38 @@ or external viewers. Its verdict agrees with this guide: a preserving
 bundle was recovered through the connected resource catalog; the earlier
 publication blocker is resolved. See the [publication record](notes/ttc-cog-site-publication.md).
 
+## Does the video rule out 1,200 good RNG values?
+
+The [video review and exact sequence checks](notes/ttc-cog-video-rng-sequence.md)
+separate two questions. Checking a specified 1,200-update candidate is practical.
+Finding a successful reachable setup is still difficult and unresolved. The
+video itself correctly explains that the 65,114-value RNG cycle is not the
+whole game state: other objects' timers decide which values the cog receives.
+Its waiting-time graph describes forward search through simulated game time,
+not the cost of checking one candidate.
+
+Each zero-target selection uses a magnitude draw divisible by 7 and a second,
+mandatory sign draw. Other objects add variable gaps between selections. A
+finite check of the generated RNG function, cross-checked against unchanged
+pinned C for all 65,536 seed inputs, finds a maximum of six consecutive good
+raw values, also six for an isolated cog taking every other value. Across
+fixed spacings of 2–64 draws, the maximum is seven. Those bounds do not apply
+to TTC's changing schedule and do not refute the video's 12-frame example.
+
+The new checker can find or exclude seeds for a supplied exact list of draw
+indices. It even verifies an arithmetic-only 1,200-selection subsequence when
+other consumers are allowed to absorb freely chosen numbers of draws. No
+legal TTC schedule is established by that relaxation. A seed search for the
+real game must recompute the objects' future decisions for each seed, then
+check preservation and entry. A constraint solver over those transitions
+could avoid naive enumeration of every state combination, but is not yet
+implemented and has no guaranteed success or running time.
+
+The video's `7^-1200` estimate assumes independent uniform selections. Its
+state count and waiting-time extrapolation are not an exact impossibility
+proof. Conversely, these new finite checks supply no successful RANDOM-mode
+hold or in-spot RNG control. No Coq theorem or proof assumption changes.
+
 ## The proved TTC Pedro interval
 
 This section is specifically about two **spinners**, not the TTC cogs.

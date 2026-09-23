@@ -1,0 +1,3503 @@
+{
+  "scope": "Finite generated-scalar/C cross-check and prescribed RNG schedules; not a full TTC scheduler, normal-entry result, or Coq theorem",
+  "versions": [
+    "VERSION_US",
+    "VERSION_JP"
+  ],
+  "source_pin": "9921382a68bb0c865e5e45eb594d9c64db59b1af",
+  "analyzer_sha256": "3a6bdce4ff70babba76df9feb055dadec425d2a43526d8c0c3dfdbf467a5e373",
+  "generated_functions": {
+    "random_u16": {
+      "us_sha256": "94533e4464d39bbc8457100221312a80d7a764cd649df3d0f2ec8b4130828704",
+      "jp_sha256": "94533e4464d39bbc8457100221312a80d7a764cd649df3d0f2ec8b4130828704",
+      "normalized_us_jp_equal": true
+    },
+    "random_sign": {
+      "us_sha256": "c36c0d0671637945f9125164b43ca52382e8d03cd34c6cdf17c381aa8bb18545",
+      "jp_sha256": "c36c0d0671637945f9125164b43ca52382e8d03cd34c6cdf17c381aa8bb18545",
+      "normalized_us_jp_equal": true
+    },
+    "bhv_ttc_cog_update": {
+      "us_sha256": "16af2cff53a7e0b57b33e271c21f48f2a5b7610eb038305a452d0a1a6b8b502f",
+      "jp_sha256": "6f6233e1f69ad1c26d42a7c8a19c24a3b78bc874203ab2b2737dc8f8c6df67cd",
+      "normalized_us_jp_equal": true
+    }
+  },
+  "native_cross_check": {
+    "source_file_sha256": "f648bd72f34714c86aba5bb5d1d413ca6c1e5b564e062ab2d8128523e9beb3b3",
+    "extracted_function_sha256": "0644ab81d1753c291ba060982a271896549cee58ccbd6355272dfb13e5bd2e2d",
+    "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+  },
+  "all_input_results_agree": 65536,
+  "transition_table_be_u16_sha256": "090172d895ecf69d912e606eb6309f16f006f483f4bcd9c4421c6cfdd09e5a77",
+  "all_functional_graph_cycles": [
+    {
+      "length": 65114,
+      "minimum_seed": 0
+    }
+  ],
+  "seed_zero_cycle": {
+    "length": 65114,
+    "good_magnitude_values": 9320,
+    "mod7_counts": {
+      "0": 9320,
+      "1": 9289,
+      "2": 9297,
+      "3": 9299,
+      "4": 9300,
+      "5": 9301,
+      "6": 9308
+    }
+  },
+  "all_input_good_first_draws": 9364,
+  "fixed_strides": [
+    {
+      "global_draw_stride": 1,
+      "all_16bit_inputs": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 30224,
+        "witness_magnitude_draws_then_failure": [
+          59479,
+          21896,
+          15078,
+          37884,
+          203,
+          6958,
+          26932
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 30224,
+        "witness_magnitude_draws_then_failure": [
+          59479,
+          21896,
+          15078,
+          37884,
+          203,
+          6958,
+          26932
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 2,
+      "all_16bit_inputs": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 1539,
+        "witness_magnitude_draws_then_failure": [
+          32641,
+          58667,
+          8862,
+          9401,
+          17885,
+          19600,
+          42479
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 1539,
+        "witness_magnitude_draws_then_failure": [
+          32641,
+          58667,
+          8862,
+          9401,
+          17885,
+          19600,
+          42479
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 3,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 11133,
+        "witness_magnitude_draws_then_failure": [
+          56994,
+          33495,
+          8204,
+          20762,
+          38416,
+          7830
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 11133,
+        "witness_magnitude_draws_then_failure": [
+          56994,
+          33495,
+          8204,
+          20762,
+          38416,
+          7830
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 4,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 20161,
+        "witness_magnitude_draws_then_failure": [
+          7686,
+          58443,
+          29204,
+          60347,
+          2716,
+          35507
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 20161,
+        "witness_magnitude_draws_then_failure": [
+          7686,
+          58443,
+          29204,
+          60347,
+          2716,
+          35507
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 5,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 24774,
+        "witness_magnitude_draws_then_failure": [
+          33761,
+          55426,
+          48881,
+          20342,
+          7924,
+          15163
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 24774,
+        "witness_magnitude_draws_then_failure": [
+          33761,
+          55426,
+          48881,
+          20342,
+          7924,
+          15163
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 6,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 27588,
+        "witness_magnitude_draws_then_failure": [
+          7315,
+          9562,
+          53613,
+          273,
+          45136,
+          46135
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 27588,
+        "witness_magnitude_draws_then_failure": [
+          7315,
+          9562,
+          53613,
+          273,
+          45136,
+          46135
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 7,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 41943,
+        "witness_magnitude_draws_then_failure": [
+          35609,
+          62601,
+          41069,
+          49336,
+          46571,
+          44370
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 41943,
+        "witness_magnitude_draws_then_failure": [
+          35609,
+          62601,
+          41069,
+          49336,
+          46571,
+          44370
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 8,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 14784,
+        "witness_magnitude_draws_then_failure": [
+          7868,
+          18445,
+          47278,
+          6139,
+          14707,
+          24307
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 14784,
+        "witness_magnitude_draws_then_failure": [
+          7868,
+          18445,
+          47278,
+          6139,
+          14707,
+          24307
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 9,
+      "all_16bit_inputs": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 53253,
+        "witness_magnitude_draws_then_failure": [
+          31983,
+          47082,
+          36400,
+          37492,
+          19789,
+          36827,
+          35862
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 53253,
+        "witness_magnitude_draws_then_failure": [
+          31983,
+          47082,
+          36400,
+          37492,
+          19789,
+          36827,
+          35862
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 10,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 5293,
+        "witness_magnitude_draws_then_failure": [
+          10353,
+          37947,
+          13020,
+          23457,
+          22526,
+          2815
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 5293,
+        "witness_magnitude_draws_then_failure": [
+          10353,
+          37947,
+          13020,
+          23457,
+          22526,
+          2815
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 11,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 49151,
+        "witness_magnitude_draws_then_failure": [
+          40747,
+          49448,
+          1372,
+          9492,
+          56910,
+          63944
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 49151,
+        "witness_magnitude_draws_then_failure": [
+          40747,
+          49448,
+          1372,
+          9492,
+          56910,
+          63944
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 12,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 9692,
+        "witness_magnitude_draws_then_failure": [
+          4256,
+          57582,
+          21035,
+          28350,
+          35,
+          30183
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 9692,
+        "witness_magnitude_draws_then_failure": [
+          4256,
+          57582,
+          21035,
+          28350,
+          35,
+          30183
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 13,
+      "all_16bit_inputs": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 44076,
+        "witness_magnitude_draws_then_failure": [
+          63000,
+          5761,
+          19593,
+          29757,
+          65247,
+          64491,
+          60145
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 44076,
+        "witness_magnitude_draws_then_failure": [
+          63000,
+          5761,
+          19593,
+          29757,
+          65247,
+          64491,
+          60145
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 14,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 14771,
+        "witness_magnitude_draws_then_failure": [
+          47362,
+          6524,
+          53060,
+          2170,
+          39823,
+          46066
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 14771,
+        "witness_magnitude_draws_then_failure": [
+          47362,
+          6524,
+          53060,
+          2170,
+          39823,
+          46066
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 15,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 14620,
+        "witness_magnitude_draws_then_failure": [
+          28686,
+          58940,
+          14868,
+          280,
+          63455,
+          56291
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 14620,
+        "witness_magnitude_draws_then_failure": [
+          28686,
+          58940,
+          14868,
+          280,
+          63455,
+          56291
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 16,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 14223,
+        "witness_magnitude_draws_then_failure": [
+          42791,
+          47005,
+          53438,
+          20902,
+          1015,
+          27800
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 14223,
+        "witness_magnitude_draws_then_failure": [
+          42791,
+          47005,
+          53438,
+          20902,
+          1015,
+          27800
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 17,
+      "all_16bit_inputs": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 32326,
+        "witness_magnitude_draws_then_failure": [
+          49966,
+          203,
+          45031,
+          45493,
+          29029,
+          32242,
+          10575
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 32326,
+        "witness_magnitude_draws_then_failure": [
+          49966,
+          203,
+          45031,
+          45493,
+          29029,
+          32242,
+          10575
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 18,
+      "all_16bit_inputs": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 50686,
+        "witness_magnitude_draws_then_failure": [
+          483,
+          8127,
+          36624,
+          25221,
+          798,
+          46550,
+          29963
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 50686,
+        "witness_magnitude_draws_then_failure": [
+          483,
+          8127,
+          36624,
+          25221,
+          798,
+          46550,
+          29963
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 19,
+      "all_16bit_inputs": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 13556,
+        "witness_magnitude_draws_then_failure": [
+          39648,
+          54733,
+          8512,
+          38171,
+          25732,
+          26838,
+          25001
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 13556,
+        "witness_magnitude_draws_then_failure": [
+          39648,
+          54733,
+          8512,
+          38171,
+          25732,
+          26838,
+          25001
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 20,
+      "all_16bit_inputs": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 7931,
+        "witness_magnitude_draws_then_failure": [
+          777,
+          59892,
+          32550,
+          10332,
+          36876,
+          57015,
+          57896
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 7931,
+        "witness_magnitude_draws_then_failure": [
+          777,
+          59892,
+          32550,
+          10332,
+          36876,
+          57015,
+          57896
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 21,
+      "all_16bit_inputs": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 44746,
+        "witness_magnitude_draws_then_failure": [
+          34188,
+          60935,
+          4809,
+          59465,
+          20076,
+          24472,
+          54416
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 44746,
+        "witness_magnitude_draws_then_failure": [
+          34188,
+          60935,
+          4809,
+          59465,
+          20076,
+          24472,
+          54416
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 22,
+      "all_16bit_inputs": {
+        "max_good_selections": 7,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 63755,
+        "witness_magnitude_draws_then_failure": [
+          58758,
+          55636,
+          6461,
+          61432,
+          29568,
+          20475,
+          34720,
+          34935
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 7,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 63755,
+        "witness_magnitude_draws_then_failure": [
+          58758,
+          55636,
+          6461,
+          61432,
+          29568,
+          20475,
+          34720,
+          34935
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 23,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 44196,
+        "witness_magnitude_draws_then_failure": [
+          45780,
+          41797,
+          21616,
+          32690,
+          13020,
+          40801
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 44196,
+        "witness_magnitude_draws_then_failure": [
+          45780,
+          41797,
+          21616,
+          32690,
+          13020,
+          40801
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 24,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 9708,
+        "witness_magnitude_draws_then_failure": [
+          2184,
+          55090,
+          39991,
+          25795,
+          24017,
+          37363
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 9708,
+        "witness_magnitude_draws_then_failure": [
+          2184,
+          55090,
+          39991,
+          25795,
+          24017,
+          37363
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 25,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 17913,
+        "witness_magnitude_draws_then_failure": [
+          40019,
+          36911,
+          59017,
+          51016,
+          10017,
+          15101
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 17913,
+        "witness_magnitude_draws_then_failure": [
+          40019,
+          36911,
+          59017,
+          51016,
+          10017,
+          15101
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 26,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 7526,
+        "witness_magnitude_draws_then_failure": [
+          19803,
+          21098,
+          18074,
+          15190,
+          49462,
+          33242
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 7526,
+        "witness_magnitude_draws_then_failure": [
+          19803,
+          21098,
+          18074,
+          15190,
+          49462,
+          33242
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 27,
+      "all_16bit_inputs": {
+        "max_good_selections": 4,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 6932,
+        "witness_magnitude_draws_then_failure": [
+          29715,
+          51989,
+          41622,
+          38003,
+          45228
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 4,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 6932,
+        "witness_magnitude_draws_then_failure": [
+          29715,
+          51989,
+          41622,
+          38003,
+          45228
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 28,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 10872,
+        "witness_magnitude_draws_then_failure": [
+          56357,
+          5474,
+          8589,
+          57029,
+          23163,
+          28222
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 10872,
+        "witness_magnitude_draws_then_failure": [
+          56357,
+          5474,
+          8589,
+          57029,
+          23163,
+          28222
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 29,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 40346,
+        "witness_magnitude_draws_then_failure": [
+          13209,
+          32704,
+          38087,
+          602,
+          22988,
+          29045
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 40346,
+        "witness_magnitude_draws_then_failure": [
+          13209,
+          32704,
+          38087,
+          602,
+          22988,
+          29045
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 30,
+      "all_16bit_inputs": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 37648,
+        "witness_magnitude_draws_then_failure": [
+          30289,
+          61425,
+          9163,
+          48965,
+          16072,
+          54530,
+          8950
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 37648,
+        "witness_magnitude_draws_then_failure": [
+          30289,
+          61425,
+          9163,
+          48965,
+          16072,
+          54530,
+          8950
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 31,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 2572,
+        "witness_magnitude_draws_then_failure": [
+          59003,
+          24066,
+          4690,
+          28945,
+          64274,
+          3312
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 2572,
+        "witness_magnitude_draws_then_failure": [
+          59003,
+          24066,
+          4690,
+          28945,
+          64274,
+          3312
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 32,
+      "all_16bit_inputs": {
+        "max_good_selections": 7,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 23467,
+        "witness_magnitude_draws_then_failure": [
+          46375,
+          52213,
+          46207,
+          61985,
+          12362,
+          21007,
+          35616,
+          26030
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 7,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 23467,
+        "witness_magnitude_draws_then_failure": [
+          46375,
+          52213,
+          46207,
+          61985,
+          12362,
+          21007,
+          35616,
+          26030
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 33,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 7274,
+        "witness_magnitude_draws_then_failure": [
+          54565,
+          33390,
+          9142,
+          29666,
+          22288,
+          57712
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 7274,
+        "witness_magnitude_draws_then_failure": [
+          54565,
+          33390,
+          9142,
+          29666,
+          22288,
+          57712
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 34,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 16800,
+        "witness_magnitude_draws_then_failure": [
+          11984,
+          54642,
+          50365,
+          55195,
+          60613,
+          42310
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 16800,
+        "witness_magnitude_draws_then_failure": [
+          11984,
+          54642,
+          50365,
+          55195,
+          60613,
+          42310
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 35,
+      "all_16bit_inputs": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 7542,
+        "witness_magnitude_draws_then_failure": [
+          17731,
+          25242,
+          64757,
+          30030,
+          32914,
+          11970,
+          20430
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 7542,
+        "witness_magnitude_draws_then_failure": [
+          17731,
+          25242,
+          64757,
+          30030,
+          32914,
+          11970,
+          20430
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 36,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 14237,
+        "witness_magnitude_draws_then_failure": [
+          44604,
+          55202,
+          62524,
+          39746,
+          18487,
+          15189
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 14237,
+        "witness_magnitude_draws_then_failure": [
+          44604,
+          55202,
+          62524,
+          39746,
+          18487,
+          15189
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 37,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 19246,
+        "witness_magnitude_draws_then_failure": [
+          26908,
+          22463,
+          49168,
+          35217,
+          21196,
+          10933
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 19246,
+        "witness_magnitude_draws_then_failure": [
+          26908,
+          22463,
+          49168,
+          35217,
+          21196,
+          10933
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 38,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 34911,
+        "witness_magnitude_draws_then_failure": [
+          20916,
+          44835,
+          63343,
+          51611,
+          37310,
+          46595
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 34911,
+        "witness_magnitude_draws_then_failure": [
+          20916,
+          44835,
+          63343,
+          51611,
+          37310,
+          46595
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 39,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 18006,
+        "witness_magnitude_draws_then_failure": [
+          52010,
+          28658,
+          54187,
+          42161,
+          48776,
+          25024
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 18006,
+        "witness_magnitude_draws_then_failure": [
+          52010,
+          28658,
+          54187,
+          42161,
+          48776,
+          25024
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 40,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 4989,
+        "witness_magnitude_draws_then_failure": [
+          57022,
+          63406,
+          41300,
+          58436,
+          27671,
+          18212
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 4989,
+        "witness_magnitude_draws_then_failure": [
+          57022,
+          63406,
+          41300,
+          58436,
+          27671,
+          18212
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 41,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 19005,
+        "witness_magnitude_draws_then_failure": [
+          24710,
+          15960,
+          38843,
+          61789,
+          62734,
+          23651
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 19005,
+        "witness_magnitude_draws_then_failure": [
+          24710,
+          15960,
+          38843,
+          61789,
+          62734,
+          23651
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 42,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 11167,
+        "witness_magnitude_draws_then_failure": [
+          44849,
+          15470,
+          11004,
+          22911,
+          29715,
+          40048
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 11167,
+        "witness_magnitude_draws_then_failure": [
+          44849,
+          15470,
+          11004,
+          22911,
+          29715,
+          40048
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 43,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 26952,
+        "witness_magnitude_draws_then_failure": [
+          23128,
+          19005,
+          52255,
+          4438,
+          12866,
+          18821
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 26952,
+        "witness_magnitude_draws_then_failure": [
+          23128,
+          19005,
+          52255,
+          4438,
+          12866,
+          18821
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 44,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 30381,
+        "witness_magnitude_draws_then_failure": [
+          10304,
+          12257,
+          34790,
+          4984,
+          64785,
+          21646
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 30381,
+        "witness_magnitude_draws_then_failure": [
+          10304,
+          12257,
+          34790,
+          4984,
+          64785,
+          21646
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 45,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 9579,
+        "witness_magnitude_draws_then_failure": [
+          54712,
+          19061,
+          25564,
+          26733,
+          25956,
+          13215
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 9579,
+        "witness_magnitude_draws_then_failure": [
+          54712,
+          19061,
+          25564,
+          26733,
+          25956,
+          13215
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 46,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 52021,
+        "witness_magnitude_draws_then_failure": [
+          64190,
+          18186,
+          1260,
+          54012,
+          40803,
+          60850
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 52021,
+        "witness_magnitude_draws_then_failure": [
+          64190,
+          18186,
+          1260,
+          54012,
+          40803,
+          60850
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 47,
+      "all_16bit_inputs": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 21883,
+        "witness_magnitude_draws_then_failure": [
+          56728,
+          47565,
+          63602,
+          47957,
+          3731,
+          54572,
+          36229
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 21883,
+        "witness_magnitude_draws_then_failure": [
+          56728,
+          47565,
+          63602,
+          47957,
+          3731,
+          54572,
+          36229
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 48,
+      "all_16bit_inputs": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 27123,
+        "witness_magnitude_draws_then_failure": [
+          39242,
+          20958,
+          18823,
+          34174,
+          29988,
+          57694,
+          21360
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 27123,
+        "witness_magnitude_draws_then_failure": [
+          39242,
+          20958,
+          18823,
+          34174,
+          29988,
+          57694,
+          21360
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 49,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 11450,
+        "witness_magnitude_draws_then_failure": [
+          48517,
+          20293,
+          42868,
+          15904,
+          35518,
+          49748
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 11450,
+        "witness_magnitude_draws_then_failure": [
+          48517,
+          20293,
+          42868,
+          15904,
+          35518,
+          49748
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 50,
+      "all_16bit_inputs": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 53064,
+        "witness_magnitude_draws_then_failure": [
+          23051,
+          38605,
+          35959,
+          60935,
+          58807,
+          51366,
+          35282
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 53064,
+        "witness_magnitude_draws_then_failure": [
+          23051,
+          38605,
+          35959,
+          60935,
+          58807,
+          51366,
+          35282
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 51,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 22789,
+        "witness_magnitude_draws_then_failure": [
+          58079,
+          26880,
+          60487,
+          24542,
+          33943,
+          11334
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 22789,
+        "witness_magnitude_draws_then_failure": [
+          58079,
+          26880,
+          60487,
+          24542,
+          33943,
+          11334
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 52,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 19628,
+        "witness_magnitude_draws_then_failure": [
+          46760,
+          30702,
+          12348,
+          13090,
+          51429,
+          23502
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 19628,
+        "witness_magnitude_draws_then_failure": [
+          46760,
+          30702,
+          12348,
+          13090,
+          51429,
+          23502
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 53,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 30013,
+        "witness_magnitude_draws_then_failure": [
+          65261,
+          4662,
+          16737,
+          54362,
+          24199,
+          18684
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 30013,
+        "witness_magnitude_draws_then_failure": [
+          65261,
+          4662,
+          16737,
+          54362,
+          24199,
+          18684
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 54,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 22649,
+        "witness_magnitude_draws_then_failure": [
+          17129,
+          37324,
+          44891,
+          29799,
+          168,
+          52715
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 22649,
+        "witness_magnitude_draws_then_failure": [
+          17129,
+          37324,
+          44891,
+          29799,
+          168,
+          52715
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 55,
+      "all_16bit_inputs": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 965,
+        "witness_magnitude_draws_then_failure": [
+          33362,
+          45850,
+          27741,
+          45115,
+          28427,
+          30100,
+          13355
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 965,
+        "witness_magnitude_draws_then_failure": [
+          33362,
+          45850,
+          27741,
+          45115,
+          28427,
+          30100,
+          13355
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 56,
+      "all_16bit_inputs": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 19710,
+        "witness_magnitude_draws_then_failure": [
+          40915,
+          39627,
+          25711,
+          21217,
+          26600,
+          3073,
+          44831
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 19710,
+        "witness_magnitude_draws_then_failure": [
+          40915,
+          39627,
+          25711,
+          21217,
+          26600,
+          3073,
+          44831
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 57,
+      "all_16bit_inputs": {
+        "max_good_selections": 7,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 56505,
+        "witness_magnitude_draws_then_failure": [
+          8715,
+          4375,
+          47075,
+          41867,
+          336,
+          36813,
+          40180,
+          25988
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 7,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 56505,
+        "witness_magnitude_draws_then_failure": [
+          8715,
+          4375,
+          47075,
+          41867,
+          336,
+          36813,
+          40180,
+          25988
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 58,
+      "all_16bit_inputs": {
+        "max_good_selections": 7,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 20309,
+        "witness_magnitude_draws_then_failure": [
+          51884,
+          952,
+          39599,
+          48265,
+          980,
+          6125,
+          33460,
+          44785
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 7,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 20309,
+        "witness_magnitude_draws_then_failure": [
+          51884,
+          952,
+          39599,
+          48265,
+          980,
+          6125,
+          33460,
+          44785
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 59,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 36124,
+        "witness_magnitude_draws_then_failure": [
+          28756,
+          10724,
+          18809,
+          46242,
+          11683,
+          13077
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 36124,
+        "witness_magnitude_draws_then_failure": [
+          28756,
+          10724,
+          18809,
+          46242,
+          11683,
+          13077
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 60,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 22601,
+        "witness_magnitude_draws_then_failure": [
+          23233,
+          62510,
+          18235,
+          9800,
+          2891,
+          44043
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 22601,
+        "witness_magnitude_draws_then_failure": [
+          23233,
+          62510,
+          18235,
+          9800,
+          2891,
+          44043
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 61,
+      "all_16bit_inputs": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 31695,
+        "witness_magnitude_draws_then_failure": [
+          34657,
+          18312,
+          47516,
+          33887,
+          31605,
+          30716,
+          57709
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 6,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 31695,
+        "witness_magnitude_draws_then_failure": [
+          34657,
+          18312,
+          47516,
+          33887,
+          31605,
+          30716,
+          57709
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 62,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 32744,
+        "witness_magnitude_draws_then_failure": [
+          2723,
+          40579,
+          11361,
+          39767,
+          62181,
+          61070
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 32744,
+        "witness_magnitude_draws_then_failure": [
+          2723,
+          40579,
+          11361,
+          39767,
+          62181,
+          61070
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 63,
+      "all_16bit_inputs": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 7997,
+        "witness_magnitude_draws_then_failure": [
+          65240,
+          23079,
+          42210,
+          16835,
+          46291,
+          27325
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 5,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 7997,
+        "witness_magnitude_draws_then_failure": [
+          65240,
+          23079,
+          42210,
+          16835,
+          46291,
+          27325
+        ]
+      }
+    },
+    {
+      "global_draw_stride": 64,
+      "all_16bit_inputs": {
+        "max_good_selections": 4,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 758,
+        "witness_magnitude_draws_then_failure": [
+          39928,
+          63693,
+          29379,
+          50925,
+          13243
+        ]
+      },
+      "seed_zero_cycle": {
+        "max_good_selections": 4,
+        "has_infinite_run": false,
+        "witness_seed_before_draw": 758,
+        "witness_magnitude_draws_then_failure": [
+          39928,
+          63693,
+          29379,
+          50925,
+          13243
+        ]
+      }
+    }
+  ],
+  "fixed_schedule_1200_filters": {
+    "1": {
+      "checked_selections": 7,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "2": {
+      "checked_selections": 7,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "3": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "4": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "5": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "6": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "7": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "8": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "9": {
+      "checked_selections": 7,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "10": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "11": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "12": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "13": {
+      "checked_selections": 7,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "14": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "15": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "16": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "17": {
+      "checked_selections": 7,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "18": {
+      "checked_selections": 7,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "19": {
+      "checked_selections": 7,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "20": {
+      "checked_selections": 7,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "21": {
+      "checked_selections": 7,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "22": {
+      "checked_selections": 8,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "23": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "24": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "25": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "26": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "27": {
+      "checked_selections": 5,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "28": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "29": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "30": {
+      "checked_selections": 7,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "31": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "32": {
+      "checked_selections": 8,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "33": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "34": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "35": {
+      "checked_selections": 7,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "36": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "37": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "38": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "39": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "40": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "41": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "42": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "43": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "44": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "45": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "46": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "47": {
+      "checked_selections": 7,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "48": {
+      "checked_selections": 7,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "49": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "50": {
+      "checked_selections": 7,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "51": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "52": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "53": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "54": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "55": {
+      "checked_selections": 7,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "56": {
+      "checked_selections": 7,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "57": {
+      "checked_selections": 8,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "58": {
+      "checked_selections": 8,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "59": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "60": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "61": {
+      "checked_selections": 7,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "62": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "63": {
+      "checked_selections": 6,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    },
+    "64": {
+      "checked_selections": 5,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": []
+    }
+  },
+  "unconstrained_interference_example": {
+    "scope": "Arithmetic example with freely assigned intervening consumers; not a TTC or controller witness",
+    "initial_seed": 0,
+    "successful_target_selections": 1200,
+    "first_magnitude_draw_index": 9,
+    "total_draws_through_final_sign": 9731,
+    "minimum_magnitude_spacing": 2,
+    "maximum_magnitude_spacing": 68,
+    "magnitude_draw_indices": [
+      9,
+      23,
+      30,
+      34,
+      38,
+      40,
+      68,
+      81,
+      83,
+      95,
+      102,
+      120,
+      128,
+      133,
+      138,
+      142,
+      154,
+      159,
+      165,
+      180,
+      183,
+      193,
+      195,
+      203,
+      212,
+      217,
+      227,
+      235,
+      247,
+      250,
+      256,
+      269,
+      291,
+      297,
+      299,
+      301,
+      303,
+      310,
+      316,
+      322,
+      333,
+      336,
+      355,
+      358,
+      375,
+      382,
+      391,
+      395,
+      404,
+      407,
+      409,
+      415,
+      418,
+      424,
+      434,
+      439,
+      444,
+      454,
+      456,
+      461,
+      470,
+      482,
+      491,
+      497,
+      508,
+      512,
+      518,
+      531,
+      539,
+      544,
+      551,
+      556,
+      558,
+      569,
+      572,
+      581,
+      619,
+      621,
+      625,
+      627,
+      631,
+      633,
+      651,
+      661,
+      670,
+      672,
+      689,
+      698,
+      715,
+      724,
+      726,
+      732,
+      738,
+      740,
+      761,
+      764,
+      767,
+      773,
+      781,
+      792,
+      795,
+      803,
+      809,
+      821,
+      825,
+      830,
+      834,
+      858,
+      860,
+      871,
+      873,
+      878,
+      882,
+      890,
+      895,
+      897,
+      899,
+      911,
+      917,
+      924,
+      934,
+      937,
+      946,
+      957,
+      960,
+      972,
+      979,
+      984,
+      986,
+      1012,
+      1015,
+      1017,
+      1027,
+      1033,
+      1042,
+      1045,
+      1057,
+      1076,
+      1090,
+      1094,
+      1105,
+      1108,
+      1118,
+      1120,
+      1131,
+      1133,
+      1145,
+      1149,
+      1152,
+      1155,
+      1160,
+      1163,
+      1169,
+      1184,
+      1192,
+      1215,
+      1224,
+      1235,
+      1256,
+      1258,
+      1260,
+      1265,
+      1272,
+      1279,
+      1284,
+      1298,
+      1307,
+      1311,
+      1328,
+      1331,
+      1333,
+      1344,
+      1351,
+      1372,
+      1379,
+      1381,
+      1385,
+      1395,
+      1406,
+      1412,
+      1422,
+      1436,
+      1442,
+      1457,
+      1459,
+      1474,
+      1482,
+      1490,
+      1496,
+      1498,
+      1508,
+      1525,
+      1583,
+      1615,
+      1626,
+      1651,
+      1659,
+      1665,
+      1681,
+      1683,
+      1722,
+      1724,
+      1732,
+      1734,
+      1740,
+      1763,
+      1767,
+      1769,
+      1794,
+      1798,
+      1802,
+      1811,
+      1818,
+      1824,
+      1827,
+      1830,
+      1835,
+      1840,
+      1843,
+      1846,
+      1852,
+      1858,
+      1863,
+      1875,
+      1880,
+      1888,
+      1893,
+      1901,
+      1904,
+      1909,
+      1917,
+      1921,
+      1926,
+      1932,
+      1940,
+      1943,
+      1947,
+      1952,
+      1958,
+      1963,
+      1979,
+      1981,
+      1983,
+      1992,
+      1996,
+      2003,
+      2006,
+      2015,
+      2017,
+      2019,
+      2021,
+      2025,
+      2035,
+      2037,
+      2047,
+      2055,
+      2067,
+      2072,
+      2075,
+      2080,
+      2089,
+      2104,
+      2118,
+      2121,
+      2123,
+      2145,
+      2151,
+      2153,
+      2163,
+      2173,
+      2198,
+      2203,
+      2220,
+      2224,
+      2240,
+      2248,
+      2252,
+      2258,
+      2260,
+      2265,
+      2271,
+      2274,
+      2277,
+      2280,
+      2284,
+      2290,
+      2292,
+      2297,
+      2308,
+      2315,
+      2332,
+      2361,
+      2368,
+      2370,
+      2372,
+      2383,
+      2387,
+      2389,
+      2405,
+      2413,
+      2417,
+      2421,
+      2426,
+      2443,
+      2457,
+      2473,
+      2475,
+      2490,
+      2501,
+      2508,
+      2517,
+      2520,
+      2524,
+      2533,
+      2535,
+      2538,
+      2544,
+      2550,
+      2565,
+      2583,
+      2617,
+      2619,
+      2622,
+      2625,
+      2641,
+      2653,
+      2662,
+      2667,
+      2673,
+      2682,
+      2686,
+      2693,
+      2699,
+      2706,
+      2710,
+      2713,
+      2719,
+      2724,
+      2732,
+      2744,
+      2746,
+      2748,
+      2750,
+      2756,
+      2764,
+      2776,
+      2779,
+      2783,
+      2786,
+      2793,
+      2803,
+      2809,
+      2816,
+      2822,
+      2832,
+      2837,
+      2856,
+      2869,
+      2871,
+      2901,
+      2921,
+      2926,
+      2950,
+      2955,
+      2963,
+      2967,
+      2969,
+      3005,
+      3014,
+      3018,
+      3022,
+      3037,
+      3049,
+      3063,
+      3069,
+      3072,
+      3078,
+      3080,
+      3101,
+      3104,
+      3111,
+      3115,
+      3117,
+      3128,
+      3138,
+      3157,
+      3170,
+      3183,
+      3187,
+      3192,
+      3214,
+      3247,
+      3259,
+      3274,
+      3279,
+      3283,
+      3285,
+      3287,
+      3289,
+      3292,
+      3299,
+      3302,
+      3315,
+      3321,
+      3334,
+      3353,
+      3356,
+      3359,
+      3363,
+      3367,
+      3373,
+      3377,
+      3390,
+      3397,
+      3400,
+      3403,
+      3415,
+      3420,
+      3427,
+      3437,
+      3443,
+      3449,
+      3458,
+      3464,
+      3480,
+      3482,
+      3484,
+      3487,
+      3491,
+      3494,
+      3512,
+      3526,
+      3536,
+      3550,
+      3552,
+      3558,
+      3562,
+      3565,
+      3583,
+      3591,
+      3597,
+      3599,
+      3605,
+      3616,
+      3627,
+      3630,
+      3664,
+      3666,
+      3677,
+      3679,
+      3687,
+      3698,
+      3705,
+      3718,
+      3733,
+      3737,
+      3749,
+      3755,
+      3773,
+      3777,
+      3788,
+      3791,
+      3796,
+      3802,
+      3807,
+      3813,
+      3816,
+      3824,
+      3829,
+      3850,
+      3869,
+      3879,
+      3882,
+      3895,
+      3916,
+      3924,
+      3929,
+      3936,
+      3940,
+      3943,
+      3947,
+      3958,
+      3982,
+      3997,
+      4017,
+      4019,
+      4038,
+      4047,
+      4066,
+      4069,
+      4075,
+      4082,
+      4084,
+      4089,
+      4092,
+      4102,
+      4105,
+      4108,
+      4110,
+      4116,
+      4123,
+      4146,
+      4149,
+      4158,
+      4162,
+      4173,
+      4190,
+      4193,
+      4195,
+      4216,
+      4240,
+      4249,
+      4254,
+      4270,
+      4282,
+      4295,
+      4319,
+      4334,
+      4339,
+      4344,
+      4366,
+      4368,
+      4377,
+      4385,
+      4389,
+      4404,
+      4408,
+      4432,
+      4440,
+      4464,
+      4470,
+      4472,
+      4478,
+      4492,
+      4510,
+      4519,
+      4521,
+      4525,
+      4528,
+      4530,
+      4542,
+      4552,
+      4559,
+      4568,
+      4570,
+      4576,
+      4580,
+      4583,
+      4591,
+      4593,
+      4601,
+      4604,
+      4616,
+      4620,
+      4624,
+      4651,
+      4662,
+      4664,
+      4674,
+      4676,
+      4678,
+      4680,
+      4690,
+      4711,
+      4719,
+      4725,
+      4730,
+      4734,
+      4742,
+      4753,
+      4756,
+      4760,
+      4763,
+      4767,
+      4769,
+      4773,
+      4784,
+      4789,
+      4814,
+      4816,
+      4820,
+      4834,
+      4836,
+      4844,
+      4851,
+      4858,
+      4860,
+      4866,
+      4871,
+      4876,
+      4891,
+      4893,
+      4901,
+      4904,
+      4919,
+      4924,
+      4933,
+      4935,
+      4948,
+      4956,
+      4958,
+      4962,
+      4967,
+      4969,
+      4980,
+      4985,
+      4990,
+      4997,
+      5005,
+      5020,
+      5028,
+      5036,
+      5038,
+      5043,
+      5055,
+      5063,
+      5069,
+      5078,
+      5085,
+      5091,
+      5094,
+      5101,
+      5109,
+      5126,
+      5137,
+      5142,
+      5144,
+      5148,
+      5155,
+      5178,
+      5193,
+      5199,
+      5203,
+      5207,
+      5211,
+      5214,
+      5220,
+      5230,
+      5235,
+      5241,
+      5250,
+      5259,
+      5269,
+      5275,
+      5280,
+      5292,
+      5297,
+      5301,
+      5303,
+      5311,
+      5315,
+      5317,
+      5323,
+      5339,
+      5342,
+      5345,
+      5362,
+      5401,
+      5411,
+      5418,
+      5431,
+      5434,
+      5467,
+      5471,
+      5480,
+      5489,
+      5500,
+      5504,
+      5514,
+      5516,
+      5524,
+      5526,
+      5534,
+      5538,
+      5546,
+      5548,
+      5557,
+      5564,
+      5566,
+      5573,
+      5577,
+      5581,
+      5583,
+      5590,
+      5592,
+      5601,
+      5606,
+      5611,
+      5617,
+      5627,
+      5646,
+      5649,
+      5655,
+      5686,
+      5704,
+      5706,
+      5710,
+      5721,
+      5735,
+      5762,
+      5768,
+      5775,
+      5787,
+      5802,
+      5820,
+      5823,
+      5835,
+      5837,
+      5841,
+      5863,
+      5866,
+      5873,
+      5904,
+      5909,
+      5913,
+      5922,
+      5925,
+      5942,
+      5948,
+      5958,
+      5969,
+      5975,
+      5979,
+      5981,
+      5983,
+      5986,
+      5991,
+      5999,
+      6009,
+      6021,
+      6036,
+      6039,
+      6044,
+      6049,
+      6055,
+      6062,
+      6066,
+      6077,
+      6080,
+      6082,
+      6092,
+      6101,
+      6109,
+      6113,
+      6117,
+      6124,
+      6127,
+      6129,
+      6132,
+      6138,
+      6141,
+      6157,
+      6162,
+      6166,
+      6171,
+      6174,
+      6193,
+      6196,
+      6200,
+      6202,
+      6211,
+      6217,
+      6220,
+      6239,
+      6244,
+      6261,
+      6265,
+      6267,
+      6273,
+      6278,
+      6286,
+      6297,
+      6304,
+      6322,
+      6327,
+      6344,
+      6346,
+      6351,
+      6356,
+      6362,
+      6364,
+      6369,
+      6377,
+      6409,
+      6414,
+      6419,
+      6422,
+      6424,
+      6431,
+      6434,
+      6442,
+      6452,
+      6477,
+      6479,
+      6488,
+      6490,
+      6493,
+      6498,
+      6506,
+      6511,
+      6527,
+      6530,
+      6532,
+      6543,
+      6551,
+      6558,
+      6561,
+      6567,
+      6578,
+      6588,
+      6595,
+      6598,
+      6600,
+      6610,
+      6658,
+      6665,
+      6671,
+      6680,
+      6689,
+      6693,
+      6695,
+      6709,
+      6725,
+      6728,
+      6732,
+      6736,
+      6758,
+      6763,
+      6768,
+      6783,
+      6788,
+      6797,
+      6803,
+      6817,
+      6842,
+      6852,
+      6859,
+      6861,
+      6866,
+      6882,
+      6885,
+      6888,
+      6891,
+      6896,
+      6899,
+      6904,
+      6908,
+      6917,
+      6920,
+      6923,
+      6930,
+      6946,
+      6956,
+      6964,
+      6970,
+      6977,
+      6979,
+      6991,
+      6996,
+      7001,
+      7013,
+      7015,
+      7035,
+      7037,
+      7040,
+      7044,
+      7046,
+      7052,
+      7060,
+      7062,
+      7073,
+      7077,
+      7095,
+      7098,
+      7103,
+      7116,
+      7122,
+      7124,
+      7127,
+      7130,
+      7137,
+      7139,
+      7145,
+      7161,
+      7164,
+      7172,
+      7178,
+      7195,
+      7197,
+      7202,
+      7204,
+      7207,
+      7215,
+      7217,
+      7225,
+      7232,
+      7239,
+      7241,
+      7256,
+      7258,
+      7260,
+      7276,
+      7278,
+      7290,
+      7295,
+      7297,
+      7316,
+      7323,
+      7330,
+      7333,
+      7336,
+      7348,
+      7350,
+      7359,
+      7368,
+      7378,
+      7382,
+      7397,
+      7416,
+      7419,
+      7422,
+      7427,
+      7429,
+      7436,
+      7438,
+      7445,
+      7450,
+      7452,
+      7460,
+      7466,
+      7470,
+      7494,
+      7512,
+      7514,
+      7521,
+      7523,
+      7528,
+      7531,
+      7538,
+      7540,
+      7542,
+      7550,
+      7562,
+      7573,
+      7581,
+      7609,
+      7622,
+      7631,
+      7634,
+      7637,
+      7642,
+      7649,
+      7659,
+      7663,
+      7673,
+      7685,
+      7693,
+      7695,
+      7708,
+      7711,
+      7724,
+      7740,
+      7749,
+      7760,
+      7763,
+      7768,
+      7778,
+      7785,
+      7796,
+      7800,
+      7802,
+      7805,
+      7809,
+      7812,
+      7821,
+      7823,
+      7829,
+      7833,
+      7850,
+      7861,
+      7865,
+      7870,
+      7873,
+      7879,
+      7881,
+      7883,
+      7888,
+      7893,
+      7897,
+      7910,
+      7923,
+      7925,
+      7938,
+      7941,
+      7954,
+      7977,
+      7987,
+      7999,
+      8001,
+      8004,
+      8007,
+      8014,
+      8018,
+      8020,
+      8024,
+      8030,
+      8036,
+      8045,
+      8049,
+      8057,
+      8062,
+      8066,
+      8079,
+      8081,
+      8091,
+      8097,
+      8100,
+      8102,
+      8104,
+      8114,
+      8119,
+      8126,
+      8135,
+      8163,
+      8166,
+      8171,
+      8187,
+      8207,
+      8215,
+      8223,
+      8226,
+      8229,
+      8231,
+      8235,
+      8244,
+      8312,
+      8324,
+      8330,
+      8344,
+      8353,
+      8384,
+      8386,
+      8388,
+      8393,
+      8401,
+      8412,
+      8415,
+      8424,
+      8430,
+      8445,
+      8468,
+      8473,
+      8475,
+      8480,
+      8487,
+      8497,
+      8502,
+      8504,
+      8514,
+      8529,
+      8538,
+      8553,
+      8556,
+      8565,
+      8572,
+      8577,
+      8582,
+      8592,
+      8599,
+      8615,
+      8619,
+      8630,
+      8653,
+      8656,
+      8658,
+      8664,
+      8676,
+      8678,
+      8683,
+      8687,
+      8698,
+      8720,
+      8747,
+      8756,
+      8771,
+      8785,
+      8807,
+      8813,
+      8815,
+      8822,
+      8830,
+      8840,
+      8844,
+      8846,
+      8852,
+      8856,
+      8860,
+      8863,
+      8879,
+      8882,
+      8890,
+      8902,
+      8922,
+      8943,
+      8948,
+      8950,
+      8976,
+      8986,
+      8990,
+      9001,
+      9007,
+      9023,
+      9029,
+      9031,
+      9038,
+      9050,
+      9052,
+      9055,
+      9059,
+      9070,
+      9093,
+      9097,
+      9110,
+      9118,
+      9121,
+      9138,
+      9149,
+      9151,
+      9171,
+      9174,
+      9194,
+      9199,
+      9203,
+      9210,
+      9219,
+      9221,
+      9224,
+      9228,
+      9237,
+      9256,
+      9258,
+      9266,
+      9269,
+      9283,
+      9296,
+      9308,
+      9312,
+      9318,
+      9327,
+      9329,
+      9332,
+      9338,
+      9346,
+      9356,
+      9359,
+      9377,
+      9381,
+      9384,
+      9387,
+      9389,
+      9394,
+      9406,
+      9408,
+      9438,
+      9456,
+      9459,
+      9461,
+      9463,
+      9468,
+      9478,
+      9487,
+      9490,
+      9496,
+      9504,
+      9528,
+      9538,
+      9542,
+      9548,
+      9563,
+      9569,
+      9571,
+      9589,
+      9593,
+      9599,
+      9616,
+      9622,
+      9626,
+      9638,
+      9659,
+      9661,
+      9663,
+      9671,
+      9673,
+      9680,
+      9691,
+      9693,
+      9702,
+      9705,
+      9710,
+      9730
+    ],
+    "fixed_schedule_check": {
+      "checked_selections": 1200,
+      "requested_selections": 1200,
+      "surviving_initial_seeds": [
+        0,
+        22026
+      ]
+    }
+  },
+  "video_independent_uniform_heuristic_only": {
+    "seven_to_minus_1200": "7.626969029853725255460476179053639417830E-1015",
+    "ten_to_155_times_that": "7.626969029853725255460476179053639417830E-860",
+    "qualification": "These numbers follow the video's probability model, not the deterministic game's exact probability or an impossibility proof"
+  }
+}

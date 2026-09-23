@@ -24,6 +24,14 @@ current request.
       observation, with loaded instruction checks and cheats disabled.
 - [ ] Obtain ordinary save/checkpoint provenance for a normal-entry experiment.
 - [x] Review the user-supplied cog video and record its overlays and limitations.
+- [x] Re-review the video's 1,200-selection probability and state-count argument;
+      cross-check the generated scalar RNG on all 65,536 inputs against pinned C,
+      enumerate fixed-gap maxima and implement an exact prescribed-schedule
+      seed filter. Keep those [finite checks](notes/ttc-cog-video-rng-sequence.md)
+      distinct from a complete TTC scheduler or impossibility theorem.
+- [ ] Derive candidate draw schedules from the actual RNG-dependent object
+      transitions and update order, with explicit preparation/reachability
+      coverage; do not hold one observed schedule fixed while varying seeds.
 - [x] Run the authorized near-cog placement experiment in US and JP with three
       declared initial setups and stock behavior functions; record failed entries.
 - [x] Export and replay the US ledge-to-lower-cog controller sequence, reproducing
