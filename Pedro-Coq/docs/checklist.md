@@ -64,6 +64,11 @@ current request.
       preserved geometry/Mario state; discharge whole-game noninterference,
       boundary coverage and Clight execution/refinement before using them to
       replace the full seed-sweep state or certify all preparations.
+- [x] Quantify the [search-space comparison](notes/ttc-cog-state-reduction.md#what-is-our-search-space-now):
+      distinguish the implemented 131,072-case RANDOM family, local transition
+      validation counts and hypothetical video/local hybrid products. Record
+      approximately 2.24e152 or 2.52e152 non-seed hybrid combinations without
+      claiming a certified total preparation count or new scheduler timing.
 - [ ] Recapture and validate a declared family of those pause boundaries,
       including their actual cog geometry and complete Mario continuation,
       before treating the phase census as a preserving seed-sweep input family.

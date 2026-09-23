@@ -39,3 +39,14 @@ These are **host finite checks**, not CompCert `exec_stmt` derivations or a
 verified interpreter. No Coq theorem or capstone premise is discharged. See
 the [report](../../docs/notes/ttc-cog-state-reduction.md) for exact domains,
 the timer boundary, composition requirements and the geometry counterexamples.
+
+`count_space.py` separately reproduces the arithmetic comparison with the
+video's product from committed receipts:
+
+```sh
+python3 Pedro-Coq/instrumentation/ttc-cog-state-reduction/count_space.py
+```
+
+It writes `docs/notes/ttc-cog-search-space-results.json`. The hypothetical
+hybrids retain every other video factor; they are not complete-state counts,
+new game executions, or benchmarks of a reduced scheduler.

@@ -1,0 +1,72 @@
+{
+  "evidence_class": "exact integer products and conditional timing arithmetic; no new execution or proof",
+  "source_pin": "9921382a68bb0c865e5e45eb594d9c64db59b1af",
+  "input_sha256": {
+    "ttc-cog-preparation-count-results.json": "668e52ef5db9abdba1ceaea3edb80e748ab65097fbbfc759c2b585059422a241",
+    "ttc-cog-state-reduction-results.json": "457788f3e9d194b668379485eb79d16b2eeb487cf6efbca4ecae18c4e6f6a28d"
+  },
+  "inherited_video_multiplicities": {
+    "cogs_and_spinning_triangles": 8,
+    "spinners": 14
+  },
+  "unchanged_other_video_factors_exact": "551831225992325065003593461614181663779957613530404869623243758750404227706774775398400000000000000000",
+  "variants": [
+    {
+      "name": "video",
+      "cog_states_each": 259,
+      "spinner_states_each": 121,
+      "cog_spinner_cartesian_product_exact": "2920070232556990338761762943027203756259320156401",
+      "cog_spinner_cartesian_product_scientific": "2.920070232556990E+48",
+      "non_seed_product_exact": "1611385936415617744289242342417853557941140585661200398153617665127273794181882659512766994106504241580854658678985328713994735085158400000000000000000",
+      "non_seed_product_scientific": "1.611385936415618E+150",
+      "times_video_nonseed": "1",
+      "with_65114_seeds_per_version": "1.049237838637665E+155",
+      "with_65536_seeds_per_version": "1.056037887289339E+155",
+      "conditional_us_jp_full_sweep_years": "1.472790178524775E+145"
+    },
+    {
+      "name": "hybrid_recurrent",
+      "cog_states_each": 480,
+      "spinner_states_each": 121,
+      "cog_spinner_cartesian_product_exact": "406373223020129008184333971830558303033753600000000",
+      "cog_spinner_cartesian_product_scientific": "4.063732230201290E+50",
+      "non_seed_product_exact": "224249433869650325193565342417231339411510093369801106100328902604402911139560801789197876730162871202542262244824645974087434240000000000000000000000000",
+      "non_seed_product_scientific": "2.242494338696503E+152",
+      "times_video_nonseed": "139.16556474886016821354805395359501495235010119594065673097917026",
+      "with_65114_seeds_per_version": "1.460177763698841E+157",
+      "with_65536_seeds_per_version": "1.469641089808140E+157",
+      "conditional_us_jp_full_sweep_years": "2.049616769509748E+147"
+    },
+    {
+      "name": "hybrid_extended_spinner",
+      "cog_states_each": 480,
+      "spinner_states_each": 122,
+      "cog_spinner_cartesian_product_exact": "456002820027862520963258454899168846964326400000000",
+      "cog_spinner_cartesian_product_scientific": "4.560028200278625E+50",
+      "non_seed_product_exact": "251636595231932937100713699714273618747287395544943471121354728577712780440612139148444101857480645103327726699742893017147637760000000000000000000000000",
+      "non_seed_product_scientific": "2.516365952319329E+152",
+      "times_video_nonseed": "156.16159328762405678207265988956983240775061806105257638583964799",
+      "with_65114_seeds_per_version": "1.638506526193208E+157",
+      "with_65536_seeds_per_version": "1.649125590511996E+157",
+      "conditional_us_jp_full_sweep_years": "2.299932608567931E+147"
+    }
+  ],
+  "timing": {
+    "seconds_per_full_us_jp_preparation_pair": "288.4332194259987",
+    "days_per_year": "365.25",
+    "meaning": "arithmetic at the prior full-game early-rejection sweep rate; not a reduced-scheduler benchmark or runtime guarantee"
+  },
+  "implemented_random_sweep": {
+    "preparation_pairs": 1,
+    "seeds_per_version": 65536,
+    "us_jp_seed_cases": 131072,
+    "complete_in_spot_preparation": false
+  },
+  "limits": [
+    "Hybrids replace only the eight cog-like and fourteen spinner factors; all other video counts remain unproved assumptions.",
+    "Local scheduling equivalence has not been composed with actual activation, ordering, geometry or Mario preservation.",
+    "Cartesian products need not be jointly reachable or complete for the real game; they are neither certified upper nor lower bounds.",
+    "447296 counts prior local validation comparisons, not full-game preparations or seed cases.",
+    "No new certified total full-game preparation count, solver speedup or 1200-update RANDOM witness follows."
+  ]
+}

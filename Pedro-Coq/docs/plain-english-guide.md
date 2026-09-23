@@ -580,6 +580,37 @@ local reduction cannot be applied again to shrink its huge product. No
 certified total preparation count or new runtime bound follows yet, and
 the preserving 1,200-update RANDOM target remains open.
 
+### What is our search space now?
+
+**We do not yet have a certified whole-game preparation count replacing the
+video's model.** Our implemented full-state search varies 65,536 seeds in one
+captured RANDOM preparation per version: 131,072 US/JP executions, measured
+at about 4 minutes 48 seconds. It keeps the rest of the modeled state and
+starts Mario on the ledge. The 447,296 checks in the local reduction audit
+are validation cases, not full-game preparations.
+
+For a like-for-like arithmetic comparison, keep the video's other factors
+and replace its eight 259-state cog-like factors with 480:
+`K_hybrid = K_video * (480/259)^8`. This gives about **`2.24 * 10^152`
+non-seed combinations**, or **`1.47 * 10^157`** with all 65,536 seeds per
+version. Applying the old full US/JP sweep rate gives **`2.05 * 10^147`
+years**. Including the broader 122-state spinner domain gives respectively
+`2.52 * 10^152`, `1.65 * 10^157` and `2.30 * 10^147` years.
+
+These hypothetical hybrid products are about 139 or 156 times the video's
+non-seed product. The 480-state cog reduction starts from 637 pairs, not
+the video's 259 states, and the video already used 121 spinner states.
+Thus "reduction" describes the raw-local-model comparison (about 24.65%
+fewer cog states); it did not mean a reduction of the video's already
+compressed table. The apparent increase is a change of baseline, not evidence
+that the actual gameplay search has grown.
+The [comparison and arithmetic receipt](notes/ttc-cog-state-reduction.md#what-is-our-search-space-now)
+therefore do not show a global search-space reduction. All other video
+factors, composition, geometry and reachability still need validation;
+the timings reuse the old early-failure rate and do not benchmark a new
+reduced scheduler. Neither hybrid is a certified bound on the full search,
+and the preserving 1,200-update RANDOM target remains open.
+
 ### Why did both sweeps report only three updates?
 
 **The video and the sweeps use different success conditions.** The video
