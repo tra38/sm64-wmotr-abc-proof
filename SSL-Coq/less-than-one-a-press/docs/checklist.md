@@ -22,7 +22,12 @@ Those initializer and return theorems are complete under their stated
 conditions. The remaining list is a set of separately scoped extensions,
 not one bounded batch or evidence of additional gameplay glitches. Fix the
 claim and its conditions before more proof work; importing a local result
-does not itself discharge a route obligation.
+does not itself discharge a route obligation. The user has now selected
+the [accepted-warp position checkpoint](notes/f02-warp-acceptance-target.md):
+immediately after the upper SSL warp is accepted, still in Area 1 and before
+the disappearing action executes. Test disagreement there and report the
+subsequent Area-1 platform capture separately. The scope does not require
+the gap to survive into Area 2 or establish star collection.
 For a consolidated account of which results the impossibility argument uses
 and which live connections remain, see the
 [impossibility-proof progress ledger](impossibility-proof-progress.md).

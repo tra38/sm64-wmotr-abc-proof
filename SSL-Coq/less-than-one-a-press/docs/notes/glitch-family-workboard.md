@@ -74,17 +74,17 @@ Sources: [The four possible stall causes, checked](../../docs/notes/rank10a-live
 
 **Primary ranks:** [1](../no-a-route-atlas.md#route-rank-1), [2](../no-a-route-atlas.md#route-rank-2), [5](../no-a-route-atlas.md#route-rank-5), [5A](../no-a-route-atlas.md#route-rank-5a), [6](../no-a-route-atlas.md#route-rank-6), [13](../no-a-route-atlas.md#route-rank-13), [13A](../no-a-route-atlas.md#route-rank-13a), [13B](../no-a-route-atlas.md#route-rank-13b), [18](../no-a-route-atlas.md#route-rank-18). **Work:** Last-writer proof + frame-by-frame trace.
 
-**The question.** Can movement, collision and display positions disagree at the right checks, without the next ordinary copy erasing the advantage?
+**The question.** Can an allowed no-new-A continuation reach the instant just after the upper SSL warp is accepted, still in Area 1, with movement, collision and stored display positions not all equal? This is the user's chosen checkpoint for testing Ink installation; it is not Area-2 arrival.
 
 **What is already known.** The supplied JP Ink setup works through the warp. All 2,462 frames of the clean pillar run lack the useful split. The full platform phase preserves display and collision coordinates, and the wrong second-state copy is excluded in the initialized model. The particle-copy tail preserves Mario when the spawned particle occupies a different valid slot. The complete nonempty US/JP allocator now returns its entry free-list slot, and the full initializer protects all other Object slots as well as separate State storage. Entry flags give a conditional separation test; the full-pool lookup is read-only. A “child” is a spawned effect, not a second Mario. Preservation during earlier graph/list operations and live ownership remain open.
 
-**First compute batch.** The initializer bounds and nonempty-return batch is complete under its stated conditions. Earlier list/graph effects, live ownership, full-pool eviction, spawning wrappers and later callbacks are separate extensions, not one bounded follow-up. Before selecting another batch, fix its exact execution interval, concrete entry conditions and required conclusion, and state which route obligation it would discharge. Do not reopen the completed initializer claim merely because the broader F02 question remains open.
+**First compute batch.** Use the successful upper-warp interaction return, after it selects the disappeared action and before that action executes. Work backward from its three position readings through geometry preparation and the last ordinary copy. For Ink, check the useful first miss and top selection; report the final Area-1 platform capture separately. The allocator proofs remain completed components, not the batch's finish line. Do not extend this target to Area-2 arrival or star collection.
 
-**What a negative result would settle.** Show that the chosen interval cannot create a useful split from synchronized records. A separate pre-action or dialog interval needs its own proof; combine them only when their boundaries match.
+**What a negative result would settle.** Exclude the chosen accepted-warp disagreement under the precisely stated start and execution conditions. A local producer exclusion or finite failed search closes only its own domain. Mere later synchronization does not exclude Ink: capture can survive after the positions agree again.
 
-**What a useful exception must show.** The first ordinary position write or skipped copy that creates the required disagreement, plus a replay showing that the next contact/query consumes it before it is refreshed.
+**What a useful exception must show.** A controller-produced predecessor, successful upper-warp acceptance and simultaneous position readings at the chosen return. Movement = display with collision still low qualifies; all three need not differ. A claim of Ink installation additionally needs the useful top captured by the final Area-1 platform query. An arbitrary gap alone earns only the disagreement verdict.
 
-**What stays open.** Do not try to disprove movement while the display survives: conditional trials already show that. The unresolved claim is the useful combination of floor loss, contact, display and timing.
+**What stays open.** The supplied JP setup already demonstrates conditional capture and later payoff, but it does not construct its gameplay predecessor or record this exact interaction-return checkpoint. The negative-depth and valid reward grants remain diagnostic only; they do not grant the useful split, contact, floor loss or timing. This scope decision adds no new proof.
 
 **Work size.** The completed local claims have a fixed scope. The remaining family is broad, and we do not have a justified estimate for completing its universal gameplay claim.
 
@@ -93,6 +93,8 @@ Sources: [The four possible stall causes, checked](../../docs/notes/rank10a-live
 **Also helps [19](../no-a-route-atlas.md#route-rank-19), [20](../no-a-route-atlas.md#route-rank-20), [21](../no-a-route-atlas.md#route-rank-21), [25](../no-a-route-atlas.md#route-rank-25).** A raised display helps only if its gap survives until the useful query and contact.
 
 Sources: [The successful supplied JP Ink setup](../../docs/notes/ink-vertical-installation.md); [Complete platform phase preserves display and collision coordinates](../../proofs/InkPlatformMovement.v); [Real second-query connection](../../proofs/InkRetryQuery.v); [Late State writers](../../docs/notes/rank5-state-split-trace.md); [Child-copy execution and its allocation boundary](f02-postcopy-child-frame.md); [Allocator proofs and remaining ownership/bounds](f02-allocation-boundary.md); [Copy and interaction audit](../../docs/notes/area1-ranks13-18-copy-interaction-audit.md); [Player and floor-owner boundaries](../../docs/notes/rank1-player-floor-owner-residual.md); [Route atlas](../../docs/no-a-route-atlas.md).
+
+The [fixed warp-acceptance target](f02-warp-acceptance-target.md) gives the exact checkpoint, conditions, candidate coordinates and completion criteria.
 
 <a id="display-seed"></a>
 
