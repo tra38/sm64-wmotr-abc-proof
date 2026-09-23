@@ -471,7 +471,21 @@ legal TTC schedule is established by that relaxation. A seed search for the
 real game must recompute the objects' future decisions for each seed, then
 check preservation and entry. A constraint solver over those transitions
 could avoid naive enumeration of every state combination, but is not yet
-implemented and has no guaranteed success or running time.
+implemented. The [tractability investigation](notes/ttc-cog-scheduler-tractability.md)
+sharpens its possible guarantees. For one fully fixed non-RNG state and input
+continuation, all 65,536 seeds require at most **78,643,200 frame evaluations**
+over a 1,200-update window. Each seed generates its own object schedule; its
+later random draws are not new independent search choices. This bound assumes
+a faithful terminating update evaluator, includes no wall-clock promise, and
+does not establish that the initial states are reachable.
+
+Allowing `K` different preparations multiplies that count by `K`. Freely
+varying more initial bits or future inputs can make the search exponential.
+SAT/SMT and early rejection offer no general polynomial-time guarantee. A
+proved small equivalent-state space or suitable constraint structure could
+give a stronger bound, but neither is established for the full TTC search.
+This investigation adds an algorithmic bound, not an implemented scheduler,
+runtime benchmark, Coq theorem or successful RANDOM-mode hold.
 
 The video's `7^-1200` estimate assumes independent uniform selections. Its
 state count and waiting-time extrapolation are not an exact impossibility

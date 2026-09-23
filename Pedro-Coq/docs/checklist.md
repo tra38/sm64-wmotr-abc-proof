@@ -33,6 +33,13 @@ current request.
 - [ ] Derive candidate draw schedules from the actual RNG-dependent object
       transitions and update order, with explicit preparation/reachability
       coverage; do not hold one observed schedule fixed while varying seeds.
+- [x] Investigate [scheduler tractability](notes/ttc-cog-scheduler-tractability.md):
+      derive the conditional seed-only frame-count bound, distinguish the
+      larger preparation/input search, and identify the unproved transition
+      cost, state-reduction and structural premises for stronger guarantees.
+- [ ] Implement and validate the actual per-seed continuation for a small
+      declared initial-state family; record coverage, execution costs and
+      unknown cases before making an elapsed-time or whole-family claim.
 - [x] Run the authorized near-cog placement experiment in US and JP with three
       declared initial setups and stock behavior functions; record failed entries.
 - [x] Export and replay the US ledge-to-lower-cog controller sequence, reproducing

@@ -175,6 +175,13 @@ guaranteed tractability. A satisfying assignment would still need replay and
 reachability checks. An unsatisfiable result would apply only to the modeled
 initial-state family and proven coverage.
 
+The subsequent [tractability investigation](ttc-cog-scheduler-tractability.md)
+gives a conditional `65,536 * 1,200` frame-evaluation bound when only the seed
+varies and every other initial component and input is fixed. It does not give
+a wall-clock bound or a practical guarantee for searching all preparations.
+Future RNG-dependent scheduling creates one continuation per seed, not a new
+independent choice at every draw.
+
 **Implemented here:** generated-scalar/C cross-checks, fixed-stride exhaustive
 analysis and a prescribed-schedule seed filter. **Not implemented or proved
 here:** a complete TTC scheduler solver, all-preparation coverage, or a legal
