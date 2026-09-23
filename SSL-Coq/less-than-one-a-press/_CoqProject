@@ -591,3 +591,7 @@ proofs/Area1AllocationChoice.v
 proofs/Area1AllocationBlockFrame.v
 proofs/Area1AllocationInitialization.v
 proofs/Area1AllocationCallback.v
+proofs/Area1SlotExpressions.v
+proofs/Area1SlotWriteCheck.v
+proofs/Area1AllocationSlotFrame.v
+proofs/Area1AllocationReturn.v

@@ -7,6 +7,10 @@ collision or display records. This is a conditional execution proof for both
 generated US and JP programs, not a claim that all spawning or the whole
 remaining frame is harmless. The F02 family remains open.
 
+Here “child” means a spawned particle or effect, not another Mario. Mario
+still occupies one Object slot. The particle occupies another and receives
+a copy of his position; it is not a second player or a second Mario slot.
+
 ## What was missing
 
 The earlier callback inventory found nine direct receiver-taking position
@@ -67,10 +71,12 @@ unchanged subjective estimates.
 The package is consumed by the existing Rank-5 boundary and exported as
 `MainTheorem.current_f02_postcopy_child_boundary`. The
 [follow-up proofs](f02-allocation-boundary.md) now track a nonempty allocator's
-returned slot, give an explicit flag-based freshness test, frame initialization
-against separate State storage, and close the read-only full-pool lookup.
-Shared-pool slot bounds, graph/list and eviction effects, live ownership,
-the complete spawn chain and remaining callbacks still need proof.
+entry free-list slot through the complete nonempty allocator return, give
+an explicit flag-based freshness test, and frame the full initializer
+against separate State storage and other slots in the same Object pool.
+The full-pool lookup is read-only. Earlier graph/list and eviction effects,
+live ownership, the complete spawn chain and remaining callbacks still need
+proof; initializer preservation starts after those earlier list operations.
 
 ## Validation
 

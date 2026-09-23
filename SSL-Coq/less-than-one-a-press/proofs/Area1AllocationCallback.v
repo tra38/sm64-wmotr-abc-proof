@@ -5,7 +5,7 @@ From Coq Require Import List ZArith.
 From compcert Require Import AST Clight ClightBigstep Clightdefs Cop Ctypes
  Events Globalenvs Integers Maps Memory Values.
 From LessThanOneAPress.Proofs Require Import GameTypes Area1AllocationSource
- Area1AllocationInitialization Area1AllocationChoice Area1PostCopyParticleExecution
+ Area1AllocationInitialization Area1AllocationSlotFrame Area1SlotWriteCheck Area1AllocationChoice Area1PostCopyParticleExecution
  OrdinaryArea1EntryMemory InkBackwardExecution ContactConsumerExecution
  ObjectContactNecessity SecretContactExecution SelectedClightTarget.
 Import ListNotations.
@@ -120,9 +120,14 @@ Proof.
 Qed.
 
 (** This package keeps the proved pieces separate from live free/active
-    ownership, same-pool write bounds and the rest of the scheduler. *)
+    ownership, earlier list effects and the rest of the scheduler. *)
 Record Area1PostCopyAllocationCheckedBoundary : Prop := {
  pca_copy_boundary : Area1PostCopyParticleCheckedBoundary;
+ pca_initializer_same_pool_frame : forall version le m ob slot t le' after out,
+   (slot < object_pool_capacity)%nat ->
+   le ! PAS._obj = Some (Vptr ob (Ptrofs.repr (object_slot_offset slot))) ->
+   ocn_exec (Clight.globalenv (selected_clight_target version)) empty_env le m
+     (pai_initializer version) t le' after out -> asw_frame ob slot m after;
  pca_nonempty_slot_origin : forall version m dest fb fo ob oo t after result,
    Mem.load Mint32 m fb (Ptrofs.unsigned (Ptrofs.add fo (Ptrofs.repr 96))) = Some (Vptr ob oo) ->
    ClightBigstep.Clight2.eval_funcall (Clight.globalenv (selected_clight_target version))
@@ -154,6 +159,7 @@ Theorem area1_postcopy_allocation_checked_boundary_holds : Area1PostCopyAllocati
 Proof.
  constructor.
  - exact area1_postcopy_particle_checked_boundary_holds.
+ - exact asf_actual_initializer_frames_other_slots.
  - exact pac_try_call_result_origin.
  - exact pac_free_head_flags_exclude_mario.
  - exact paf_actual_allocator_reaches_initializer.

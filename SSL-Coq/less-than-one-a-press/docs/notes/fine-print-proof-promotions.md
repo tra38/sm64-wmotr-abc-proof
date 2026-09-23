@@ -18,12 +18,16 @@ other callbacks and the rest of the post-copy interval. This is new proof
 work, unlike simply promoting an older result's presentation.
 
 The [allocator follow-up](f02-allocation-boundary.md) also belongs in Section
-01, with its limits visible. It proves the nonempty result's origin, a
-flag-based conditional freshness test, the complete initializer's frame
-for separate State storage, and the read-only full-pool lookup. It does
-not frame Mario's neighboring Object slot during initialization or prove
-live ownership, graph/list effects, unloading, the complete spawn chain,
-or the remaining callbacks. Those stay in Section 03 and the workboard.
+01, with its limits visible. The stronger result now follows the free-list
+head through the complete nonempty allocator call, carries the explicit
+flag-based separation test to that return, and bounds every initializer
+write within the selected valid slot. Other shared-pool slots and separate
+State storage are protected during initialization, including the real matrix
+helper. The read-only full-pool lookup remains proved. Live ownership,
+earlier graph/list effects, unloading, the complete spawn chain and the
+remaining callbacks stay in Section 03 and the workboard. This strengthens
+the existing card; it does not add a route closure. “Child” means a spawned
+particle or effect, not a second Mario.
 
 ## The 20 September promotion
 

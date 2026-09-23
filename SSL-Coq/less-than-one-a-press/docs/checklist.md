@@ -13,9 +13,11 @@ To choose a bounded investigation shared by several ranks, use the
 ranks to 11 gameplay families and three supporting or scope workstreams;
 its first-batch targets separate plans from checked parts. F02 now has a
 [checked child-copy tail](notes/f02-postcopy-child-frame.md) and
-[allocator pieces](notes/f02-allocation-boundary.md). Same-pool initialization
-bounds, live ownership, graph/list effects, eviction and the remaining
-post-copy interval are still open.
+[allocator pieces](notes/f02-allocation-boundary.md). The full initializer's
+same-pool bounds and the complete nonempty allocator's returned-slot
+connection are now proved. Live ownership, earlier graph/list effects,
+eviction, the spawning wrappers and the remaining post-copy interval are
+still open. “Child” here means a spawned particle, not another Mario.
 For a consolidated account of which results the impossibility argument uses
 and which live connections remain, see the
 [impossibility-proof progress ledger](impossibility-proof-progress.md).
@@ -501,11 +503,12 @@ These obligations currently block the clean-retail result.
   connects the real particle allocation-and-copy segment to the returned
   child and proves the complete position-and-angle copy tail preserves
   Mario's distinct valid Object slot and separate State. The new allocator
-  package follows the nonempty free-list result, derives distinctness from
-  explicit free/active flag loads, frames the whole initializer and its matrix
-  helper against separate State storage, and closes the read-only eviction
-  lookup. Still prove initialization's bounds within a shared-pool slot,
-  graph/list and unloading effects, live ownership, and the returned-child
+  package follows the entry free-list slot through the complete nonempty
+  allocator return, derives distinctness from explicit free/active flag
+  loads, frames the whole initializer and its matrix helper against both
+  separate State and other slots of the same Object pool, and closes the
+  read-only eviction lookup. Still prove earlier graph/list and unloading
+  effects, live ownership, and the returned-particle
   connection through the spawning wrappers. Current-node identity, other
   callbacks and lifecycle/retarget aliasing remain open. See the
   [allocation boundary](notes/f02-allocation-boundary.md).

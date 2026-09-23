@@ -20,7 +20,14 @@ Completed work is grouped by subject. Each item retains its original scope warni
   free/active flag loads. Live ownership and lifetime are not proved.
 - [x] Connect the real allocator to its initializer and prove the complete
   initializer, including `mtxf_identity`, preserves separate State storage.
-  The stronger frame between slots in the same Object pool remains open.
+- [x] Strengthen that initializer frame to every other slot in the same
+  Object pool. The actual US/JP 80-field clearing loop, all scalar writes
+  and both matrix loops stay inside the selected valid 608-byte slot.
+  Earlier graph/list effects are outside this preservation interval.
+- [x] Follow the entry free-list head through the complete nonempty
+  `allocate_object` call to its final returned slot. That branch skips
+  eviction. Explicit inactive-head and active-Mario entry flags imply
+  different slots; the live ownership invariant is still open.
 - [x] Prove the real full-pool lookup preserves memory, and that the
   exhaustion spin has no completed execution. Eviction/unloading and other
   callbacks remain open. See the [exact scope](notes/f02-allocation-boundary.md).

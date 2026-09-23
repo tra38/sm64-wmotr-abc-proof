@@ -15,7 +15,7 @@ From LessThanOneAPress.Proofs Require Import
   Area1Rank1SixResidualAudit
   InkTimer131RetailMipsFrames Area1SurfacePoolRangeSeparation
   Area1Rank1LiveBoundaryReceipt Area1Rank1UpperWarpTraceReceipt
-  Area1Rank4WarpTopTraceReceipt Area1Rank5StateSplitTraceReceipt Area1PostCopyParticleExecution Area1AllocationCallback
+  Area1Rank4WarpTopTraceReceipt Area1Rank5StateSplitTraceReceipt Area1PostCopyParticleExecution Area1AllocationCallback Area1AllocationReturn
   Area1Rank18CopyResolution Area1Ranks13To18TraceReceipt
   InkTimer131RealEntryPrefix InkTimer131PostEntryMachineTrace TurningAnimation
   NegativeDepthInteractionClosure NegativeDepthDefinedProducerClosure
@@ -203,11 +203,17 @@ Proof. exact area1_rank5_state_split_trace_checked_boundary_holds. Qed.
 Theorem current_f02_postcopy_child_boundary : Area1PostCopyParticleCheckedBoundary.
 Proof. exact area1_postcopy_particle_checked_boundary_holds. Qed.
 
-(** Nonempty allocation result, explicit flag-based freshness, reached
-    initializer frame for separate State, and the read-only eviction lookup.
-    The Object-pool slot frame and live ownership remain open. *)
+(** The reached initializer now preserves all other slots of the same Object
+    pool, as well as separate State. Earlier list/graph effects, live ownership
+    and full-pool eviction effects remain open. *)
 Theorem current_f02_allocation_boundary : Area1PostCopyAllocationCheckedBoundary.
 Proof. exact area1_postcopy_allocation_checked_boundary_holds. Qed.
+
+(** In the actual nonempty allocator call, the entry free-list head reaches
+    initialization and return unchanged. Inactive-head and active-Mario flags
+    at that entry give explicit slot separation; their live invariant is open. *)
+Theorem current_f02_allocation_slot_boundary : Area1AllocationSlotCheckedBoundary.
+Proof. exact area1_allocation_slot_checked_boundary_holds. Qed.
 
 (** The route-matched replay now watches every raw-Object coordinate store,
     every interaction dispatch/return, the copy index and three readbacks,
