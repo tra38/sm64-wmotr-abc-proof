@@ -46,6 +46,14 @@ current request.
       Distinguish SAT expressibility from TTC NP-completeness and runtime.
 - [ ] Benchmark the actual spot-preservation predicate on a declared broader
       family before extending those timing projections or claiming SAT speedups.
+- [x] Audit [preparation counts](notes/ttc-cog-preparation-count.md): distinguish
+      the literal fixed-state execution, the video's unproved non-seed product
+      (about 1.61e150), 26 matched-prefix pause opportunities and 196 US-survey
+      opportunities. Record conditional costs and avoid treating them as valid
+      in-spot states, all reachable preparations or a necessary search size.
+- [ ] Recapture and validate a declared family of those pause boundaries,
+      including their actual cog geometry and complete Mario continuation,
+      before treating the phase census as a preserving seed-sweep input family.
 - [x] Implement the [bounded offline seed sweep](notes/ttc-cog-seed-sweep.md)
       over three explicit STOPPED-derived RANDOM snapshots per version, with
       fixed inputs and actual compiled per-seed object scheduling. Calibrate

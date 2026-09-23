@@ -516,6 +516,37 @@ or measured solver speedup yet. Other objects' initial states add preparations;
 their subsequent draws are determined once the complete state, inputs and
 seed are fixed. The preserving RANDOM-mode target remains open.
 
+### How many preparations would that mean?
+
+If the **complete state, seed and future inputs are all fixed**, there is one
+execution per version. The earlier table fixes them per candidate, then varies
+the non-seed state between preparations and the seed within a preparation.
+Object timers and activation are already part of the complete state.
+
+The [preparation-count audit](notes/ttc-cog-preparation-count.md) recomputes
+the video's 4:00 table. Its approximately `1.0492 * 10^155` total already
+includes 65,114 seeds; factoring those out gives about **`1.61 * 10^150`
+non-seed combinations**. Applying our conditional full-seed US/JP timing to
+that product gives about **`1.47 * 10^145` years**. The product has no proved
+reachability or complete-state coverage, so this is not a necessary trial
+count, a time lower bound or an impossibility result for a better solver.
+
+A bounded existing family is countable. The matching 845-boundary US/JP
+replay prefixes contain **26** distinct boundaries where either selected cog
+meets the zero-target pause filter: 10 for the lower, 17 for the upper, with
+one overlap. The longer 11,625-boundary **US-only** survey contains **196**:
+107 lower, 90 upper, one overlap. At unchanged sweep cost, 26 preparation
+pairs project to **2.08 hours** and a hypothetical 196-pair extension to
+**15.70 hours**, excluding capture and validation.
+
+Those boundaries are ledge-context pause opportunities, not valid Pedro
+states. Only the existing 836-838 boundaries have complete checkpoints;
+other phases need recapture, geometry, entry and preservation checks. JP's
+longer prefix remains unverified, and the actual in-spot predicate may cost
+more. This gives a bounded pilot size, not the number of all reachable
+preparations needed to settle the target. One reachable preserving witness
+could establish possibility without exhausting them all.
+
 ### Why did both sweeps report only three updates?
 
 **The video and the sweeps use different success conditions.** The video

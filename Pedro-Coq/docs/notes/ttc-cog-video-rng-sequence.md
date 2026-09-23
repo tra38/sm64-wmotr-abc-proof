@@ -40,8 +40,10 @@ The argument is more careful than “there are 65,114 seeds, so just try them”
 
 The graph measures game time advanced while searching for a streak, not the
 CPU time needed to verify one specified 1,200-update candidate. We have not
-independently certified its 69-object inventory, full state quotient or
-waiting-time samples against the US/JP scheduler.
+independently certified its object inventory, full state quotient or
+waiting-time samples against the US/JP scheduler. The later
+[preparation-count audit](ttc-cog-preparation-count.md) transcribes the table,
+separates its seed factor and distinguishes that product from reachable states.
 
 The video discusses one relevant cog. Our current preservation checker keeps
 both selected cog poses fixed. That stronger diagnostic must not silently
