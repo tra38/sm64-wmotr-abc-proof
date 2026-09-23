@@ -8,6 +8,10 @@ entry remains no stronger than its stated caveats.
 For a plain-language, family-by-family explanation of every active and retired
 route idea, including its current evidence, close-out condition, and overall
 counterexample-search rank, see the [no-A route atlas](no-a-route-atlas.md).
+To choose a bounded investigation shared by several ranks, use the
+[glitch-family workboard](notes/glitch-family-workboard.md). It maps all 45
+ranks to 11 gameplay families and three supporting or scope workstreams;
+its first-batch targets are plans, not newly checked-off obligations.
 For a consolidated account of which results the impossibility argument uses
 and which live connections remain, see the
 [impossibility-proof progress ledger](impossibility-proof-progress.md).

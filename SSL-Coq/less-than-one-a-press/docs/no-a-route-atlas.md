@@ -3,6 +3,8 @@
 > Status snapshot: 2026-09-20.  Rankings are intentionally revisable as linked
 > execution evidence or new counterexamples arrive.
 
+The [23 September family workboard](notes/glitch-family-workboard.md) groups all 45 ranks into 11 shared gameplay investigations, with separate workstreams for downstream collection, proof contracts and a different start. Each gives the affected ranks, a first compute batch, and the limited conclusion that would justify stopping. The grouping adds no new proof or search result and leaves the route verdicts and subjective estimates unchanged.
+
 ## Purpose and scope
 
 This document is the readable inventory of ways the project currently knows
