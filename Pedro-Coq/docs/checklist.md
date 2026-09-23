@@ -39,6 +39,12 @@ current request.
       derive the conditional seed-only frame-count bound, distinguish the
       larger preparation/input search, and identify the unproved transition
       cost, state-reduction and structural premises for stronger guarantees.
+- [x] Derive [conditional brute-force time estimates](notes/ttc-cog-scheduler-tractability.md#measured-brute-force-cost-2026-09-23)
+      from the measured RANDOM sweep: about 4 min 48 s per US/JP preparation
+      pair under two-job concurrency, with early-rejection and setup exclusions.
+      Distinguish SAT expressibility from TTC NP-completeness and runtime.
+- [ ] Benchmark the actual spot-preservation predicate on a declared broader
+      family before extending those timing projections or claiming SAT speedups.
 - [x] Implement the [bounded offline seed sweep](notes/ttc-cog-seed-sweep.md)
       over three explicit STOPPED-derived RANDOM snapshots per version, with
       fixed inputs and actual compiled per-seed object scheduling. Calibrate

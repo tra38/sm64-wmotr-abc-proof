@@ -489,6 +489,32 @@ give a stronger bound, but neither is established for the full TTC search.
 The subsequent bounded experiment implements that enumeration under an explicit
 external-system model; it does not establish a full N64/Clight refinement.
 
+### Can we estimate how long brute force would take?
+
+**For a specified family, yes; for every possible preparation, not yet.**
+Encoding the question as SAT does not prove this TTC family NP-complete, and
+NP-completeness would not predict its wall-clock runtime. The existing seed
+enumerator already gives a measured baseline: the corrected RANDOM US and JP
+sweeps ran together in about **4 minutes 48 seconds** for 131,072 seed cases.
+That is the sweep phase only, excluding capture, build, calibration and the
+independent longest-seed replays.
+
+If further preparation pairs have the same average cost and use the same
+two-job concurrency, 10 pairs project to about **48 minutes**, 100 to **8
+hours**, 1,000 to **3.34 days**, and one million to **9.14 years**. These are
+conditional extrapolations, not runtime guarantees or estimates of when a
+working strategy will be found. The [cost analysis](notes/ttc-cog-scheduler-tractability.md#measured-brute-force-cost-2026-09-23)
+records the arithmetic and assumptions.
+
+Every seed in that benchmark failed by its fourth update under the two-cog
+ledge predicate, averaging about 2.021 attempted updates including the partial
+failure. A full 1,200-update path, the actual spot-preservation predicate, or
+different preparations may cost much more. We must benchmark those cases
+before extending the timing claim. There is no complete TTC SAT implementation
+or measured solver speedup yet. Other objects' initial states add preparations;
+their subsequent draws are determined once the complete state, inputs and
+seed are fixed. The preserving RANDOM-mode target remains open.
+
 ### Why did both sweeps report only three updates?
 
 **The video and the sweeps use different success conditions.** The video

@@ -158,6 +158,99 @@ may be effective, but the rough one-in-seven probability does not guarantee
 that a fixed fraction of candidates disappears at each step. Merging requires
 equal relevant future behavior, not merely equal seeds or cog targets.
 
+## Measured brute-force cost (2026-09-23)
+
+**We can estimate the cost of exhausting a specified family, not the time to
+settle every possible TTC preparation.** Expressing this query as SAT does
+not prove this particular family NP-complete. Even an NP-completeness result
+would classify worst-case scaling, not give seconds per instance, a required
+exponential running time, or a guaranteed speedup from a particular solver.
+There is no implemented SAT/SMT encoding of the complete TTC continuation in
+this project to benchmark yet. The seed enumerator already provides a useful
+ordinary brute-force baseline without one.
+
+The [corrected RANDOM receipt](ttc-cog-random-seed-sweep-results.json) records
+286.992661734 seconds for US and 288.433219426 seconds for JP, running as two
+concurrent jobs on this host. Each job checks all 65,536 seeds from its one
+captured non-seed state. About **288.43 seconds (4 minutes 48 seconds)** is
+therefore the observed sweep-phase scale for a pair of US/JP preparations,
+or about **454 seed cases per wall-clock second** across the two jobs.
+The estimate uses the larger per-job time, not an independently timed full
+experiment. It excludes capture, build, calibration and subsequent independent
+replays of the longest seeds. It includes candidate initialization and the
+sweep runner's output parsing. It is one observed run, not a confidence interval
+or a worst-case execution bound.
+
+Let `K` count preparation pairs: one complete non-seed starting state and fixed
+input continuation for each version. Running one US/JP pair at a time with
+the same two-job concurrency gives the following **conditional projections**:
+
+| Preparation pairs `K` | Seed cases across US + JP | Sweep time at the measured cost |
+| --- | ---: | ---: |
+| 1 | 131,072 | 4 min 48 s (measured baseline) |
+| 10 | 1,310,720 | about 48 min |
+| 100 | 13,107,200 | about 8 hours |
+| 1,000 | 131,072,000 | about 3.34 days |
+| 1,000,000 | 131,072,000,000 | about 9.14 years |
+
+Each projection is `K * 288.433219426 seconds`, using 365.25 days per year.
+It assumes comparable hardware, contention, initialization and rejection
+costs; no additional parallel speedup is assumed. If another `b` independent
+binary preparation choices really must all be enumerated, they multiply `K`
+by `2^b`. At this same conditional rate, ten extra bits give about 3.42 days,
+and twenty give about 9.58 years. These are arithmetic examples, not counts
+of valid or reachable TTC states. A state count also does not predict when a
+successful seed exists or where it occurs in the enumeration order.
+
+The most important caveat is **early rejection**. In each version's RANDOM
+sweep, 64,185 seeds finish one preserving update, 1,326 finish two, and 25
+finish three. Thus there are 66,912 complete preserving updates, followed by
+one partially executed failing update per seed: 132,448 attempted updates in
+total, about 2.021 attempts per seed. All candidates fail by the fourth update.
+These are not 65,536 executions of all 1,200 updates, and partially executed
+updates cannot be treated as complete-frame throughput measurements.
+
+The tested predicate requires both cogs still with Mario on the ledge. The
+[single-cog diagnosis](ttc-cog-sweep-diagnosis.md) already finds longer paths
+when the other cog may move. A corrected predicate for the actual Pedro spot,
+different object preparations, or more long-lived candidates can change the
+runtime substantially. The table is not an upper bound for those searches.
+Nor does the earlier STOPPED-derived six-job timing establish linear scaling
+with processor count: both the workload and concurrency differ.
+
+For a new family, the useful model is:
+
+```text
+serial work = sum over all candidates (initialization cost
+              + sum of costs of the updates actually attempted)
+wall time   approximately fixed preparation overhead
+              + serial work / measured effective parallelism
+```
+
+For a faithful terminating evaluator, at most **157,286,400 update evaluations
+per preparation pair** are needed before early rejection (`2 * 65,536 * 1,200`).
+That operation bound remains available; a validated maximum update cost and
+setup cost would be needed to turn it into a conservative time bound. A fuel
+limit produces unknown cases if reached. It does not prove their rejection.
+Extrapolating the two-update timing to 1,200 by a simple ratio would wrongly
+assume negligible initialization and constant complete-frame costs.
+
+A useful next estimate should first fix the actual cog/Mario preservation
+predicate and an explicit list of preparations, then pilot that same family
+and record initialization, attempted lengths, update costs and unknowns.
+Benchmark any SAT encoding against the enumerator on the same cases before
+claiming a speedup. SAT's internal transition variables describe determined
+intermediate states; they do not automatically create extra independent
+gameplay choices to enumerate. Other objects' initial states do enlarge the
+preparation family, while each fixed preparation and seed still determine
+their subsequent draws. The video's `7^1200` rarity heuristic supplies neither
+that family size nor a brute-force runtime estimate.
+
+No new game executions or Coq proofs were added for this cost analysis.
+A small declared family may be an hours-to-days experiment under the measured
+conditions; the full preserving 1,200-update RANDOM question has no established
+completion-time estimate.
+
 ## Concrete consequence for this project
 
 The proposed solver should first fix a small explicit family of complete initial
