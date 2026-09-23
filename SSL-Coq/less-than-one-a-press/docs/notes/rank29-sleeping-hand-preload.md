@@ -52,6 +52,28 @@ A clean Rank-29 counterexample can no longer consist only of repeating an intact
 
 After exhibiting one of those failures, the counterexample still has to repeat the preserving transition until directional speed exceeds `400`, survive the Area-2-to-Area-3 instant warp, and reach the already authenticated sleeping-hand Pedro landing.  Conversely, a live-trace proof that owner identity, collision reload, stock action state, and collision data remain valid discharges this premise and imports the finite closure directly.  Any first failing frame is not merely a proof hole; it names the exact owner, action, surface, alias, or outside effect to test in retail execution.
 
+## A focused gameplay search
+
+An open model condition is testable; it does not mean that a glitch is
+unknowable or that one exists. The recommended next investigation is a bounded
+controller-driven search for the first failure of a named condition: an
+unexpected support owner, a missed collision refresh, or a landing/departure
+that preserves speed outside the checked cases. Read-only logging should
+record the support, action/state, speed and update order around that frame.
+Source analysis can also prove that a proposed exception cannot occur in a
+specified case. This recommendation adds no new search result or route proof.
+
+Any candidate still needs a reproducible controller history from an allowed
+starting boundary and a repeatable speed gain that reaches the required hand
+entry. A supplied diagnostic state is not a clean installer. Finding nothing
+in a finite search does not establish universal impossibility. The existing very
+low route assessment is unchanged.
+
+This search stays within ordinary gameplay and defined, in-bounds glitches.
+ACE, memory corruption, arbitrary memory or code modification, and
+emulator/OS/network vulnerability methods are outside the project. The older
+machine-level extension listed above is a scope boundary, not a search target.
+
 ## Formal artifact
 
 [`EyerokRank29Preload.v`](../../proofs/EyerokRank29Preload.v) contains the bilateral generated-source receipts, exact roster and macro-preset census, sleeping-branch control-flow check, selected static-mesh envelope computation, air-growth threshold, conservative vertical sum, and ordinary-episode theorem.  [`EyerokRank29CycleClosure.v`](../../proofs/EyerokRank29CycleClosure.v) adds the bilateral landing and platform source receipts, exact collision-surface parser, five-platform delta model, vertical-Grindel `72`-unit maximum-drop computation, single-use butt-slide bounce theorem, and the public proof that no repeatable preserving boundary exists in the stock-owner model.  Both are exposed by `MainTheorem.v`.
