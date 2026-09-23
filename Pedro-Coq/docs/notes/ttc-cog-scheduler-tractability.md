@@ -185,6 +185,12 @@ repository discipline audit passed in Ubuntu's configured login environment
 with `SM64_PROOF_SWITCH=sm64-item-proof`; no proof statements or assumptions
 were changed, and no capstone obligation was discharged.
 
+The subsequent [RANDOM-phase correction](ttc-cog-random-seed-sweep.md) uses an
+already-RANDOM capture instead of changing STOPPED-derived clock mode. Its
+131,072 cases exercise one phase per version, with a maximum three stationary
+updates and zero unknowns under the stated offline model. Mario remains on
+the ledge, so this still does not answer the in-spot preservation query.
+
 Published in owner-only [site version 5](https://pedro-proof-notes.tra38.chatgpt.site/#scheduler-tractability);
 the [publication record](ttc-cog-site-publication.md) identifies the exact
 source snapshots and private-access check.

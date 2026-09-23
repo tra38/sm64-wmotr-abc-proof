@@ -13,7 +13,7 @@ current request.
 
 - [x] Publish the geometry, 1,200-update STOPPED, input-comparison, local
       cog-departure, video/RNG sequence, scheduler-tractability and bounded
-      seed-sweep results to the dedicated Pedro site; verify version 6
+      STOPPED-derived seed-sweep results to the dedicated Pedro site; verify version 6
       remains owner-only and its open RANDOM-mode verdict matches this guide.
       Record [bundle recovery and publication](notes/ttc-cog-site-publication.md).
 - [x] Audit the existing capstone statements and identify the cog/spinner
@@ -45,10 +45,20 @@ current request.
       cases, all rejected by cog movement, maximum three complete preserving
       updates and zero sweep unknowns. Four separate device-I/O calibration
       cases remain unknown; no full N64/Clight refinement is claimed.
-- [ ] Supply and validate natural RANDOM-mode preparation states with different
-      relevant object timers; the three sampled STOPPED phases have identical
-      short scheduling results. Establish gameplay provenance and the omitted
-      external-system/refinement premises before a retail exclusion claim.
+- [x] Correct the preparation scope with an [already-RANDOM capture](notes/ttc-cog-random-seed-sweep.md):
+      find frame 836 in an 11,625-frame survey, compare US/JP provenance, keep
+      all non-seed state unchanged and sweep 65,536 seeds per version. All
+      131,072 cases fail by cog movement, maximum three complete updates, zero
+      unknowns. This is a ledge-context cog scheduling check, not in-spot
+      preservation. Validate animation DMA explicitly and retain OS/audio limits.
+- [x] Sample the recorded RANDOM cog angles with pinned collision code: 319
+      close-gap candidates among 2,178 points, 257 stable under immediate
+      geometry refresh in both versions. No full action or entry is established.
+- [ ] Capture a complete RANDOM state after permitted entry into valid cog
+      geometry, restore Mario preservation to the seed-sweep predicate, and
+      broaden the family of object preparations. Establish normal-entry
+      provenance and omitted external-system/refinement premises before a
+      retail exclusion claim.
 - [x] Run the authorized near-cog placement experiment in US and JP with three
       declared initial setups and stock behavior functions; record failed entries.
 - [x] Export and replay the US ledge-to-lower-cog controller sequence, reproducing

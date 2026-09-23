@@ -1,5 +1,6 @@
 /* Offline execution of read-only receipts; never connects to a running game.
- * Candidate initialization varies only the seed and clock mode in this copy.
+ * Legacy experiments vary seed and clock mode; KEEP_CLOCK_MODE variants vary
+ * only the seed. The selected predicate is recorded in the build receipt.
  * See README.md for the explicit frame-boundary model and evidence limits. */
 #define _POSIX_C_SOURCE 200809L
 #include <unicorn/unicorn.h>
@@ -11,11 +12,23 @@
 #include <string.h>
 #include "config.h"
 
+#ifndef KEEP_CLOCK_MODE
+#define KEEP_CLOCK_MODE 0
+#endif
+#ifndef COG_SCHEDULE_ONLY
+#define COG_SCHEDULE_ONLY 0
+#endif
+
 #define RAM_SIZE 0x800000u
 #define RETURN_SENTINEL 0x80001000u
 static uc_engine *vm;
 static unsigned char *ram, *original;
 static unsigned halted, unknown, rejected, baseline, draws, pedro, frame_done;
+static unsigned dma_calls;
+#ifdef ANIMATION_DMA
+static unsigned char *rom;
+static size_t rom_size;
+#endif
 static unsigned cog_updates[2];
 static uint64_t fuel, fuel_limit = 5000000, draw_hash;
 static uint32_t floor_anchor, positions[3], cog_yaws[2];
@@ -64,6 +77,34 @@ static void position_check(void) {
 }
 static void point(uc_engine *u, uint64_t a, uint32_t size, void *data) {
     (void)u; (void)size; (void)data; uint32_t pc = (uint32_t)a;
+#ifdef ANIMATION_DMA
+    if (pc == ANIMATION_DMA) {
+        /* External I/O contract for memory.c:dma_read, restricted to Mario's
+           allocated 16 KiB animation buffer. The actual caller, table lookup,
+           animation update and all gameplay code still execute. No live game
+           or ROM is modified. OS queues/cache/thread state are not modeled. */
+        uint32_t dest = (uint32_t)reg(UC_MIPS_REG_A0);
+        uint32_t begin = (uint32_t)reg(UC_MIPS_REG_A1);
+        uint32_t end = (uint32_t)reg(UC_MIPS_REG_A2);
+        uint32_t buffer = r32(ANIMATION_BUFFER);
+        if (end < begin || end-begin > 0x4000 || dest != buffer
+            || (uint32_t)reg(UC_MIPS_REG_RA) != ANIMATION_DMA_RETURN) {
+            inconclusive("unsupported-dma-request"); return;
+        }
+        uint32_t length = (end-begin+15u)&~15u;
+        if (begin < ANIMATION_ROM_BEGIN || begin > ANIMATION_ROM_END
+            || length > ANIMATION_ROM_END-begin
+            || begin > rom_size || length > rom_size-begin) {
+            inconclusive("dma-rom-bounds"); return;
+        }
+        unsigned target = offset(dest, length);
+        if (unknown) return;
+        memcpy(ram+target, rom+begin, length);
+        ++dma_calls;
+        setreg(UC_MIPS_REG_PC, reg(UC_MIPS_REG_RA));
+        return;
+    }
+#endif
     if (pc == RETURN_SENTINEL) { halted = 1; checked(uc_emu_stop(vm)); return; }
     if (pc == A_RANDOM_U16) {
         ++draws;
@@ -76,9 +117,11 @@ static void point(uc_engine *u, uint64_t a, uint32_t size, void *data) {
         /* The boundary shim only supports the same CALL_LOOP command. */
         if ((uint32_t)reg(UC_MIPS_REG_V0) != (uint32_t)start->gpr[4]) inconclusive("level-command-changed");
         if (baseline != 1) {
-            position_check();
-            if (r32(A_MARIO_STATES+0x68) != floor_anchor || r32(A_MARIO_PLATFORM)) reject("support-changed");
-            if (!pedro) reject("no-close-gap-return");
+            if (!COG_SCHEDULE_ONLY) {
+                position_check();
+                if (r32(A_MARIO_STATES+0x68) != floor_anchor || r32(A_MARIO_PLATFORM)) reject("support-changed");
+                if (!pedro) reject("no-close-gap-return");
+            }
             for (unsigned j = 0; j < 2; ++j) {
                 if (cog_updates[j] != 1) inconclusive("cog-update-count");
                 if (r32(A_OBJECT_POOL+(j?32:29)*0x260+0xd4) != cog_yaws[j]) reject("cog-moved");
@@ -102,7 +145,7 @@ static void point(uc_engine *u, uint64_t a, uint32_t size, void *data) {
                 if (baseline != 1 && r32(object+0xd4) != cog_yaws[j]) reject("cog-moved");
             }
         }
-        if (baseline != 1 && !strcmp(path_points[i].routine, "execute_mario_action")) position_check();
+        if (baseline != 1 && !COG_SCHEDULE_ONLY && !strcmp(path_points[i].routine, "execute_mario_action")) position_check();
     }
 }
 static void run(uint32_t pc) {
@@ -153,20 +196,36 @@ int main(int argc, char **argv) {
     FILE *in = fopen(path, "rb"); original = malloc(RAM_SIZE); ram = malloc(RAM_SIZE);
     if (!in || !original || !ram || fread(original, 1, RAM_SIZE, in) != RAM_SIZE || fgetc(in) != EOF) return 2;
     fclose(in); memcpy(ram, original, RAM_SIZE);
+#ifdef ANIMATION_DMA
+    in = fopen(ROM_FILE, "rb");
+    rom_size = ROM_BYTES;
+    rom = malloc(rom_size);
+    if (!in || !rom || fread(rom, 1, rom_size, in) != rom_size || fgetc(in) != EOF) return 2;
+    fclose(in);
+#endif
     checked(uc_open(UC_ARCH_MIPS, UC_MODE_MIPS64 | UC_MODE_BIG_ENDIAN, &vm));
     checked(uc_ctl_set_cpu_model(vm, UC_CPU_MIPS64_R4000));
     checked(uc_mem_map_ptr(vm, 0, RAM_SIZE, UC_PROT_ALL, ram));
+    if (KEEP_CLOCK_MODE && r16(A_TTC_SPEED_SETTING) != 2) {
+        fprintf(stderr, "natural-RANDOM evaluator requires an already-RANDOM snapshot\n"); return 2;
+    }
     uc_hook hook; checked(uc_hook_add(vm, &hook, UC_HOOK_BLOCK, (void *)block, NULL, 1, 0));
     hook_point(A_RANDOM_U16); hook_point(PC_AIR_EXIT); hook_point(RETURN_SENTINEL);
+#ifdef ANIMATION_DMA
+    hook_point(ANIMATION_DMA);
+#endif
     for (unsigned i = 0; i < sizeof(path_points)/sizeof(path_points[0]); ++i) hook_point(path_points[i].pc);
     floor_anchor = r32(A_MARIO_STATES+0x68);
     for (unsigned i = 0; i < 3; ++i) positions[i] = r32(A_MARIO_STATES+0x3c+4*i);
     for (unsigned i = 0; i < 2; ++i) cog_yaws[i] = r32(A_OBJECT_POOL+(i?32:29)*0x260+0xd4);
-    printf("seed,status,complete_updates,rng_calls,final_seed,rng_hash,reason,pc\n");
+    printf("seed,status,complete_updates,rng_calls,final_seed,rng_hash,reason,pc,dma_calls\n");
     for (unsigned seed = first; seed < first+count; ++seed) {
         memcpy(ram, original, RAM_SIZE); setup_cpu();
-        unknown = rejected = draws = 0; reason = "none"; draw_hash = 14695981039346656037ULL;
-        if (!baseline) { w16(A_RANDOM_SEED16, (uint16_t)seed); w16(A_TTC_SPEED_SETTING, 2); }
+        unknown = rejected = draws = dma_calls = 0; reason = "none"; draw_hash = 14695981039346656037ULL;
+        if (!baseline) {
+            w16(A_RANDOM_SEED16, (uint16_t)seed);
+            if (!KEEP_CLOCK_MODE) w16(A_TTC_SPEED_SETTING, 2);
+        }
         unsigned input_seed = r16(A_RANDOM_SEED16), complete = 0;
         while (complete < horizon) {
             pedro = frame_done = 0; cog_updates[0] = cog_updates[1] = 0;
@@ -175,14 +234,18 @@ int main(int argc, char **argv) {
             ++complete;
             if (complete < horizon) { next_frame(); if (unknown) break; }
         }
-        printf("%u,%s,%u,%u,%u,%016llx,%s,%llx\n", input_seed,
+        printf("%u,%s,%u,%u,%u,%016llx,%s,%llx,%u\n", input_seed,
             unknown ? "unknown" : rejected ? "rejected" : "survived", complete, draws,
-            r16(A_RANDOM_SEED16), (unsigned long long)draw_hash, reason, (unsigned long long)reg(UC_MIPS_REG_PC));
+            r16(A_RANDOM_SEED16), (unsigned long long)draw_hash, reason, (unsigned long long)reg(UC_MIPS_REG_PC), dma_calls);
         if ((seed-first)%4096 == 0) { fflush(stdout); fprintf(stderr, "evaluated %u / %u seeds\n", seed-first+1, count); }
     }
     if (argc > 7) {
         FILE *out = fopen(argv[7], "wb");
         if (!out || fwrite(ram, 1, RAM_SIZE, out) != RAM_SIZE || fclose(out)) return 2;
     }
-    checked(uc_close(vm)); free(ram); free(original); return 0;
+    checked(uc_close(vm)); free(ram); free(original);
+#ifdef ANIMATION_DMA
+    free(rom);
+#endif
+    return 0;
 }

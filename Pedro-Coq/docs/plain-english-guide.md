@@ -490,7 +490,40 @@ external-system model; it does not establish a full N64/Clight refinement.
 
 ### What happened when we actually swept the seeds?
 
-The [bounded sweep](notes/ttc-cog-seed-sweep.md) tested **all 65,536 seeds for
+**The first sweep used the wrong preparation family for the request:** it
+changed STOPPED snapshots to RANDOM offline. The
+[corrected experiment](notes/ttc-cog-random-seed-sweep.md) instead captures an
+already-RANDOM phase, preserving its cog angles, speeds, targets and object
+timers, and varies only the seed. It checks **all 65,536 seeds in each of US
+and JP: 131,072 cases**. All fail by cog movement; the longest stationary
+prefix is **three complete updates**, with zero unknown cases. Per version,
+64,185 seeds last one update, 1,326 last two and 25 last three. The two
+versions agree, and enumeration took about 4 minutes 48 seconds with two
+concurrent jobs, excluding capture and validation.
+
+That starting state occurs after 836 ordinary updates in RANDOM mode from
+the authorized near-cog test placement. It was the only pause opportunity
+for the original cog pair in an 11,625-frame survey. The captured yaws are
+45,000 and -21,800; the upper cog's incoming speed 50 approaches zero during
+its next update. The mode and cog fields are never rewritten by this sweep.
+Alternative seed combinations are still hypothetical, and normal-entry
+reachability has not been established.
+
+**Mario remains on the ledge in this scheduling test, not in a Pedro spot.**
+A separate geometry filter at the recorded angles finds 319 sampled close-gap
+returns, of which 257 survive immediate geometry refresh. Those are local
+candidates, not completed preserving actions or reachable entries. Moving
+Mario into one of them changes object activity and needs a new complete-state
+sweep. The current result does not exclude other RANDOM preparations.
+
+The corrected evaluator includes a narrowly bounded animation-ROM transfer
+adapter and matches the recorded one-, two- and three-update US/JP continuations,
+including gameplay state, animation data and ordered RNG draws. OS/audio/device
+effects are not fully modeled or proved irrelevant. This remains a finite
+experiment under explicit assumptions; no Coq theorem or capstone premise
+was discharged.
+
+The **historical** [STOPPED-derived sweep](notes/ttc-cog-seed-sweep.md) tested **all 65,536 seeds for
 three snapshots in each of US and JP: 393,216 cases**. None lasted four complete
 preserving updates. The maximum was **three**; every rejection was caused by
 a cog actually moving. There were no unknown or resource-limited cases within
@@ -508,7 +541,7 @@ timers, cog angles and future input choices remain open.
 The evaluator executes the compiled object scheduler, Mario, camera and
 rendering separately for each seed. Its game-thread state and ordered RNG
 draws were calibrated against 102 recorded STOPPED updates in each version.
-Audio, OS and hardware execution between updates are modeled only through the
+In that earlier evaluator, audio, OS and hardware execution between updates are modeled only through the
 declared boundary operations. A separate RANDOM calibration matches its first
 frame; its next two frames in each version require unsupported device I/O and
 remain unknown. Those four calibration cases are outside the exhaustive family.

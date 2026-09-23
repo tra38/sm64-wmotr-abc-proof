@@ -1,5 +1,13 @@
 # Bounded TTC seed sweep
 
+This folder's default family is the historical **STOPPED-derived** experiment.
+For the corrected already-RANDOM capture and seed-only constructor, see
+[ttc-cog-random-seed-sweep](../ttc-cog-random-seed-sweep/README.md). Its opt-in
+shared-engine flags retain clock mode, use a cog-only scheduling predicate,
+and model the bounded animation-ROM transfer. Default flags preserve this
+older experiment's predicate and external boundary; the CSV now additionally
+records `dma_calls` (zero for this default configuration).
+
 This is an **offline finite experiment**, not a Coq theorem or a complete N64
 emulator. It executes captured, compiled US/JP game-thread code with Unicorn
 2.1.4. It never connects to a running game and never writes a ROM or savestate.

@@ -3,6 +3,12 @@
 Investigated 2026-09-22. Scope: `VERSION_US` and `VERSION_JP`, source pin
 `9921382a68bb0c865e5e45eb594d9c64db59b1af`.
 
+**Scope correction, 2026-09-23:** this historical experiment used STOPPED-derived
+states and did not satisfy the request for actual RANDOM preparations. The
+[corrected RANDOM-phase experiment](ttc-cog-random-seed-sweep.md) preserves the
+captured clock mode, cog angles and timers, varies only the seed, and reports
+its separate ledge-context scheduling and geometry results.
+
 **Implemented and ran the bounded sweep: all 393,216 cases were rejected;
 the longest preserving prefix was three complete updates.** Every rejection
 was an observed cog yaw change. No case in this sweep exhausted its budget or
