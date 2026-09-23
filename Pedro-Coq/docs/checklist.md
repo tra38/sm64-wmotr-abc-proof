@@ -51,6 +51,17 @@ current request.
       (about 1.61e150), 26 matched-prefix pause opportunities and 196 US-survey
       opportunities. Record conditional costs and avoid treating them as valid
       in-spot states, all reachable preparations or a necessary search size.
+- [x] Implement and exhaustively check local cog/spinner RNG-schedule keys
+      against generated US/JP bodies and unchanged pinned C: 637 cog pairs
+      become 480 states; 608 recurrent spinner combinations become 121, or
+      930 extended combinations become 122. Record closure, congruence,
+      finite-table minimality, sign-merge and motion counterexamples in the
+      [state-reduction audit](notes/ttc-cog-state-reduction.md). These are host
+      finite checks, not new Coq proofs or capstone discharges.
+- [ ] Compose those scheduling keys with actual invocation/activation and
+      preserved geometry/Mario state; discharge whole-game noninterference,
+      boundary coverage and Clight execution/refinement before using them to
+      replace the full seed-sweep state or certify all preparations.
 - [ ] Recapture and validate a declared family of those pause boundaries,
       including their actual cog geometry and complete Mario continuation,
       before treating the phase census as a preserving seed-sweep input family.

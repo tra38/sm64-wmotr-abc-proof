@@ -81,6 +81,14 @@ literal enumeration of that particular Cartesian product is impractical;
 it does not prove that every algorithm, or every search for one witness,
 must do that much work.
 
+The subsequent [state-reduction audit](ttc-cog-state-reduction.md) implements
+finite local cog/spinner scheduling checks. It supports 121 recurrent spinner
+classes (122 in a broader timer-zero domain) and 480 signed-target/countdown
+cog classes, but finds that equal RNG schedules can have different motion.
+It also supplies a real-seed counterexample to a simple absolute-sign cog
+merge. These local results sharpen which reductions are available; they do
+not supply the missing whole-game coverage or justify shrinking this product.
+
 ## A concrete bounded family that we can count
 
 The existing RANDOM survey is one fixed neutral-input trajectory from the

@@ -442,7 +442,7 @@ comparisons, local cog-departure proof, alternative-RNG findings and the video
 review with exact scalar RNG checks, conditional scheduler-search bounds and
 the historical STOPPED-derived and corrected RANDOM-phase seed-sweep results,
 the one-cog/two-cog diagnosis, conditional brute-force runtime estimates and
-preparation-count audit.
+preparation-count audit and local state-reduction checks.
 The [publication record](notes/ttc-cog-site-publication.md)
 identifies the published version and owner-only access check. Its verdict
 agrees with this guide: a preserving
@@ -547,6 +547,38 @@ longer prefix remains unverified, and the actual in-spot predicate may cost
 more. This gives a bounded pilot size, not the number of all reachable
 preparations needed to settle the target. One reachable preserving witness
 could establish possibility without exhausting them all.
+
+### Can we reduce the states we have to search?
+
+**Yes for some local RNG schedules; a full Pedro-preservation reduction is
+still open.** The [state-reduction audit](notes/ttc-cog-state-reduction.md)
+implements exhaustive finite checks against the generated US/JP code and
+independently compiled pinned C. A spinner's timer, threshold and direction
+can become one countdown: **608 recurrent combinations become 121 states**.
+Including an explicit broader family with timer-zero and initial-zero fields
+gives **930 combinations and 122 states**. Those counts assume the stated
+native-call and timer-increment boundary, not arbitrary gameplay resets.
+
+For a cog, retain the signed target and number of updates until its next RNG
+draw: **637 numeric speed/target pairs become 480 scheduling states**.
+The 447,296 US/JP output comparisons pass. Partition refinement finds these
+keys minimal for the checked local domains with arbitrary RNG input classes.
+This is finite host evidence, not a new Coq theorem or full-game state count.
+
+Discarding target sign is unsafe: with the same seed 38, starts at
+speed/target `(+200,+200)` and `(-200,-200)` both draw twice, then consume
+different numbers of RNG words on the second update. The video's 259 cog
+states therefore cannot be justified simply by merging absolute values;
+its table alone does not specify the simulator's full equivalence rule.
+
+Matching RNG schedules also does not mean matching motion. Speeds 100 and
+300 toward target 200 share our cog key but produce yaw increments 150 and
+250. A solver must retain the motion needed for collision and Mario
+preservation, and establish that dropped state cannot change activation or
+other RNG consumers. The video already uses 121 spinner states, so that
+local reduction cannot be applied again to shrink its huge product. No
+certified total preparation count or new runtime bound follows yet, and
+the preserving 1,200-update RANDOM target remains open.
 
 ### Why did both sweeps report only three updates?
 
