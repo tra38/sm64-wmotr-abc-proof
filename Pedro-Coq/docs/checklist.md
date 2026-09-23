@@ -11,8 +11,9 @@ for US/JP. See [the cog plan](notes/ttc-cog-plan.md). The spinner checklist belo
 retained as prior work, and enumerating every stock Pedro spot is outside the
 current request.
 
-- [x] Publish the geometry, 1,200-update STOPPED, input-comparison and local
-      cog-departure results to the dedicated Pedro site; verify version 3
+- [x] Publish the geometry, 1,200-update STOPPED, input-comparison, local
+      cog-departure and video/RNG sequence results to the dedicated Pedro site;
+      verify version 4
       remains owner-only and its open RANDOM-mode verdict matches this guide.
       Record [bundle recovery and publication](notes/ttc-cog-site-publication.md).
 - [x] Audit the existing capstone statements and identify the cog/spinner

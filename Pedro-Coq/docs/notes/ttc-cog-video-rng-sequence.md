@@ -185,3 +185,8 @@ The repository proof-discipline audit passes with the installed
 initially prevented its build phase; rerunning with the existing documented
 switch resolved that environment issue. No proof statements or assumptions
 were changed in this investigation.
+
+This review and its receipt are published in owner-only site version 4,
+in the [video argument section](https://pedro-proof-notes.tra38.chatgpt.site/#video-argument).
+See the [publication record](ttc-cog-site-publication.md) for source provenance
+and access verification.
