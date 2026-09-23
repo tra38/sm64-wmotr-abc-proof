@@ -13,8 +13,8 @@ current request.
 
 - [x] Publish the geometry, 1,200-update STOPPED, input-comparison, local
       cog-departure, video/RNG sequence, scheduler-tractability, historical
-      STOPPED-derived sweep and corrected RANDOM-phase sweep to the dedicated
-      Pedro site; verify version 7
+      STOPPED-derived sweep, corrected RANDOM-phase sweep and one-cog/two-cog
+      diagnosis to the dedicated Pedro site; verify version 8
       remains owner-only and its open RANDOM-mode verdict matches this guide.
       Record [bundle recovery and publication](notes/ttc-cog-site-publication.md).
 - [x] Audit the existing capstone statements and identify the cog/spinner

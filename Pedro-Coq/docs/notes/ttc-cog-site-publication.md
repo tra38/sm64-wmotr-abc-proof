@@ -142,7 +142,7 @@ report or site was changed. The archive's recorded SHA-256 is
 
 ## Version 7 publication
 
-**Version 7 is live and remains owner-only**, published on 2026-09-23,
+**Version 7 was published with owner-only access** on 2026-09-23,
 America/Chicago (deployment timestamp `2026-09-23T05:57:10.662544+00:00`).
 The [corrected RANDOM sweep](https://pedro-proof-notes.tra38.chatgpt.site/#seed-sweep)
 now leads with an already-RANDOM frame-836 capture, its 131,072 seed-only cases,
@@ -168,3 +168,32 @@ no SSL report or site was changed. The local compressed package SHA-256 is
 `acf090383edb128de87f9af86a0309a5dc29053fcdb1ae56b102a50f7c5c972c`;
 the saved archive reports content hash
 `7514d7e222f874927cc1bb8aa181271de06eb12eabde1cee221cf13fe49dbfc6`.
+
+## Version 8 publication
+
+**Version 8 is live and remains owner-only**, published on 2026-09-23,
+America/Chicago (deployment timestamp `2026-09-23T10:05:41.331191+00:00`).
+The [three-update diagnosis](https://pedro-proof-notes.tra38.chatgpt.site/#three-frame-limit)
+explains that the video counts one still cog while both prior sweeps require
+two. It reports the checked RANDOM examples: four lower-cog updates from seed
+13372 and five upper-cog updates from seed 48274, with the other cog moving.
+The guide and site distinguish these diagnostics from complete Pedro holds,
+explain the unsearched combinations of object timers/phases, and retain the
+two unknown historical single-cog continuations. The broad RANDOM target
+remains open; the three-update results do not contradict the video's graph.
+
+Proof evidence snapshot: `ec11893a9bf1001d01e385a9d43824dd4f31a1c7`.
+Site source commit: `3bd49a8632366411617e7528935511d4415310ad`.
+Both were pushed before publication. The official workflow packaged that
+site source, and the private save-and-deploy call returned `succeeded`. The
+saved version identifies the exact site commit. A subsequent access read
+confirmed one owner, no groups, no external visitors and unchanged policy
+revision 1. No sharing changes were made.
+
+All 16 pinned proof-source links, anchors and local assets passed consistency
+checks. All eight downloadable receipts match the proof-repository files.
+The example table was checked against both US and JP diagnostic outputs.
+The saved archive's content hash is
+`ed045ec52ecc547c55e564113513b58878974f9ea8d71985071ab48c21fd68e4`.
+No ROM/RAM data, credentials or conversation exports were published. No SSL
+report or site was changed, and no new Coq theorem was claimed.
