@@ -295,3 +295,36 @@ The prior stale short evidence hash in the page footer was corrected to the
 current pinned snapshot. No ROM/RAM images, credentials, video frames or
 conversation exports were published; no SSL report or site was changed.
 No new Coq theorem or discharged capstone premise is claimed.
+
+## Version 12 publication
+
+**Version 12 is live and remains owner-only**, published on 2026-09-23,
+America/Chicago (deployment timestamp `2026-09-23T12:09:11.961712+00:00`).
+The [search-space comparison](https://pedro-proof-notes.tra38.chatgpt.site/#search-space)
+distinguishes the implemented one-preparation-per-version RANDOM sweep,
+local validation cases and hypothetical hybrids retaining the video's other
+factors. Replacing its eight 259-state cog-like factors with 480 gives about
+2.24e152 non-seed combinations and a conditional 2.05e147 years at the old
+full US/JP sweep rate. The broader spinner domain gives 2.52e152 and 2.30e147.
+These are arithmetic comparisons, not complete-game counts or benchmarks
+of a reduced scheduler. The site and guide explicitly correct the baseline:
+637 to 480 is a local reduction, while substituting 480 for the video's
+already-reduced 259 increases that separate product. No global reduction or
+necessary increase in the real gameplay search has been established.
+
+Proof evidence snapshot: `ccf563df709e0c9f86ff7da31cfed86e571ee8b1`.
+Site source commit: `30116f916ebb90b0abd801aa1bde56822f48cab8`.
+Both were pushed before publication. The official workflow packaged the
+clean source, and the owner-private operation returned terminal `succeeded`.
+The saved version confirms that exact source commit. Access readback confirms
+one owner, no groups, no external visitors and unchanged policy revision 1.
+
+The integer products are reproducible with `count_space.py` from the existing
+receipts. All 21 pinned evidence links, 17 unique anchors and local assets were
+checked. All eleven downloadable receipts match the proof checkout byte for
+byte and pinned Git content allowing LF/CRLF normalization. The saved archive
+content hash is `948fe85a669884c585d043e6f763eb19162e2456ad8d54acab46c1c4a2faabb9`.
+This is arithmetic and reporting work: no new game executions, Coq theorems
+or discharged premises. The preserving 1,200-update RANDOM target remains
+open. No ROM/RAM data, credentials or conversation exports were published;
+no SSL report or site was changed.

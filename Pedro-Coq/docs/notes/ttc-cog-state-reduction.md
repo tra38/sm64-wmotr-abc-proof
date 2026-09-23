@@ -255,6 +255,8 @@ successful witness, remain unknown.
 
 The local reduction audit was first published in owner-only
 [site version 11](https://pedro-proof-notes.tra38.chatgpt.site/#state-reductions).
+The search-space comparison and baseline clarification are live in
+[site version 12](https://pedro-proof-notes.tra38.chatgpt.site/#search-space).
 The [publication record](ttc-cog-site-publication.md) identifies the exact
 source, subsequent search-space comparison, receipt checks and unchanged
 private audience.
