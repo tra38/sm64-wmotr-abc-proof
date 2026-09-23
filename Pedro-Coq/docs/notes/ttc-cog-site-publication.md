@@ -230,3 +230,36 @@ The saved archive content hash is
 This update adds analysis and reporting only: no gameplay executions, new Coq
 proofs or discharged capstone premises. No ROM/RAM data, credentials or
 conversation exports were published, and no SSL report or site was changed.
+
+## Version 10 publication
+
+**Version 10 is live and remains owner-only**, published on 2026-09-23,
+America/Chicago (deployment timestamp `2026-09-23T11:02:54.171469+00:00`).
+The [preparation-count section](https://pedro-proof-notes.tra38.chatgpt.site/#preparation-count)
+distinguishes a fully fixed execution from the video's approximately 1.61e150
+non-seed combinations and the counted replay boundaries. The matching US/JP
+prefixes have 26 either-cog pause opportunities; the longer US-only survey
+has 196. Their conditional paired sweep costs are about 2.08 and 15.70 hours,
+excluding recapture/validation and assuming the old early-rejection cost.
+These are not valid in-spot states or an exhaustive preparation count. The
+video's product would take about 1.47e145 years at that rate, but neither its
+domains nor joint reachability have been proved. The complete preserving
+1,200-update RANDOM target remains open in the note, guide and site.
+
+Proof evidence snapshot: `a440a322ab2522fb0f2fb7ca637f300e128ab3e2`.
+Site source commit: `3882cbe208a3e63caa265c57f2f8ca4c62cd9369`.
+Both were pushed before publication. The official workflow packaged the clean
+source and the owner-private operation returned terminal status `succeeded`.
+The saved version confirms that exact site commit. Access readback confirms
+one owner, no groups, no external visitors and unchanged policy revision 1.
+
+The census authenticates its existing trace inputs, checks US/JP prefix
+agreement and records exact boundary lists; the table product uses exact
+integer arithmetic. All 18 pinned evidence links, anchors and local assets
+were checked. All nine downloadable receipts match the proof checkout byte
+for byte and the pinned Git content allowing LF/CRLF normalization. The saved
+archive content hash is
+`f76a2001f5d1dde8e131cbff3d7f2e726cf51a09e9da9c1ba3d46dc31d15a509`.
+No new game executions, Coq proofs or discharged capstone premises are claimed.
+No ROM/RAM images, video frames, credentials or conversation exports were
+published; no SSL report or site was changed.

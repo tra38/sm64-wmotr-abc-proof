@@ -148,3 +148,7 @@ reachable preserving witness would suffice for the positive claim; it does
 not require exhausting that domain. The required number of trials before
 finding such a witness is not known. The preserving 1,200-update RANDOM
 target remains open.
+
+Published in owner-only [site version 10](https://pedro-proof-notes.tra38.chatgpt.site/#preparation-count).
+The [publication record](ttc-cog-site-publication.md) identifies the exact source
+and access check; the guide and site retain the same coverage limits.
