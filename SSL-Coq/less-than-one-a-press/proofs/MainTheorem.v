@@ -15,7 +15,7 @@ From LessThanOneAPress.Proofs Require Import
   Area1Rank1SixResidualAudit
   InkTimer131RetailMipsFrames Area1SurfacePoolRangeSeparation
   Area1Rank1LiveBoundaryReceipt Area1Rank1UpperWarpTraceReceipt
-  Area1Rank4WarpTopTraceReceipt Area1Rank5StateSplitTraceReceipt Area1PostCopyParticleExecution
+  Area1Rank4WarpTopTraceReceipt Area1Rank5StateSplitTraceReceipt Area1PostCopyParticleExecution Area1AllocationCallback
   Area1Rank18CopyResolution Area1Ranks13To18TraceReceipt
   InkTimer131RealEntryPrefix InkTimer131PostEntryMachineTrace TurningAnimation
   NegativeDepthInteractionClosure NegativeDepthDefinedProducerClosure
@@ -202,6 +202,12 @@ Proof. exact area1_rank5_state_split_trace_checked_boundary_holds. Qed.
     not premises silently discharged by this local result. *)
 Theorem current_f02_postcopy_child_boundary : Area1PostCopyParticleCheckedBoundary.
 Proof. exact area1_postcopy_particle_checked_boundary_holds. Qed.
+
+(** Nonempty allocation result, explicit flag-based freshness, reached
+    initializer frame for separate State, and the read-only eviction lookup.
+    The Object-pool slot frame and live ownership remain open. *)
+Theorem current_f02_allocation_boundary : Area1PostCopyAllocationCheckedBoundary.
+Proof. exact area1_postcopy_allocation_checked_boundary_holds. Qed.
 
 (** The route-matched replay now watches every raw-Object coordinate store,
     every interaction dispatch/return, the copy index and three readbacks,

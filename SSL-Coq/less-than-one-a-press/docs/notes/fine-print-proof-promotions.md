@@ -2,8 +2,8 @@
 
 The 20 September 2026 review checked all 50 ledger entries and six
 assumption recommendations. The 23 September F02 batch adds a new proved
-conditional child-copy result to "01 / WE DO HAVE PROOFS", taking it to 28
-result cards. The other sections retain the conditions and gameplay
+conditional child-copy result and a follow-up allocator result to
+"01 / WE DO HAVE PROOFS", taking it to 29 result cards. The other sections retain the conditions and gameplay
 questions outside those results, with links to the completed parts. No
 whole-route verdict changes.
 
@@ -16,6 +16,14 @@ The generated caller is connected to its returned destination. Section 03
 and the F02 workboard still retain allocation effects, child freshness,
 other callbacks and the rest of the post-copy interval. This is new proof
 work, unlike simply promoting an older result's presentation.
+
+The [allocator follow-up](f02-allocation-boundary.md) also belongs in Section
+01, with its limits visible. It proves the nonempty result's origin, a
+flag-based conditional freshness test, the complete initializer's frame
+for separate State storage, and the read-only full-pool lookup. It does
+not frame Mario's neighboring Object slot during initialization or prove
+live ownership, graph/list effects, unloading, the complete spawn chain,
+or the remaining callbacks. Those stay in Section 03 and the workboard.
 
 ## The 20 September promotion
 

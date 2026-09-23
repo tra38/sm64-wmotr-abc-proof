@@ -13,6 +13,18 @@ Completed work is grouped by subject. Each item retains its original scope warni
   effects, freshness, other callbacks and the whole F02 interval remain open.
   See [the checked boundary](notes/f02-postcopy-child-frame.md).
 
+## F02 allocator pieces
+
+- [x] Prove a completed nonempty US/JP `try_allocate_object` returns its
+  entry free-list head, and derive slot distinctness from explicit unequal
+  free/active flag loads. Live ownership and lifetime are not proved.
+- [x] Connect the real allocator to its initializer and prove the complete
+  initializer, including `mtxf_identity`, preserves separate State storage.
+  The stronger frame between slots in the same Object pool remains open.
+- [x] Prove the real full-pool lookup preserves memory, and that the
+  exhaustion spin has no completed execution. Eviction/unloading and other
+  callbacks remain open. See the [exact scope](notes/f02-allocation-boundary.md).
+
 ## Generation, source inventory, and entry facts
 
 - [x] Exact decomp commit pinned.

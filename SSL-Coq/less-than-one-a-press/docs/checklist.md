@@ -12,15 +12,17 @@ To choose a bounded investigation shared by several ranks, use the
 [glitch-family workboard](notes/glitch-family-workboard.md). It maps all 45
 ranks to 11 gameplay families and three supporting or scope workstreams;
 its first-batch targets separate plans from checked parts. F02 now has a
-[checked child-copy tail](notes/f02-postcopy-child-frame.md); allocation and
-the remaining post-copy interval are still open.
+[checked child-copy tail](notes/f02-postcopy-child-frame.md) and
+[allocator pieces](notes/f02-allocation-boundary.md). Same-pool initialization
+bounds, live ownership, graph/list effects, eviction and the remaining
+post-copy interval are still open.
 For a consolidated account of which results the impossibility argument uses
 and which live connections remain, see the
 [impossibility-proof progress ledger](impossibility-proof-progress.md).
 The [Fine Print promotion review](notes/fine-print-proof-promotions.md)
 now includes the conditional stock negative-seed argument among the site's
-28 established-result summaries, including the new conditional child-copy
-execution result alongside the earlier local/model claims.
+29 established-result summaries, including the conditional child-copy and
+allocator results alongside the earlier local/model claims.
 Their wider gameplay connections remain on this board; no route is closed
 merely by moving an existing result into that section.
 Apply the [CompCert execution-scope boundary](compcert-execution-scope.md)
@@ -498,10 +500,15 @@ These obligations currently block the clean-retail result.
   the current/Mario object as source. The new `Area1PostCopyParticleExecution.v`
   connects the real particle allocation-and-copy segment to the returned
   child and proves the complete position-and-angle copy tail preserves
-  Mario's distinct valid Object slot and separate State. This does not frame
-  allocation or prove freshness. Next derive the allocator/initialization
-  effects and child separation; current-node identity, the other transitive
-  wrappers, indirect/external calls and lifecycle/retarget aliasing remain open.
+  Mario's distinct valid Object slot and separate State. The new allocator
+  package follows the nonempty free-list result, derives distinctness from
+  explicit free/active flag loads, frames the whole initializer and its matrix
+  helper against separate State storage, and closes the read-only eviction
+  lookup. Still prove initialization's bounds within a shared-pool slot,
+  graph/list and unloading effects, live ownership, and the returned-child
+  connection through the spawning wrappers. Current-node identity, other
+  callbacks and lifecycle/retarget aliasing remain open. See the
+  [allocation boundary](notes/f02-allocation-boundary.md).
   `Area1MovingSkippedQueryClosure.v` separately finds no concrete moving
   skipped-query witness in the audited generated normal/basic/object-warp
   shapes: coordinate-moving warp paths precede a full same-frame query, while

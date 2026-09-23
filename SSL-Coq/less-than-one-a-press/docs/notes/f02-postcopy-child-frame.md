@@ -65,15 +65,16 @@ unchanged subjective estimates.
 - [Area1PostCopyParticleExecution.v](../../proofs/Area1PostCopyParticleExecution.v): `pcp_actual_spawn_segment_has_framed_copy_tail`, splitting the generated allocation-and-copy execution at its real return.
 
 The package is consumed by the existing Rank-5 boundary and exported as
-`MainTheorem.current_f02_postcopy_child_boundary`. The next bounded target
-is the allocator/initialization segment: derive its effects and the returned
-child's separation from Mario, then extend to the remaining reached
-callbacks. That is the remaining work, rather than assuming every late call
-preserves Mario.
+`MainTheorem.current_f02_postcopy_child_boundary`. The
+[follow-up proofs](f02-allocation-boundary.md) now track a nonempty allocator's
+returned slot, give an explicit flag-based freshness test, frame initialization
+against separate State storage, and close the read-only full-pool lookup.
+Shared-pool slot bounds, graph/list and eviction effects, live ownership,
+the complete spawn chain and remaining callbacks still need proof.
 
 ## Validation
 
-The 23 September 2026 selected discipline audit passed: 584 registered
+The original child-copy audit on 23 September 2026 passed: 584 registered
 source files, MainTheorem and the requested dependencies, no proof holes,
 clean links and 414 of 508 proof modules in the main import closure. The
 updated Rank-5 boundary, complete copy frame and generated particle-segment

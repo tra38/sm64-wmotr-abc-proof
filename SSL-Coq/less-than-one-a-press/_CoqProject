@@ -586,3 +586,8 @@ proofs/Area1PostCopyChildSource.v
 proofs/Area1PostCopyChildFrame.v
 proofs/Area1PostCopyChildCall.v
 proofs/Area1PostCopyParticleExecution.v
+proofs/Area1AllocationSource.v
+proofs/Area1AllocationChoice.v
+proofs/Area1AllocationBlockFrame.v
+proofs/Area1AllocationInitialization.v
+proofs/Area1AllocationCallback.v

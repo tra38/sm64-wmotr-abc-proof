@@ -17,7 +17,7 @@
 From Coq Require Import List ZArith.
 From LessThanOneAPress.Proofs Require Import
   Area1PostCopyTailClassification Area1PrecollisionWriterClosure
-  Area1Rank1UpperWarpTraceReceipt Area1PostCopyParticleExecution.
+  Area1Rank1UpperWarpTraceReceipt Area1PostCopyParticleExecution Area1AllocationCallback.
 
 Import ListNotations.
 Local Open Scope Z_scope.
@@ -271,10 +271,10 @@ Proof.
   cbv; repeat split; reflexivity.
 Qed.
 
-(** Source classifications, route-matched machine facts and the conditional
-    child-copy execution result are separate conjuncts. The latter starts
-    its memory frame after allocation returns; combining these facts does
-    not turn the one trace into a universal controller-history theorem. *)
+(** Source classifications, route-matched machine facts and the bounded
+    child-copy/allocator execution results remain separate. The initializer
+    frame starts after list repair or eviction and protects separate blocks,
+    not other slots of the Object pool. No finite trace is universalized. *)
 Definition Area1Rank5StateSplitTraceCheckedBoundary : Prop :=
   (@Area1PostCopyTailClassificationCheckedBoundary
     (Z * Z * Z)%type Z) /\
@@ -284,7 +284,7 @@ Definition Area1Rank5StateSplitTraceCheckedBoundary : Prop :=
   JPRank5PostCopyTraceEscapesAbsent /\
   JPRank5APrecollisionTraceEscapesAbsent /\
   JPRank5PostApplyCollisionTraceWritesAbsent /\
-  Area1PostCopyParticleCheckedBoundary.
+  Area1PostCopyAllocationCheckedBoundary.
 
 Theorem area1_rank5_state_split_trace_checked_boundary_holds :
   Area1Rank5StateSplitTraceCheckedBoundary.
@@ -298,5 +298,5 @@ Proof.
   split; [exact jp_rank5_postcopy_trace_escapes_absent |].
   split; [exact jp_rank5a_precollision_trace_escapes_absent |].
   split; [exact jp_rank5_postapply_collision_trace_writes_absent |].
-  exact area1_postcopy_particle_checked_boundary_holds.
+  exact area1_postcopy_allocation_checked_boundary_holds.
 Qed.
