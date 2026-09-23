@@ -37,9 +37,17 @@ current request.
       derive the conditional seed-only frame-count bound, distinguish the
       larger preparation/input search, and identify the unproved transition
       cost, state-reduction and structural premises for stronger guarantees.
-- [ ] Implement and validate the actual per-seed continuation for a small
-      declared initial-state family; record coverage, execution costs and
-      unknown cases before making an elapsed-time or whole-family claim.
+- [x] Implement the [bounded offline seed sweep](notes/ttc-cog-seed-sweep.md)
+      over three explicit STOPPED-derived RANDOM snapshots per version, with
+      fixed inputs and actual compiled per-seed object scheduling. Calibrate
+      supported continuations and record the external-system model: 393,216
+      cases, all rejected by cog movement, maximum three complete preserving
+      updates and zero sweep unknowns. Four separate device-I/O calibration
+      cases remain unknown; no full N64/Clight refinement is claimed.
+- [ ] Supply and validate natural RANDOM-mode preparation states with different
+      relevant object timers; the three sampled STOPPED phases have identical
+      short scheduling results. Establish gameplay provenance and the omitted
+      external-system/refinement premises before a retail exclusion claim.
 - [x] Run the authorized near-cog placement experiment in US and JP with three
       declared initial setups and stock behavior functions; record failed entries.
 - [x] Export and replay the US ledge-to-lower-cog controller sequence, reproducing

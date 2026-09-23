@@ -45,6 +45,46 @@ static float air_x, air_y, air_z, air_floor_height;
 static float air_intended_x, air_intended_y, air_intended_z;
 static uint32_t lower_cog, upper_cog;
 
+/* Offline receipts only: these files are never loaded back into the game. */
+static void capture_frame_state(uint32_t pc, int leaving, const int64_t *registers) {
+    const char *frames = getenv("COG_SNAPSHOT_FRAMES"), *dir = getenv("COG_SNAPSHOT_DIR");
+    const uint64_t *fp = (const uint64_t *) GetCPUData(M64P_CPU_REG_COP1_FGR_64);
+    const uint32_t *cp0 = (const uint32_t *) GetCPUData(M64P_CPU_REG_COP0);
+    char key[32], path[4096];
+    unsigned rel = R32(A_GLOBAL_TIMER) - start_timer, i, offset;
+    unsigned char block[4096];
+    FILE *out;
+    if (!frames || !dir) return;
+    snprintf(key, sizeof(key), ",%u,", rel);
+    if (!strstr(frames, key)) return;
+    if (!fp || !cp0) { fprintf(stderr, "COG_ERROR,reason=snapshot-registers\n"); return; }
+    snprintf(path, sizeof(path), "%s/%u-%s.ram", dir, rel, leaving ? "exit" : "enter");
+    out = fopen(path, "wbx");
+    if (!out) { fprintf(stderr, "COG_ERROR,reason=snapshot-output\n"); return; }
+    for (offset = 0; offset < 0x800000; offset += sizeof(block)) {
+        for (i = 0; i < sizeof(block); i += 4) {
+            uint32_t word = R32(0x80000000u + offset + i);
+            block[i] = word >> 24; block[i+1] = word >> 16;
+            block[i+2] = word >> 8; block[i+3] = word;
+        }
+        if (fwrite(block, 1, sizeof(block), out) != sizeof(block)) {
+            fprintf(stderr, "COG_ERROR,reason=snapshot-write\n"); break;
+        }
+    }
+    if (fclose(out)) fprintf(stderr, "COG_ERROR,reason=snapshot-close\n");
+    snprintf(path, sizeof(path), "%s/%u-%s.json", dir, rel, leaving ? "exit" : "enter");
+    out = fopen(path, "wx");
+    if (!out) { fprintf(stderr, "COG_ERROR,reason=snapshot-metadata\n"); return; }
+    fprintf(out, "{\"pc\":%u,\"frame\":%u,\"gpr\":[", pc, rel);
+    for (i = 0; i < 32; ++i) fprintf(out, "%s\"%016llx\"", i ? "," : "", (unsigned long long)registers[i]);
+    fprintf(out, "],\"fpr\":[");
+    for (i = 0; i < 32; ++i) fprintf(out, "%s\"%016llx\"", i ? "," : "", (unsigned long long)fp[i]);
+    fprintf(out, "],\"cp0\":[");
+    for (i = 0; i < 32; ++i) fprintf(out, "%s%u", i ? "," : "", cp0[i]);
+    fprintf(out, "]}\n");
+    if (fclose(out)) fprintf(stderr, "COG_ERROR,reason=snapshot-metadata-close\n");
+}
+
 static float rf(uint32_t address) {
     uint32_t bits = R32(address);
     float value;
@@ -93,6 +133,8 @@ static int observe_path(uint32_t pc, const int64_t *registers) {
         const struct path_point *point = &path_points[i];
         uint32_t floor, ceil, mario_object = R32(A_MARIO_OBJECT);
         if (pc != point->pc) continue;
+        if (strcmp(point->routine, "level_script_execute") == 0)
+            capture_frame_state(pc, point->leaving, registers);
         if (strcmp(point->routine, "bhv_ttc_cog_update") == 0) {
             uint32_t object = R32(A_CURRENT_OBJECT);
             if (!valid_object(object)) {

@@ -129,8 +129,16 @@ def main():
                         help="include ground-pound, successor and mist-helper boundaries")
     parser.add_argument("--trace-cogs", action="store_true",
                         help="also observe complete cog updates and their RNG boundaries")
+    parser.add_argument("--snapshot-frames", default="",
+                        help="comma-separated relative frames for read-only offline CPU/RAM receipts")
     args = parser.parse_args()
     args.trace_path = args.trace_path or args.trace_ground_pound or args.trace_cogs
+    if args.snapshot_frames:
+        if not re.fullmatch(r"\d+(,\d+)*", args.snapshot_frames):
+            parser.error("snapshot-frames must be comma-separated nonnegative integers")
+        if len(args.snapshot_frames.split(',')) > 32:
+            parser.error("at most 32 snapshot frames per replay")
+        args.trace_path = True
     args.trace_calls = args.trace_calls or args.trace_path
     if not args.name.isidentifier() or not 300 <= args.video_frames <= 12000:
         parser.error("invalid trial name or video-frame limit")
@@ -201,6 +209,8 @@ def main():
         path_routines.update(GROUND_POUND_ROUTINES)
     if args.trace_cogs:
         path_routines["bhv_ttc_cog_update"] = False
+    if args.snapshot_frames:
+        path_routines["level_script_execute"] = False
     for routine, returns_value in path_routines.items():
         words, disassembly = routine_words(elf, routine)
         start = min(words)
@@ -241,6 +251,12 @@ def main():
         env["COG_TRACE_CALLS"] = "1"
     if args.trace_path:
         env["COG_TRACE_PATH"] = "1"
+    env.pop("COG_SNAPSHOT_FRAMES", None)
+    env.pop("COG_SNAPSHOT_DIR", None)
+    if args.snapshot_frames:
+        (out / "snapshots").mkdir()
+        env["COG_SNAPSHOT_FRAMES"] = ',' + args.snapshot_frames + ','
+        env["COG_SNAPSHOT_DIR"] = str(out / "snapshots")
     if waypoint_copy:
         env["COG_WAYPOINT_FILE"] = str(waypoint_copy)
     capture_frames = (list(range(args.capture_from, args.video_frames + 1))
@@ -261,6 +277,7 @@ def main():
         "trace_path": args.trace_path,
         "trace_ground_pound": args.trace_ground_pound,
         "trace_cogs": args.trace_cogs,
+        "snapshot_frames": args.snapshot_frames,
         "runner_sha256": sha(Path(__file__)),
         "captured_render_frames": capture_frames,
         "timeout_seconds": args.timeout_seconds,

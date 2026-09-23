@@ -11,9 +11,12 @@ seed-dependent schedules do not themselves cause exponential branching when
 the seed is the only unknown. Each complete initial state and fixed input
 continuation determines one execution.
 
-This is a source-grounded algorithmic analysis, not a new Coq theorem, an
-implemented full-game scheduler, a runtime benchmark or a successful gameplay
-witness. The preserving 1,200-update RANDOM target remains open.
+This note is source-grounded algorithmic analysis. The subsequent
+[bounded seed sweep](ttc-cog-seed-sweep.md) implements and benchmarks the small
+explicit-family search under a documented external-system model: 393,216
+cases, none beyond three complete preserving updates. That finite experiment
+is not a complete N64 refinement or a new Coq theorem. The preserving
+1,200-update RANDOM target remains open.
 
 ## The useful bound: only the seed varies
 
@@ -45,7 +48,8 @@ only a candidate until entry, preservation and reachability are established.
 
 The bound is conditional on a terminating, faithful update evaluator. No
 validated worst-case `C` or elapsed-time bound for that evaluator is available
-here. The existing replay observer is not such a seed-sweep implementation.
+here. The replay observer alone is not such an implementation; the new offline
+executor consumes its read-only snapshots with explicit semantic limits.
 A frame-count bound is not an instruction-count or wall-clock guarantee.
 An execution-fuel cutoff can bound runtime, but an exhausted case must be
 reported as **unknown**, not as a rejected seed, unless the fuel bound has
@@ -156,7 +160,7 @@ equal relevant future behavior, not merely equal seeds or cog targets.
 
 ## Concrete consequence for this project
 
-The next solver should first fix a small explicit family of complete initial
+The proposed solver should first fix a small explicit family of complete initial
 states and deterministic continuations. Establish a faithful frame evaluator
 (including all RNG consumers and relevant external inputs), then enumerate
 seeds with actual per-seed scheduling and early rejection. This has a clear
@@ -171,9 +175,12 @@ new nonzero cog target need not move the cog until the next update; rejecting
 the last selection of a window would silently strengthen the goal. Likewise,
 a cog-only schedule success does not establish Mario's complete preservation.
 
-**Outcome:** a conditional seed-sweep operation bound is justified; no practical
-bound for the unrestricted preparation search, and no complete scheduler
-implementation, is supplied. No game or emulator state was changed. The
+**Original analysis outcome:** a conditional seed-sweep operation bound is
+justified; no practical bound for the unrestricted preparation search or
+complete scheduler implementation was supplied by that analysis. The subsequent
+[experiment](ttc-cog-seed-sweep.md) implements a restricted offline executor,
+with calibration, finite coverage and the remaining external-system boundary
+made explicit. No game or emulator state was changed by the original analysis. The
 repository discipline audit passed in Ubuntu's configured login environment
 with `SM64_PROOF_SWITCH=sm64-item-proof`; no proof statements or assumptions
 were changed, and no capstone obligation was discharged.

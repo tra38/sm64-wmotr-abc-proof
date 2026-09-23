@@ -182,9 +182,12 @@ a wall-clock bound or a practical guarantee for searching all preparations.
 Future RNG-dependent scheduling creates one continuation per seed, not a new
 independent choice at every draw.
 
-**Implemented here:** generated-scalar/C cross-checks, fixed-stride exhaustive
-analysis and a prescribed-schedule seed filter. **Not implemented or proved
-here:** a complete TTC scheduler solver, all-preparation coverage, or a legal
+**Implemented in this video review:** generated-scalar/C cross-checks,
+fixed-stride exhaustive analysis and a prescribed-schedule seed filter. The
+subsequent [bounded sweep](ttc-cog-seed-sweep.md) executes the compiled game-thread
+continuation for each seed under an explicit external-system model: all 393,216
+cases in three STOPPED-derived US/JP snapshot pairs fail within four updates.
+This is not a full N64/Clight refinement, all-preparation coverage or a legal
 1,200-frame RANDOM-mode witness. The active gameplay result remains open.
 
 The repository proof-discipline audit passes with the installed

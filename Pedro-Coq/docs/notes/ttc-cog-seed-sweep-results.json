@@ -1,0 +1,1418 @@
+{
+  "family": "search_edge_a STOPPED snapshots, hypothetical RANDOM seed variants",
+  "wall_seconds": 520.081269794995,
+  "parallel_jobs": 6,
+  "cases": [
+    {
+      "version": "jp",
+      "snapshot_frame": 0,
+      "horizon": 1200,
+      "seed_count": 65536,
+      "status_counts": {
+        "rejected": 65536
+      },
+      "reasons": {
+        "cog-moved": 65536
+      },
+      "completed_update_histogram": {
+        "1": 64207,
+        "2": 1292,
+        "3": 37
+      },
+      "longest_complete_prefix": 3,
+      "total_complete_updates": 66902,
+      "total_rng_calls": 4159500,
+      "min_rng_calls": 61,
+      "max_rng_calls": 81,
+      "elapsed_seconds": 519.1151037129966,
+      "csv_sha256": "4badd1b6e5c47de0c5259443bc9bac1028508971a64678cc40ad8cfe5add1571",
+      "build_sha256": "5bdc516fd01bac05cadc428dd837810618a7c1f37f671f27f2cad9cf13cbf6a5",
+      "validation_sha256": "c59aa5fc842512fb4d8e132e4c6669945a411429c35d086ef32d9d4bfb3fe2ab",
+      "starting_mario": {
+        "position": [
+          1308.0,
+          -2088.0,
+          -1088.0
+        ],
+        "forward_speed": 0.0,
+        "action": "0100088c"
+      },
+      "snapshot_receipt": {
+        "frame": 0,
+        "ram_sha256": "db2eebe1113cfffcf67ab4f94965cbc11a0b5d3ffa5b67ebb369415d28648e55",
+        "cpu_sha256": "c5452c05810eb718d857419ec5bb0c86dc69232c9519342669f6a7da06b39c47"
+      },
+      "isolated_longest_replays": 37,
+      "longest_seeds": [
+        32,
+        828,
+        2075,
+        2378,
+        3087,
+        11880,
+        12517,
+        14306,
+        17899,
+        21341,
+        23078,
+        24606,
+        25034,
+        28226,
+        28971,
+        29586,
+        29982,
+        31118,
+        38216,
+        38681,
+        39969,
+        40546,
+        41465,
+        41681,
+        43330,
+        46071,
+        46465,
+        47082,
+        49440,
+        50820,
+        51964,
+        52910,
+        53608,
+        54335,
+        60399,
+        60582,
+        61269
+      ]
+    },
+    {
+      "version": "jp",
+      "snapshot_frame": 30,
+      "horizon": 1200,
+      "seed_count": 65536,
+      "status_counts": {
+        "rejected": 65536
+      },
+      "reasons": {
+        "cog-moved": 65536
+      },
+      "completed_update_histogram": {
+        "1": 64207,
+        "2": 1292,
+        "3": 37
+      },
+      "longest_complete_prefix": 3,
+      "total_complete_updates": 66902,
+      "total_rng_calls": 4159500,
+      "min_rng_calls": 61,
+      "max_rng_calls": 81,
+      "elapsed_seconds": 513.8074958569996,
+      "csv_sha256": "4badd1b6e5c47de0c5259443bc9bac1028508971a64678cc40ad8cfe5add1571",
+      "build_sha256": "5bdc516fd01bac05cadc428dd837810618a7c1f37f671f27f2cad9cf13cbf6a5",
+      "validation_sha256": "c59aa5fc842512fb4d8e132e4c6669945a411429c35d086ef32d9d4bfb3fe2ab",
+      "starting_mario": {
+        "position": [
+          1308.0,
+          -2088.0,
+          -1088.0
+        ],
+        "forward_speed": 31.80536651611328,
+        "action": "04000471"
+      },
+      "snapshot_receipt": {
+        "frame": 30,
+        "ram_sha256": "5ae7ef5905a22096de17fcdf226b0950c03ab42a5c754f91ff1ccb093f8de85c",
+        "cpu_sha256": "1fb28f2bc4df7cfcfd128549c45e6be6cbbf86bcc53a745e373e9e446f37b2f4"
+      },
+      "isolated_longest_replays": 37,
+      "longest_seeds": [
+        32,
+        828,
+        2075,
+        2378,
+        3087,
+        11880,
+        12517,
+        14306,
+        17899,
+        21341,
+        23078,
+        24606,
+        25034,
+        28226,
+        28971,
+        29586,
+        29982,
+        31118,
+        38216,
+        38681,
+        39969,
+        40546,
+        41465,
+        41681,
+        43330,
+        46071,
+        46465,
+        47082,
+        49440,
+        50820,
+        51964,
+        52910,
+        53608,
+        54335,
+        60399,
+        60582,
+        61269
+      ]
+    },
+    {
+      "version": "jp",
+      "snapshot_frame": 100,
+      "horizon": 1200,
+      "seed_count": 65536,
+      "status_counts": {
+        "rejected": 65536
+      },
+      "reasons": {
+        "cog-moved": 65536
+      },
+      "completed_update_histogram": {
+        "1": 64207,
+        "2": 1292,
+        "3": 37
+      },
+      "longest_complete_prefix": 3,
+      "total_complete_updates": 66902,
+      "total_rng_calls": 4159500,
+      "min_rng_calls": 61,
+      "max_rng_calls": 81,
+      "elapsed_seconds": 515.4600719770024,
+      "csv_sha256": "4badd1b6e5c47de0c5259443bc9bac1028508971a64678cc40ad8cfe5add1571",
+      "build_sha256": "5bdc516fd01bac05cadc428dd837810618a7c1f37f671f27f2cad9cf13cbf6a5",
+      "validation_sha256": "c59aa5fc842512fb4d8e132e4c6669945a411429c35d086ef32d9d4bfb3fe2ab",
+      "starting_mario": {
+        "position": [
+          1308.0,
+          -2088.0,
+          -1088.0
+        ],
+        "forward_speed": 42.20158386230469,
+        "action": "04000471"
+      },
+      "snapshot_receipt": {
+        "frame": 100,
+        "ram_sha256": "bd398c766a51756d788137a9eb4ba933121fbd7fb737d655ca3bb938bad9276c",
+        "cpu_sha256": "1fe3a333c7c8e38866cb1b5344c1246fdf0bca79e681663a3d6b065c4eef7c12"
+      },
+      "isolated_longest_replays": 37,
+      "longest_seeds": [
+        32,
+        828,
+        2075,
+        2378,
+        3087,
+        11880,
+        12517,
+        14306,
+        17899,
+        21341,
+        23078,
+        24606,
+        25034,
+        28226,
+        28971,
+        29586,
+        29982,
+        31118,
+        38216,
+        38681,
+        39969,
+        40546,
+        41465,
+        41681,
+        43330,
+        46071,
+        46465,
+        47082,
+        49440,
+        50820,
+        51964,
+        52910,
+        53608,
+        54335,
+        60399,
+        60582,
+        61269
+      ]
+    },
+    {
+      "version": "us",
+      "snapshot_frame": 0,
+      "horizon": 1200,
+      "seed_count": 65536,
+      "status_counts": {
+        "rejected": 65536
+      },
+      "reasons": {
+        "cog-moved": 65536
+      },
+      "completed_update_histogram": {
+        "1": 64207,
+        "2": 1292,
+        "3": 37
+      },
+      "longest_complete_prefix": 3,
+      "total_complete_updates": 66902,
+      "total_rng_calls": 4159500,
+      "min_rng_calls": 61,
+      "max_rng_calls": 81,
+      "elapsed_seconds": 519.4856557510066,
+      "csv_sha256": "32121773de1f10903a6c4539031c463ed46b6e3b0584ad3e1b8def4b9e070197",
+      "build_sha256": "67022eb34db04e460cc413011ac2b779b38111d6ac1bf6e44ef55dbb18299c28",
+      "validation_sha256": "3e7554cce1ff2ed1a2102ae323e973d262803135317e0ad39325fac7392676ba",
+      "starting_mario": {
+        "position": [
+          1308.0,
+          -2088.0,
+          -1088.0
+        ],
+        "forward_speed": 0.0,
+        "action": "0100088c"
+      },
+      "snapshot_receipt": {
+        "frame": 0,
+        "ram_sha256": "17858e3945596761d095f97f7983cc67d4fc77388e9fede017d613c4be32bbcf",
+        "cpu_sha256": "a4c03482b1be5a9fecf7620ea986320f37d59d227d8c9ec976be81ce6ad66ab1"
+      },
+      "isolated_longest_replays": 37,
+      "longest_seeds": [
+        32,
+        828,
+        2075,
+        2378,
+        3087,
+        11880,
+        12517,
+        14306,
+        17899,
+        21341,
+        23078,
+        24606,
+        25034,
+        28226,
+        28971,
+        29586,
+        29982,
+        31118,
+        38216,
+        38681,
+        39969,
+        40546,
+        41465,
+        41681,
+        43330,
+        46071,
+        46465,
+        47082,
+        49440,
+        50820,
+        51964,
+        52910,
+        53608,
+        54335,
+        60399,
+        60582,
+        61269
+      ]
+    },
+    {
+      "version": "us",
+      "snapshot_frame": 30,
+      "horizon": 1200,
+      "seed_count": 65536,
+      "status_counts": {
+        "rejected": 65536
+      },
+      "reasons": {
+        "cog-moved": 65536
+      },
+      "completed_update_histogram": {
+        "1": 64207,
+        "2": 1292,
+        "3": 37
+      },
+      "longest_complete_prefix": 3,
+      "total_complete_updates": 66902,
+      "total_rng_calls": 4159500,
+      "min_rng_calls": 61,
+      "max_rng_calls": 81,
+      "elapsed_seconds": 514.159531583995,
+      "csv_sha256": "32121773de1f10903a6c4539031c463ed46b6e3b0584ad3e1b8def4b9e070197",
+      "build_sha256": "67022eb34db04e460cc413011ac2b779b38111d6ac1bf6e44ef55dbb18299c28",
+      "validation_sha256": "3e7554cce1ff2ed1a2102ae323e973d262803135317e0ad39325fac7392676ba",
+      "starting_mario": {
+        "position": [
+          1308.0,
+          -2088.0,
+          -1088.0
+        ],
+        "forward_speed": 31.80536651611328,
+        "action": "04000471"
+      },
+      "snapshot_receipt": {
+        "frame": 30,
+        "ram_sha256": "57f904c85e6ba545f9c5859fb2112daf8dee3d59e0a6c1178c52c2666ac5c74f",
+        "cpu_sha256": "319a1119400ee2b8fcbe0674de0d79573d35fe1e3d2bf615515998ab0e350e7b"
+      },
+      "isolated_longest_replays": 37,
+      "longest_seeds": [
+        32,
+        828,
+        2075,
+        2378,
+        3087,
+        11880,
+        12517,
+        14306,
+        17899,
+        21341,
+        23078,
+        24606,
+        25034,
+        28226,
+        28971,
+        29586,
+        29982,
+        31118,
+        38216,
+        38681,
+        39969,
+        40546,
+        41465,
+        41681,
+        43330,
+        46071,
+        46465,
+        47082,
+        49440,
+        50820,
+        51964,
+        52910,
+        53608,
+        54335,
+        60399,
+        60582,
+        61269
+      ]
+    },
+    {
+      "version": "us",
+      "snapshot_frame": 100,
+      "horizon": 1200,
+      "seed_count": 65536,
+      "status_counts": {
+        "rejected": 65536
+      },
+      "reasons": {
+        "cog-moved": 65536
+      },
+      "completed_update_histogram": {
+        "1": 64207,
+        "2": 1292,
+        "3": 37
+      },
+      "longest_complete_prefix": 3,
+      "total_complete_updates": 66902,
+      "total_rng_calls": 4159500,
+      "min_rng_calls": 61,
+      "max_rng_calls": 81,
+      "elapsed_seconds": 516.4639200699967,
+      "csv_sha256": "32121773de1f10903a6c4539031c463ed46b6e3b0584ad3e1b8def4b9e070197",
+      "build_sha256": "67022eb34db04e460cc413011ac2b779b38111d6ac1bf6e44ef55dbb18299c28",
+      "validation_sha256": "3e7554cce1ff2ed1a2102ae323e973d262803135317e0ad39325fac7392676ba",
+      "starting_mario": {
+        "position": [
+          1308.0,
+          -2088.0,
+          -1088.0
+        ],
+        "forward_speed": 42.20158386230469,
+        "action": "04000471"
+      },
+      "snapshot_receipt": {
+        "frame": 100,
+        "ram_sha256": "7f51ea8417ea89beda817788782642f8d69121f3b5bf5c7c9548ff3cdd01d38c",
+        "cpu_sha256": "f55915a5e3b71a0839609abbb5aecbf7924e4eead0d43eedd4974c79fedc6561"
+      },
+      "isolated_longest_replays": 37,
+      "longest_seeds": [
+        32,
+        828,
+        2075,
+        2378,
+        3087,
+        11880,
+        12517,
+        14306,
+        17899,
+        21341,
+        23078,
+        24606,
+        25034,
+        28226,
+        28971,
+        29586,
+        29982,
+        31118,
+        38216,
+        38681,
+        39969,
+        40546,
+        41465,
+        41681,
+        43330,
+        46071,
+        46465,
+        47082,
+        49440,
+        50820,
+        51964,
+        52910,
+        53608,
+        54335,
+        60399,
+        60582,
+        61269
+      ]
+    }
+  ],
+  "all_six_normalized_csvs_identical": true,
+  "total_seed_cases": 393216,
+  "hypothetical_initialization": {
+    "clock_mode": "RANDOM",
+    "seed_range": [
+      0,
+      65535
+    ],
+    "other_state": "retained from STOPPED snapshots",
+    "fixed_raw_stick": [
+      75,
+      28
+    ],
+    "buttons": []
+  },
+  "evidence_class": "finite offline execution under an explicit external-system boundary model; not a Coq theorem or reachable-gameplay exclusion",
+  "source_pin": "9921382a68bb0c865e5e45eb594d9c64db59b1af",
+  "source_sha256": {
+    "README.md": "82ebee2e8a7a0f0055b703848364743ab986888555b93767ad8984604ad1158e",
+    "calibrate_random.py": "3d8fcdb6c714b543b7eb1318aa8f6585fa45755f49c48cf3591ea0572ad00dd6",
+    "offline.py": "ec94f0b308d4e24974ef7a2da638757eebf08f36721b827cde0c4ca6c721c1dd",
+    "prepare.py": "7f76922d4d9c63960c4eeec52dd516c814691b3f7fccf5b95d915195f6204da3",
+    "report.py": "361d5e7e0f843efb7e19fcdb9d1e05d2c38149b4ee7782d4e4b661dac7afdafb",
+    "run.py": "db9941a26537e9a2ca6c4c0506270606d04fab5e7e685ac8a9bf83ae9c612018",
+    "sweep.c": "c0135728744e5b2975a2bde4b698aaefb517732e7c397fe4a1160a0692f93463",
+    "validate.py": "65d33362297e81c02c56f8ea7e19bc8454f6d0d9285bcb9e939b524b1847470c"
+  },
+  "validation": {
+    "us": {
+      "version": "us",
+      "build_sha256": "67022eb34db04e460cc413011ac2b779b38111d6ac1bf6e44ef55dbb18299c28",
+      "required_identical_regions": [
+        "gObjectPool",
+        "gMarioStates",
+        "gMarioPlatform",
+        "gLakituState",
+        "gCurrentObject",
+        "gGlobalTimer",
+        "gControllers",
+        "gGfxPools",
+        "gMatStack",
+        "gTimeStopState",
+        "gTTCSpeedSetting"
+      ],
+      "baselines": [
+        {
+          "frame": 0,
+          "updates": 1,
+          "result": {
+            "seed": "17711",
+            "status": "survived",
+            "complete_updates": "1",
+            "rng_calls": "2",
+            "final_seed": "2530",
+            "rng_hash": "52c8452c49baa32d",
+            "reason": "none",
+            "pc": "ffffffff8038067c"
+          },
+          "expected_sha256": "1d8374295f131b7c5a5fa0e63657b7b79182285b652d9ab9d85f8e8b87cc5241",
+          "actual_sha256": "3756f722a2410328387e4d5fd50ce6b70c57fd9852abfe8683ee4a4761ab17b0",
+          "full_ram_differences": {
+            "gProfilerFrameData": 5
+          }
+        },
+        {
+          "frame": 0,
+          "updates": 2,
+          "result": {
+            "seed": "17711",
+            "status": "survived",
+            "complete_updates": "2",
+            "rng_calls": "4",
+            "final_seed": "43823",
+            "rng_hash": "7ccdc0ba66d3e939",
+            "reason": "none",
+            "pc": "ffffffff8038067c"
+          },
+          "expected_sha256": "21d05f9ff9d5108a058a46da439711d787fb25f99e2a9eb0f337cfd771d6e811",
+          "actual_sha256": "ae354a95777cee3ce45fda57b3943368dc9b2cedb6090d27413add6f754b6413",
+          "full_ram_differences": {
+            "gAudioHeap": 21451,
+            "gSequenceLayers": 122,
+            "gThread4Stack": 88,
+            "sSoundBanks": 77,
+            "gProfilerFrameData": 73,
+            "gSoundThread": 72,
+            "gSequenceChannels": 70,
+            "sSampleDmas": 42,
+            "gCurrAudioFrameDmaIoMesgBufs": 25,
+            "gPIMesgBuf": 21,
+            "gSynthesisReverb": 18,
+            "gThread3Stack": 9,
+            "gSequencePlayers": 6,
+            "gNoteFreeLists": 6,
+            "gIntrMesgBuf": 5,
+            "piMgrStack": 5,
+            "gAudioTasks": 4,
+            "gAudioRandom": 4,
+            "unmapped-symbol-80335": 4,
+            "unmapped-symbol-80365": 3,
+            "__osCurrentTime": 3,
+            "__osBaseCounter": 3,
+            "gLayerFreeList": 2,
+            "gAudioCmd": 2,
+            "sSoundBankUsedListBack": 2,
+            "sSoundBankFreeListFront": 2,
+            "sNumSoundsInBank": 2,
+            "sCurrentSound": 2,
+            "sSoundMovingSpeed": 2,
+            "tmpTask": 2,
+            "sSampleDmaReuseQueueTail1": 1,
+            "sSampleDmaReuseQueueTail2": 1,
+            "gAudioFrameCount": 1,
+            "gCurrAudioFrameDmaCount": 1,
+            "gCurrAiBufferIndex": 1,
+            "gAiBufferLengths": 1,
+            "gNumVblanks": 1,
+            "gCurrentFrameIndex2": 1,
+            "sNumProcessedSoundRequests": 1,
+            "sMusicDynamicDelay": 1,
+            "gPIMesgQueue": 1,
+            "gIntrMesgQueue": 1,
+            "gSPTaskMesgQueue": 1,
+            "gCurrAiBuffer": 1,
+            "__osViIntrCount": 1
+          }
+        },
+        {
+          "frame": 30,
+          "updates": 1,
+          "result": {
+            "seed": "52753",
+            "status": "survived",
+            "complete_updates": "1",
+            "rng_calls": "2",
+            "final_seed": "40910",
+            "rng_hash": "26a3a802c3246627",
+            "reason": "none",
+            "pc": "ffffffff8038067c"
+          },
+          "expected_sha256": "5c8816826448e7eed47cfc2882309191994f609c49380dbe190c766f6ce17bee",
+          "actual_sha256": "1626df82fd4e0becc49b840fb2821f360776ba1d903e3a4711f9a7f550a4456d",
+          "full_ram_differences": {
+            "gGameLoopThread": 147,
+            "__osThreadSave": 20,
+            "gProfilerFrameData": 5
+          }
+        },
+        {
+          "frame": 30,
+          "updates": 2,
+          "result": {
+            "seed": "52753",
+            "status": "survived",
+            "complete_updates": "2",
+            "rng_calls": "4",
+            "final_seed": "3481",
+            "rng_hash": "2cd805c24ba7a9ba",
+            "reason": "none",
+            "pc": "ffffffff8038067c"
+          },
+          "expected_sha256": "8d1de78d1b7ab38174751db3191bbf056d7e7c4a878661273a9b5fbffd049c46",
+          "actual_sha256": "69ef055d70902e8cd63ddab76ccd39737f479331bac7cd1515a920b785bf4da7",
+          "full_ram_differences": {
+            "gAudioHeap": 12447,
+            "gGameLoopThread": 112,
+            "gSoundThread": 75,
+            "gProfilerFrameData": 72,
+            "gThread4Stack": 37,
+            "gSequenceLayers": 28,
+            "gSynthesisReverb": 21,
+            "gSequenceChannels": 18,
+            "sSampleDmas": 15,
+            "__osThreadSave": 12,
+            "gThread3Stack": 9,
+            "gCurrAudioFrameDmaIoMesgBufs": 8,
+            "gSequencePlayers": 6,
+            "gAudioTasks": 4,
+            "gAudioRandom": 4,
+            "unmapped-symbol-80335": 4,
+            "gIntrMesgBuf": 4,
+            "sSoundBanks": 4,
+            "__osCurrentTime": 3,
+            "__osBaseCounter": 3,
+            "sSampleDmaReuseQueue1": 2,
+            "gAudioCmd": 2,
+            "tmpTask": 2,
+            "unmapped-symbol-80365": 2,
+            "piMgrStack": 2,
+            "sSampleDmaReuseQueueTail1": 1,
+            "sSampleDmaReuseQueueHead1": 1,
+            "gAudioFrameCount": 1,
+            "gCurrAiBufferIndex": 1,
+            "gNumVblanks": 1,
+            "gCurrentFrameIndex2": 1,
+            "sNumProcessedSoundRequests": 1,
+            "gPIMesgQueue": 1,
+            "gIntrMesgQueue": 1,
+            "gSPTaskMesgQueue": 1,
+            "gCurrAiBuffer": 1,
+            "__osViIntrCount": 1
+          }
+        },
+        {
+          "frame": 100,
+          "updates": 1,
+          "result": {
+            "seed": "49887",
+            "status": "survived",
+            "complete_updates": "1",
+            "rng_calls": "2",
+            "final_seed": "51333",
+            "rng_hash": "54bb0c69f864dff2",
+            "reason": "none",
+            "pc": "ffffffff8038067c"
+          },
+          "expected_sha256": "9a125a78c4b175bea6260542398ec95fc0a60531f6a17c7c2c5710dbcf2a0668",
+          "actual_sha256": "4b1dd192a78a3db95233ccb1a816bc1ac149613c26de96266a9567fef077870c",
+          "full_ram_differences": {
+            "gProfilerFrameData": 5
+          }
+        },
+        {
+          "frame": 100,
+          "updates": 2,
+          "result": {
+            "seed": "49887",
+            "status": "survived",
+            "complete_updates": "2",
+            "rng_calls": "4",
+            "final_seed": "28588",
+            "rng_hash": "21111fc2fc32af55",
+            "reason": "none",
+            "pc": "ffffffff8038067c"
+          },
+          "expected_sha256": "5c3ede49b4b9107401bbf3354a5029bc9f031072ac4a8efbc939f8658c70c267",
+          "actual_sha256": "6400a2b43a014033cd317437991ce730611a1136124d2c6808d009e45473968a",
+          "full_ram_differences": {
+            "gAudioHeap": 21100,
+            "gGameLoopThread": 92,
+            "gSoundThread": 78,
+            "gSequenceLayers": 71,
+            "gThread4Stack": 63,
+            "gProfilerFrameData": 57,
+            "sSampleDmas": 30,
+            "gSynthesisReverb": 26,
+            "__osThreadSave": 26,
+            "gSequenceChannels": 24,
+            "gCurrAudioFrameDmaIoMesgBufs": 15,
+            "gThread3Stack": 9,
+            "gNoteFreeLists": 8,
+            "gSequencePlayers": 6,
+            "gPIMesgBuf": 5,
+            "gAudioRandom": 4,
+            "unmapped-symbol-80335": 4,
+            "gIntrMesgBuf": 4,
+            "sSoundBanks": 4,
+            "sSampleDmaReuseQueue1": 3,
+            "gAudioTasks": 3,
+            "__osCurrentTime": 3,
+            "__osBaseCounter": 3,
+            "gAudioCmd": 2,
+            "unmapped-symbol-80365": 2,
+            "piMgrStack": 2,
+            "sSampleDmaReuseQueueTail1": 1,
+            "sSampleDmaReuseQueueHead1": 1,
+            "gAudioFrameCount": 1,
+            "gCurrAiBufferIndex": 1,
+            "gAiBufferLengths": 1,
+            "gNumVblanks": 1,
+            "gCurrentFrameIndex2": 1,
+            "sNumProcessedSoundRequests": 1,
+            "gPIMesgQueue": 1,
+            "gIntrMesgQueue": 1,
+            "gSPTaskMesgQueue": 1,
+            "gCurrAiBuffer": 1,
+            "tmpTask": 1,
+            "__osViIntrCount": 1
+          }
+        },
+        {
+          "frame": 0,
+          "updates": 102,
+          "result": {
+            "seed": "17711",
+            "status": "survived",
+            "complete_updates": "102",
+            "rng_calls": "176",
+            "final_seed": "28588",
+            "rng_hash": "e14388041dd746c3",
+            "reason": "none",
+            "pc": "ffffffff8038067c"
+          },
+          "expected_sha256": "5c3ede49b4b9107401bbf3354a5029bc9f031072ac4a8efbc939f8658c70c267",
+          "actual_sha256": "558479d49c8021fb1f97179c511900bf54cff2f6f50f24c3528472da14dd4569",
+          "full_ram_differences": {
+            "gAudioHeap": 92855,
+            "gSequenceLayers": 575,
+            "sSampleDmas": 339,
+            "sSampleDmaReuseQueue1": 241,
+            "gSequenceChannels": 170,
+            "gGameLoopThread": 154,
+            "gThread4Stack": 139,
+            "gProfilerFrameData": 134,
+            "gPIMesgBuf": 83,
+            "sSoundBanks": 69,
+            "gSoundThread": 65,
+            "gSynthesisReverb": 36,
+            "gCurrAudioFrameDmaIoMesgBufs": 28,
+            "__osThreadSave": 26,
+            "gNoteFreeLists": 14,
+            "gThread3Stack": 11,
+            "gIntrMesgBuf": 10,
+            "gSequencePlayers": 9,
+            "gAudioTasks": 4,
+            "gAudioRandom": 4,
+            "unmapped-symbol-80335": 4,
+            "piMgrStack": 4,
+            "__osCurrentTime": 4,
+            "__osBaseCounter": 4,
+            "unmapped-symbol-80365": 3,
+            "sSampleDmaReuseQueue2": 2,
+            "gAudioCmd": 2,
+            "gAiBufferLengths": 2,
+            "gNumVblanks": 2,
+            "sSoundMovingSpeed": 2,
+            "tmpTask": 2,
+            "__osViIntrCount": 2,
+            "gLayerFreeList": 1,
+            "sSampleDmaReuseQueueTail1": 1,
+            "sSampleDmaReuseQueueTail2": 1,
+            "sSampleDmaReuseQueueHead1": 1,
+            "sSampleDmaReuseQueueHead2": 1,
+            "gAudioFrameCount": 1,
+            "gCurrAudioFrameDmaCount": 1,
+            "gCurrAiBufferIndex": 1,
+            "gCurrentFrameIndex2": 1,
+            "sNumProcessedSoundRequests": 1,
+            "sBackgroundMusicForDynamics": 1,
+            "sMusicDynamicDelay": 1,
+            "sSoundBankUsedListBack": 1,
+            "sNumSoundsInBank": 1,
+            "gPIMesgQueue": 1,
+            "gIntrMesgQueue": 1,
+            "gSPTaskMesgQueue": 1,
+            "gCurrAiBuffer": 1,
+            "sCurrentSound": 1
+          }
+        }
+      ],
+      "positive_preservation": {
+        "seed": "17711",
+        "status": "survived",
+        "complete_updates": "102",
+        "rng_calls": "176",
+        "final_seed": "28588",
+        "rng_hash": "e14388041dd746c3",
+        "reason": "none",
+        "pc": "ffffffff8038067c"
+      },
+      "fuel_exhaustion": {
+        "seed": "0",
+        "status": "unknown",
+        "complete_updates": "0",
+        "rng_calls": "0",
+        "final_seed": "0",
+        "rng_hash": "cbf29ce484222325",
+        "reason": "instruction-budget",
+        "pc": "ffffffff803805c8"
+      },
+      "seed_isolation": {
+        "seed": "32",
+        "status": "rejected",
+        "complete_updates": "3",
+        "rng_calls": "77",
+        "final_seed": "42063",
+        "rng_hash": "10b9901175ca0b71",
+        "reason": "cog-moved",
+        "pc": "ffffffff80307958"
+      },
+      "last_update_selection": {
+        "seed": "0",
+        "status": "survived",
+        "complete_updates": "1",
+        "rng_calls": "64",
+        "final_seed": "16784",
+        "rng_hash": "cdb210c2897d2191",
+        "reason": "none",
+        "pc": "ffffffff8038067c"
+      },
+      "next_update_movement": {
+        "seed": "0",
+        "status": "rejected",
+        "complete_updates": "1",
+        "rng_calls": "64",
+        "final_seed": "16784",
+        "rng_hash": "cdb210c2897d2191",
+        "reason": "cog-moved",
+        "pc": "ffffffff80307958"
+      }
+    },
+    "jp": {
+      "version": "jp",
+      "build_sha256": "5bdc516fd01bac05cadc428dd837810618a7c1f37f671f27f2cad9cf13cbf6a5",
+      "required_identical_regions": [
+        "gObjectPool",
+        "gMarioStates",
+        "gMarioPlatform",
+        "gLakituState",
+        "gCurrentObject",
+        "gGlobalTimer",
+        "gControllers",
+        "gGfxPools",
+        "gMatStack",
+        "gTimeStopState",
+        "gTTCSpeedSetting"
+      ],
+      "baselines": [
+        {
+          "frame": 0,
+          "updates": 1,
+          "result": {
+            "seed": "17711",
+            "status": "survived",
+            "complete_updates": "1",
+            "rng_calls": "2",
+            "final_seed": "2530",
+            "rng_hash": "52c8452c49baa32d",
+            "reason": "none",
+            "pc": "ffffffff8038067c"
+          },
+          "expected_sha256": "39dd527fec95cd4cc48eeaae83eddc7e20223bd1a34f64b19811044649d74f1b",
+          "actual_sha256": "0ca16cbb14a7d1fb89fa8c4f5ed663dac5f6d375fa90e87a307b0364edeac20c",
+          "full_ram_differences": {
+            "gProfilerFrameData": 5
+          }
+        },
+        {
+          "frame": 0,
+          "updates": 2,
+          "result": {
+            "seed": "17711",
+            "status": "survived",
+            "complete_updates": "2",
+            "rng_calls": "4",
+            "final_seed": "43823",
+            "rng_hash": "7ccdc0ba66d3e939",
+            "reason": "none",
+            "pc": "ffffffff8038067c"
+          },
+          "expected_sha256": "0e9e72189a26ac1e43a95ac638d9b22f807205ba6459cdcd2b5624b95f57892c",
+          "actual_sha256": "be8d28332160754232bfb04cf20cd2f5aeccb06540e6be6272fded0984e51614",
+          "full_ram_differences": {
+            "gAudioHeap": 21442,
+            "gSequenceLayers": 122,
+            "gSoundThread": 94,
+            "gThread4Stack": 90,
+            "sSoundBanks": 77,
+            "gSequenceChannels": 76,
+            "gProfilerFrameData": 73,
+            "sSampleDmas": 43,
+            "gCurrAudioFrameDmaIoMesgBufs": 23,
+            "gPIMesgBuf": 21,
+            "gSynthesisReverb": 18,
+            "gThread3Stack": 9,
+            "gNoteFreeLists": 6,
+            "gIntrMesgBuf": 5,
+            "piMgrStack": 5,
+            "gSequencePlayers": 4,
+            "gAudioTasks": 4,
+            "gAudioRandom": 4,
+            "unmapped-symbol-80334": 4,
+            "unmapped-symbol-80364": 3,
+            "__osCurrentTime": 3,
+            "__osBaseCounter": 3,
+            "gLayerFreeList": 2,
+            "gAudioCmd": 2,
+            "sSoundBankUsedListBack": 2,
+            "sSoundBankFreeListFront": 2,
+            "sNumSoundsInBank": 2,
+            "sCurrentSound": 2,
+            "sSoundMovingSpeed": 2,
+            "tmpTask": 2,
+            "sSampleDmaReuseQueueTail1": 1,
+            "sSampleDmaReuseQueueTail2": 1,
+            "gAudioFrameCount": 1,
+            "gCurrAudioFrameDmaCount": 1,
+            "gCurrAiBufferIndex": 1,
+            "gAiBufferLengths": 1,
+            "gNumVblanks": 1,
+            "gCurrentFrameIndex2": 1,
+            "sNumProcessedSoundRequests": 1,
+            "sMusicDynamicDelay": 1,
+            "gPIMesgQueue": 1,
+            "gIntrMesgQueue": 1,
+            "gSPTaskMesgQueue": 1,
+            "gCurrAiBuffer": 1,
+            "__osViIntrCount": 1
+          }
+        },
+        {
+          "frame": 30,
+          "updates": 1,
+          "result": {
+            "seed": "52753",
+            "status": "survived",
+            "complete_updates": "1",
+            "rng_calls": "2",
+            "final_seed": "40910",
+            "rng_hash": "26a3a802c3246627",
+            "reason": "none",
+            "pc": "ffffffff8038067c"
+          },
+          "expected_sha256": "03efc24969c446c2e2905718460f0fffe3e8b84d6e0bd35343b867f247b8acc3",
+          "actual_sha256": "c642688859a45bf5e6b00aba1559bd3e343a9b899f41af6dd595f8c5d72d81b0",
+          "full_ram_differences": {
+            "gGameLoopThread": 115,
+            "__osThreadSave": 14,
+            "gProfilerFrameData": 5
+          }
+        },
+        {
+          "frame": 30,
+          "updates": 2,
+          "result": {
+            "seed": "52753",
+            "status": "survived",
+            "complete_updates": "2",
+            "rng_calls": "4",
+            "final_seed": "3481",
+            "rng_hash": "2cd805c24ba7a9ba",
+            "reason": "none",
+            "pc": "ffffffff8038067c"
+          },
+          "expected_sha256": "8a218974ca00753c32615febd2f22f373150903a91910e6cbd1f54c586672b7f",
+          "actual_sha256": "480a313b6a99ce9bb3656845884da4a0eb134e868ff798c151e8c1d1c4cdad3b",
+          "full_ram_differences": {
+            "gAudioHeap": 12797,
+            "gGameLoopThread": 109,
+            "gProfilerFrameData": 72,
+            "gSoundThread": 70,
+            "gThread4Stack": 42,
+            "gSequenceLayers": 27,
+            "gSynthesisReverb": 21,
+            "gSequenceChannels": 18,
+            "sSampleDmas": 14,
+            "__osThreadSave": 12,
+            "gThread3Stack": 11,
+            "gSequencePlayers": 5,
+            "gCurrAudioFrameDmaIoMesgBufs": 4,
+            "gAudioTasks": 4,
+            "gAudioRandom": 4,
+            "unmapped-symbol-80334": 4,
+            "gIntrMesgBuf": 4,
+            "sSoundBanks": 4,
+            "__osCurrentTime": 4,
+            "__osBaseCounter": 4,
+            "sSampleDmaReuseQueue1": 2,
+            "gAudioCmd": 2,
+            "tmpTask": 2,
+            "unmapped-symbol-80364": 2,
+            "piMgrStack": 2,
+            "sSampleDmaReuseQueueTail1": 1,
+            "sSampleDmaReuseQueueHead1": 1,
+            "gAudioFrameCount": 1,
+            "gCurrAiBufferIndex": 1,
+            "gNumVblanks": 1,
+            "gCurrentFrameIndex2": 1,
+            "sNumProcessedSoundRequests": 1,
+            "gPIMesgQueue": 1,
+            "gIntrMesgQueue": 1,
+            "gSPTaskMesgQueue": 1,
+            "gPIMesgBuf": 1,
+            "gCurrAiBuffer": 1,
+            "__osViIntrCount": 1
+          }
+        },
+        {
+          "frame": 100,
+          "updates": 1,
+          "result": {
+            "seed": "49887",
+            "status": "survived",
+            "complete_updates": "1",
+            "rng_calls": "2",
+            "final_seed": "51333",
+            "rng_hash": "54bb0c69f864dff2",
+            "reason": "none",
+            "pc": "ffffffff8038067c"
+          },
+          "expected_sha256": "e495194163f59b027c8674562efbd891272fe46ba4f1bee15bffe930c4459779",
+          "actual_sha256": "95b35db3ed3e4aff6888858a4ccfbc2de1e35459b9947e92a3301a0074866e18",
+          "full_ram_differences": {
+            "gProfilerFrameData": 5
+          }
+        },
+        {
+          "frame": 100,
+          "updates": 2,
+          "result": {
+            "seed": "49887",
+            "status": "survived",
+            "complete_updates": "2",
+            "rng_calls": "4",
+            "final_seed": "28588",
+            "rng_hash": "21111fc2fc32af55",
+            "reason": "none",
+            "pc": "ffffffff8038067c"
+          },
+          "expected_sha256": "e1752ee2a691f24f56c39e36736746391b83f09aa36106802aed572fd66010ae",
+          "actual_sha256": "ae6232d42d335cf78eeb222e71f33c10c57c26787a485980b26082955973505d",
+          "full_ram_differences": {
+            "gAudioHeap": 19034,
+            "gGameLoopThread": 92,
+            "gSoundThread": 87,
+            "gThread4Stack": 70,
+            "gProfilerFrameData": 57,
+            "sSampleDmas": 30,
+            "gSequenceLayers": 28,
+            "gSynthesisReverb": 26,
+            "__osThreadSave": 24,
+            "gSequenceChannels": 17,
+            "gCurrAudioFrameDmaIoMesgBufs": 10,
+            "gThread3Stack": 9,
+            "gSequencePlayers": 4,
+            "gAudioRandom": 4,
+            "unmapped-symbol-80334": 4,
+            "gIntrMesgBuf": 4,
+            "sSoundBanks": 4,
+            "sSampleDmaReuseQueue1": 3,
+            "piMgrStack": 3,
+            "__osCurrentTime": 3,
+            "__osBaseCounter": 3,
+            "gAudioTasks": 2,
+            "gPIMesgBuf": 2,
+            "unmapped-symbol-80364": 2,
+            "sSampleDmaReuseQueueTail1": 1,
+            "sSampleDmaReuseQueueHead1": 1,
+            "gAudioFrameCount": 1,
+            "gCurrAudioFrameDmaCount": 1,
+            "gCurrAiBufferIndex": 1,
+            "gAudioCmd": 1,
+            "gAiBufferLengths": 1,
+            "gNumVblanks": 1,
+            "gCurrentFrameIndex2": 1,
+            "sNumProcessedSoundRequests": 1,
+            "gPIMesgQueue": 1,
+            "gIntrMesgQueue": 1,
+            "gSPTaskMesgQueue": 1,
+            "gCurrAiBuffer": 1,
+            "tmpTask": 1,
+            "__osViIntrCount": 1
+          }
+        },
+        {
+          "frame": 0,
+          "updates": 102,
+          "result": {
+            "seed": "17711",
+            "status": "survived",
+            "complete_updates": "102",
+            "rng_calls": "176",
+            "final_seed": "28588",
+            "rng_hash": "e14388041dd746c3",
+            "reason": "none",
+            "pc": "ffffffff8038067c"
+          },
+          "expected_sha256": "e1752ee2a691f24f56c39e36736746391b83f09aa36106802aed572fd66010ae",
+          "actual_sha256": "3ccc31b32bd36a005190d418534cf64e041d2456bb9706dd9cb8643448af5198",
+          "full_ram_differences": {
+            "gAudioHeap": 97220,
+            "gSequenceLayers": 579,
+            "sSampleDmas": 350,
+            "sSampleDmaReuseQueue1": 237,
+            "gSequenceChannels": 176,
+            "gThread4Stack": 155,
+            "gProfilerFrameData": 134,
+            "gGameLoopThread": 120,
+            "gSoundThread": 89,
+            "gPIMesgBuf": 88,
+            "sSoundBanks": 69,
+            "gCurrAudioFrameDmaIoMesgBufs": 37,
+            "gSynthesisReverb": 36,
+            "__osThreadSave": 24,
+            "gNoteFreeLists": 14,
+            "gThread3Stack": 11,
+            "gIntrMesgBuf": 10,
+            "gSequencePlayers": 7,
+            "gAudioTasks": 4,
+            "gAudioRandom": 4,
+            "unmapped-symbol-80334": 4,
+            "piMgrStack": 4,
+            "__osCurrentTime": 4,
+            "__osBaseCounter": 4,
+            "unmapped-symbol-80364": 3,
+            "sSampleDmaReuseQueue2": 2,
+            "gAudioCmd": 2,
+            "gAiBufferLengths": 2,
+            "gNumVblanks": 2,
+            "sSoundMovingSpeed": 2,
+            "tmpTask": 2,
+            "__osViIntrCount": 2,
+            "gLayerFreeList": 1,
+            "sSampleDmaReuseQueueTail1": 1,
+            "sSampleDmaReuseQueueTail2": 1,
+            "sSampleDmaReuseQueueHead1": 1,
+            "sSampleDmaReuseQueueHead2": 1,
+            "gAudioFrameCount": 1,
+            "gCurrAudioFrameDmaCount": 1,
+            "gCurrAiBufferIndex": 1,
+            "gCurrentFrameIndex2": 1,
+            "sNumProcessedSoundRequests": 1,
+            "sBackgroundMusicForDynamics": 1,
+            "sMusicDynamicDelay": 1,
+            "sSoundBankUsedListBack": 1,
+            "sNumSoundsInBank": 1,
+            "gPIMesgQueue": 1,
+            "gIntrMesgQueue": 1,
+            "gSPTaskMesgQueue": 1,
+            "gCurrAiBuffer": 1,
+            "sCurrentSound": 1
+          }
+        }
+      ],
+      "positive_preservation": {
+        "seed": "17711",
+        "status": "survived",
+        "complete_updates": "102",
+        "rng_calls": "176",
+        "final_seed": "28588",
+        "rng_hash": "e14388041dd746c3",
+        "reason": "none",
+        "pc": "ffffffff8038067c"
+      },
+      "fuel_exhaustion": {
+        "seed": "0",
+        "status": "unknown",
+        "complete_updates": "0",
+        "rng_calls": "0",
+        "final_seed": "0",
+        "rng_hash": "cbf29ce484222325",
+        "reason": "instruction-budget",
+        "pc": "ffffffff803805c8"
+      },
+      "seed_isolation": {
+        "seed": "32",
+        "status": "rejected",
+        "complete_updates": "3",
+        "rng_calls": "77",
+        "final_seed": "42063",
+        "rng_hash": "10b9901175ca0b71",
+        "reason": "cog-moved",
+        "pc": "ffffffff80306874"
+      },
+      "last_update_selection": {
+        "seed": "0",
+        "status": "survived",
+        "complete_updates": "1",
+        "rng_calls": "64",
+        "final_seed": "16784",
+        "rng_hash": "cdb210c2897d2191",
+        "reason": "none",
+        "pc": "ffffffff8038067c"
+      },
+      "next_update_movement": {
+        "seed": "0",
+        "status": "rejected",
+        "complete_updates": "1",
+        "rng_calls": "64",
+        "final_seed": "16784",
+        "rng_hash": "cdb210c2897d2191",
+        "reason": "cog-moved",
+        "pc": "ffffffff80306874"
+      }
+    }
+  },
+  "build_provenance": {
+    "us": {
+      "version": "us",
+      "frames": [
+        0,
+        30,
+        100
+      ],
+      "snapshots": [
+        {
+          "frame": 0,
+          "ram_sha256": "17858e3945596761d095f97f7983cc67d4fc77388e9fede017d613c4be32bbcf",
+          "cpu_sha256": "a4c03482b1be5a9fecf7620ea986320f37d59d227d8c9ec976be81ce6ad66ab1"
+        },
+        {
+          "frame": 30,
+          "ram_sha256": "57f904c85e6ba545f9c5859fb2112daf8dee3d59e0a6c1178c52c2666ac5c74f",
+          "cpu_sha256": "319a1119400ee2b8fcbe0674de0d79573d35fe1e3d2bf615515998ab0e350e7b"
+        },
+        {
+          "frame": 100,
+          "ram_sha256": "7f51ea8417ea89beda817788782642f8d69121f3b5bf5c7c9548ff3cdd01d38c",
+          "cpu_sha256": "f55915a5e3b71a0839609abbb5aecbf7924e4eead0d43eedd4974c79fedc6561"
+        }
+      ],
+      "source_pin": "9921382a68bb0c865e5e45eb594d9c64db59b1af",
+      "unicorn_wheel_sha256": "9d6e6dea140560de4ebd8446661f7ef84a357d428c14a3ef09dacd306ec8c239",
+      "unicorn_library_sha256": "ddb196ec82b52e502c18e4a34478bf7b9f61c83c2ebaa95c74d8ded45a95da9c",
+      "trial_manifest_sha256": "4a6591a978849eb266c577dec760ebee03e2ecbc7e0272dee9076bd20684ab6a",
+      "trace_sha256": "4dc629cef5859e19eaefa3139f90a83550643706f3d85199e3291608755f715b",
+      "elf_sha256": "fad10b6e870ce5a86a18d206d9cce0d33fd7dfbcb2d728e9ef11de767b279a24",
+      "config_sha256": "2ca4d391876e4ae4dc6f4a51d2289f76a9f3b664db01bfd2af47ab82ebfab9b2",
+      "sweep_source_sha256": "c0135728744e5b2975a2bde4b698aaefb517732e7c397fe4a1160a0692f93463",
+      "executable_sha256": "40cf7c7ef4ee6f1bb802698597c53296896643cc1770a51d20729d1650c361a6"
+    },
+    "jp": {
+      "version": "jp",
+      "frames": [
+        0,
+        30,
+        100
+      ],
+      "snapshots": [
+        {
+          "frame": 0,
+          "ram_sha256": "db2eebe1113cfffcf67ab4f94965cbc11a0b5d3ffa5b67ebb369415d28648e55",
+          "cpu_sha256": "c5452c05810eb718d857419ec5bb0c86dc69232c9519342669f6a7da06b39c47"
+        },
+        {
+          "frame": 30,
+          "ram_sha256": "5ae7ef5905a22096de17fcdf226b0950c03ab42a5c754f91ff1ccb093f8de85c",
+          "cpu_sha256": "1fb28f2bc4df7cfcfd128549c45e6be6cbbf86bcc53a745e373e9e446f37b2f4"
+        },
+        {
+          "frame": 100,
+          "ram_sha256": "bd398c766a51756d788137a9eb4ba933121fbd7fb737d655ca3bb938bad9276c",
+          "cpu_sha256": "1fe3a333c7c8e38866cb1b5344c1246fdf0bca79e681663a3d6b065c4eef7c12"
+        }
+      ],
+      "source_pin": "9921382a68bb0c865e5e45eb594d9c64db59b1af",
+      "unicorn_wheel_sha256": "9d6e6dea140560de4ebd8446661f7ef84a357d428c14a3ef09dacd306ec8c239",
+      "unicorn_library_sha256": "ddb196ec82b52e502c18e4a34478bf7b9f61c83c2ebaa95c74d8ded45a95da9c",
+      "trial_manifest_sha256": "8312a61a7f0b40a72030bcc82c11971d31b738cfec1374ceb25e4b69142760a2",
+      "trace_sha256": "41ff1233507641360b8f156724f54b0bda346b965a7c8fc0940a7150e5d253d5",
+      "elf_sha256": "b4728d18f13b4c69224c06d41006322b4105507471a936c2bbdef32c04a2356e",
+      "config_sha256": "271d17c7aa253c0b219f6c2009970a5fed3e305974492550ed5d5990eae1732f",
+      "sweep_source_sha256": "c0135728744e5b2975a2bde4b698aaefb517732e7c397fe4a1160a0692f93463",
+      "executable_sha256": "f27819664a84209871365fcb98a3bba35ac867cc34802355010757f518e14828"
+    }
+  },
+  "random_calibration": {
+    "random_emulator_baselines": [
+      {
+        "version": "us",
+        "frame": 0,
+        "status": "matched",
+        "rng_calls": 39,
+        "different_profiler_bytes": 5,
+        "entry_sha256": "45fb07621909dfb72549cb735381a1cee3dd29f1c9bcae25bd6f28c9bf959d0d",
+        "exit_sha256": "46434abe54405d709015b683a67ef73232ee96015bdde67162002a8186275e34",
+        "manifest_sha256": "6be93c5023801f4ffe2b7bf0250e104131a283c5f2bad8cbbd2efc8b664f18cb"
+      },
+      {
+        "version": "us",
+        "frame": 1,
+        "status": "unknown",
+        "error": "Invalid memory read (UC_ERR_READ_UNMAPPED)",
+        "pc": "0xffffffff80327d24",
+        "unmapped": [
+          {
+            "access": 19,
+            "address": "0x430000c",
+            "size": 4
+          }
+        ],
+        "manifest_sha256": "6be93c5023801f4ffe2b7bf0250e104131a283c5f2bad8cbbd2efc8b664f18cb"
+      },
+      {
+        "version": "us",
+        "frame": 2,
+        "status": "unknown",
+        "error": "Invalid memory read (UC_ERR_READ_UNMAPPED)",
+        "pc": "0xffffffff80327d24",
+        "unmapped": [
+          {
+            "access": 19,
+            "address": "0x430000c",
+            "size": 4
+          }
+        ],
+        "manifest_sha256": "6be93c5023801f4ffe2b7bf0250e104131a283c5f2bad8cbbd2efc8b664f18cb"
+      },
+      {
+        "version": "jp",
+        "frame": 0,
+        "status": "matched",
+        "rng_calls": 39,
+        "different_profiler_bytes": 5,
+        "entry_sha256": "f21cb4850b0e597e902c3ae679dc3ca479a1667eb22296035721d6f6d1184d60",
+        "exit_sha256": "03acd57ddc3332ea098407974ee428b7d669db7c5c1f126cab3d0b2e12809066",
+        "manifest_sha256": "a5b39f18798bb44d87470aa7c47c62fa259413cafeb46383b4f6266c67340464"
+      },
+      {
+        "version": "jp",
+        "frame": 1,
+        "status": "unknown",
+        "error": "Invalid memory read (UC_ERR_READ_UNMAPPED)",
+        "pc": "0xffffffff80326da4",
+        "unmapped": [
+          {
+            "access": 19,
+            "address": "0x430000c",
+            "size": 4
+          }
+        ],
+        "manifest_sha256": "a5b39f18798bb44d87470aa7c47c62fa259413cafeb46383b4f6266c67340464"
+      },
+      {
+        "version": "jp",
+        "frame": 2,
+        "status": "unknown",
+        "error": "Invalid memory read (UC_ERR_READ_UNMAPPED)",
+        "pc": "0xffffffff80326da4",
+        "unmapped": [
+          {
+            "access": 19,
+            "address": "0x430000c",
+            "size": 4
+          }
+        ],
+        "manifest_sha256": "a5b39f18798bb44d87470aa7c47c62fa259413cafeb46383b4f6266c67340464"
+      }
+    ],
+    "native_reference_seed_samples_per_version": 8
+  }
+}

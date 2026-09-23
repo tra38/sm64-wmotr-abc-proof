@@ -439,10 +439,10 @@ The dedicated private
 [Pedro-Coq research site](https://pedro-proof-notes.tra38.chatgpt.site) now
 includes the geometry search, 1,200-update STOPPED hold, preserving-input
 comparisons, local cog-departure proof, alternative-RNG findings and the video
-review with exact scalar RNG checks and conditional scheduler-search bounds.
-Version 5 was published on 2026-09-22
-and verified to remain owner-only, with no groups
-or external viewers. Its verdict agrees with this guide: a preserving
+review with exact scalar RNG checks, conditional scheduler-search bounds and
+the bounded seed-sweep results. The [publication record](notes/ttc-cog-site-publication.md)
+identifies the published version and owner-only access check. Its verdict
+agrees with this guide: a preserving
 1,200-frame RANDOM-mode RNG strategy remains unproved. The official Sites
 bundle was recovered through the connected resource catalog; the earlier
 publication blocker is resolved. See the [publication record](notes/ttc-cog-site-publication.md).
@@ -485,8 +485,35 @@ varying more initial bits or future inputs can make the search exponential.
 SAT/SMT and early rejection offer no general polynomial-time guarantee. A
 proved small equivalent-state space or suitable constraint structure could
 give a stronger bound, but neither is established for the full TTC search.
-This investigation adds an algorithmic bound, not an implemented scheduler,
-runtime benchmark, Coq theorem or successful RANDOM-mode hold.
+The subsequent bounded experiment implements that enumeration under an explicit
+external-system model; it does not establish a full N64/Clight refinement.
+
+### What happened when we actually swept the seeds?
+
+The [bounded sweep](notes/ttc-cog-seed-sweep.md) tested **all 65,536 seeds for
+three snapshots in each of US and JP: 393,216 cases**. None lasted four complete
+preserving updates. The maximum was **three**; every rejection was caused by
+a cog actually moving. There were no unknown or resource-limited cases within
+this sweep. Enumeration took about 8 minutes 40 seconds with six concurrent
+jobs, excluding setup and validation; that is a measurement, not a guarantee.
+
+The snapshots come from updates 0, 30 and 100 of the same STOPPED hold. Only in
+the offline evaluator, we set the clock to RANDOM and vary the seed while keeping
+stick `(75, 28)` and no buttons. **These are hypothetical starting conditions,
+not a demonstrated way to enter RANDOM mode with those states.** The three
+different Mario speeds produced identical short RNG schedules and results, so
+they add no observed scheduling diversity. Other RANDOM preparations, object
+timers, cog angles and future input choices remain open.
+
+The evaluator executes the compiled object scheduler, Mario, camera and
+rendering separately for each seed. Its game-thread state and ordered RNG
+draws were calibrated against 102 recorded STOPPED updates in each version.
+Audio, OS and hardware execution between updates are modeled only through the
+declared boundary operations. A separate RANDOM calibration matches its first
+frame; its next two frames in each version require unsupported device I/O and
+remain unknown. Those four calibration cases are outside the exhaustive family.
+This is a bounded experimental exclusion, not a Coq impossibility proof or a
+proof against all ways to keep RANDOM-mode cogs still for 1,200 frames.
 
 The video's `7^-1200` estimate assumes independent uniform selections. Its
 state count and waiting-time extrapolation are not an exact impossibility
