@@ -11,13 +11,16 @@ counterexample-search rank, see the [no-A route atlas](no-a-route-atlas.md).
 To choose a bounded investigation shared by several ranks, use the
 [glitch-family workboard](notes/glitch-family-workboard.md). It maps all 45
 ranks to 11 gameplay families and three supporting or scope workstreams;
-its first-batch targets are plans, not newly checked-off obligations.
+its first-batch targets separate plans from checked parts. F02 now has a
+[checked child-copy tail](notes/f02-postcopy-child-frame.md); allocation and
+the remaining post-copy interval are still open.
 For a consolidated account of which results the impossibility argument uses
 and which live connections remain, see the
 [impossibility-proof progress ledger](impossibility-proof-progress.md).
 The [Fine Print promotion review](notes/fine-print-proof-promotions.md)
 now includes the conditional stock negative-seed argument among the site's
-27 established-result summaries, alongside the earlier local/model claims.
+28 established-result summaries, including the new conditional child-copy
+execution result alongside the earlier local/model claims.
 Their wider gameplay connections remain on this board; no route is closed
 merely by moving an existing result into that section.
 Apply the [CompCert execution-scope boundary](compcert-execution-scope.md)
@@ -491,11 +494,14 @@ These obligations currently block the clean-retail result.
   `Area1PostCopyAliasCallbackClosure.v` closes the direct one-hop designated-
   Mario subcase: the bilateral corpus has nine direct raw-XYZ formal-receiver
   helpers, no one-hop designated-Mario call into them, and the audited
-  particle/debug child-copy chains use the fresh child as destination and the
-  current/Mario object as source.  Its memory frame proves that a distinct
-  valid object slot cannot change Mario's raw load.  Current-node identity,
-  allocator freshness, transitive wrappers, indirect/external calls, and
-  lifecycle/retarget aliasing remain open.
+  particle/debug child-copy chains use the returned child as destination and
+  the current/Mario object as source. The new `Area1PostCopyParticleExecution.v`
+  connects the real particle allocation-and-copy segment to the returned
+  child and proves the complete position-and-angle copy tail preserves
+  Mario's distinct valid Object slot and separate State. This does not frame
+  allocation or prove freshness. Next derive the allocator/initialization
+  effects and child separation; current-node identity, the other transitive
+  wrappers, indirect/external calls and lifecycle/retarget aliasing remain open.
   `Area1MovingSkippedQueryClosure.v` separately finds no concrete moving
   skipped-query witness in the audited generated normal/basic/object-warp
   shapes: coordinate-moving warp paths precede a full same-frame query, while

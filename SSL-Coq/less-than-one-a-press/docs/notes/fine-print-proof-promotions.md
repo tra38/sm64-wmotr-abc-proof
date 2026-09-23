@@ -1,13 +1,23 @@
 # Which Fine Print results belong with the proofs?
 
-The review refreshed on 20 September 2026 checks all 50 ledger entries and
-six assumption recommendations. One further result belongs in "01 / WE DO
-HAVE PROOFS": the conditional stock negative-depth argument. There are now
-27 result cards. The other sections retain the conditions and gameplay
-questions outside those results, with links to the completed parts. This
-review changes their presentation, not the proofs or route verdicts.
+The 20 September 2026 review checked all 50 ledger entries and six
+assumption recommendations. The 23 September F02 batch adds a new proved
+conditional child-copy result to "01 / WE DO HAVE PROOFS", taking it to 28
+result cards. The other sections retain the conditions and gameplay
+questions outside those results, with links to the completed parts. No
+whole-route verdict changes.
 
-## The new promotion
+## F02: a new local execution proof
+
+The [child-copy result](f02-postcopy-child-frame.md) belongs in Section 01:
+the actual US/JP position-and-angle copy and the particle tail after
+allocation preserve Mario's separate State and distinct valid Object slot.
+The generated caller is connected to its returned destination. Section 03
+and the F02 workboard still retain allocation effects, child freshness,
+other callbacks and the rest of the post-copy interval. This is new proof
+work, unlike simply promoting an older result's presentation.
+
+## The 20 September promotion
 
 [InkStockSeedConditional.v](../../proofs/InkStockSeedConditional.v) proves
 `isc_useful_negative_seed_requires_physical_a` and its no-A corollary.

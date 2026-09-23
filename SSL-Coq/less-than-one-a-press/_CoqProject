@@ -582,3 +582,7 @@ proofs/InkPlatformMovement.v
 proofs/InkPlatformDistance.v
 proofs/InkCourseEntryReset.v
 proofs/InkStockSeedConditional.v
+proofs/Area1PostCopyChildSource.v
+proofs/Area1PostCopyChildFrame.v
+proofs/Area1PostCopyChildCall.v
+proofs/Area1PostCopyParticleExecution.v

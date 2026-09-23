@@ -74,9 +74,9 @@ Sources: [The four possible stall causes, checked](../../docs/notes/rank10a-live
 
 **The question.** Can movement, collision and display positions disagree at the right checks, without the next ordinary copy erasing the advantage?
 
-**What is already known.** The supplied JP Ink setup works through the warp. All 2,462 frames of the clean pillar run lack the useful split. The full platform phase preserves display and collision coordinates even when actual Mario moves. The second-state copy cannot succeed in the initialized source model. These results leave other legal histories open.
+**What is already known.** The supplied JP Ink setup works through the warp. All 2,462 frames of the clean pillar run lack the useful split. The full platform phase preserves display and collision coordinates even when actual Mario moves. The second-state copy cannot succeed in the initialized source model. The new US/JP execution proof also closes the child-copy tail: after allocation returns a valid child in a different slot, the position-and-angle copy leaves Mario's State, collision and display records unchanged. Allocation itself and other legal histories remain open.
 
-**First compute batch.** Choose the late-write interval from Mario’s completed ordinary copy to the next collision check. Connect the remaining stock object callbacks and their actual receivers to a position-preservation argument, then identify any reached writer that lies outside it.
+**First compute batch.** The particle child-copy part is now checked against the actual generated calls and returned destination. Next, prove the preceding allocation and initialization effects and that the returned child is distinct from Mario. Then connect the remaining reached callbacks through the next collision check. A source list alone does not discharge those execution conditions.
 
 **What a negative result would settle.** Show that the chosen interval cannot create a useful split from synchronized records. A separate pre-action or dialog interval needs its own proof; combine them only when their boundaries match.
 
@@ -90,7 +90,7 @@ Sources: [The four possible stall causes, checked](../../docs/notes/rank10a-live
 
 **Also helps [19](../no-a-route-atlas.md#route-rank-19), [20](../no-a-route-atlas.md#route-rank-20), [21](../no-a-route-atlas.md#route-rank-21), [25](../no-a-route-atlas.md#route-rank-25).** A raised display helps only if its gap survives until the useful query and contact.
 
-Sources: [The successful supplied JP Ink setup](../../docs/notes/ink-vertical-installation.md); [Complete platform phase preserves display and collision coordinates](../../proofs/InkPlatformMovement.v); [Real second-query connection](../../proofs/InkRetryQuery.v); [Late State writers](../../docs/notes/rank5-state-split-trace.md); [Copy and interaction audit](../../docs/notes/area1-ranks13-18-copy-interaction-audit.md); [Player and floor-owner boundaries](../../docs/notes/rank1-player-floor-owner-residual.md); [Route atlas](../../docs/no-a-route-atlas.md).
+Sources: [The successful supplied JP Ink setup](../../docs/notes/ink-vertical-installation.md); [Complete platform phase preserves display and collision coordinates](../../proofs/InkPlatformMovement.v); [Real second-query connection](../../proofs/InkRetryQuery.v); [Late State writers](../../docs/notes/rank5-state-split-trace.md); [Child-copy execution and its allocation boundary](f02-postcopy-child-frame.md); [Copy and interaction audit](../../docs/notes/area1-ranks13-18-copy-interaction-audit.md); [Player and floor-owner boundaries](../../docs/notes/rank1-player-floor-owner-residual.md); [Route atlas](../../docs/no-a-route-atlas.md).
 
 <a id="display-seed"></a>
 

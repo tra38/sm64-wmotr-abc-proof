@@ -4,6 +4,15 @@
 
 Completed work is grouped by subject. Each item retains its original scope warning; conditional models and runtime fixtures are not promoted to linked retail proofs.
 
+## F02 child-copy execution
+
+- [x] Connect the generated US/JP particle allocation-and-copy segment to its
+  returned copy destination, and prove the complete position-and-angle
+  copy preserves Mario's separate State and distinct valid Object slot.
+  The result begins its memory frame after allocation returns. Allocation
+  effects, freshness, other callbacks and the whole F02 interval remain open.
+  See [the checked boundary](notes/f02-postcopy-child-frame.md).
+
 ## Generation, source inventory, and entry facts
 
 - [x] Exact decomp commit pinned.
