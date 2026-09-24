@@ -6,6 +6,11 @@ Completed work is grouped by subject. Each item retains its original scope warni
 
 ## F02 accepted-warp checkpoint
 
+- [x] Mark the seven proved stock-list exclusion groups clearly and move their
+  catalog explanations into Fine Print **01 · Already proved**. Rewrite the
+  catalog and result summaries around what happens to Mario, while retaining
+  the exact conditions and theorem links. These are existing proofs; the
+  other 20 cases, live-creation coverage and all route estimates are unchanged.
 - [x] Catalog 27 whole-game position-split mechanisms and supporting cases,
   including their stock SSL availability, next copy and remaining obligations.
   Coq checks the three direct State-setter callers across all 38 generated

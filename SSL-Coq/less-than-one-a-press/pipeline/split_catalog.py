@@ -109,6 +109,17 @@ def make_index(repo, catalog):
     files, function_count, functions, refs = source_index(repo)
     counts, hashes, generated = generated_index()
     for row in catalog["situations"]:
+        if row["section"] not in ("proved", "catalog"):
+            raise ValueError(f"{row['id']}: invalid presentation section")
+        if (row["section"] == "proved") != bool(row.get("proof")):
+            raise ValueError(f"{row['id']}: missing or misplaced proof reference")
+        if row.get("proof"):
+            proof = row["proof"]
+            module = ROOT / proof["module"]
+            if not proof["claim"] or not proof["scope"] or row["availability"] != "absent":
+                raise ValueError(f"{row['id']}: incomplete stock-list exclusion")
+            if not re.search(r"\bTheorem\s+" + re.escape(proof["theorem"]) + r"\b", module.read_text(encoding="utf-8")):
+                raise ValueError(f"{row['id']}: missing referenced theorem")
         for name in row["functions"]:
             if name not in functions:
                 raise ValueError(f"{row['id']}: unindexed source function {name}")
@@ -139,10 +150,11 @@ def render_markdown(catalog, index):
     lines = ["# Where a useful position split could come from", "",
         "Updated 24 September 2026. The full catalog is also on the private "
         "[Fine Print site](https://pyramid-proof-fine-print.tra38.chatgpt.site/#split-catalog).", "",
-        "The proposed method is sound: classify the actual ways the game can write or retain "
-        "the three positions, then eliminate the ones SSL cannot use and follow the remaining "
-        "ones to the chosen warp checkpoint. An enemy being absent can eliminate its ordinary "
-        "spawn path. It cannot eliminate a different SSL actor using a shared helper.", "",
+        "Mario has three position records. Usually, the game keeps them together. We want to "
+        "know which tricks can pull them apart, and whether SSL can supply the ingredients "
+        "before the next copy puts them back together. If an enemy's stock spawn path is "
+        "impossible, cross off that path. A different actor using the same helper still needs "
+        "its own check.", "",
         "This catalog groups whole-game source mechanisms into 27 cases. It includes actual "
         "writers, ways to preserve a gap, and tempting false positives. It is not a list of "
         "27 demonstrated Ink routes or a completed classification of every live memory write.", "",
@@ -173,15 +185,37 @@ def render_markdown(catalog, index):
         "JP Ink fixture remains conditional; the clean replay has all three records equal. "
         "No new clean installation or all-history impossibility has been established. "
         "Atlas route estimates are unchanged; no probability is assigned to these source rows.", "",
-        "## The catalog", "",
+        "Seven proved stock-list exclusions now appear in **01 · Already proved** below "
+        "and on the site. The other 20 entries remain separate. This is a clearer presentation "
+        "of existing proofs, not seven new route closures. The summaries start with what "
+        "happens to Mario; the exact scope and proof references remain attached.", "",
+        "## All 27 cases at a glance", "",
         "| # | Situation | SSL / current verdict |", "| --- | --- | --- |"]
     for row in catalog["situations"]:
         lines.append(f"| {row['number']:02} | [{row['title']}](#split-{row['id']}) | {row['status']} |")
-    for row in catalog["situations"]:
+    grouped_rows = [row for section in ("proved", "catalog")
+                    for row in catalog["situations"] if row["section"] == section]
+    previous_section = None
+    for row in grouped_rows:
+        if row["section"] != previous_section:
+            previous_section = row["section"]
+            if previous_section == "proved":
+                lines += ["", "## 01 · Already proved: these stock spawn choices are ruled out", "",
+                    "These lists cannot select the named actors. That is the completed claim. "
+                    "Unexpected later object creation remains a separate question; it is not "
+                    "silently declared impossible here."]
+            else:
+                lines += ["", "## 02 · Remaining cases and other contexts", "",
+                    "These entries include open gameplay questions and things that only look "
+                    "like useful producers. Being listed here does not mean a route works."]
         lines += ["", f"<a id=\"split-{row['id']}\"></a>", "", f"### {row['number']:02} — {row['title']}", ""]
-        for key, label in (("effect", "Position effect"), ("prerequisite", "Whole-game prerequisite"),
-                ("area1", "SSL Area 1"), ("timing", "The next copy or check"),
-                ("evidence", "What is established"), ("missing", "What is still needed")):
+        if row.get("proof"):
+            proof = row["proof"]
+            lines += [f"**Ruled out.** {proof['claim']}", "", f"**Scope.** {proof['scope']}", "",
+                f"Proof: [`{proof['theorem']}`](../../{proof['module']}).", ""]
+        for key, label in (("effect", "What happens to Mario"), ("prerequisite", "What we would need"),
+                ("area1", "Can SSL supply it"), ("timing", "Does the gap last long enough"),
+                ("evidence", "What we know"), ("missing", "What this does not rule out" if row.get("proof") else "What is left to check")):
             lines += [f"**{label}.** {row[key]}", ""]
         links = []
         for name in row["functions"]:

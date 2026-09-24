@@ -204,6 +204,12 @@ The detailed sections are organized as:
   foreign actors, while SSL's own platform, push, water, cannon, shell and
   dialog mechanisms still need their timing and copy arguments. This is not
   yet a complete live-write classification; route estimates stay unchanged.
+  The catalog and Fine Print Section 01 now mark seven groups as **ruled out
+  from the checked stock spawn lists**: Chuckya/King Bob-omb, Dorrie, the two
+  tilting pyramids, Hoot, the named launch enemies, whirlpools and butterflies.
+  The other 20 cases remain separate. This makes existing exclusions easier
+  to find; it does not claim those actors are impossible under every later
+  object-creation history or close a whole route.
 - **The signed-16 State alias remains rank 3 for proof value, not because a
   stock installation looks likely:** its exact payload works, but every
   installation in the audited stock scheduler and surface-owner model fails.

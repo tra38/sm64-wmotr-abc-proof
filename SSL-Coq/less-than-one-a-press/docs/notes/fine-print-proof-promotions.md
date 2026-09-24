@@ -8,6 +8,25 @@ questions outside those results, with links to the completed parts. No
 whole-route verdict changes. The 24 September source catalog adds one narrowly
 labeled source-census card, bringing the total to 31.
 
+## Clear exclusions, with their limits attached
+
+The 24 September presentation follow-up moves seven detailed catalog groups
+into **01 · Already proved**: Chuckya/King Bob-omb, Dorrie, the two tilting
+pyramids, Hoot, Heave-Ho/the named bullies/Bowser's shockwave, whirlpools and
+butterflies. Each is labeled **Ruled out · stock lists**. The exact completed
+claim is that the checked US/JP stock selectors cannot choose the named
+behaviors. A broader claim about every possible later object-creation history
+is not promoted. The three existing proof modules and their theorem names
+are linked in the canonical [catalog](position-split-catalog.md).
+
+Section 01 now contains 31 result summaries plus these seven expanded cases;
+the seven are not additional theorems or new route closures. The other 20
+catalog entries remain separate. Existing negative results get a short label
+that names the ruled-out step or conditional setup. Positive results and
+finite trials keep their own verdicts. The main explanations use informal,
+example-led original prose; exact limits and proof receipts remain available.
+No Coq file, route estimate or gameplay conclusion changes in this update.
+
 ## F02: whole-game mechanisms and stock selectors
 
 The [position-split catalog](position-split-catalog.md) belongs beside the F02

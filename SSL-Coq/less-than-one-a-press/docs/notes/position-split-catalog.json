@@ -13,14 +13,14 @@
     {
       "id": "ordinary-step",
       "number": 1,
-      "title": "Ordinary walking, falling and action movement",
-      "status": "Present Â· timing matters",
-      "effect": "State moves first; action helpers usually copy it into display, and the Mario callback later copies it into collision.",
-      "prerequisite": "Walking, sliding, jumping/falling, damage movement and ground-pound startup use this machinery in every course.",
-      "area1": "SSL Area 1 has ordinary ground and air movement. Availability of a particular airborne action without a new A press is a separate question.",
-      "timing": "The warp interaction runs before the ordinary action loop. Movement later in that pass cannot cause a split at the earlier accepted-warp return. Earlier updates still need their last copy traced.",
-      "evidence": "The normal ordering is read from stock source; existing copy and ground-step proofs cover named segments. It is not a proof that every action always refreshes display.",
-      "missing": "Close an actual earlier action segment and its intervening copies; a large stored speed is not itself a position change.",
+      "title": "Walking, falling and the ordinary position copies",
+      "status": "Open · present in SSL",
+      "effect": "Mario takes a step, so his movement position changes. The action usually updates his display next, and Mario's object update later copies the movement position into the collision record. In between, the numbers can disagree.",
+      "prerequisite": "This is the everyday machinery behind walking, sliding, falling and airborne actions.",
+      "area1": "Yes. SSL uses it too. Whether Mario can enter a particular airborne action without a new A press is a separate problem.",
+      "timing": "The warp gets checked before the ordinary action loop. A step taken later in that update is too late to explain a gap that was already there when the warp accepted Mario.",
+      "evidence": "We have the update order and proofs for particular copies and movement steps. That gives us useful stopping points.",
+      "missing": "Follow the earlier action to its last copy. A big speed value alone does not move Mario between two arbitrary checks.",
       "functions": [
         "perform_air_quarter_step",
         "perform_ground_step",
@@ -35,19 +35,21 @@
         "5",
         "13B",
         "18"
-      ]
+      ],
+      "availability": "available",
+      "section": "catalog"
     },
     {
       "id": "geometry-retry",
       "number": 2,
-      "title": "Wall corrections and the failed-floor display retry",
-      "status": "Present Â· central open producer",
-      "effect": "Pre-action wall correction moves State. If its floor lookup misses, the retry copies display into State while collision can remain low.",
-      "prerequisite": "No special enemy is needed: geometry preparation runs before interaction.",
-      "area1": "This is the mechanism that makes the supplied SSL Ink setup work. The low actual/collision pose and high display must already coexist at the right top timing.",
-      "timing": "Both wall corrections and the first floor query precede warp interaction; the retry can leave State = display â‰  collision at acceptance.",
-      "evidence": "The real copy-to-second-query segment and finite/top-selection certificates are proved separately; the supplied JP installation has a replay. A clean gameplay predecessor remains open.",
-      "missing": "Derive the wall-corrected first miss, eligible raised display, live top and low collision contact together.",
+      "title": "The floor check borrows Mario's display position",
+      "status": "Open · key Ink mechanism",
+      "effect": "First, wall correction can move Mario's movement position. Then the game looks for a floor. If it finds nothing, it copies the stored display position into movement and tries again. The collision record can still be back where it started.",
+      "prerequisite": "No special enemy is needed. This is part of Mario's normal preparation before interactions.",
+      "area1": "Yes. This is what makes the supplied SSL Ink setup work. We still need gameplay to supply the low collision position and high display together.",
+      "timing": "The retry happens before the warp interaction. So movement and display can agree up high while the collision record still touches the warp down below.",
+      "evidence": "The real copy and second-query connection are proved. We also have a successful supplied JP setup and a checked floor-list certificate. The supplied starting gap is doing real work in that demonstration.",
+      "missing": "Create the first floor miss, useful display height, low warp contact and correctly timed top in one legal continuation.",
       "functions": [
         "update_mario_geometry_inputs",
         "resolve_and_return_wall_collisions",
@@ -58,19 +60,21 @@
         "2",
         "3",
         "13A"
-      ]
+      ],
+      "availability": "available",
+      "section": "catalog"
     },
     {
       "id": "floor-animation",
       "number": 3,
-      "title": "Floor alignment and animation translation",
-      "status": "Present Â· open",
-      "effect": "Alignment can write State.Y from a remembered floor without itself replacing stored display. Animation translation can move State in X/Y/Z.",
-      "prerequisite": "Ground actions, ledge/door animations and support changes can produce intermediate disagreements.",
-      "area1": "Ordinary floor alignment and animation helpers exist in Area 1. A retained large floor mismatch is a candidate, not an established seed.",
-      "timing": "These writes mostly occur in the action phase; follow the return and the next geometry pass rather than stopping at the assignment.",
-      "evidence": "Conditional ground-reset and alignment results already exclude their stated cases. They do not cover every earlier action or remembered floor.",
-      "missing": "Find or exclude a concrete mismatch that survives the following action copy and is consumed by the pre-action retry.",
+      "title": "The floor moves Mario, but does the display follow?",
+      "status": "Open · present in SSL",
+      "effect": "Floor alignment can set Mario's movement height to the remembered floor height without itself replacing his stored display. Animation movement can also change his movement coordinates.",
+      "prerequisite": "A ground action, an animation that moves Mario, or a change in the support beneath him.",
+      "area1": "Yes. These are ordinary helpers. What we do not have is the large, surviving mismatch needed for Ink.",
+      "timing": "Most of this happens during the action. We must keep reading past the interesting assignment: a later copy might immediately remove the advantage.",
+      "evidence": "The existing ground-reset and alignment proofs settle their stated cases. They do not cover every possible earlier action and remembered floor.",
+      "missing": "Find a mismatch that survives the following copies and reaches the next useful floor retry, or rule out that particular sequence.",
       "functions": [
         "align_with_floor",
         "update_mario_pos_for_anim"
@@ -79,19 +83,21 @@
         "2",
         "5",
         "13B"
-      ]
+      ],
+      "availability": "available",
+      "section": "catalog"
     },
     {
       "id": "platform",
       "number": 4,
-      "title": "Ordinary moving-platform displacement",
-      "status": "Present Â· preservation proved",
-      "effect": "A platform can move State while preserving display and collision throughout the complete platform phase.",
-      "prerequisite": "Translation and rotation of an actually retained supporting object.",
-      "area1": "SSL has moving Tox Boxes and the pyramid top. Availability as Mario's support at the needed phase is not automatic.",
-      "timing": "This phase precedes the next Mario update. The support check can clear the platform; platform movement alone cannot lower the collision record used for contact.",
-      "evidence": "The full US/JP platform phase preserves both other records under its stated ordinary Object-pool conditions. The preceding missing/distant-floor clear is also proved.",
-      "missing": "Supply an earlier low collision pose with usable support and raised display, then connect floor loss and timing.",
+      "title": "Ride a platform while the other positions stay put",
+      "status": "Movement proved · useful setup open",
+      "effect": "A moving platform can carry Mario's movement position while his display and collision positions stay put for that entire platform phase.",
+      "prerequisite": "Mario must actually have a valid remembered platform. Merely being near a moving object is not enough.",
+      "area1": "Yes. SSL has Tox Boxes and the pyramid top. Getting useful support from one at the right time still needs an explanation.",
+      "timing": "This happens before Mario's next update. The support check can erase the remembered platform, and moving Mario here does not move the collision record used for warp contact.",
+      "evidence": "The complete US/JP platform phase preserves display and collision under the stated normal Object-pool conditions. A missing or too-distant floor also provably clears the remembered platform.",
+      "missing": "Explain how the collision record was already low while Mario still had useful support and a high display. Platform movement alone does not supply all three.",
       "functions": [
         "set_mario_pos",
         "apply_platform_displacement",
@@ -103,19 +109,21 @@
         "2",
         "5A",
         "6"
-      ]
+      ],
+      "availability": "available",
+      "section": "catalog"
     },
     {
       "id": "chuckya-anchor",
       "number": 5,
-      "title": "Chuckya and King Bob-omb's held-Mario anchor",
-      "status": "Stock selectors absent",
-      "effect": "The shared anchor copies the anchor's raw position, plus its graphical Y offset, into Mario's stored display; the grabbed action can later copy display into State.",
-      "prerequisite": "A Chuckya or King Bob-omb parent must create and operate its Mario anchor.",
-      "area1": "Neither parent has a stock Area-1 regular, macro or special selector. Existing proofs identify both parent scripts and the anchor call chain.",
-      "timing": "An anchor is a real display writer, unlike a mere launch velocity. Its usefulness elsewhere still depends on when collision and State are copied.",
-      "evidence": "Existing US/JP source proofs exclude these stock selector paths and enumerate the shared helper's callers. This is not a theorem that arbitrary dynamic spawning is impossible.",
-      "missing": "For a universal exclusion, connect the stock spawn/ownership history to those checked selectors; do not assume a new Chuckya in SSL.",
+      "title": "Chuckya and King Bob-omb: the stock lists cannot choose them",
+      "status": "Ruled out · stock lists",
+      "effect": "While Mario is held, the shared anchor can place his stored display at the anchor's raw position, including its graphical Y offset. When he is thrown, the grabbed action can copy that display position back into movement.",
+      "prerequisite": "A Chuckya or King Bob-omb parent has to create and run the anchor.",
+      "area1": "The checked Area-1 regular, macro and special spawn lists choose neither parent. Loading a model does not put that enemy in the level.",
+      "timing": "This really changes the stored display. It is more than a funny animation or a launch-speed change.",
+      "evidence": "Coq checks both parents, their shared anchor chain and their absence from the stock lists in US and JP. The generated C bodies also have no direct parent reference.",
+      "missing": "This stock-list explanation is finished. A different proposal would have to show how legal gameplay creates the missing actor; that broader creation history is still open.",
       "functions": [
         "common_anchor_mario_behavior",
         "obj_set_gfx_pos_at_obj_pos",
@@ -124,57 +132,81 @@
       "ranks": [
         "21",
         "2"
-      ]
+      ],
+      "availability": "absent",
+      "proof": {
+        "claim": "The checked stock Area-1 lists cannot select Chuckya or King Bob-omb.",
+        "module": "proofs/InkTimer131ProducerClosure.v",
+        "theorem": "anchor_parent_static_area1_exclusion_checked",
+        "scope": "Both US and JP; regular script choices and the checked Area-1 macro and special-object lists. This excludes these stock selections, not every possible later object-creation history."
+      },
+      "section": "proved"
     },
     {
       "id": "dorrie",
       "number": 6,
-      "title": "Dorrie's neck lift",
-      "status": "Stock selectors absent",
-      "effect": "Dorrie calls the State-position setter using Mario's collision position and the neck displacement.",
-      "prerequisite": "A live Dorrie head-lift behavior.",
-      "area1": "Dorrie has no stock SSL selector.",
-      "timing": "The exact setter-call census distinguishes this special lift from ordinary platform displacement.",
-      "evidence": "New US/JP checks prove Dorrie's selector absence and that its head lift is one of exactly three direct callers of set_mario_pos across the generated corpus.",
-      "missing": "A course import would need to survive real initialization; the catalog does not grant retained foreign actors or state.",
+      "title": "Dorrie: no neck lift from the stock SSL lists",
+      "status": "Ruled out · stock lists",
+      "effect": "Dorrie's neck lift sets Mario's movement position using his collision position and the movement of Dorrie's head.",
+      "prerequisite": "A live Dorrie running the head-lift behavior.",
+      "area1": "The stock SSL lists checked here cannot choose Dorrie.",
+      "timing": "This is a special movement helper, separate from the ordinary platform ride.",
+      "evidence": "Both versions have a checked Dorrie exclusion. His head lift is also one of exactly three direct callers of the movement-position setter in the generated code.",
+      "missing": "The stock-list case is done. Bringing a Dorrie or a useful gap from elsewhere would require a real creation or transition sequence; we have not granted one.",
       "functions": [
         "dorrie_raise_head"
       ],
       "ranks": [
         "5",
         "5A"
-      ]
+      ],
+      "availability": "absent",
+      "proof": {
+        "claim": "The checked stock SSL lists cannot select Dorrie.",
+        "module": "proofs/PositionSplitCatalog.v",
+        "theorem": "psc_absent_actor_selectors_checked",
+        "scope": "Both US and JP; regular script choices and the checked Area-1 macro and special-object lists. This excludes these stock selections, not every possible later object-creation history."
+      },
+      "section": "proved"
     },
     {
       "id": "tilting-platform",
       "number": 7,
-      "title": "LLL and BitFS tilting inverted pyramids",
-      "status": "Stock selectors absent",
-      "effect": "Their custom rider correction calls the State-position setter.",
-      "prerequisite": "The tilting inverted pyramid behavior used in LLL or BitFS.",
-      "area1": "Neither behavior selector occurs in stock SSL. These are not SSL's exploding pyramid top.",
-      "timing": "A different behavior with a similar shape is not the same position-writing callback.",
-      "evidence": "New US/JP checks exclude both selectors and include their shared callback in the exact three-caller census.",
-      "missing": "Only an actual legal spawn or import of this behavior would reopen this named mechanism.",
+      "title": "Those other pyramids are not SSL's pyramid top",
+      "status": "Ruled out · stock lists",
+      "effect": "The tilting platforms in LLL and BitFS use a special rider correction that sets Mario's movement position.",
+      "prerequisite": "One of those two tilting-platform behaviors.",
+      "area1": "Neither behavior is selected by the checked stock SSL lists. SSL's exploding pyramid top is a different object with different code.",
+      "timing": "Two objects looking like pyramids does not give them the same movement helper.",
+      "evidence": "Coq excludes both stock selections in US and JP. Their shared callback is another of the three direct movement-setter callers.",
+      "missing": "The stock-list proposal is ruled out. A different legal way of creating or importing the behavior would need its own demonstration.",
       "functions": [
         "bhv_tilting_inverted_pyramid_loop"
       ],
       "ranks": [
         "5",
         "5A"
-      ]
+      ],
+      "availability": "absent",
+      "proof": {
+        "claim": "The checked stock SSL lists cannot select either LLL or BitFS tilting-pyramid behavior.",
+        "module": "proofs/PositionSplitCatalog.v",
+        "theorem": "psc_absent_actor_selectors_checked",
+        "scope": "Both US and JP; regular script choices and the checked Area-1 macro and special-object lists. This excludes these stock selections, not every possible later object-creation history."
+      },
+      "section": "proved"
     },
     {
       "id": "hoot",
       "number": 8,
-      "title": "Riding Hoot",
-      "status": "Stock selectors absent",
-      "effect": "The riding action anchors State to Hoot, then writes display from State.",
-      "prerequisite": "Hoot and a successful Hoot interaction.",
-      "area1": "No Hoot selector exists in stock SSL.",
-      "timing": "The action's temporary mismatch must survive its own copy before it can help a later warp.",
-      "evidence": "New US/JP source checks exclude Hoot selectors; source inspection identifies the position-copy sequence.",
-      "missing": "A global action-history proof must rule out entry without a legitimate Hoot; a behavior-name check alone is not that proof.",
+      "title": "Hoot: the stock SSL lists cannot supply the ride",
+      "status": "Ruled out · stock lists",
+      "effect": "While Mario rides Hoot, the action places his movement position below Hoot and then copies it into display.",
+      "prerequisite": "Hoot must exist, Mario must grab him, and the riding action must still be active.",
+      "area1": "The checked stock SSL lists never choose Hoot.",
+      "timing": "Even with an owl, an intermediate mismatch is only useful if it survives the action's own display copy.",
+      "evidence": "The US/JP stock-list exclusion is proved. The riding code shows where the position change and copy occur.",
+      "missing": "The normal stock-spawn explanation is finished. A claim about every possible action history would also need to show that the riding action cannot begin without its proper actor.",
       "functions": [
         "act_riding_hoot",
         "interact_hoot"
@@ -182,19 +214,27 @@
       "ranks": [
         "5",
         "21"
-      ]
+      ],
+      "availability": "absent",
+      "proof": {
+        "claim": "The checked stock SSL lists cannot select Hoot.",
+        "module": "proofs/PositionSplitCatalog.v",
+        "theorem": "psc_absent_actor_selectors_checked",
+        "scope": "Both US and JP; regular script choices and the checked Area-1 macro and special-object lists. This excludes these stock selections, not every possible later object-creation history."
+      },
+      "section": "proved"
     },
     {
       "id": "push",
       "number": 9,
-      "title": "Palm-tree and object pushes",
-      "status": "Present Â· open",
-      "effect": "The push helpers change State.X/Z without directly changing collision or stored display.",
-      "prerequisite": "A pole/tree callback or an applicable object interaction with Mario.",
-      "area1": "The palm tree at (-5989,0,-4850) is real. Enemies and other solid objects also use collision/push logic; banning Chuckya does not ban these helpers.",
-      "timing": "The tree's POLELIKE callback is before Mario's update, after collision detection. Interaction pushes must also respect the handler order and accepted-warp short circuit.",
-      "evidence": "Existing source proofs show that a graph-only writer exclusion is false: the tree can write State. New selectors have a positive tree control.",
-      "missing": "Prove the actual push receiver, contact range, resulting floor query and copies; distance from the warp is evidence to investigate, not a universal history proof.",
+      "title": "The palm tree can push one position",
+      "status": "Open · present in SSL",
+      "effect": "The push helpers can change Mario's movement X/Z without directly changing his collision or display coordinates.",
+      "prerequisite": "A tree/pole callback or an object interaction that actually reaches the push helper.",
+      "area1": "Yes. The palm tree at (-5989,0,-4850) is there in the stock level. Other solid objects and enemies also use push logic.",
+      "timing": "The tree's callback runs after collision detection and before Mario's update. Interaction pushes have to fit their own place in the handler order.",
+      "evidence": "We have a source proof of this position-writing path. So 'none of the object callbacks can move Mario' would be false. The new stock-list check also correctly finds the tree.",
+      "missing": "Follow a real push through wall correction, the floor query and the next copies. The tree being far from the warp does not by itself prove that every possible sequence fails.",
       "functions": [
         "cur_obj_push_mario_away",
         "push_mario_out_of_object"
@@ -203,19 +243,21 @@
         "5",
         "13A",
         "13B"
-      ]
+      ],
+      "availability": "available",
+      "section": "catalog"
     },
     {
       "id": "bounce",
       "number": 10,
-      "title": "Enemy bounce, knockback and environmental forces",
-      "status": "Present Â· effects differ",
-      "effect": "A bounce can snap State.Y to an object's hitbox top. Other interactions change speed/action first; normal movement later changes positions.",
-      "prerequisite": "Goombas, Pokeys, Fly Guys, flames, damage and ordinary environmental movement, depending on the actual handler.",
-      "area1": "Several such actors and hazards are stock Area 1. An impulse is not automatically a display-only or collision-only writer.",
-      "timing": "Most of these handlers are after INTERACT_WARP. A successful nonfading warp stops the loop; they cannot be appended after that acceptance in the same loop.",
-      "evidence": "The source handler order and bounce write are explicit. Existing acceptance/replay work checks the selected warp path, not all earlier bounces.",
-      "missing": "Follow a reached earlier interaction and its action constructor to the last display/collision copies.",
+      "title": "Bounces and knockback are different kinds of help",
+      "status": "Open · present in SSL",
+      "effect": "A bounce can put Mario's movement height at the top of an object's hitbox. Other hits first change his speed or action, leaving later movement to do the actual moving.",
+      "prerequisite": "The relevant enemy, hazard and interaction. A Goomba bounce and a gust of wind do not write the same things.",
+      "area1": "SSL has several of these enemies and hazards. Their presence does not automatically give us a useful position split.",
+      "timing": "Most of these handlers come after the warp handler. Once the nonfading warp accepts Mario, the loop stops; we cannot sneak an extra bounce in afterward in that same loop.",
+      "evidence": "The handler order and bounce write are in the actual source. The accepted-warp proof and replay cover their stated path, not every earlier bounce.",
+      "missing": "Pick an earlier interaction that can really occur, then follow its action change and all the position copies before the warp.",
       "functions": [
         "bounce_off_object",
         "interact_bounce_top",
@@ -226,19 +268,21 @@
       "ranks": [
         "5",
         "13B"
-      ]
+      ],
+      "availability": "available",
+      "section": "catalog"
     },
     {
       "id": "absent-launch",
       "number": 11,
-      "title": "Heave-Ho, bullies and Bowser's shockwave",
-      "status": "Stock selectors absent",
-      "effect": "Heave-Ho supplies launch speed/status, not the Chuckya display anchor. Bullies can adjust State.Y; shockwave bouncing changes State and then display.",
-      "prerequisite": "Their distinct actor and interaction/action prerequisites.",
-      "area1": "The named Heave-Ho, five bully variants and BowserShockWave selectors are absent from stock SSL.",
-      "timing": "Velocity changes alone do not create an instantaneous coordinate split. These mechanisms must not be conflated.",
-      "evidence": "New US/JP selector checks cover all seven named behaviors. This excludes the stock selector paths, not an arbitrary asserted action history.",
-      "missing": "Retain separate no-actor/action-constructor obligations if using this as an all-gameplay exclusion.",
+      "title": "Heave-Ho, bullies and Bowser's shockwave are off these lists",
+      "status": "Ruled out · stock lists",
+      "effect": "These actors do different jobs. Heave-Ho supplies launch speed and status, not Chuckya's display anchor. Bullies can adjust movement height. Shockwave bouncing moves Mario and then updates display.",
+      "prerequisite": "The matching actor and a legitimate interaction or action.",
+      "area1": "The checked stock lists do not select Heave-Ho, the five named bully variants or BowserShockWave.",
+      "timing": "A speed change is not an immediate position change. We cannot replace all seven behaviors with a generic 'enemy moves Mario' assumption.",
+      "evidence": "The absence of all seven named behavior choices is proved in both generated versions.",
+      "missing": "Their stock-list paths are ruled out. A broader exclusion still needs proper actor creation and action history; these checks do not let us invent either.",
       "functions": [
         "bhv_heave_ho_throw_mario_loop",
         "bully_knock_back_mario",
@@ -248,19 +292,27 @@
         "5",
         "13B",
         "21"
-      ]
+      ],
+      "availability": "absent",
+      "proof": {
+        "claim": "The checked stock SSL lists cannot select Heave-Ho, the five named bully variants or BowserShockWave.",
+        "module": "proofs/PositionSplitCatalog.v",
+        "theorem": "psc_absent_actor_selectors_checked",
+        "scope": "Both US and JP; regular script choices and the checked Area-1 macro and special-object lists. This excludes these stock selections, not every possible later object-creation history."
+      },
+      "section": "proved"
     },
     {
       "id": "attachments",
       "number": 12,
-      "title": "Trees, poles, ledges and hanging",
-      "status": "Present / geometry-dependent",
-      "effect": "These actions snap or translate State to an attachment point, generally followed by a display copy.",
-      "prerequisite": "A climbable pole/tree, ledge or hangable surface and the matching action.",
-      "area1": "The palm tree is present and ordinary ledges exist. A particular hanging surface or action entry still needs its own geometry check.",
-      "timing": "Moving within an action is not the same as retaining that mismatch until the next warp interaction.",
-      "evidence": "Source identifies the pole, ledge and stationary-hanging writers. Existing local proofs do not form a complete action-entry classification.",
-      "missing": "Trace each reachable attachment exit and the copies before a useful floor miss; no generic actor-absence shortcut applies.",
+      "title": "Trees, ledges and hanging points",
+      "status": "Open · depends on the geometry",
+      "effect": "These actions attach Mario's movement position to something, or move it along an animation. Usually a display copy follows.",
+      "prerequisite": "A climbable tree/pole, a ledge or a hangable surface, plus the action that uses it.",
+      "area1": "The palm tree and ordinary ledges are present. A proposed hanging point still has to match actual hangable geometry.",
+      "timing": "A gap halfway through an action may be gone before the next warp check. The exit from the attachment matters as much as the attachment itself.",
+      "evidence": "The source identifies the pole, ledge and hanging writers. Our local proofs do not yet classify every way of entering and leaving those actions.",
+      "missing": "Trace a reachable attachment exit to the useful floor miss. There is no general 'that actor is absent' shortcut for ordinary geometry.",
       "functions": [
         "set_pole_position",
         "check_ledge_climb_down",
@@ -272,19 +324,21 @@
         "5",
         "13B",
         "18"
-      ]
+      ],
+      "availability": "available",
+      "section": "catalog"
     },
     {
       "id": "cannon",
       "number": 13,
-      "title": "Cannon entry and confinement",
-      "status": "Present Â· action-limited",
-      "effect": "Entry and confinement place State at the cannon and copy it to display. Normal firing moves State 120 units along the aim and returns before that display copy, so the stored display can lag.",
-      "prerequisite": "A live opened cannon and cannon-base interaction.",
-      "area1": "Area 1 has a cannon at (6863,0,-6860) and a Bob-omb Buddy that can open it.",
-      "timing": "The firing branch explicitly requires INPUT_A_PRESSED. Its stale display is a real source-level case, but normal firing uses a new A press. Entry/confinement without firing follows the display copy.",
-      "evidence": "The actual US/JP generated cannon body and stock C distinguish the early firing return from the ordinary tail. The new stock-selector positive control confirms the cannon is present; the firing-guard observation is source inspection, not a new action-history theorem.",
-      "missing": "Show a legal exit/interrupt with useful retained positions before the upper warp, or exclude that precisely defined continuation.",
+      "title": "The cannon really can leave the display behind",
+      "status": "Needs A to fire · other exits open",
+      "effect": "While Mario enters and sits in the cannon, the action updates his movement position and copies it to display. Firing moves him 120 units along the aim and returns before that display copy. That can leave the old display behind.",
+      "prerequisite": "An opened cannon and an actual cannon-entry interaction.",
+      "area1": "Yes. The cannon is at (6863,0,-6860), and the stock Bob-omb Buddy can open it.",
+      "timing": "Here is the restriction: the normal firing branch tests INPUT_A_PRESSED. Sitting in the cannon takes the ordinary display-copy path. Invisibility alone does not preserve a useful high display.",
+      "evidence": "This comes from the actual cannon code, including its early return. Coq separately confirms the stock cannon selection. We have not presented the firing observation as a proved universal action-history exclusion.",
+      "missing": "A no-new-A proposal needs a legal exit or interruption with a useful remaining gap. Normal firing does not meet the button rule.",
       "functions": [
         "act_in_cannon",
         "interact_cannon_base"
@@ -293,38 +347,42 @@
         "5",
         "13B",
         "18"
-      ]
+      ],
+      "availability": "available",
+      "section": "catalog"
     },
     {
       "id": "tornado",
       "number": 14,
-      "title": "Tweester / tornado capture",
-      "status": "Present Â· timing matters",
-      "effect": "Tornado motion writes State around the tornado and updates display.",
-      "prerequisite": "An actual tornado interaction and the tornado-twirling action.",
-      "area1": "Tweesters are stock SSL Area 1 actors; a new positive selector check confirms this.",
-      "timing": "The capture handler is after warp in the interaction order, and ordinary tornado movement occurs in the action phase.",
-      "evidence": "Stock code gives a concrete writer/copy chain. Availability is not proof that it can transport a useful split to the top warp.",
-      "missing": "Trace a reachable release/interrupt and subsequent copies; do not replace it with arbitrary wind or position grants.",
+      "title": "A Tweester can move Mario, but it also updates the display",
+      "status": "Open · present in SSL",
+      "effect": "The tornado action moves Mario around the tornado and updates his stored display.",
+      "prerequisite": "A real tornado interaction and the tornado-twirling action.",
+      "area1": "Yes. SSL has Tweesters. The checked stock selections confirm this.",
+      "timing": "Tornado capture is after warp in the interaction list, and the twirling movement occurs during the action. Those placements limit when it could help.",
+      "evidence": "The code gives us a concrete movement-and-copy sequence. Having a tornado in the level is only the beginning of the argument.",
+      "missing": "Follow a reachable release or interruption through its next copies. We still need a useful gap at the top warp.",
       "functions": [
         "act_tornado_twirling"
       ],
       "ranks": [
         "5",
         "13B"
-      ]
+      ],
+      "availability": "available",
+      "section": "catalog"
     },
     {
       "id": "water",
       "number": 15,
-      "title": "Water entry, swimming pitch and surface bobbing",
-      "status": "Present Â· open transfer",
-      "effect": "Water entry/surface limits can move State.Y. Swimming pitch and surface bobbing add an offset to stored display after the swim copy.",
-      "prerequisite": "An ordinary water box and an appropriate submerged action.",
-      "area1": "SSL Area 1 has an oasis: water box 0 spans X -6911..-4223 and Z -7167..-4607 at Y=-127. 'Desert means no swimming' would be an incorrect exclusion.",
-      "timing": "These are ordinary small/action-dependent offsets, not a supplied high display at the pyramid. Their survival through an exit and travel needs checking.",
-      "evidence": "Stock water data and actual swimming writers are cataloged. No complete oasis-to-Ink transfer has been proved.",
-      "missing": "Establish legal action entry and a retained useful offset after leaving water; otherwise close that bounded transfer.",
+      "title": "Yes, the desert has swimming offsets",
+      "status": "Open · oasis transfer needed",
+      "effect": "Entering water or hitting its height limits can move Mario's movement position. Swimming pitch and surface bobbing can then add an offset to the stored display after the swimming copy.",
+      "prerequisite": "A water box and the right swimming action.",
+      "area1": "The oasis is real: water box 0 covers X -6911..-4223 and Z -7167..-4607, at Y=-127. We cannot cross swimming off just because this is a desert.",
+      "timing": "An offset while swimming is not yet a raised display beside the pyramid warp. It has to survive leaving the water and everything done afterward.",
+      "evidence": "The stock water box and swimming writers are identified in the source. No complete oasis-to-Ink transfer is proved.",
+      "missing": "Show how a legal swimming sequence leaves a useful offset after the exit, or rule out a precisely stated transfer.",
       "functions": [
         "set_water_plunge_action",
         "check_common_submerged_cancels",
@@ -336,19 +394,21 @@
         "5",
         "19",
         "21"
-      ]
+      ],
+      "availability": "available",
+      "section": "catalog"
     },
     {
       "id": "whirlpool",
       "number": 16,
-      "title": "Whirlpool capture",
-      "status": "Stock selectors absent",
-      "effect": "The whirlpool action repositions State and updates display.",
-      "prerequisite": "A whirlpool object plus its interaction/action.",
-      "area1": "The whirlpool selector is absent from stock SSL, including the oasis.",
-      "timing": "Ordinary swimming does not imply a whirlpool actor or its action.",
-      "evidence": "New US/JP selector absence is checked. The action itself remains a different whole-game writer from normal swimming.",
-      "missing": "As with Hoot, a global proof needs legitimate action construction and actor lifetime, not merely a name-based ban.",
+      "title": "The oasis does not come with a whirlpool",
+      "status": "Ruled out · stock lists",
+      "effect": "The whirlpool action changes Mario's movement position and updates display.",
+      "prerequisite": "A whirlpool object and its matching interaction and action.",
+      "area1": "The checked stock SSL lists do not select a whirlpool. Having water does not supply one.",
+      "timing": "Ordinary swimming and whirlpool capture are different mechanisms.",
+      "evidence": "The US/JP stock-list exclusion is proved. We keep the separate swimming case open where it belongs.",
+      "missing": "The stock-whirlpool explanation is done. A claim about every action history would also have to rule out an illegitimate way into the whirlpool action.",
       "functions": [
         "act_caught_in_whirlpool",
         "interact_whirlpool"
@@ -356,19 +416,27 @@
       "ranks": [
         "5",
         "21"
-      ]
+      ],
+      "availability": "absent",
+      "proof": {
+        "claim": "The checked stock SSL lists cannot select the whirlpool behavior.",
+        "module": "proofs/PositionSplitCatalog.v",
+        "theorem": "psc_absent_actor_selectors_checked",
+        "scope": "Both US and JP; regular script choices and the checked Area-1 macro and special-object lists. This excludes these stock selections, not every possible later object-creation history."
+      },
+      "section": "proved"
     },
     {
       "id": "shell",
       "number": 17,
-      "title": "Shell riding and the graphical offset",
-      "status": "Present Â· bounded local results",
-      "effect": "Shell actions reanchor display and add a ride/tilt offset; the airborne code adds 42 to display.Y.",
-      "prerequisite": "A Koopa shell and the riding action.",
-      "area1": "A stock shell box is present at (5840,940,2500).",
-      "timing": "A freshly added offset may be erased/recomputed by the next ordinary update. It is not the large gap by itself.",
-      "evidence": "Existing shell-offset and refresh results are local. The whole-game catalog keeps shell/wall/floor scheduling as an available SSL family.",
-      "missing": "Find or exclude the exact interruption and geometry combination that consumes the offset before refresh.",
+      "title": "The shell gives Mario a display offset",
+      "status": "Open · present in SSL",
+      "effect": "Shell riding updates the display and adds a riding or tilting offset. In the airborne action, the code adds 42 to display Y.",
+      "prerequisite": "A Koopa shell and the corresponding riding action.",
+      "area1": "Yes. The stock shell box is at (5840,940,2500).",
+      "timing": "The next action may erase or recompute the offset. Forty-two units also does not, by itself, supply the large Ink gap.",
+      "evidence": "The local shell-offset and refresh results are already checked. A clever combination with walls, floors or an interruption is still a separate question.",
+      "missing": "Find the exact moment when the offset can be used before refresh, or prove that the proposed interruption cannot do that.",
       "functions": [
         "act_riding_shell_air",
         "tilt_body_ground_shell"
@@ -376,19 +444,21 @@
       "ranks": [
         "25",
         "2"
-      ]
+      ],
+      "availability": "available",
+      "section": "catalog"
     },
     {
       "id": "quicksand",
       "number": 18,
-      "title": "Quicksand depth and a stalled reward dialog",
-      "status": "Present Â· conditional producer remains open",
-      "effect": "Sinking subtracts quicksandDepth from display.Y. A useful negative depth raises display; a skipped refresh can retain it.",
-      "prerequisite": "A useful negative seed, valid collectible reward and a matching milestone dialog/action history.",
-      "area1": "Quicksand and reward opportunities exist in SSL; a useful no-A negative seed is not thereby established. The transfer test may grant a negative seed and valid coin/star opportunity.",
-      "timing": "The dialog can preserve display across updates, but warp interaction and support retention have their own gates. Movement while display survives is already possible conditionally.",
-      "evidence": "Seed-to-long-jump conditional proofs, entry resets, copy/refresh proofs and finite dialog continuations exist. None proves the useful floor-loss/contact/top combination.",
-      "missing": "Derive one concrete predecessor supplying useful display, low collision and the right first floor miss; do not assume that combination.",
+      "title": "Negative depth plus a dialog that keeps the display",
+      "status": "Open · conditional setup allowed",
+      "effect": "Sinking subtracts quicksand depth from display Y. If that depth is negative, the subtraction raises the display instead. Skipping a later refresh can keep it there.",
+      "prerequisite": "A useful negative seed, a collectible reward and the right milestone dialog.",
+      "area1": "SSL has quicksand and rewards. That does not prove a no-A negative seed. For the agreed transfer test, we may grant the seed and a valid coin/star opportunity.",
+      "timing": "A dialog can preserve the display, but the warp interaction and remembered platform still have their own checks. We already know that some conditional continuations move Mario while the display survives.",
+      "evidence": "There are conditional seed-to-A proofs, entry-reset proofs, copy proofs and finite dialog trials. None supplies the whole useful combination of floor loss, contact and top timing.",
+      "missing": "Build a specific predecessor with the high display, low collision record and first floor miss together. Granting that combination would assume the gameplay result we want.",
       "functions": [
         "sink_mario_in_quicksand",
         "act_star_dance",
@@ -398,19 +468,21 @@
       "ranks": [
         "19",
         "2"
-      ]
+      ],
+      "availability": "available",
+      "section": "catalog"
     },
     {
       "id": "dialog",
       "number": 19,
-      "title": "Signs, NPC dialog and skipped refresh",
-      "status": "Present Â· preservation is not production",
-      "effect": "Some dialog states skip ordinary movement/copies; reading a sign also moves State during alignment.",
-      "prerequisite": "A sign/NPC/reward dialog with its actual action and timer.",
-      "area1": "Signs and Bob-omb Buddy are stock Area 1. Automatic milestone dialog is a separate reward-dependent path.",
-      "timing": "A stopped update preserves what was there; it does not invent a gap. The next resumed action or geometry pass decides usefulness.",
-      "evidence": "Existing dialog-gate and post-dialog refresh proofs cover specified paths. Treating all dialog as one harmless/beneficial freeze would be unjustified.",
-      "missing": "Identify the last writer before the pause and the first consumer after it, including contact and floor queries.",
+      "title": "A dialog can keep a gap; it cannot create one by pausing",
+      "status": "Open · present in SSL",
+      "effect": "Some dialog states skip ordinary movement or display refresh. Reading a sign can also move Mario while aligning him with the sign.",
+      "prerequisite": "A particular sign, NPC or reward dialog, at the right action and timer.",
+      "area1": "Signs and Bob-omb Buddy are present. The automatic milestone dialog is a separate reward-dependent case.",
+      "timing": "Pausing keeps what was already there. On release, the next action or floor check decides whether that old gap is useful.",
+      "evidence": "The dialog gate and particular post-dialog refreshes are proved. We cannot treat every dialog as the same kind of freeze.",
+      "missing": "Find the last position change before the pause and the first useful check afterward, including the floor and contact checks.",
       "functions": [
         "act_reading_sign",
         "execute_mario_action",
@@ -421,19 +493,21 @@
         "2",
         "6",
         "19"
-      ]
+      ],
+      "availability": "available",
+      "section": "catalog"
     },
     {
       "id": "warp-reset",
       "number": 20,
-      "title": "Doors, teleports, instant warps and level entry",
-      "status": "Mixed Â· reset/transfer barrier",
-      "effect": "Warp/entry code relocates records or initializes them; door actions move State through their own animation/copy sequence.",
-      "prerequisite": "The particular level command, warp kind and legitimate transition.",
-      "area1": "SSL has ordinary fading/nonfading warps, but Area 1 has no instant-warp command. The named door mechanisms are not stock Area-1 entrances.",
-      "timing": "The chosen checkpoint is before the disappearing action or Area-2 initialization. Moving coordinates after that point cannot explain disagreement at acceptance.",
-      "evidence": "Real entry depth reset and warp-call connections are proved. The accepted-warp final action call preserves all three positions; earlier calls have their own scope.",
-      "missing": "A foreign-course seed/actor or transient split must survive the actual transition, not be carried over by assumption.",
+      "title": "Bringing a gap through a warp or level entry",
+      "status": "Mixed · the actual transition matters",
+      "effect": "Entry and warp code can relocate or reset positions. Door actions have their own movement and animation copies.",
+      "prerequisite": "The particular warp or level command and a legitimate way of reaching it.",
+      "area1": "SSL has ordinary fading and nonfading warps. Area 1 has no instant-warp command, and the named door actions are not its stock entrance mechanism.",
+      "timing": "Our checkpoint is before the disappearing action and Area-2 initialization. A change after that point cannot explain a gap already present when the warp was accepted.",
+      "evidence": "The reached entry-depth reset and real warp-call connection are proved. The accepted-warp final action call also preserves the positions it receives. Earlier calls have separate limits.",
+      "missing": "A gap or actor brought from another course must survive the real transition. We cannot carry it across by assumption.",
       "functions": [
         "check_instant_warp",
         "init_mario",
@@ -449,37 +523,47 @@
         "13B",
         "18",
         "32"
-      ]
+      ],
+      "availability": "available",
+      "section": "catalog"
     },
     {
       "id": "butterfly",
       "number": 21,
-      "title": "Butterfly's temporary collision-position perturbation",
-      "status": "Stock selectors absent",
-      "effect": "The butterfly helper adds to Mario's raw collision coordinates for aiming and subtracts afterward; State/display are not that scratch target.",
-      "prerequisite": "A live butterfly callback.",
-      "area1": "Existing US/JP proofs exclude stock Area-1 butterfly selector origins.",
-      "timing": "The add/subtract intention must not be mistaken for a proved exact Float32 identity. No intervening consumer is granted.",
-      "evidence": "Existing direct raw-Mario writer and butterfly-origin source checks isolate this unusual writer.",
-      "missing": "A universal frame would still need actual callback/receiver coverage; the stock absence result removes the named selector path.",
+      "title": "Butterflies: this stock list cannot supply the unusual writer",
+      "status": "Ruled out · stock lists",
+      "effect": "A butterfly briefly adds to Mario's raw collision coordinates to calculate its aim, then subtracts afterward. Those coordinates are being used as temporary working space.",
+      "prerequisite": "A live butterfly running that helper.",
+      "area1": "The checked US/JP Area-1 stock lists do not select butterflies.",
+      "timing": "Adding and subtracting floating-point numbers is not automatically an exact undo. We also do not get to invent a collision check between those operations.",
+      "evidence": "The unusual raw-position writer and the stock-list exclusion are already checked.",
+      "missing": "The normal stock-list explanation is finished. A wider claim still needs to establish which callbacks and object records can actually be used during gameplay.",
       "functions": [
         "butterfly_calculate_angle"
       ],
       "ranks": [
         "13"
-      ]
+      ],
+      "availability": "absent",
+      "proof": {
+        "claim": "The checked stock Area-1 lists cannot select butterflies.",
+        "module": "proofs/Area1ButterflyStaticOriginClosure.v",
+        "theorem": "butterfly_area1_selector_exclusion_checked",
+        "scope": "Both US and JP; regular script choices and the checked Area-1 macro and special-object lists. This excludes these stock selections, not every possible later object-creation history."
+      },
+      "section": "proved"
     },
     {
       "id": "cutscene",
       "number": 22,
-      "title": "Endgame and other scripted placements",
-      "status": "Not stock Area-1 action entry",
-      "effect": "Cutscenes deliberately place State or stored display, including the ending walk/wave and jumbo-star sequences.",
-      "prerequisite": "Their endgame/scripted action constructors and context.",
-      "area1": "The ending sequence is not a normal SSL Area-1 entry or reward dance. Ordinary SSL reward/dialog is listed separately.",
-      "timing": "A function in the executable is not proof that the current course can enter that action.",
-      "evidence": "The generated writer census finds these assignments; they are cataloged rather than silently dropped.",
-      "missing": "A complete no-A history theorem needs the actual constructor/transition exclusion. We have not replaced it with a blanket 'cutscenes harmless' premise.",
+      "title": "Ending cutscenes can place Mario almost wherever they need him",
+      "status": "Different context · not a stock SSL entry",
+      "effect": "The ending and jumbo-star sequences deliberately move Mario or his stored display to stage the scene.",
+      "prerequisite": "The proper endgame actions and the code that starts them.",
+      "area1": "The ending sequence is not an ordinary SSL entry or reward dance. SSL's actual dialogs and rewards have their own entries in this catalog.",
+      "timing": "Finding a function in the executable does not show that SSL can start that action.",
+      "evidence": "The generated position-write scan finds these assignments, so we have kept them visible rather than silently dropping them.",
+      "missing": "A full gameplay proof must check the real action constructors. 'All cutscenes are harmless' is not a substitute for doing that.",
       "functions": [
         "act_end_waving_cutscene",
         "end_peach_cutscene_run_to_castle",
@@ -490,37 +574,41 @@
         "5",
         "18",
         "21"
-      ]
+      ],
+      "availability": "context",
+      "section": "catalog"
     },
     {
       "id": "debug",
       "number": 23,
-      "title": "Debug free movement",
-      "status": "Outside selected stock gameplay",
-      "effect": "The debug action writes State directly and refreshes display.",
-      "prerequisite": "A debug-action entry, not an ordinary retail controller constructor.",
-      "area1": "Its compiled helper appearing in the source census does not make debug mode a permitted SSL route.",
-      "timing": "Arbitrary action injection is outside the project's controller-only model.",
-      "evidence": "The census explicitly retains this name as excluded scope, rather than counting it as a gameplay counterexample.",
-      "missing": "If a claim includes debug builds or injected actions, change the model explicitly; this catalog does not.",
+      "title": "Debug free movement is outside this gameplay challenge",
+      "status": "Outside the chosen rules",
+      "effect": "The debug action directly moves Mario and refreshes his display.",
+      "prerequisite": "Entry into the debug action.",
+      "area1": "A compiled debug helper does not make injected debug actions an ordinary controller route through SSL.",
+      "timing": "Choosing an arbitrary action value is outside the model used for this challenge.",
+      "evidence": "The source scan keeps the function on the list, marked as outside scope. That is a scope choice, not a new impossibility proof.",
+      "missing": "A study of debug builds or injected actions would need different rules. This catalog does not include that study.",
       "functions": [
         "act_debug_free_move"
       ],
       "ranks": [
         "31"
-      ]
+      ],
+      "availability": "context",
+      "section": "catalog"
     },
     {
       "id": "render",
       "number": 24,
-      "title": "Renderer, mirror Mario, camera and local vectors",
-      "status": "Not a Mario-record producer by itself",
-      "effect": "Render copies, camera positions, object transforms and local arrays may use a field named pos without modifying the three Mario records.",
-      "prerequisite": "A specific receiver or local storage location determines what is written.",
-      "area1": "Camera/render code is present; the castle mirror proxy is a separate object, not a second live Mario slot.",
-      "timing": "An apparent visual displacement or a matrix translation is not automatically the stored display position read by the floor retry.",
-      "evidence": "The mechanical census intentionally includes false positives such as coin-formation local pos and tilting-platform local pos. They are classified here.",
-      "missing": "Prove receiver/storage separation wherever a semantic preservation theorem needs it; do not treat all 'pos' writes as Mario writes.",
+      "title": "Looking displaced is not always a change to the stored display",
+      "status": "Different record · check the target",
+      "effect": "The camera, mirror proxy, object transforms and temporary vectors can all have something called pos. A write to one of those is not automatically a write to Mario's three relevant positions.",
+      "prerequisite": "We have to identify the actual object or local variable receiving the write.",
+      "area1": "Camera and rendering code are present. The castle mirror proxy is another object, not another live Mario slot.",
+      "timing": "A visual animation or matrix shift only helps the retry if it changes the particular stored vector that the retry reads.",
+      "evidence": "The broad scan deliberately catches harmless lookalikes, including a coin-formation local vector and camera bookkeeping. They are accounted for here.",
+      "missing": "Where a proof depends on one of these being separate from Mario, prove that actual storage relationship. Do not classify by the name pos alone.",
       "functions": [
         "geo_render_mirror_mario",
         "spawn_coin_in_formation",
@@ -531,19 +619,21 @@
         "20",
         "21",
         "31"
-      ]
+      ],
+      "availability": "context",
+      "section": "catalog"
     },
     {
       "id": "generic-objects",
       "number": 25,
-      "title": "Generic object movement, spawning and slot ownership",
-      "status": "Present Â· receiver proof required",
-      "effect": "Object helpers and behavior commands can write raw coordinates or display of their actual receiver; an allocator initializes a returned slot.",
-      "prerequisite": "A reached callback/command, its receiver and normal shared-pool ownership.",
-      "area1": "Many such helpers run in SSL. Spawning a child means another object, not another Mario.",
-      "timing": "A non-Mario receiver can still share the pool's memory block; prove slot separation and the complete called segment rather than assuming every outside call harmless.",
-      "evidence": "Existing allocation, child-copy and behavior results prove bounded effects. The complete callback/ownership history remains open.",
-      "missing": "Classify actual receivers and aliases for remaining reached calls in the fixed interval. Arbitrary pointer modification is not an allowed route.",
+      "title": "A helper moves its object. Which object is that?",
+      "status": "Open · actual object matters",
+      "effect": "Movement helpers and behavior commands write to the object they receive. The allocator initializes the slot it returns.",
+      "prerequisite": "A real call, its actual destination and valid Object-pool ownership.",
+      "area1": "SSL runs many of these helpers. A spawned child here is another object, such as a particle; it does not mean another Mario.",
+      "timing": "Two objects can occupy different slots in the same pool. The proof must show that the writes stay in the intended slot.",
+      "evidence": "The particle-copy and allocator proofs settle specific calls and initialization steps. The full sequence of callbacks and object lifetimes is still open.",
+      "missing": "For the remaining calls in the chosen interval, identify the real destination and its writes. Arbitrary pointer modification is outside the gameplay rules.",
       "functions": [
         "allocate_object",
         "obj_set_gfx_pos_from_pos",
@@ -558,19 +648,21 @@
         "20",
         "21",
         "31"
-      ]
+      ],
+      "availability": "available",
+      "section": "catalog"
     },
     {
       "id": "copies-pauses",
       "number": 26,
-      "title": "Ordinary synchronization, time stop and skipped updates",
-      "status": "Present Â· preservation/eraser",
-      "effect": "The ordinary State-to-Object copy synchronizes collision. Skipped phases can retain a preexisting disagreement but do not move positions by themselves.",
-      "prerequisite": "The real scheduler, action return, time-stop flags and copy receiver.",
-      "area1": "All apply to SSL; the initialized second-State copy proposal is already excluded in the existing source model.",
-      "timing": "An early return from execute_mario_action still returns to bhv_mario_update, which performs the ordinary copy. A proposed skipped copy must identify the actual bypass.",
-      "evidence": "Existing copy-index and completed-copy results are checked. Full all-history scheduling/ownership coverage is not proved.",
-      "missing": "Pair a real earlier writer with a reached skipped or delayed copy and the next contact/query. Freeze alone is not a producer.",
+      "title": "A skipped update needs something worth preserving",
+      "status": "Open · copies matter",
+      "effect": "The ordinary movement-to-Object copy brings collision up to date. A skipped phase may preserve an old mismatch, but skipping alone does not move Mario.",
+      "prerequisite": "The actual update order, action return, time-stop flags and copy destination.",
+      "area1": "All of this matters in SSL. The initialized second-State-copy proposal is already excluded in the existing source model.",
+      "timing": "Even an early return from execute_mario_action goes back to Mario's object update, which then performs the ordinary copy. A skipped-copy proposal must show what really bypasses it.",
+      "evidence": "The copy-index and completed-copy results are checked. That does not yet prove the scheduler and object identity for every possible history.",
+      "missing": "Pair a real position change with an actual delayed or skipped copy, then reach the contact or floor query before the advantage disappears.",
       "functions": [
         "copy_mario_state_to_object",
         "bhv_mario_update"
@@ -578,19 +670,21 @@
       "ranks": [
         "6",
         "18"
-      ]
+      ],
+      "availability": "available",
+      "section": "catalog"
     },
     {
       "id": "query-alias",
       "number": 27,
-      "title": "Signed-16 query aliases and different samples",
-      "status": "Present code Â· not a record writer",
-      "effect": "Converting a query or testing a different point can select different geometry even when no position record has just changed.",
-      "prerequisite": "The actual finite coordinate conversion, floor lists and query location.",
-      "area1": "The collision engine uses these conversions in SSL too. Useful distant coordinates still need legal movement and contact.",
-      "timing": "A query-result disagreement is a consumer/geometric condition, not itself a write creating State/collision/display disagreement.",
-      "evidence": "Finite geometry and alias checks exist with explicit domains. They are not all-controller-history coverage.",
-      "missing": "Connect a reachable pose to live list selection and accepted warp contact; no out-of-bounds memory effects are included.",
+      "title": "A different floor answer is not itself a position write",
+      "status": "Geometry question · no position writer",
+      "effect": "A signed-16 conversion or a different sample point can give a different floor answer without writing any of Mario's three position records.",
+      "prerequisite": "The actual converted coordinates, floor lists and query point.",
+      "area1": "SSL uses this collision code too. Useful distant coordinates still need a legal way to reach them and make contact.",
+      "timing": "This can affect how a gap is used. It does not create the gap by itself.",
+      "evidence": "The finite geometry and coordinate-alias checks keep their stated ranges. They are not a proof about every controller history.",
+      "missing": "Connect a reachable pose to the live floor choice and accepted warp contact. Memory corruption is not part of this mechanism.",
       "functions": [
         "find_floor_from_list",
         "find_wall_collisions"
@@ -599,7 +693,9 @@
         "1",
         "3",
         "2"
-      ]
+      ],
+      "availability": "available",
+      "section": "catalog"
     }
   ]
 }

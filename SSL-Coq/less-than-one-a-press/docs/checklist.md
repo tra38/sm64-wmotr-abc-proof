@@ -40,12 +40,17 @@ and next copy. The new generated US/JP setter-call and twelve-actor selector
 checks are complete source results. SSL's own pushes, platforms, water, cannon,
 shell and dialog mechanisms remain; the catalog is not yet a proved complete
 classification of live writes. Source absence alone does not close F02.
+Seven completed stock-list exclusion groups now appear in the catalog's and
+site's **01 · Already proved** section, with their exact scope and theorem
+links. The remaining 20 catalog cases stay separate. This presentation change
+does not discharge any additional live-history obligation.
 For a consolidated account of which results the impossibility argument uses
 and which live connections remain, see the
 [impossibility-proof progress ledger](impossibility-proof-progress.md).
 The [Fine Print promotion review](notes/fine-print-proof-promotions.md)
 now includes the conditional stock negative-seed argument among the site's
-31 established-result summaries, including the new source census, final warp-action call,
+31 established-result summaries and seven expanded stock-list exclusions,
+including the source census, final warp-action call,
 conditional child-copy and allocator results alongside earlier local/model claims.
 Their wider gameplay connections remain on this board; no route is closed
 merely by moving an existing result into that section.
