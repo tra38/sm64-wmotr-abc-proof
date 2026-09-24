@@ -4,6 +4,23 @@
 
 Completed work is grouped by subject. Each item retains its original scope warning; conditional models and runtime fixtures are not promoted to linked retail proofs.
 
+## Tweester transport and later-action source check
+
+- [x] Check home-boundary switching, the 3D 3000-distance hiding trigger
+  and the post-ejection return-home subaction in the actual stock source.
+- [x] Run 188,416 prescribed schedules per version with unchanged chase,
+  movement, terrain and overlap C functions. US/JP receipts agree; none
+  reaches useful warp proximity before the stopping conditions. Mario
+  poses, initial heading and scale phase are supplied; these are not
+  controller replays or an exhaustive oscillation search.
+- [x] Check that a separately supplied western-ledge Tweester pose at its
+  widest regular phase can overlap the supplied low Mario warp-contact
+  pose. The relaxed terrain approach grants direct steering; this does
+  not establish a gameplay jam or create a display gap. Trace the ordinary
+  ejection source into its air-step copy and note warp-before-Tweester
+  interaction order. These are finite/source results, not new Coq closures.
+  See [the full limits and receipt](../instrumentation/tweester-transport/README.md).
+
 ## F02 backward gap sizing
 
 - [x] Size all 20 remaining split-catalog cases against the supplied

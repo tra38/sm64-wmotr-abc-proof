@@ -248,6 +248,12 @@
         "line": 764
       }
     ],
+    "act_twirling": [
+      {
+        "path": "src/game/mario_actions_airborne.c",
+        "line": 680
+      }
+    ],
     "act_unlocking_key_door": [
       {
         "path": "src/game/mario_actions_cutscene.c",
@@ -612,6 +618,18 @@
       {
         "path": "src/game/mario_actions_moving.c",
         "line": 745
+      }
+    ],
+    "tweester_act_chase": [
+      {
+        "path": "src/game/behaviors/tweester.inc.c",
+        "line": 74
+      }
+    ],
+    "tweester_act_hide": [
+      {
+        "path": "src/game/behaviors/tweester.inc.c",
+        "line": 117
       }
     ],
     "update_hang_stationary": [

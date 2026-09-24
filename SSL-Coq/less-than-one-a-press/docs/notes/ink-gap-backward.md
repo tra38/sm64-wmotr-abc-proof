@@ -98,6 +98,23 @@ supplied JP installation remains a conditional success. No clean route,
 no whole-family impossibility result and no changed atlas probability are
 claimed by this sizing pass.
 
+## Transport follow-up: rapid home oscillation
+
+The user requested this specific transport check despite the producer-first
+priority. The [new diagnostic](../../instrumentation/tweester-transport/README.md)
+confirms the source steering mechanism and tests 188,416 supplied schedules
+per version. None reaches useful warp proximity before first overlap or
+hiding in those tests. A separate relaxed approach supplies a western-ledge
+pose whose widest hitbox overlaps Mario at the low warp-contact point.
+That conditional contact is not a controller route or a gap producer.
+
+Source inspection follows ordinary ejection into another air-step display
+copy; the formal theorem above still stops at the normal copy. Warp
+acceptance also breaks the interaction loop before the later Tweester
+handler. A subsequent-action proposal needs a specific interruption or
+position writer; neither moving the enemy nor simultaneous hitbox contact
+already provides Ink. No theorem or probability is promoted by this follow-up.
+
 ## Receipts
 
 The selected audit

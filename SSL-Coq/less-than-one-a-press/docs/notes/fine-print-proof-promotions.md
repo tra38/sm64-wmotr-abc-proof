@@ -46,6 +46,12 @@ finite expression calculations unless their row names an existing
 theorem. Water's generous single-refresh envelope is not a proved live
 maximum, and the negative-depth arithmetic is not a gameplay producer.
 
+The rapid-home-oscillation follow-up stays outside Section 01 as a new
+proof: it adds finite native transport/contact diagnostics and a source
+trace of ordinary ejection, not a completed Clight ejection or gameplay
+theorem. The existing Tweester copy card keeps its scope and the count
+stays at 32. See [the diagnostic](../../instrumentation/tweester-transport/README.md).
+
 ## F02: whole-game mechanisms and stock selectors
 
 The [position-split catalog](position-split-catalog.md) belongs beside the F02

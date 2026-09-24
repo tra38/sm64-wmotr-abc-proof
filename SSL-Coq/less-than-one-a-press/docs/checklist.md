@@ -6,6 +6,12 @@
   [the backward review](notes/ink-gap-backward.md); do not grant the useful
   gap/contact/floor-loss combination. Tweester ejection is outside the new
   normal-continuation proof. Defer travel to the warp until a producer works.
+- [ ] For the user-requested Tweester transport exception, construct an
+  actual home-oscillation route to the conditional western ledge or another
+  useful pose, avoiding unwanted capture/hiding. Then identify a retained
+  gap writer outside the normal ride and ordinary ejection copies. The
+  [finite diagnostic](../instrumentation/tweester-transport/README.md) does
+  not establish that route or an all-controller impossibility result.
 
 This open-action board is organized by decision value rather than research
 chronology. Every checkbox below is an outstanding obligation. Checked work is

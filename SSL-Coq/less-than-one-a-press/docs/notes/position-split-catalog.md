@@ -505,7 +505,7 @@ Related atlas ranks: 5, 13B, 18.
 
 Both floor-found and floor-missing branches feed into the same real display copy. The new US/JP proof follows that actual continuation and completed callee: display Y and movement Y are equal there, however far the Tweester just moved Mario.
 
-**Limits.** This starts after the early ejection test and ends at the completed copy. Ejection, the following angle call and surrounding action history are not covered by the theorem. Reading the ejection source shows it leaves before the position-update branches; that source observation is not silently promoted to a whole-history proof.
+**Limits.** The theorem starts after the early ejection test and ends at the completed copy. The following angle call and surrounding action history remain outside it. Separate source review follows ordinary ejection into an air step with another display copy, conditional on retaining that action and avoiding common cancellations; this is not a new complete Clight proof. Moving the Tweester itself does not bypass either copy.
 
 **Evidence level.** New Coq execution connection: TweesterGap.v
 
@@ -517,11 +517,11 @@ Both floor-found and floor-missing branches feed into the same real display copy
 
 **Does the gap last long enough.** Tornado capture is after warp in the interaction list, and the twirling movement occurs during the action. Those placements limit when it could help.
 
-**What we know.** The generated US/JP continuation after the early ejection test now has a completed-copy proof. Both floor outcomes reach equal movement/display Y at that checkpoint, excluding the supplied low-State/high-display pair there.
+**What we know.** The generated US/JP continuation after the early ejection test now has a completed-copy proof. Both floor outcomes reach equal movement/display Y at that checkpoint, excluding the supplied low-State/high-display pair there. A new finite US/JP transport diagnostic tests 188,416 prescribed home-boundary schedules per version, stopping at first hitbox overlap or hiding. None reaches useful warp proximity. A separate relaxed-steering ledge pose can geometrically overlap Mario at the supplied low contact point; it is not an oscillation route.
 
-**What is left to check.** Follow any proposed exception through ejection or a later ordinary writer. The proof does not cover the post-copy angle call or the surrounding update, and does not close every Tweester-assisted route.
+**What is left to check.** Find an actual controller-driven oscillation route that avoids unwanted capture and hiding. The tested fixed-ray schedules do not supply one. The conditional western-ledge contact grants the two poses and scale phase, and creates no gap. The ordinary ejection source continues into an air step with another display copy; exceptional interruptions and later writers still need their own proof. Warp acceptance is checked before tornado capture, so a lift from the same accepted contact is too late.
 
-Stock source: [act_tornado_twirling](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario_actions_automatic.c#L764).
+Stock source: [act_tornado_twirling](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario_actions_automatic.c#L764); [tweester_act_chase](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/behaviors/tweester.inc.c#L74); [tweester_act_hide](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/behaviors/tweester.inc.c#L117); [act_twirling](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario_actions_airborne.c#L680).
 
 Related atlas ranks: 5, 13B.
 
