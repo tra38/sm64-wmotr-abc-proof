@@ -28,19 +28,21 @@ The supplied vertical setup needs actual and collision Y=768 with display Y=1938
 
 All 20 remaining cases now have a sizing review below. A zero at a named copy is not a theorem about every surrounding update. Formula-dependent rows still need real incoming values; an unknown maximum is not an unlimited reachable gap. We defer travel to the warp until a producer passes this first test. See the [backward review](ink-gap-backward.md) and [finite arithmetic receipt](ink-gap-arithmetic.json).
 
+**Stopping rule.** A proved upper bound below **1170.8648681640625** counts as **Insufficient — already proved**, under its stated conditions and checkpoint. The normal Tweester and completed ground copies qualify with zero gap. The shell, water, ledge and cannon shortfalls keep their source/finite evidence labels; unknown bounds remain open. A keeper or consumer of an existing gap is not ruled out in that supporting role. This threshold is specific to the supplied setup, not every Ink installation.
+
 | Case | Gap at the stated checkpoint | Verdict |
 | --- | --- | --- |
-| [01 — ordinary-step](#split-ordinary-step) | 0 at the ordinary movement-to-display copy | Refreshes the gap away at that checkpoint |
+| [01 — ordinary-step](#split-ordinary-step) | 0 at the completed ground copy; air/water copies reviewed separately | Insufficient — already proved at the completed ground copy |
 | [02 — geometry-retry](#split-geometry-retry) | 0 between display and movement after retry | Consumes a gap; does not create the raised display |
 | [03 — floor-animation](#split-floor-animation) | Old display Y − remembered floor Y; animation depends on its signed translation | A possible downward writer; useful size is still unproved |
 | [04 — platform](#split-platform) | Old display-minus-movement gap − platform vertical displacement | Can change one gap, but keeps the collision record where it was |
 | [09 — push](#split-push) | 0 new vertical gap from the direct push writes | A sideways helper, not the height source |
 | [10 — bounce](#split-bounce) | Old display Y − (object Y + hitbox height) | A real height assignment; no useful large gap demonstrated |
-| [12 — attachments](#split-attachments) | Pole/hang copies: 0. Ledge release: a 100-unit subtraction or a shallower floor snap | A small local drop exists; a large retained gap is not shown |
-| [13 — cannon](#split-cannon) | 0 while seated; firing leaves display at or below movement | The normal launch goes the wrong way for an upward display gap |
-| [14 — tornado](#split-tornado) | 0 at the completed non-ejecting display-copy checkpoint | Proved: this Tweester checkpoint cannot install the supplied gap |
-| [15 — water](#split-water) | About +208 in the generous one-refresh calculation at Y=768 | A real positive offset, too small alone in this envelope |
-| [17 — shell](#split-shell) | +42 airborne; +45 on the ground, per ordinary refresh | A real positive offset, too small alone |
+| [12 — attachments](#split-attachments) | Pole/hang copies: 0. Ledge release: a 100-unit subtraction or a shallower floor snap | Insufficient at the local drop — source review |
+| [13 — cannon](#split-cannon) | 0 while seated; firing leaves display at or below movement | Insufficient at normal launch — source and finite checks |
+| [14 — tornado](#split-tornado) | 0 at the completed non-ejecting display-copy checkpoint | Insufficient — already proved at the normal Tweester copy |
+| [15 — water](#split-water) | About +208 in the generous one-refresh calculation at Y=768 | Insufficient in the checked expression envelope |
+| [17 — shell](#split-shell) | +42 airborne; +45 on the ground, per ordinary refresh | Insufficient alone — source arithmetic |
 | [18 — quicksand](#split-quicksand) | Display increases by −depth per subtraction when depth is negative | Large enough arithmetically; the useful producer remains open |
 | [19 — dialog](#split-dialog) | No independent fixed upward offset; preserves what enters | A possible keeper, not the original height source |
 | [20 — warp-reset](#split-warp-reset) | Instant warp: incoming gap − vertical warp displacement | Relocation can make a gap elsewhere; no matching Area-1 table |
@@ -55,7 +57,7 @@ All 20 remaining cases now have a sizing review below. A zero at a named copy is
 
 | # | Situation | SSL / current verdict |
 | --- | --- | --- |
-| 01 | [Walking, falling and the ordinary position copies](#split-ordinary-step) | Open · present in SSL |
+| 01 | [Walking, falling and the ordinary position copies](#split-ordinary-step) | Insufficient at ground copy · other checkpoints open |
 | 02 | [The floor check borrows Mario's display position](#split-geometry-retry) | Open · key Ink mechanism |
 | 03 | [The floor moves Mario, but does the display follow?](#split-floor-animation) | Open · present in SSL |
 | 04 | [Ride a platform while the other positions stay put](#split-platform) | Movement proved · useful setup open |
@@ -68,7 +70,7 @@ All 20 remaining cases now have a sizing review below. A zero at a named copy is
 | 11 | [Heave-Ho, bullies and Bowser's shockwave are off these lists](#split-absent-launch) | Ruled out · stock lists |
 | 12 | [Trees, ledges and hanging points](#split-attachments) | Open · depends on the geometry |
 | 13 | [The cannon really can leave the display behind](#split-cannon) | Needs A to fire · other exits open |
-| 14 | [A Tweester can move Mario, but it also updates the display](#split-tornado) | Open · present in SSL |
+| 14 | [A Tweester can move Mario, but it also updates the display](#split-tornado) | Insufficient at normal copy · other checkpoints open |
 | 15 | [Yes, the desert has swimming offsets](#split-water) | Open · oasis transfer needed |
 | 16 | [The oasis does not come with a whirlpool](#split-whirlpool) | Ruled out · stock lists |
 | 17 | [The shell gives Mario a display offset](#split-shell) | Open · present in SSL |
@@ -269,6 +271,17 @@ Stock source: [butterfly_calculate_angle](https://github.com/n64decomp/sm64/blob
 
 Related atlas ranks: 13.
 
+### Already proved: insufficient for this supplied gap
+
+**[Walking, falling and the ordinary position copies](#split-ordinary-step) — Insufficient.** At the completed actual US/JP ground-step display copy, with the reached Mario pointer, readable movement Y, a valid Object-pool slot and separate MarioState storage, display Y equals movement Y. The whole ground-call theorem supplies this copy checkpoint. This does not cover an earlier retry, every action, or later offset and position writes.
+
+Proof: [`ipg_ground_refresh_completes_without_old_display`](../../proofs/InkPostDialogGroundReset.v).
+
+**[A Tweester can move Mario, but it also updates the display](#split-tornado) — Insufficient.** At the completed actual US/JP non-ejecting display copy, under its stated storage conditions, the supplied low-movement/high-display pair is impossible. Both floor-query outcomes are covered. Ejection, the following angle call and other later writers remain outside this result.
+
+Proof: [`twg_copy_cannot_install_supplied_vertical_gap`](../../proofs/TweesterGap.v).
+
+
 ## 02 · Remaining cases and other contexts
 
 These entries include open gameplay questions and things that only look like useful producers. Being listed here does not mean a route works.
@@ -277,13 +290,17 @@ These entries include open gameplay questions and things that only look like use
 
 ### 01 — Walking, falling and the ordinary position copies
 
-**Gap sizing: 0 at the ordinary movement-to-display copy.** Refreshes the gap away at that checkpoint
+**Gap sizing: 0 at the completed ground copy; air/water copies reviewed separately.** Insufficient — already proved at the completed ground copy
 
 A step may briefly leave the old display behind. The completed ground, air or water copy replaces it with the new movement position. Later shell, water and sand adjustments are counted in their own rows.
 
 **Limits.** This is not a bound on every intermediate displacement or a proof that every action takes one of these completed copies.
 
-**Evidence level.** Existing local copy proofs + source review
+**Evidence level.** InkPostDialogGroundReset.v: completed ground-copy result; other movement copies remain separately scoped
+
+**Already proved — Insufficient.** At the completed actual US/JP ground-step display copy, with the reached Mario pointer, readable movement Y, a valid Object-pool slot and separate MarioState storage, display Y equals movement Y. The whole ground-call theorem supplies this copy checkpoint. This does not cover an earlier retry, every action, or later offset and position writes.
+
+Proof: [`ipg_ground_refresh_completes_without_old_display`](../../proofs/InkPostDialogGroundReset.v).
 
 **What happens to Mario.** Mario takes a step, so his movement position changes. The action usually updates his display next, and Mario's object update later copies the movement position into the collision record. In between, the numbers can disagree.
 
@@ -445,7 +462,7 @@ Related atlas ranks: 5, 13B.
 
 ### 12 — Trees, ledges and hanging points
 
-**Gap sizing: Pole/hang copies: 0. Ledge release: a 100-unit subtraction or a shallower floor snap.** A small local drop exists; a large retained gap is not shown
+**Gap sizing: Pole/hang copies: 0. Ledge release: a 100-unit subtraction or a shallower floor snap.** Insufficient at the local drop — source review
 
 Letting go of a ledge shifts X/Z back by a nominal 60 and lowers Y by the source's 100-unit cap, before setting soft bonk. From a synchronized pose at ordinary heights this gives at most about +100 of vertical gap at that local write. Pole placement and stationary hanging subsequently copy movement to display.
 
@@ -473,7 +490,7 @@ Related atlas ranks: 5, 13B, 18.
 
 ### 13 — The cannon really can leave the display behind
 
-**Gap sizing: 0 while seated; firing leaves display at or below movement.** The normal launch goes the wrong way for an upward display gap
+**Gap sizing: 0 while seated; firing leaves display at or below movement.** Insufficient at normal launch — source and finite checks
 
 Firing moves actual Mario 120 units along the aim before the usual display copy. The clamped pitch is nonnegative: the checked sine-table expression raises actual Y by 0 to 118.169815 units. Starting synchronized, display-minus-movement Y is therefore nonpositive at those writes.
 
@@ -501,13 +518,17 @@ Related atlas ranks: 5, 13B, 18.
 
 ### 14 — A Tweester can move Mario, but it also updates the display
 
-**Gap sizing: 0 at the completed non-ejecting display-copy checkpoint.** Proved: this Tweester checkpoint cannot install the supplied gap
+**Gap sizing: 0 at the completed non-ejecting display-copy checkpoint.** Insufficient — already proved at the normal Tweester copy
 
 Both floor-found and floor-missing branches feed into the same real display copy. The new US/JP proof follows that actual continuation and completed callee: display Y and movement Y are equal there, however far the Tweester just moved Mario.
 
 **Limits.** The theorem starts after the early ejection test and ends at the completed copy. The following angle call and surrounding action history remain outside it. Separate source review follows ordinary ejection into an air step with another display copy, conditional on retaining that action and avoiding common cancellations; this is not a new complete Clight proof. Moving the Tweester itself does not bypass either copy.
 
 **Evidence level.** New Coq execution connection: TweesterGap.v
+
+**Already proved — Insufficient.** At the completed actual US/JP non-ejecting display copy, under its stated storage conditions, the supplied low-movement/high-display pair is impossible. Both floor-query outcomes are covered. Ejection, the following angle call and other later writers remain outside this result.
+
+Proof: [`twg_copy_cannot_install_supplied_vertical_gap`](../../proofs/TweesterGap.v).
 
 **What happens to Mario.** The tornado action moves Mario around the tornado and updates his stored display.
 
@@ -529,7 +550,7 @@ Related atlas ranks: 5, 13B.
 
 ### 15 — Yes, the desert has swimming offsets
 
-**Gap sizing: About +208 in the generous one-refresh calculation at Y=768.** A real positive offset, too small alone in this envelope
+**Gap sizing: About +208 in the generous one-refresh calculation at Y=768.** Insufficient in the checked expression envelope
 
 Pitch adds up to 60. Reset-derived bob height is at most 147.99609375 over every signed-16 reset pitch. Granting both maxima independently after one copy at actual Y=768 gives display Y=975.99609375, a gap of 207.99609375. That is still 962.868774 below the supplied display.
 
@@ -557,7 +578,7 @@ Related atlas ranks: 2, 5, 19, 21.
 
 ### 17 — The shell gives Mario a display offset
 
-**Gap sizing: +42 airborne; +45 on the ground, per ordinary refresh.** A real positive offset, too small alone
+**Gap sizing: +42 airborne; +45 on the ground, per ordinary refresh.** Insufficient alone — source arithmetic
 
 The airborne shell action adds 42 after the air-step copy. The grounded shell tilt adds 45. At actual Y=768 those give display Y=810 or 813, far short of 1938.864868.
 

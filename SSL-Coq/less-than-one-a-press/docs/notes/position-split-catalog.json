@@ -14,7 +14,7 @@
       "id": "ordinary-step",
       "number": 1,
       "title": "Walking, falling and the ordinary position copies",
-      "status": "Open · present in SSL",
+      "status": "Insufficient at ground copy · other checkpoints open",
       "effect": "Mario takes a step, so his movement position changes. The action usually updates his display next, and Mario's object update later copies the movement position into the collision record. In between, the numbers can disagree.",
       "prerequisite": "This is the everyday machinery behind walking, sliding, falling and airborne actions.",
       "area1": "Yes. SSL uses it too. Whether Mario can enter a particular airborne action without a new A press is a separate problem.",
@@ -39,11 +39,17 @@
       "availability": "available",
       "section": "catalog",
       "gap": {
-        "amount": "0 at the ordinary movement-to-display copy",
-        "verdict": "Refreshes the gap away at that checkpoint",
+        "amount": "0 at the completed ground copy; air/water copies reviewed separately",
+        "verdict": "Insufficient — already proved at the completed ground copy",
         "detail": "A step may briefly leave the old display behind. The completed ground, air or water copy replaces it with the new movement position. Later shell, water and sand adjustments are counted in their own rows.",
         "limit": "This is not a bound on every intermediate displacement or a proof that every action takes one of these completed copies.",
-        "basis": "Existing local copy proofs + source review"
+        "basis": "InkPostDialogGroundReset.v: completed ground-copy result; other movement copies remain separately scoped",
+        "insufficiency": {
+          "card": "proved-ground-gap",
+          "module": "proofs/InkPostDialogGroundReset.v",
+          "theorem": "ipg_ground_refresh_completes_without_old_display",
+          "scope": "At the completed actual US/JP ground-step display copy, with the reached Mario pointer, readable movement Y, a valid Object-pool slot and separate MarioState storage, display Y equals movement Y. The whole ground-call theorem supplies this copy checkpoint. This does not cover an earlier retry, every action, or later offset and position writes."
+        }
       }
     },
     {
@@ -371,7 +377,7 @@
       "section": "catalog",
       "gap": {
         "amount": "Pole/hang copies: 0. Ledge release: a 100-unit subtraction or a shallower floor snap",
-        "verdict": "A small local drop exists; a large retained gap is not shown",
+        "verdict": "Insufficient at the local drop — source review",
         "detail": "Letting go of a ledge shifts X/Z back by a nominal 60 and lowers Y by the source's 100-unit cap, before setting soft bonk. From a synchronized pose at ordinary heights this gives at most about +100 of vertical gap at that local write. Pole placement and stationary hanging subsequently copy movement to display.",
         "limit": "The ledge number is source arithmetic at the drop, not a proof that the gap survives the resumed action. It is short of 1,170.864868 by itself. Live attachment exits remain separate.",
         "basis": "Source review; no full exit-history proof"
@@ -401,7 +407,7 @@
       "section": "catalog",
       "gap": {
         "amount": "0 while seated; firing leaves display at or below movement",
-        "verdict": "The normal launch goes the wrong way for an upward display gap",
+        "verdict": "Insufficient at normal launch — source and finite checks",
         "detail": "Firing moves actual Mario 120 units along the aim before the usual display copy. The clamped pitch is nonnegative: the checked sine-table expression raises actual Y by 0 to 118.169815 units. Starting synchronized, display-minus-movement Y is therefore nonpositive at those writes.",
         "limit": "The normal firing branch also requires INPUT_A_PRESSED. The finite pitch calculation does not prove controller history, later sound-call effects or a warp transfer.",
         "basis": "Generated-table parameter calculation + source guard"
@@ -411,7 +417,7 @@
       "id": "tornado",
       "number": 14,
       "title": "A Tweester can move Mario, but it also updates the display",
-      "status": "Open · present in SSL",
+      "status": "Insufficient at normal copy · other checkpoints open",
       "effect": "The tornado action moves Mario around the tornado and updates his stored display.",
       "prerequisite": "A real tornado interaction and the tornado-twirling action.",
       "area1": "Yes. SSL has Tweesters. The checked stock selections confirm this.",
@@ -432,10 +438,16 @@
       "section": "catalog",
       "gap": {
         "amount": "0 at the completed non-ejecting display-copy checkpoint",
-        "verdict": "Proved: this Tweester checkpoint cannot install the supplied gap",
+        "verdict": "Insufficient — already proved at the normal Tweester copy",
         "detail": "Both floor-found and floor-missing branches feed into the same real display copy. The new US/JP proof follows that actual continuation and completed callee: display Y and movement Y are equal there, however far the Tweester just moved Mario.",
         "limit": "The theorem starts after the early ejection test and ends at the completed copy. The following angle call and surrounding action history remain outside it. Separate source review follows ordinary ejection into an air step with another display copy, conditional on retaining that action and avoiding common cancellations; this is not a new complete Clight proof. Moving the Tweester itself does not bypass either copy.",
-        "basis": "New Coq execution connection: TweesterGap.v"
+        "basis": "New Coq execution connection: TweesterGap.v",
+        "insufficiency": {
+          "card": "proved-tweester-gap",
+          "module": "proofs/TweesterGap.v",
+          "theorem": "twg_copy_cannot_install_supplied_vertical_gap",
+          "scope": "At the completed actual US/JP non-ejecting display copy, under its stated storage conditions, the supplied low-movement/high-display pair is impossible. Both floor-query outcomes are covered. Ejection, the following angle call and other later writers remain outside this result."
+        }
       }
     },
     {
@@ -465,7 +477,7 @@
       "section": "catalog",
       "gap": {
         "amount": "About +208 in the generous one-refresh calculation at Y=768",
-        "verdict": "A real positive offset, too small alone in this envelope",
+        "verdict": "Insufficient in the checked expression envelope",
         "detail": "Pitch adds up to 60. Reset-derived bob height is at most 147.99609375 over every signed-16 reset pitch. Granting both maxima independently after one copy at actual Y=768 gives display Y=975.99609375, a gap of 207.99609375. That is still 962.868774 below the supplied display.",
         "limit": "This finite expression envelope uses the unchanged stock sine table and reset-derived bob state. It is not a reachable swim maximum or a bound on extra calls without a fresh copy. Entry/exit height clamps and support changes are separate writes.",
         "basis": "Reproducible finite expression calculation"
@@ -522,7 +534,7 @@
       "section": "catalog",
       "gap": {
         "amount": "+42 airborne; +45 on the ground, per ordinary refresh",
-        "verdict": "A real positive offset, too small alone",
+        "verdict": "Insufficient alone — source arithmetic",
         "detail": "The airborne shell action adds 42 after the air-step copy. The grounded shell tilt adds 45. At actual Y=768 those give display Y=810 or 813, far short of 1938.864868.",
         "limit": "Do not sum the two constants or accumulate them over frames without showing a skipped refresh. A different later State drop is a separate producer.",
         "basis": "Source constants + fixed-anchor arithmetic"

@@ -7,7 +7,8 @@ conditional child-copy, allocator and final warp-action results to
 questions outside those results, with links to the completed parts. No
 whole-route verdict changes. The 24 September source catalog adds one narrowly
 labeled source-census card. The backward gap review adds the normal Tweester
-copy checkpoint, bringing the current total to 32.
+copy checkpoint, bringing that total to 32. The gap-comparison update now
+also displays the existing completed ground-copy result, for 33 summaries.
 
 ## Clear exclusions, with their limits attached
 
@@ -20,7 +21,7 @@ behaviors. A broader claim about every possible later object-creation history
 is not promoted. The three existing proof modules and their theorem names
 are linked in the canonical [catalog](position-split-catalog.md).
 
-Section 01 now contains 32 result summaries plus these seven expanded cases;
+Section 01 now contains 33 result summaries plus these seven expanded cases;
 the seven are not additional theorems or new route closures. The other 20
 catalog entries remain separate. Existing negative results get a short label
 that names the ruled-out step or conditional setup. Positive results and
@@ -29,6 +30,20 @@ example-led original prose; exact limits and proof receipts remain available.
 That presentation change altered no Coq proof. The subsequent Tweester
 connection below is new proof work; route estimates and whole-route
 conclusions remain unchanged.
+
+## Proved insufficient for the supplied setup
+
+The user's stopping rule is now explicit: a proved upper bound below the
+supplied **1170.8648681640625-unit** gap counts as **Insufficient — already
+proved**, within its stated conditions and checkpoint. The normal Tweester
+copy and ordinary completed ground copy each give zero and have Section 01
+cards. The latter reuses `ipg_ground_refresh_completes_without_old_display`
+and its whole-call connection in `InkPostDialogGroundReset.v`; no new proof
+is claimed. Broad catalog entries retain their other open checkpoints.
+Shell/water/ledge/cannon source or finite-expression shortfalls do not
+become gameplay theorems. An existing-gap keeper or retry consumer is not
+ruled out just because it cannot independently create the gap. The target
+is not a proved minimum for every Ink installation. Route estimates stay unchanged.
 
 ## F02: Tweester height is not a retained display gap
 
@@ -50,7 +65,7 @@ The rapid-home-oscillation follow-up stays outside Section 01 as a new
 proof: it adds finite native transport/contact diagnostics and a source
 trace of ordinary ejection, not a completed Clight ejection or gameplay
 theorem. The existing Tweester copy card keeps its scope and the count
-stays at 32. See [the diagnostic](../../instrumentation/tweester-transport/README.md).
+stayed at 32 before the ground-copy presentation update. See [the diagnostic](../../instrumentation/tweester-transport/README.md).
 
 ## F02: whole-game mechanisms and stock selectors
 

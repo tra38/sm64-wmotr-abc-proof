@@ -62,13 +62,17 @@ cases against the supplied vertical setup. The normal Tweester continuation
 has a new checked no-gap copy checkpoint, including its failed-floor branch.
 The ejection branch, later writes and useful downward-position producers
 remain open. The shell/water/cannon numbers are scoped source and finite
-expression results; they are not an all-history gameplay bound.
+expression results; they are not an all-history gameplay bound. For this
+comparison, a proved shortfall earns **Insufficient — already proved**
+under its stated conditions. The normal Tweester and completed ground-copy
+checkpoints qualify with zero gap; the wider mechanisms remain open. The
+1170.864868-unit target is specific to the supplied setup, not every Ink route.
 For a consolidated account of which results the impossibility argument uses
 and which live connections remain, see the
 [impossibility-proof progress ledger](impossibility-proof-progress.md).
 The [Fine Print promotion review](notes/fine-print-proof-promotions.md)
 now includes the conditional stock negative-seed argument among the site's
-32 established-result summaries and seven expanded stock-list exclusions,
+33 established-result summaries and seven expanded stock-list exclusions,
 including the Tweester copy checkpoint, source census, final warp-action call,
 conditional child-copy and allocator results alongside earlier local/model claims.
 Their wider gameplay connections remain on this board; no route is closed

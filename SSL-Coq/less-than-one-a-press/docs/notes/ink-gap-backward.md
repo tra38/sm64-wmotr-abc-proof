@@ -21,11 +21,37 @@ to end up low. A later movement-to-collision copy could provide that part,
 but only if the display survives until then. Simply lifting Mario in a
 Tweester does not establish any of those separations.
 
+## When we count a case as insufficient
+
+For this comparison, a proved upper bound below **1170.8648681640625** earns
+**Insufficient — already proved**, with its starting conditions and endpoint
+attached. We can finish that conditional case without first proving every
+surrounding gameplay history. This closes that way of supplying this setup's
+gap; it does not declare the whole mechanism or every possible Ink setup
+impossible. The target is not a universal minimum. A result about a keeper
+or consumer of an existing gap must not be used to reject that supporting role.
+
+Two completed copies qualify now: the normal Tweester copy and the ordinary
+ground-step copy, each with **zero** gap. The ground result is
+`ipg_ground_refresh_completes_without_old_display` in
+[InkPostDialogGroundReset.v](../../proofs/InkPostDialogGroundReset.v); its
+frame preserves movement Y, and `ipg_whole_ground_call_has_completed_copy_checkpoint`
+connects it to the real whole call. Both results keep their explicit storage
+and execution conditions. Air/water callers are not promoted by the ground proof.
+These are existing proofs, not new theorem or audit results.
+
+The shell, water, ledge and cannon shortfalls keep **Insufficient** labels
+qualified by their source or finite-calculation scope. Their numbers alone do
+not earn a gameplay-proof label. Unknown bounds stay open. In particular,
+the retry's zero movement/display gap afterward is not an exclusion: it can
+leave the useful collision/display split intact.
+
 ## How the obvious candidates measure up
 
 | Candidate | What it can add or leave behind | Verdict for this supplied height pair |
 | --- | --- | --- |
-| Tweester, normal continuation | **0** at its completed display copy | The new US/JP execution proof excludes the supplied pair at this checkpoint, even after a failed internal floor query. |
+| Tweester, normal continuation | **0** at its completed display copy | **Insufficient — already proved** at this checkpoint, even after a failed internal floor query. |
+| Ordinary ground-step copy | **0** at its completed display copy | **Insufficient — already proved** at this checkpoint. Earlier retry and later adjustments remain separate. |
 | Shell | **42** in the air or **45** on the ground after the ordinary refresh | A real offset, much too small by itself. Do not add both or stack frames without proving that the refresh is skipped. |
 | Water pitch and bob | **207.99609375** in a generous one-refresh calculation at movement Y=768 | Still **962.8687744140625** short. This is an expression envelope, not a reachable swimming maximum. |
 | Ledge release | A nominal **100-unit** downward cap at the local write | Potentially the right sign, too small alone. The following action can refresh the display. |

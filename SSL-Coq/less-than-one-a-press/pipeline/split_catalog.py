@@ -116,6 +116,13 @@ def make_index(repo, catalog):
         if row['section'] == 'catalog' and any(not row.get('gap', {}).get(key)
                 for key in ('amount', 'verdict', 'detail', 'limit', 'basis')):
             raise ValueError(f"{row['id']}: incomplete backward gap review")
+        insufficient = row.get('gap', {}).get('insufficiency')
+        if insufficient:
+            if any(not insufficient.get(key) for key in ('card', 'module', 'theorem', 'scope')):
+                raise ValueError(f"{row['id']}: incomplete insufficiency proof reference")
+            module = ROOT / insufficient['module']
+            if not re.search(r"\bTheorem\s+" + re.escape(insufficient['theorem']) + r"\b", module.read_text(encoding='utf-8')):
+                raise ValueError(f"{row['id']}: missing insufficiency theorem")
         if row.get("proof"):
             proof = row["proof"]
             module = ROOT / proof["module"]
@@ -204,6 +211,13 @@ def render_markdown(catalog, index):
         "need real incoming values; an unknown maximum is not an unlimited reachable gap. "
         "We defer travel to the warp until a producer passes this first test. See the "
         "[backward review](ink-gap-backward.md) and [finite arithmetic receipt](ink-gap-arithmetic.json).", "",
+        "**Stopping rule.** A proved upper bound below **1170.8648681640625** counts as "
+        "**Insufficient — already proved**, under its stated conditions and checkpoint. "
+        "The normal Tweester and completed ground copies qualify with zero gap. The "
+        "shell, water, ledge and cannon shortfalls keep their source/finite evidence "
+        "labels; unknown bounds remain open. A keeper or consumer of an existing gap "
+        "is not ruled out in that supporting role. This threshold is specific to the "
+        "supplied setup, not every Ink installation.", "",
         "| Case | Gap at the stated checkpoint | Verdict |", "| --- | --- | --- |"]
     for row in catalog['situations']:
         if row['section'] == 'catalog':
@@ -225,6 +239,13 @@ def render_markdown(catalog, index):
                     "Unexpected later object creation remains a separate question; it is not "
                     "silently declared impossible here."]
             else:
+                lines += ["", "### Already proved: insufficient for this supplied gap", ""]
+                for proved_row in catalog['situations']:
+                    result = proved_row.get('gap', {}).get('insufficiency')
+                    if result:
+                        lines += [f"**[{proved_row['title']}](#split-{proved_row['id']}) — Insufficient.** "
+                            + result['scope'], "",
+                            f"Proof: [`{result['theorem']}`](../../{result['module']}).", ""]
                 lines += ["", "## 02 · Remaining cases and other contexts", "",
                     "These entries include open gameplay questions and things that only look "
                     "like useful producers. Being listed here does not mean a route works."]
@@ -238,6 +259,10 @@ def render_markdown(catalog, index):
             lines += [f"**Gap sizing: {gap['amount']}.** {gap['verdict']}", "",
                 gap['detail'], "", f"**Limits.** {gap['limit']}", "",
                 f"**Evidence level.** {gap['basis']}", ""]
+            if gap.get('insufficiency'):
+                result = gap['insufficiency']
+                lines += [f"**Already proved — Insufficient.** {result['scope']}", "",
+                    f"Proof: [`{result['theorem']}`](../../{result['module']}).", ""]
         for key, label in (("effect", "What happens to Mario"), ("prerequisite", "What we would need"),
                 ("area1", "Can SSL supply it"), ("timing", "Does the gap last long enough"),
                 ("evidence", "What we know"), ("missing", "What this does not rule out" if row.get("proof") else "What is left to check")):

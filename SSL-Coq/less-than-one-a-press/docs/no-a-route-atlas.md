@@ -211,7 +211,12 @@ The detailed sections are organized as:
   to find; it does not claim those actors are impossible under every later
   object-creation history or close a whole route. The new
   [backward sizing pass](notes/ink-gap-backward.md) reviews all 20 remaining
-  cases against the supplied 1170.864868-unit gap. A new US/JP proof shows
+  cases against the supplied 1170.864868-unit gap. A proved shortfall now
+  counts as **Insufficient — already proved** for its stated conditions and
+  checkpoint: the normal Tweester copy and completed ordinary ground copy
+  qualify with zero gap. This target is specific to the supplied setup, not
+  a proved minimum for every Ink route; finite/source shortfalls retain
+  their separate evidence labels. A new US/JP proof shows
   that the normal Tweester continuation reaches a copy with equal movement
   and display Y, even after its internal floor query misses. Its ejection
   branch and later changes remain separate. Shell and the checked single-refresh

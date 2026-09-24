@@ -23,6 +23,12 @@ Completed work is grouped by subject. Each item retains its original scope warni
 
 ## F02 backward gap sizing
 
+- [x] Adopt **Insufficient — already proved** for a proved shortfall against
+  the supplied gap, with its conditions and checkpoint visible. Apply it to
+  the existing normal Tweester and completed ground-copy results (zero gap).
+  Add the latter to Fine Print Section 01. Source/finite shortfalls remain
+  separately labeled; no new Coq theorem or whole-route closure is claimed.
+
 - [x] Size all 20 remaining split-catalog cases against the supplied
   1170.8648681640625-unit vertical gap. Each row has an amount or formula,
   evidence level and limit; unknown useful maxima remain unknown.
