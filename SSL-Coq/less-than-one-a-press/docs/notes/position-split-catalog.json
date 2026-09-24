@@ -37,7 +37,14 @@
         "18"
       ],
       "availability": "available",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "0 at the ordinary movement-to-display copy",
+        "verdict": "Refreshes the gap away at that checkpoint",
+        "detail": "A step may briefly leave the old display behind. The completed ground, air or water copy replaces it with the new movement position. Later shell, water and sand adjustments are counted in their own rows.",
+        "limit": "This is not a bound on every intermediate displacement or a proof that every action takes one of these completed copies.",
+        "basis": "Existing local copy proofs + source review"
+      }
     },
     {
       "id": "geometry-retry",
@@ -62,7 +69,14 @@
         "13A"
       ],
       "availability": "available",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "0 between display and movement after retry",
+        "verdict": "Consumes a gap; does not create the raised display",
+        "detail": "The retry can turn low movement into high movement by copying the display. It can leave the collision record low, which is exactly why the supplied setup works. Wall correction is a separate X/Z change, not a new upward display offset.",
+        "limit": "The useful display-versus-collision gap and first missing floor must already be available. Live correction and floor choice still matter.",
+        "basis": "Existing retry proof + source review"
+      }
     },
     {
       "id": "floor-animation",
@@ -85,7 +99,14 @@
         "13B"
       ],
       "availability": "available",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "Old display Y − remembered floor Y; animation depends on its signed translation",
+        "verdict": "A possible downward writer; useful size is still unproved",
+        "detail": "Floor alignment writes the remembered floor height into actual Y while leaving the stored display alone at that assignment. A lower remembered floor could therefore create an upward gap. Animation translation instead adds a selected signed translation to movement; a negative Y translation could lower it.",
+        "limit": "No controller-reachable large mismatch or useful animation frame/flag sequence is supplied. Later copies and the matrix helper still need their actual effects checked. There is no justified route-wide maximum yet.",
+        "basis": "Source formulas; producer remains open"
+      }
     },
     {
       "id": "platform",
@@ -111,7 +132,14 @@
         "6"
       ],
       "availability": "available",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "Old display-minus-movement gap − platform vertical displacement",
+        "verdict": "Can change one gap, but keeps the collision record where it was",
+        "detail": "A downward ride can make display sit above actual Mario. The complete platform phase preserves both display and raw collision coordinates. Starting with all three together therefore does not create the required high-display/low-collision pair during that phase.",
+        "limit": "A later collision copy could make collision low only if display survives until then. Live downward displacement, remembered support and those later copies are separate obligations; no maximum useful drop is established.",
+        "basis": "Existing complete platform-phase proof"
+      }
     },
     {
       "id": "chuckya-anchor",
@@ -245,7 +273,14 @@
         "13B"
       ],
       "availability": "available",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "0 new vertical gap from the direct push writes",
+        "verdict": "A sideways helper, not the height source",
+        "detail": "These helpers write X/Z. They could matter by changing the next floor query while a raised display already exists. The tree push scales its raw horizontal offset by (radius − distance) / radius; the interaction push aims at the combined hitbox radius and padding.",
+        "limit": "Do not assign a reachable horizontal maximum without the real actor sizes and input positions. Calls through the wall/floor helpers need their own connection.",
+        "basis": "Source review"
+      }
     },
     {
       "id": "bounce",
@@ -270,7 +305,14 @@
         "13B"
       ],
       "availability": "available",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "Old display Y − (object Y + hitbox height)",
+        "verdict": "A real height assignment; no useful large gap demonstrated",
+        "detail": "The bounce helper snaps actual Mario to the hitbox top. Depending on the incoming position, that could move him up or down. Damage, tornado capture and wind primarily set speed or action; speed by itself is not a position gap.",
+        "limit": "We have not bounded the reached SSL bounce placements and incoming split. The warp handler runs earlier, and an accepted warp stops the loop. No numeric route-wide maximum is claimed.",
+        "basis": "Source formula + checked interaction order"
+      }
     },
     {
       "id": "absent-launch",
@@ -326,7 +368,14 @@
         "18"
       ],
       "availability": "available",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "Pole/hang copies: 0. Ledge release: a 100-unit subtraction or a shallower floor snap",
+        "verdict": "A small local drop exists; a large retained gap is not shown",
+        "detail": "Letting go of a ledge shifts X/Z back by a nominal 60 and lowers Y by the source's 100-unit cap, before setting soft bonk. From a synchronized pose at ordinary heights this gives at most about +100 of vertical gap at that local write. Pole placement and stationary hanging subsequently copy movement to display.",
+        "limit": "The ledge number is source arithmetic at the drop, not a proof that the gap survives the resumed action. It is short of 1,170.864868 by itself. Live attachment exits remain separate.",
+        "basis": "Source review; no full exit-history proof"
+      }
     },
     {
       "id": "cannon",
@@ -349,7 +398,14 @@
         "18"
       ],
       "availability": "available",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "0 while seated; firing leaves display at or below movement",
+        "verdict": "The normal launch goes the wrong way for an upward display gap",
+        "detail": "Firing moves actual Mario 120 units along the aim before the usual display copy. The clamped pitch is nonnegative: the checked sine-table expression raises actual Y by 0 to 118.169815 units. Starting synchronized, display-minus-movement Y is therefore nonpositive at those writes.",
+        "limit": "The normal firing branch also requires INPUT_A_PRESSED. The finite pitch calculation does not prove controller history, later sound-call effects or a warp transfer.",
+        "basis": "Generated-table parameter calculation + source guard"
+      }
     },
     {
       "id": "tornado",
@@ -360,8 +416,8 @@
       "prerequisite": "A real tornado interaction and the tornado-twirling action.",
       "area1": "Yes. SSL has Tweesters. The checked stock selections confirm this.",
       "timing": "Tornado capture is after warp in the interaction list, and the twirling movement occurs during the action. Those placements limit when it could help.",
-      "evidence": "The code gives us a concrete movement-and-copy sequence. Having a tornado in the level is only the beginning of the argument.",
-      "missing": "Follow a reachable release or interruption through its next copies. We still need a useful gap at the top warp.",
+      "evidence": "The generated US/JP continuation after the early ejection test now has a completed-copy proof. Both floor outcomes reach equal movement/display Y at that checkpoint, excluding the supplied low-State/high-display pair there.",
+      "missing": "Follow any proposed exception through ejection or a later ordinary writer. The proof does not cover the post-copy angle call or the surrounding update, and does not close every Tweester-assisted route.",
       "functions": [
         "act_tornado_twirling"
       ],
@@ -370,7 +426,14 @@
         "13B"
       ],
       "availability": "available",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "0 at the completed non-ejecting display-copy checkpoint",
+        "verdict": "Proved: this Tweester checkpoint cannot install the supplied gap",
+        "detail": "Both floor-found and floor-missing branches feed into the same real display copy. The new US/JP proof follows that actual continuation and completed callee: display Y and movement Y are equal there, however far the Tweester just moved Mario.",
+        "limit": "This starts after the early ejection test and ends at the completed copy. Ejection, the following angle call and surrounding action history are not covered by the theorem. Reading the ejection source shows it leaves before the position-update branches; that source observation is not silently promoted to a whole-history proof.",
+        "basis": "New Coq execution connection: TweesterGap.v"
+      }
     },
     {
       "id": "water",
@@ -396,7 +459,14 @@
         "21"
       ],
       "availability": "available",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "About +208 in the generous one-refresh calculation at Y=768",
+        "verdict": "A real positive offset, too small alone in this envelope",
+        "detail": "Pitch adds up to 60. Reset-derived bob height is at most 147.99609375 over every signed-16 reset pitch. Granting both maxima independently after one copy at actual Y=768 gives display Y=975.99609375, a gap of 207.99609375. That is still 962.868774 below the supplied display.",
+        "limit": "This finite expression envelope uses the unchanged stock sine table and reset-derived bob state. It is not a reachable swim maximum or a bound on extra calls without a fresh copy. Entry/exit height clamps and support changes are separate writes.",
+        "basis": "Reproducible finite expression calculation"
+      }
     },
     {
       "id": "whirlpool",
@@ -446,7 +516,14 @@
         "2"
       ],
       "availability": "available",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "+42 airborne; +45 on the ground, per ordinary refresh",
+        "verdict": "A real positive offset, too small alone",
+        "detail": "The airborne shell action adds 42 after the air-step copy. The grounded shell tilt adds 45. At actual Y=768 those give display Y=810 or 813, far short of 1938.864868.",
+        "limit": "Do not sum the two constants or accumulate them over frames without showing a skipped refresh. A different later State drop is a separate producer.",
+        "basis": "Source constants + fixed-anchor arithmetic"
+      }
     },
     {
       "id": "quicksand",
@@ -470,7 +547,14 @@
         "2"
       ],
       "availability": "available",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "Display increases by −depth per subtraction when depth is negative",
+        "verdict": "Large enough arithmetically; the useful producer remains open",
+        "detail": "A single depth of −1,170.8648681640625 takes a reset display of 768 exactly to the supplied height in binary32. That is a sizing example, not a stock reachable depth. Existing checked arithmetic also gets from supported Y=1280 to 1939 with 1,318 uninterrupted subtractions of depth −0.5.",
+        "limit": "The small-seed example still needs a 512-unit actual-position drop with display retained. The real reward/dialog sequence and a no-A seed remain unproved. A granted negative seed is not a grant of arbitrary magnitude or of the useful combined setup.",
+        "basis": "Existing Coq subtraction/iteration results + arithmetic witness"
+      }
     },
     {
       "id": "dialog",
@@ -495,7 +579,14 @@
         "19"
       ],
       "availability": "available",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "No independent fixed upward offset; preserves what enters",
+        "verdict": "A possible keeper, not the original height source",
+        "detail": "Automatic dialog can leave the stored display untouched. Repeated sand subtraction belongs in the sand row. Ordinary sign alignment moves X/Z and then copies display; NPC dialog also has a display copy.",
+        "limit": "We need the particular dialog branch and release boundary. We do not assume every dialog preserves a gap. Active automatic dialog also skips the warp handler.",
+        "basis": "Existing dialog-gate results + source review"
+      }
     },
     {
       "id": "warp-reset",
@@ -525,7 +616,14 @@
         "32"
       ],
       "availability": "available",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "Instant warp: incoming gap − vertical warp displacement",
+        "verdict": "Relocation can make a gap elsewhere; no matching Area-1 table",
+        "detail": "The instant-warp code moves State and raw collision, leaving stored display for later work. A downward displacement could therefore create the right sign. The stock SSL script supplies no Area-1 instant warp; its Area-2/3 instant warps have zero displacement. The upper object-warp's proved final action tail creates no new split.",
+        "limit": "This is a stock-script/source distinction, not a theorem about every imported state. A normal area entry and door sequence need their own copies traced; changes after the selected acceptance checkpoint are too late.",
+        "basis": "Pinned script and source review + existing acceptance-tail proof"
+      }
     },
     {
       "id": "butterfly",
@@ -576,7 +674,14 @@
         "21"
       ],
       "availability": "context",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "Depends on the selected ending/door/action sequence",
+        "verdict": "No legitimate SSL producer established",
+        "detail": "Some cutscenes relocate movement or display independently. Finding that assignment in the executable does not show an ordinary SSL action can enter the scene. There is no sound universal number for this mixed group.",
+        "limit": "Identify a legal first action constructor and exact coordinate writer before treating this as a candidate. No arbitrary action selection is granted.",
+        "basis": "Source review; action entry remains open"
+      }
     },
     {
       "id": "debug",
@@ -596,7 +701,14 @@
         "31"
       ],
       "availability": "context",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "0 at its display copy; arbitrary entry is outside this challenge",
+        "verdict": "No authorized stock-gameplay producer",
+        "detail": "The debug movement action copies its result into display. Choosing this action by changing game state is not controller-driven gameplay under the selected rules.",
+        "limit": "This is a scope decision, not a proof that all normal action transitions are covered.",
+        "basis": "Source review + chosen execution scope"
+      }
     },
     {
       "id": "render",
@@ -621,7 +733,14 @@
         "31"
       ],
       "availability": "context",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "0 from writes only to camera, proxy, matrix or local vectors",
+        "verdict": "No gap unless the actual stored display vector changes",
+        "detail": "A drawn or camera-relative movement does not help the retry if the stored Mario display position stays put. The mirror uses its own object; local vectors and transforms must be distinguished from Mario's cells.",
+        "limit": "Actual receivers and aliases still matter. This is not permission to treat every renderer or animation call as harmless.",
+        "basis": "Receiver-specific source review"
+      }
     },
     {
       "id": "generic-objects",
@@ -650,7 +769,14 @@
         "31"
       ],
       "availability": "available",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "No common numeric bound; depends on the actual receiver",
+        "verdict": "Known distinct-child copies add 0 to Mario; wider coverage remains open",
+        "detail": "The completed copy into a different valid particle slot preserves Mario. A generic position helper acting on Mario instead would need its own argument and write analysis. Existing stock graphical-offset command payloads are at most +240 even if granted to Mario, but that does not cover every generic write.",
+        "limit": "The allocator/child theorems keep their stated boundaries. Ownership, other callbacks and alias coverage are not replaced with a blanket zero-gap assumption.",
+        "basis": "Existing local proofs and command census"
+      }
     },
     {
       "id": "copies-pauses",
@@ -672,7 +798,14 @@
         "18"
       ],
       "availability": "available",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "No new display-minus-movement gap; collision copy transfers an existing one",
+        "verdict": "Can complete the low collision record only after a producer exists",
+        "detail": "If actual Mario has already moved down while display stayed high, copying State into the raw Object makes collision low too. That is useful bookkeeping for Ink, but it does not create the original height difference. Skipping a phase merely preserves its incoming values.",
+        "limit": "The crucial order is whether that collision copy happens before another display refresh. The ordinary caller still copies State after execute_mario_action returns.",
+        "basis": "Source order + existing raw-copy proofs"
+      }
     },
     {
       "id": "query-alias",
@@ -695,7 +828,20 @@
         "2"
       ],
       "availability": "available",
-      "section": "catalog"
+      "section": "catalog",
+      "gap": {
+        "amount": "0 new position gap",
+        "verdict": "Changes what a query sees, not where the records are",
+        "detail": "Signed-16 conversion can make the floor query see different coordinates. It does not itself write State, display or raw collision. It may help use a separately created gap.",
+        "limit": "A changed floor answer can feed a later snap or retry, which belongs to that writer's row. Ordinary coordinates are used by the supplied vertical setup.",
+        "basis": "Existing coordinate/geometry results"
+      }
     }
-  ]
+  ],
+  "gapReview": {
+    "targetActualY": 768,
+    "targetDisplayY": 1938.8648681640625,
+    "targetGap": 1170.8648681640625,
+    "note": "Size the display-minus-movement gap before the first floor query. After the retry, movement can agree with display while raw collision stays low. This sizing pass does not attempt the transfer to the warp."
+  }
 }

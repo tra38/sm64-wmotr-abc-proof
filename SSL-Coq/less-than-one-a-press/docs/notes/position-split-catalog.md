@@ -22,6 +22,35 @@ The accepted-warp action tail preserves any gap it receives. The successful supp
 
 Seven proved stock-list exclusions now appear in **01 · Already proved** below and on the site. The other 20 entries remain separate. This is a clearer presentation of existing proofs, not seven new route closures. The summaries start with what happens to Mario; the exact scope and proof references remain attached.
 
+## Working backward: how much gap can each case create?
+
+The supplied vertical setup needs actual and collision Y=768 with display Y=1938.8648681640625: an upward gap of **1170.8648681640625** before the first floor query. This is one successful supplied setup, not a universal minimum for every possible Ink installation. After the retry, movement can equal display while collision remains low. A platform changing only movement does not create that display-versus-collision difference by itself.
+
+All 20 remaining cases now have a sizing review below. A zero at a named copy is not a theorem about every surrounding update. Formula-dependent rows still need real incoming values; an unknown maximum is not an unlimited reachable gap. We defer travel to the warp until a producer passes this first test. See the [backward review](ink-gap-backward.md) and [finite arithmetic receipt](ink-gap-arithmetic.json).
+
+| Case | Gap at the stated checkpoint | Verdict |
+| --- | --- | --- |
+| [01 — ordinary-step](#split-ordinary-step) | 0 at the ordinary movement-to-display copy | Refreshes the gap away at that checkpoint |
+| [02 — geometry-retry](#split-geometry-retry) | 0 between display and movement after retry | Consumes a gap; does not create the raised display |
+| [03 — floor-animation](#split-floor-animation) | Old display Y − remembered floor Y; animation depends on its signed translation | A possible downward writer; useful size is still unproved |
+| [04 — platform](#split-platform) | Old display-minus-movement gap − platform vertical displacement | Can change one gap, but keeps the collision record where it was |
+| [09 — push](#split-push) | 0 new vertical gap from the direct push writes | A sideways helper, not the height source |
+| [10 — bounce](#split-bounce) | Old display Y − (object Y + hitbox height) | A real height assignment; no useful large gap demonstrated |
+| [12 — attachments](#split-attachments) | Pole/hang copies: 0. Ledge release: a 100-unit subtraction or a shallower floor snap | A small local drop exists; a large retained gap is not shown |
+| [13 — cannon](#split-cannon) | 0 while seated; firing leaves display at or below movement | The normal launch goes the wrong way for an upward display gap |
+| [14 — tornado](#split-tornado) | 0 at the completed non-ejecting display-copy checkpoint | Proved: this Tweester checkpoint cannot install the supplied gap |
+| [15 — water](#split-water) | About +208 in the generous one-refresh calculation at Y=768 | A real positive offset, too small alone in this envelope |
+| [17 — shell](#split-shell) | +42 airborne; +45 on the ground, per ordinary refresh | A real positive offset, too small alone |
+| [18 — quicksand](#split-quicksand) | Display increases by −depth per subtraction when depth is negative | Large enough arithmetically; the useful producer remains open |
+| [19 — dialog](#split-dialog) | No independent fixed upward offset; preserves what enters | A possible keeper, not the original height source |
+| [20 — warp-reset](#split-warp-reset) | Instant warp: incoming gap − vertical warp displacement | Relocation can make a gap elsewhere; no matching Area-1 table |
+| [22 — cutscene](#split-cutscene) | Depends on the selected ending/door/action sequence | No legitimate SSL producer established |
+| [23 — debug](#split-debug) | 0 at its display copy; arbitrary entry is outside this challenge | No authorized stock-gameplay producer |
+| [24 — render](#split-render) | 0 from writes only to camera, proxy, matrix or local vectors | No gap unless the actual stored display vector changes |
+| [25 — generic-objects](#split-generic-objects) | No common numeric bound; depends on the actual receiver | Known distinct-child copies add 0 to Mario; wider coverage remains open |
+| [26 — copies-pauses](#split-copies-pauses) | No new display-minus-movement gap; collision copy transfers an existing one | Can complete the low collision record only after a producer exists |
+| [27 — query-alias](#split-query-alias) | 0 new position gap | Changes what a query sees, not where the records are |
+
 ## All 27 cases at a glance
 
 | # | Situation | SSL / current verdict |
@@ -248,6 +277,14 @@ These entries include open gameplay questions and things that only look like use
 
 ### 01 — Walking, falling and the ordinary position copies
 
+**Gap sizing: 0 at the ordinary movement-to-display copy.** Refreshes the gap away at that checkpoint
+
+A step may briefly leave the old display behind. The completed ground, air or water copy replaces it with the new movement position. Later shell, water and sand adjustments are counted in their own rows.
+
+**Limits.** This is not a bound on every intermediate displacement or a proof that every action takes one of these completed copies.
+
+**Evidence level.** Existing local copy proofs + source review
+
 **What happens to Mario.** Mario takes a step, so his movement position changes. The action usually updates his display next, and Mario's object update later copies the movement position into the collision record. In between, the numbers can disagree.
 
 **What we would need.** This is the everyday machinery behind walking, sliding, falling and airborne actions.
@@ -267,6 +304,14 @@ Related atlas ranks: 2, 5, 13B, 18.
 <a id="split-geometry-retry"></a>
 
 ### 02 — The floor check borrows Mario's display position
+
+**Gap sizing: 0 between display and movement after retry.** Consumes a gap; does not create the raised display
+
+The retry can turn low movement into high movement by copying the display. It can leave the collision record low, which is exactly why the supplied setup works. Wall correction is a separate X/Z change, not a new upward display offset.
+
+**Limits.** The useful display-versus-collision gap and first missing floor must already be available. Live correction and floor choice still matter.
+
+**Evidence level.** Existing retry proof + source review
 
 **What happens to Mario.** First, wall correction can move Mario's movement position. Then the game looks for a floor. If it finds nothing, it copies the stored display position into movement and tries again. The collision record can still be back where it started.
 
@@ -288,6 +333,14 @@ Related atlas ranks: 1, 2, 3, 13A.
 
 ### 03 — The floor moves Mario, but does the display follow?
 
+**Gap sizing: Old display Y − remembered floor Y; animation depends on its signed translation.** A possible downward writer; useful size is still unproved
+
+Floor alignment writes the remembered floor height into actual Y while leaving the stored display alone at that assignment. A lower remembered floor could therefore create an upward gap. Animation translation instead adds a selected signed translation to movement; a negative Y translation could lower it.
+
+**Limits.** No controller-reachable large mismatch or useful animation frame/flag sequence is supplied. Later copies and the matrix helper still need their actual effects checked. There is no justified route-wide maximum yet.
+
+**Evidence level.** Source formulas; producer remains open
+
 **What happens to Mario.** Floor alignment can set Mario's movement height to the remembered floor height without itself replacing his stored display. Animation movement can also change his movement coordinates.
 
 **What we would need.** A ground action, an animation that moves Mario, or a change in the support beneath him.
@@ -307,6 +360,14 @@ Related atlas ranks: 2, 5, 13B.
 <a id="split-platform"></a>
 
 ### 04 — Ride a platform while the other positions stay put
+
+**Gap sizing: Old display-minus-movement gap − platform vertical displacement.** Can change one gap, but keeps the collision record where it was
+
+A downward ride can make display sit above actual Mario. The complete platform phase preserves both display and raw collision coordinates. Starting with all three together therefore does not create the required high-display/low-collision pair during that phase.
+
+**Limits.** A later collision copy could make collision low only if display survives until then. Live downward displacement, remembered support and those later copies are separate obligations; no maximum useful drop is established.
+
+**Evidence level.** Existing complete platform-phase proof
 
 **What happens to Mario.** A moving platform can carry Mario's movement position while his display and collision positions stay put for that entire platform phase.
 
@@ -328,6 +389,14 @@ Related atlas ranks: 1, 2, 5A, 6.
 
 ### 09 — The palm tree can push one position
 
+**Gap sizing: 0 new vertical gap from the direct push writes.** A sideways helper, not the height source
+
+These helpers write X/Z. They could matter by changing the next floor query while a raised display already exists. The tree push scales its raw horizontal offset by (radius − distance) / radius; the interaction push aims at the combined hitbox radius and padding.
+
+**Limits.** Do not assign a reachable horizontal maximum without the real actor sizes and input positions. Calls through the wall/floor helpers need their own connection.
+
+**Evidence level.** Source review
+
 **What happens to Mario.** The push helpers can change Mario's movement X/Z without directly changing his collision or display coordinates.
 
 **What we would need.** A tree/pole callback or an object interaction that actually reaches the push helper.
@@ -347,6 +416,14 @@ Related atlas ranks: 5, 13A, 13B.
 <a id="split-bounce"></a>
 
 ### 10 — Bounces and knockback are different kinds of help
+
+**Gap sizing: Old display Y − (object Y + hitbox height).** A real height assignment; no useful large gap demonstrated
+
+The bounce helper snaps actual Mario to the hitbox top. Depending on the incoming position, that could move him up or down. Damage, tornado capture and wind primarily set speed or action; speed by itself is not a position gap.
+
+**Limits.** We have not bounded the reached SSL bounce placements and incoming split. The warp handler runs earlier, and an accepted warp stops the loop. No numeric route-wide maximum is claimed.
+
+**Evidence level.** Source formula + checked interaction order
 
 **What happens to Mario.** A bounce can put Mario's movement height at the top of an object's hitbox. Other hits first change his speed or action, leaving later movement to do the actual moving.
 
@@ -368,6 +445,14 @@ Related atlas ranks: 5, 13B.
 
 ### 12 — Trees, ledges and hanging points
 
+**Gap sizing: Pole/hang copies: 0. Ledge release: a 100-unit subtraction or a shallower floor snap.** A small local drop exists; a large retained gap is not shown
+
+Letting go of a ledge shifts X/Z back by a nominal 60 and lowers Y by the source's 100-unit cap, before setting soft bonk. From a synchronized pose at ordinary heights this gives at most about +100 of vertical gap at that local write. Pole placement and stationary hanging subsequently copy movement to display.
+
+**Limits.** The ledge number is source arithmetic at the drop, not a proof that the gap survives the resumed action. It is short of 1,170.864868 by itself. Live attachment exits remain separate.
+
+**Evidence level.** Source review; no full exit-history proof
+
 **What happens to Mario.** These actions attach Mario's movement position to something, or move it along an animation. Usually a display copy follows.
 
 **What we would need.** A climbable tree/pole, a ledge or a hangable surface, plus the action that uses it.
@@ -387,6 +472,14 @@ Related atlas ranks: 5, 13B, 18.
 <a id="split-cannon"></a>
 
 ### 13 — The cannon really can leave the display behind
+
+**Gap sizing: 0 while seated; firing leaves display at or below movement.** The normal launch goes the wrong way for an upward display gap
+
+Firing moves actual Mario 120 units along the aim before the usual display copy. The clamped pitch is nonnegative: the checked sine-table expression raises actual Y by 0 to 118.169815 units. Starting synchronized, display-minus-movement Y is therefore nonpositive at those writes.
+
+**Limits.** The normal firing branch also requires INPUT_A_PRESSED. The finite pitch calculation does not prove controller history, later sound-call effects or a warp transfer.
+
+**Evidence level.** Generated-table parameter calculation + source guard
 
 **What happens to Mario.** While Mario enters and sits in the cannon, the action updates his movement position and copies it to display. Firing moves him 120 units along the aim and returns before that display copy. That can leave the old display behind.
 
@@ -408,6 +501,14 @@ Related atlas ranks: 5, 13B, 18.
 
 ### 14 — A Tweester can move Mario, but it also updates the display
 
+**Gap sizing: 0 at the completed non-ejecting display-copy checkpoint.** Proved: this Tweester checkpoint cannot install the supplied gap
+
+Both floor-found and floor-missing branches feed into the same real display copy. The new US/JP proof follows that actual continuation and completed callee: display Y and movement Y are equal there, however far the Tweester just moved Mario.
+
+**Limits.** This starts after the early ejection test and ends at the completed copy. Ejection, the following angle call and surrounding action history are not covered by the theorem. Reading the ejection source shows it leaves before the position-update branches; that source observation is not silently promoted to a whole-history proof.
+
+**Evidence level.** New Coq execution connection: TweesterGap.v
+
 **What happens to Mario.** The tornado action moves Mario around the tornado and updates his stored display.
 
 **What we would need.** A real tornado interaction and the tornado-twirling action.
@@ -416,9 +517,9 @@ Related atlas ranks: 5, 13B, 18.
 
 **Does the gap last long enough.** Tornado capture is after warp in the interaction list, and the twirling movement occurs during the action. Those placements limit when it could help.
 
-**What we know.** The code gives us a concrete movement-and-copy sequence. Having a tornado in the level is only the beginning of the argument.
+**What we know.** The generated US/JP continuation after the early ejection test now has a completed-copy proof. Both floor outcomes reach equal movement/display Y at that checkpoint, excluding the supplied low-State/high-display pair there.
 
-**What is left to check.** Follow a reachable release or interruption through its next copies. We still need a useful gap at the top warp.
+**What is left to check.** Follow any proposed exception through ejection or a later ordinary writer. The proof does not cover the post-copy angle call or the surrounding update, and does not close every Tweester-assisted route.
 
 Stock source: [act_tornado_twirling](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario_actions_automatic.c#L764).
 
@@ -427,6 +528,14 @@ Related atlas ranks: 5, 13B.
 <a id="split-water"></a>
 
 ### 15 — Yes, the desert has swimming offsets
+
+**Gap sizing: About +208 in the generous one-refresh calculation at Y=768.** A real positive offset, too small alone in this envelope
+
+Pitch adds up to 60. Reset-derived bob height is at most 147.99609375 over every signed-16 reset pitch. Granting both maxima independently after one copy at actual Y=768 gives display Y=975.99609375, a gap of 207.99609375. That is still 962.868774 below the supplied display.
+
+**Limits.** This finite expression envelope uses the unchanged stock sine table and reset-derived bob state. It is not a reachable swim maximum or a bound on extra calls without a fresh copy. Entry/exit height clamps and support changes are separate writes.
+
+**Evidence level.** Reproducible finite expression calculation
 
 **What happens to Mario.** Entering water or hitting its height limits can move Mario's movement position. Swimming pitch and surface bobbing can then add an offset to the stored display after the swimming copy.
 
@@ -448,6 +557,14 @@ Related atlas ranks: 2, 5, 19, 21.
 
 ### 17 — The shell gives Mario a display offset
 
+**Gap sizing: +42 airborne; +45 on the ground, per ordinary refresh.** A real positive offset, too small alone
+
+The airborne shell action adds 42 after the air-step copy. The grounded shell tilt adds 45. At actual Y=768 those give display Y=810 or 813, far short of 1938.864868.
+
+**Limits.** Do not sum the two constants or accumulate them over frames without showing a skipped refresh. A different later State drop is a separate producer.
+
+**Evidence level.** Source constants + fixed-anchor arithmetic
+
 **What happens to Mario.** Shell riding updates the display and adds a riding or tilting offset. In the airborne action, the code adds 42 to display Y.
 
 **What we would need.** A Koopa shell and the corresponding riding action.
@@ -467,6 +584,14 @@ Related atlas ranks: 25, 2.
 <a id="split-quicksand"></a>
 
 ### 18 — Negative depth plus a dialog that keeps the display
+
+**Gap sizing: Display increases by −depth per subtraction when depth is negative.** Large enough arithmetically; the useful producer remains open
+
+A single depth of −1,170.8648681640625 takes a reset display of 768 exactly to the supplied height in binary32. That is a sizing example, not a stock reachable depth. Existing checked arithmetic also gets from supported Y=1280 to 1939 with 1,318 uninterrupted subtractions of depth −0.5.
+
+**Limits.** The small-seed example still needs a 512-unit actual-position drop with display retained. The real reward/dialog sequence and a no-A seed remain unproved. A granted negative seed is not a grant of arbitrary magnitude or of the useful combined setup.
+
+**Evidence level.** Existing Coq subtraction/iteration results + arithmetic witness
 
 **What happens to Mario.** Sinking subtracts quicksand depth from display Y. If that depth is negative, the subtraction raises the display instead. Skipping a later refresh can keep it there.
 
@@ -488,6 +613,14 @@ Related atlas ranks: 19, 2.
 
 ### 19 — A dialog can keep a gap; it cannot create one by pausing
 
+**Gap sizing: No independent fixed upward offset; preserves what enters.** A possible keeper, not the original height source
+
+Automatic dialog can leave the stored display untouched. Repeated sand subtraction belongs in the sand row. Ordinary sign alignment moves X/Z and then copies display; NPC dialog also has a display copy.
+
+**Limits.** We need the particular dialog branch and release boundary. We do not assume every dialog preserves a gap. Active automatic dialog also skips the warp handler.
+
+**Evidence level.** Existing dialog-gate results + source review
+
 **What happens to Mario.** Some dialog states skip ordinary movement or display refresh. Reading a sign can also move Mario while aligning him with the sign.
 
 **What we would need.** A particular sign, NPC or reward dialog, at the right action and timer.
@@ -507,6 +640,14 @@ Related atlas ranks: 2, 6, 19.
 <a id="split-warp-reset"></a>
 
 ### 20 — Bringing a gap through a warp or level entry
+
+**Gap sizing: Instant warp: incoming gap − vertical warp displacement.** Relocation can make a gap elsewhere; no matching Area-1 table
+
+The instant-warp code moves State and raw collision, leaving stored display for later work. A downward displacement could therefore create the right sign. The stock SSL script supplies no Area-1 instant warp; its Area-2/3 instant warps have zero displacement. The upper object-warp's proved final action tail creates no new split.
+
+**Limits.** This is a stock-script/source distinction, not a theorem about every imported state. A normal area entry and door sequence need their own copies traced; changes after the selected acceptance checkpoint are too late.
+
+**Evidence level.** Pinned script and source review + existing acceptance-tail proof
 
 **What happens to Mario.** Entry and warp code can relocate or reset positions. Door actions have their own movement and animation copies.
 
@@ -528,6 +669,14 @@ Related atlas ranks: 2, 13B, 18, 32.
 
 ### 22 — Ending cutscenes can place Mario almost wherever they need him
 
+**Gap sizing: Depends on the selected ending/door/action sequence.** No legitimate SSL producer established
+
+Some cutscenes relocate movement or display independently. Finding that assignment in the executable does not show an ordinary SSL action can enter the scene. There is no sound universal number for this mixed group.
+
+**Limits.** Identify a legal first action constructor and exact coordinate writer before treating this as a candidate. No arbitrary action selection is granted.
+
+**Evidence level.** Source review; action entry remains open
+
 **What happens to Mario.** The ending and jumbo-star sequences deliberately move Mario or his stored display to stage the scene.
 
 **What we would need.** The proper endgame actions and the code that starts them.
@@ -547,6 +696,14 @@ Related atlas ranks: 5, 18, 21.
 <a id="split-debug"></a>
 
 ### 23 — Debug free movement is outside this gameplay challenge
+
+**Gap sizing: 0 at its display copy; arbitrary entry is outside this challenge.** No authorized stock-gameplay producer
+
+The debug movement action copies its result into display. Choosing this action by changing game state is not controller-driven gameplay under the selected rules.
+
+**Limits.** This is a scope decision, not a proof that all normal action transitions are covered.
+
+**Evidence level.** Source review + chosen execution scope
 
 **What happens to Mario.** The debug action directly moves Mario and refreshes his display.
 
@@ -568,6 +725,14 @@ Related atlas ranks: 31.
 
 ### 24 — Looking displaced is not always a change to the stored display
 
+**Gap sizing: 0 from writes only to camera, proxy, matrix or local vectors.** No gap unless the actual stored display vector changes
+
+A drawn or camera-relative movement does not help the retry if the stored Mario display position stays put. The mirror uses its own object; local vectors and transforms must be distinguished from Mario's cells.
+
+**Limits.** Actual receivers and aliases still matter. This is not permission to treat every renderer or animation call as harmless.
+
+**Evidence level.** Receiver-specific source review
+
 **What happens to Mario.** The camera, mirror proxy, object transforms and temporary vectors can all have something called pos. A write to one of those is not automatically a write to Mario's three relevant positions.
 
 **What we would need.** We have to identify the actual object or local variable receiving the write.
@@ -587,6 +752,14 @@ Related atlas ranks: 20, 21, 31.
 <a id="split-generic-objects"></a>
 
 ### 25 — A helper moves its object. Which object is that?
+
+**Gap sizing: No common numeric bound; depends on the actual receiver.** Known distinct-child copies add 0 to Mario; wider coverage remains open
+
+The completed copy into a different valid particle slot preserves Mario. A generic position helper acting on Mario instead would need its own argument and write analysis. Existing stock graphical-offset command payloads are at most +240 even if granted to Mario, but that does not cover every generic write.
+
+**Limits.** The allocator/child theorems keep their stated boundaries. Ownership, other callbacks and alias coverage are not replaced with a blanket zero-gap assumption.
+
+**Evidence level.** Existing local proofs and command census
 
 **What happens to Mario.** Movement helpers and behavior commands write to the object they receive. The allocator initializes the slot it returns.
 
@@ -608,6 +781,14 @@ Related atlas ranks: 5, 13, 20, 21, 31.
 
 ### 26 — A skipped update needs something worth preserving
 
+**Gap sizing: No new display-minus-movement gap; collision copy transfers an existing one.** Can complete the low collision record only after a producer exists
+
+If actual Mario has already moved down while display stayed high, copying State into the raw Object makes collision low too. That is useful bookkeeping for Ink, but it does not create the original height difference. Skipping a phase merely preserves its incoming values.
+
+**Limits.** The crucial order is whether that collision copy happens before another display refresh. The ordinary caller still copies State after execute_mario_action returns.
+
+**Evidence level.** Source order + existing raw-copy proofs
+
 **What happens to Mario.** The ordinary movement-to-Object copy brings collision up to date. A skipped phase may preserve an old mismatch, but skipping alone does not move Mario.
 
 **What we would need.** The actual update order, action return, time-stop flags and copy destination.
@@ -627,6 +808,14 @@ Related atlas ranks: 6, 18.
 <a id="split-query-alias"></a>
 
 ### 27 — A different floor answer is not itself a position write
+
+**Gap sizing: 0 new position gap.** Changes what a query sees, not where the records are
+
+Signed-16 conversion can make the floor query see different coordinates. It does not itself write State, display or raw collision. It may help use a separately created gap.
+
+**Limits.** A changed floor answer can feed a later snap or retry, which belongs to that writer's row. Ordinary coordinates are used by the supplied vertical setup.
+
+**Evidence level.** Existing coordinate/geometry results
 
 **What happens to Mario.** A signed-16 conversion or a different sample point can give a different floor answer without writing any of Mario's three position records.
 

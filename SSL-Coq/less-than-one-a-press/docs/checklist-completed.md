@@ -4,6 +4,26 @@
 
 Completed work is grouped by subject. Each item retains its original scope warning; conditional models and runtime fixtures are not promoted to linked retail proofs.
 
+## F02 backward gap sizing
+
+- [x] Size all 20 remaining split-catalog cases against the supplied
+  1170.8648681640625-unit vertical gap. Each row has an amount or formula,
+  evidence level and limit; unknown useful maxima remain unknown.
+- [x] Prove that every completed actual US/JP Tweester continuation after
+  the early ejection test reaches its real movement-to-display copy,
+  including both floor outcomes. Under the stated storage conditions,
+  movement Y and display Y agree there, excluding the supplied low/high
+  pair. Connect `TweesterGap.v` to MainTheorem and pass selected audit
+  `20260924-140311-qxc9hdrb`. Ejection, the following angle call, and the
+  surrounding gameplay history remain outside this result.
+- [x] Reproduce the shell, one-refresh water and cannon expression sizes
+  using the actual generated US/JP sine tables. The water envelope at
+  Y=768 is 207.99609375; it grants independent maxima and is not a
+  reachable-state or repeated-call bound. Negative-depth arithmetic can
+  reach the target, but its useful producer and retained downward move
+  remain unproved. See [the review](notes/ink-gap-backward.md) for the exact
+  scopes. No whole-route estimate or verdict changes.
+
 ## F02 accepted-warp checkpoint
 
 - [x] Mark the seven proved stock-list exclusion groups clearly and move their

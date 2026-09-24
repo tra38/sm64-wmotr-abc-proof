@@ -1,5 +1,12 @@
 # Verification checklist
 
+- [ ] For the supplied Ink height pair, exhibit a reached downward-position
+  writer or raised-display producer large enough to help, then check the
+  next display and collision copies. Start from the formulas and limits in
+  [the backward review](notes/ink-gap-backward.md); do not grant the useful
+  gap/contact/floor-loss combination. Tweester ejection is outside the new
+  normal-continuation proof. Defer travel to the warp until a producer works.
+
 This open-action board is organized by decision value rather than research
 chronology. Every checkbox below is an outstanding obligation. Checked work is
 preserved in the [completed-task archive](checklist-completed.md), where each
@@ -44,13 +51,19 @@ Seven completed stock-list exclusion groups now appear in the catalog's and
 site's **01 · Already proved** section, with their exact scope and theorem
 links. The remaining 20 catalog cases stay separate. This presentation change
 does not discharge any additional live-history obligation.
+The [backward gap review](notes/ink-gap-backward.md) now sizes all 20 remaining
+cases against the supplied vertical setup. The normal Tweester continuation
+has a new checked no-gap copy checkpoint, including its failed-floor branch.
+The ejection branch, later writes and useful downward-position producers
+remain open. The shell/water/cannon numbers are scoped source and finite
+expression results; they are not an all-history gameplay bound.
 For a consolidated account of which results the impossibility argument uses
 and which live connections remain, see the
 [impossibility-proof progress ledger](impossibility-proof-progress.md).
 The [Fine Print promotion review](notes/fine-print-proof-promotions.md)
 now includes the conditional stock negative-seed argument among the site's
-31 established-result summaries and seven expanded stock-list exclusions,
-including the source census, final warp-action call,
+32 established-result summaries and seven expanded stock-list exclusions,
+including the Tweester copy checkpoint, source census, final warp-action call,
 conditional child-copy and allocator results alongside earlier local/model claims.
 Their wider gameplay connections remain on this board; no route is closed
 merely by moving an existing result into that section.

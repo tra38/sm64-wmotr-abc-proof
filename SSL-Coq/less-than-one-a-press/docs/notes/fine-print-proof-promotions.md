@@ -6,7 +6,8 @@ conditional child-copy, allocator and final warp-action results to
 "01 / WE DO HAVE PROOFS", taking it to 30 result cards. The other sections retain the conditions and gameplay
 questions outside those results, with links to the completed parts. No
 whole-route verdict changes. The 24 September source catalog adds one narrowly
-labeled source-census card, bringing the total to 31.
+labeled source-census card. The backward gap review adds the normal Tweester
+copy checkpoint, bringing the current total to 32.
 
 ## Clear exclusions, with their limits attached
 
@@ -19,13 +20,31 @@ behaviors. A broader claim about every possible later object-creation history
 is not promoted. The three existing proof modules and their theorem names
 are linked in the canonical [catalog](position-split-catalog.md).
 
-Section 01 now contains 31 result summaries plus these seven expanded cases;
+Section 01 now contains 32 result summaries plus these seven expanded cases;
 the seven are not additional theorems or new route closures. The other 20
 catalog entries remain separate. Existing negative results get a short label
 that names the ruled-out step or conditional setup. Positive results and
 finite trials keep their own verdicts. The main explanations use informal,
 example-led original prose; exact limits and proof receipts remain available.
-No Coq file, route estimate or gameplay conclusion changes in this update.
+That presentation change altered no Coq proof. The subsequent Tweester
+connection below is new proof work; route estimates and whole-route
+conclusions remain unchanged.
+
+## F02: Tweester height is not a retained display gap
+
+The new [Tweester result](ink-gap-backward.md) belongs in Section 01 with
+its checkpoint named: every completed actual US/JP continuation after
+the early ejection test reaches the real display copy, and ordinary
+separate storage makes movement Y and display Y equal there. The supplied
+Y=768/Y=1938.864868 pair is impossible at that copy checkpoint. Both floor
+outcomes are covered. Ejection, the subsequent angle call and the full
+gameplay history are not promoted. The Tweester catalog case therefore
+stays among the 20 remaining cases and links to this proved part.
+
+The remaining per-case gap amounts and formulas are source review or
+finite expression calculations unless their row names an existing
+theorem. Water's generous single-refresh envelope is not a proved live
+maximum, and the negative-depth arithmetic is not a gameplay producer.
 
 ## F02: whole-game mechanisms and stock selectors
 

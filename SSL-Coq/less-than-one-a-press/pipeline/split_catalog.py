@@ -113,6 +113,9 @@ def make_index(repo, catalog):
             raise ValueError(f"{row['id']}: invalid presentation section")
         if (row["section"] == "proved") != bool(row.get("proof")):
             raise ValueError(f"{row['id']}: missing or misplaced proof reference")
+        if row['section'] == 'catalog' and any(not row.get('gap', {}).get(key)
+                for key in ('amount', 'verdict', 'detail', 'limit', 'basis')):
+            raise ValueError(f"{row['id']}: incomplete backward gap review")
         if row.get("proof"):
             proof = row["proof"]
             module = ROOT / proof["module"]
@@ -189,7 +192,24 @@ def render_markdown(catalog, index):
         "and on the site. The other 20 entries remain separate. This is a clearer presentation "
         "of existing proofs, not seven new route closures. The summaries start with what "
         "happens to Mario; the exact scope and proof references remain attached.", "",
-        "## All 27 cases at a glance", "",
+        "## Working backward: how much gap can each case create?", "",
+        "The supplied vertical setup needs actual and collision Y=768 with display "
+        "Y=1938.8648681640625: an upward gap of **1170.8648681640625** before the first "
+        "floor query. This is one successful supplied setup, not a universal minimum for "
+        "every possible Ink installation. After the retry, movement can equal display "
+        "while collision remains low. A platform changing only movement does not create "
+        "that display-versus-collision difference by itself.", "",
+        "All 20 remaining cases now have a sizing review below. A zero at a named copy "
+        "is not a theorem about every surrounding update. Formula-dependent rows still "
+        "need real incoming values; an unknown maximum is not an unlimited reachable gap. "
+        "We defer travel to the warp until a producer passes this first test. See the "
+        "[backward review](ink-gap-backward.md) and [finite arithmetic receipt](ink-gap-arithmetic.json).", "",
+        "| Case | Gap at the stated checkpoint | Verdict |", "| --- | --- | --- |"]
+    for row in catalog['situations']:
+        if row['section'] == 'catalog':
+            gap = row['gap']
+            lines.append(f"| [{row['number']:02} — {row['id']}](#split-{row['id']}) | {gap['amount']} | {gap['verdict']} |")
+    lines += ["", "## All 27 cases at a glance", "",
         "| # | Situation | SSL / current verdict |", "| --- | --- | --- |"]
     for row in catalog["situations"]:
         lines.append(f"| {row['number']:02} | [{row['title']}](#split-{row['id']}) | {row['status']} |")
@@ -213,6 +233,11 @@ def render_markdown(catalog, index):
             proof = row["proof"]
             lines += [f"**Ruled out.** {proof['claim']}", "", f"**Scope.** {proof['scope']}", "",
                 f"Proof: [`{proof['theorem']}`](../../{proof['module']}).", ""]
+        if row.get('gap'):
+            gap = row['gap']
+            lines += [f"**Gap sizing: {gap['amount']}.** {gap['verdict']}", "",
+                gap['detail'], "", f"**Limits.** {gap['limit']}", "",
+                f"**Evidence level.** {gap['basis']}", ""]
         for key, label in (("effect", "What happens to Mario"), ("prerequisite", "What we would need"),
                 ("area1", "Can SSL supply it"), ("timing", "Does the gap last long enough"),
                 ("evidence", "What we know"), ("missing", "What this does not rule out" if row.get("proof") else "What is left to check")):

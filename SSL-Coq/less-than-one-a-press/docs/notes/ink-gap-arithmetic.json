@@ -1,0 +1,44 @@
+{
+  "scope": "Finite expression calculations, not a live gameplay bound or a Coq certificate.",
+  "revision": "9921382a68bb0c865e5e45eb594d9c64db59b1af",
+  "generated_sine_table_sha256": {
+    "us_math_util.v": "b4f4ec618a96c25b74a9eeb2a1f9583f71dd2e541db594c16797b7de85db3994",
+    "jp_math_util.v": "35c03102cfeffb38dcde18c03b24cb8ebc854e4f85aad001c3fa0b7f09309859"
+  },
+  "us_jp_sine_entries_equal": 5120,
+  "target": {
+    "actual_y": 768.0,
+    "display_y": 1938.8648681640625,
+    "display_bits": 1156733869,
+    "required_gap": 1170.8648681640625,
+    "required_gap_bits": 1150442413
+  },
+  "shell": {
+    "air_added_y": 42,
+    "ground_added_y": 45,
+    "air_display_at_anchor": 810.0,
+    "ground_display_at_anchor": 813.0
+  },
+  "water": {
+    "positive_pitch_cases": 32767,
+    "max_pitch_addend": 60.0,
+    "reset_pitch_cases": 65536,
+    "min_reset_bob_height": -108.0,
+    "max_reset_bob_height": 147.99609375,
+    "active_bob_timer_cases": 32768,
+    "display_at_anchor_with_independent_max_addends": 975.99609375,
+    "gap_at_anchor_with_independent_max_addends": 207.99609375,
+    "caveat": "Generous independent parameter envelope after one water copy, with reset-derived bob height and the unchanged stock sine table. Joint controller reachability is not asserted; this does not bound repeated calls without a refresh or later support changes."
+  },
+  "cannon": {
+    "permitted_pitch_cases": 14564,
+    "max_vertical_launch_step": 118.16981506347656,
+    "min_vertical_launch_step": 0.0,
+    "caveat": "At the position writes, starting synchronized, display minus movement Y is nonpositive. The normal firing branch requires INPUT_A_PRESSED. Subsequent calls and action transitions are not modeled here."
+  },
+  "negative_depth": {
+    "one_subtraction_depth": -1170.8648681640625,
+    "result_display_y": 1938.8648681640625,
+    "caveat": "An arithmetic witness, not creation of that depth, a dialog history or a clean Ink setup."
+  }
+}

@@ -51,7 +51,7 @@ From LessThanOneAPress.Proofs Require Import
   SecretContactExecution
   InkBackwardSource InkBackwardExecution InkCopyCaller InkFloorResetCopy InkRawCopyHeight
   InkQuicksandBackward InkMovingBackward InkControllerBackward InkBackwardHistory
-  PositionSplitCatalog
+  PositionSplitCatalog TweesterGap
   CompCertRouteScope.
 
 Import ListNotations.
@@ -1330,6 +1330,12 @@ Proof. exact InkWarpAcceptance.iwa_warp_acceptance_boundary_checked. Qed.
     assert exhaustive live-writer coverage or no gameplay split. *)
 Theorem current_f02_position_split_catalog : PositionSplitCatalogSourceBoundary.
 Proof. exact psc_catalog_source_boundary_checked. Qed.
+
+(** For the normal Tweester continuation, both live floor-query outcomes
+    lead to an actual copy with equal movement/display Y. Ejection and the
+    surrounding update remain separate; this is not a no-Tweester route theorem. *)
+Theorem current_f02_tweester_gap_boundary : TweesterGapBoundary.
+Proof. exact twg_gap_boundary_checked. Qed.
 
 (* The graphical-fallback tranche shows that update order does not by itself
    refute the scheduling shape; it does not execute the branch in Clight or
