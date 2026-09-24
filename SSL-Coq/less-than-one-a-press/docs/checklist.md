@@ -34,12 +34,18 @@ equal at the exact accepted return, with no top captured afterward. The
 proof starts after the handler's stop-riding call; the earlier producer and
 the full gameplay question remain open. See the completed-task archive for
 the local proof and finite replay separately.
+The [whole-game position-split catalog](notes/position-split-catalog.md) now
+groups 27 mechanisms and supporting cases by position effect, SSL availability
+and next copy. The new generated US/JP setter-call and twelve-actor selector
+checks are complete source results. SSL's own pushes, platforms, water, cannon,
+shell and dialog mechanisms remain; the catalog is not yet a proved complete
+classification of live writes. Source absence alone does not close F02.
 For a consolidated account of which results the impossibility argument uses
 and which live connections remain, see the
 [impossibility-proof progress ledger](impossibility-proof-progress.md).
 The [Fine Print promotion review](notes/fine-print-proof-promotions.md)
 now includes the conditional stock negative-seed argument among the site's
-30 established-result summaries, including the final warp-action call,
+31 established-result summaries, including the new source census, final warp-action call,
 conditional child-copy and allocator results alongside earlier local/model claims.
 Their wider gameplay connections remain on this board; no route is closed
 merely by moving an existing result into that section.

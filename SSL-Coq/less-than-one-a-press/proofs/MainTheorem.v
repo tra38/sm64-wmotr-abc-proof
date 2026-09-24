@@ -51,6 +51,7 @@ From LessThanOneAPress.Proofs Require Import
   SecretContactExecution
   InkBackwardSource InkBackwardExecution InkCopyCaller InkFloorResetCopy InkRawCopyHeight
   InkQuicksandBackward InkMovingBackward InkControllerBackward InkBackwardHistory
+  PositionSplitCatalog
   CompCertRouteScope.
 
 Import ListNotations.
@@ -1323,6 +1324,12 @@ Proof. exact ibh_backward_histories_checked. Qed.
     earlier call or its predecessors, produce the split, or prove capture. *)
 Theorem current_f02_warp_acceptance_boundary : InkWarpAcceptance.InkWarpAcceptanceBoundary.
 Proof. exact InkWarpAcceptance.iwa_warp_acceptance_boundary_checked. Qed.
+
+(** Finite source census supporting the whole-game split catalog. The
+    actor selectors and named setter callers are checked; this does not
+    assert exhaustive live-writer coverage or no gameplay split. *)
+Theorem current_f02_position_split_catalog : PositionSplitCatalogSourceBoundary.
+Proof. exact psc_catalog_source_boundary_checked. Qed.
 
 (* The graphical-fallback tranche shows that update order does not by itself
    refute the scheduling shape; it does not execute the branch in Clight or

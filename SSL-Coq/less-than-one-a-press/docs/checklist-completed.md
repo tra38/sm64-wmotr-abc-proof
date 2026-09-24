@@ -6,6 +6,15 @@ Completed work is grouped by subject. Each item retains its original scope warni
 
 ## F02 accepted-warp checkpoint
 
+- [x] Catalog 27 whole-game position-split mechanisms and supporting cases,
+  including their stock SSL availability, next copy and remaining obligations.
+  Coq checks the three direct State-setter callers across all 38 generated
+  units per version, twelve absent actor selectors and four positive controls.
+  A separate reproducible text index classifies all 50 generated named-pos
+  assignment function names. It does not prove complete live-write/alias or
+  action-history coverage. See [the catalog](notes/position-split-catalog.md)
+  and audit `20260924-104903-5dt7xgd1`. No clean Ink route or universal
+  impossibility result is claimed.
 - [x] Prove the actual generated US/JP final accepted-warp action call and
   return preserve movement, collision and display. A split after this tail
   exists exactly when it existed before the tail. The real setter and its

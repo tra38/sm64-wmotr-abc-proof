@@ -5,6 +5,19 @@ assumption recommendations. The 23 September F02 batches add the proved
 conditional child-copy, allocator and final warp-action results to
 "01 / WE DO HAVE PROOFS", taking it to 30 result cards. The other sections retain the conditions and gameplay
 questions outside those results, with links to the completed parts. No
+whole-route verdict changes. The 24 September source catalog adds one narrowly
+labeled source-census card, bringing the total to 31.
+
+## F02: whole-game mechanisms and stock selectors
+
+The [position-split catalog](position-split-catalog.md) belongs beside the F02
+workboard. Its new Coq source card belongs in Section 01: both generated
+versions have exactly three direct State-position-setter callers; twelve
+named actor selectors are absent and four stock controls are present.
+The existing Chuckya/King Bob-omb and butterfly exclusions are reused.
+The 27 catalog rows and text scan are not promoted to a universal live-writer
+classification. SSL's palm tree, oasis, cannon, Tweesters, shell, platforms and
+dialog mechanisms remain in their applicable open cases. No route estimate or
 whole-route verdict changes.
 
 ## F02: a new local execution proof
