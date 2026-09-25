@@ -20,6 +20,8 @@ The completed-call theorem, `ijc_completed_early_call_clamps_before_helpers`, re
 
 This closes the temporary-subtraction candidate at that checkpoint. It does not discharge every writer's live receiver, arithmetic bounds, action/timer history or controller-edge refinement. The late common-landing calculation remains the substantive producer to trace; no new no-A seed or complete impossibility result is claimed.
 
+The [next investigation prompt](late-common-landing-prompt.md) first asks whether a no-A continuation can reach that late write at all. Only a surviving candidate advances to the separate check that its incoming depth becomes negative and is not reset before use. This fixes the next task without claiming it has been executed.
+
 ## Validation of the new connection
 
 The selected audit passed on 25 September 2026 at `build/audit/20260925-142547-w9g34lco`. It checked compilation, proof holes, source links, allowed foundations and integration: 597 registered source files; 427 of 521 proof modules in the main import closure; 94 standalone modules. The main backward boundary uses nine allowed foundations. The completed early call, its classified-history connection and the existing seed-to-A theorem each use seven; the two direct-writer censuses use four each. No project axiom was added.

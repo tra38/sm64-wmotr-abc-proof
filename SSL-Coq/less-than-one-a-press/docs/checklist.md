@@ -91,7 +91,7 @@ and which live connections remain, see the
 [impossibility-proof progress ledger](impossibility-proof-progress.md).
 The [Fine Print promotion review](notes/fine-print-proof-promotions.md)
 now includes the conditional stock negative-seed argument among the site's
-33 established-result summaries and seven expanded stock-list exclusions,
+34 established-result summaries and seven expanded stock-list exclusions,
 including the Tweester copy checkpoint, source census, final warp-action call,
 conditional child-copy and allocator results alongside earlier local/model claims.
 Their wider gameplay connections remain on this board; no route is closed
@@ -208,6 +208,12 @@ These obligations currently block the clean-retail result.
   offsets must not wrap. The same call's later helpers, movement and return
   are retained; their depth effects are not assumed harmless. The existing
   eight-function direct-writer census was rechecked against the pinned C.
+
+- [ ] Follow the [late common-landing prompt](notes/late-common-landing-prompt.md):
+  first determine whether a no-A continuation can reach the late depth write;
+  only then check whether its incoming depth becomes a useful negative seed.
+  A late timer and a negative adjustment are not themselves a negative seed.
+  This is a chosen next investigation, not a new exclusion.
 
 - [ ] Establish or refute a useful negative seed with A never pressed,
   including the newly requested cross-course search. A seed cannot persist
