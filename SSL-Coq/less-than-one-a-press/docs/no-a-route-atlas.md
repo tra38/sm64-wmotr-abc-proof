@@ -5,6 +5,8 @@
 
 The [23 September family workboard](notes/glitch-family-workboard.md) groups all 45 ranks into 11 shared gameplay investigations, with separate workstreams for downstream collection, proof contracts and a different start. Each gives the affected ranks, a first compute batch, and the limited conclusion that would justify stopping. The grouping adds no new proof or search result and leaves the route verdicts and subjective estimates unchanged.
 
+The [25 September Wafel review](notes/wafel-testing-review.md) recommends one replay-validation trial before adopting it for controller searches. Its saved states, named readings, hitboxes and event log could help test contact, support and position gaps with the rest of the game running. Exact warp timing and agreement with the existing replay still need checking; this tool review adds no gameplay result and changes no estimate.
+
 ## Purpose and scope
 
 This document is the readable inventory of ways the project currently knows

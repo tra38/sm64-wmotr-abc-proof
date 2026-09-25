@@ -1,5 +1,11 @@
 # Verification checklist
 
+- [ ] Before adopting Wafel for searches, complete the bounded
+  [replay-validation pilot](notes/wafel-testing-review.md): check a known JP
+  replay and its event coverage, then try one controller-only interval and
+  replay any candidate in the existing emulator. Tool suitability is reviewed;
+  installation, performance and synchronization have not been tested.
+
 - [ ] For the supplied Ink height pair, exhibit a reached downward-position
   writer or raised-display producer large enough to help, then check the
   next display and collision copies. Start from the formulas and limits in
