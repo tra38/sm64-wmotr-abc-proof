@@ -1,6 +1,6 @@
 # Where a useful position split could come from
 
-Updated 24 September 2026. The full catalog is also on the private [Fine Print site](https://pyramid-proof-fine-print.tra38.chatgpt.site/#split-catalog).
+Updated 25 September 2026. The full catalog is also on the private [Fine Print site](https://pyramid-proof-fine-print.tra38.chatgpt.site/#split-catalog).
 
 Mario has three position records. Usually, the game keeps them together. We want to know which tricks can pull them apart, and whether SSL can supply the ingredients before the next copy puts them back together. If an enemy's stock spawn path is impossible, cross off that path. A different actor using the same helper still needs its own check.
 
@@ -26,64 +26,66 @@ Seven proved stock-list exclusions now appear in **01 · Already proved** below 
 
 The supplied vertical setup needs actual and collision Y=768 with display Y=1938.8648681640625: an upward gap of **1170.8648681640625** before the first floor query. This is one successful supplied setup, not a universal minimum for every possible Ink installation. After the retry, movement can equal display while collision remains low. A platform changing only movement does not create that display-versus-collision difference by itself.
 
-All 20 remaining cases now have a sizing review below. A zero at a named copy is not a theorem about every surrounding update. Formula-dependent rows still need real incoming values; an unknown maximum is not an unlimited reachable gap. We defer travel to the warp until a producer passes this first test. See the [backward review](ink-gap-backward.md) and [finite arithmetic receipt](ink-gap-arithmetic.json).
+These 20 reviewed cases are not 20 unresolved gap producers. A zero at a named copy is not a theorem about every surrounding update. Formula-dependent rows still need real incoming values; an unknown maximum is not an unlimited reachable gap. We defer travel to the warp until a producer passes this first test. See the [backward review](ink-gap-backward.md) and [finite arithmetic receipt](ink-gap-arithmetic.json).
 
 **Stopping rule.** A proved upper bound below **1170.8648681640625** counts as **Insufficient — already proved**, under its stated conditions and checkpoint. The normal Tweester and completed ground copies qualify with zero gap. The shell, water, ledge and cannon shortfalls keep their source/finite evidence labels; unknown bounds remain open. A keeper or consumer of an existing gap is not ruled out in that supporting role. This threshold is specific to the supplied setup, not every Ink installation.
 
-| Case | Gap at the stated checkpoint | Verdict |
-| --- | --- | --- |
-| [01 — ordinary-step](#split-ordinary-step) | 0 at the completed ground copy; air/water copies reviewed separately | Insufficient — already proved at the completed ground copy |
-| [02 — geometry-retry](#split-geometry-retry) | 0 between display and movement after retry | Consumes a gap; does not create the raised display |
-| [03 — floor-animation](#split-floor-animation) | Old display Y − remembered floor Y; animation depends on its signed translation | A possible downward writer; useful size is still unproved |
-| [04 — platform](#split-platform) | Old display-minus-movement gap − platform vertical displacement | Can change one gap, but keeps the collision record where it was |
-| [09 — push](#split-push) | 0 new vertical gap from the direct push writes | A sideways helper, not the height source |
-| [10 — bounce](#split-bounce) | Old display Y − (object Y + hitbox height) | A real height assignment; no useful large gap demonstrated |
-| [12 — attachments](#split-attachments) | Pole/hang copies: 0. Ledge release: a 100-unit subtraction or a shallower floor snap | Insufficient at the local drop — source review |
-| [13 — cannon](#split-cannon) | 0 while seated; firing leaves display at or below movement | Insufficient at normal launch — source and finite checks |
-| [14 — tornado](#split-tornado) | 0 at the completed non-ejecting display-copy checkpoint | Insufficient — already proved at the normal Tweester copy |
-| [15 — water](#split-water) | About +208 in the generous one-refresh calculation at Y=768 | Insufficient in the checked expression envelope |
-| [17 — shell](#split-shell) | +42 airborne; +45 on the ground, per ordinary refresh | Insufficient alone — source arithmetic |
-| [18 — quicksand](#split-quicksand) | Display increases by −depth per subtraction when depth is negative | Large enough arithmetically; the useful producer remains open |
-| [19 — dialog](#split-dialog) | No independent fixed upward offset; preserves what enters | A possible keeper, not the original height source |
-| [20 — warp-reset](#split-warp-reset) | Instant warp: incoming gap − vertical warp displacement | Relocation can make a gap elsewhere; no matching Area-1 table |
-| [22 — cutscene](#split-cutscene) | Depends on the selected ending/door/action sequence | No legitimate SSL producer established |
-| [23 — debug](#split-debug) | 0 at its display copy; arbitrary entry is outside this challenge | No authorized stock-gameplay producer |
-| [24 — render](#split-render) | 0 from writes only to camera, proxy, matrix or local vectors | No gap unless the actual stored display vector changes |
-| [25 — generic-objects](#split-generic-objects) | No common numeric bound; depends on the actual receiver | Known distinct-child copies add 0 to Mario; wider coverage remains open |
-| [26 — copies-pauses](#split-copies-pauses) | No new display-minus-movement gap; collision copy transfers an existing one | Can complete the low collision record only after a producer exists |
-| [27 — query-alias](#split-query-alias) | 0 new position gap | Changes what a query sees, not where the records are |
+The review separates six scoped insufficient cases, five helpers, four concrete unresolved producers, four other-context/lookalike cases, and one ownership question. There is no pole beside the Area-1 upper warp. Its distant palm tree uses pole actions; the two regular SSL poles belong to Area 2. The checked Area-1 static mesh and pyramid top have no hangable triangles; Area 2 has six. These are pinned stock-data checks, not new Coq or all-history exclusions.
+
+| Case | Role in this review | Gap at the stated checkpoint | Verdict |
+| --- | --- | --- | --- |
+| [01 — ordinary-step](#split-ordinary-step) | Insufficient at the stated checkpoint | 0 at the completed ground copy; air/water copies reviewed separately | Insufficient — already proved at the completed ground copy |
+| [02 — geometry-retry](#split-geometry-retry) | Helper, not a height source | 0 between display and movement after retry | Consumes a gap; does not create the raised display |
+| [03 — floor-animation](#split-floor-animation) | Concrete producer still open | Old display Y − remembered floor Y; animation depends on its signed translation | A possible downward writer; useful size is still unproved |
+| [04 — platform](#split-platform) | Concrete producer still open | Old display-minus-movement gap − platform vertical displacement | Can change one gap, but keeps the collision record where it was |
+| [09 — push](#split-push) | Helper, not a height source | 0 new vertical gap from the direct push writes | A sideways helper, not the height source |
+| [10 — bounce](#split-bounce) | Concrete producer still open | Old display Y − (object Y + hitbox height) | A real height assignment; no useful large gap demonstrated |
+| [12 — attachments](#split-attachments) | Insufficient at the stated checkpoint | Pole/hang copies: 0. Ledge release: a 100-unit subtraction or a shallower floor snap | Insufficient at the local drop — source review |
+| [13 — cannon](#split-cannon) | Insufficient at the stated checkpoint | 0 while seated; firing leaves display at or below movement | Insufficient at normal launch — source and finite checks |
+| [14 — tornado](#split-tornado) | Insufficient at the stated checkpoint | 0 at the completed non-ejecting display-copy checkpoint | Insufficient — already proved at the normal Tweester copy |
+| [15 — water](#split-water) | Insufficient at the stated checkpoint | About +208 in the generous one-refresh calculation at Y=768 | Insufficient in the checked expression envelope |
+| [17 — shell](#split-shell) | Insufficient at the stated checkpoint | +42 airborne; +45 on the ground, per ordinary refresh | Insufficient alone — source arithmetic |
+| [18 — quicksand](#split-quicksand) | Concrete producer still open | Display increases by −depth per subtraction when depth is negative | Large enough arithmetically; the useful producer remains open |
+| [19 — dialog](#split-dialog) | Helper, not a height source | No independent fixed upward offset; preserves what enters | A possible keeper, not the original height source |
+| [20 — warp-reset](#split-warp-reset) | No local stock producer identified | Instant warp: incoming gap − vertical warp displacement | Relocation can make a gap elsewhere; no matching Area-1 table |
+| [22 — cutscene](#split-cutscene) | No local stock producer identified | Depends on the selected ending/door/action sequence | No legitimate SSL producer established |
+| [23 — debug](#split-debug) | No local stock producer identified | 0 at its display copy; arbitrary entry is outside this challenge | No authorized stock-gameplay producer |
+| [24 — render](#split-render) | No local stock producer identified | 0 from writes only to camera, proxy, matrix or local vectors | No gap unless the actual stored display vector changes |
+| [25 — generic-objects](#split-generic-objects) | Which object is being written? | No common numeric bound; depends on the actual receiver | Known distinct-child copies add 0 to Mario; wider coverage remains open |
+| [26 — copies-pauses](#split-copies-pauses) | Helper, not a height source | No new display-minus-movement gap; collision copy transfers an existing one | Can complete the low collision record only after a producer exists |
+| [27 — query-alias](#split-query-alias) | Helper, not a height source | 0 new position gap | Changes what a query sees, not where the records are |
 
 ## All 27 cases at a glance
 
 | # | Situation | SSL / current verdict |
 | --- | --- | --- |
 | 01 | [Walking, falling and the ordinary position copies](#split-ordinary-step) | Insufficient at ground copy · other checkpoints open |
-| 02 | [The floor check borrows Mario's display position](#split-geometry-retry) | Open · key Ink mechanism |
+| 02 | [The floor check borrows Mario's display position](#split-geometry-retry) | Helper · needs an earlier height gap |
 | 03 | [The floor moves Mario, but does the display follow?](#split-floor-animation) | Open · present in SSL |
 | 04 | [Ride a platform while the other positions stay put](#split-platform) | Movement proved · useful setup open |
 | 05 | [Chuckya and King Bob-omb: the stock lists cannot choose them](#split-chuckya-anchor) | Ruled out · stock lists |
 | 06 | [Dorrie: no neck lift from the stock SSL lists](#split-dorrie) | Ruled out · stock lists |
 | 07 | [Those other pyramids are not SSL's pyramid top](#split-tilting-platform) | Ruled out · stock lists |
 | 08 | [Hoot: the stock SSL lists cannot supply the ride](#split-hoot) | Ruled out · stock lists |
-| 09 | [The palm tree can push one position](#split-push) | Open · present in SSL |
+| 09 | [The palm tree can push one position](#split-push) | Helper · needs an earlier height gap |
 | 10 | [Bounces and knockback are different kinds of help](#split-bounce) | Open · present in SSL |
 | 11 | [Heave-Ho, bullies and Bowser's shockwave are off these lists](#split-absent-launch) | Ruled out · stock lists |
-| 12 | [Trees, ledges and hanging points](#split-attachments) | Open · depends on the geometry |
+| 12 | [Trees, ledges and hanging points](#split-attachments) | Insufficient alone · source review |
 | 13 | [The cannon really can leave the display behind](#split-cannon) | Needs A to fire · other exits open |
 | 14 | [A Tweester can move Mario, but it also updates the display](#split-tornado) | Insufficient at normal copy · other checkpoints open |
-| 15 | [Yes, the desert has swimming offsets](#split-water) | Open · oasis transfer needed |
+| 15 | [Yes, the desert has swimming offsets](#split-water) | Insufficient in the checked expression |
 | 16 | [The oasis does not come with a whirlpool](#split-whirlpool) | Ruled out · stock lists |
-| 17 | [The shell gives Mario a display offset](#split-shell) | Open · present in SSL |
+| 17 | [The shell gives Mario a display offset](#split-shell) | Insufficient alone · source review |
 | 18 | [Negative depth plus a dialog that keeps the display](#split-quicksand) | Open · conditional setup allowed |
-| 19 | [A dialog can keep a gap; it cannot create one by pausing](#split-dialog) | Open · present in SSL |
+| 19 | [A dialog can keep a gap; it cannot create one by pausing](#split-dialog) | Helper · needs an earlier height gap |
 | 20 | [Bringing a gap through a warp or level entry](#split-warp-reset) | Mixed · the actual transition matters |
 | 21 | [Butterflies: this stock list cannot supply the unusual writer](#split-butterfly) | Ruled out · stock lists |
 | 22 | [Ending cutscenes can place Mario almost wherever they need him](#split-cutscene) | Different context · not a stock SSL entry |
 | 23 | [Debug free movement is outside this gameplay challenge](#split-debug) | Outside the chosen rules |
 | 24 | [Looking displaced is not always a change to the stored display](#split-render) | Different record · check the target |
-| 25 | [A helper moves its object. Which object is that?](#split-generic-objects) | Open · actual object matters |
-| 26 | [A skipped update needs something worth preserving](#split-copies-pauses) | Open · copies matter |
-| 27 | [A different floor answer is not itself a position write](#split-query-alias) | Geometry question · no position writer |
+| 25 | [A helper moves its object. Which object is that?](#split-generic-objects) | Ownership coverage · not a sized producer |
+| 26 | [A skipped update needs something worth preserving](#split-copies-pauses) | Helper · needs an earlier height gap |
+| 27 | [A different floor answer is not itself a position write](#split-query-alias) | Helper · needs an earlier height gap |
 
 ## 01 · Already proved: these stock spawn choices are ruled out
 
@@ -290,6 +292,8 @@ These entries include open gameplay questions and things that only look like use
 
 ### 01 — Walking, falling and the ordinary position copies
 
+**Role in this review.** The completed ground copy supplies zero gap, already proved. Do not reopen that checkpoint merely because other actions exist.
+
 **Gap sizing: 0 at the completed ground copy; air/water copies reviewed separately.** Insufficient — already proved at the completed ground copy
 
 A step may briefly leave the old display behind. The completed ground, air or water copy replaces it with the new movement position. Later shell, water and sand adjustments are counted in their own rows.
@@ -322,6 +326,8 @@ Related atlas ranks: 2, 5, 13B, 18.
 
 ### 02 — The floor check borrows Mario's display position
 
+**Role in this review.** This is the consumer that makes the supplied Ink setup useful. It needs the earlier raised display; it does not manufacture it.
+
 **Gap sizing: 0 between display and movement after retry.** Consumes a gap; does not create the raised display
 
 The retry can turn low movement into high movement by copying the display. It can leave the collision record low, which is exactly why the supplied setup works. Wall correction is a separate X/Z change, not a new upward display offset.
@@ -349,6 +355,8 @@ Related atlas ranks: 1, 2, 3, 13A.
 <a id="split-floor-animation"></a>
 
 ### 03 — The floor moves Mario, but does the display follow?
+
+**Role in this review.** Check a reached downward floor snap or animation translation, then the next display copy. A useful retained size has not been bounded.
 
 **Gap sizing: Old display Y − remembered floor Y; animation depends on its signed translation.** A possible downward writer; useful size is still unproved
 
@@ -378,6 +386,8 @@ Related atlas ranks: 2, 5, 13B.
 
 ### 04 — Ride a platform while the other positions stay put
 
+**Role in this review.** A downward support move can separate movement from display. Collision stays with display during the proved platform phase, so another copy must complete the useful pair.
+
 **Gap sizing: Old display-minus-movement gap − platform vertical displacement.** Can change one gap, but keeps the collision record where it was
 
 A downward ride can make display sit above actual Mario. The complete platform phase preserves both display and raw collision coordinates. Starting with all three together therefore does not create the required high-display/low-collision pair during that phase.
@@ -405,6 +415,8 @@ Related atlas ranks: 1, 2, 5A, 6.
 <a id="split-push"></a>
 
 ### 09 — The palm tree can push one position
+
+**Role in this review.** The direct writes are sideways. They may help lose a floor, but an independent height producer must already exist.
 
 **Gap sizing: 0 new vertical gap from the direct push writes.** A sideways helper, not the height source
 
@@ -434,6 +446,8 @@ Related atlas ranks: 5, 13A, 13B.
 
 ### 10 — Bounces and knockback are different kinds of help
 
+**Role in this review.** The hitbox-top snap changes actual Y. We still need a reachable SSL incoming pose with a large enough downward change and a surviving display.
+
 **Gap sizing: Old display Y − (object Y + hitbox height).** A real height assignment; no useful large gap demonstrated
 
 The bounce helper snaps actual Mario to the hitbox top. Depending on the incoming position, that could move him up or down. Damage, tornado capture and wind primarily set speed or action; speed by itself is not a position gap.
@@ -462,25 +476,27 @@ Related atlas ranks: 5, 13B.
 
 ### 12 — Trees, ledges and hanging points
 
+**Role in this review.** No pole beside the Area-1 top warp. The distant palm tree uses pole actions, whose normal placement copies the display. A local ledge release is only a nominal 100-unit drop; neither is an established source of the supplied gap.
+
 **Gap sizing: Pole/hang copies: 0. Ledge release: a 100-unit subtraction or a shallower floor snap.** Insufficient at the local drop — source review
 
 Letting go of a ledge shifts X/Z back by a nominal 60 and lowers Y by the source's 100-unit cap, before setting soft bonk. From a synchronized pose at ordinary heights this gives at most about +100 of vertical gap at that local write. Pole placement and stationary hanging subsequently copy movement to display.
 
 **Limits.** The ledge number is source arithmetic at the drop, not a proof that the gap survives the resumed action. It is short of 1,170.864868 by itself. Live attachment exits remain separate.
 
-**Evidence level.** Source review; no full exit-history proof
+**Evidence level.** Pinned stock area/helper/tree/mesh checks in split_catalog.py; action source review; no full exit-history proof
 
 **What happens to Mario.** These actions attach Mario's movement position to something, or move it along an animation. Usually a display copy follows.
 
 **What we would need.** A climbable tree/pole, a ledge or a hangable surface, plus the action that uses it.
 
-**Can SSL supply it.** The palm tree and ordinary ledges are present. A proposed hanging point still has to match actual hangable geometry.
+**Can SSL supply it.** There is no stock pole beside the pyramid-top warp. The palm tree at (-5989,0,-4850) uses pole actions, far from the warp at (-2048,768,-1024). The two regular poles are in Area 2. The checked Area-1 static mesh and pyramid top have no hangable triangles; Area 2 has six. Ordinary Area-1 ledges remain relevant.
 
 **Does the gap last long enough.** A gap halfway through an action may be gone before the next warp check. The exit from the attachment matters as much as the attachment itself.
 
 **What we know.** The source identifies the pole, ledge and hanging writers. Our local proofs do not yet classify every way of entering and leaving those actions.
 
-**What is left to check.** Trace a reachable attachment exit to the useful floor miss. There is no general 'that actor is absent' shortcut for ordinary geometry.
+**What is left to check.** The absent local pole cannot supply a release right at the warp. A remote tree exit, a different ledge history or a later dynamic attachment would need its own producer and transfer; the stock-data check does not close all such histories.
 
 Stock source: [set_pole_position](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario_actions_automatic.c#L58); [check_ledge_climb_down](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario_actions_moving.c#L100); [climb_up_ledge](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario_actions_automatic.c#L509); [let_go_of_ledge](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario_actions_automatic.c#L490); [update_hang_stationary](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario_actions_automatic.c#L375).
 
@@ -489,6 +505,8 @@ Related atlas ranks: 5, 13B, 18.
 <a id="split-cannon"></a>
 
 ### 13 — The cannon really can leave the display behind
+
+**Role in this review.** Normal launch needs an A edge and moves actual Mario upward, leaving the wrong sign of gap. An unusual exit would be a separate claim.
 
 **Gap sizing: 0 while seated; firing leaves display at or below movement.** Insufficient at normal launch — source and finite checks
 
@@ -517,6 +535,8 @@ Related atlas ranks: 5, 13B, 18.
 <a id="split-tornado"></a>
 
 ### 14 — A Tweester can move Mario, but it also updates the display
+
+**Role in this review.** The completed normal Tweester copy supplies zero gap, already proved for either internal floor result. Transporting the enemy does not change that checkpoint.
 
 **Gap sizing: 0 at the completed non-ejecting display-copy checkpoint.** Insufficient — already proved at the normal Tweester copy
 
@@ -550,6 +570,8 @@ Related atlas ranks: 5, 13B.
 
 ### 15 — Yes, the desert has swimming offsets
 
+**Role in this review.** The checked single-refresh pitch/bob expression is below 208 units, even granting independent maxima. The oasis is distant; a separate clamp or later downward move would need its own case.
+
 **Gap sizing: About +208 in the generous one-refresh calculation at Y=768.** Insufficient in the checked expression envelope
 
 Pitch adds up to 60. Reset-derived bob height is at most 147.99609375 over every signed-16 reset pitch. Granting both maxima independently after one copy at actual Y=768 gives display Y=975.99609375, a gap of 207.99609375. That is still 962.868774 below the supplied display.
@@ -577,6 +599,8 @@ Related atlas ranks: 2, 5, 19, 21.
 <a id="split-shell"></a>
 
 ### 17 — The shell gives Mario a display offset
+
+**Role in this review.** The ordinary 42/45-unit offsets are far too small. A skipped refresh or extra State drop would require an additional producer.
 
 **Gap sizing: +42 airborne; +45 on the ground, per ordinary refresh.** Insufficient alone — source arithmetic
 
@@ -606,6 +630,8 @@ Related atlas ranks: 25, 2.
 
 ### 18 — Negative depth plus a dialog that keeps the display
 
+**Role in this review.** Negative depth can raise display arithmetically. The grant permits a transfer test, not arbitrary depth magnitude, a useful floor loss or a clean no-A seed.
+
 **Gap sizing: Display increases by −depth per subtraction when depth is negative.** Large enough arithmetically; the useful producer remains open
 
 A single depth of −1,170.8648681640625 takes a reset display of 768 exactly to the supplied height in binary32. That is a sizing example, not a stock reachable depth. Existing checked arithmetic also gets from supported Y=1280 to 1939 with 1,318 uninterrupted subtractions of depth −0.5.
@@ -633,6 +659,8 @@ Related atlas ranks: 19, 2.
 <a id="split-dialog"></a>
 
 ### 19 — A dialog can keep a gap; it cannot create one by pausing
+
+**Role in this review.** A pause may keep an existing display. The sand subtraction, if any, supplies the height and is counted separately.
 
 **Gap sizing: No independent fixed upward offset; preserves what enters.** A possible keeper, not the original height source
 
@@ -662,6 +690,8 @@ Related atlas ranks: 2, 6, 19.
 
 ### 20 — Bringing a gap through a warp or level entry
 
+**Role in this review.** Area 1 has no stock instant-warp table. The Area-2/3 instant warps displace by zero and occur after our checkpoint. Ordinary warp-entry and imported-state histories remain separate.
+
 **Gap sizing: Instant warp: incoming gap − vertical warp displacement.** Relocation can make a gap elsewhere; no matching Area-1 table
 
 The instant-warp code moves State and raw collision, leaving stored display for later work. A downward displacement could therefore create the right sign. The stock SSL script supplies no Area-1 instant warp; its Area-2/3 instant warps have zero displacement. The upper object-warp's proved final action tail creates no new split.
@@ -689,6 +719,8 @@ Related atlas ranks: 2, 13B, 18, 32.
 <a id="split-cutscene"></a>
 
 ### 22 — Ending cutscenes can place Mario almost wherever they need him
+
+**Role in this review.** An ending-scene relocation is not a stock SSL reward or action entry. A legal SSL first constructor would be needed before it becomes a gameplay candidate.
 
 **Gap sizing: Depends on the selected ending/door/action sequence.** No legitimate SSL producer established
 
@@ -718,6 +750,8 @@ Related atlas ranks: 5, 18, 21.
 
 ### 23 — Debug free movement is outside this gameplay challenge
 
+**Role in this review.** Injected debug-action entry is outside this controller-gameplay task. Listing its code does not make a new route.
+
 **Gap sizing: 0 at its display copy; arbitrary entry is outside this challenge.** No authorized stock-gameplay producer
 
 The debug movement action copies its result into display. Choosing this action by changing game state is not controller-driven gameplay under the selected rules.
@@ -745,6 +779,8 @@ Related atlas ranks: 31.
 <a id="split-render"></a>
 
 ### 24 — Looking displaced is not always a change to the stored display
+
+**Role in this review.** Moving the camera, a mirror proxy or a draw matrix does not change the stored display used by the retry. A genuine write to Mario would need to be identified separately.
 
 **Gap sizing: 0 from writes only to camera, proxy, matrix or local vectors.** No gap unless the actual stored display vector changes
 
@@ -774,6 +810,8 @@ Related atlas ranks: 20, 21, 31.
 
 ### 25 — A helper moves its object. Which object is that?
 
+**Role in this review.** This is a coverage question, not one measured gap producer. Distinct-child copies preserve Mario in the existing local proofs; other actual receivers still need checking.
+
 **Gap sizing: No common numeric bound; depends on the actual receiver.** Known distinct-child copies add 0 to Mario; wider coverage remains open
 
 The completed copy into a different valid particle slot preserves Mario. A generic position helper acting on Mario instead would need its own argument and write analysis. Existing stock graphical-offset command payloads are at most +240 even if granted to Mario, but that does not cover every generic write.
@@ -802,6 +840,8 @@ Related atlas ranks: 5, 13, 20, 21, 31.
 
 ### 26 — A skipped update needs something worth preserving
 
+**Role in this review.** A collision copy can make an already-low actual position available to contact. A skipped update preserves values; neither supplies the earlier height change.
+
 **Gap sizing: No new display-minus-movement gap; collision copy transfers an existing one.** Can complete the low collision record only after a producer exists
 
 If actual Mario has already moved down while display stayed high, copying State into the raw Object makes collision low too. That is useful bookkeeping for Ink, but it does not create the original height difference. Skipping a phase merely preserves its incoming values.
@@ -829,6 +869,8 @@ Related atlas ranks: 6, 18.
 <a id="split-query-alias"></a>
 
 ### 27 — A different floor answer is not itself a position write
+
+**Role in this review.** Coordinate conversion changes the query input, not the three stored positions. A resulting snap or retry is counted under its actual writer.
 
 **Gap sizing: 0 new position gap.** Changes what a query sees, not where the records are
 

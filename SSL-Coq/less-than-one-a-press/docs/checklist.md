@@ -1,10 +1,19 @@
 # Verification checklist
 
-- [ ] Before adopting Wafel for searches, complete the bounded
-  [replay-validation pilot](notes/wafel-testing-review.md): check a known JP
-  replay and its event coverage, then try one controller-only interval and
-  replay any candidate in the existing emulator. Tool suitability is reviewed;
-  installation, performance and synchronization have not been tested.
+- [x] Complete the bounded [Wafel JP pilot](../instrumentation/wafel-jp-pilot/README.md):
+  2,483 baseline Area-1 snapshots and 2,442 branch snapshots match the named
+  fields with the explicitly checked +1 global-timer mapping. Five 90-update
+  controller choices leave zero sampled position gap; one changed branch was
+  replayed in the emulator. No A was used. These are finite runtime results,
+  not a new gameplay proof or an exhaustive search.
+- [ ] Keep the existing exact accepted-warp observer for future candidates.
+  The Wafel event types observed here do not supply both other position
+  records or that exact return checkpoint. US and other builds are untested.
+- [x] Reevaluate all 20 gap-review entries: six scoped insufficient cases,
+  five helpers, four concrete unresolved producers, four other-context cases
+  and one ownership question. Check stock pole/mesh locality: no pole beside
+  the Area-1 top warp; the distant tree uses pole actions, and the two ordinary
+  poles belong to Area 2. These are source-data checks, not new Coq closures.
 
 - [ ] For the supplied Ink height pair, exhibit a reached downward-position
   writer or raised-display producer large enough to help, then check the
@@ -63,7 +72,7 @@ Seven completed stock-list exclusion groups now appear in the catalog's and
 site's **01 · Already proved** section, with their exact scope and theorem
 links. The remaining 20 catalog cases stay separate. This presentation change
 does not discharge any additional live-history obligation.
-The [backward gap review](notes/ink-gap-backward.md) now sizes all 20 remaining
+The [backward gap review](notes/ink-gap-backward.md) now sizes all 20 reviewed
 cases against the supplied vertical setup. The normal Tweester continuation
 has a new checked no-gap copy checkpoint, including its failed-floor branch.
 The ejection branch, later writes and useful downward-position producers

@@ -681,6 +681,51 @@
       }
     ]
   },
+  "ssl_locality": {
+    "scope": "Literal stock SSL script helpers, tree preset and named collision assets; no dynamic-actor history claim.",
+    "poleGrabbingSelectorsByArea": {
+      "1": 0,
+      "2": 2,
+      "3": 0
+    },
+    "area1PalmTree": [
+      -5989,
+      0,
+      -4850
+    ],
+    "treePoleHitbox": {
+      "radius": 80,
+      "height": 500
+    },
+    "area1InstantWarps": 0,
+    "area2and3InstantWarpDisplacements": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "hangableTriangles": {
+      "area1Static": 0,
+      "pyramidTop": 0,
+      "area2Static": 6
+    },
+    "sha256": {
+      "levels/ssl/script.c": "33582eb00761bf53ba57687212334f341cdc64a3781ac9f4a6819f3b144dee49",
+      "levels/ssl/areas/1/collision.inc.c": "198d388721ac25793a7e6b96fc579b71a44e95c3233c55aae08a5f7d0ee87d5d",
+      "levels/ssl/areas/1/macro.inc.c": "890d95b332802b98f9d2dbd6a09bdf1a4c8028d7e411818fb8a697379b700525",
+      "levels/ssl/areas/2/collision.inc.c": "b940dd18ff59e49f86fb68591bc73565252212d049b4dc66b06a45b3b49e30ed",
+      "levels/ssl/pyramid_top/collision.inc.c": "4864e4e4b082deb636133dafd7a1bed2273cfbfabb45819d9a27a1f92406636a",
+      "include/special_presets.inc.c": "392313b16e25bd9750f44df82a0bc3855b22bc1b468d75f39e9e9a3554869d3c",
+      "include/macro_presets.inc.c": "9dc5addf8a58a851b4dcb0f82d2bdba32329c7a85c554c24411867e9301c260c",
+      "data/behavior_data.c": "da1aad6e3982bc3a35b195480157330e2cd98e909503e2100d2072d3be265f6a"
+    }
+  },
   "coordinate_references": [
     {"path": "src/audio/external.c", "function": "process_level_music_dynamics", "line": 1853, "matching_lines": 6, "examples": ["if (((s16) gMarioStates[0].pos[0]) < conditionValues[j]) {", "if (((s16) gMarioStates[0].pos[1]) < conditionValues[j]) {", "if (((s16) gMarioStates[0].pos[2]) < conditionValues[j]) {"]},
     {"path": "src/engine/behavior_script.c", "function": "obj_update_gfx_pos_and_angle", "line": 84, "matching_lines": 3, "examples": ["obj->header.gfx.pos[0] = obj->oPosX;", "obj->header.gfx.pos[1] = obj->oPosY + obj->oGraphYOffset;", "obj->header.gfx.pos[2] = obj->oPosZ;"]},

@@ -1,8 +1,37 @@
 # Working backward from Ink: first, make the gap
 
-Updated 24 September 2026. This pass sizes the 20 remaining cases in the
+Updated 25 September 2026. This pass sizes the 20 reviewed cases in the
 [position-split catalog](position-split-catalog.md). It does not start a
 journey to the warp before a candidate can supply the required separation.
+
+## These are not twenty equally open routes
+
+Every entry now has a role in the [full catalog](position-split-catalog.md):
+
+| Role | Cases | What to do with them |
+| --- | --- | --- |
+| Six scoped insufficient cases | Ordinary ground copy, normal Tweester copy, shell offset, water expression, ledge/pole/hang placement, normal cannon launch | The first two have Coq execution proofs. The others keep their source/finite evidence labels. Stop treating those particular offsets as unknown amounts. |
+| Five helpers | Floor retry, sideways push, dialog, collision copy/skipped update, query alias | They may preserve or consume a gap. None supplies the original upward height difference by itself. |
+| Four concrete unresolved producers | Floor alignment/animation, platform displacement, bounce snap, negative-depth subtraction | Check actual incoming height and the next copies; no justified useful maximum is established. |
+| Four other-context or lookalike cases | Instant-warp/entry variants, ending cutscenes, debug entry, render/proxy changes | No local stock producer is identified for the proposed variant. These are source/scope judgments, not new universal action-history proofs. |
+| One ownership question | Generic object helpers | The next deliverable is an actual writer and receiver, not a guessed common height bound. |
+
+The user's pole point is specifically about **beside the pyramid-top warp
+in Area 1**. There is no pole there. The distant palm tree at
+`(-5989,0,-4850)` uses the pole interaction; its presence does not put a pole
+at the warp at `(-2048,768,-1024)`. The two regular pole selectors are reached
+from Area 2's script. The checked Area-1 static mesh and pyramid-top mesh
+also contain no hangable triangles; Area 2 has six. The macro named
+`hidden_1up_in_pole` selects a 1-Up spawner, not a physical pole.
+
+These literal stock facts are checked from source revision
+`9921382a68bb0c865e5e45eb594d9c64db59b1af` by `pipeline/split_catalog.py`, with
+asset hashes in the source index's `ssl_locality` receipt. They close the
+mistaken idea of a stock pole/hanging surface right at this warp. They do
+not prove every dynamic actor history, a remote attachment transfer or a
+different ledge exit impossible. A ledge's local nominal 100-unit drop is
+already too small alone; stacking it requires a separate history through
+the intervening display copies. Area 2's poles remain relevant to Area 2.
 
 ## The height we are trying to explain
 

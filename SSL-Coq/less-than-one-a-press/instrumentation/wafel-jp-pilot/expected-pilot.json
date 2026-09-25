@@ -1,0 +1,265 @@
+{
+  "date": "2026-09-25",
+  "scope": "Finite original-JP runtime comparison; no Coq proof or all-controller-history exclusion.",
+  "wafelRelease": "0.8.5",
+  "python": "3.9.13 Windows embed amd64",
+  "librarySha256": "960fe979068b78e6733b3ddb87741833fbf4eb29b2a21a2bba871977427c2d0f",
+  "baselineComparison": {
+    "inputRows": 2852,
+    "checkedRows": 2483,
+    "aButtonFrames": 0,
+    "timerOffsets": [
+      1
+    ],
+    "mismatchFieldCounts": {},
+    "firstMismatches": [],
+    "eventFields": {
+      "FLT_CHANGE_FORWARD_VEL": [
+        "from",
+        "reason",
+        "to",
+        "type"
+      ],
+      "FLT_CHANGE_ACTION": [
+        "from",
+        "to",
+        "type"
+      ],
+      "FLT_EXECUTE_ACTION": [
+        "action",
+        "faceAngle",
+        "forwardVel",
+        "pos",
+        "type",
+        "vel"
+      ],
+      "FLT_BEGIN_MOVEMENT_STEP": [
+        "stepNum",
+        "stepType",
+        "type"
+      ],
+      "FLT_END_MOVEMENT_STEP": [
+        "_placeholder",
+        "type"
+      ],
+      "FLT_WALL_PUSH": [
+        "from",
+        "surface",
+        "to",
+        "type"
+      ]
+    },
+    "passed": true
+  },
+  "branchComparison": {
+    "inputRows": 2790,
+    "checkedRows": 2442,
+    "aButtonFrames": 0,
+    "timerOffsets": [
+      1
+    ],
+    "mismatchFieldCounts": {},
+    "firstMismatches": [],
+    "eventFields": {
+      "FLT_CHANGE_FORWARD_VEL": [
+        "from",
+        "reason",
+        "to",
+        "type"
+      ],
+      "FLT_CHANGE_ACTION": [
+        "from",
+        "to",
+        "type"
+      ],
+      "FLT_EXECUTE_ACTION": [
+        "action",
+        "faceAngle",
+        "forwardVel",
+        "pos",
+        "type",
+        "vel"
+      ],
+      "FLT_BEGIN_MOVEMENT_STEP": [
+        "stepNum",
+        "stepType",
+        "type"
+      ],
+      "FLT_END_MOVEMENT_STEP": [
+        "_placeholder",
+        "type"
+      ],
+      "FLT_WALL_PUSH": [
+        "from",
+        "surface",
+        "to",
+        "type"
+      ]
+    },
+    "passed": true
+  },
+  "branches": {
+    "firstPoll": 2700,
+    "updates": 90,
+    "secondsAt30Hz": 3.0,
+    "aButtonFrames": 0,
+    "initialPosition": [
+      -4999.7919921875,
+      275.0,
+      1540.950927734375
+    ],
+    "initialTopActive": 257,
+    "initialTopTimer": 150,
+    "initialTopAction": 1,
+    "results": [
+      {
+        "name": "baseline",
+        "updates": 90,
+        "area1Samples": 90,
+        "floorNullSamples": 0,
+        "maxDisplayMinusStateY": 0.0,
+        "minDisplayMinusStateY": 0.0,
+        "maxDisplayMinusCollisionY": 0.0,
+        "anyPositionSplit": 0,
+        "finalPosition": [
+          -2223.5556640625,
+          1408.0,
+          -919.9176025390625
+        ],
+        "actions": [
+          2222,
+          9176147,
+          16779430
+        ],
+        "topActiveValues": [
+          0,
+          257,
+          273
+        ]
+      },
+      {
+        "name": "neutral-30",
+        "updates": 90,
+        "area1Samples": 90,
+        "floorNullSamples": 0,
+        "maxDisplayMinusStateY": 0.0,
+        "minDisplayMinusStateY": 0.0,
+        "maxDisplayMinusCollisionY": 0.0,
+        "anyPositionSplit": 0,
+        "finalPosition": [
+          -2683.69873046875,
+          1156.0001220703125,
+          -681.4011840820312
+        ],
+        "actions": [
+          2222,
+          9176147
+        ],
+        "topActiveValues": [
+          0,
+          257,
+          273
+        ],
+        "inputSha256": "c4fcb790c645d9b11b1713ddbe0d3d60e0c3e842eab16e847b35b083c6fc0448"
+      },
+      {
+        "name": "hold-z",
+        "updates": 90,
+        "area1Samples": 90,
+        "floorNullSamples": 0,
+        "maxDisplayMinusStateY": 0.0,
+        "minDisplayMinusStateY": 0.0,
+        "maxDisplayMinusCollisionY": 0.0,
+        "anyPositionSplit": 0,
+        "finalPosition": [
+          -2223.5556640625,
+          1408.0,
+          -919.9176025390625
+        ],
+        "actions": [
+          2222,
+          9176147,
+          16779430
+        ],
+        "topActiveValues": [
+          0,
+          257,
+          273
+        ]
+      },
+      {
+        "name": "reverse-x",
+        "updates": 90,
+        "area1Samples": 90,
+        "floorNullSamples": 0,
+        "maxDisplayMinusStateY": 0.0,
+        "minDisplayMinusStateY": 0.0,
+        "maxDisplayMinusCollisionY": 0.0,
+        "anyPositionSplit": 0,
+        "finalPosition": [
+          -2121.14111328125,
+          1408.0,
+          -746.6134643554688
+        ],
+        "actions": [
+          2222,
+          9176147,
+          16779430
+        ],
+        "topActiveValues": [
+          0,
+          257,
+          273
+        ]
+      },
+      {
+        "name": "b-once",
+        "updates": 90,
+        "area1Samples": 90,
+        "floorNullSamples": 0,
+        "maxDisplayMinusStateY": 0.0,
+        "minDisplayMinusStateY": 0.0,
+        "maxDisplayMinusCollisionY": 0.0,
+        "anyPositionSplit": 0,
+        "finalPosition": [
+          -2223.5556640625,
+          1408.0,
+          -919.9176025390625
+        ],
+        "actions": [
+          2222,
+          9176147,
+          16779430
+        ],
+        "topActiveValues": [
+          0,
+          257,
+          273
+        ]
+      }
+    ],
+    "scope": "Finite after-update samples. The original top slot becomes inactive during these intervals. Adapter pilot, not an Ink search closure."
+  },
+  "savedStateBranchEmulatorSamplesChecked": 90,
+  "positionBitAndTimerOffsetPerturbationsRejected": true,
+  "captures": {
+    "baseline": {
+      "localDirectory": "build/wafel-pilot/capture.bKv95w",
+      "sha256": {
+        "inputs.jsonl": "9bcc451964025d9f0bb1344c45957b6bfd095451b44bfb9a01f8584a75db6a72",
+        "receipt.txt": "053d86336c6a4f9b11d13975da6d330337f1bc2395255f8812ebd0da63817881",
+        "rank5.txt": "bdc6ca0ee08b3ca67e1753141bf57e1291638b171d4d87fbeec806f070b994aa",
+        "rank13.txt": "569ecd82cfcbb3f7f84a9cde1088e5dc751506a1a489bbd8963fb240dfd9ec03"
+      }
+    },
+    "neutral-30": {
+      "localDirectory": "build/wafel-pilot/capture.aWS5zh",
+      "sha256": {
+        "inputs.jsonl": "895b854b4ac5a88035d8bb8abfea8e0be7a63ccc292e5fc101c4c6f83293fd13",
+        "receipt.txt": "770a5e90df4a36db3dea288193496140153df236ce1beafab743897204205d06",
+        "rank5.txt": "ec535c0c0f54389826f6b3657e99f81cf7fbcac85ac699ee09af8fdd46a5f820",
+        "rank13.txt": "c27e2b306a04a9d870c2477d90fb49ad2f7b60c49f120cb781142f99c2797bdb"
+      }
+    }
+  }
+}

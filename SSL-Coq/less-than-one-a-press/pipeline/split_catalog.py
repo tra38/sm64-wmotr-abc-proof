@@ -116,6 +116,10 @@ def make_index(repo, catalog):
         if row['section'] == 'catalog' and any(not row.get('gap', {}).get(key)
                 for key in ('amount', 'verdict', 'detail', 'limit', 'basis')):
             raise ValueError(f"{row['id']}: incomplete backward gap review")
+        if row['section'] == 'catalog':
+            review = row.get('review', {})
+            if review.get('group') not in {g['id'] for g in catalog['gapReviewGroups']} or not review.get('summary'):
+                raise ValueError(f"{row['id']}: missing role in the gap review")
         insufficient = row.get('gap', {}).get('insufficiency')
         if insufficient:
             if any(not insufficient.get(key) for key in ('card', 'module', 'theorem', 'scope')):
@@ -151,14 +155,54 @@ def make_index(repo, catalog):
         "generated_sha256": hashes,
         "named_pos_functions": named,
         "catalog_function_locations": {n:functions[n] for n in sorted(covered)},
+        "ssl_locality": check_ssl_locality(files),
         "coordinate_references": refs,
         "generated_lvalue_functions": generated,
     }
 
 
+def check_ssl_locality(files):
+    """Small literal stock-data check; not live-actor or action-history closure."""
+    paths = ['levels/ssl/script.c', 'levels/ssl/areas/1/collision.inc.c',
+             'levels/ssl/areas/1/macro.inc.c', 'levels/ssl/areas/2/collision.inc.c',
+             'levels/ssl/pyramid_top/collision.inc.c', 'include/special_presets.inc.c',
+             'include/macro_presets.inc.c', 'data/behavior_data.c']
+    clean = {p: mask_comments_strings(files[p]) for p in paths}
+    script = clean[paths[0]]
+    arrays = dict(re.findall(r'LevelScript\s+(\w+)\[\]\s*=\s*\{(.*?)\};', script, re.S))
+    areas = dict(re.findall(r'\bAREA\(\s*(\d+)\s*,[^)]*\)(.*?)END_AREA\(\)', script, re.S))
+    assert set(areas) == {'1', '2', '3'}
+    def expanded(body, visited=()):
+        for name in re.findall(r'JUMP_LINK\(\s*(\w+)\s*\)', body):
+            assert name in arrays and name not in visited
+            body += expanded(arrays[name], visited+(name,))
+        return body
+    selectors = {area: re.findall(r'\bbhv\w+', expanded(body)) for area, body in areas.items()}
+    pole_counts = {area: names.count('bhvPoleGrabbing') for area, names in selectors.items()}
+    assert pole_counts == {'1': 0, '2': 2, '3': 0}
+    assert 'INSTANT_WARP' not in areas['1']
+    assert re.findall(r'INSTANT_WARP\(\s*\d+,\s*\d+,\s*(-?\d+),\s*(-?\d+),\s*(-?\d+)\)', script) == [('0','0','0'), ('0','0','0')]
+    trees = re.findall(r'SPECIAL_OBJECT\(\s*special_palm_tree,\s*(-?\d+),\s*(-?\d+),\s*(-?\d+)\)', clean[paths[1]])
+    assert trees == [('-5989', '0', '-4850')]
+    assert re.search(r'\{\s*special_palm_tree,[^}]*\bbhvTree\s*\}', clean[paths[5]])
+    assert re.search(r'/\*\s*macro_hidden_1up_in_pole\s*\*/\s*\{\s*bhvHidden1UpInPoleSpawner', files[paths[6]])
+    tree = re.search(r'BehaviorScript\s+bhvTree\[\]\s*=\s*\{(.*?)\};', clean[paths[7]], re.S)[1]
+    assert re.search(r'SET_INT\(oInteractType,\s*INTERACT_POLE\)', tree)
+    assert re.search(r'SET_HITBOX\(\s*80,\s*500\)', tree)
+    assert 'SURFACE_HANGABLE' not in clean[paths[1]]
+    assert 'SURFACE_HANGABLE' not in clean[paths[4]]
+    assert re.findall(r'COL_TRI_INIT\(SURFACE_HANGABLE,\s*(\d+)\)', clean[paths[3]]) == ['6']
+    return {'scope': 'Literal stock SSL script helpers, tree preset and named collision assets; no dynamic-actor history claim.',
+            'poleGrabbingSelectorsByArea': pole_counts, 'area1PalmTree': [-5989,0,-4850],
+            'treePoleHitbox': {'radius':80, 'height':500},
+            'area1InstantWarps':0, 'area2and3InstantWarpDisplacements':[[0,0,0],[0,0,0]],
+            'hangableTriangles':{'area1Static':0, 'pyramidTop':0, 'area2Static':6},
+            'sha256':{p:hashlib.sha256(files[p].encode()).hexdigest() for p in paths}}
+
+
 def render_markdown(catalog, index):
     lines = ["# Where a useful position split could come from", "",
-        "Updated 24 September 2026. The full catalog is also on the private "
+        "Updated 25 September 2026. The full catalog is also on the private "
         "[Fine Print site](https://pyramid-proof-fine-print.tra38.chatgpt.site/#split-catalog).", "",
         "Mario has three position records. Usually, the game keeps them together. We want to "
         "know which tricks can pull them apart, and whether SSL can supply the ingredients "
@@ -206,7 +250,7 @@ def render_markdown(catalog, index):
         "every possible Ink installation. After the retry, movement can equal display "
         "while collision remains low. A platform changing only movement does not create "
         "that display-versus-collision difference by itself.", "",
-        "All 20 remaining cases now have a sizing review below. A zero at a named copy "
+        "These 20 reviewed cases are not 20 unresolved gap producers. A zero at a named copy "
         "is not a theorem about every surrounding update. Formula-dependent rows still "
         "need real incoming values; an unknown maximum is not an unlimited reachable gap. "
         "We defer travel to the warp until a producer passes this first test. See the "
@@ -218,11 +262,18 @@ def render_markdown(catalog, index):
         "labels; unknown bounds remain open. A keeper or consumer of an existing gap "
         "is not ruled out in that supporting role. This threshold is specific to the "
         "supplied setup, not every Ink installation.", "",
-        "| Case | Gap at the stated checkpoint | Verdict |", "| --- | --- | --- |"]
+        "The review separates six scoped insufficient cases, five helpers, four concrete "
+        "unresolved producers, four other-context/lookalike cases, and one ownership question. "
+        "There is no pole beside the Area-1 upper warp. Its distant palm tree uses pole "
+        "actions; the two regular SSL poles belong to Area 2. The checked Area-1 static "
+        "mesh and pyramid top have no hangable triangles; Area 2 has six. These are "
+        "pinned stock-data checks, not new Coq or all-history exclusions.", "",
+        "| Case | Role in this review | Gap at the stated checkpoint | Verdict |", "| --- | --- | --- | --- |"]
     for row in catalog['situations']:
         if row['section'] == 'catalog':
             gap = row['gap']
-            lines.append(f"| [{row['number']:02} — {row['id']}](#split-{row['id']}) | {gap['amount']} | {gap['verdict']} |")
+            title = next(g['title'] for g in catalog['gapReviewGroups'] if g['id'] == row['review']['group'])
+            lines.append(f"| [{row['number']:02} — {row['id']}](#split-{row['id']}) | {title} | {gap['amount']} | {gap['verdict']} |")
     lines += ["", "## All 27 cases at a glance", "",
         "| # | Situation | SSL / current verdict |", "| --- | --- | --- |"]
     for row in catalog["situations"]:
@@ -256,6 +307,7 @@ def render_markdown(catalog, index):
                 f"Proof: [`{proof['theorem']}`](../../{proof['module']}).", ""]
         if row.get('gap'):
             gap = row['gap']
+            lines += [f"**Role in this review.** {row['review']['summary']}", ""]
             lines += [f"**Gap sizing: {gap['amount']}.** {gap['verdict']}", "",
                 gap['detail'], "", f"**Limits.** {gap['limit']}", "",
                 f"**Evidence level.** {gap['basis']}", ""]

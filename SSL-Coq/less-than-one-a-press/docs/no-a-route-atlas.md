@@ -5,7 +5,9 @@
 
 The [23 September family workboard](notes/glitch-family-workboard.md) groups all 45 ranks into 11 shared gameplay investigations, with separate workstreams for downstream collection, proof contracts and a different start. Each gives the affected ranks, a first compute batch, and the limited conclusion that would justify stopping. The grouping adds no new proof or search result and leaves the route verdicts and subjective estimates unchanged.
 
-The [25 September Wafel review](notes/wafel-testing-review.md) recommends one replay-validation trial before adopting it for controller searches. Its saved states, named readings, hitboxes and event log could help test contact, support and position gaps with the rest of the game running. Exact warp timing and agreement with the existing replay still need checking; this tool review adds no gameplay result and changes no estimate.
+The [25 September Wafel pilot](notes/wafel-testing-review.md) now reproduces the known JP replay: 2,483 Area-1 snapshots match the checked position/action/support/top-slot fields with a separately checked +1 global-timer mapping. Five controller-only three-second choices produce no sampled split; one changed branch also matches 2,442 emulator snapshots, including the 90 restored-state outputs. No A was used. This validates one bounded test adapter, not every timer-dependent history; the existing exact warp observer remains necessary. No proof verdict or route estimate changes.
+
+The [gap review](notes/ink-gap-backward.md) now separates the 20 reviewed entries into six scoped insufficient cases, five helpers, four concrete unresolved producers, four other-context/lookalike cases and one ownership question. They are not 20 independent open gap producers. There is no stock pole beside the Area-1 top warp: the palm tree is distant, while the two regular poles belong to Area 2. The checked Area-1 static mesh and pyramid top have no hangable triangles. These stock-data/source distinctions do not become new Coq or all-history impossibility results; the existing ground-copy and Tweester-copy insufficiency proofs retain their precise checkpoints.
 
 ## Purpose and scope
 
@@ -212,7 +214,7 @@ The detailed sections are organized as:
   The other 20 cases remain separate. This makes existing exclusions easier
   to find; it does not claim those actors are impossible under every later
   object-creation history or close a whole route. The new
-  [backward sizing pass](notes/ink-gap-backward.md) reviews all 20 remaining
+  [backward sizing pass](notes/ink-gap-backward.md) reviews all 20 catalog
   cases against the supplied 1170.864868-unit gap. A proved shortfall now
   counts as **Insufficient — already proved** for its stated conditions and
   checkpoint: the normal Tweester copy and completed ordinary ground copy

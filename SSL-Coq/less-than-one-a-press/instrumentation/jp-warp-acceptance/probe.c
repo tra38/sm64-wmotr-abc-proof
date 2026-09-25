@@ -122,6 +122,9 @@ EXPORT void CALL GetKeys(int control, BUTTONS *keys) {
                          debugger_vi_callback) != M64ERR_SUCCESS) waFailures++;
         else waArmed = 1;
     }
+#ifdef WARP_ACCEPT_INPUT_OBSERVER
+    WARP_ACCEPT_INPUT_OBSERVER(control, keys);
+#endif
 }
 
 EXPORT void CALL RomClosed(void) {

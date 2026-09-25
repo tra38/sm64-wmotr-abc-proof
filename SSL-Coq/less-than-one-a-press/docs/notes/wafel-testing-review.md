@@ -1,86 +1,72 @@
-# Wafel: a useful testing tool, not a new proof
+# Wafel: the first bounded replay pilot passed
 
-Reviewed 25 September 2026. **Recommendation: try one replay-validation pilot
-before using Wafel for searches.** This is a source/API review, not an
-installation, benchmark or gameplay result. No route estimate, insufficient-case
-classification or proof verdict changes.
+Updated 25 September 2026. We installed an isolated **Wafel 0.8.5 / Python
+3.9.13** runtime, reproduced the existing JP replay, branched three seconds
+of controller inputs, and checked a changed branch in the original emulator.
+This is a finite runtime result, not a new Coq proof or a no-Ink theorem.
+All atlas estimates stay unchanged.
 
-## What it offers
+## What worked
 
-[Wafel](https://github.com/branpk/wafel) combines an SM64 TAS application with
-Rust code and Python bindings. It runs a compiled game library rather than
-emulating the N64. Its README lists original US and JP support, Windows
-distribution and a requirement for a vanilla ROM. EU and Shindou support are
-experimental. The reviewed source revision is
-`5b808b60af15d316a5e2b0f87db34421d6225b57`.
+The known four-pillar replay passes its original exact warp-acceptance
+checks. Wafel matches 2,483 Area-1 snapshots of the three position vectors,
+action/action timer, input flags, floor height/nullness/owner, platform and
+Mario slots, and original top-slot fields. There are 2,852 input polls and
+no A-down frames. Wafel's global timer is consistently one ahead at the
+paired observation boundary; the checker requires that mapping explicitly.
+This does not establish raw timer equality or every timer-dependent history.
 
-The [Python interface](https://github.com/branpk/wafel/blob/5b808b60af15d316a5e2b0f87db34421d6225b57/wafel_python/__init__.pyi)
-has controller input, frame advance, named variable reads, saved states,
-M64 input import/export, a frame event log, loaded surfaces and active-object
-hitboxes. The [API guide](https://branpk.com/wafel/docs/dev/wafel_api/)
-recommends `Game` for brute-force work. Its higher-level `Timeline` manages
-rewinding for the application; that API is not exposed in the reviewed
-Python stub. Rewinding a known history does not solve unknown predecessors.
+At one reached late approach, we save the state and try five 90-update input
+choices: unchanged, briefly neutral, holding Z, reversed stick X, and a
+single B press. Across all 450 after-update samples, movement, collision
+and display match and the stored floor is non-null. Some input choices
+produce the same trajectory. This is not an exhaustive input search or
+evidence about every intermediate lookup.
 
-## Where it could help this project
+The neutral choice changes Mario's movement. Replaying its full input
+sequence in the original emulator matches 2,442 Area-1 snapshots under the
+same timer mapping. All 90 restored-state outputs match too. No useful gap
+was found. The interval begins with the original top slot at timer 150,
+so it is not a fresh search for the earlier timer-131 installation. The
+existing baseline still reaches the accepted warp with all three records
+equal and no live top; the short branch stops before acceptance.
 
-| Current question | Proposed use | What a result would mean |
+The [pilot instructions and compact receipt](../../instrumentation/wafel-jp-pilot/README.md)
+give the versions, hashes, fields, exact inputs recipe, checked local output
+paths and reproduction commands. The comparison rejects a changed position
+bit and a shifted timer. ROMs, libraries and full captures are not published.
+
+## Where it helps next
+
+| Family | Useful test | Limit |
 | --- | --- | --- |
-| F02: can a useful gap be created and retained? | Log movement, raw collision and stored display positions, action, depth, support and top timer; restore a reached state and vary controller inputs. | A replayable candidate or a failure within the tested inputs, not a universal exclusion. |
-| Tweester transport | Search actual stick/button continuations with Mario, capture, hiding and other game updates present. | Could replace the supplied-Mario-position assumption in the existing isolated sweep, after replay synchronization is validated. It does not itself produce the gap. |
-| F01: contact near the warp, walls or elevator | Inspect active hitboxes and terrain alongside the actors' identities and poses. | Helps explain why a candidate collides or misses. Hitbox overlap alone is not warp acceptance or installation. |
-| F03 / 10A: support and elevator motion | Reuse a reached checkpoint to vary inputs and trace the selected floor and next position copies. | Targets one proposed exception to the existing conditional result; no new ground-pound closure follows from using the tool. |
+| F02 position order | Restore a reached checkpoint and vary controller inputs while observing all three position records. | A failed finite batch is not an all-history exclusion. |
+| F08 collision/contact | Inspect actual hitboxes, actors and terrain beside a replay. | Overlap alone is not warp acceptance or installation. |
+| F01 support / 10A | Follow the selected floor and next copies during controller variations. | A flat list of surfaces is not proof of live selection order. |
+| Tweester transport | Test stick inputs with Mario, capture and hiding actually running. | This pilot did not solve rapid home oscillation or produce a Tweester gap. |
 
-The main expected benefit is less bespoke experiment code: Python can branch
-from a saved game state and record named fields. Speed and synchronization
-have not been measured here. A failed search stays a finite negative result.
-A candidate still needs replay validation and the relevant proof connection.
+Wafel runs a compiled game library rather than the N64 or our generated
+Clight semantics. The tested release is pinned; the earlier API review
+used main revision `5b808b60af15d316a5e2b0f87db34421d6225b57`. Those are not
+the same source state. In particular, the release lacks main's `set_input`
+helper, so the adapter uses only the three controller-pad writes during
+gameplay. The accepted level-select startup is the sole pre-entry setup
+write. Saved states come from the reproduced controller prefix, not an
+injected gameplay pose or emulator-state conversion.
 
-## Details that matter for Ink
+The observed event logs include action changes, speed, movement steps and
+wall pushes. They do not provide the collision/display vectors or the exact
+successful warp return in these runs. Keep the existing accepted-warp
+debugger observer for those checks. Reading only after an update may miss
+a temporary useful split. The convenience surface and hitbox records also
+do not establish every owner, list selection or actor lifetime.
 
-The [frame-log reader](https://github.com/branpk/wafel/blob/5b808b60af15d316a5e2b0f87db34421d6225b57/wafel_sm64/src/frame_log.rs)
-does expose events within a frame. However, this review does not establish
-that the distributed game's event schema records both floor calls, all three
-position vectors, or the exact successful `interact_warp` return. Reading
-only after `advance()` could miss a temporary split. Retain the existing
-[accepted-warp observer](../../instrumentation/jp-warp-acceptance/README.md)
-for that exact endpoint unless equivalent event coverage is demonstrated.
+US, other library versions and other gameplay histories remain untested.
+No robust performance benchmark or universal synchronization claim is made.
+The completed deliverable is a checked adapter and one reproducible bounded
+experiment; a future candidate still needs the exact installation checks.
 
-The Python `Surface` convenience object exposes normals and vertices, not
-the full owner/type/list-selection evidence we need. `ObjectHitbox` exposes
-position and dimensions, not persistent actor identity. Named reads may
-provide the other fields, subject to checking the loaded layout. A terrain
-picture or flat surface collection is not a live-floor selection proof.
-
-The [Game implementation](https://github.com/branpk/wafel/blob/5b808b60af15d316a5e2b0f87db34421d6225b57/wafel_api/src/game.rs)
-restricts its saved states to the same Game instance. Our emulator checkpoint
-is not automatically a Wafel saved state. The compiled game library also
-needs its own version, source and replay checks; it is not the project's
-generated US/JP Clight program. The release history includes a desynchronization
-fix, so agreement with retail execution must be tested rather than presumed.
-
-The latest published release found was
-[v0.8.5, 27 June 2022](https://github.com/branpk/wafel/releases/tag/v0.8.5).
-The README advertises Python 3.7–3.9 prebuilt bindings, while the main source
-has later changes. Confirm a compatible isolated Python/runtime/library
-combination before adoption; no installation was attempted in this review.
-
-## A bounded first trial
-
-1. Select and record one Wafel/library version and reproduce the agreed normal
-   JP startup and an existing controller replay. Keep the starting boundary
-   and input-poll mapping explicit; do not manufacture the useful pose.
-2. Compare actions, all nine position values, floor/support identity and key
-   timer milestones against the existing JP observer. Check what the subframe
-   log actually records. An unexplained divergence stops the pilot.
-3. Once that baseline agrees, branch one short interval with controller inputs
-   only, preserve its input sequence and replay any promising candidate in
-   the existing emulator. Check the accepted-warp endpoint and later top
-   capture separately. Use the appropriate no-new-A or A-never-pressed rule
-   for the selected investigation.
-
-Controller inputs and inspection are enough for this pilot. Changing depth,
-actions, actor poses or RNG directly would not establish a gameplay route;
-the previously agreed conditional grants remain separately labeled.
-Completion means a checked replay adapter and one reproducible bounded
-experiment, not an attempt to settle every family at once.
+Tool sources: [Wafel repository](https://github.com/branpk/wafel),
+[tested release 0.8.5](https://github.com/branpk/wafel/releases/tag/v0.8.5),
+[reviewed main Python interface](https://github.com/branpk/wafel/blob/5b808b60af15d316a5e2b0f87db34421d6225b57/wafel_python/__init__.pyi),
+[frame-log reader](https://github.com/branpk/wafel/blob/5b808b60af15d316a5e2b0f87db34421d6225b57/wafel_sm64/src/frame_log.rs).
