@@ -21,7 +21,7 @@ behaviors. A broader claim about every possible later object-creation history
 is not promoted. The three existing proof modules and their theorem names
 are linked in the canonical [catalog](position-split-catalog.md).
 
-Section 01 now contains 34 result summaries plus these seven expanded cases;
+Section 01 now contains 35 result summaries plus these seven expanded cases;
 the seven are not additional theorems or new route closures. The other 20
 catalog entries remain separate. Existing negative results get a short label
 that names the ruled-out step or conditional setup. Positive results and
@@ -190,3 +190,7 @@ The [quicksand writer connection](conditional-stock-negative-seed.md#the-subtrac
 The broader negative-depth entry and stock-history recommendation stay open: the eight named direct writers do not by themselves prove the live action, timer, receiver or physical controller edge at every write. The conditional seed-to-A theorem remains proved with those conditions. Neither the clean seed search nor the complete Ink route is promoted, and the atlas estimate remains below 1%.
 
 The new result and its main-boundary connection passed selected audit `20260925-142547-w9g34lco`: 597 registered sources, successful compilation and discipline checks, with the stated gameplay conditions still explicit. The [validation record](conditional-stock-negative-seed.md#validation-of-the-new-connection) gives the checked targets and foundation counts.
+
+## The late-landing caller connection
+
+The [nine-wrapper result](late-common-landing-investigation.md) belongs in Section 01 as a generated US/JP source and execution result: each complete wrapper exits in its prechecks or guard, or continues after the real cancellation callee returned zero. No timer bound or harmless-call premise is assumed for that connection. The full no-A landing exclusion stays open because its live duration, later timer and action/input histories are not discharged. The paired Wafel controls stay finite evidence and do not receive an Already proved badge.

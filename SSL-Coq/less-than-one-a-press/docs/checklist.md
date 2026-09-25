@@ -91,7 +91,7 @@ and which live connections remain, see the
 [impossibility-proof progress ledger](impossibility-proof-progress.md).
 The [Fine Print promotion review](notes/fine-print-proof-promotions.md)
 now includes the conditional stock negative-seed argument among the site's
-34 established-result summaries and seven expanded stock-list exclusions,
+35 established-result summaries and seven expanded stock-list exclusions,
 including the Tweester copy checkpoint, source census, final warp-action call,
 conditional child-copy and allocator results alongside earlier local/model claims.
 Their wider gameplay connections remain on this board; no route is closed
@@ -209,11 +209,18 @@ These obligations currently block the clean-retail result.
   are retained; their depth effects are not assumed harmless. The existing
   eight-function direct-writer census was rechecked against the pinned C.
 
-- [ ] Follow the [late common-landing prompt](notes/late-common-landing-prompt.md):
-  first determine whether a no-A continuation can reach the late depth write;
-  only then check whether its incoming depth becomes a useful negative seed.
-  A late timer and a negative adjustment are not themselves a negative seed.
-  This is a chosen next investigation, not a new exclusion.
+- [x] Check all nine direct common-landing wrappers and connect their actual
+  continuation to a zero return from the real cancellation callee. The
+  [late-landing investigation](notes/late-common-landing-investigation.md)
+  retains complete wrapper entry, early exits, real call effects and the
+  remaining body. It adds no stock-timer or harmless-helper assumption.
+  Twelve paired controller controls reach late landing in six one-A trials
+  and none of the twelve no-A trials; these remain finite observations.
+
+- [ ] Complete the no-A late-write exclusion: connect returned-zero cancellation
+  to its live duration read, carry the timer bound through the following calls,
+  and derive the first-long-jump/physical-A history for every reached case.
+  The caller connection does not itself discharge these conditions.
 
 - [ ] Establish or refute a useful negative seed with A never pressed,
   including the newly requested cross-course search. A seed cannot persist

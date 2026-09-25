@@ -1,0 +1,831 @@
+{
+  "scope": "Finite Wafel JP controller controls, after-update samples; not a proof or an exact write observer.",
+  "captureSha256": "9bcc451964025d9f0bb1344c45957b6bfd095451b44bfb9a01f8584a75db6a72",
+  "baselineSnapshotsChecked": 2483,
+  "branchUpdates": 90,
+  "cases": [
+    {
+      "firstPoll": 352,
+      "initial": {
+        "action": 67109952,
+        "timer": 3,
+        "depth": 0.0,
+        "pos": [
+          681.678955078125,
+          38.0,
+          6559.53125
+        ],
+        "floorType": 48
+      },
+      "trials": [
+        {
+          "aPresses": 0,
+          "lateLongJumpSamples": [],
+          "anyLateCommonLandingSamples": [],
+          "negativeDepthSamples": [],
+          "actions": [
+            75531353,
+            201359904
+          ],
+          "inputFile": "poll-352-no-a.inputs",
+          "inputSha256": "1bd95fec316e7463eb2532257843b65f7dfcc179c54958c004289f67d84ce35e"
+        },
+        {
+          "aPresses": 1,
+          "lateLongJumpSamples": [
+            {
+              "update": 36,
+              "action": 1145,
+              "timer": 4,
+              "depth": 0.0,
+              "pos": [
+                1018.5740356445312,
+                38.0,
+                6479.42431640625
+              ],
+              "floorType": 48
+            },
+            {
+              "update": 37,
+              "action": 1145,
+              "timer": 5,
+              "depth": 0.0,
+              "pos": [
+                1018.5740356445312,
+                38.0,
+                6478.11083984375
+              ],
+              "floorType": 48
+            }
+          ],
+          "anyLateCommonLandingSamples": [
+            {
+              "update": 36,
+              "action": 1145,
+              "timer": 4,
+              "depth": 0.0,
+              "pos": [
+                1018.5740356445312,
+                38.0,
+                6479.42431640625
+              ],
+              "floorType": 48
+            },
+            {
+              "update": 37,
+              "action": 1145,
+              "timer": 5,
+              "depth": 0.0,
+              "pos": [
+                1018.5740356445312,
+                38.0,
+                6478.11083984375
+              ],
+              "floorType": 48
+            }
+          ],
+          "negativeDepthSamples": [],
+          "actions": [
+            1145,
+            50333832,
+            75531353,
+            134218299,
+            201359904
+          ],
+          "inputFile": "poll-352-one-a.inputs",
+          "inputSha256": "6d8081b6ec5654f42224fe806b2f2c7878b777e32906b93287062dbd0a150d5e"
+        }
+      ]
+    },
+    {
+      "firstPoll": 628,
+      "initial": {
+        "action": 67109952,
+        "timer": 3,
+        "depth": 0.0,
+        "pos": [
+          4686.95263671875,
+          -0.0,
+          4018.490478515625
+        ],
+        "floorType": 0
+      },
+      "trials": [
+        {
+          "aPresses": 0,
+          "lateLongJumpSamples": [],
+          "anyLateCommonLandingSamples": [],
+          "negativeDepthSamples": [],
+          "actions": [
+            75531353,
+            201359904
+          ],
+          "inputFile": "poll-628-no-a.inputs",
+          "inputSha256": "ae738a349725b8bae0df1215c2257447b444b68e256023f5fc7d2d5f1c373a0b"
+        },
+        {
+          "aPresses": 1,
+          "lateLongJumpSamples": [
+            {
+              "update": 34,
+              "action": 1145,
+              "timer": 4,
+              "depth": 0.0,
+              "pos": [
+                4449.74365234375,
+                87.41873168945312,
+                3753.590087890625
+              ],
+              "floorType": 0
+            },
+            {
+              "update": 35,
+              "action": 1145,
+              "timer": 5,
+              "depth": 0.0,
+              "pos": [
+                4445.99951171875,
+                89.61805725097656,
+                3749.407470703125
+              ],
+              "floorType": 0
+            }
+          ],
+          "anyLateCommonLandingSamples": [
+            {
+              "update": 34,
+              "action": 1145,
+              "timer": 4,
+              "depth": 0.0,
+              "pos": [
+                4449.74365234375,
+                87.41873168945312,
+                3753.590087890625
+              ],
+              "floorType": 0
+            },
+            {
+              "update": 35,
+              "action": 1145,
+              "timer": 5,
+              "depth": 0.0,
+              "pos": [
+                4445.99951171875,
+                89.61805725097656,
+                3749.407470703125
+              ],
+              "floorType": 0
+            }
+          ],
+          "negativeDepthSamples": [],
+          "actions": [
+            1145,
+            50333832,
+            75531353,
+            134218299,
+            201359904
+          ],
+          "inputFile": "poll-628-one-a.inputs",
+          "inputSha256": "f8f08c72c9a1c6e6baffb30c8b40f9be244389320c94b7104aa0f81b0bf5d9b8"
+        }
+      ]
+    },
+    {
+      "firstPoll": 718,
+      "initial": {
+        "action": 67109952,
+        "timer": 3,
+        "depth": 0.0,
+        "pos": [
+          3718.73779296875,
+          208.47857666015625,
+          2894.738525390625
+        ],
+        "floorType": 0
+      },
+      "trials": [
+        {
+          "aPresses": 0,
+          "lateLongJumpSamples": [],
+          "anyLateCommonLandingSamples": [],
+          "negativeDepthSamples": [],
+          "actions": [
+            75531353,
+            201359904
+          ],
+          "inputFile": "poll-718-no-a.inputs",
+          "inputSha256": "213296ff1633d83f6d5e5242250f81d9ef284ee5db600a5b10ee8cb414f9c521"
+        },
+        {
+          "aPresses": 1,
+          "lateLongJumpSamples": [
+            {
+              "update": 35,
+              "action": 1145,
+              "timer": 4,
+              "depth": 0.0,
+              "pos": [
+                3278.64599609375,
+                252.34805297851562,
+                2312.41796875
+              ],
+              "floorType": 0
+            },
+            {
+              "update": 36,
+              "action": 1145,
+              "timer": 5,
+              "depth": 0.0,
+              "pos": [
+                3270.75244140625,
+                249.9447784423828,
+                2302.0107421875
+              ],
+              "floorType": 0
+            }
+          ],
+          "anyLateCommonLandingSamples": [
+            {
+              "update": 35,
+              "action": 1145,
+              "timer": 4,
+              "depth": 0.0,
+              "pos": [
+                3278.64599609375,
+                252.34805297851562,
+                2312.41796875
+              ],
+              "floorType": 0
+            },
+            {
+              "update": 36,
+              "action": 1145,
+              "timer": 5,
+              "depth": 0.0,
+              "pos": [
+                3270.75244140625,
+                249.9447784423828,
+                2302.0107421875
+              ],
+              "floorType": 0
+            }
+          ],
+          "negativeDepthSamples": [],
+          "actions": [
+            1145,
+            50333832,
+            75531353,
+            134218299,
+            201359904
+          ],
+          "inputFile": "poll-718-one-a.inputs",
+          "inputSha256": "0aa0f64fa52e91535643c2b408771bf70014f0a2f806693268fd486e806d3096"
+        }
+      ]
+    },
+    {
+      "firstPoll": 817,
+      "initial": {
+        "action": 67109952,
+        "timer": 3,
+        "depth": 0.0,
+        "pos": [
+          2024.93017578125,
+          57.750003814697266,
+          969.7369995117188
+        ],
+        "floorType": 55
+      },
+      "trials": [
+        {
+          "aPresses": 0,
+          "lateLongJumpSamples": [],
+          "anyLateCommonLandingSamples": [],
+          "negativeDepthSamples": [],
+          "actions": [
+            75531353,
+            268567410,
+            276826276
+          ],
+          "inputFile": "poll-817-no-a.inputs",
+          "inputSha256": "7ce711c0432cf631759069338f16e6bf5d96c334be28f9af7de79c4162f0ca0f"
+        },
+        {
+          "aPresses": 1,
+          "lateLongJumpSamples": [],
+          "anyLateCommonLandingSamples": [],
+          "negativeDepthSamples": [],
+          "actions": [
+            67110000,
+            75531353,
+            201327152,
+            201359904,
+            201359905,
+            205521409,
+            268567410
+          ],
+          "inputFile": "poll-817-one-a.inputs",
+          "inputSha256": "7c700688be19bf57ad56bdd993511de5ffd5c6767897f2fbe3c60979ff425749"
+        }
+      ]
+    },
+    {
+      "firstPoll": 907,
+      "initial": {
+        "action": 67109952,
+        "timer": 3,
+        "depth": 8.100000381469727,
+        "pos": [
+          1758.7236328125,
+          -0.0,
+          -426.770751953125
+        ],
+        "floorType": 38
+      },
+      "trials": [
+        {
+          "aPresses": 0,
+          "lateLongJumpSamples": [],
+          "anyLateCommonLandingSamples": [],
+          "negativeDepthSamples": [],
+          "actions": [
+            75531353,
+            201359904,
+            268567410,
+            276826276
+          ],
+          "inputFile": "poll-907-no-a.inputs",
+          "inputSha256": "d24d8bcc42c42ed495599d9fc120b74960070d2831b8042a46b9814f04372c72"
+        },
+        {
+          "aPresses": 1,
+          "lateLongJumpSamples": [
+            {
+              "update": 21,
+              "action": 1145,
+              "timer": 4,
+              "depth": 21.100000381469727,
+              "pos": [
+                1781.5244140625,
+                -0.0,
+                -1253.773193359375
+              ],
+              "floorType": 38
+            },
+            {
+              "update": 22,
+              "action": 1145,
+              "timer": 5,
+              "depth": 17.350000381469727,
+              "pos": [
+                1782.0712890625,
+                -0.0,
+                -1273.568115234375
+              ],
+              "floorType": 38
+            }
+          ],
+          "anyLateCommonLandingSamples": [
+            {
+              "update": 21,
+              "action": 1145,
+              "timer": 4,
+              "depth": 21.100000381469727,
+              "pos": [
+                1781.5244140625,
+                -0.0,
+                -1253.773193359375
+              ],
+              "floorType": 38
+            },
+            {
+              "update": 22,
+              "action": 1145,
+              "timer": 5,
+              "depth": 17.350000381469727,
+              "pos": [
+                1782.0712890625,
+                -0.0,
+                -1273.568115234375
+              ],
+              "floorType": 38
+            }
+          ],
+          "negativeDepthSamples": [],
+          "actions": [
+            1145,
+            50333832,
+            75531353,
+            134218299,
+            201359904,
+            268567410
+          ],
+          "inputFile": "poll-907-one-a.inputs",
+          "inputSha256": "9c5b820bf5ce58204fc63373b2dd39a0a8e583aeb7ea7d68cee6fc41c9f40a69"
+        }
+      ]
+    },
+    {
+      "firstPoll": 1083,
+      "initial": {
+        "action": 67109952,
+        "timer": 3,
+        "depth": 0.0,
+        "pos": [
+          1824.6866455078125,
+          896.0,
+          -2624.833984375
+        ],
+        "floorType": 110
+      },
+      "trials": [
+        {
+          "aPresses": 0,
+          "lateLongJumpSamples": [],
+          "anyLateCommonLandingSamples": [],
+          "negativeDepthSamples": [],
+          "actions": [
+            75531353,
+            201359904
+          ],
+          "inputFile": "poll-1083-no-a.inputs",
+          "inputSha256": "9e28ff8bda916c66dd83dac394973b16e51a6cc17c51ae9ffcbd0de012f5f505"
+        },
+        {
+          "aPresses": 1,
+          "lateLongJumpSamples": [],
+          "anyLateCommonLandingSamples": [],
+          "negativeDepthSamples": [],
+          "actions": [
+            131900,
+            50333832,
+            75531353
+          ],
+          "inputFile": "poll-1083-one-a.inputs",
+          "inputSha256": "62a0896fd45d6a3bb3d3e3f8b54885fd5aadd4fbc46a1efe543af147fc43916e"
+        }
+      ]
+    },
+    {
+      "firstPoll": 1192,
+      "initial": {
+        "action": 67109952,
+        "timer": 3,
+        "depth": 0.0,
+        "pos": [
+          1974.1312255859375,
+          -0.0,
+          -3791.72509765625
+        ],
+        "floorType": 48
+      },
+      "trials": [
+        {
+          "aPresses": 0,
+          "lateLongJumpSamples": [],
+          "anyLateCommonLandingSamples": [],
+          "negativeDepthSamples": [],
+          "actions": [
+            135954,
+            16779404,
+            67110001,
+            75531353
+          ],
+          "inputFile": "poll-1192-no-a.inputs",
+          "inputSha256": "b9d74bf63995e56dfae7ad2d87f06ed91b517bcec4c2898ca608403de0b577eb"
+        },
+        {
+          "aPresses": 1,
+          "lateLongJumpSamples": [
+            {
+              "update": 36,
+              "action": 1145,
+              "timer": 4,
+              "depth": 0.0,
+              "pos": [
+                2130.504150390625,
+                -0.0,
+                -5257.81884765625
+              ],
+              "floorType": 48
+            },
+            {
+              "update": 37,
+              "action": 1145,
+              "timer": 5,
+              "depth": 0.0,
+              "pos": [
+                2132.409423828125,
+                -0.0,
+                -5275.24658203125
+              ],
+              "floorType": 48
+            }
+          ],
+          "anyLateCommonLandingSamples": [
+            {
+              "update": 36,
+              "action": 1145,
+              "timer": 4,
+              "depth": 0.0,
+              "pos": [
+                2130.504150390625,
+                -0.0,
+                -5257.81884765625
+              ],
+              "floorType": 48
+            },
+            {
+              "update": 37,
+              "action": 1145,
+              "timer": 5,
+              "depth": 0.0,
+              "pos": [
+                2132.409423828125,
+                -0.0,
+                -5275.24658203125
+              ],
+              "floorType": 48
+            }
+          ],
+          "negativeDepthSamples": [],
+          "actions": [
+            1145,
+            50333832,
+            75531353,
+            134218299,
+            201359904
+          ],
+          "inputFile": "poll-1192-one-a.inputs",
+          "inputSha256": "b692dd90ad1ba8246e7460993fe7cfe3f78ba91bd7042d2cdd7aec751de43751"
+        }
+      ]
+    },
+    {
+      "firstPoll": 1811,
+      "initial": {
+        "action": 67109952,
+        "timer": 3,
+        "depth": 0.0,
+        "pos": [
+          -1525.6461181640625,
+          0.0,
+          -5017.95703125
+        ],
+        "floorType": 48
+      },
+      "trials": [
+        {
+          "aPresses": 0,
+          "lateLongJumpSamples": [],
+          "anyLateCommonLandingSamples": [],
+          "negativeDepthSamples": [],
+          "actions": [
+            75531353,
+            201359904
+          ],
+          "inputFile": "poll-1811-no-a.inputs",
+          "inputSha256": "ddc78fca8fbb1cf2f27fbaab7641478ea1f059d5d1a1dc874fa14b17df8be7c1"
+        },
+        {
+          "aPresses": 1,
+          "lateLongJumpSamples": [],
+          "anyLateCommonLandingSamples": [],
+          "negativeDepthSamples": [],
+          "actions": [
+            50333824,
+            67110000,
+            75531353,
+            201327152,
+            201359904,
+            201359905,
+            205521409
+          ],
+          "inputFile": "poll-1811-one-a.inputs",
+          "inputSha256": "745be4534332dc30b88a097283899a18928531eb5a2f6a7adb92286c38117e8d"
+        }
+      ]
+    },
+    {
+      "firstPoll": 2292,
+      "initial": {
+        "action": 67109952,
+        "timer": 3,
+        "depth": 0.0,
+        "pos": [
+          -4914.49853515625,
+          114.12650299072266,
+          -4610.56640625
+        ],
+        "floorType": 0
+      },
+      "trials": [
+        {
+          "aPresses": 0,
+          "lateLongJumpSamples": [],
+          "anyLateCommonLandingSamples": [],
+          "negativeDepthSamples": [],
+          "actions": [
+            75531353,
+            201359904
+          ],
+          "inputFile": "poll-2292-no-a.inputs",
+          "inputSha256": "9851c79db9bc9c1f6636c012148dbe2a6f331732ec2f5ac851a8830ea4fcfc5b"
+        },
+        {
+          "aPresses": 1,
+          "lateLongJumpSamples": [],
+          "anyLateCommonLandingSamples": [],
+          "negativeDepthSamples": [],
+          "actions": [
+            50333824,
+            67110000,
+            75531353,
+            201327152,
+            201359904,
+            201359905,
+            205521409
+          ],
+          "inputFile": "poll-2292-one-a.inputs",
+          "inputSha256": "746010e494de4332544bcd70c0ef822147b81f096dd586377543fe7861b39810"
+        }
+      ]
+    },
+    {
+      "firstPoll": 2382,
+      "initial": {
+        "action": 67109952,
+        "timer": 3,
+        "depth": 0.0,
+        "pos": [
+          -5806.62158203125,
+          806.4995727539062,
+          -2715.716552734375
+        ],
+        "floorType": 55
+      },
+      "trials": [
+        {
+          "aPresses": 0,
+          "lateLongJumpSamples": [],
+          "anyLateCommonLandingSamples": [],
+          "negativeDepthSamples": [],
+          "actions": [
+            75531353,
+            201359904
+          ],
+          "inputFile": "poll-2382-no-a.inputs",
+          "inputSha256": "30397d31a542ce77824a9e7e6333e7a0634a20af7e17f32dc84b31d60f6091bb"
+        },
+        {
+          "aPresses": 1,
+          "lateLongJumpSamples": [],
+          "anyLateCommonLandingSamples": [],
+          "negativeDepthSamples": [],
+          "actions": [
+            131900,
+            16779404,
+            67110000,
+            75531353
+          ],
+          "inputFile": "poll-2382-one-a.inputs",
+          "inputSha256": "b9b5a3bac60a439e2e190ec004feaa6cd766916bfcdb4b467230b65a011ea01e"
+        }
+      ]
+    },
+    {
+      "firstPoll": 2472,
+      "initial": {
+        "action": 67109952,
+        "timer": 3,
+        "depth": 0.0,
+        "pos": [
+          -5906.919921875,
+          68.74996948242188,
+          -847.4913940429688
+        ],
+        "floorType": 0
+      },
+      "trials": [
+        {
+          "aPresses": 0,
+          "lateLongJumpSamples": [],
+          "anyLateCommonLandingSamples": [],
+          "negativeDepthSamples": [],
+          "actions": [
+            75531353,
+            201359904
+          ],
+          "inputFile": "poll-2472-no-a.inputs",
+          "inputSha256": "820549f75f25fe7daf9a38c4623fd977a32a4972aec924f2fe006777916d1a80"
+        },
+        {
+          "aPresses": 1,
+          "lateLongJumpSamples": [
+            {
+              "update": 39,
+              "action": 1145,
+              "timer": 4,
+              "depth": 0.0,
+              "pos": [
+                -5828.23046875,
+                79.40625762939453,
+                545.4820556640625
+              ],
+              "floorType": 55
+            },
+            {
+              "update": 40,
+              "action": 1145,
+              "timer": 5,
+              "depth": 0.0,
+              "pos": [
+                -5828.005859375,
+                89.03125762939453,
+                549.4266357421875
+              ],
+              "floorType": 55
+            }
+          ],
+          "anyLateCommonLandingSamples": [
+            {
+              "update": 39,
+              "action": 1145,
+              "timer": 4,
+              "depth": 0.0,
+              "pos": [
+                -5828.23046875,
+                79.40625762939453,
+                545.4820556640625
+              ],
+              "floorType": 55
+            },
+            {
+              "update": 40,
+              "action": 1145,
+              "timer": 5,
+              "depth": 0.0,
+              "pos": [
+                -5828.005859375,
+                89.03125762939453,
+                549.4266357421875
+              ],
+              "floorType": 55
+            }
+          ],
+          "negativeDepthSamples": [],
+          "actions": [
+            1145,
+            50333832,
+            75531353,
+            134218299,
+            201359904
+          ],
+          "inputFile": "poll-2472-one-a.inputs",
+          "inputSha256": "67e55b5d127d20985a27e1707977f37f7bbbb232234762ed4e9e54c82fed466d"
+        }
+      ]
+    },
+    {
+      "firstPoll": 2562,
+      "initial": {
+        "action": 67109952,
+        "timer": 3,
+        "depth": 0.0,
+        "pos": [
+          -5845.33935546875,
+          806.4995727539062,
+          924.2825927734375
+        ],
+        "floorType": 55
+      },
+      "trials": [
+        {
+          "aPresses": 0,
+          "lateLongJumpSamples": [],
+          "anyLateCommonLandingSamples": [],
+          "negativeDepthSamples": [],
+          "actions": [
+            75531353,
+            201359904
+          ],
+          "inputFile": "poll-2562-no-a.inputs",
+          "inputSha256": "71ed5fe1796f5f9ee6c6a51a60771e96d4b0224df0f4b793ef160af04aa06c09"
+        },
+        {
+          "aPresses": 1,
+          "lateLongJumpSamples": [],
+          "anyLateCommonLandingSamples": [],
+          "negativeDepthSamples": [],
+          "actions": [
+            131900,
+            50333832,
+            75531353
+          ],
+          "inputFile": "poll-2562-one-a.inputs",
+          "inputSha256": "e4c89796b3d128a4a58f20c8b3d80a80ffb76049d3b5b1127678a7a4f296bab1"
+        }
+      ]
+    }
+  ]
+}

@@ -599,3 +599,5 @@ proofs/InkWarpAcceptance.v
 proofs/PositionSplitCatalog.v
 proofs/TweesterGap.v
 proofs/InkJumpClamp.v
+proofs/InkLandingCallerSource.v
+proofs/InkLandingCallerGate.v

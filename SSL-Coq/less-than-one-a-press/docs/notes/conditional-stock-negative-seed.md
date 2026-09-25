@@ -20,7 +20,7 @@ The completed-call theorem, `ijc_completed_early_call_clamps_before_helpers`, re
 
 This closes the temporary-subtraction candidate at that checkpoint. It does not discharge every writer's live receiver, arithmetic bounds, action/timer history or controller-edge refinement. The late common-landing calculation remains the substantive producer to trace; no new no-A seed or complete impossibility result is claimed.
 
-The [next investigation prompt](late-common-landing-prompt.md) first asks whether a no-A continuation can reach that late write at all. Only a surviving candidate advances to the separate check that its incoming depth becomes negative and is not reset before use. This fixes the next task without claiming it has been executed.
+The [late-landing investigation](late-common-landing-investigation.md) has now checked the nine actual direct wrappers and connected continuation past their guards to the real cancellation callee returning zero. Controller-only one-A controls reach the late window; the twelve matching no-A controls do not. The latter are finite observations. The full returned-zero-to-duration connection, later timer preservation and first-constructor/input history remain open, so the seed-to-A theorem retains its stated conditions.
 
 ## Validation of the new connection
 

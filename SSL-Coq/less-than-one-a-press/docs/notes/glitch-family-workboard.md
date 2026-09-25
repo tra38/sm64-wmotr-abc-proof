@@ -104,9 +104,9 @@ The [whole-game position-split catalog](position-split-catalog.md) distinguishes
 
 **The question.** Can legal gameplay create and retain the unusually high display or useful negative-depth seed, rather than merely accepting it as a supplied setup?
 
-**What is already known.** The conditional stock seed theorem traces a useful negative endpoint to an A edge under its writer, landing, action and input conditions. A reached course-entry reset clears depth. Stock offsets and shell lifts do not supply the large gap, and ordinary Area 1 lacks the alternative anchor parents. Applying these checks to every history remains open.
+**What is already known.** The conditional stock seed theorem traces a useful negative endpoint to A under its stated gameplay conditions. The early quicksand-jump clamp and all nine direct landing wrappers now have real execution connections: a wrapper continues only after the cancellation callee returns zero. Paired controller controls reach late landing with A, but provide no no-A witness. A reached course-entry reset clears depth. Other display offsets and anchor restrictions retain their stated scopes.
 
-**First compute batch.** Discharge a concrete part of the stock seed theorem’s producer classification: enumerate the real depth writes and connect the first useful negative endpoint to its actual landing action, timer and constructor. Keep a temporary negative that is immediately clamped separate.
+**First compute batch.** Follow a real returned-zero common_landing_cancels call to its duration comparison and stored timer, using the live descriptor supplied by its checked wrapper. Then carry that bound through the following landing calls. Reuse the existing eight-writer inventory, clamp and first-long-jump proofs; do not repeat those local facts as new progress.
 
 **What a negative result would settle.** Close the seed claim for the specified stock history once its coverage conditions are derived. For a cross-course candidate, account for the reached reset or an actual producer after it; the existing reset proof alone does not classify every entry path.
 

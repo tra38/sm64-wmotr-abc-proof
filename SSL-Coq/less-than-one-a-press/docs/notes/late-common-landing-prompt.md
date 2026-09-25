@@ -1,6 +1,6 @@
 # Can no-A gameplay reach the late common-landing write?
 
-This is the next investigation prompt, not a new proof result. Reaching a late timer, subtracting from depth, and leaving a useful negative seed are separate claims. The existing stock duration gates permit late long-jump landing; they do not show that a player who has never pressed A can reach it.
+The [first investigation pass](late-common-landing-investigation.md) has now been carried out. It adds an actual caller connection and finite controller controls, while the complete no-A exclusion remains open. Reaching a late timer, subtracting from depth, and leaving a useful negative seed are separate claims. The original prompt is retained below.
 
 ## Prompt
 
@@ -22,4 +22,4 @@ Stay within defined, in-bounds gameplay; do not use memory corruption, arbitrary
 
 ## Current boundary
 
-The [conditional seed-to-A implication](conditional-stock-negative-seed.md) and the early quicksand-jump clamp checkpoint remain proved at their stated scopes. This prompt adds no gameplay exclusion and changes no route estimate.
+The [conditional seed-to-A implication](conditional-stock-negative-seed.md) and early quicksand-jump clamp checkpoint retain their scopes. The new caller proof excludes an unguarded direct-wrapper continuation; its remaining timer/history connections and finite controller results are recorded in the [investigation](late-common-landing-investigation.md). No complete no-A seed exclusion or route estimate change is claimed.
