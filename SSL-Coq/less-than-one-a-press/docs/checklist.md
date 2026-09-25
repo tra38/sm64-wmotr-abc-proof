@@ -217,10 +217,22 @@ These obligations currently block the clean-retail result.
   Twelve paired controller controls reach late landing in six one-A trials
   and none of the twelve no-A trials; these remain finite observations.
 
-- [ ] Complete the no-A late-write exclusion: connect returned-zero cancellation
-  to its live duration read, carry the timer bound through the following calls,
-  and derive the first-long-jump/physical-A history for every reached case.
+- [x] Connect the completed real cancellation call and all nine stock guards
+  to the actual duration read and stored timer bound. The
+  [new execution connection](../proofs/InkLandingCancellationCaller.v) resolves
+  the real callback and descriptor address, derives the integer increment and
+  signed duration read, and proves that the bound survives until return. It
+  assumes neither an incoming timer value nor harmless cancellation helpers.
+
+- [ ] Complete the no-A late-write exclusion: preserve the stock four-or-six
+  descriptor values at the proved read, carry the returned timer bound through
+  the following calls, and derive the first-long-jump/physical-A history for
+  every reached case. Named audio/DMA effects and storage conditions remain
+  explicit in the existing later-call theorems.
   The caller connection does not itself discharge these conditions.
+  Stop once useful negative depth implies late landing and late landing implies
+  an earlier physical A press: that is enough to mark this producer insufficient
+  for no-A gameplay. A-using seed sizes and the later Ink route are not required.
 
 - [ ] Establish or refute a useful negative seed with A never pressed,
   including the newly requested cross-course search. A seed cannot persist

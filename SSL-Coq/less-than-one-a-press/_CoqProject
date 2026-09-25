@@ -601,3 +601,8 @@ proofs/TweesterGap.v
 proofs/InkJumpClamp.v
 proofs/InkLandingCallerSource.v
 proofs/InkLandingCallerGate.v
+proofs/InkLandingCancellationSource.v
+proofs/InkLandingCancellationReturn.v
+proofs/InkLandingDurationRead.v
+proofs/InkLandingCancellationGate.v
+proofs/InkLandingCancellationCaller.v

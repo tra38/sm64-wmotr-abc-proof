@@ -6,7 +6,7 @@ The assumption is substantial: every completed depth change must be one of the e
 
 The proof follows the connected depth values through the whole finite classified sequence. At the first negative landing, the existing generated-code theorem forces long-jump landing at timer 4 or 5. The existing first-target theorem then forces an A edge, which the input refinement turns into a physical A press. The argument allows any finite number of earlier safe writes; it is not an extrapolation from sampled trials. Temporary negatives inside a writer that immediately clamps them are not exposed as endpoints here.
 
-This settles the requested conditional claim. Applying it to every stock gameplay history still requires proving the classification, action-prefix and input refinements. It does not settle the no-A seed search throughout the game or the Ink route. The separate course-entry reset proof remains unchanged.
+This settles the requested conditional claim. The necessary-condition chain is sufficient for insufficiency: useful negative depth implies late landing, and late landing implies an earlier physical A press. Once those links apply to the allowed executions, there is no need to establish the size of any A-using seed or test its later Ink continuation. Applying it to every stock gameplay history still requires proving the classification, action-prefix and input refinements. It does not settle the no-A seed search throughout the game or the Ink route. The separate course-entry reset proof remains unchanged.
 
 Proof: [InkStockSeedConditional.v](../../proofs/InkStockSeedConditional.v), especially `isc_useful_negative_seed_requires_physical_a` and `isc_no_a_excludes_classified_negative_seed`.
 
@@ -20,9 +20,9 @@ The completed-call theorem, `ijc_completed_early_call_clamps_before_helpers`, re
 
 This closes the temporary-subtraction candidate at that checkpoint. It does not discharge every writer's live receiver, arithmetic bounds, action/timer history or controller-edge refinement. The late common-landing calculation remains the substantive producer to trace; no new no-A seed or complete impossibility result is claimed.
 
-The [late-landing investigation](late-common-landing-investigation.md) has now checked the nine actual direct wrappers and connected continuation past their guards to the real cancellation callee returning zero. Controller-only one-A controls reach the late window; the twelve matching no-A controls do not. The latter are finite observations. The full returned-zero-to-duration connection, later timer preservation and first-constructor/input history remain open, so the seed-to-A theorem retains its stated conditions.
+The [late-landing investigation](late-common-landing-investigation.md) now connects the nine stock guards to the completed cancellation, actual duration read and returned timer bound. It resolves the real descriptor address and jump callback, derives both integer values from execution and proves that the successful post-gate checks leave memory unchanged. Controller-only one-A controls reach the late window; the twelve matching no-A controls do not. Those remain finite observations. Stock descriptor preservation, later timer preservation and first-constructor/input history remain open, so the seed-to-A theorem retains its stated conditions. The linked investigation records the newer cancellation audit.
 
-## Validation of the new connection
+## Validation of the early-clamp connection
 
 The selected audit passed on 25 September 2026 at `build/audit/20260925-142547-w9g34lco`. It checked compilation, proof holes, source links, allowed foundations and integration: 597 registered source files; 427 of 521 proof modules in the main import closure; 94 standalone modules. The main backward boundary uses nine allowed foundations. The completed early call, its classified-history connection and the existing seed-to-A theorem each use seven; the two direct-writer censuses use four each. No project axiom was added.
 

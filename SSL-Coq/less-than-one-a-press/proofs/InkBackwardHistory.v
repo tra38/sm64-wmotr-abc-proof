@@ -12,7 +12,8 @@ From LessThanOneAPress.Proofs Require Import
   InkRetryCompletion InkRetryQuery InkVerticalRetryGeometry InkRetryCallCompletion
   InkDialogInteractionGate InkVerticalLiveSelection InkWarpStop InkPlatformDeparture
   InkPlatformMovement InkPlatformDistance InkCourseEntryReset InkStockSeedConditional
-  InkJumpClamp InkLandingCallerGate InkWarpAcceptance.
+  InkJumpClamp InkLandingCallerGate InkLandingCancellationGate
+  InkLandingCancellationCaller InkWarpAcceptance.
 
 Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkLandingHistoryCheckedBoundary /\
@@ -33,7 +34,8 @@ Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkDialogInteractionGateBoundary /\ InkVerticalLiveSelectionBoundary /\
   InkWarpStopCopyCheckpoint /\ InkPlatformDepartureBoundary /\ InkPlatformMovementBoundary /\
   InkPlatformDistanceBoundary /\ InkCourseEntryResetBoundary /\ InkStockSeedConditionalBoundary /\
-  InkJumpClampBoundary /\ InkLandingCallerGateBoundary /\ InkWarpAcceptanceBoundary.
+  InkJumpClampBoundary /\ InkLandingCallerGateBoundary /\
+  InkCompletedCancellationGate /\ InkStockCancellationGuard /\ InkWarpAcceptanceBoundary.
 
 Theorem ibh_backward_histories_checked : InkBackwardHistoryCheckedBoundary.
 Proof.
@@ -80,5 +82,7 @@ Proof.
   split; [exact isc_useful_negative_seed_requires_physical_a|].
   split; [exact ijc_jump_clamp_boundary_checked|].
   split; [exact ilw_landing_caller_gate_checked|].
+  split; [exact icz_completed_zero_return_reaches_duration_gate|].
+  split; [exact icz_stock_guard_reaches_live_duration|].
   exact iwa_warp_acceptance_boundary_checked.
 Qed.
