@@ -1377,6 +1377,15 @@ concrete clean-retail predecessor needed to outrank the linked installer proof.
 
 ### Shell and wall interactions
 
+- [x] Review the shell's normal wall/step/cancel paths and add the
+  [shell-gap diagnostic](../instrumentation/shell-gap/README.md): both US/JP
+  builds pass 7760 supplied outcome/height cases and repeated calls, plus
+  two early exits. Maximum tested gap is 45. This uses helper test doubles,
+  not live gameplay, and adds no Coq theorem or all-history exclusion.
+- [ ] Find or exclude the separate later downward State writer needed to
+  enlarge the retained shell offset by at least 1125.864868 units at the
+  fixed anchor; include collision contact and refresh timing.
+
 - [ ] Refine shell/wall behavior to binary32 Clight memory, prove pointer
   non-aliasing and all relevant callers, disable the debug-spawn path, and
   close every reachable Graphics/action/flag writer.

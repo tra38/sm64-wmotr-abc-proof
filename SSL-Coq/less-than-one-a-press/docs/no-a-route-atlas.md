@@ -718,13 +718,7 @@ This could create the entire Ink gap at once.
 **In plain language.** Use the shell's small visual lift and a wall-selected or
 cached floor to try to preserve and enlarge a Graphics gap.
 
-**What is already known.** The stock shell offsets are around `+42/+45`, far
-below `960`, and the normal behavior reanchors instead of accumulating them
-forever.  Under well-formed non-aliasing state, a successful shell interaction
-has no immediate Mario-coordinate write.  A failed contact pushes State X/Z
-toward the stock radius-`89` boundary, but no total live-wall bound is proved.
-Ground and air shell paths reset quicksand depth.  These effects have not
-supplied the missing large gap.
+**What is already known.** The normal shell offsets are `+42` in air and `+45` on the ground, far below the supplied `1170.8648681640625`-unit gap. The [shell investigation](notes/shell-gap-investigation.md) follows wall stops, in-step missing floors, action exits, water, quicksand, speed and the shell actor's copy direction. Normal movement refreshes before the addition; early shell exits add nothing. A native US/JP diagnostic checks 7760 supplied outcome/height cases and repeated calls per build, using explicit helper test doubles rather than live terrain or controller histories. It finds no stacking. Existing Coq copy and normal-frame results retain their scope; this adds no universal shell exclusion. At actual Y=768 the normal display is 810 or 813, so a later writer would still need at least another 1125.864868 units of downward separation. A successful mount has no immediate coordinate write under the existing storage conditions; failed contact can push X/Z, and normal riding clears quicksand depth.
 
 **What closes it.** Linked live-range writer coverage can turn this into a clean impossibility result; a counterexample would need an unusual schedule, valid alias, or another mechanism that first creates most of the gap.  Ordinary platform or PU motion alone preserves an existing gap rather than creating one from a synchronized start, and turning-animation metadata also preserves the three positions.  A valid overlapping buffer remains an in-scope alias question, while actual asynchronous DMA is outside the current Clight execution and needs explicit machine or external semantics.
 

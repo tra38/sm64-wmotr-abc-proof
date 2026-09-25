@@ -555,13 +555,13 @@
       "id": "shell",
       "number": 17,
       "title": "The shell gives Mario a display offset",
-      "status": "Insufficient alone · source review",
+      "status": "Insufficient alone · source review + finite check",
       "effect": "Shell riding updates the display and adds a riding or tilting offset. In the airborne action, the code adds 42 to display Y.",
       "prerequisite": "A Koopa shell and the corresponding riding action.",
       "area1": "Yes. The stock shell box is at (5840,940,2500).",
-      "timing": "The next action may erase or recompute the offset. Forty-two units also does not, by itself, supply the large Ink gap.",
-      "evidence": "The local shell-offset and refresh results are already checked. A clever combination with walls, floors or an interruption is still a separate question.",
-      "missing": "Find the exact moment when the offset can be used before refresh, or prove that the proposed interruption cannot do that.",
+      "timing": "Ground and air movement refresh before adding 45 or 42, including wall-stop and in-step missing-floor results. A canceled action adds no shell offset. Later non-shell writers need separate analysis.",
+      "evidence": "The normal copy and local source-shape proofs remain scoped. The shell branch diagnostic passes 7760 supplied outcome/height cases and their repeated calls in each US/JP build, plus two early exits. It uses explicit helper test doubles, not live terrain or controller histories.",
+      "missing": "A shell-assisted route still needs a separate downward State writer: at the fixed anchor, another 1125.864868 units after a ground offset. Prove its live helpers, timing and contact before promoting the whole case.",
       "functions": [
         "act_riding_shell_air",
         "tilt_body_ground_shell"
@@ -575,13 +575,13 @@
       "gap": {
         "amount": "+42 airborne; +45 on the ground, per ordinary refresh",
         "verdict": "Insufficient alone — source arithmetic",
-        "detail": "The airborne shell action adds 42 after the air-step copy. The grounded shell tilt adds 45. At actual Y=768 those give display Y=810 or 813, far short of 1938.864868.",
-        "limit": "Do not sum the two constants or accumulate them over frames without showing a skipped refresh. A different later State drop is a separate producer.",
-        "basis": "Source constants + fixed-anchor arithmetic"
+        "detail": "At actual Y=768, the shell leaves display Y=810 in air or 813 on the ground. Wall results still pass through the step copy; early A/Z returns add nothing. The native helper-outcome diagnostic found no stacking. See the shell-gap investigation for water, quicksand, speed, mounting and later-writer distinctions.",
+        "limit": "No shell-specific amplifier was found. This is not a universal bound on shell-assisted histories: another support, dialog or later State write could enlarge a retained small offset, and still needs a concrete useful continuation.",
+        "basis": "Existing scoped proofs + source review + finite native branch diagnostic"
       },
       "review": {
         "group": "insufficient",
-        "summary": "The ordinary 42/45-unit offsets are far too small. A skipped refresh or extra State drop would require an additional producer."
+        "summary": "Walls do not stack the 42/45-unit shell offset. Keep this scoped insufficiency separate from a later non-shell drop; this batch adds no Coq closure."
       }
     },
     {

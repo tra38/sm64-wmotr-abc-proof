@@ -75,7 +75,7 @@ The review separates six scoped insufficient cases, five helpers, four concrete 
 | 14 | [A Tweester can move Mario, but it also updates the display](#split-tornado) | Insufficient at normal copy · other checkpoints open |
 | 15 | [Yes, the desert has swimming offsets](#split-water) | Insufficient in the checked expression |
 | 16 | [The oasis does not come with a whirlpool](#split-whirlpool) | Ruled out · stock lists |
-| 17 | [The shell gives Mario a display offset](#split-shell) | Insufficient alone · source review |
+| 17 | [The shell gives Mario a display offset](#split-shell) | Insufficient alone · source review + finite check |
 | 18 | [Negative depth plus a dialog that keeps the display](#split-quicksand) | Open · conditional setup allowed |
 | 19 | [A dialog can keep a gap; it cannot create one by pausing](#split-dialog) | Helper · needs an earlier height gap |
 | 20 | [Bringing a gap through a warp or level entry](#split-warp-reset) | Mixed · the actual transition matters |
@@ -600,15 +600,15 @@ Related atlas ranks: 2, 5, 19, 21.
 
 ### 17 — The shell gives Mario a display offset
 
-**Role in this review.** The ordinary 42/45-unit offsets are far too small. A skipped refresh or extra State drop would require an additional producer.
+**Role in this review.** Walls do not stack the 42/45-unit shell offset. Keep this scoped insufficiency separate from a later non-shell drop; this batch adds no Coq closure.
 
 **Gap sizing: +42 airborne; +45 on the ground, per ordinary refresh.** Insufficient alone — source arithmetic
 
-The airborne shell action adds 42 after the air-step copy. The grounded shell tilt adds 45. At actual Y=768 those give display Y=810 or 813, far short of 1938.864868.
+At actual Y=768, the shell leaves display Y=810 in air or 813 on the ground. Wall results still pass through the step copy; early A/Z returns add nothing. The native helper-outcome diagnostic found no stacking. See the shell-gap investigation for water, quicksand, speed, mounting and later-writer distinctions.
 
-**Limits.** Do not sum the two constants or accumulate them over frames without showing a skipped refresh. A different later State drop is a separate producer.
+**Limits.** No shell-specific amplifier was found. This is not a universal bound on shell-assisted histories: another support, dialog or later State write could enlarge a retained small offset, and still needs a concrete useful continuation.
 
-**Evidence level.** Source constants + fixed-anchor arithmetic
+**Evidence level.** Existing scoped proofs + source review + finite native branch diagnostic
 
 **What happens to Mario.** Shell riding updates the display and adds a riding or tilting offset. In the airborne action, the code adds 42 to display Y.
 
@@ -616,11 +616,11 @@ The airborne shell action adds 42 after the air-step copy. The grounded shell ti
 
 **Can SSL supply it.** Yes. The stock shell box is at (5840,940,2500).
 
-**Does the gap last long enough.** The next action may erase or recompute the offset. Forty-two units also does not, by itself, supply the large Ink gap.
+**Does the gap last long enough.** Ground and air movement refresh before adding 45 or 42, including wall-stop and in-step missing-floor results. A canceled action adds no shell offset. Later non-shell writers need separate analysis.
 
-**What we know.** The local shell-offset and refresh results are already checked. A clever combination with walls, floors or an interruption is still a separate question.
+**What we know.** The normal copy and local source-shape proofs remain scoped. The shell branch diagnostic passes 7760 supplied outcome/height cases and their repeated calls in each US/JP build, plus two early exits. It uses explicit helper test doubles, not live terrain or controller histories.
 
-**What is left to check.** Find the exact moment when the offset can be used before refresh, or prove that the proposed interruption cannot do that.
+**What is left to check.** A shell-assisted route still needs a separate downward State writer: at the fixed anchor, another 1125.864868 units after a ground offset. Prove its live helpers, timing and contact before promoting the whole case.
 
 Stock source: [act_riding_shell_air](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario_actions_airborne.c#L656); [tilt_body_ground_shell](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario_actions_moving.c#L745).
 
