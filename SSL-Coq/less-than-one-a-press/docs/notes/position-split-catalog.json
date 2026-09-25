@@ -54,7 +54,13 @@
       "review": {
         "group": "insufficient",
         "summary": "The completed ground copy supplies zero gap, already proved. Do not reopen that checkpoint merely because other actions exist."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "proved",
+          "scope": "Completed ground-copy checkpoint only; other exits and later writers are separate."
+        }
+      ]
     },
     {
       "id": "geometry-retry",
@@ -90,7 +96,13 @@
       "review": {
         "group": "helper",
         "summary": "This is the consumer that makes the supplied Ink setup useful. It needs the earlier raised display; it does not manufacture it."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "helper",
+          "scope": "Consumes an existing gap; it does not supply the raised display."
+        }
+      ]
     },
     {
       "id": "floor-animation",
@@ -124,7 +136,13 @@
       "review": {
         "group": "producer",
         "summary": "Check a reached downward floor snap or animation translation, then the next display copy. A useful retained size has not been bounded."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "live",
+          "scope": "A downward writer exists; reachable size and surviving copies remain unproved."
+        }
+      ]
     },
     {
       "id": "platform",
@@ -161,7 +179,13 @@
       "review": {
         "group": "producer",
         "summary": "A downward support move can separate movement from display. Collision stays with display during the proved platform phase, so another copy must complete the useful pair."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "live",
+          "scope": "Support movement can separate records; useful support, size and timing remain unproved."
+        }
+      ]
     },
     {
       "id": "chuckya-anchor",
@@ -306,7 +330,13 @@
       "review": {
         "group": "helper",
         "summary": "The direct writes are sideways. They may help lose a floor, but an independent height producer must already exist."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "helper",
+          "scope": "Sideways movement can help reach a query; it does not supply the height gap."
+        }
+      ]
     },
     {
       "id": "bounce",
@@ -342,7 +372,13 @@
       "review": {
         "group": "producer",
         "summary": "The hitbox-top snap changes actual Y. We still need a reachable SSL incoming pose with a large enough downward change and a surviving display."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "live",
+          "scope": "A height assignment exists; a useful large retained gap has not been demonstrated."
+        }
+      ]
     },
     {
       "id": "absent-launch",
@@ -409,7 +445,17 @@
       "review": {
         "group": "insufficient",
         "summary": "No pole beside the Area-1 top warp. The distant palm tree uses pole actions, whose normal placement copies the display. A local ledge release is only a nominal 100-unit drop; neither is an established source of the supplied gap."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "geometry",
+          "scope": "No pole beside the Area-1 warp and no checked hangable Area-1/top triangles: stock-data check, not a whole-history theorem."
+        },
+        {
+          "category": "source",
+          "scope": "The remote tree and ordinary ledges remain separate; their full transfer/exit histories are not excluded."
+        }
+      ]
     },
     {
       "id": "cannon",
@@ -443,7 +489,17 @@
       "review": {
         "group": "insufficient",
         "summary": "Normal launch needs an A edge and moves actual Mario upward, leaving the wrong sign of gap. An unusual exit would be a separate claim."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "constraints",
+          "scope": "Normal cannon firing requires an A press; this excludes that launch in the no-new-A route, not the stock cannon itself."
+        },
+        {
+          "category": "finite",
+          "scope": "The normal-launch sizing calculation is finite, not a proof of every cannon-related history."
+        }
+      ]
     },
     {
       "id": "tornado",
@@ -484,7 +540,13 @@
       "review": {
         "group": "insufficient",
         "summary": "The completed normal Tweester copy supplies zero gap, already proved for either internal floor result. Transporting the enemy does not change that checkpoint."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "proved",
+          "scope": "Normal non-ejecting copy checkpoint only; transport, ejection and later writers are separate."
+        }
+      ]
     },
     {
       "id": "water",
@@ -521,7 +583,13 @@
       "review": {
         "group": "insufficient",
         "summary": "The checked single-refresh pitch/bob expression is below 208 units, even granting independent maxima. The oasis is distant; a separate clamp or later downward move would need its own case."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "finite",
+          "scope": "The checked expression envelope is insufficient. The oasis exists; all water histories are not excluded."
+        }
+      ]
     },
     {
       "id": "whirlpool",
@@ -582,7 +650,13 @@
       "review": {
         "group": "insufficient",
         "summary": "Walls do not stack the 42/45-unit shell offset. Keep this scoped insufficiency separate from a later non-shell drop; this batch adds no Coq closure."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "finite",
+          "scope": "Source review and supplied-helper branch tests find no stacking; later non-shell writers remain separate."
+        }
+      ]
     },
     {
       "id": "quicksand",
@@ -617,7 +691,13 @@
       "review": {
         "group": "producer",
         "summary": "Negative depth can raise display arithmetically. The grant permits a transfer test, not arbitrary depth magnitude, a useful floor loss or a clean no-A seed."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "live",
+          "scope": "Large enough arithmetically; a useful no-A seed and surviving gameplay combination are unproved."
+        }
+      ]
     },
     {
       "id": "dialog",
@@ -653,7 +733,13 @@
       "review": {
         "group": "helper",
         "summary": "A pause may keep an existing display. The sand subtraction, if any, supplies the height and is counted separately."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "helper",
+          "scope": "Can preserve a gap; does not create the original height separation."
+        }
+      ]
     },
     {
       "id": "warp-reset",
@@ -694,7 +780,17 @@
       "review": {
         "group": "not-local",
         "summary": "Area 1 has no stock instant-warp table. The Area-2/3 instant warps displace by zero and occur after our checkpoint. Ordinary warp-entry and imported-state histories remain separate."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "geometry",
+          "scope": "No Area-1 instant-warp command in the stock data."
+        },
+        {
+          "category": "source",
+          "scope": "Other relocation contexts are not proved universally unreachable; the accepted SSL warp tail has its separate proof."
+        }
+      ]
     },
     {
       "id": "butterfly",
@@ -756,7 +852,13 @@
       "review": {
         "group": "not-local",
         "summary": "An ending-scene relocation is not a stock SSL reward or action entry. A legal SSL first constructor would be needed before it becomes a gameplay candidate."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "coverage",
+          "scope": "No legitimate SSL entry into the cited ending motion is established. Missing reachability is not proof of unavailability."
+        }
+      ]
     },
     {
       "id": "debug",
@@ -787,7 +889,13 @@
       "review": {
         "group": "not-local",
         "summary": "Injected debug-action entry is outside this controller-gameplay task. Listing its code does not make a new route."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "constraints",
+          "scope": "Injected debug actions are excluded by the ordinary controller-driven stock-gameplay model."
+        }
+      ]
     },
     {
       "id": "render",
@@ -823,7 +931,13 @@
       "review": {
         "group": "not-local",
         "summary": "Moving the camera, a mirror proxy or a draw matrix does not change the stored display used by the retry. A genuine write to Mario would need to be identified separately."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "record",
+          "scope": "Camera motion and a separate mirror object do not themselves write live Mario’s stored display; an actual writer would need separate evidence."
+        }
+      ]
     },
     {
       "id": "generic-objects",
@@ -863,7 +977,13 @@
       "review": {
         "group": "ownership",
         "summary": "This is a coverage question, not one measured gap producer. Distinct-child copies preserve Mario in the existing local proofs; other actual receivers still need checking."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "coverage",
+          "scope": "Known distinct-child copies do not move Mario; remaining receiver/callback coverage is not a demonstrated height trick."
+        }
+      ]
     },
     {
       "id": "copies-pauses",
@@ -896,7 +1016,13 @@
       "review": {
         "group": "helper",
         "summary": "A collision copy can make an already-low actual position available to contact. A skipped update preserves values; neither supplies the earlier height change."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "helper",
+          "scope": "Transfers or preserves an existing split; skipping alone supplies no movement."
+        }
+      ]
     },
     {
       "id": "query-alias",
@@ -930,7 +1056,13 @@
       "review": {
         "group": "helper",
         "summary": "Coordinate conversion changes the query input, not the three stored positions. A resulting snap or retry is counted under its actual writer."
-      }
+      },
+      "outcomes": [
+        {
+          "category": "helper",
+          "scope": "Changes a query input or answer; a resulting position write belongs to another case."
+        }
+      ]
     }
   ],
   "gapReview": {
@@ -965,5 +1097,43 @@
       "title": "Which object is being written?",
       "explanation": "One entry collects receiver and callback coverage. A particle moving is not Mario moving; any exception needs an actual Mario receiver."
     }
-  ]
+  ],
+  "outcomeCategories": {
+    "proved": {
+      "label": "01 · Already proved — insufficient",
+      "style": "proved"
+    },
+    "geometry": {
+      "label": "Geometrically unavailable — scoped",
+      "style": "unavailable"
+    },
+    "constraints": {
+      "label": "Unavailable under route constraints — scoped",
+      "style": "unavailable"
+    },
+    "finite": {
+      "label": "Only finite-tested — not broadly proved",
+      "style": "finite"
+    },
+    "live": {
+      "label": "Still live — producer unproved",
+      "style": "live"
+    },
+    "helper": {
+      "label": "Helper only — not a gap source",
+      "style": "helper"
+    },
+    "source": {
+      "label": "Source review only — not broadly proved",
+      "style": "source"
+    },
+    "coverage": {
+      "label": "Coverage unresolved — not a demonstrated lead",
+      "style": "source"
+    },
+    "record": {
+      "label": "Not a stored-position gap source — scoped",
+      "style": "helper"
+    }
+  }
 }

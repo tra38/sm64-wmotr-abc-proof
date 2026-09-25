@@ -1434,3 +1434,8 @@ the formal cut and coverage boundaries behind these rankings, use
 [route exhaustiveness](notes/route-exhaustiveness.md).  For the most detailed
 installer-mechanism matrix, use the
 [local-Object/nonlocal-State gap matrix](notes/local-object-nonlocal-state-gap-matrix.md).
+
+
+### Reading the 20-case gap comparison
+
+The [gap catalog](notes/position-split-catalog.md) now labels every “What that tells us” cell by its scoped verdict and evidence: proved insufficient, geometrically unavailable, unavailable under route constraints, finite-tested, still-live producer, or helper only. Source-only and unresolved-coverage labels prevent an unproved route from being called impossible. Some rows have two labels because a missing local pole does not exclude a remote tree or ordinary ledge. These are bookkeeping categories, not new proofs; all route estimates are unchanged.

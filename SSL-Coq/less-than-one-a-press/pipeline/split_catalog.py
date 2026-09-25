@@ -273,7 +273,8 @@ def render_markdown(catalog, index):
         if row['section'] == 'catalog':
             gap = row['gap']
             title = next(g['title'] for g in catalog['gapReviewGroups'] if g['id'] == row['review']['group'])
-            lines.append(f"| [{row['number']:02} — {row['id']}](#split-{row['id']}) | {title} | {gap['amount']} | {gap['verdict']} |")
+            outcome = "<br>".join(catalog["outcomeCategories"][o["category"]]["label"] + ": " + o["scope"] for o in row["outcomes"])
+            lines.append(f"| [{row['number']:02} — {row['id']}](#split-{row['id']}) | {title} | {gap['amount']} | {outcome}<br>{gap['verdict']} |")
     lines += ["", "## All 27 cases at a glance", "",
         "| # | Situation | SSL / current verdict |", "| --- | --- | --- |"]
     for row in catalog["situations"]:

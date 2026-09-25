@@ -1432,3 +1432,8 @@ each result does and does not prove—is preserved in the
   continuation results.
 - [Route cuts and downstream geometry](checklist-completed.md#route-cuts-and-downstream-geometry)
   — Area-2 cut geometry and post-gate route algorithms.
+
+
+### Gap-catalog verdict presentation
+
+- [x] Classify all 20 reviewed rows with scoped evidence labels in the comparison verdict column, including helper-only roles. Preserve unknown reachability as unknown; do not promote source review or finite trials into Coq exclusions. No new theorem or changed atlas estimate.
