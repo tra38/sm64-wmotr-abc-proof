@@ -14,6 +14,10 @@
   and one ownership question. Check stock pole/mesh locality: no pole beside
   the Area-1 top warp; the distant tree uses pole actions, and the two ordinary
   poles belong to Area 2. These are source-data checks, not new Coq closures.
+- [x] Mark the five helper-only entries visibly on the private site. Purple
+  banners distinguish consumers, sideways help, preservation, transfer and
+  query-only changes from original height producers. Defer these helpers
+  until a viable producer needs them; do not label them new proofs or useless.
 
 - [ ] For the supplied Ink height pair, exhibit a reached downward-position
   writer or raised-display producer large enough to help, then check the

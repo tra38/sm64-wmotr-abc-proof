@@ -16,6 +16,15 @@ Every entry now has a role in the [full catalog](position-split-catalog.md):
 | Four other-context or lookalike cases | Instant-warp/entry variants, ending cutscenes, debug entry, render/proxy changes | No local stock producer is identified for the proposed variant. These are source/scope judgments, not new universal action-history proofs. |
 | One ownership question | Generic object helpers | The next deliverable is an actual writer and receiver, not a guessed common height bound. |
 
+The five helper rows have purple **Helper only / not a gap source**
+banners on the site, visible before opening a case and again beside its
+details and table entry. Floor retry consumes a gap; pushes help sideways;
+dialog preserves it; a collision copy or skipped update transfers or preserves
+it; query aliasing changes what the query sees. Set these aside while looking
+for the original height difference, then revisit them when a concrete producer
+needs that supporting step. The banners are role labels, separate from green
+**Already proved**. No proof verdict or route estimate changes.
+
 The user's pole point is specifically about **beside the pyramid-top warp
 in Area 1**. There is no pole there. The distant palm tree at
 `(-5989,0,-4850)` uses the pole interaction; its presence does not put a pole
