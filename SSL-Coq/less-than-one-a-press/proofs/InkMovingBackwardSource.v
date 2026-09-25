@@ -15,17 +15,20 @@ Import ListNotations.
 Import Clightdefs.ClightNotations.
 Module IMB := us_mario_actions_moving.
 
-Inductive InkMovingBody := IMBAlign | IMBLanding | IMBCrouch.
+Inductive InkMovingBody := IMBAlign | IMBLanding | IMBCrouch | IMBJumpClamp.
 Definition imb_body version kind := match version, kind with
 | VersionUS, IMBAlign => us_mario_actions_moving.f_align_with_floor
 | VersionJP, IMBAlign => jp_mario_actions_moving.f_align_with_floor
 | VersionUS, IMBLanding => us_mario_actions_moving.f_common_landing_action
 | VersionJP, IMBLanding => jp_mario_actions_moving.f_common_landing_action
 | VersionUS, IMBCrouch => us_mario_actions_moving.f_act_crouch_slide
-| VersionJP, IMBCrouch => jp_mario_actions_moving.f_act_crouch_slide end.
+| VersionJP, IMBCrouch => jp_mario_actions_moving.f_act_crouch_slide
+| VersionUS, IMBJumpClamp => us_mario_actions_moving.f_quicksand_jump_land_action
+| VersionJP, IMBJumpClamp => jp_mario_actions_moving.f_quicksand_jump_land_action end.
 Definition imb_ident kind := match kind with
 | IMBAlign => IMB._align_with_floor | IMBLanding => IMB._common_landing_action
-| IMBCrouch => IMB._act_crouch_slide end.
+| IMBCrouch => IMB._act_crouch_slide
+| IMBJumpClamp => IMB._quicksand_jump_land_action end.
 
 Lemma imb_us_source : forall kind,
   nth_error IMB.global_definitions

@@ -9,3 +9,19 @@ The proof follows the connected depth values through the whole finite classified
 This settles the requested conditional claim. Applying it to every stock gameplay history still requires proving the classification, action-prefix and input refinements. It does not settle the no-A seed search throughout the game or the Ink route. The separate course-entry reset proof remains unchanged.
 
 Proof: [InkStockSeedConditional.v](../../proofs/InkStockSeedConditional.v), especially `isc_useful_negative_seed_requires_physical_a` and `isc_no_a_excludes_classified_negative_seed`.
+
+## The subtraction that does not leave a seed
+
+The 25 September writer review found that the catalog already exists: the generated US and JP source checks name the same eight direct writers, and a fresh search of the pinned C source finds no extra course-specific writer. An inventory of names alone is not the missing proof. We must connect each reached write, including its actual receiver and surrounding calls, to the outcomes used by the conditional theorem.
+
+[InkJumpClamp.v](../../proofs/InkJumpClamp.v) supplies one of those connections. In the real `quicksand_jump_land_action`, an incoming timer from 0 through 5 takes the early branch. The code increments it first, so the subtraction uses 1 through 6. A raw result below 1 is replaced with the game's binary32 value for 1.1 before the sound and animation calls. The proof follows the actual field reads and stores, not a replacement arithmetic routine.
+
+The completed-call theorem, `ijc_completed_early_call_clamps_before_helpers`, retains that call's entry, timer increment, subtraction, clamp, helper suffix, movement suffix and return. At the checkpoint before the helpers, the stored depth is finite and nonnegative, assuming the raw subtraction is finite and the MarioState offsets do not wrap. `ijc_pair_extends_classified_history` connects the actual store pair to the existing safe-writer constructor. No premise says that later sound, animation or movement leaves depth alone, and no conclusion says that the final returned depth is safe regardless of those later calls.
+
+This closes the temporary-subtraction candidate at that checkpoint. It does not discharge every writer's live receiver, arithmetic bounds, action/timer history or controller-edge refinement. The late common-landing calculation remains the substantive producer to trace; no new no-A seed or complete impossibility result is claimed.
+
+## Validation of the new connection
+
+The selected audit passed on 25 September 2026 at `build/audit/20260925-142547-w9g34lco`. It checked compilation, proof holes, source links, allowed foundations and integration: 597 registered source files; 427 of 521 proof modules in the main import closure; 94 standalone modules. The main backward boundary uses nine allowed foundations. The completed early call, its classified-history connection and the existing seed-to-A theorem each use seven; the two direct-writer censuses use four each. No project axiom was added.
+
+The dependency rebuild exceeded the first 600-second allowance. The successful resumed audit used `--build-timeout 1800 --assumption-timeout 240` with the established memory cap unchanged. Its six selected targets were the main backward boundary, `ijc_completed_early_call_clamps_before_helpers`, `ijc_pair_extends_classified_history`, `isc_useful_negative_seed_requires_physical_a`, and the US/JP direct-writer census theorems. This is a selected dependency audit, not a fresh build of all standalone modules or a proof of whole-game reachability.

@@ -200,6 +200,15 @@ These obligations currently block the clean-retail result.
 
 - [x] Assemble the [conditional stock seed-to-A chain](notes/conditional-stock-negative-seed.md): a finite connected history of classified writer outcomes, with the stock landing gates, legitimate first constructors and physical-edge refinement, cannot finish negative without a physical A press. These coverage premises remain explicit; their application to all gameplay is not proved.
 
+- [x] Connect the actual US/JP quicksand-jump subtraction and immediate clamp
+  to that safe-writer classification. [InkJumpClamp.v](../proofs/InkJumpClamp.v)
+  follows a completed early call from incoming timer 0–5, through the real
+  increment and depth stores, to a finite nonnegative checkpoint before the
+  sound/animation helpers. The raw arithmetic must be finite and the state
+  offsets must not wrap. The same call's later helpers, movement and return
+  are retained; their depth effects are not assumed harmless. The existing
+  eight-function direct-writer census was rechecked against the pinned C.
+
 - [ ] Establish or refute a useful negative seed with A never pressed,
   including the newly requested cross-course search. A seed cannot persist
   unchanged through the proved reset; a proposed import must explain a
@@ -1039,8 +1048,9 @@ These obligations currently block the clean-retail result.
 
 - [ ] Derive that source-shaped split from linked Clight expression and
   control execution, derive the remaining binary32 relation and finite/
-  no-overflow premises from every reachable linked writer, prove
-  quicksand-jump store/clamp non-interleaving, and exclude forged timer
+  no-overflow premises from every reachable linked writer, connect
+  the remaining consumers and writer histories beyond the now-checked early
+  quicksand-jump store/clamp checkpoint, and exclude forged timer
   `4/5`, mutable-descriptor and defined aliased stores, plus specified external
   effects.  Out-of-bounds producers require a later machine-level model.
 

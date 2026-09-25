@@ -23,7 +23,7 @@ eight functions that directly write Mario's depth; that census covers the
 | Submerged action dispatcher | Assigns zero. |
 | Quicksand update | Clears, raises to 1.1, adds the caller's positive sinking speed, or applies a positive cap. The three source callers supply 0.25 or 0.5. |
 | Quicksand death | Adds 5. |
-| Quicksand jump landing | Subtracts, then immediately replaces a result below 1 with 1.1. An intermediate negative store is not a surviving seed. |
+| Quicksand jump landing | Subtracts, then immediately replaces a result below 1 with 1.1. The new US/JP execution proof follows the early call to this safe stored checkpoint before the next helper. |
 | Common landing | Adds `(4 - actionTimer) * 3.5 - 0.5`. This is the important remaining producer. |
 
 The checked landing arithmetic needs a timer of at least four for a first
@@ -40,6 +40,23 @@ The existing proofs keep the live action history, landing timer, pointer
 identity and remaining call effects as obligations. No finite gameplay
 search was performed in the other courses in this investigation, and no
 clean no-A negative seed was found.
+
+The 25 September recheck uses the pinned C export at
+`9921382a68bb0c865e5e45eb594d9c64db59b1af` and reuses the exact US/JP
+direct-writer census in `ActionDepthAliasCensus.v`. Its eight function names
+are exhaustive for direct depth-field assignments in the selected 38-unit
+generated corpus. The separate alias-source checks exclude several ways
+of manufacturing a different state pointer in that corpus; they do not
+replace live receiver and external-call proofs. No new named writer was
+found in the wider C search.
+
+The [new clamp connection](conditional-stock-negative-seed.md#the-subtraction-that-does-not-leave-a-seed)
+also settles a concrete gap in using that inventory: for incoming timer
+0 through 5 and finite raw arithmetic, the actual early quicksand-jump
+call reaches a finite, nonnegative stored depth before its next helper.
+The timer increment and following execution are retained. A temporary
+negative from this subtraction is therefore not a useful seed at that
+checkpoint. Later calls and all-game history coverage remain separate.
 
 ## Bringing a value into SSL
 

@@ -257,8 +257,10 @@ Qed.
 (** One constructor denotes the final, sink-visible depth after one complete
     generated writer routine.  The quicksand-jump helper's raw subtraction is
     intentionally paired with its immediately following clamp.  There is no
-    call or return between those two generated statements; linking that AST
-    fact to small-step non-interleaving remains outside this arithmetic file. *)
+    call or return between those two generated statements. [InkJumpClamp]
+    connects their actual US/JP early-call execution to this constructor and
+    retains the later helper/movement suffix. Global writer and consumer
+    history coverage remains separate from this arithmetic file. *)
 Inductive JPBinary32SafeDepthWriterOutcome :
     float32 -> float32 -> Prop :=
 | JPB32DepthReset :
