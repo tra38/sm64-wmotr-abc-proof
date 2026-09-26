@@ -13,7 +13,8 @@ From LessThanOneAPress.Proofs Require Import
   InkDialogInteractionGate InkVerticalLiveSelection InkWarpStop InkPlatformDeparture
   InkPlatformMovement InkPlatformDistance InkCourseEntryReset InkStockSeedConditional
   InkJumpClamp InkLandingCallerGate InkLandingCancellationGate
-  InkLandingCancellationCaller InkWarpAcceptance.
+  InkLandingCancellationCaller InkLandingDescriptorFrame
+  InkActionConstructor InkActionInstall InkWarpAcceptance.
 
 Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkLandingHistoryCheckedBoundary /\
@@ -35,7 +36,9 @@ Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkWarpStopCopyCheckpoint /\ InkPlatformDepartureBoundary /\ InkPlatformMovementBoundary /\
   InkPlatformDistanceBoundary /\ InkCourseEntryResetBoundary /\ InkStockSeedConditionalBoundary /\
   InkJumpClampBoundary /\ InkLandingCallerGateBoundary /\
-  InkCompletedCancellationGate /\ InkStockCancellationGuard /\ InkWarpAcceptanceBoundary.
+  InkCompletedCancellationGate /\ InkStockCancellationGuard /\
+  InkCancellationDescriptorFrame /\ InkStockCancellationTimerBound /\
+  InkActionInitializerExclusion /\ InkCompletedActionInstallExclusion /\ InkWarpAcceptanceBoundary.
 
 Theorem ibh_backward_histories_checked : InkBackwardHistoryCheckedBoundary.
 Proof.
@@ -84,5 +87,9 @@ Proof.
   split; [exact ilw_landing_caller_gate_checked|].
   split; [exact icz_completed_zero_return_reaches_duration_gate|].
   split; [exact icz_stock_guard_reaches_live_duration|].
+  split; [exact ildf_returned_cancellation_preserves_descriptor|].
+  split; [exact ildf_stock_guard_preserves_duration_and_bounds_timer|].
+  split; [exact iai_completed_initializer_cannot_manufacture_long_jump|].
+  split; [exact iai_completed_setter_cannot_install_unrequested_long_jump|].
   exact iwa_warp_acceptance_boundary_checked.
 Qed.

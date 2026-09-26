@@ -606,3 +606,8 @@ proofs/InkLandingCancellationReturn.v
 proofs/InkLandingDurationRead.v
 proofs/InkLandingCancellationGate.v
 proofs/InkLandingCancellationCaller.v
+proofs/InkLandingReadOnly.v
+proofs/InkLandingDescriptorFrame.v
+proofs/InkActionConstructorSource.v
+proofs/InkActionConstructor.v
+proofs/InkActionInstall.v

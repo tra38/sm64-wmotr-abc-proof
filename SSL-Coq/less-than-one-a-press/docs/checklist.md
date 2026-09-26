@@ -224,8 +224,21 @@ These obligations currently block the clean-retail result.
   signed duration read, and proves that the bound survives until return. It
   assumes neither an incoming timer value nor harmless cancellation helpers.
 
+- [x] Preserve a separate descriptor block through the complete continuing
+  cancellation call. [InkLandingDescriptorFrame.v](../proofs/InkLandingDescriptorFrame.v)
+  carries stock four-or-six values from guard entry through the real read and
+  return, without assuming harmless sliding/downhill calls. Only long-jump
+  landing can return timer 4 or 5 there. Earlier descriptor lifetime remains open.
+
+- [x] Exclude an unrequested long-jump conversion by the complete central action
+  setter. [InkActionInstall.v](../proofs/InkActionInstall.v) follows all four
+  actual initializers, their real named calls, the final store and return.
+  Non-wrapping state offsets are explicit. Earlier requests and other action
+  writers still need the first-entry/controller connection.
+
 - [ ] Complete the no-A late-write exclusion: preserve the stock four-or-six
-  descriptor values at the proved read, carry the returned timer bound through
+  descriptor values through earlier gameplay to guard entry, carry the returned
+  timer bound through
   the following calls, and derive the first-long-jump/physical-A history for
   every reached case. Named audio/DMA effects and storage conditions remain
   explicit in the existing later-call theorems.
@@ -233,6 +246,10 @@ These obligations currently block the clean-retail result.
   Stop once useful negative depth implies late landing and late landing implies
   an earlier physical A press: that is enough to mark this producer insufficient
   for no-A gameplay. A-using seed sizes and the later Ink route are not required.
+  An immediate clamp before a useful read also excludes its own producer:
+  the early quicksand-jump pair is proved this way; common landing has no
+  corresponding clamp after its depth write. Do not transfer that exclusion
+  between the two functions.
 
 - [ ] Establish or refute a useful negative seed with A never pressed,
   including the newly requested cross-course search. A seed cannot persist
