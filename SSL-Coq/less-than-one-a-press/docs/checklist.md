@@ -275,11 +275,13 @@ These obligations currently block the clean-retail result.
   first-entry/controller history, starting nonnegative. Excluding every seed
   additionally needs the full completed-writer classification and its finite
   arithmetic conditions. Sound binding and call frames justify those premises;
-  they are not additional gameplay goals. The conditional theorem stays in
-  Section 01. No new proof or user acceptance of the remaining conditions is
-  claimed by this scope review.
+  they are not additional gameplay goals. On 26 September the user accepted
+  this scope and the label **01 — Already proved, under the listed conditions**.
+  The conditional theorem stays in Section 01. This is the accepted stopping
+  point; no new Coq proof or unrestricted gameplay closure is claimed.
 
-- [ ] Remove the remaining conditions from the no-A late-write exclusion: preserve the stock four-or-six
+- [ ] Separate extension beyond the accepted conditional result: remove the
+  remaining conditions from the no-A late-write exclusion. Preserve the stock four-or-six
   descriptor values through earlier gameplay to guard entry, carry the returned
   timer bound through
   the following calls, and derive the first-long-jump/physical-A history for
