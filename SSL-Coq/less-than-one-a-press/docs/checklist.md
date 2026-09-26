@@ -270,7 +270,16 @@ These obligations currently block the clean-retail result.
   either long-jump action at this checkpoint without assuming harmless calls
   before or after it. It does not prove a frame for those other calls.
 
-- [ ] Complete the no-A late-write exclusion: preserve the stock four-or-six
+- [x] Spell out the [existing conditional stopping point](notes/conditional-stock-negative-seed.md#a-fixed-stopping-point-for-this-producer).
+  Common landing alone needs the stock timer at its actual write and the
+  first-entry/controller history, starting nonnegative. Excluding every seed
+  additionally needs the full completed-writer classification and its finite
+  arithmetic conditions. Sound binding and call frames justify those premises;
+  they are not additional gameplay goals. The conditional theorem stays in
+  Section 01. No new proof or user acceptance of the remaining conditions is
+  claimed by this scope review.
+
+- [ ] Remove the remaining conditions from the no-A late-write exclusion: preserve the stock four-or-six
   descriptor values through earlier gameplay to guard entry, carry the returned
   timer bound through
   the following calls, and derive the first-long-jump/physical-A history for
