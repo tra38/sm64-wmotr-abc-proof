@@ -8,11 +8,13 @@ all: proofs
 
 generated:
 	bash pipeline/generate-clight.sh
+	bash pipeline/generate-audio-clight.sh
 
 regenerate: generated
 
 verify-generated:
 	bash pipeline/check-generated.sh
+	bash pipeline/check-audio-generated.sh
 
 $(COQMAKEFILE): _CoqProject
 	$(COQMAKEFILE_CMD) -f _CoqProject -o $(COQMAKEFILE)

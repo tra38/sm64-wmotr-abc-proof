@@ -15,7 +15,7 @@ From LessThanOneAPress.Proofs Require Import
   InkJumpClamp InkLandingCallerGate InkLandingCancellationGate
   InkLandingCancellationCaller InkLandingDescriptorFrame
   InkLandingEntryBound InkAnimationTimerHandoff InkDirectActionStores
-  InkLandingDescriptorAccess
+  InkLandingDescriptorAccess StockSoundRequestFrame InkInitActionChoice
   InkActionConstructor InkActionInstall InkWarpAcceptance.
 
 Definition InkBackwardHistoryCheckedBoundary : Prop :=
@@ -43,7 +43,8 @@ Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkActionInitializerExclusion /\ InkCompletedActionInstallExclusion /\
   InkSixLandingEntryBound /\ InkAnimationLoaderHandoff /\
   InkLandingAnimationLoaderHandoff /\ InkAnimationTimerChangeRequiresTransfer /\
-  InkDirectActionStoreBoundary /\ InkLandingDescriptorAccessSource /\ InkWarpAcceptanceBoundary.
+  InkDirectActionStoreBoundary /\ InkLandingDescriptorAccessSource /\
+  StockSoundImplementationBoundary /\ InkInitActionCheckpoint /\ InkWarpAcceptanceBoundary.
 
 Theorem ibh_backward_histories_checked : InkBackwardHistoryCheckedBoundary.
 Proof.
@@ -102,5 +103,7 @@ Proof.
   split; [exact iath_changed_timer_requires_the_reached_transfer|].
   split; [exact idas_direct_action_stores_checked|].
   split; [exact ildp_descriptor_access_source_checked|].
+  split; [exact isr_stock_sound_implementation_checked|].
+  split; [exact iia_completed_initialization_has_only_idle_action_at_its_store|].
   exact iwa_warp_acceptance_boundary_checked.
 Qed.

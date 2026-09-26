@@ -1,6 +1,8 @@
 -R generated LessThanOneAPress.Generated
 -R proofs LessThanOneAPress.Proofs
 
+generated/runtime/us_audio_external.v
+generated/runtime/jp_audio_external.v
 generated/us_game_init.v
 generated/us_mario.v
 generated/us_mario_actions_airborne.v
@@ -615,3 +617,5 @@ proofs/InkAnimationTimerHandoff.v
 proofs/InkLandingEntryBound.v
 proofs/InkDirectActionStores.v
 proofs/InkLandingDescriptorAccess.v
+proofs/StockSoundRequestFrame.v
+proofs/InkInitActionChoice.v

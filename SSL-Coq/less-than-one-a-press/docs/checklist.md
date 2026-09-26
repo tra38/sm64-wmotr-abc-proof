@@ -258,14 +258,28 @@ These obligations currently block the clean-retail result.
   nine records are exported. They cannot inherit the private-table proof merely
   from their restricted ordinary uses. Their earlier lifetime remains open.
 
+- [x] Execute the actual stock US/JP sound-request implementation and prove its
+  memory footprint. [StockSoundRequestFrame.v](../proofs/StockSoundRequestFrame.v)
+  preserves every cell in Mario's state, its pointer global and the nine landing
+  records. The C callsite theorem requires resolution to that internal body.
+  The supplemental audio source reproduces byte-for-byte; binding it into the
+  existing 38-unit gameplay target remains open.
+
+- [x] Follow completed initialization to its actual standing-or-water-idle
+  action store. [InkInitActionChoice.v](../proofs/InkInitActionChoice.v) excludes
+  either long-jump action at this checkpoint without assuming harmless calls
+  before or after it. It does not prove a frame for those other calls.
+
 - [ ] Complete the no-A late-write exclusion: preserve the stock four-or-six
   descriptor values through earlier gameplay to guard entry, carry the returned
   timer bound through
   the following calls, and derive the first-long-jump/physical-A history for
   every reached case. Named audio/DMA effects and storage conditions remain
   explicit in the existing later-call theorems.
-  Six direct wrappers and the zero-loader-result animation case now have
-  checked handoffs. Neither discharges the other calls or full earlier history.
+  Six direct wrappers and the zero-loader-result animation case have checked
+  handoffs. The stock sound implementation and initialization store now have
+  local proofs. The sound runtime binding, other calls and full earlier history
+  still need their connections.
   Stop once useful negative depth implies late landing and late landing implies
   an earlier physical A press: that is enough to mark this producer insufficient
   for no-A gameplay. A-using seed sizes and the later Ink route are not required.
