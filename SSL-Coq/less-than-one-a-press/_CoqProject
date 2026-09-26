@@ -611,3 +611,7 @@ proofs/InkLandingDescriptorFrame.v
 proofs/InkActionConstructorSource.v
 proofs/InkActionConstructor.v
 proofs/InkActionInstall.v
+proofs/InkAnimationTimerHandoff.v
+proofs/InkLandingEntryBound.v
+proofs/InkDirectActionStores.v
+proofs/InkLandingDescriptorAccess.v

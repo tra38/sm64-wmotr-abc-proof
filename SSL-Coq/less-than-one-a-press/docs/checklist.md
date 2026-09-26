@@ -236,13 +236,36 @@ These obligations currently block the clean-retail result.
   Non-wrapping state offsets are explicit. Earlier requests and other action
   writers still need the first-entry/controller connection.
 
+- [x] Connect six stock wrappers from the completed cancellation guard into the
+  actual common-landing call with timer below four. [InkLandingEntryBound.v](../proofs/InkLandingEntryBound.v)
+  preserves the exact memory and original Mario argument at body entry. The
+  three wrappers with an intervening voice call and the later body remain separate.
+
+- [x] Connect the completed animation call to its real loader and transfer.
+  [InkAnimationTimerHandoff.v](../proofs/InkAnimationTimerHandoff.v) proves a
+  zero-returning loader preserves the caller's timer under the stated separate
+  storage conditions. Any changed timer is traced to the transfer actually
+  reached in that call, not assumed away. A general transfer frame remains open.
+
+- [x] Check the typed direct action-store inventory and execute its safe literal
+  stores. [InkDirectActionStores.v](../proofs/InkDirectActionStores.v) leaves only
+  the central setter and initialization as nonliteral direct assignments. This
+  is not coverage of aliased writes or every first action request.
+
+- [x] Check descriptor address uses and exports in all 38 US/JP source units.
+  [InkLandingDescriptorAccess.v](../proofs/InkLandingDescriptorAccess.v) finds no
+  initializer aliases and only scalar-reading cancellation borrows, but all
+  nine records are exported. They cannot inherit the private-table proof merely
+  from their restricted ordinary uses. Their earlier lifetime remains open.
+
 - [ ] Complete the no-A late-write exclusion: preserve the stock four-or-six
   descriptor values through earlier gameplay to guard entry, carry the returned
   timer bound through
   the following calls, and derive the first-long-jump/physical-A history for
   every reached case. Named audio/DMA effects and storage conditions remain
   explicit in the existing later-call theorems.
-  The caller connection does not itself discharge these conditions.
+  Six direct wrappers and the zero-loader-result animation case now have
+  checked handoffs. Neither discharges the other calls or full earlier history.
   Stop once useful negative depth implies late landing and late landing implies
   an earlier physical A press: that is enough to mark this producer insufficient
   for no-A gameplay. A-using seed sizes and the later Ink route are not required.

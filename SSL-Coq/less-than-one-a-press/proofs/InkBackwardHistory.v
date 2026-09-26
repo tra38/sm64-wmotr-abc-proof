@@ -14,6 +14,8 @@ From LessThanOneAPress.Proofs Require Import
   InkPlatformMovement InkPlatformDistance InkCourseEntryReset InkStockSeedConditional
   InkJumpClamp InkLandingCallerGate InkLandingCancellationGate
   InkLandingCancellationCaller InkLandingDescriptorFrame
+  InkLandingEntryBound InkAnimationTimerHandoff InkDirectActionStores
+  InkLandingDescriptorAccess
   InkActionConstructor InkActionInstall InkWarpAcceptance.
 
 Definition InkBackwardHistoryCheckedBoundary : Prop :=
@@ -38,7 +40,10 @@ Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkJumpClampBoundary /\ InkLandingCallerGateBoundary /\
   InkCompletedCancellationGate /\ InkStockCancellationGuard /\
   InkCancellationDescriptorFrame /\ InkStockCancellationTimerBound /\
-  InkActionInitializerExclusion /\ InkCompletedActionInstallExclusion /\ InkWarpAcceptanceBoundary.
+  InkActionInitializerExclusion /\ InkCompletedActionInstallExclusion /\
+  InkSixLandingEntryBound /\ InkAnimationLoaderHandoff /\
+  InkLandingAnimationLoaderHandoff /\ InkAnimationTimerChangeRequiresTransfer /\
+  InkDirectActionStoreBoundary /\ InkLandingDescriptorAccessSource /\ InkWarpAcceptanceBoundary.
 
 Theorem ibh_backward_histories_checked : InkBackwardHistoryCheckedBoundary.
 Proof.
@@ -91,5 +96,11 @@ Proof.
   split; [exact ildf_stock_guard_preserves_duration_and_bounds_timer|].
   split; [exact iai_completed_initializer_cannot_manufacture_long_jump|].
   split; [exact iai_completed_setter_cannot_install_unrequested_long_jump|].
+  split; [exact ile_six_actual_wrappers_enter_landing_below_four|].
+  split; [exact iath_completed_animation_exposes_its_real_loader|].
+  split; [exact iath_landing_call_exposes_its_real_loader|].
+  split; [exact iath_changed_timer_requires_the_reached_transfer|].
+  split; [exact idas_direct_action_stores_checked|].
+  split; [exact ildp_descriptor_access_source_checked|].
   exact iwa_warp_acceptance_boundary_checked.
 Qed.
