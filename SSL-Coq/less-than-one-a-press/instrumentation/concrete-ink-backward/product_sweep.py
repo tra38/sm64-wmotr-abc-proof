@@ -13,8 +13,11 @@ import math
 from pathlib import Path
 import sys
 import time
+import platform
+from importlib.metadata import version
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from chunk_ledger import ChunkLedger, STATUSES, atomic_json
 from search import (A_BUTTON, Backend, DISAPPEARED, END_FIELDS, Input, Observer,
                     ROOT, RUNTIME, accepted_target, bits, create_game, differences,
                     installation_templates, load_capture, prepare, replay,
@@ -195,10 +198,34 @@ def compare_reference(jobs):
 
 
 def atomic_write(path, report):
-    path.parent.mkdir(parents=True,exist_ok=True)
-    temporary=path.with_suffix(path.suffix+'.tmp')
-    temporary.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
-    temporary.replace(path)
+    atomic_json(path,report)
+
+
+def hash_file(path):
+    digest=hashlib.sha256()
+    with path.open('rb') as source:
+        for block in iter(lambda:source.read(65536),b''):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def peak_rss_bytes():
+    if sys.platform=='win32':
+        import ctypes
+        from ctypes import wintypes
+        class Counters(ctypes.Structure):
+            _fields_=[('cb',wintypes.DWORD),('faults',wintypes.DWORD)]+[(n,ctypes.c_size_t) for n in
+                ('peakWorkingSet','workingSet','peakPaged','paged','peakNonpaged','nonpaged','pagefile','peakPagefile')]
+        counters=Counters(); counters.cb=ctypes.sizeof(counters)
+        kernel=ctypes.WinDLL('kernel32'); kernel.GetCurrentProcess.restype=ctypes.c_void_p
+        psapi=ctypes.WinDLL('psapi')
+        psapi.GetProcessMemoryInfo.argtypes=[ctypes.c_void_p,ctypes.POINTER(Counters),wintypes.DWORD]
+        if not psapi.GetProcessMemoryInfo(kernel.GetCurrentProcess(),ctypes.byref(counters),counters.cb):
+            raise ctypes.WinError()
+        return counters.peakWorkingSet
+    import resource
+    peak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+    return peak if sys.platform=='darwin' else peak*1024
 
 
 def resume_counts(old, signature, total_cases):
@@ -216,8 +243,8 @@ def resume_counts(old, signature, total_cases):
 
 
 def check_ledger(path, old, signature, jobs):
-    """Reject a missing/tampered ledger or an uncheckpointed tail."""
-    if hashlib.sha256(path.read_bytes()).hexdigest() != old['ledger']['sha256']:
+    """Read-only legacy v1 audit. Never used for new checkpoints."""
+    if hash_file(path) != old['ledger']['sha256']:
         raise ValueError('Ledger hash differs; preserve it for recovery')
     counts = {name:Counter() for name in NAMES}
     with path.open(encoding='utf-8') as source:
@@ -242,104 +269,143 @@ def check_ledger(path, old, signature, jobs):
     return cursor
 
 
+def validate_record(signature):
+    jobs=signature['jobOrder']
+    def validate(record,cursor):
+        ordinal,job_id=divmod(cursor,len(jobs))
+        index=ordered_input(ordinal,signature['inputSpace']['buttonsMode'],signature['order'])
+        control=decode_input(index,signature['aMode'],signature['inputSpace']['buttonsMode'])
+        if (record['case']!=cursor or record['jobId']!=job_id or record['inputIndex']!=index
+                or record['input']!=control.record() or record['setup']!=jobs[job_id]['setup']
+                or record['pose']!=jobs[job_id]['move'] or record['status'] not in STATUSES):
+            raise ValueError('Record skips, duplicates or changes the declared enumeration')
+    return validate
+
+
+def audit_output(args):
+    """Offline full audit; no game construction and no historical-file rewrite."""
+    started=time.perf_counter()
+    root=args.output.with_suffix('.ledger')
+    if not root.exists():
+        old=json.loads(args.output.read_text(encoding='utf-8'))
+        from types import SimpleNamespace
+        jobs=[dict(setup=j['setup'],move=SimpleNamespace(name=j['move'])) for j in old['signature']['jobOrder']]
+        cursor=check_ledger(args.output.with_suffix('.trials.jsonl'),old,old['signature'],jobs)
+        return dict(format='legacy-v1',verifiedCases=cursor,wallSeconds=time.perf_counter()-started,
+                    readOnly=True,scope='Entire legacy ledger hash, enumeration and counts')
+    with (root/'manifest.json').open('rb') as source:
+        raw=source.read(262145)
+    if len(raw)>262144:
+        raise ValueError('Oversize manifest')
+    manifest=json.loads(raw)['payload']
+    with ChunkLedger(root,manifest['signature'],manifest['totalCases'],validate_record(manifest['signature']),
+                     resume=True,verify='full',chunk_records=manifest['chunkRecords'],read_only=True) as store:
+        return dict(format='chunk-v2',verifiedCases=store.state['nextCase'],retained=store.state['retained'],
+                    wallSeconds=time.perf_counter()-started,io=store.io,peakRssBytes=peak_rss_bytes(),
+                    readOnly=True,scope='All committed metadata, trial bytes, exact enumeration, counts and retained recipes; '
+                        'uncommitted recovery/pending files are not part of coverage')
+
+
 def run(args):
-    if args.resume and not args.output.exists():
-        raise ValueError('Resume checkpoint is missing; no new sweep was started')
+    started=time.perf_counter()
+    root=args.output.with_suffix('.ledger')
+    if args.resume and not root.exists():
+        raise ValueError('Chunk checkpoint missing; legacy JSONL is preserved for --audit, not silently migrated')
+    if not args.resume and (root.exists() or args.output.exists() or args.output.with_suffix('.trials.jsonl').exists()):
+        raise ValueError('Output/ledger already exists; use --resume or a new path')
+    if args.resume and args.benchmark:
+        raise ValueError('Timing sample cannot resume a coverage stream')
+    phases={}
+    phase_start=time.perf_counter()
     jobs,meta=make_jobs(args.a_mode,args.buttons)
+    phases['preparation']=time.perf_counter()-phase_start
+    phase_start=time.perf_counter()
     reference_count=compare_reference(jobs)
-    hashes={name:hashlib.sha256((ROOT/'instrumentation/concrete-ink-backward'/name).read_bytes()).hexdigest()
-            for name in ('product_sweep.py','search.py','controller_inputs.py')}
-    hashes.update({name:hashlib.sha256((ROOT/'instrumentation/wafel-jp-pilot'/name).read_bytes()).hexdigest()
+    phases['referenceValidation']=time.perf_counter()-phase_start
+    phase_start=time.perf_counter()
+    hashes={name:hash_file(ROOT/'instrumentation/concrete-ink-backward'/name)
+            for name in ('product_sweep.py','chunk_ledger.py','search.py','controller_inputs.py')}
+    hashes.update({name:hash_file(ROOT/'instrumentation/wafel-jp-pilot'/name)
                    for name in ('replay.py','backward_wafel.py','backward_validation.py')})
     order='mixed' if args.benchmark else args.order
     signature=dict(aMode=args.a_mode,inputSpace=meta['inputSpace'],sourceHashes=hashes,
-                   jobOrder=meta['jobOrder'],order=order)
-    signature.update(captureSha256=hashlib.sha256((RUNTIME/'capture.bKv95w/inputs.jsonl').read_bytes()).hexdigest(),
-                     dllSha256=hashlib.sha256((RUNTIME/'sm64_jp.dll').read_bytes()).hexdigest(),
+                   jobOrder=meta['jobOrder'],order=order,inputStride=INPUT_STRIDE,
+                   mode='stratified-timing' if args.benchmark else 'contiguous-exhaustive-stream',
+                   python=platform.python_version(),wafel=version('wafel'),architecture=platform.machine())
+    signature.update(captureSha256=hash_file(RUNTIME/'capture.bKv95w/inputs.jsonl'),
+                     dllSha256=hash_file(RUNTIME/'sm64_jp.dll'),
                      contextFrame=meta['frame'],buttonDown=meta['buttonDown'])
-    cursor=0
-    counts={name:Counter() for name in NAMES}
-    elapsed_before=0.
-    ledger_path=args.output.with_suffix('.trials.jsonl')
-    args.output.parent.mkdir(parents=True,exist_ok=True)
-    if args.resume and args.output.exists():
-        old=json.loads(args.output.read_text(encoding='utf-8'))
-        cursor,counts,elapsed_before=resume_counts(old,signature,meta['totalCases'])
-        if args.benchmark or check_ledger(ledger_path,old,signature,jobs) != cursor:
-            raise ValueError('Cannot resume this ledger')
-    elif args.output.exists():
-        raise ValueError('Output already exists; use --resume or a new path')
-    elif ledger_path.exists():
-        raise ValueError('Ledger already exists; preserve it and choose a new output')
-    ledger=ledger_path.open('a' if cursor else 'w',encoding='utf-8')
-    if not cursor:
-        ledger.write(json.dumps({'kind':'manifest','signature':signature})+'\n')
-    start_cursor=cursor
-    started=time.perf_counter()
+    phases['configuration']=time.perf_counter()-phase_start
+    phase_start=time.perf_counter()
+    store=ChunkLedger(root,signature,meta['totalCases'],validate_record(signature),resume=args.resume,
+                      verify=args.resume_verify,chunk_records=args.chunk_records)
+    phases['resumeValidation' if args.resume else 'storeInitialization']=time.perf_counter()-phase_start
+    start_cursor=store.state['nextCase']
     recent_samples=[]
     limit=meta['totalCases']
     if args.benchmark:
-        if args.resume:
-            raise ValueError('Benchmark cannot resume an exhaustive counter')
         limit=min(args.cases,meta['totalCases'])
-    def report():
-        elapsed=time.perf_counter()-started
-        done=cursor==meta['totalCases'] and not args.benchmark
-        return dict(schema=1,status='complete-product' if done else
-                    ('timing-sample' if args.benchmark else 'partial-product'),
-                    complete=done,mode='stratified-timing' if args.benchmark else 'contiguous-exhaustive-stream',
-                    order=order,
-                    metadata=meta,signature=signature,inputsPerPose=input_count(args.buttons),
-                    nextCase=cursor,unprocessedCases=meta['totalCases']-cursor,
-                    counts={name:dict(c) for name,c in counts.items()},
-                    referenceComparisons=reference_count,searchSeconds=elapsed_before+elapsed,
-                    thisBatch=dict(tested=cursor-start_cursor,seconds=elapsed,
-                                   casesPerSecond=(cursor-start_cursor)/elapsed if elapsed else 0),
-                    samples=recent_samples,
-                    coverage='Every tested input uses an actual Wafel update. Unprocessed cases are not classified; '
-                             'no sampled equivalence or gameplay-history coverage is claimed.',
-                    matching='END_FIELDS plus exact movement at ACT_DISAPPEARED entry. Collision/display at '
-                             'the accepted return still need the separate exact observer; this is not full-state equality.',
-                    context='All world state comes from saved normally initialized SSL after supplied pillar completion; '
-                            'pose templates are conditional inverse proposals, not reached gameplay.',
-                    aHistory='Held mode has one earlier preparation press; no new A edge during each tested update.')
-    def checkpoint(result):
-        ledger.flush()
-        result['ledger']=dict(path=str(ledger_path),records=cursor,
-                             sha256=hashlib.sha256(ledger_path.read_bytes()).hexdigest())
-        atomic_write(args.output,result)
+    phases.update(trials=0.,append=0.,finalization=0.)
     try:
-        while cursor<limit and cursor-start_cursor<args.cases and time.perf_counter()-started<args.seconds:
-            if args.benchmark:
-                # Deterministic spread across both the complete mask and stick ranges.
-                index=ordered_input(cursor//len(jobs),args.buttons,'mixed')
-                job=jobs[cursor%len(jobs)]
-            else:
-                ordinal,job_id=divmod(cursor,len(jobs))
-                index=ordered_input(ordinal,args.buttons,args.order)
-                job=jobs[job_id]
+        while store.state['nextCase']<limit and store.state['nextCase']-start_cursor<args.cases and time.perf_counter()-started<args.seconds:
+            cursor=store.state['nextCase']
+            ordinal,job_id=divmod(cursor,len(jobs))
+            index=ordered_input(ordinal,args.buttons,order)
+            job=jobs[job_id]
             control=decode_input(index,args.a_mode,args.buttons)
+            phase_start=time.perf_counter()
             status,detail=cached_trial(job,control,True)
-            ledger.write(json.dumps(dict(case=cursor,inputIndex=index,jobId=cursor%len(jobs),
+            phases['trials']+=time.perf_counter()-phase_start
+            record=dict(case=cursor,inputIndex=index,jobId=job_id,
                         setup=job['setup'],pose=job['move'].name,input=control.record(),
-                        status=status,detail=detail))+'\n')
-            counts[job['setup']][status]+=1
+                        status=status,detail=detail)
+            phase_start=time.perf_counter()
+            prior_checkpoint=store.io['checkpointSeconds']
+            store.append(record)
+            phases['append']+=time.perf_counter()-phase_start-(store.io['checkpointSeconds']-prior_checkpoint)
             if len(recent_samples)<12:
-                recent_samples.append(dict(case=cursor,inputIndex=index,setup=job['setup'],
-                                           pose=job['move'].name,input=control.record(),status=status,detail=detail))
-            cursor+=1
-            if cursor%1000==0:
-                checkpoint(report())
-        result=report()
-        checkpoint(result)
-        return result
+                recent_samples.append(record)
+            if store.ready():
+                store.commit()
+        store.commit()
     except BaseException:
-        result=report()
-        result['status']='aborted-error'
-        checkpoint(result)
+        # No error-path checkpoint: a partial append must never advance HEAD.
+        # Pending bytes are preserved and quarantined on the next resume.
+        store.close()
         raise
-    finally:
-        ledger.close()
+    phase_start=time.perf_counter()
+    state=store.state
+    ledger=dict(format='chunk-v2',path=str(root),generation=store.generation,
+                commitSha256=store.commit_sha,retained=state['retained'],io=store.io,
+                recovered=store.recovered,archive='Accepted predecessor recipes, not portable Wafel memory dumps')
+    store.close()
+    phases['finalization']+=time.perf_counter()-phase_start
+    phases['checkpoints']=store.io['checkpointSeconds']
+    elapsed=time.perf_counter()-started
+    cursor=state['nextCase']
+    done=cursor==meta['totalCases'] and not args.benchmark
+    result=dict(schema=2,status='complete-product' if done else ('timing-sample' if args.benchmark else 'partial-product'),
+                complete=done,mode=signature['mode'],order=order,metadata=meta,signature=signature,
+                inputsPerPose=input_count(args.buttons),nextCase=cursor,
+                unprocessedCases=meta['totalCases']-cursor,counts=state['counts'],sampling=state['sampling'],
+                referenceComparisons=reference_count,ledger=ledger,samples=recent_samples,
+                phaseSeconds=phases,peakRssBytes=peak_rss_bytes(),
+                thisBatch=dict(tested=cursor-start_cursor,seconds=elapsed,
+                               casesPerSecond=(cursor-start_cursor)/elapsed if elapsed else 0,
+                               timingScope='Whole run including preparation, reference checks, configuration, resume, '
+                                           'trial/append/checkpoint/close; final report write and process startup/shutdown '
+                                           'are included by the external benchmark wall clock.'),
+                integrity=dict(resumeVerification=args.resume_verify if args.resume else 'new-ledger',
+                               historicalContentVerified=not args.resume or args.resume_verify=='full',
+                               warning='Explicit latest mode trusts older chunk contents; run --audit for complete corruption checks.'
+                                       if args.resume and args.resume_verify=='latest' else None),
+                coverage='Every tested input uses an actual Wafel update. Unprocessed cases are not classified; '
+                         'no sampled equivalence or gameplay-history coverage is claimed.',
+                matching='END_FIELDS plus exact movement at ACT_DISAPPEARED entry; not full-state equality.',
+                context='Saved normally initialized SSL after supplied pillar completion; conditional pose proposals.',
+                aHistory='Held mode has one earlier preparation press; no new A edge during a tested update.')
+    atomic_write(args.output,result)  # A convenience receipt, never the transaction authority.
+    return result
 
 
 def main():
@@ -352,10 +418,17 @@ def main():
     parser.add_argument('--seconds',type=float,default=60)
     parser.add_argument('--benchmark',action='store_true')
     parser.add_argument('--resume',action='store_true')
+    parser.add_argument('--resume-verify',choices=('full','latest'),default='full',
+                        help='Full detects old payload corruption; explicit latest trusts the historical prefix')
+    parser.add_argument('--chunk-records',type=int,default=1000)
+    parser.add_argument('--audit',action='store_true',help='Read-only full integrity audit; does not create a game')
     parser.add_argument('--output',type=Path,required=True)
     args=parser.parse_args()
-    if args.cases<1 or args.seconds<=0:
+    if args.cases<1 or args.seconds<=0 or not 1<=args.chunk_records<=4096:
         parser.error('Positive limits required')
+    if args.audit:
+        print(json.dumps(audit_output(args)))
+        return
     result=run(args)
     print(json.dumps({k:result[k] for k in ('status','complete','inputsPerPose','nextCase',
                                           'unprocessedCases','counts','thisBatch')}))

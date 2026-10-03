@@ -1,5 +1,10 @@
 # Rank 1: 5,000 individual predecessor trials, then stop
 
+**Timing correction:** the later [chunk-ledger repair](rank1-chunk-ledger.md)
+withdraws this note's historical 2.9-day extrapolation. It excluded preparation,
+resume and growing-ledger costs. The original counts and saved ledger below
+remain unchanged; the new benchmark uses a separate dataset.
+
 3 October 2026. **The requested test is finished and the search is stopped.**
 Of 5,000 one-update trials, 1,750 pass the selected comparison and 3,250 do
 not. The gap remains supplied. This is a finite conditional check, not a
@@ -138,8 +143,9 @@ comparison controls are outside those 5,000 timed search cases. All comparison
 controls agree. Forty-five code tests pass, including ledger integrity,
 permutation, resume and the original backward pilot checks.
 
-At that measured rate, the selected full one-update product would take about
-**2.9 days with A released**, before interruptions and repeated preparation.
+The original trial-only extrapolation was **2.9 days with A released**;
+it is now withdrawn in favor of the growing-ledger benchmark and its explicit
+batching/integrity costs.
 Held A is a separate pass; it was not run as part of this 5,000-case test.
 Earlier timing probes suggest a comparable cost. The existing earlier
 timing/prefix files have different signatures and are not silently added to

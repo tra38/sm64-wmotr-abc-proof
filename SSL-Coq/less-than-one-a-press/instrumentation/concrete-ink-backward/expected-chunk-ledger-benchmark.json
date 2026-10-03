@@ -1,0 +1,808 @@
+{
+  "audits": [
+    {
+      "cases": 5000,
+      "format": "chunk-v2",
+      "io": {
+        "bytesRead": 3136075,
+        "bytesWritten": 0,
+        "checkpointSeconds": 0,
+        "checkpoints": 0
+      },
+      "peakRssBytes": 23015424,
+      "processWallSeconds": 0.8176185999999994,
+      "readOnly": true,
+      "retained": 1750,
+      "scope": "All committed metadata, trial bytes, exact enumeration, counts and retained recipes; uncommitted recovery/pending files are not part of coverage",
+      "verifiedCases": 5000,
+      "wallSeconds": 0.5160375
+    },
+    {
+      "cases": 20000,
+      "format": "chunk-v2",
+      "io": {
+        "bytesRead": 12539876,
+        "bytesWritten": 0,
+        "checkpointSeconds": 0,
+        "checkpoints": 0
+      },
+      "peakRssBytes": 22704128,
+      "processWallSeconds": 1.4917086999999967,
+      "readOnly": true,
+      "retained": 7000,
+      "scope": "All committed metadata, trial bytes, exact enumeration, counts and retained recipes; uncommitted recovery/pending files are not part of coverage",
+      "verifiedCases": 20000,
+      "wallSeconds": 1.2697745
+    },
+    {
+      "cases": 80000,
+      "format": "chunk-v2",
+      "io": {
+        "bytesRead": 50185154,
+        "bytesWritten": 0,
+        "checkpointSeconds": 0,
+        "checkpoints": 0
+      },
+      "peakRssBytes": 23343104,
+      "processWallSeconds": 3.9294651000000016,
+      "readOnly": true,
+      "retained": 28000,
+      "scope": "All committed metadata, trial bytes, exact enumeration, counts and retained recipes; uncommitted recovery/pending files are not part of coverage",
+      "verifiedCases": 80000,
+      "wallSeconds": 3.7367003000000003
+    }
+  ],
+  "batches": [
+    {
+      "counts": {
+        "hybrid": {
+          "accepted-projection": 500,
+          "rejected": 250,
+          "rejected-event": 1000
+        },
+        "original": {
+          "accepted-projection": 1000,
+          "rejected": 250,
+          "rejected-event": 500
+        },
+        "variant": {
+          "accepted-projection": 250,
+          "rejected": 1250
+        }
+      },
+      "cumulativeCases": 5000,
+      "cumulativeProcessWallSeconds": 10.276148099999999,
+      "inclusiveCasesPerSecond": 486.56363759490785,
+      "io": {
+        "bytesRead": 0,
+        "bytesWritten": 3124036,
+        "checkpointSeconds": 0.10983799999999899,
+        "checkpoints": 5
+      },
+      "ledgerDisk": {
+        "bytes": 3136076,
+        "files": 18
+      },
+      "newCases": 5000,
+      "peakRssBytes": 1014788096,
+      "phaseSeconds": {
+        "append": 0.6855117999999583,
+        "checkpoints": 0.10983799999999899,
+        "configuration": 0.1835517000000002,
+        "finalization": 0.00015509999999885338,
+        "preparation": 1.5760714,
+        "referenceValidation": 0.7029635000000001,
+        "storeInitialization": 0.01686759999999987,
+        "trials": 6.571643900000017
+      },
+      "processWallSeconds": 10.276148099999999,
+      "retained": 1750
+    },
+    {
+      "counts": {
+        "hybrid": {
+          "accepted-projection": 2000,
+          "rejected": 1000,
+          "rejected-event": 4000
+        },
+        "original": {
+          "accepted-projection": 4000,
+          "rejected": 1000,
+          "rejected-event": 2000
+        },
+        "variant": {
+          "accepted-projection": 1000,
+          "rejected": 5000
+        }
+      },
+      "cumulativeCases": 20000,
+      "cumulativeProcessWallSeconds": 29.773285799999996,
+      "inclusiveCasesPerSecond": 769.3436970494394,
+      "io": {
+        "bytesRead": 3136075,
+        "bytesWritten": 9390510,
+        "checkpointSeconds": 0.2831071000000014,
+        "checkpoints": 15
+      },
+      "ledgerDisk": {
+        "bytes": 12539877,
+        "files": 63
+      },
+      "newCases": 15000,
+      "peakRssBytes": 1015189504,
+      "phaseSeconds": {
+        "append": 1.082114999999979,
+        "checkpoints": 0.2831071000000014,
+        "configuration": 0.21803090000000003,
+        "finalization": 0.00010380000000154155,
+        "preparation": 2.0176615,
+        "referenceValidation": 0.8529203999999999,
+        "resumeValidation": 0.23055380000000003,
+        "trials": 14.233557899999948
+      },
+      "processWallSeconds": 19.497137699999996,
+      "retained": 7000
+    },
+    {
+      "counts": {
+        "hybrid": {
+          "accepted-projection": 8000,
+          "rejected": 4000,
+          "rejected-event": 16000
+        },
+        "original": {
+          "accepted-projection": 16000,
+          "rejected": 4000,
+          "rejected-event": 8000
+        },
+        "variant": {
+          "accepted-projection": 4000,
+          "rejected": 20000
+        }
+      },
+      "cumulativeCases": 80000,
+      "cumulativeProcessWallSeconds": 93.3154789,
+      "inclusiveCasesPerSecond": 944.2544720729823,
+      "io": {
+        "bytesRead": 12539876,
+        "bytesWritten": 37591659,
+        "checkpointSeconds": 1.184884399999988,
+        "checkpoints": 60
+      },
+      "ledgerDisk": {
+        "bytes": 50185155,
+        "files": 243
+      },
+      "newCases": 60000,
+      "peakRssBytes": 1015668736,
+      "phaseSeconds": {
+        "append": 3.902658600000263,
+        "checkpoints": 1.184884399999988,
+        "configuration": 0.1853701000000001,
+        "finalization": 0.00011010000000055697,
+        "preparation": 2.03718,
+        "referenceValidation": 0.7570588000000003,
+        "resumeValidation": 0.6331796000000001,
+        "trials": 53.52487280000006
+      },
+      "processWallSeconds": 63.542193100000006,
+      "retained": 28000
+    }
+  ],
+  "newCasesPerCumulativeProcessSecond": 857.3068578014874,
+  "runtime": {
+    "aMode": "released",
+    "architecture": "AMD64",
+    "buttonDown": 0,
+    "captureSha256": "9bcc451964025d9f0bb1344c45957b6bfd095451b44bfb9a01f8584a75db6a72",
+    "contextFrame": 492,
+    "dllSha256": "960fe979068b78e6733b3ddb87741833fbf4eb29b2a21a2bba871977427c2d0f",
+    "inputSpace": {
+      "buttonsMode": "stock-gameplay",
+      "choicesPerPose": 16777216,
+      "gatedMask": 3872,
+      "gating": "L and D-pad excluded by user-selected scope, not a proved equivalence",
+      "nonAMasks": 256,
+      "stickPairs": 65536
+    },
+    "inputStride": 13254001,
+    "jobOrder": [
+      {
+        "move": "pre-action-retry-y-768",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "original"
+      },
+      {
+        "move": "pre-action-retry-y-767",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1145028608,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "original"
+      },
+      {
+        "move": "pre-action-retry-y-769",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1145061376,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "original"
+      },
+      {
+        "move": "pre-action-retry-y-1201",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1150689280,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "original"
+      },
+      {
+        "move": "pre-action-retry-y-1202",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1150697472,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "original"
+      },
+      {
+        "move": "pre-action-retry-y-1861",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1156096000,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "original"
+      },
+      {
+        "move": "successful-query-state-only-y-1861",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1156096000,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "original"
+      },
+      {
+        "move": "pre-action-retry-y-768",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "variant"
+      },
+      {
+        "move": "pre-action-retry-y-767",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1145028608,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "variant"
+      },
+      {
+        "move": "pre-action-retry-y-769",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1145061376,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "variant"
+      },
+      {
+        "move": "pre-action-retry-y-1201",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1150689280,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "variant"
+      },
+      {
+        "move": "pre-action-retry-y-1202",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1150697472,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "variant"
+      },
+      {
+        "move": "pre-action-retry-y-1861",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1156096000,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "variant"
+      },
+      {
+        "move": "pre-action-retry-y-768",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "hybrid"
+      },
+      {
+        "move": "pre-action-retry-y-767",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1145028608,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "hybrid"
+      },
+      {
+        "move": "pre-action-retry-y-769",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1145061376,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "hybrid"
+      },
+      {
+        "move": "pre-action-retry-y-1201",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1150689280,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "hybrid"
+      },
+      {
+        "move": "pre-action-retry-y-1202",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1150697472,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "hybrid"
+      },
+      {
+        "move": "pre-action-retry-y-1861",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1156096000,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "hybrid"
+      },
+      {
+        "move": "successful-query-state-only-y-1861",
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1156096000,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "setup": "hybrid"
+      }
+    ],
+    "mode": "contiguous-exhaustive-stream",
+    "order": "mixed",
+    "python": "3.9.13",
+    "sourceHashes": {
+      "backward_validation.py": "06437f52f074d958ff56642e19eaf304fd8ef7dcb78897e4ca6bd0e4cd3651de",
+      "backward_wafel.py": "a2df51c3f68db76ebc855eec5f495593bbc2e591931fa0412979a07532c5cb52",
+      "chunk_ledger.py": "25d9a050d6c2329c3527a3c8a98fd316476771b6128de1c60dbad82e747eaaef",
+      "controller_inputs.py": "122c1f37ac7e03981b7e0d645ace0b0fb36aa748786cde3c2e96122ffe94b8bf",
+      "product_sweep.py": "edc48cde379b4dd041d56472e7154e60a601488dcde2243a12d707a43b798e8b",
+      "replay.py": "ea422b6478e40931c9d61aaa0e19c9d86a551a0219dbeaca85cd9a82e70df66d",
+      "search.py": "00b39ee7f0b165b7959231ee796241a13daf2ea0aaef5049dce983b8580d69f3"
+    },
+    "wafel": "0.8.5"
+  },
+  "schema": 1,
+  "scope": "Real supplied-scene, one-update trials, not reachable gap generation; all batch clocks include interpreter startup/shutdown and report finalization. Whole benchmark also includes separate audits and benchmark receipt/stat work.",
+  "wholeBenchmarkWallSeconds": 99.8011988,
+  "latestOnlyCheck": {
+    "seconds": 0.04214650000000003,
+    "bytesRead": 636029,
+    "cursor": 80000,
+    "peakRssBytes": 21811200,
+    "historicalContentVerified": false
+  },
+  "tests": {
+    "counterAndRecovery": 47,
+    "originalPilot": 15,
+    "total": 62
+  },
+  "bounds": {
+    "chunkRecords": 1000,
+    "maxChunkBytes": 4194304,
+    "maxRecordBytes": 65536,
+    "maxMetadataBytes": 262144
+  },
+  "oldLinearEstimateWithdrawn": true,
+  "benchmarkedCompleteControllerProduct": false,
+  "nominalDaysAtObservedCumulativeRate": 4.530017203844741,
+  "nominalDaysAtLargestBatchRate": 4.112890041483062,
+  "approximateFullProductDiskBytes": 210491796357.12003,
+  "interruptedRun": {
+    "committedBeforeRecovery": 47000,
+    "retainedBeforeRecovery": 16450,
+    "nextCaseAfterRecovery": 47100,
+    "uncommittedChunkQuarantined": true,
+    "initialFailureLog": "growth/batch-80000.stderr.log",
+    "firstFailedAttemptWallTimeNotRecorded": true,
+    "excludedFromCompletedRepeatableBenchmark": true
+  },
+  "timingWarnings": [
+    "Nominal day figures are constant-rate arithmetic, not predictions at a 200+ GB ledger size.",
+    "Default full resume/audit scans all history once; frequent small full-verify batches add cumulative reread cost.",
+    "The first exploratory growth run failed; its unrecorded attempt duration is not part of the fresh completed benchmark."
+  ],
+  "fullStateArchive": false,
+  "archiveFormat": "accepted-predecessor-recipes-v1",
+  "gameProofVerdict": "No gameplay gap producer, full-state inverse, exhaustive update product or Coq result"
+}

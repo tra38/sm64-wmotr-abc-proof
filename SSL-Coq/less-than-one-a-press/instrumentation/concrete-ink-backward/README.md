@@ -2,6 +2,14 @@
 
 ## Latest: an individual, resumable one-update counter
 
+**Checkpoint repair, 3 October:** [the bounded chunk ledger](../../docs/notes/rank1-chunk-ledger.md)
+now commits trial data, accepted predecessor recipes, counts and sampling
+cursor together. The old 2.9-day extrapolation is withdrawn. A separate real
+80,000-case growth benchmark measures 93.315 seconds across three complete
+batch processes, or 99.801 seconds including three extra full audits; peak
+game-process memory stays near 968 MiB and logs grow to 47.86 MiB. There are
+62 passing search/recovery/pilot tests. No gap producer or Coq result follows.
+
 `product_sweep.py` tests all three target menus with a cached, fully restored
 scene for each actual Wafel update. `--buttons stock-gameplay` gates L and the
 four D-pad bits at the user's request, retaining B/Z/Start/R/all C buttons and
@@ -18,19 +26,34 @@ not a whole-Ink exclusion. The exact accepted-return observer and Area-2
 suffix checks remain separate from per-trial matching.
 
 ```powershell
-& './build/wafel-pilot/python/python.exe' -X utf8 instrumentation/concrete-ink-backward/product_sweep.py --buttons stock-gameplay --order mixed --cases 2500 --seconds 30 --output build/concrete-ink-backward/20261003-5000-ledger/report.json
-& './build/wafel-pilot/python/python.exe' -X utf8 instrumentation/concrete-ink-backward/product_sweep.py --buttons stock-gameplay --order mixed --resume --cases 2500 --seconds 30 --output build/concrete-ink-backward/20261003-5000-ledger/report.json
+& './build/wafel-pilot/python/python.exe' -X utf8 instrumentation/concrete-ink-backward/product_sweep.py --buttons stock-gameplay --order mixed --cases 2500 --seconds 30 --output build/concrete-ink-backward/NEW-chunk-counter/report.json
+& './build/wafel-pilot/python/python.exe' -X utf8 instrumentation/concrete-ink-backward/product_sweep.py --buttons stock-gameplay --order mixed --resume --cases 2500 --seconds 30 --output build/concrete-ink-backward/NEW-chunk-counter/report.json
+& './build/wafel-pilot/python/python.exe' -X utf8 instrumentation/concrete-ink-backward/product_sweep.py --audit --output build/concrete-ink-backward/NEW-chunk-counter/report.json
 ```
 
-`--cases` and `--seconds` bound each invocation. `--order mixed` is an exact
-permutation of the alphabet, so short batches spread through it; no input
-representative stands in for another. The report and adjacent `.trials.jsonl`
-ledger checkpoint every 1,000 completed cases. Resume verifies source/runtime
-hashes, prior controller state, exact enumeration and counts. A mismatched
-or uncheckpointed tail is rejected for explicit recovery; preserve it.
+`--cases` and `--seconds` bound each invocation; the new loop clock includes
+setup and validation. `--order mixed` is an exact permutation; no untested
+input representative is counted. The adjacent `.ledger/` contains bounded
+immutable chunks and a checksummed HEAD, the authority for counts/cursor.
+The report is not authoritative and can be reconstructed after interruption.
+Default `--resume-verify full` streams/hashes all committed trial and retained
+bytes, verifies enumeration/chain/counts and includes the cost in the clock.
+Checkpoint writing never rereads old payloads. Full resume remains linear in
+history per invocation, so repeatedly auditing growing prefixes is expensive.
+
+Explicit `--resume-verify latest` verifies only the latest chunk and prior
+metadata; its receipt warns that historical contents are not verified. Run
+normal full resume or `--audit` for old-chunk corruption detection. Failed
+append/checkpoint data is preserved in `recovery/`; only committed IDs count,
+and uncommitted work may be replayed. Retained files are accepted predecessor
+recipes, not portable save-state dumps. Source/runtime, input/action history,
+enumeration and chunk-setting differences refuse resume. Legacy v1 JSONL is
+preserved and supported by read-only `--audit`, without silent migration.
 `--benchmark` is a timing sample and cannot resume this coverage stream.
 The compact `expected-gated-product.json` records the stopped result.
-No continuation is running; start a later batch only on user instruction.
+The original 5,000-case dataset and separate 80,000-case benchmark are both
+stopped; no continuation is running. See `expected-chunk-ledger-benchmark.json`
+for inclusive timing, memory/log growth and explicit integrity limits.
 
 The [implemented move inventory](../../docs/notes/rank1-concrete-move-inventory.md)
 lists both installation setups and the three earlier action families. Its
