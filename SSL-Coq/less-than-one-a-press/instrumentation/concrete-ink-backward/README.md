@@ -1,6 +1,58 @@
 # Concrete backward experiment from Ink
 
-## Latest: an individual, resumable one-update counter
+## Latest: compact storage and a bounded Reverse Scattershot pilot
+
+[The checked pilot](../../docs/notes/rank1-reverse-scattershot-pilot.md) stops at
+2,000 native search updates per arm, including suffix and retention replay.
+Reverse Scattershot completes 292 distinct combinations: 74 selected conditional
+passes, 218 rejections and a separately recorded final incomplete attempt.
+All 146 earlier-step proposals fail their parent checkpoint; real Ink depth
+remains one. The archive has twelve entries, six recipes and twelve suffixes.
+No gap producer, route exclusion or new Coq result follows. All 78 code tests
+and a real 8+8-versus-16 deterministic resume control pass. No long search runs.
+
+New storage uses compact case/recipe/controller IDs, accepted-ID references and
+independently compressed bounded chunks. Actual 80,000-row migration reduces
+50.1 MB of old payload to a 0.733 MB whole ledger; full compact audit takes
+6.19 s. Default full resume still hashes and validates every committed record.
+Explicit latest mode trusts older payloads and says so; `--audit` always uses
+full verification. Read-only compatibility supports v1/v2 logs. To migrate v2,
+run `benchmark_compaction.py --source OLD.ledger --output NEW --cases COUNT`;
+the destination must be new and the source is preserved. Changed source/config
+fingerprints refuse incompatible resume.
+
+`--setup-seconds`, `--verification-seconds`, `--search-seconds` and optional
+`--wall-seconds` separate budgets. Product `--seconds` aliases search work only.
+Time bounds are cooperative; safe checkpoint/close can exceed them. Verification
+incomplete runs zero candidates and preserves committed history. Native
+`--game-updates` checks before each advance and records a partial candidate as
+incomplete, without consuming its sampling ticket. Receipts give all phases;
+external benchmarks also include process startup/receipt writing/final exit.
+
+The seeded scheduler alternates fresh samples and backward extensions, reserving
+shorter branches while preferring deeper ones. Seven button classes and nine
+stick regions partition the gated encoded alphabet. Coarse buckets never merge
+states. Disk archives pin exact reconstruction recipes and all inputs; native
+full snapshots stay in memory. Each extension patches only its earliest state
+and continuously checks all parent observations, the within-update movement
+event, top retention and first Area-2 displacement. Raw/display words at the
+accepted return still use the explicit conditional prefix frame; they are not
+independently observed per sampled input by Wafel. Original/Variant/Hybrid
+requirements remain separate even when one exact execution is shared.
+
+```powershell
+& './build/wafel-pilot/python/python.exe' -X utf8 instrumentation/concrete-ink-backward/reverse_scattershot.py --seed 20261003 --game-updates 2000 --trials 2000 --depth 3 --archive 12 --setup-seconds 30 --verification-seconds 30 --search-seconds 30 --wall-seconds 90 --output build/concrete-ink-backward/NEW-pilot/report.json
+& './build/wafel-pilot/python/python.exe' -X utf8 instrumentation/concrete-ink-backward/reverse_scattershot.py --resume --seed 20261003 --game-updates 2000 --trials 2000 --depth 3 --archive 12 --output build/concrete-ink-backward/NEW-pilot/report.json
+& './build/wafel-pilot/python/python.exe' -X utf8 instrumentation/concrete-ink-backward/reverse_scattershot.py --audit --output build/concrete-ink-backward/NEW-pilot/report.json
+```
+
+See `expected-reverse-scattershot-pilot.json` for the fixed-budget comparison,
+storage costs, hashes and archive. Ground, freefall and final-message inverses
+are implemented; horizontal/support/rotation and other action/writer inverses
+are absent. More sampling cannot cover missing generators. All scene poses
+remain supplied conditional states, not controller-reached gameplay witnesses.
+
+## Earlier: an individual, resumable one-update counter
 
 **Checkpoint repair, 3 October:** [the bounded chunk ledger](../../docs/notes/rank1-chunk-ledger.md)
 now commits trial data, accepted predecessor recipes, counts and sampling
@@ -31,13 +83,13 @@ suffix checks remain separate from per-trial matching.
 & './build/wafel-pilot/python/python.exe' -X utf8 instrumentation/concrete-ink-backward/product_sweep.py --audit --output build/concrete-ink-backward/NEW-chunk-counter/report.json
 ```
 
-`--cases` and `--seconds` bound each invocation; the new loop clock includes
-setup and validation. `--order mixed` is an exact permutation; no untested
+`--cases` and `--seconds` bound each invocation; `--seconds` now limits search
+work separately from setup and validation. `--order mixed` is an exact permutation; no untested
 input representative is counted. The adjacent `.ledger/` contains bounded
 immutable chunks and a checksummed HEAD, the authority for counts/cursor.
 The report is not authoritative and can be reconstructed after interruption.
 Default `--resume-verify full` streams/hashes all committed trial and retained
-bytes, verifies enumeration/chain/counts and includes the cost in the clock.
+bytes, verifies enumeration/chain/counts and reports the cost in the verification phase.
 Checkpoint writing never rereads old payloads. Full resume remains linear in
 history per invocation, so repeatedly auditing growing prefixes is expensive.
 

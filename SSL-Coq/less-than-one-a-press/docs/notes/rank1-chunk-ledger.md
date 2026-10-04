@@ -1,5 +1,7 @@
 # Rank 1: scalable checkpoints, honest resume costs
 
+Follow-up: [compact storage and the stopped Reverse Scattershot pilot](rank1-reverse-scattershot-pilot.md) separates setup/verification/search budgets and measures the new compressed format. The measurements and raw-chunk format below are the preserved earlier benchmark, not the current format's footprint or clock policy.
+
 3 October 2026. This repairs the concrete counter's bookkeeping; it adds no
 Coq result or gameplay gap producer. The original 5,000-case ledger remains
 unchanged. A fresh, bounded benchmark stops at 80,000 supplied-scene trials:

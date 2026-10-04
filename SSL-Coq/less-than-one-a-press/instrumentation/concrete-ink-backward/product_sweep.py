@@ -18,6 +18,8 @@ from importlib.metadata import version
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from chunk_ledger import ChunkLedger, STATUSES, atomic_json
+from compact_store import ProductCodec, open_product
+from work_limits import WorkLimits, LimitReached
 from search import (A_BUTTON, Backend, DISAPPEARED, END_FIELDS, Input, Observer,
                     ROOT, RUNTIME, accepted_target, bits, create_game, differences,
                     installation_templates, load_capture, prepare, replay,
@@ -129,16 +131,18 @@ def cached_trial(job, control, details=False):
     return 'accepted-projection', actual if details else None
 
 
-def make_jobs(a_mode, buttons_mode):
+def make_jobs(a_mode, buttons_mode, check=None):
+    check = check or (lambda: None)
     started = time.perf_counter()
     b = Backend(create_game(), None)
     b.observer = Observer(b.game)
     presses = []
     control = Input(A_BUTTON if a_mode == 'held' else 0)
-    context = prepare(b, load_capture(RUNTIME/'capture.bKv95w/inputs.jsonl'), 1, control, presses)[0]
+    context = prepare(b, load_capture(RUNTIME/'capture.bKv95w/inputs.jsonl'), 1, control, presses,check)[0]
     jobs = []
     controls = []
     for name in NAMES:
+        check()
         accepted, fixture = specification(name)
         b.restore(context)
         b.patch(fixture)
@@ -151,6 +155,7 @@ def make_jobs(a_mode, buttons_mode):
             raise RuntimeError('Setup top capture failed: '+name)
         retained = False
         for _ in range(23):
+            check()
             b.advance(control)
             if b.game.read('gCurrAreaIndex')==2 and [bits(v) for v in b.game.read('gMarioState.pos')]==[
                     bits(365.5927734375),bits(5500.),bits(-1096.8026123046875)]:
@@ -160,6 +165,7 @@ def make_jobs(a_mode, buttons_mode):
         controls.append(dict(setup=name,fixture=fixture,accepted=accepted,endpoint=endpoint.observation,
                              retainedFirstArea2Apply=retained))
         for move in pose_templates(accepted):
+            check()
             b.restore(context)
             b.patch(move.patch)
             predecessor = b.capture()
@@ -179,12 +185,14 @@ def make_jobs(a_mode, buttons_mode):
     return jobs, metadata
 
 
-def compare_reference(jobs):
+def compare_reference(jobs, check=None):
+    check = check or (lambda: None)
     controls = (Input(),Input(0x1000,13,-27),Input(0x7f3f,-128,127),Input(0x400f,127,-128))
     comparisons = 0
     for job in jobs:
         b = job['backend']
         for c in controls:
+            check()
             if job['aMode']=='held':
                 c=Input(c.buttons|A_BUTTON,c.x,c.y)
             fast,_=cached_trial(job,c)
@@ -201,10 +209,12 @@ def atomic_write(path, report):
     atomic_json(path,report)
 
 
-def hash_file(path):
+def hash_file(path, check=None):
+    check = check or (lambda: None)
     digest=hashlib.sha256()
     with path.open('rb') as source:
         for block in iter(lambda:source.read(65536),b''):
+            check()
             digest.update(block)
     return digest.hexdigest()
 
@@ -242,9 +252,10 @@ def resume_counts(old, signature, total_cases):
     return cursor, counts, old['searchSeconds']
 
 
-def check_ledger(path, old, signature, jobs):
+def check_ledger(path, old, signature, jobs, check=None):
     """Read-only legacy v1 audit. Never used for new checkpoints."""
-    if hash_file(path) != old['ledger']['sha256']:
+    check=check or (lambda:None)
+    if hash_file(path,check) != old['ledger']['sha256']:
         raise ValueError('Ledger hash differs; preserve it for recovery')
     counts = {name:Counter() for name in NAMES}
     with path.open(encoding='utf-8') as source:
@@ -253,6 +264,7 @@ def check_ledger(path, old, signature, jobs):
             raise ValueError('Ledger signature differs')
         cursor = 0
         for line in source:
+            check()
             record = json.loads(line)
             ordinal, job_id = divmod(cursor, len(jobs))
             index = ordered_input(ordinal, signature['inputSpace']['buttonsMode'], signature['order'])
@@ -285,12 +297,14 @@ def validate_record(signature):
 def audit_output(args):
     """Offline full audit; no game construction and no historical-file rewrite."""
     started=time.perf_counter()
+    limits=WorkLimits(verification=getattr(args,'verification_seconds',None),overall=getattr(args,'wall_seconds',None))
+    limits.enter('verification')
     root=args.output.with_suffix('.ledger')
     if not root.exists():
         old=json.loads(args.output.read_text(encoding='utf-8'))
         from types import SimpleNamespace
         jobs=[dict(setup=j['setup'],move=SimpleNamespace(name=j['move'])) for j in old['signature']['jobOrder']]
-        cursor=check_ledger(args.output.with_suffix('.trials.jsonl'),old,old['signature'],jobs)
+        cursor=check_ledger(args.output.with_suffix('.trials.jsonl'),old,old['signature'],jobs,limits.check)
         return dict(format='legacy-v1',verifiedCases=cursor,wallSeconds=time.perf_counter()-started,
                     readOnly=True,scope='Entire legacy ledger hash, enumeration and counts')
     with (root/'manifest.json').open('rb') as source:
@@ -298,9 +312,8 @@ def audit_output(args):
     if len(raw)>262144:
         raise ValueError('Oversize manifest')
     manifest=json.loads(raw)['payload']
-    with ChunkLedger(root,manifest['signature'],manifest['totalCases'],validate_record(manifest['signature']),
-                     resume=True,verify='full',chunk_records=manifest['chunkRecords'],read_only=True) as store:
-        return dict(format='chunk-v2',verifiedCases=store.state['nextCase'],retained=store.state['retained'],
+    with open_product(root,manifest,verify='full',read_only=True,check=limits.check) as store:
+        return dict(format='chunk-v'+str(manifest['schema']),verifiedCases=store.state['nextCase'],retained=store.state['retained'],
                     wallSeconds=time.perf_counter()-started,io=store.io,peakRssBytes=peak_rss_bytes(),
                     readOnly=True,scope='All committed metadata, trial bytes, exact enumeration, counts and retained recipes; '
                         'uncommitted recovery/pending files are not part of coverage')
@@ -308,6 +321,10 @@ def audit_output(args):
 
 def run(args):
     started=time.perf_counter()
+    limits=WorkLimits(setup=getattr(args,'setup_seconds',None),
+                      verification=getattr(args,'verification_seconds',None),
+                      search=getattr(args,'search_seconds',None) if getattr(args,'search_seconds',None) is not None else getattr(args,'seconds',60),
+                      overall=getattr(args,'wall_seconds',None))
     root=args.output.with_suffix('.ledger')
     if args.resume and not root.exists():
         raise ValueError('Chunk checkpoint missing; legacy JSONL is preserved for --audit, not silently migrated')
@@ -317,28 +334,45 @@ def run(args):
         raise ValueError('Timing sample cannot resume a coverage stream')
     phases={}
     phase_start=time.perf_counter()
-    jobs,meta=make_jobs(args.a_mode,args.buttons)
+    try:
+        return _run_prepared(args,started,root,limits)
+    except LimitReached as exc:
+        # Verification failure never reaches recovery or append. The old HEAD
+        # and receipt remain authoritative; this separate attempt is diagnostic.
+        result=dict(status='verification incomplete' if exc.phase=='verification' else 'setup incomplete',
+                    complete=False,thisBatch={'tested':0},timing=limits.finish())
+        atomic_write(args.output.with_suffix('.attempt.json'),result)
+        return result
+
+
+def _run_prepared(args,started,root,limits):
+    phases={}
+    phase_start=time.perf_counter()
+    limits.check()
+    jobs,meta=make_jobs(args.a_mode,args.buttons,limits.check)
     phases['preparation']=time.perf_counter()-phase_start
     phase_start=time.perf_counter()
-    reference_count=compare_reference(jobs)
+    reference_count=compare_reference(jobs,limits.check)
     phases['referenceValidation']=time.perf_counter()-phase_start
     phase_start=time.perf_counter()
-    hashes={name:hash_file(ROOT/'instrumentation/concrete-ink-backward'/name)
-            for name in ('product_sweep.py','chunk_ledger.py','search.py','controller_inputs.py')}
-    hashes.update({name:hash_file(ROOT/'instrumentation/wafel-jp-pilot'/name)
+    hashes={name:hash_file(ROOT/'instrumentation/concrete-ink-backward'/name,limits.check)
+            for name in ('product_sweep.py','chunk_ledger.py','compact_store.py','work_limits.py','search.py','controller_inputs.py')}
+    hashes.update({name:hash_file(ROOT/'instrumentation/wafel-jp-pilot'/name,limits.check)
                    for name in ('replay.py','backward_wafel.py','backward_validation.py')})
     order='mixed' if args.benchmark else args.order
     signature=dict(aMode=args.a_mode,inputSpace=meta['inputSpace'],sourceHashes=hashes,
                    jobOrder=meta['jobOrder'],order=order,inputStride=INPUT_STRIDE,
                    mode='stratified-timing' if args.benchmark else 'contiguous-exhaustive-stream',
                    python=platform.python_version(),wafel=version('wafel'),architecture=platform.machine())
-    signature.update(captureSha256=hash_file(RUNTIME/'capture.bKv95w/inputs.jsonl'),
-                     dllSha256=hash_file(RUNTIME/'sm64_jp.dll'),
+    signature.update(captureSha256=hash_file(RUNTIME/'capture.bKv95w/inputs.jsonl',limits.check),
+                     dllSha256=hash_file(RUNTIME/'sm64_jp.dll',limits.check),
                      contextFrame=meta['frame'],buttonDown=meta['buttonDown'])
     phases['configuration']=time.perf_counter()-phase_start
     phase_start=time.perf_counter()
+    limits.enter('verification')
     store=ChunkLedger(root,signature,meta['totalCases'],validate_record(signature),resume=args.resume,
-                      verify=args.resume_verify,chunk_records=args.chunk_records)
+                      verify=args.resume_verify,chunk_records=args.chunk_records,check=limits.check,
+                      codec=ProductCodec(signature) if getattr(args,'storage','compact')=='compact' else None)
     phases['resumeValidation' if args.resume else 'storeInitialization']=time.perf_counter()-phase_start
     start_cursor=store.state['nextCase']
     recent_samples=[]
@@ -346,8 +380,15 @@ def run(args):
     if args.benchmark:
         limit=min(args.cases,meta['totalCases'])
     phases.update(trials=0.,append=0.,finalization=0.)
+    limits.enter('search')
+    store.check=lambda: None  # append/commit safety work cannot be aborted mid-transaction by a cooperative limit
+    stop_reason=None
     try:
-        while store.state['nextCase']<limit and store.state['nextCase']-start_cursor<args.cases and time.perf_counter()-started<args.seconds:
+        while store.state['nextCase']<limit and store.state['nextCase']-start_cursor<args.cases:
+            try:
+                limits.check()
+            except LimitReached as exc:
+                stop_reason=exc.phase+'-limit'; break
             cursor=store.state['nextCase']
             ordinal,job_id=divmod(cursor,len(jobs))
             index=ordered_input(ordinal,args.buttons,order)
@@ -366,7 +407,10 @@ def run(args):
             if len(recent_samples)<12:
                 recent_samples.append(record)
             if store.ready():
+                limits.enter('checkpoint')
                 store.commit()
+                limits.enter('search')
+        limits.enter('checkpoint')
         store.commit()
     except BaseException:
         # No error-path checkpoint: a partial append must never advance HEAD.
@@ -374,8 +418,9 @@ def run(args):
         store.close()
         raise
     phase_start=time.perf_counter()
+    limits.enter('finalization')
     state=store.state
-    ledger=dict(format='chunk-v2',path=str(root),generation=store.generation,
+    ledger=dict(format='chunk-v'+str(store.manifest['schema']),path=str(root),generation=store.generation,
                 commitSha256=store.commit_sha,retained=state['retained'],io=store.io,
                 recovered=store.recovered,archive='Accepted predecessor recipes, not portable Wafel memory dumps')
     store.close()
@@ -395,6 +440,7 @@ def run(args):
                                timingScope='Whole run including preparation, reference checks, configuration, resume, '
                                            'trial/append/checkpoint/close; final report write and process startup/shutdown '
                                            'are included by the external benchmark wall clock.'),
+                stopReason=stop_reason,timing=limits.finish(),
                 integrity=dict(resumeVerification=args.resume_verify if args.resume else 'new-ledger',
                                historicalContentVerified=not args.resume or args.resume_verify=='full',
                                warning='Explicit latest mode trusts older chunk contents; run --audit for complete corruption checks.'
@@ -416,6 +462,11 @@ def main():
                         help='Mixed is an exact permutation, not representative grouping')
     parser.add_argument('--cases',type=int,default=5000)
     parser.add_argument('--seconds',type=float,default=60)
+    parser.add_argument('--search-seconds',type=float,help='Search work only; --seconds is its compatibility alias')
+    parser.add_argument('--setup-seconds',type=float)
+    parser.add_argument('--verification-seconds',type=float)
+    parser.add_argument('--wall-seconds',type=float,help='Optional cooperative overall limit; safety finalization may overrun')
+    parser.add_argument('--storage',choices=('compact','legacy'),default='compact')
     parser.add_argument('--benchmark',action='store_true')
     parser.add_argument('--resume',action='store_true')
     parser.add_argument('--resume-verify',choices=('full','latest'),default='full',
@@ -427,11 +478,14 @@ def main():
     if args.cases<1 or args.seconds<=0 or not 1<=args.chunk_records<=4096:
         parser.error('Positive limits required')
     if args.audit:
-        print(json.dumps(audit_output(args)))
+        try:
+            print(json.dumps(audit_output(args)))
+        except LimitReached:
+            print(json.dumps(dict(status='verification incomplete',verified=False)))
         return
     result=run(args)
     print(json.dumps({k:result[k] for k in ('status','complete','inputsPerPose','nextCase',
-                                          'unprocessedCases','counts','thisBatch')}))
+                                          'unprocessedCases','counts','thisBatch') if k in result}))
 
 
 if __name__=='__main__':

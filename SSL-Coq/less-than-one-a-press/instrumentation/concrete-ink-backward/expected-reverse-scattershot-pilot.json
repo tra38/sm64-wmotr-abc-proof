@@ -1,0 +1,3960 @@
+{
+  "schema": 1,
+  "date": "2026-10-03",
+  "tests": {
+    "application": 63,
+    "freefallPilot": 15,
+    "total": 78
+  },
+  "comparison": {
+    "arms": [
+      {
+        "name": "menu-first",
+        "processWallSeconds": 2.8921436,
+        "report": {
+          "acceptedFromSynchronizedRecords": [],
+          "archive": [
+            {
+              "attempts": 0,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 16387,
+                  "stick": [
+                    32,
+                    -2
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "pre-action-retry",
+              "frame": 492,
+              "id": 134,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-769",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1145061376,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1145061376,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "original"
+              ]
+            },
+            {
+              "attempts": 0,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 16397,
+                  "stick": [
+                    84,
+                    -5
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "pre-action-retry",
+              "frame": 492,
+              "id": 135,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-1201",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1150689280,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1150689280,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "original"
+              ]
+            },
+            {
+              "attempts": 0,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 24589,
+                  "stick": [
+                    76,
+                    -2
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "first-floor-query",
+              "frame": 492,
+              "id": 137,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-1861",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "hybrid"
+              ]
+            },
+            {
+              "attempts": 0,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 24587,
+                  "stick": [
+                    12,
+                    -7
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "first-floor-query",
+              "frame": 492,
+              "id": 138,
+              "initialRecordsSynchronized": false,
+              "move": "successful-query-state-only-y-1861",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "variant"
+              ]
+            },
+            {
+              "attempts": 0,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 8223,
+                  "stick": [
+                    6,
+                    -97
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "pre-action-retry",
+              "frame": 492,
+              "id": 144,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-768",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "original"
+              ]
+            },
+            {
+              "attempts": 0,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 22,
+                  "stick": [
+                    3,
+                    -58
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "pre-action-retry",
+              "frame": 492,
+              "id": 145,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-767",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1145028608,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1145028608,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "original"
+              ]
+            },
+            {
+              "attempts": 0,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 19,
+                  "stick": [
+                    0,
+                    -22
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "pre-action-retry",
+              "frame": 492,
+              "id": 146,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-769",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1145061376,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1145061376,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "original"
+              ]
+            },
+            {
+              "attempts": 0,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 26,
+                  "stick": [
+                    1,
+                    -88
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "pre-action-retry",
+              "frame": 492,
+              "id": 147,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-1201",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1150689280,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1150689280,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "original"
+              ]
+            },
+            {
+              "attempts": 0,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 24,
+                  "stick": [
+                    0,
+                    -64
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "first-floor-query",
+              "frame": 492,
+              "id": 149,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-1861",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "hybrid"
+              ]
+            },
+            {
+              "attempts": 0,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 24598,
+                  "stick": [
+                    5,
+                    -74
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "first-floor-query",
+              "frame": 492,
+              "id": 150,
+              "initialRecordsSynchronized": false,
+              "move": "successful-query-state-only-y-1861",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "variant"
+              ]
+            },
+            {
+              "attempts": 0,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 12305,
+                  "stick": [
+                    2,
+                    45
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "pre-action-retry",
+              "frame": 492,
+              "id": 156,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-768",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "original"
+              ]
+            },
+            {
+              "attempts": 0,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 4112,
+                  "stick": [
+                    -1,
+                    30
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "pre-action-retry",
+              "frame": 492,
+              "id": 157,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-767",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1145028608,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1145028608,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "original"
+              ]
+            }
+          ],
+          "batchGameUpdates": 2000,
+          "batchTrials": 159,
+          "buttonClasses": {
+            "B": 24,
+            "B+Z": 24,
+            "R": 24,
+            "Start": 15,
+            "Z": 24,
+            "camera": 24,
+            "none": 24
+          },
+          "completedTrials": 158,
+          "counts": {
+            "original": {
+              "accepted-projection": 80,
+              "incomplete-budget": 1,
+              "rejected": 13
+            },
+            "variant": {
+              "rejected": 65
+            }
+          },
+          "deepestValidatedUpdates": 1,
+          "distinctRetainedBuckets": 12,
+          "distinctTestedCombinations": 158,
+          "generators": "Target-derived pre-action retry/first-query poses, ground copy/sink, four-quarter freefall arithmetic, final automatic-dialog sink. Missing horizontal/support/rotation inverses, other actions and writers, and a controller-reached predecessor context.",
+          "incompleteBudgetAttempts": 1,
+          "integrity": {
+            "fullHistoryVerified": true,
+            "verification": "new"
+          },
+          "ledger": {
+            "commitSha256": "2a6ee4117b648e1b06b5821ad22bc5d3a120a365bcc6114c59b639010497fdc1",
+            "format": "compact-gzip-v3",
+            "generation": 3,
+            "io": {
+              "bytesRead": 356333,
+              "bytesWritten": 356333,
+              "checkpointSeconds": 0.2375195000000001,
+              "checkpoints": 4
+            },
+            "path": "build\\concrete-ink-backward\\20261003-rss-final-report\\menu-first.ledger"
+          },
+          "matching": "Every stored parent observation, distinct endpoint END_FIELDS, exact ACT_DISAPPEARED movement event, top platform persistence in Area 1 and first Area-2 action-entry displacement. The pointer may clear later in that Area-2 update. Collision/display at accepted return are conditional on the explicit entry-record contract and separate emulator fixtures; no per-input observation or full-memory equality.",
+          "nativeSnapshotsPeak": 12,
+          "nextCase": 159,
+          "peakRssBytes": 159879168,
+          "poseRecipes": 12,
+          "preparationAPresses": [],
+          "preparationGameUpdates": 495,
+          "proposalFamilies": {
+            "first-floor-query": 52,
+            "pre-action-retry": 107
+          },
+          "reachability": "All earliest poses and pillar completion supplied conditionally. No patch-free no-A route or mechanism impossibility follows from this finite menu/sample.",
+          "reusedPredicates": 8,
+          "scheduler": "menu-first",
+          "schema": 1,
+          "seed": 20261003,
+          "signature": {
+            "aMode": "released",
+            "architecture": "AMD64",
+            "archiveLimit": 12,
+            "contextFrames": [
+              490,
+              491,
+              492
+            ],
+            "depth": 3,
+            "endpoints": {
+              "hybrid": {
+                "action": 4864,
+                "actionArg": 262145,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1156733869,
+                "floorNull": 0,
+                "floorOwner": 61,
+                "forwardVel": 0,
+                "input": 40,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": 61,
+                "rng": 20512,
+                "timer": 494,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 132,
+                "usedSlot": 64,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "original": {
+                "action": 4864,
+                "actionArg": 262145,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1156733869,
+                "floorNull": 0,
+                "floorOwner": 61,
+                "forwardVel": 0,
+                "input": 40,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": 61,
+                "rng": 20512,
+                "timer": 494,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 132,
+                "usedSlot": 64,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "variant": {
+                "action": 4864,
+                "actionArg": 262145,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1156733869,
+                "floorNull": 0,
+                "floorOwner": 61,
+                "forwardVel": 0,
+                "input": 40,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": 61,
+                "rng": 20512,
+                "timer": 494,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 132,
+                "usedSlot": 64,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              }
+            },
+            "entryRecordContract": "For this IDLE installation menu, raw/display records at accepted warp return equal those at the start of the installation update (the last parent checkpoint for an extension). This is an explicit unproved per-input prefix frame; the native event directly observes movement only. Earlier proposals are not required to inherit those records.",
+            "initialAux": {
+              "archive": [],
+              "deepest": 0,
+              "expansions": 0,
+              "fresh": 0,
+              "updates": 0
+            },
+            "jobOrder": [
+              {
+                "family": "pre-action-retry",
+                "move": "pre-action-retry-y-768",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1156733869,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "original",
+                "targets": [
+                  "original",
+                  "hybrid"
+                ]
+              },
+              {
+                "family": "pre-action-retry",
+                "move": "pre-action-retry-y-767",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1156733869,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1145028608,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "original",
+                "targets": [
+                  "original",
+                  "hybrid"
+                ]
+              },
+              {
+                "family": "pre-action-retry",
+                "move": "pre-action-retry-y-769",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1156733869,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1145061376,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "original",
+                "targets": [
+                  "original",
+                  "hybrid"
+                ]
+              },
+              {
+                "family": "pre-action-retry",
+                "move": "pre-action-retry-y-1201",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1156733869,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1150689280,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "original",
+                "targets": [
+                  "original",
+                  "hybrid"
+                ]
+              },
+              {
+                "family": "first-floor-query",
+                "move": "pre-action-retry-y-1202",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1156733869,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1150697472,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "original",
+                "targets": [
+                  "original",
+                  "hybrid"
+                ]
+              },
+              {
+                "family": "first-floor-query",
+                "move": "pre-action-retry-y-1861",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1156733869,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1156096000,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "original",
+                "targets": [
+                  "original",
+                  "hybrid"
+                ]
+              },
+              {
+                "family": "first-floor-query",
+                "move": "successful-query-state-only-y-1861",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1156096000,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "original",
+                "targets": [
+                  "original",
+                  "variant",
+                  "hybrid"
+                ]
+              },
+              {
+                "family": "pre-action-retry",
+                "move": "pre-action-retry-y-768",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "variant",
+                "targets": [
+                  "variant"
+                ]
+              },
+              {
+                "family": "pre-action-retry",
+                "move": "pre-action-retry-y-767",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1145028608,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "variant",
+                "targets": [
+                  "variant"
+                ]
+              },
+              {
+                "family": "pre-action-retry",
+                "move": "pre-action-retry-y-769",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1145061376,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "variant",
+                "targets": [
+                  "variant"
+                ]
+              },
+              {
+                "family": "pre-action-retry",
+                "move": "pre-action-retry-y-1201",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1150689280,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "variant",
+                "targets": [
+                  "variant"
+                ]
+              },
+              {
+                "family": "first-floor-query",
+                "move": "pre-action-retry-y-1202",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1150697472,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "variant",
+                "targets": [
+                  "variant"
+                ]
+              }
+            ],
+            "maxTrials": 5000,
+            "order": "seeded-strata-v1",
+            "python": "3.9.13",
+            "reconstruction": "pinned-init-capture360-pillar4-neutral-to131-v1",
+            "retentionSuffix": {
+              "input": {
+                "buttons": 0,
+                "stick": [
+                  0,
+                  0
+                ]
+              },
+              "updates": 23
+            },
+            "scheduler": "menu-first",
+            "seed": 20261003,
+            "sourceHashes": {
+              "build/wafel-pilot/capture.bKv95w/inputs.jsonl": "9bcc451964025d9f0bb1344c45957b6bfd095451b44bfb9a01f8584a75db6a72",
+              "build/wafel-pilot/sm64_jp.dll": "960fe979068b78e6733b3ddb87741833fbf4eb29b2a21a2bba871977427c2d0f",
+              "instrumentation/concrete-ink-backward/chunk_ledger.py": "cfac94c2e736b32c39ee18c8bb3c9af8a4b17e4cc27dd3f67bb92def914140a2",
+              "instrumentation/concrete-ink-backward/compact_store.py": "8f4f474a62728fa0dd0a1107001b3f1d238381e77df56bf0246501b5778470bb",
+              "instrumentation/concrete-ink-backward/controller_inputs.py": "122c1f37ac7e03981b7e0d645ace0b0fb36aa748786cde3c2e96122ffe94b8bf",
+              "instrumentation/concrete-ink-backward/product_sweep.py": "205d010fe21d4a559b3ed4a4a1cb4e7d611a66978e7ece2f760b211ebf0fc6b1",
+              "instrumentation/concrete-ink-backward/reverse_scattershot.py": "f342fe428b0a5b1ad37e023ee8f106ae966618329ade53a9a964c0213de2a3fc",
+              "instrumentation/concrete-ink-backward/search.py": "90db7656eb456ec1661558b7f0c32e5dc7e422b1c99049cbde87ef4cbf9a2303",
+              "instrumentation/concrete-ink-backward/work_limits.py": "b2fea08775e667ffa9db09767fde0fc4f07e9e3a8b368dd93cdd0803875fad18",
+              "instrumentation/wafel-jp-pilot/backward_validation.py": "06437f52f074d958ff56642e19eaf304fd8ef7dcb78897e4ca6bd0e4cd3651de",
+              "instrumentation/wafel-jp-pilot/backward_wafel.py": "a2df51c3f68db76ebc855eec5f495593bbc2e591931fa0412979a07532c5cb52",
+              "instrumentation/wafel-jp-pilot/replay.py": "ea422b6478e40931c9d61aaa0e19c9d86a551a0219dbeaca85cd9a82e70df66d"
+            },
+            "targets": {
+              "hybrid": {
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ]
+              },
+              "original": {
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "variant": {
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "display": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ]
+              }
+            },
+            "wafel": "0.8.5"
+          },
+          "splitClassification": "List accepted Ink suffixes whose earliest movement/collision/display records all agreed. An empty list means no such witness in this sample; end-of-update agreement does not disprove a within-update split. Other seed fields and the scene remain conditional.",
+          "status": "game-update-budget",
+          "targetEvaluations": {
+            "hybrid:accepted-projection": 13,
+            "hybrid:rejected": 13,
+            "hybrid:rejected-event": 67,
+            "original:accepted-projection": 54,
+            "original:rejected": 13,
+            "original:rejected-event": 26,
+            "variant:accepted-projection": 13,
+            "variant:rejected": 65
+          },
+          "timing": {
+            "limitSemantics": "Cooperative checks between updates and bounded IO operations; an in-flight native update/IO cannot be preempted. Completed records are checkpointed and safety finalization may exceed these limits.",
+            "limits": {
+              "overall": 90.0,
+              "search": 30.0,
+              "setup": 30.0,
+              "verification": 30.0
+            },
+            "phaseSeconds": {
+              "checkpoint": 0.2376436999999998,
+              "finalization": 0.013545300000000093,
+              "preparation": 1.3662782,
+              "search": 1.0222917,
+              "verification": 0.013888200000000017
+            },
+            "searchCheckBoundary": "Between complete candidate replays, at most depth+23 native updates. The game-update budget is checked before each individual update.",
+            "totalSeconds": 2.6536471
+          },
+          "totalStoredBytes": 93921,
+          "retainedPoseRecipes": 6,
+          "retainedSuffixes": 12
+        },
+        "completedCombinationsPerTotalSecond": 54.63075899827381,
+        "nativeUpdatesPerTotalSecond": 691.5285949148583,
+        "passedSelectedChecks": 80,
+        "rejectedSelectedChecks": 78
+      },
+      {
+        "name": "scattershot",
+        "processWallSeconds": 2.9980552,
+        "report": {
+          "acceptedFromSynchronizedRecords": [],
+          "archive": [
+            {
+              "attempts": 1,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 24576,
+                  "stick": [
+                    -16,
+                    5
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "pre-action-retry",
+              "frame": 492,
+              "id": 244,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-769",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1145061376,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1145061376,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "original"
+              ]
+            },
+            {
+              "attempts": 0,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 24576,
+                  "stick": [
+                    -116,
+                    -2
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "pre-action-retry",
+              "frame": 492,
+              "id": 246,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-1201",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1150689280,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1150689280,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "original"
+              ]
+            },
+            {
+              "attempts": 0,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 24576,
+                  "stick": [
+                    -97,
+                    8
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "first-floor-query",
+              "frame": 492,
+              "id": 250,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-1861",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "hybrid"
+              ]
+            },
+            {
+              "attempts": 0,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 24576,
+                  "stick": [
+                    -49,
+                    -7
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "first-floor-query",
+              "frame": 492,
+              "id": 252,
+              "initialRecordsSynchronized": false,
+              "move": "successful-query-state-only-y-1861",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "variant"
+              ]
+            },
+            {
+              "attempts": 0,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 16392,
+                  "stick": [
+                    83,
+                    -4
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "pre-action-retry",
+              "frame": 492,
+              "id": 264,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-768",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "original"
+              ]
+            },
+            {
+              "attempts": 1,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 16385,
+                  "stick": [
+                    97,
+                    0
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "pre-action-retry",
+              "frame": 492,
+              "id": 266,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-767",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1145028608,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1145028608,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "original"
+              ]
+            },
+            {
+              "attempts": 0,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 16387,
+                  "stick": [
+                    32,
+                    -2
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "pre-action-retry",
+              "frame": 492,
+              "id": 268,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-769",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1145061376,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1145061376,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "original"
+              ]
+            },
+            {
+              "attempts": 0,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 16397,
+                  "stick": [
+                    84,
+                    -5
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "pre-action-retry",
+              "frame": 492,
+              "id": 270,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-1201",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1150689280,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1150689280,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "original"
+              ]
+            },
+            {
+              "attempts": 1,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 24589,
+                  "stick": [
+                    76,
+                    -2
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "first-floor-query",
+              "frame": 492,
+              "id": 274,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-1861",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "hybrid"
+              ]
+            },
+            {
+              "attempts": 1,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 24587,
+                  "stick": [
+                    12,
+                    -7
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "first-floor-query",
+              "frame": 492,
+              "id": 276,
+              "initialRecordsSynchronized": false,
+              "move": "successful-query-state-only-y-1861",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "variant"
+              ]
+            },
+            {
+              "attempts": 1,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 8223,
+                  "stick": [
+                    6,
+                    -97
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "pre-action-retry",
+              "frame": 492,
+              "id": 288,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-768",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "original"
+              ]
+            },
+            {
+              "attempts": 1,
+              "checkpoints": [],
+              "controls": [
+                {
+                  "buttons": 22,
+                  "stick": [
+                    3,
+                    -58
+                  ]
+                }
+              ],
+              "depth": 1,
+              "family": "pre-action-retry",
+              "frame": 492,
+              "id": 290,
+              "initialRecordsSynchronized": false,
+              "move": "pre-action-retry-y-767",
+              "observation": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1108869120,
+                "floorNull": 0,
+                "floorOwner": -1,
+                "forwardVel": 0,
+                "input": 32,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1145028608,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": -1,
+                "rng": 56027,
+                "timer": 493,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 131,
+                "usedSlot": -1,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "parent": null,
+              "patch": {
+                "action": 205521409,
+                "actionArg": 0,
+                "actionState": 0,
+                "actionTimer": 0,
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1145028608,
+                  3296722944
+                ],
+                "vy": 0
+              },
+              "provenance": "supplied conditional earliest pose; suffix controller-replayed",
+              "targets": [
+                "original"
+              ]
+            }
+          ],
+          "batchGameUpdates": 2000,
+          "batchTrials": 293,
+          "buttonClasses": {
+            "B": 24,
+            "B+Z": 24,
+            "R": 15,
+            "Start": 12,
+            "Z": 24,
+            "camera": 24,
+            "none": 170
+          },
+          "completedTrials": 292,
+          "counts": {
+            "original": {
+              "accepted-projection": 74,
+              "incomplete-budget": 1,
+              "rejected": 158
+            },
+            "variant": {
+              "rejected": 60
+            }
+          },
+          "deepestValidatedUpdates": 1,
+          "distinctRetainedBuckets": 12,
+          "distinctTestedCombinations": 292,
+          "generators": "Target-derived pre-action retry/first-query poses, ground copy/sink, four-quarter freefall arithmetic, final automatic-dialog sink. Missing horizontal/support/rotation inverses, other actions and writers, and a controller-reached predecessor context.",
+          "incompleteBudgetAttempts": 1,
+          "integrity": {
+            "fullHistoryVerified": true,
+            "verification": "new"
+          },
+          "ledger": {
+            "commitSha256": "8371908ad9b5f4822fb41e2e42ef2489ab95472a5f786076184b316273ac293f",
+            "format": "compact-gzip-v3",
+            "generation": 5,
+            "io": {
+              "bytesRead": 607503,
+              "bytesWritten": 607503,
+              "checkpointSeconds": 0.2725055999999997,
+              "checkpoints": 6
+            },
+            "path": "build\\concrete-ink-backward\\20261003-rss-final-report\\scattershot.ledger"
+          },
+          "matching": "Every stored parent observation, distinct endpoint END_FIELDS, exact ACT_DISAPPEARED movement event, top platform persistence in Area 1 and first Area-2 action-entry displacement. The pointer may clear later in that Area-2 update. Collision/display at accepted return are conditional on the explicit entry-record contract and separate emulator fixtures; no per-input observation or full-memory equality.",
+          "nativeSnapshotsPeak": 12,
+          "nextCase": 293,
+          "peakRssBytes": 160063488,
+          "poseRecipes": 12,
+          "preparationAPresses": [],
+          "preparationGameUpdates": 495,
+          "proposalFamilies": {
+            "dialog": 23,
+            "first-floor-query": 48,
+            "freefall": 51,
+            "ground": 72,
+            "pre-action-retry": 99
+          },
+          "reachability": "All earliest poses and pillar completion supplied conditionally. No patch-free no-A route or mechanism impossibility follows from this finite menu/sample.",
+          "reusedPredicates": 8,
+          "scheduler": "scattershot",
+          "schema": 1,
+          "seed": 20261003,
+          "signature": {
+            "aMode": "released",
+            "architecture": "AMD64",
+            "archiveLimit": 12,
+            "contextFrames": [
+              490,
+              491,
+              492
+            ],
+            "depth": 3,
+            "endpoints": {
+              "hybrid": {
+                "action": 4864,
+                "actionArg": 262145,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1156733869,
+                "floorNull": 0,
+                "floorOwner": 61,
+                "forwardVel": 0,
+                "input": 40,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": 61,
+                "rng": 20512,
+                "timer": 494,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 132,
+                "usedSlot": 64,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "original": {
+                "action": 4864,
+                "actionArg": 262145,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1156733869,
+                "floorNull": 0,
+                "floorOwner": 61,
+                "forwardVel": 0,
+                "input": 40,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": 61,
+                "rng": 20512,
+                "timer": 494,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 132,
+                "usedSlot": 64,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              },
+              "variant": {
+                "action": 4864,
+                "actionArg": 262145,
+                "actionState": 0,
+                "actionTimer": 0,
+                "area": 1,
+                "buttonDown": 0,
+                "buttonPressed": 0,
+                "collision": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "depth": 0,
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "flags": 17,
+                "floorHeight": 1156733869,
+                "floorNull": 0,
+                "floorOwner": 61,
+                "forwardVel": 0,
+                "input": 40,
+                "level": 8,
+                "marioSlot": 67,
+                "movement": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "pad": [
+                  0,
+                  0,
+                  0
+                ],
+                "pillars": 4,
+                "platform": 61,
+                "rng": 20512,
+                "timer": 494,
+                "topAction": 1,
+                "topActive": 257,
+                "topSlot": 61,
+                "topTimer": 132,
+                "usedSlot": 64,
+                "vx": 0,
+                "vy": 0,
+                "vz": 2147483648
+              }
+            },
+            "entryRecordContract": "For this IDLE installation menu, raw/display records at accepted warp return equal those at the start of the installation update (the last parent checkpoint for an extension). This is an explicit unproved per-input prefix frame; the native event directly observes movement only. Earlier proposals are not required to inherit those records.",
+            "initialAux": {
+              "archive": [],
+              "deepest": 0,
+              "expansions": 0,
+              "fresh": 0,
+              "updates": 0
+            },
+            "jobOrder": [
+              {
+                "family": "pre-action-retry",
+                "move": "pre-action-retry-y-768",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1156733869,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "original",
+                "targets": [
+                  "original",
+                  "hybrid"
+                ]
+              },
+              {
+                "family": "pre-action-retry",
+                "move": "pre-action-retry-y-767",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1156733869,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1145028608,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "original",
+                "targets": [
+                  "original",
+                  "hybrid"
+                ]
+              },
+              {
+                "family": "pre-action-retry",
+                "move": "pre-action-retry-y-769",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1156733869,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1145061376,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "original",
+                "targets": [
+                  "original",
+                  "hybrid"
+                ]
+              },
+              {
+                "family": "pre-action-retry",
+                "move": "pre-action-retry-y-1201",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1156733869,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1150689280,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "original",
+                "targets": [
+                  "original",
+                  "hybrid"
+                ]
+              },
+              {
+                "family": "first-floor-query",
+                "move": "pre-action-retry-y-1202",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1156733869,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1150697472,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "original",
+                "targets": [
+                  "original",
+                  "hybrid"
+                ]
+              },
+              {
+                "family": "first-floor-query",
+                "move": "pre-action-retry-y-1861",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1156733869,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1156096000,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "original",
+                "targets": [
+                  "original",
+                  "hybrid"
+                ]
+              },
+              {
+                "family": "first-floor-query",
+                "move": "successful-query-state-only-y-1861",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1156096000,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "original",
+                "targets": [
+                  "original",
+                  "variant",
+                  "hybrid"
+                ]
+              },
+              {
+                "family": "pre-action-retry",
+                "move": "pre-action-retry-y-768",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "variant",
+                "targets": [
+                  "variant"
+                ]
+              },
+              {
+                "family": "pre-action-retry",
+                "move": "pre-action-retry-y-767",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1145028608,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "variant",
+                "targets": [
+                  "variant"
+                ]
+              },
+              {
+                "family": "pre-action-retry",
+                "move": "pre-action-retry-y-769",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1145061376,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "variant",
+                "targets": [
+                  "variant"
+                ]
+              },
+              {
+                "family": "pre-action-retry",
+                "move": "pre-action-retry-y-1201",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1150689280,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "variant",
+                "targets": [
+                  "variant"
+                ]
+              },
+              {
+                "family": "first-floor-query",
+                "move": "pre-action-retry-y-1202",
+                "patch": {
+                  "action": 205521409,
+                  "actionArg": 0,
+                  "actionState": 0,
+                  "actionTimer": 0,
+                  "collision": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "depth": 0,
+                  "display": [
+                    3305734144,
+                    1145044992,
+                    3296722944
+                  ],
+                  "movement": [
+                    3305734144,
+                    1150697472,
+                    3296722944
+                  ],
+                  "vy": 0
+                },
+                "setup": "variant",
+                "targets": [
+                  "variant"
+                ]
+              }
+            ],
+            "maxTrials": 5000,
+            "order": "seeded-strata-v1",
+            "python": "3.9.13",
+            "reconstruction": "pinned-init-capture360-pillar4-neutral-to131-v1",
+            "retentionSuffix": {
+              "input": {
+                "buttons": 0,
+                "stick": [
+                  0,
+                  0
+                ]
+              },
+              "updates": 23
+            },
+            "scheduler": "scattershot",
+            "seed": 20261003,
+            "sourceHashes": {
+              "build/wafel-pilot/capture.bKv95w/inputs.jsonl": "9bcc451964025d9f0bb1344c45957b6bfd095451b44bfb9a01f8584a75db6a72",
+              "build/wafel-pilot/sm64_jp.dll": "960fe979068b78e6733b3ddb87741833fbf4eb29b2a21a2bba871977427c2d0f",
+              "instrumentation/concrete-ink-backward/chunk_ledger.py": "cfac94c2e736b32c39ee18c8bb3c9af8a4b17e4cc27dd3f67bb92def914140a2",
+              "instrumentation/concrete-ink-backward/compact_store.py": "8f4f474a62728fa0dd0a1107001b3f1d238381e77df56bf0246501b5778470bb",
+              "instrumentation/concrete-ink-backward/controller_inputs.py": "122c1f37ac7e03981b7e0d645ace0b0fb36aa748786cde3c2e96122ffe94b8bf",
+              "instrumentation/concrete-ink-backward/product_sweep.py": "205d010fe21d4a559b3ed4a4a1cb4e7d611a66978e7ece2f760b211ebf0fc6b1",
+              "instrumentation/concrete-ink-backward/reverse_scattershot.py": "f342fe428b0a5b1ad37e023ee8f106ae966618329ade53a9a964c0213de2a3fc",
+              "instrumentation/concrete-ink-backward/search.py": "90db7656eb456ec1661558b7f0c32e5dc7e422b1c99049cbde87ef4cbf9a2303",
+              "instrumentation/concrete-ink-backward/work_limits.py": "b2fea08775e667ffa9db09767fde0fc4f07e9e3a8b368dd93cdd0803875fad18",
+              "instrumentation/wafel-jp-pilot/backward_validation.py": "06437f52f074d958ff56642e19eaf304fd8ef7dcb78897e4ca6bd0e4cd3651de",
+              "instrumentation/wafel-jp-pilot/backward_wafel.py": "a2df51c3f68db76ebc855eec5f495593bbc2e591931fa0412979a07532c5cb52",
+              "instrumentation/wafel-jp-pilot/replay.py": "ea422b6478e40931c9d61aaa0e19c9d86a551a0219dbeaca85cd9a82e70df66d"
+            },
+            "targets": {
+              "hybrid": {
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ]
+              },
+              "original": {
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "display": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "variant": {
+                "collision": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "display": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ],
+                "movement": [
+                  3305734144,
+                  1156096000,
+                  3296722944
+                ]
+              }
+            },
+            "wafel": "0.8.5"
+          },
+          "splitClassification": "List accepted Ink suffixes whose earliest movement/collision/display records all agreed. An empty list means no such witness in this sample; end-of-update agreement does not disprove a within-update split. Other seed fields and the scene remain conditional.",
+          "status": "game-update-budget",
+          "targetEvaluations": {
+            "hybrid:accepted-projection": 12,
+            "hybrid:rejected": 12,
+            "hybrid:rejected-event": 62,
+            "original:accepted-projection": 50,
+            "original:rejected": 12,
+            "original:rejected-event": 24,
+            "variant:accepted-projection": 12,
+            "variant:rejected": 60
+          },
+          "timing": {
+            "limitSemantics": "Cooperative checks between updates and bounded IO operations; an in-flight native update/IO cannot be preempted. Completed records are checkpointed and safety finalization may exceed these limits.",
+            "limits": {
+              "overall": 90.0,
+              "search": 30.0,
+              "setup": 30.0,
+              "verification": 30.0
+            },
+            "phaseSeconds": {
+              "checkpoint": 0.27266080000000126,
+              "finalization": 0.007091399999999748,
+              "preparation": 1.170258,
+              "search": 1.326773299999999,
+              "verification": 0.014163499999999996
+            },
+            "searchCheckBoundary": "Between complete candidate replays, at most depth+23 native updates. The game-update budget is checked before each individual update.",
+            "totalSeconds": 2.790947
+          },
+          "totalStoredBytes": 138599,
+          "retainedPoseRecipes": 6,
+          "retainedSuffixes": 12
+        },
+        "completedCombinationsPerTotalSecond": 97.3964722197243,
+        "nativeUpdatesPerTotalSecond": 667.0991247926322,
+        "passedSelectedChecks": 74,
+        "rejectedSelectedChecks": 218
+      }
+    ],
+    "comparisonScope": "Old installation-menu-first scheduling versus interleaved backward expansion, using the same new compact storage, predicate reuse and continuous suffix/retention validator. The old product executable did not validate retention per candidate, so it is not timed as an equivalent check. All native suffix/retention updates and incomplete final attempts count.",
+    "nativeUpdateBudgetEach": 2000,
+    "seed": 20261003,
+    "totalExternalWallSeconds": 5.9320095
+  },
+  "storage": {
+    "rows": [
+      {
+        "cases": 5000,
+        "checkpointSeconds": 0.3371954000000006,
+        "compactTotalBytes": 52824,
+        "explicitLatestIo": {
+          "bytesRead": 18032,
+          "bytesWritten": 0,
+          "checkpointSeconds": 0.0,
+          "checkpoints": 0
+        },
+        "fullAuditIo": {
+          "bytesRead": 52823,
+          "bytesWritten": 0,
+          "checkpointSeconds": 0.0,
+          "checkpoints": 0
+        },
+        "oldPayloadBytes": 3124036,
+        "peakRssBytes": 25653248,
+        "phaseSeconds": {
+          "compactFullAudit": 0.4231727999999997,
+          "explicitLatestAudit": 0.07661080000000009,
+          "initialization": 0.018661800000000284,
+          "migrationIncludingCheckpoints": 0.8706778999999996,
+          "sourceFullVerification": 3.1336141
+        },
+        "processWallSeconds": 4.8487414,
+        "scope": "Actual existing rows, decoded identically and non-destructively rewritten to a new ledger. Includes a full 80000-row source audit for each measurement; no gameplay-search rate.",
+        "totalSeconds": 4.5446547,
+        "writeIo": {
+          "bytesRead": 1644537,
+          "bytesWritten": 1644537,
+          "checkpointSeconds": 0.3371954000000006,
+          "checkpoints": 5
+        }
+      },
+      {
+        "cases": 20000,
+        "checkpointSeconds": 1.6668399999999988,
+        "compactTotalBytes": 188415,
+        "explicitLatestIo": {
+          "bytesRead": 18111,
+          "bytesWritten": 0,
+          "checkpointSeconds": 0.0,
+          "checkpoints": 0
+        },
+        "fullAuditIo": {
+          "bytesRead": 188414,
+          "bytesWritten": 0,
+          "checkpointSeconds": 0.0,
+          "checkpoints": 0
+        },
+        "oldPayloadBytes": 12514546,
+        "peakRssBytes": 26202112,
+        "phaseSeconds": {
+          "compactFullAudit": 1.7657743999999997,
+          "explicitLatestAudit": 0.0687464999999996,
+          "initialization": 0.014664399999999578,
+          "migrationIncludingCheckpoints": 3.8960490000000005,
+          "sourceFullVerification": 3.2782913000000002
+        },
+        "processWallSeconds": 9.385762699999999,
+        "scope": "Actual existing rows, decoded identically and non-destructively rewritten to a new ledger. Includes a full 80000-row source audit for each measurement; no gameplay-search rate.",
+        "totalSeconds": 9.0725855,
+        "writeIo": {
+          "bytesRead": 6597211,
+          "bytesWritten": 6597211,
+          "checkpointSeconds": 1.6668399999999988,
+          "checkpoints": 20
+        }
+      },
+      {
+        "cases": 80000,
+        "checkpointSeconds": 6.629572899999996,
+        "compactTotalBytes": 732752,
+        "explicitLatestIo": {
+          "bytesRead": 18126,
+          "bytesWritten": 0,
+          "checkpointSeconds": 0.0,
+          "checkpoints": 0
+        },
+        "fullAuditIo": {
+          "bytesRead": 732751,
+          "bytesWritten": 0,
+          "checkpointSeconds": 0.0,
+          "checkpoints": 0
+        },
+        "oldPayloadBytes": 50106205,
+        "peakRssBytes": 26599424,
+        "phaseSeconds": {
+          "compactFullAudit": 6.1932236,
+          "explicitLatestAudit": 0.061519100000001714,
+          "initialization": 0.017954399999999815,
+          "migrationIncludingCheckpoints": 14.9990585,
+          "sourceFullVerification": 2.6359076
+        },
+        "processWallSeconds": 24.402068899999996,
+        "scope": "Actual existing rows, decoded identically and non-destructively rewritten to a new ledger. Includes a full 80000-row source audit for each measurement; no gameplay-search rate.",
+        "totalSeconds": 24.0839434,
+        "writeIo": {
+          "bytesRead": 26436549,
+          "bytesWritten": 26436549,
+          "checkpointSeconds": 6.629572899999996,
+          "checkpoints": 80
+        }
+      }
+    ],
+    "scope": "Compaction/audit of old game results, no new gameplay search",
+    "source": "build\\concrete-ink-backward\\20261003-chunk-ledger\\growth-retry\\report.ledger",
+    "totalExternalWallSeconds": 38.7050661,
+    "observedReductionPercent": 98.53760227899919,
+    "conditionalProductProjectionBytes": 3073384644.608,
+    "projectionCaveat": "Same observed record mix/chunk sizes only. New failures, larger IDs, repeated recovery files, filesystem allocation and growing metadata can change it. Reverse archive format is a bounded separate workload."
+  },
+  "resume": {
+    "completedTrialsEach": 16,
+    "fullAuditsPassed": true,
+    "headAndPriorReceiptUnchanged": true,
+    "nativeSearchUpdatesEach": 154,
+    "samplerArchiveAndEveryRecordEqual": true,
+    "scope": "Two eight-trial real runs equal one sixteen-trial run on declared observations/recipes and all recorded updates. No full-memory equality or gameplay reachability.",
+    "seed": 20261003,
+    "status": "passed",
+    "totalExternalWallSeconds": 6.0436858,
+    "verificationLimitStatus": "verification incomplete"
+  },
+  "verdict": "Finite conditional pilot; deepest chain one; no new gap producer or no-A route; no Coq proof change or estimate change."
+}

@@ -6,7 +6,7 @@ Selected-field equality, supplied histories and a finite move menu are
 explicit limitations. Rejection is never an all-gameplay exclusion.
 """
 import argparse
-from collections import Counter
+from collections import Counter, deque
 from dataclasses import dataclass, replace
 import hashlib
 import json
@@ -254,14 +254,17 @@ def previous_templates(target):
                    'final automatic-dialog update and its sink hypothesis')
 
 
-def prepare(backend, rows, horizon, context_control=Input(), history_log=None):
+def prepare(backend, rows, horizon, context_control=Input(), history_log=None, check=None):
+    check = check or (lambda: None)
     for row in rows[:360]:
+        check()
         set_input(backend.game, row); backend.game.advance()
     if backend.game.read('gCurrAreaIndex') != 1:
         raise RuntimeError('Expected accepted SSL entry context')
     backend.game.write('gObjectPool[61].oPyramidTopPillarsTouched', 4)
-    saved = []
+    saved = deque(maxlen=horizon)
     while True:
+        check()
         saved.append(backend.capture())
         g = backend.game
         if g.read('gObjectPool[61].oAction') == 1 and g.read('gObjectPool[61].oTimer') == 131:
@@ -273,7 +276,7 @@ def prepare(backend, rows, horizon, context_control=Input(), history_log=None):
             raise RuntimeError('No timer-131 context')
     if len(saved) < horizon or not backend.game.read('gMarioPlatform').is_null():
         raise RuntimeError('Missing unmounted scene contexts')
-    result = saved[-horizon:]
+    result = list(saved)
     if context_control.buttons & A_BUTTON and any(
             not s.observation['buttonDown'] & A_BUTTON for s in result):
         raise RuntimeError('Selected context does not already hold A')
