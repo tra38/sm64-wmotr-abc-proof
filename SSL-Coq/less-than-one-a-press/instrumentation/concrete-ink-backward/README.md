@@ -1,6 +1,35 @@
 # Concrete backward experiment from Ink
 
-## Latest: compact storage and a bounded Reverse Scattershot pilot
+## Latest: audit the 146 unequal parents and replay their actual suffixes
+
+[The saved-parent diagnostic](../../docs/notes/rank1-parent-mismatch-audit.md)
+reproduces all 146 earlier mismatch dictionaries. Every attempt has a Y-record
+mismatch; floor height and RNG differ in all 146, while pad/button fields differ
+in none. Actual Controller raw-stick/held-button readbacks match on all 3,650
+native updates and every A/history check passes.
+
+Each actual suffix continues through its two recorded inputs and 23 retention
+updates from one earliest patch, even when its parent differs. None gives the
+checked Ink payoff. Forty-seven retain the top at their last Area-1 observation,
+where it is still active; all 59 Area-2 arrivals use the ordinary spawn. The
+strict search, source ledger and archive are unchanged. This diagnostic does
+not merge states, discover a reachable gap or rule out a whole family.
+
+```powershell
+& './build/wafel-pilot/python/python.exe' -X utf8 instrumentation/concrete-ink-backward/benchmark_parent_diagnostics.py --ledger build/concrete-ink-backward/20261003-rss-final-report/scattershot.ledger --output build/concrete-ink-backward/NEW-parent-diagnostic
+```
+
+The read-only source audit is full-history. Limits are 5,000 native search
+updates, 30 seconds each for setup/verification/search, 90 seconds overall
+(cooperative), and a hard 100-second child-process ceiling. Search checks time
+between complete suffixes; update ceilings check before each advance. No new
+proposals are sampled. All 146 replay in 3.164 external process seconds,
+including preparation, verification and receipt/exit costs. Eighty-five code
+tests pass. See `expected-parent-diagnostics.json` for the compact, shared
+per-trial receipt; a new output directory is required. The full local run is
+`build/concrete-ink-backward/20261003-rss-parent-delivery/`.
+
+## Earlier: compact storage and a bounded Reverse Scattershot pilot
 
 [The checked pilot](../../docs/notes/rank1-reverse-scattershot-pilot.md) stops at
 2,000 native search updates per arm, including suffix and retention replay.

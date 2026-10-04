@@ -1,5 +1,12 @@
 # Rank 1: compact storage and a small Reverse Scattershot pilot
 
+Follow-up: the [146-parent audit](rank1-parent-mismatch-audit.md) now reports
+the exact overlapping mismatch counts and continuously replays every actual
+suffix past its unequal parent. None produces the checked Ink payoff; the
+source ledger and strict archive stay unchanged. The counts below remain the
+original stopped pilot's results, not a claim that parent inequality alone
+rules out a useful continuation.
+
 3 October 2026. **The backward pilot runs, but it has not found how gameplay
 makes the gap.** Its 2,000 native-update allowance completed 292 distinct
 context/pose/input-suffix combinations: 74 passed the selected conditional
