@@ -1,6 +1,6 @@
 # Where a useful position split could come from
 
-Updated 25 September 2026. The full catalog is also on the private [Fine Print site](https://pyramid-proof-fine-print.tra38.chatgpt.site/#split-catalog).
+Updated 4 October 2026. The full catalog is also on the private [Fine Print site](https://pyramid-proof-fine-print.tra38.chatgpt.site/#split-catalog).
 
 Mario has three position records. Usually, the game keeps them together. We want to know which tricks can pull them apart, and whether SSL can supply the ingredients before the next copy puts them back together. If an enemy's stock spawn path is impossible, cross off that path. A different actor using the same helper still needs its own check.
 
@@ -30,22 +30,24 @@ These 20 reviewed cases are not 20 unresolved gap producers. A zero at a named c
 
 **Stopping rule.** A proved upper bound below **1170.8648681640625** counts as **Insufficient — already proved**, under its stated conditions and checkpoint. The normal Tweester and completed ground copies qualify with zero gap. The shell, water, ledge and cannon shortfalls keep their source/finite evidence labels; unknown bounds remain open. A keeper or consumer of an existing gap is not ruled out in that supporting role. This threshold is specific to the supplied setup, not every Ink installation.
 
+The [four concrete producer review](ink-concrete-producers.md) adds actual US/JP execution connections for the accepted floor snap, reached nonrotating platform tail, bounded live bounce snap and real sink magnitude. The families remain open beyond those cuts. The supplied Variant uses a different 1093-unit movement/collision split; zero display/movement gap alone does not exclude it.
+
 The review separates six scoped insufficient cases, five helpers, four concrete unresolved producers, four other-context/lookalike cases, and one ownership question. There is no pole beside the Area-1 upper warp. Its distant palm tree uses pole actions; the two regular SSL poles belong to Area 2. The checked Area-1 static mesh and pyramid top have no hangable triangles; Area 2 has six. These are pinned stock-data checks, not new Coq or all-history exclusions.
 
 | Case | Role in this review | Gap at the stated checkpoint | Verdict |
 | --- | --- | --- | --- |
 | [01 — ordinary-step](#split-ordinary-step) | Insufficient at the stated checkpoint | 0 at the completed ground copy; air/water copies reviewed separately | 01 · Already proved — insufficient: Completed ground-copy checkpoint only; other exits and later writers are separate.<br>Insufficient — already proved at the completed ground copy |
 | [02 — geometry-retry](#split-geometry-retry) | Helper, not a height source | 0 between display and movement after retry | Helper only — not a gap source: Consumes an existing gap; it does not supply the raised display.<br>Consumes a gap; does not create the raised display |
-| [03 — floor-animation](#split-floor-animation) | Concrete producer still open | Old display Y − remembered floor Y; animation depends on its signed translation | Still live — producer unproved: A downward writer exists; reachable size and surviving copies remain unproved.<br>A possible downward writer; useful size is still unproved |
-| [04 — platform](#split-platform) | Concrete producer still open | Old display-minus-movement gap − platform vertical displacement | Still live — producer unproved: Support movement can separate records; useful support, size and timing remain unproved.<br>Can change one gap, but keeps the collision record where it was |
+| [03 — floor-animation](#split-floor-animation) | Concrete producer still open | 0 display-minus-movement gap at accepted refresh/snap; early stop: old display Y minus cached floor Y | 01 · Already proved — insufficient: Accepted quarter, completed ordinary refresh and immediately following alignment snap give zero display-minus-movement gap at that checkpoint. This excludes that raised-display snap subcase only; older collision disagreement and early stopped quarters remain open.<br>Still live — producer unproved: The accepted refresh/snap is proved synchronized. The specific surviving candidate is an early stopped quarter followed by a lower cached-floor snap; animation remains separate.<br>Accepted refresh/snap is insufficient for the raised-display gap; early stops remain live |
+| [04 — platform](#split-platform) | Concrete producer still open | 0 new vertical change in the linked nonrotating tail; rotating displacement still needs a live bound | 01 · Already proved — insufficient: At the reached zero-rotation guard, with local Y linked to entry State Y, the completed real tail leaves State Y unchanged. Display/collision need not agree. Full entry and rotating support remain open.<br>Still live — producer unproved: Separate rotation displacement from floor following. Vertical platform velocity is not directly added; the proved nonrotating tail supplies no new vertical change.<br>Vertical platform velocity alone is insufficient in this helper |
 | [09 — push](#split-push) | Helper, not a height source | 0 new vertical gap from the direct push writes | Helper only — not a gap source: Sideways movement can help reach a query; it does not supply the height gap.<br>A sideways helper, not the height source |
-| [10 — bounce](#split-bounce) | Concrete producer still open | Old display Y − (object Y + hitbox height) | Still live — producer unproved: A height assignment exists; a useful large retained gap has not been demonstrated.<br>A real height assignment; no useful large gap demonstrated |
+| [10 — bounce](#split-bounce) | Concrete producer still open | Snap = binary32(actor Y + live hitbox height); bounded low-actor snap is at most 1018 | 01 · Already proved — insufficient: For finite live actor bottom in [-32768,768] and hitbox height in [-32768,250], the reached actual snap is at most 1018 and below Variant 1861. The actor bounds, earlier contact and ensuing flight/copies are not derived by this result.<br>Still live — producer unproved: The immediate low-actor snap has a proved conditional height bound. Live scaling, other actor heights, downward writes and later bounce/knockback flight remain distinct producer questions.<br>The bounded immediate snap cannot reach Variant 1861; other directions and flight remain open |
 | [12 — attachments](#split-attachments) | Insufficient at the stated checkpoint | Pole/hang copies: 0. Ledge release: a 100-unit subtraction or a shallower floor snap | Geometrically unavailable — scoped: No pole beside the Area-1 warp and no checked hangable Area-1/top triangles: stock-data check, not a whole-history theorem.<br>Source review only — not broadly proved: The remote tree and ordinary ledges remain separate; their full transfer/exit histories are not excluded.<br>Insufficient at the local drop — source review |
 | [13 — cannon](#split-cannon) | Insufficient at the stated checkpoint | 0 while seated; firing leaves display at or below movement | Unavailable under route constraints — scoped: Normal cannon firing requires an A press; this excludes that launch in the no-new-A route, not the stock cannon itself.<br>Only finite-tested — not broadly proved: The normal-launch sizing calculation is finite, not a proof of every cannon-related history.<br>Insufficient at normal launch — source and finite checks |
 | [14 — tornado](#split-tornado) | Insufficient at the stated checkpoint | 0 at the completed non-ejecting display-copy checkpoint | 01 · Already proved — insufficient: Normal non-ejecting copy checkpoint only; transport, ejection and later writers are separate.<br>Insufficient — already proved at the normal Tweester copy |
 | [15 — water](#split-water) | Insufficient at the stated checkpoint | About +208 in the generous one-refresh calculation at Y=768 | Only finite-tested — not broadly proved: The checked expression envelope is insufficient. The oasis exists; all water histories are not excluded.<br>Insufficient in the checked expression envelope |
 | [17 — shell](#split-shell) | Insufficient at the stated checkpoint | +42 airborne; +45 on the ground, per ordinary refresh | Only finite-tested — not broadly proved: Source review and supplied-helper branch tests find no stacking; later non-shell writers remain separate.<br>Insufficient alone — source arithmetic |
-| [18 — quicksand](#split-quicksand) | Concrete producer still open | Display increases by −depth per subtraction when depth is negative | Still live — producer unproved: Large enough arithmetically; a useful no-A seed and surviving gameplay combination are unproved.<br>Large enough arithmetically; the useful producer remains open |
+| [18 — quicksand](#split-quicksand) | Concrete producer still open | Minus depth per real sink; retained -4 can exceed 1170 units after 293 calls | 01 · Already proved — insufficient: Under the accepted classified stock depth-write/action/physical-input contract and no A press, a finite completed real sink cannot raise display. Granting a negative seed for a transfer test deliberately leaves that contract case; unrestricted gameplay coverage is not claimed.<br>Still live — producer unproved: The granted negative can make a large enough display rise arithmetically. Supported update retention and the low-pose transfer still need their actual history; the accepted no-A seed contract is a separate scoped exclusion.<br>Size can be sufficient conditionally; useful gameplay retention is unproved |
 | [19 — dialog](#split-dialog) | Helper, not a height source | No independent fixed upward offset; preserves what enters | Helper only — not a gap source: Can preserve a gap; does not create the original height separation.<br>A possible keeper, not the original height source |
 | [20 — warp-reset](#split-warp-reset) | No local stock producer identified | Instant warp: incoming gap − vertical warp displacement | Geometrically unavailable — scoped: No Area-1 instant-warp command in the stock data.<br>Source review only — not broadly proved: Other relocation contexts are not proved universally unreachable; the accepted SSL warp tail has its separate proof.<br>Relocation can make a gap elsewhere; no matching Area-1 table |
 | [22 — cutscene](#split-cutscene) | No local stock producer identified | Depends on the selected ending/door/action sequence | Coverage unresolved — not a demonstrated lead: No legitimate SSL entry into the cited ending motion is established. Missing reachability is not proof of unavailability.<br>No legitimate SSL producer established |
@@ -61,14 +63,14 @@ The review separates six scoped insufficient cases, five helpers, four concrete 
 | --- | --- | --- |
 | 01 | [Walking, falling and the ordinary position copies](#split-ordinary-step) | Insufficient at ground copy · other checkpoints open |
 | 02 | [The floor check borrows Mario's display position](#split-geometry-retry) | Helper · needs an earlier height gap |
-| 03 | [The floor moves Mario, but does the display follow?](#split-floor-animation) | Open · present in SSL |
-| 04 | [Ride a platform while the other positions stay put](#split-platform) | Movement proved · useful setup open |
+| 03 | [The floor moves Mario, but does the display follow?](#split-floor-animation) | Accepted snap proved · early stops open |
+| 04 | [Ride a platform while the other positions stay put](#split-platform) | Nonrotating tail proved · rotations open |
 | 05 | [Chuckya and King Bob-omb: the stock lists cannot choose them](#split-chuckya-anchor) | Ruled out · stock lists |
 | 06 | [Dorrie: no neck lift from the stock SSL lists](#split-dorrie) | Ruled out · stock lists |
 | 07 | [Those other pyramids are not SSL's pyramid top](#split-tilting-platform) | Ruled out · stock lists |
 | 08 | [Hoot: the stock SSL lists cannot supply the ride](#split-hoot) | Ruled out · stock lists |
 | 09 | [The palm tree can push one position](#split-push) | Helper · needs an earlier height gap |
-| 10 | [Bounces and knockback are different kinds of help](#split-bounce) | Open · present in SSL |
+| 10 | [Bounces and knockback are different kinds of help](#split-bounce) | Live-value snap bound proved · history open |
 | 11 | [Heave-Ho, bullies and Bowser's shockwave are off these lists](#split-absent-launch) | Ruled out · stock lists |
 | 12 | [Trees, ledges and hanging points](#split-attachments) | Insufficient alone · source review |
 | 13 | [The cannon really can leave the display behind](#split-cannon) | Needs A to fire · other exits open |
@@ -76,7 +78,7 @@ The review separates six scoped insufficient cases, five helpers, four concrete 
 | 15 | [Yes, the desert has swimming offsets](#split-water) | Insufficient in the checked expression |
 | 16 | [The oasis does not come with a whirlpool](#split-whirlpool) | Ruled out · stock lists |
 | 17 | [The shell gives Mario a display offset](#split-shell) | Insufficient alone · source review + finite check |
-| 18 | [Negative depth plus a dialog that keeps the display](#split-quicksand) | Open · conditional setup allowed |
+| 18 | [Negative depth plus a dialog that keeps the display](#split-quicksand) | Magnitude proved · transfer history open |
 | 19 | [A dialog can keep a gap; it cannot create one by pausing](#split-dialog) | Helper · needs an earlier height gap |
 | 20 | [Bringing a gap through a warp or level entry](#split-warp-reset) | Mixed · the actual transition matters |
 | 21 | [Butterflies: this stock list cannot supply the unusual writer](#split-butterfly) | Ruled out · stock lists |
@@ -279,9 +281,25 @@ Related atlas ranks: 13.
 
 Proof: [`ipg_ground_refresh_completes_without_old_display`](../../proofs/InkPostDialogGroundReset.v).
 
+**[The floor moves Mario, but does the display follow?](#split-floor-animation) — Insufficient.** Accepted quarter, completed ordinary refresh and immediately following alignment snap give zero display-minus-movement gap at that checkpoint. This excludes that raised-display snap subcase only; older collision disagreement and early stopped quarters remain open.
+
+Proof: [`ifp_accepted_refresh_then_alignment_has_zero_display_gap`](../../proofs/InkFloorProducerEffect.v).
+
+**[Ride a platform while the other positions stay put](#split-platform) — Insufficient.** At the reached zero-rotation guard, with local Y linked to entry State Y, the completed real tail leaves State Y unchanged. Display/collision need not agree. Full entry and rotating support remain open.
+
+Proof: [`iph_nonrotating_tail_has_no_new_vertical_change`](../../proofs/InkPlatformProducerHeight.v).
+
+**[Bounces and knockback are different kinds of help](#split-bounce) — Insufficient.** For finite live actor bottom in [-32768,768] and hitbox height in [-32768,250], the reached actual snap is at most 1018 and below Variant 1861. The actor bounds, earlier contact and ensuing flight/copies are not derived by this result.
+
+Proof: [`ibp_completed_bounded_bounce_is_insufficient_at_snap`](../../proofs/InkBounceProducerEffect.v).
+
 **[A Tweester can move Mario, but it also updates the display](#split-tornado) — Insufficient.** At the completed actual US/JP non-ejecting display copy, under its stated storage conditions, the supplied low-movement/high-display pair is impossible. Both floor-query outcomes are covered. Ejection, the following angle call and other later writers remain outside this result.
 
 Proof: [`twg_copy_cannot_install_supplied_vertical_gap`](../../proofs/TweesterGap.v).
+
+**[Negative depth plus a dialog that keeps the display](#split-quicksand) — Insufficient.** Under the accepted classified stock depth-write/action/physical-input contract and no A press, a finite completed real sink cannot raise display. Granting a negative seed for a transfer test deliberately leaves that contract case; unrestricted gameplay coverage is not claimed.
+
+Proof: [`iqps_classified_no_a_sink_cannot_create_upward_gap`](../../proofs/InkQuicksandProducerSize.v).
 
 
 ## 02 · Remaining cases and other contexts
@@ -356,27 +374,31 @@ Related atlas ranks: 1, 2, 3, 13A.
 
 ### 03 — The floor moves Mario, but does the display follow?
 
-**Role in this review.** Check a reached downward floor snap or animation translation, then the next display copy. A useful retained size has not been bounded.
+**Role in this review.** The accepted refresh/snap is proved synchronized. The specific surviving candidate is an early stopped quarter followed by a lower cached-floor snap; animation remains separate.
 
-**Gap sizing: Old display Y − remembered floor Y; animation depends on its signed translation.** A possible downward writer; useful size is still unproved
+**Gap sizing: 0 display-minus-movement gap at accepted refresh/snap; early stop: old display Y minus cached floor Y.** Accepted refresh/snap is insufficient for the raised-display gap; early stops remain live
 
-Floor alignment writes the remembered floor height into actual Y while leaving the stored display alone at that assignment. A lower remembered floor could therefore create an upward gap. Animation translation instead adds a selected signed translation to movement; a negative Y translation could lower it.
+The completed accepted quarter makes movement and cached floor height agree. The real refresh then copies that height into display, and the following snap cannot separate them. An early stopped quarter can skip the first alignment, leaving a later cached-floor snap as a concrete candidate.
 
-**Limits.** No controller-reachable large mismatch or useful animation frame/flag sequence is supplied. Later copies and the matrix helper still need their actual effects checked. There is no justified route-wide maximum yet.
+**Limits.** This is not a Variant exclusion: movement and display can agree above an older collision record. The theorem stops at the snap; intervening caller helpers, the real matrix tail, other quarters and animation translations remain to connect.
 
-**Evidence level.** Source formulas; producer remains open
+**Evidence level.** Actual generated US/JP execution composition
+
+**Already proved — Insufficient.** Accepted quarter, completed ordinary refresh and immediately following alignment snap give zero display-minus-movement gap at that checkpoint. This excludes that raised-display snap subcase only; older collision disagreement and early stopped quarters remain open.
+
+Proof: [`ifp_accepted_refresh_then_alignment_has_zero_display_gap`](../../proofs/InkFloorProducerEffect.v).
 
 **What happens to Mario.** Floor alignment can set Mario's movement height to the remembered floor height without itself replacing his stored display. Animation movement can also change his movement coordinates.
 
-**What we would need.** A ground action, an animation that moves Mario, or a change in the support beneath him.
+**What we would need.** Idle plus Z can enter crouching, then Z plus stick can enter crawling; walking plus a Z press can enter crouch slide without A. These source-local constructors give access to alignment, not to its exceptional floor setup. Animation movement is separate.
 
-**Can SSL supply it.** Yes. These are ordinary helpers. What we do not have is the large, surviving mismatch needed for Ink.
+**Can SSL supply it.** Yes. These ordinary actions exist here. What we do not have is a reached stopped quarter and remembered floor that make the large, surviving mismatch needed for Ink.
 
 **Does the gap last long enough.** Most of this happens during the action. We must keep reading past the interesting assignment: a later copy might immediately remove the advantage.
 
-**What we know.** The existing ground-reset and alignment proofs settle their stated cases. They do not cover every possible earlier action and remembered floor.
+**What we know.** The new real US/JP connection follows an accepted ground quarter, its completed display refresh and the subsequent alignment snap: display and movement have the same floor height at that snap. Collision can still be old. The alignment matrix tail is retained as an execution, not assumed harmless.
 
-**What is left to check.** Find a mismatch that survives the following copies and reaches the next useful floor retry, or rule out that particular sequence.
+**What is left to check.** Check an early stopped crawl/slide quarter: it can skip movement alignment before the display copy, yet the caller still reaches align_with_floor. Derive its corrected floor/ceiling query and cached height, then the caller helpers, matrix tail and later collision copy. Animation translation remains separate.
 
 Stock source: [align_with_floor](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario_actions_moving.c#L88); [update_mario_pos_for_anim](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario.c#L207).
 
@@ -386,27 +408,31 @@ Related atlas ranks: 2, 5, 13B.
 
 ### 04 — Ride a platform while the other positions stay put
 
-**Role in this review.** A downward support move can separate movement from display. Collision stays with display during the proved platform phase, so another copy must complete the useful pair.
+**Role in this review.** Separate rotation displacement from floor following. Vertical platform velocity is not directly added; the proved nonrotating tail supplies no new vertical change.
 
-**Gap sizing: Old display-minus-movement gap − platform vertical displacement.** Can change one gap, but keeps the collision record where it was
+**Gap sizing: 0 new vertical change in the linked nonrotating tail; rotating displacement still needs a live bound.** Vertical platform velocity alone is insufficient in this helper
 
-A downward ride can make display sit above actual Mario. The complete platform phase preserves both display and raw collision coordinates. Starting with all three together therefore does not create the required high-display/low-collision pair during that phase.
+There is no y += platform velocity Y assignment. The real X/Z translations preserve local Y, and with zero rotation the reached tail sends that same Y to the actual setter. Existing collision/display differences are preserved by the complete platform-phase theorem.
 
-**Limits.** A later collision copy could make collision low only if display survives until then. Live downward displacement, remembered support and those later copies are separate obligations; no maximum useful drop is established.
+**Limits.** The new cuts explicitly supply post-getter local bindings and link local Y to State Y at the guard. They do not establish a full entry theorem or bound the matrix branches. Floor following is a separate height writer, and no universal ride-gap bound is claimed.
 
-**Evidence level.** Existing complete platform-phase proof
+**Evidence level.** Actual generated US/JP nonrotating cuts and complete real setter
 
-**What happens to Mario.** A moving platform can carry Mario's movement position while his display and collision positions stay put for that entire platform phase.
+**Already proved — Insufficient.** At the reached zero-rotation guard, with local Y linked to entry State Y, the completed real tail leaves State Y unchanged. Display/collision need not agree. Full entry and rotating support remain open.
 
-**What we would need.** Mario must actually have a valid remembered platform. Merely being near a moving object is not enough.
+Proof: [`iph_nonrotating_tail_has_no_new_vertical_change`](../../proofs/InkPlatformProducerHeight.v).
 
-**Can SSL supply it.** Yes. SSL has Tox Boxes and the pyramid top. Getting useful support from one at the right time still needs an explanation.
+**What happens to Mario.** The complete platform phase preserves display and collision. The displacement helper adds horizontal platform velocity; it does not directly add vertical velocity. A rotation calculation can change Mario movement Y.
+
+**What we would need.** The final raw-position query must find an owned floor within four units; a live retained platform and enabled apply phase are required. Merely being near a moving object is not enough.
+
+**Can SSL supply it.** SSL has three Tox Boxes and the pyramid top. Tox Box visible rolling changes face angles, not the rotation-speed fields this helper reads; the top writes yaw rotation speed. A useful pitch/roll field writer and reachable rider setup are not established.
 
 **Does the gap last long enough.** This happens before Mario's next update. The support check can erase the remembered platform, and moving Mario here does not move the collision record used for warp contact.
 
-**What we know.** The complete US/JP platform phase preserves display and collision under the stated normal Object-pool conditions. A missing or too-distant floor also provably clears the remembered platform.
+**What we know.** The existing complete US/JP platform phase protects display/collision. The new proof follows real horizontal translations, the zero-rotation test and a reached nonrotating tail through the complete actual set_mario_pos call. Local Y is passed unchanged.
 
-**What is left to check.** Explain how the collision record was already low while Mario still had useful support and a high display. Platform movement alone does not supply all three.
+**What is left to check.** Connect local Y after get_mario_pos to complete function entry, then quantify yaw/pitch/roll branches and derive their actual live fields and retained support. Visual rolling alone supplies no pitch/roll displacement. A later collision copy and retained display are distinct checks.
 
 Stock source: [set_mario_pos](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/platform_displacement.c#L81); [apply_platform_displacement](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/platform_displacement.c#L91); [apply_mario_platform_displacement](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/platform_displacement.c#L171); [update_mario_platform](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/platform_displacement.c#L22).
 
@@ -446,27 +472,31 @@ Related atlas ranks: 5, 13A, 13B.
 
 ### 10 — Bounces and knockback are different kinds of help
 
-**Role in this review.** The hitbox-top snap changes actual Y. We still need a reachable SSL incoming pose with a large enough downward change and a surviving display.
+**Role in this review.** The immediate low-actor snap has a proved conditional height bound. Live scaling, other actor heights, downward writes and later bounce/knockback flight remain distinct producer questions.
 
-**Gap sizing: Old display Y − (object Y + hitbox height).** A real height assignment; no useful large gap demonstrated
+**Gap sizing: Snap = binary32(actor Y + live hitbox height); bounded low-actor snap is at most 1018.** The bounded immediate snap cannot reach Variant 1861; other directions and flight remain open
 
-The bounce helper snaps actual Mario to the hitbox top. Depending on the incoming position, that could move him up or down. Damage, tornado capture and wind primarily set speed or action; speed by itself is not a position gap.
+If live actor bottom is at most 768 and live height at most 250, within the stated finite numeric range, the actual helper snaps movement no higher than 1018: 250 above 768 and 843 below 1861. Initial Goomba/Pokey/FlyGuy/Klepto sizes are not silently promoted to all-history bounds. The 30/80 values are later velocity, not immediate displacement.
 
-**Limits.** We have not bounded the reached SSL bounce placements and incoming split. The warp handler runs earlier, and an accepted warp stops the loop. No numeric route-wide maximum is claimed.
+**Limits.** A higher actor, inherited gap, changed scale, later flight or downward snap needs its own derivation. The source documents repeated fire Fly Guy shrinking. The finite 1861 + (-1093) =768 calculation is only a numerical candidate; negative dimensions may prevent contact. No whole bounce or knockback family is ruled out.
 
-**Evidence level.** Source formula + checked interaction order
+**Evidence level.** Actual generated snap with all-binary32 bounds under explicit live-value conditions
+
+**Already proved — Insufficient.** For finite live actor bottom in [-32768,768] and hitbox height in [-32768,250], the reached actual snap is at most 1018 and below Variant 1861. The actor bounds, earlier contact and ensuing flight/copies are not derived by this result.
+
+Proof: [`ibp_completed_bounded_bounce_is_insufficient_at_snap`](../../proofs/InkBounceProducerEffect.v).
 
 **What happens to Mario.** A bounce can put Mario's movement height at the top of an object's hitbox. Other hits first change his speed or action, leaving later movement to do the actual moving.
 
-**What we would need.** The relevant enemy, hazard and interaction. A Goomba bounce and a gust of wind do not write the same things.
+**What we would need.** Walking off a ledge can enter freefall and a falling contact from above without A; hostile contact can cause knockback without A. The relevant actor, overlap and interaction must still be reached. A Goomba bounce and a gust of wind do not write the same things.
 
 **Can SSL supply it.** SSL has several of these enemies and hazards. Their presence does not automatically give us a useful position split.
 
 **Does the gap last long enough.** Most of these handlers come after the warp handler. Once the nonfading warp accepts Mario, the loop stops; we cannot sneak an extra bounce in afterward in that same loop.
 
-**What we know.** The handler order and bounce write are in the actual source. The accepted-warp proof and replay cover their stated path, not every earlier bounce.
+**What we know.** The actual US/JP helper writes actor bottom Y plus live hitbox height before its sound call, preserving other blocks at that checkpoint. Under the stated finite low-bottom/250-height bounds, the result is at most 1018. Stock templates and spawn records are checked separately; they do not prove live scale bounds. A passed actual contact-height guard, with its actor top still matching this bounce sum, also proves that the snap cannot place Mario below the compared collision bottom; the live read matching is explicit.
 
-**What is left to check.** Pick an earlier interaction that can really occur, then follow its action change and all the position copies before the warp.
+**What is left to check.** Derive actor position, live dimensions and actual registered contact, then follow the sound/action/movement and display copies. Fire Fly Guy shrinking can change dimensions; a negative-height arithmetic example does not establish contact or useful copy survival. Knockback flight remains separate.
 
 Stock source: [bounce_off_object](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/interaction.c#L515); [interact_bounce_top](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/interaction.c#L1368); [interact_damage](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/interaction.c#L1423); [interact_tornado](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/interaction.c#L1088); [interact_strong_wind](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/interaction.c#L1136).
 
@@ -630,27 +660,31 @@ Related atlas ranks: 25, 2.
 
 ### 18 — Negative depth plus a dialog that keeps the display
 
-**Role in this review.** Negative depth can raise display arithmetically. The grant permits a transfer test, not arbitrary depth magnitude, a useful floor loss or a clean no-A seed.
+**Role in this review.** The granted negative can make a large enough display rise arithmetically. Supported update retention and the low-pose transfer still need their actual history; the accepted no-A seed contract is a separate scoped exclusion.
 
-**Gap sizing: Display increases by −depth per subtraction when depth is negative.** Large enough arithmetically; the useful producer remains open
+**Gap sizing: Minus depth per real sink; retained -4 can exceed 1170 units after 293 calls.** Size can be sufficient conditionally; useful gameplay retention is unproved
 
-A single depth of −1,170.8648681640625 takes a reset display of 768 exactly to the supplied height in binary32. That is a sizing example, not a stock reachable depth. Existing checked arithmetic also gets from supported Y=1280 to 1939 with 1,318 uninterrupted subtractions of depth −0.5.
+The exact supplied negative produces the Original display height in one completed real sink. Even depth -4 exceeds that height after 293 consecutive real sink calls from display 768, preserving movement, collision and depth. This rules out an intrinsic small-magnitude objection, not the route.
 
-**Limits.** The small-seed example still needs a 512-unit actual-position drop with display retained. The real reward/dialog sequence and a no-A seed remain unproved. A granted negative seed is not a grant of arbitrary magnitude or of the useful combined setup.
+**Limits.** Consecutive callee invocations contain no dialog scheduler or intervening update frames. The low candidate lacks a first floor, so repeated dialog updates cannot simply be granted there. A supported start still needs the later low-position transfer. The accepted no-A writer/action/controller conditions exclude upward sinking separately.
 
-**Evidence level.** Existing Coq subtraction/iteration results + arithmetic witness
+**Evidence level.** Complete generated US/JP sink effects, exact binary32 certificate, accepted conditional seed theorem
+
+**Already proved — Insufficient.** Under the accepted classified stock depth-write/action/physical-input contract and no A press, a finite completed real sink cannot raise display. Granting a negative seed for a transfer test deliberately leaves that contract case; unrestricted gameplay coverage is not claimed.
+
+Proof: [`iqps_classified_no_a_sink_cannot_create_upward_gap`](../../proofs/InkQuicksandProducerSize.v).
 
 **What happens to Mario.** Sinking subtracts quicksand depth from display Y. If that depth is negative, the subtraction raises the display instead. Skipping a later refresh can keep it there.
 
-**What we would need.** A useful negative seed, a collectible reward and the right milestone dialog.
+**What we would need.** A useful negative seed, a collectible reward and the right milestone dialog. The accepted classified stock history contract traces a useful seed to physical A; a no-A reward opportunity does not supply it.
 
 **Can SSL supply it.** SSL has quicksand and rewards. That does not prove a no-A negative seed. For the agreed transfer test, we may grant the seed and a valid coin/star opportunity.
 
 **Does the gap last long enough.** A dialog can preserve the display, but the warp interaction and remembered platform still have their own checks. We already know that some conditional continuations move Mario while the display survives.
 
-**What we know.** There are conditional seed-to-A proofs, entry-reset proofs, copy proofs and finite dialog trials. None supplies the whole useful combination of floor loss, contact and top timing.
+**What we know.** New complete US/JP sink effects connect the arithmetic to the real writes. Supplied depth -1170.8648681640625 raises display 768 exactly to 1938.8648681640625. Retained depth -4 gives 1936 after 292 real sink calls and 1940 after 293. Under the accepted classified no-A seed contract, depth stays nonnegative and the real sink cannot raise display.
 
-**What is left to check.** Build a specific predecessor with the high display, low collision record and first floor miss together. Granting that combination would assume the gameplay result we want.
+**What is left to check.** For the granted-seed transfer test, derive floor-supported dialog updates, intervening frames, retained depth/display, the earlier low collision pose and useful top timing. The low test pose is already floorless; the 293 calls are not a reached dialog. Unrestricted seed coverage remains open outside the accepted contract.
 
 Stock source: [sink_mario_in_quicksand](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario.c#L1545); [act_star_dance](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario_actions_cutscene.c#L640); [general_star_dance_handler](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario_actions_cutscene.c#L590); [act_reading_automatic_dialog](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario_actions_cutscene.c#L443).
 

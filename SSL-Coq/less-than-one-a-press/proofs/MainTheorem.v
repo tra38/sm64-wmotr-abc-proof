@@ -52,7 +52,7 @@ From LessThanOneAPress.Proofs Require Import
   SecretContactExecution
   InkBackwardSource InkBackwardExecution InkCopyCaller InkFloorResetCopy InkRawCopyHeight
   InkQuicksandBackward InkMovingBackward InkControllerBackward InkBackwardHistory
-  PositionSplitCatalog TweesterGap
+  PositionSplitCatalog TweesterGap InkConcreteProducerBoundary
   CompCertRouteScope.
 
 Import ListNotations.
@@ -1352,6 +1352,14 @@ Proof. exact psc_catalog_source_boundary_checked. Qed.
     surrounding update remain separate; this is not a no-Tweester route theorem. *)
 Theorem current_f02_tweester_gap_boundary : TweesterGapBoundary.
 Proof. exact twg_gap_boundary_checked. Qed.
+
+(** Quantitative producer effects at their actual US/JP execution cuts.
+    Accepted ground-refresh/alignment, a reached nonrotating platform tail,
+    the bounce snap and real sink effects have separate explicit conditions.
+    Early ground stops, rotating support, live actor values and complete
+    dialog/update histories are not silently covered by these results. *)
+Theorem current_ink_concrete_producer_boundary : InkConcreteProducerCheckedBoundary.
+Proof. exact icpb_concrete_producer_boundary_checked. Qed.
 
 (* The graphical-fallback tranche shows that update order does not by itself
    refute the scheduling shape; it does not execute the branch in Clight or

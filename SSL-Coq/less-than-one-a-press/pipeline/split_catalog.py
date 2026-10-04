@@ -125,7 +125,7 @@ def make_index(repo, catalog):
             if any(not insufficient.get(key) for key in ('card', 'module', 'theorem', 'scope')):
                 raise ValueError(f"{row['id']}: incomplete insufficiency proof reference")
             module = ROOT / insufficient['module']
-            if not re.search(r"\bTheorem\s+" + re.escape(insufficient['theorem']) + r"\b", module.read_text(encoding='utf-8')):
+            if not re.search(r"\b(?:Theorem|Lemma|Corollary)\s+" + re.escape(insufficient['theorem']) + r"\b", module.read_text(encoding='utf-8')):
                 raise ValueError(f"{row['id']}: missing insufficiency theorem")
         if row.get("proof"):
             proof = row["proof"]
@@ -202,7 +202,7 @@ def check_ssl_locality(files):
 
 def render_markdown(catalog, index):
     lines = ["# Where a useful position split could come from", "",
-        "Updated 25 September 2026. The full catalog is also on the private "
+        "Updated 4 October 2026. The full catalog is also on the private "
         "[Fine Print site](https://pyramid-proof-fine-print.tra38.chatgpt.site/#split-catalog).", "",
         "Mario has three position records. Usually, the game keeps them together. We want to "
         "know which tricks can pull them apart, and whether SSL can supply the ingredients "
@@ -262,6 +262,11 @@ def render_markdown(catalog, index):
         "labels; unknown bounds remain open. A keeper or consumer of an existing gap "
         "is not ruled out in that supporting role. This threshold is specific to the "
         "supplied setup, not every Ink installation.", "",
+        "The [four concrete producer review](ink-concrete-producers.md) adds actual US/JP "
+        "execution connections for the accepted floor snap, reached nonrotating platform tail, "
+        "bounded live bounce snap and real sink magnitude. The families remain open beyond "
+        "those cuts. The supplied Variant uses a different 1093-unit movement/collision split; "
+        "zero display/movement gap alone does not exclude it.", "",
         "The review separates six scoped insufficient cases, five helpers, four concrete "
         "unresolved producers, four other-context/lookalike cases, and one ownership question. "
         "There is no pole beside the Area-1 upper warp. Its distant palm tree uses pole "

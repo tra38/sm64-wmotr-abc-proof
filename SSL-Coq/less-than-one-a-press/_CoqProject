@@ -627,3 +627,8 @@ proofs/Rank1ObjectUpdateSchedule.v
 proofs/InkRawCopyCompletion.v
 proofs/Rank1PlatformQueryCompletion.v
 proofs/Rank1DirectExecution.v
+proofs/InkFloorProducerEffect.v
+proofs/InkQuicksandProducerSize.v
+proofs/InkBounceProducerEffect.v
+proofs/InkPlatformProducerHeight.v
+proofs/InkConcreteProducerBoundary.v
