@@ -1,5 +1,11 @@
 # Verification checklist
 
+- [x] Review the [direct Ink exclusion argument](notes/ink-direct-exclusion-plan.md): distinguish modeled one-sample geometry, real local query/owner proofs and the open position changes between checks. Preserve the working movement-Y=1861, collision/display-Y=768 control at depth zero; its 1,093-unit split makes the raised-display example's 1,170.864868 units an instance, not a universal threshold. No Coq source, gameplay search, proof promotion or estimate changes.
+- [ ] Connect actual warp contact and live top floor bounds at the relevant phases to the generated US/JP final-query guard. Start with timer 131; label the scope rather than claim every live phase from one mesh.
+- [ ] Derive the real receivers and position writers between contact, pre-action geometry, warp acceptance and final raw query, including high-State/low-collision and raised-display retry branches. Do not assume sample equality or a blanket call frame.
+- [ ] Establish the mandatory final check and address state until first Area-2 apply. If a useful address survives or a query is skipped, derive its lifetime/reuse instead of dismissing an inactive owner.
+- [ ] Connect every surviving producer to the accepted start and allowed controller history, or prove a complete scoped obstruction. Finite predecessor failures and supplied installers do not discharge that connection.
+
 - [x] Explain the [early warp contact](notes/rank1-parent-mismatch-audit.md#why-the-warp-begins-one-update-early) from the exact saved proposals and pinned US/JP code: all 146 inherit collision (-2200,768,-1024), all 72 ground and 51 freefall proposals start the warp state immediately, and none of the 23 intangible message proposals does. The warp interaction precedes ordinary action movement. This adds a source-order constraint, not a new gameplay trial, producer or Coq exclusion.
 
 - [x] Audit all [146 saved parent failures](notes/rank1-parent-mismatch-audit.md) under full-history verification. All saved mismatch dictionaries reproduce; every attempt has a Y-record mismatch, floor height and RNG differ in all 146, and pad/button fields differ in none.
