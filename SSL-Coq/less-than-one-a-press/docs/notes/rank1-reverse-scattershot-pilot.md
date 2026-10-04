@@ -21,6 +21,46 @@ impossibility result or atlas estimate changes. Rank 1 remains at the subjective
 1–2%. A reachable Ink result still needs an uninterrupted, patch-free controller
 replay from the accepted starting state under the allowed A-button history.
 
+## Which setups have earlier predecessors?
+
+4 October clarification; no new trials. The names below follow the actual
+`product_sweep.py` specification. An earlier chat table reversed Variant and
+Hybrid. These are the supplied heights before the installation update, with
+X=-2200 and Z=-1024 in each record:
+
+| Setup | Movement Y | Collision Y | Display Y | Validated earlier chain |
+| --- | ---: | ---: | ---: | --- |
+| Original | 768 | 768 | 1938.8648681640625 | None beyond the supplied installation update |
+| Variant | 1861 | 768 | 768 | None beyond the supplied installation update |
+| Hybrid | 1861 | 768 | 1938.8648681640625 | None beyond the supplied installation update |
+
+Each named supplied control installs Ink at the tested timing. The success
+checkpoint is inside that update, just after the upper warp accepts contact,
+while Mario is still in Area 1 and before the disappeared action runs. The
+emulator checks those named controls and their later retained-top displacement;
+the sampled Wafel predicates retain the per-input raw/display qualification
+described below. Original's movement Y rises during the retry before acceptance.
+The supplied start is therefore not identical to the acceptance checkpoint.
+
+The one-update result is a conditional predecessor of installation, not an
+earlier gameplay producer of the supplied pose. Variant has no special advantage
+in validated backward depth: the variant-only run also stops at the next edge.
+All 146 earlier proposals in this pilot miss their saved parent; the follow-up
+continuous replays find no checked Ink displacement either. That excludes those
+fixed attempts, not every earlier state or every installation timing.
+
+We do not know whether a useful chain needs a few more frames or exists at all.
+Simply increasing the depth repeats the same missing edge. The implemented
+earlier moves inherit collision at the live warp; an interactive ground or
+freefall proposal is accepted by the warp before its intended movement action.
+A different predecessor needs to explain delayed contact and the useful split
+together, for example through an earlier outside-contact collision position,
+an actual interaction-blocking action, or different live timing. Horizontal
+approaches, moving support and other writer/action histories still lack
+generators. A longer candidate must replay every intervening update continuously
+from its earliest patch; it cannot skip the failed edge or patch the middle.
+This clarification supplies no new producer, proof or route exclusion.
+
 ## What storage now costs
 
 The old 80,000-trial dataset is preserved. A compatibility reader audits legacy
