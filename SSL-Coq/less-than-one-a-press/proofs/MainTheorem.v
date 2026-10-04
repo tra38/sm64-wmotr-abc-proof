@@ -13,7 +13,7 @@ From LessThanOneAPress.Proofs Require Import
   InkTimer131EntryExecutionClosure Area1PlayerListTailClosure
   Area1Rank1ResidualClosure Area1SurfaceWriteClosure
   Area1Rank1SixResidualAudit
-  Rank1PlatformInstallation
+  Rank1PlatformInstallation Rank1DirectExecution
   InkTimer131RetailMipsFrames Area1SurfacePoolRangeSeparation
   Area1Rank1LiveBoundaryReceipt Area1Rank1UpperWarpTraceReceipt
   Area1Rank4WarpTopTraceReceipt Area1Rank5StateSplitTraceReceipt Area1PostCopyParticleExecution Area1AllocationCallback Area1AllocationReturn
@@ -130,13 +130,19 @@ Proof. exact area1_surface_write_closure_boundary_holds. Qed.
     allocator/query projection stay explicit rather than being framed away.
     The final generated update now connects its actual raw-coordinate reads
     and real find_floor call to the returned owner's two pointer stores.
+    Every completed object-update call reaches this query.  Its complete
+    low-raw/high-floor call clears both references; the completed ordinary
+    State-to-Object copy has matching State/collision Y and preserves display
+    Y.  A later effective apply requires replacing a cleared global pointer.
     No equality with State/display or warp-contact positions is required;
     live selection and later pointer lifetime remain unproved globally. *)
 Theorem current_rank1_six_residual_audit_boundary :
-  Area1Rank1SixResidualAuditBoundary /\ Rank1FinalQueryOwnerConnection.
+  Area1Rank1SixResidualAuditBoundary /\ Rank1FinalQueryOwnerConnection /\
+  Rank1DirectExecutionBoundary.
 Proof.
   split; [exact area1_rank1_six_residual_audit_boundary_holds|].
-  exact r1o_final_query_connects_raw_position_to_owner.
+  split; [exact r1o_final_query_connects_raw_position_to_owner|].
+  exact r1d_direct_execution_checked.
 Qed.
 
 (** Rank 1's shared-main-pool residual is now a byte-range question rather

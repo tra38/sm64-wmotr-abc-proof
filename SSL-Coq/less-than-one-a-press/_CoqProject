@@ -622,3 +622,8 @@ proofs/InkDirectActionStores.v
 proofs/InkLandingDescriptorAccess.v
 proofs/StockSoundRequestFrame.v
 proofs/InkInitActionChoice.v
+proofs/Rank1CaptureGeometry.v
+proofs/Rank1ObjectUpdateSchedule.v
+proofs/InkRawCopyCompletion.v
+proofs/Rank1PlatformQueryCompletion.v
+proofs/Rank1DirectExecution.v

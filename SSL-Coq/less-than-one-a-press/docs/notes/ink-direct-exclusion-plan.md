@@ -1,8 +1,12 @@
 # Ink: what a direct exclusion would need
 
-This is a 3 October 2026 proof review and proposed next batch. No new Coq
-theorem or gameplay search is claimed. Rank 1 remains open at its subjective
-1–2% estimate.
+This began as a 3 October 2026 proof review and proposed next batch. The
+[4 October execution tranche](rank1-direct-execution.md) now proves the
+mandatory query in a completed object update, the completed ordinary Y copy
+and full-call low-raw/high-floor clearing. The table below records the
+earlier proof boundaries; the new note gives their extensions and exact
+remaining conditions. No new gameplay search or full route exclusion is
+claimed. Rank 1 remains open at its subjective 1–2% estimate.
 
 ## Is the proposed argument right?
 
@@ -58,7 +62,8 @@ The acceptance-tail proof also shows that its action setter preserves the
 three position records. That tail neither invents nor removes the incoming
 split. None of these results requires every position to agree throughout
 gameplay. The final-query result's recorded passing audit is
-`build/audit/20260926-210704-9ushw0ao`; this review does not rerun or expand it.
+`build/audit/20260926-210704-9ushw0ao`; the new tranche has its own expanded
+audit and does not change the verdict of that earlier check.
 
 ## The next bounded proof plan
 
