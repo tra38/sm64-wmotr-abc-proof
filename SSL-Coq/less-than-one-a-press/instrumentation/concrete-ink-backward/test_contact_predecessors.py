@@ -7,7 +7,7 @@ import unittest
 
 from contact_predecessors import contact_templates
 from search import previous_templates, DIALOG, number, Input
-from reverse_scattershot import continuous, initial_aux, proposal, advance_aux, open_store
+from reverse_scattershot import continuous, initial_aux, proposal, advance_aux, open_store, earlier_menu
 from test_compact_scattershot import FakeBackend, scatter_signature, scatter_row
 
 
@@ -52,6 +52,7 @@ class ContactTests(unittest.TestCase):
 
     def test_expanded_seeded_schedule_resumes_without_skipping_trials(self):
         sig = scatter_signature(); sig['predecessorMenu'] = 'contact-approach'
+        sig['expansionSampling'] = 'seeded-menu-per-parent-v2'
         with tempfile.TemporaryDirectory() as d:
             root = Path(d) / 'ledger'
             with open_store(root, sig, chunk_records=3) as s:
@@ -64,6 +65,43 @@ class ContactTests(unittest.TestCase):
             with open_store(root, sig, True, chunk_records=3) as s:
                 self.assertEqual(s.state, expected)
                 self.assertEqual([r['case'] for r in s.records()], list(range(18)))
+
+    def test_archive_turnover_does_not_restart_move_and_input_prefixes(self):
+        sig = scatter_signature(); sig['predecessorMenu'] = 'contact-approach'
+        sig['expansionSampling'] = 'seeded-menu-per-parent-v2'
+        observed = []
+        # Supply many fresh parents but reject their extensions, mimicking the
+        # real pilot. New parent attempt counters stay small under turnover.
+        aux = initial_aux()
+        for case in range(400):
+            c = proposal(aux, sig)
+            extension = c['ticket']['kind'] == 'extend'
+            if extension: observed.append(c)
+            aux = advance_aux(aux, scatter_row(aux, sig, case, not extension), sig)
+        self.assertEqual(len({c['buttonClass'] for c in observed}), 7)
+        self.assertEqual(len({c['stickRectangle'] for c in observed}), 9)
+        self.assertGreater(len({c['move'] for c in observed}), 60)
+        self.assertTrue({'contact', 'horizontal', 'interaction'} <= {c['family'] for c in observed})
+
+    def test_one_parent_visits_each_pose_once_and_old_schedule_remains_auditable(self):
+        sig = scatter_signature(); sig['predecessorMenu'] = 'contact-approach'
+        aux = advance_aux(initial_aux(), scatter_row(initial_aux(), sig, 0), sig)
+        menu = earlier_menu(json.dumps(aux['archive'][0]['observation'], sort_keys=True), 'contact-approach')
+        legacy = proposal(aux, sig)
+        self.assertEqual(legacy['move'], menu[0].name)
+        sig['expansionSampling'] = 'seeded-menu-per-parent-v2'
+        found = set()
+        for n in range(len(menu)):
+            aux['archive'][0]['attempts'] = n
+            c = proposal(aux, sig)
+            identity = json.dumps(c['patch'], sort_keys=True)
+            self.assertNotIn(identity, found); found.add(identity)
+        self.assertEqual(found, {json.dumps(m.patch, sort_keys=True) for m in menu})
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d) / 'ledger'
+            old = copy.deepcopy(sig); old.pop('expansionSampling')
+            with open_store(root, old): pass
+            with self.assertRaises(ValueError): open_store(root, sig, True)
 
 
 if __name__ == '__main__': unittest.main()

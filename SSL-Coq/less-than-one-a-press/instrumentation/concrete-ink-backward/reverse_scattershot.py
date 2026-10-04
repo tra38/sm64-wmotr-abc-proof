@@ -310,8 +310,18 @@ def proposal(aux,signature):
         # Interleave ground, freefall and dialog rather than exhausting ground.
         interleaved=earlier_menu(json.dumps(parent['observation'],sort_keys=True),
                                 signature.get('predecessorMenu','legacy'))
-        candidate=interleaved[ticket['serial']%len(interleaved)]
-        serial=ticket['serial']//len(interleaved); key=['extend',parent['id'],candidate.name]
+        cycle,ordinal=divmod(ticket['serial'],len(interleaved))
+        if signature.get('expansionSampling')=='seeded-menu-per-parent-v2':
+            # A short-lived parent must not restart at the same menu prefix.
+            # Visit each pose once per cycle in a parent-specific permutation;
+            # use the global expansion count to spread input classes despite
+            # archive turnover. The cycle supplies a new point within a stratum.
+            ordinal=permutation(ordinal,len(interleaved),signature['seed'],['moves',parent['id']])
+            serial=63*cycle+aux['expansions']%63
+        else:
+            # Preserve the recorded v1 schedule for full audits of old ledgers.
+            serial=cycle
+        candidate=interleaved[ordinal]; key=['extend',parent['id'],candidate.name]
         patch=candidate.patch; checkpoints=[parent['observation']]+parent['checkpoints']
         suffix=parent['controls']; targets=parent['targets']; depth=parent['depth']+1
         family=candidate.name.split('-')[0]; move=candidate.name
@@ -364,6 +374,7 @@ def run(args):
                        sourceHashes=sources,initialAux=initial_aux(),contextFrames=[c.frame for c in contexts],
                        endpoints=endpoints,targets=targets,reconstruction='pinned-init-capture360-pillar4-neutral-to131-v1')
         signature['predecessorMenu']=profile
+        if profile!='legacy': signature['expansionSampling']='seeded-menu-per-parent-v2'
         signature['parentPolicy']='exact-observation' if profile=='legacy' else 'diagnose-and-replay-actual-suffix'
         signature['entryRecordContract']=('For this IDLE installation menu, raw/display records at accepted warp '
             'return equal those at the start of the installation update (the last parent checkpoint for an '
