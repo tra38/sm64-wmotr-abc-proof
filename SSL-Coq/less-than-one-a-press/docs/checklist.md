@@ -1,5 +1,7 @@
 # Verification checklist
 
+- [x] Explain the [early warp contact](notes/rank1-parent-mismatch-audit.md#why-the-warp-begins-one-update-early) from the exact saved proposals and pinned US/JP code: all 146 inherit collision (-2200,768,-1024), all 72 ground and 51 freefall proposals start the warp state immediately, and none of the 23 intangible message proposals does. The warp interaction precedes ordinary action movement. This adds a source-order constraint, not a new gameplay trial, producer or Coq exclusion.
+
 - [x] Audit all [146 saved parent failures](notes/rank1-parent-mismatch-audit.md) under full-history verification. All saved mismatch dictionaries reproduce; every attempt has a Y-record mismatch, floor height and RNG differ in all 146, and pad/button fields differ in none.
 - [x] Replay all 146 actual suffixes through retention without an intermediate patch or restore: 3,650 native updates and matching controller/A readbacks, zero checked Ink payoffs. Forty-seven retain an active top at the last Area-1 observation; all 59 Area-2 entries use the ordinary spawn. Preserve the source ledger and strict archive unchanged.
 - [x] Save overlapping mismatch counts, per-trial recipes/outcomes, inclusive external timing (3.164 seconds) and 85 passing code tests. Audit actual continuation separately from exact-parent reproduction; do not infer a family exclusion or change route estimates.

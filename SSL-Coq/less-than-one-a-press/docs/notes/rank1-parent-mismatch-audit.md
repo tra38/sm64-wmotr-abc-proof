@@ -55,6 +55,63 @@ automatic message action. In other words, many proposals trigger the upper
 warp a frame earlier than the intended supplied idle parent. Requiring idle
 at that checkpoint rejects that different timing.
 
+## Why the warp begins one update early
+
+Follow-up source review, 3 October 2026. **These proposals already put Mario's
+collision record in contact with the live warp on their earliest update.**
+The earlier-move generator changes movement height, display, depth, speed and
+action, but inherits the parent's collision position. All 146 proposals keep
+that position at **(−2200, 768, −1024)**. Restoring an earlier top timer does not
+move that supplied record away from the warp.
+
+| Earlier proposal family | Attempts | Warp state starts on update 1 |
+| --- | ---: | ---: |
+| Ground / idle | 72 | 72 |
+| Freefall | 51 | 51 |
+| Automatic message ending | 23 | 0 |
+
+This table is derived from the committed receipt, without new game trials.
+The pinned C and actual generated US/JP code give the relevant order:
+object hitbox detection reads the raw Object positions before Mario's behavior
+runs; Mario then prepares his geometry and processes the detected interactions
+before his ordinary ground/air action loop. The upper warp handler sets
+`ACT_DISAPPEARED` when its contact is accepted. Consequently these tangible
+ground/freefall proposals have their proposed action interrupted before its
+ordinary movement step can reproduce the desired idle parent.
+
+The message action includes `ACT_FLAG_INTANGIBLE`, which blocks the interaction
+handler. That explains the exact family split: all 123 ground/freefall proposals
+start the warp state early, while none of the 23 message proposals does.
+Starting that state does not guarantee that its action executes or that Mario
+travels: the later missing-floor guard can return first, as the earlier replay
+counts distinguish.
+
+**Yes, this says something useful about the position:** in these supplied
+scenes, its collision record is already in the warp's contact region. It
+cannot simply remain there, interactive, for an extra ordinary action update
+while this live warp accepts contact. Higher movement or display coordinates
+do not prevent the contact test from using the low collision record. For
+example, saved case 7 starts movement/display at Y=843 with collision Y=768;
+its freefall proposal starts the warp state on the first update.
+
+A useful earlier history therefore needs to explain why contact was absent
+or blocked until the intended update: for example, an earlier collision record
+outside the hitbox, a real intangible action, or a different live-warp timing.
+Those alternatives still need their own gap/copy/timing continuation. We have
+not established any of them as a usable producer. The immediate contact is a
+constraint on these proposed predecessors; it is not a proof that the final
+installation position cannot work at the right time.
+
+The reviewed generated bodies are `f_detect_object_hitbox_overlap` in
+`generated/{us,jp}_object_collision.v`, `f_update_objects` in
+`generated/{us,jp}_object_list_processor.v`, `f_execute_mario_action` in
+`generated/{us,jp}_mario.v`, and `f_interact_warp` /
+`f_mario_process_interactions` in `generated/{us,jp}_interaction.v`.
+The corresponding C is `src/game/object_collision.c`,
+`src/game/object_list_processor.c`, `src/game/mario.c` and
+`src/game/interaction.c`. This is a source-order explanation of the finite
+receipt, not a new whole-update Coq theorem or an all-history exclusion.
+
 ## The controller suspicion does not explain these 146
 
 The saved `pad` observer reads the OS pad buffer. It does not read
