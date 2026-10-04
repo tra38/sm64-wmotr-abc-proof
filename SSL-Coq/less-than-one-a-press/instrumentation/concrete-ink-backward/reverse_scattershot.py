@@ -12,6 +12,7 @@ import json
 import math
 import platform
 from importlib.metadata import version
+from functools import lru_cache
 from pathlib import Path
 import sys
 import time
@@ -175,7 +176,7 @@ def controls_from(records):
 
 
 def continuous(backend, context, patch, controls, checkpoints, targets, endpoints, a_mode,
-               retention_control=Input(), tick=None, update_limit=None):
+               retention_control=Input(), tick=None, update_limit=None, exact_parent=True):
     """One restore+patch, complete suffix, then 23 unpatched retention updates.
 
     No intermediate restores/patches. Parent checkpoints compare every named
@@ -183,7 +184,7 @@ def continuous(backend, context, patch, controls, checkpoints, targets, endpoint
     """
     tick=tick or (lambda: None)
     backend.restore(context); backend.patch(patch); earlier=backend.capture()
-    updates=0; samples=[]
+    updates=0; samples=[]; parent_comparisons=[]; last_start=None
     def advance(c):
         nonlocal updates
         if update_limit is not None and updates>=update_limit:
@@ -203,15 +204,21 @@ def continuous(backend, context, patch, controls, checkpoints, targets, endpoint
             return o,False
         return o,True
     for i,c in enumerate(controls):
+        last_start=earlier.observation if not samples else samples[-1]
         actual,a_valid=advance(c)
         if not a_valid: return dict(status='rejected-a-history',updates=updates,reason='A edge/history'),None
         if i<len(checkpoints):
             diff=differences(actual,checkpoints[i],tuple(checkpoints[i]))
-            if diff: return dict(status='rejected',updates=updates,stage='parent',differences=diff),None
+            parent_comparisons.append(dict(update=i+1,differences=diff))
+            if diff and exact_parent:
+                return dict(status='rejected',updates=updates,stage='parent',differences=diff),None
         samples.append(actual)
+    if actual.get('area') != 1:
+        return dict(status='rejected-event',updates=updates,stage='departed-before-installation',
+                    parentComparisons=parent_comparisons),None
     events=[e for e in backend.game.frame_log() if e['type']=='FLT_EXECUTE_ACTION' and e['action']==DISAPPEARED]
     decisions={}
-    entry_start=checkpoints[-1] if checkpoints else patch
+    entry_start=(checkpoints[-1] if checkpoints else patch) if exact_parent else last_start
     for name,target in targets.items():
         diff=differences(actual,endpoints[name],END_FIELDS)
         event_ok=len(events)==1 and [bits(v) for v in events[0]['pos']]==target['movement']
@@ -229,7 +236,8 @@ def continuous(backend, context, patch, controls, checkpoints, targets, endpoint
     good=[n for n,d in decisions.items() if d['status']=='accepted-projection']
     if not good:
         status='rejected' if all(d['status']=='rejected' for d in decisions.values()) else 'rejected-event'
-        return dict(status=status,updates=updates,targets=decisions),None
+        return dict(status=status,updates=updates,targets=decisions,
+                    parentComparisons=parent_comparisons),None
     event_words=[bits(v) for v in events[0]['pos']]
     retained=True; area2=False; first_apply=None; area2_platform=None
     for i in range(23):
@@ -243,15 +251,19 @@ def continuous(backend, context, patch, controls, checkpoints, targets, endpoint
                    and [bits(v) for v in entries[0]['pos']]==FIRST_APPLY)
     if not retained or not area2:
         return dict(status='rejected-event',updates=updates,stage='retention',targets=decisions,
-                    retained=retained,firstArea2=first_apply),None
+                    retained=retained,firstArea2=first_apply,parentComparisons=parent_comparisons),None
     return dict(status='accepted-projection',updates=updates,targets=decisions,matched=good,
                 eventWords=event_words,retained=retained,firstArea2=first_apply,
                 firstArea2PlatformAfterUpdate=area2_platform,
-                observations=samples),earlier
+                observations=samples,parentComparisons=parent_comparisons),earlier
 
 
-def make_scene(depth,a_mode,check):
-    b=Backend(create_game(),None); b.observer=Observer(b.game)
+def make_scene(depth,a_mode,check,predecessor_menu='legacy'):
+    if predecessor_menu=='contact-approach':
+        from contact_predecessors import ContactBackend
+        backend_type=ContactBackend
+    else: backend_type=Backend
+    b=backend_type(create_game(),None); b.observer=Observer(b.game)
     c=Input(A_BUTTON if a_mode=='held' else 0); presses=[]
     contexts=prepare(b,load_capture(RUNTIME/'capture.bKv95w/inputs.jsonl'),depth,c,presses,check)
     endpoints={}; targets={}; recipes=[]; seen={}
@@ -270,6 +282,22 @@ def make_scene(depth,a_mode,check):
     return b,contexts,targets,endpoints,recipes,c,presses
 
 
+@lru_cache(maxsize=48)
+def earlier_menu(observation_json, profile):
+    target=json.loads(observation_json)
+    if profile=='contact-approach':
+        from contact_predecessors import contact_templates
+        return tuple(contact_templates(target, previous_templates(target)))
+    menus=[]; seen=set()
+    for move in previous_templates(target):
+        identity=digest(move.patch)
+        if identity not in seen:
+            seen.add(identity); menus.append(move)
+    menus=menus[::3]+menus[1::3]+menus[2::3]
+    groups=[[m for m in menus if m.name.startswith(prefix)] for prefix in ('ground','freefall','dialog')]
+    return tuple(group[i] for i in range(max(map(len,groups))) for group in groups if i<len(group))
+
+
 def proposal(aux,signature):
     ticket=next_ticket(aux,signature)
     if ticket['kind']=='fresh':
@@ -280,15 +308,8 @@ def proposal(aux,signature):
     else:
         parent=next(e for e in aux['archive'] if e['id']==ticket['parent'])
         # Interleave ground, freefall and dialog rather than exhausting ground.
-        menus=[]; seen=set()
-        for move_ in previous_templates(parent['observation']):
-            identity=digest(move_.patch)
-            if identity not in seen:
-                seen.add(identity); menus.append(move_)
-        menus=menus[::3]+menus[1::3]+menus[2::3]
-        # Family interleaving is explicit, not dependent on string ordering.
-        grouped=[[m for m in menus if m.name.startswith(prefix)] for prefix in ('ground','freefall','dialog')]
-        interleaved=[group[i] for i in range(max(map(len,grouped))) for group in grouped if i<len(group)]
+        interleaved=earlier_menu(json.dumps(parent['observation'],sort_keys=True),
+                                signature.get('predecessorMenu','legacy'))
         candidate=interleaved[ticket['serial']%len(interleaved)]
         serial=ticket['serial']//len(interleaved); key=['extend',parent['id'],candidate.name]
         patch=candidate.patch; checkpoints=[parent['observation']]+parent['checkpoints']
@@ -318,13 +339,23 @@ def run(args):
     phase=time.perf_counter(); preparation_updates=0
     try:
         limits.check()
-        b,contexts,targets,endpoints,recipes,neutral,presses=make_scene(args.depth,args.a_mode,limits.check)
+        profile=getattr(args,'predecessor_menu','legacy')
+        b,contexts,targets,endpoints,recipes,neutral,presses=make_scene(args.depth,args.a_mode,limits.check,profile)
         preparation_updates=contexts[-1].frame+3
         names=('reverse_scattershot.py','chunk_ledger.py','work_limits.py','search.py','product_sweep.py',
                'controller_inputs.py','compact_store.py')
+        if profile!='legacy': names=names+('contact_predecessors.py',)
         sources={str(Path('instrumentation/concrete-ink-backward')/n).replace('\\','/'):hash_file(Path(__file__).with_name(n),limits.check) for n in names}
         for n in ('replay.py','backward_wafel.py','backward_validation.py'):
             sources['instrumentation/wafel-jp-pilot/'+n]=hash_file(ROOT/'instrumentation/wafel-jp-pilot'/n,limits.check)
+        if profile!='legacy':
+            for stem in ('mario', 'mario_actions_moving', 'mario_actions_airborne',
+                         'mario_actions_cutscene', 'interaction'):
+                for region in ('us','jp'):
+                    name='generated/'+region+'_'+stem+'.v'
+                    sources[name]=hash_file(ROOT/name,limits.check)
+                name='../../../reference-sm64-decomp/src/game/'+stem+'.c'
+                sources[name]=hash_file(ROOT/name,limits.check)
         for name,path in (('build/wafel-pilot/sm64_jp.dll',RUNTIME/'sm64_jp.dll'),
                           ('build/wafel-pilot/capture.bKv95w/inputs.jsonl',RUNTIME/'capture.bKv95w/inputs.jsonl')):
             sources[name]=hash_file(path,limits.check)
@@ -332,6 +363,8 @@ def run(args):
                        maxTrials=args.max_trials,jobOrder=recipes,order='seeded-strata-v1',aMode=args.a_mode,
                        sourceHashes=sources,initialAux=initial_aux(),contextFrames=[c.frame for c in contexts],
                        endpoints=endpoints,targets=targets,reconstruction='pinned-init-capture360-pillar4-neutral-to131-v1')
+        signature['predecessorMenu']=profile
+        signature['parentPolicy']='exact-observation' if profile=='legacy' else 'diagnose-and-replay-actual-suffix'
         signature['entryRecordContract']=('For this IDLE installation menu, raw/display records at accepted warp '
             'return equal those at the start of the installation update (the last parent checkpoint for an '
             'extension). This is an explicit unproved per-input prefix frame; the native event directly '
@@ -352,6 +385,7 @@ def run(args):
         stop='trial-limit'; tested_inputs=Counter(); proposals=Counter(); target_counts=Counter()
         distinct=set(); incomplete=0
         coherent_witnesses=[]; runtime_snapshot_peak=len(live)
+        parent_mismatches=Counter(); extension_successes=[]
         while s.state['nextCase']<args.max_trials:
             if s.state['nextCase']-start_cursor>=args.trials: break
             try: limits.check()
@@ -363,7 +397,7 @@ def run(args):
             try:
                 report,snapshot=continuous(b,contexts[-candidate['depth']],candidate['patch'],
                     controls_from(candidate['controls']),candidate['checkpoints'],expected,endpoints,args.a_mode,
-                    neutral,update_limit=remaining)
+                    neutral,update_limit=remaining,exact_parent=profile=='legacy')
             except GameBudgetReached as exc:
                 report=dict(status='incomplete-budget',updates=exc.updates,
                             reason='Native update limit; no gameplay verdict; retry this proposal on resume')
@@ -373,7 +407,8 @@ def run(args):
             entry=None
             if snapshot is not None:
                 entry=dict(id=s.state['nextCase'],frame=snapshot.frame,depth=candidate['depth'],
-                           patch=candidate['patch'],controls=candidate['controls'],checkpoints=candidate['checkpoints'],
+                           patch=candidate['patch'],controls=candidate['controls'],
+                           checkpoints=(report['observations'][:-1] if profile!='legacy' else candidate['checkpoints']),
                            targets=report['matched'],observation=snapshot.observation,family=candidate['family'],
                            move=candidate['move'],attempts=0,parent=candidate['ticket']['parent'],
                            provenance='supplied conditional earliest pose; suffix controller-replayed')
@@ -383,6 +418,9 @@ def run(args):
                 synced=before['movement']==before['collision']==before['display']
                 entry['initialRecordsSynchronized']=synced
                 if synced: coherent_witnesses.append(entry['id'])
+                if entry['depth']>1: extension_successes.append(entry['id'])
+            for comparison in report.get('parentComparisons',[]):
+                parent_mismatches.update(comparison['differences'].keys())
             detail={k:v for k,v in report.items() if k not in ('status','observations')}
             detail.update(ticket=candidate['ticket'],proposal=candidate,entry=entry)
             record=dict(case=s.state['nextCase'],jobId=candidate['jobId'],inputIndex=candidate['inputIndex'],
@@ -396,6 +434,10 @@ def run(args):
             for name,d in report.get('targets',{}).items(): target_counts[name+':'+d['status']]+=1
             if s.ready():
                 limits.enter('checkpoint'); s.commit(); limits.enter('search')
+                if getattr(args,'progress',False):
+                    print(json.dumps(dict(progress=True,attempts=s.state['nextCase'],
+                        searchSeconds=limits.phases['search'],updates=s.state['aux']['updates'],
+                        deepest=s.state['aux']['deepest'],extendedAccepted=len(extension_successes))),flush=True)
             if incomplete: stop='game-update-budget'; break
         limits.enter('checkpoint'); s.commit(); limits.enter('finalization')
         aux=s.state['aux']
@@ -408,6 +450,7 @@ def run(args):
             proposalFamilies=dict(proposals),buttonClasses=dict(tested_inputs),archive=aux['archive'],
             distinctRetainedBuckets=len({bucket(e) for e in aux['archive']}),nativeSnapshotsPeak=runtime_snapshot_peak,
             deepestValidatedUpdates=aux['deepest'],acceptedFromSynchronizedRecords=coherent_witnesses,
+            acceptedExtendedSuffixes=extension_successes,parentMismatchFieldCounts=dict(parent_mismatches),
             splitClassification='List accepted Ink suffixes whose earliest movement/collision/display records '
                 'all agreed. An empty list means no such witness in this sample; end-of-update agreement '
                 'does not disprove a within-update split. Other seed fields and the scene remain conditional.',
@@ -425,6 +468,14 @@ def run(args):
                      'emulator fixtures; no per-input observation or full-memory equality.',
             reachability='All earliest poses and pillar completion supplied conditionally. No patch-free no-A route '
                          'or mechanism impossibility follows from this finite menu/sample.')
+        if profile!='legacy':
+            result['generators']=('Legacy vertical proposals plus target-derived collision offsets, '
+                'horizontal walking/air target-minus-speed proposals, and stock intangible message states. '
+                'Moving support/rotation, other writers/actions and controller-reached scene contexts remain absent.')
+            result['matching']=('Unequal saved parents are diagnosed, never substituted. Replay uses the actual '
+                'continuous suffix and archives its actual intermediate observations. Acceptance still requires '
+                'the selected within-update movement event, distinct raw/display start requirements under '
+                'the explicit per-input prefix condition, the original top and the checked first Area-2 payoff.')
     except LimitReached as exc:
         result=dict(status='verification incomplete' if exc.phase=='verification' else 'setup incomplete',
                     batchTrials=0,batchGameUpdates=0)
@@ -443,7 +494,9 @@ def main():
     p.add_argument('--output',type=Path,required=True)
     p.add_argument('--seed',type=int,default=20261003)
     p.add_argument('--scheduler',choices=('scattershot','menu-first'),default='scattershot')
-    p.add_argument('--depth',type=int,choices=range(1,5),default=3)
+    p.add_argument('--depth',type=int,choices=range(1,31),default=3)
+    p.add_argument('--predecessor-menu',choices=('legacy','contact-approach'),default='legacy')
+    p.add_argument('--progress',action='store_true')
     p.add_argument('--archive',type=int,default=12)
     p.add_argument('--game-updates',type=int,default=2000)
     p.add_argument('--trials',type=int,default=2000)
@@ -458,8 +511,8 @@ def main():
     p.add_argument('--resume-verify',choices=('full','latest'),default='full')
     p.add_argument('--audit',action='store_true',help='Offline full-history audit; constructs no game')
     args=p.parse_args()
-    if not 4<=args.archive<=24 or not 1<=args.trials<=args.max_trials<=5000 or args.game_updates<1:
-        p.error('Pilot limits: archive 4..24, at most 5000 trials, positive update budget')
+    if not 4<=args.archive<=24 or not 1<=args.trials<=args.max_trials<=1000000 or args.game_updates<1:
+        p.error('Bounded limits: archive 4..24, at most 1000000 trials, positive update budget')
     if args.audit:
         root=args.output.with_suffix('.ledger')
         signature=json.loads((root/'manifest.json').read_text())['payload']['signature']
