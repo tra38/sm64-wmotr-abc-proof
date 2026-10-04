@@ -1,0 +1,2115 @@
+{
+  "comparison": "This is a corrected time-limited run, not an equal-update comparison or exhaustive product.",
+  "corrected": {
+    "examplesByFamily": {
+      "contact": {
+        "case": 3,
+        "controls": [
+          {
+            "buttons": 16384,
+            "stick": [
+              -39,
+              2
+            ]
+          },
+          {
+            "buttons": 0,
+            "stick": [
+              7,
+              -6
+            ]
+          }
+        ],
+        "move": "contact-ground-copy-y-1280-depth--1171.86-offset-384-0-0",
+        "parent": 2,
+        "parentComparisons": [
+          {
+            "differences": {
+              "action": {
+                "actual": 8389719,
+                "expected": 205521409
+              },
+              "actionArg": {
+                "actual": 1,
+                "expected": 0
+              },
+              "actionState": {
+                "actual": 1,
+                "expected": 0
+              },
+              "buttonDown": {
+                "actual": 16384,
+                "expected": 0
+              },
+              "buttonPressed": {
+                "actual": 16384,
+                "expected": 0
+              },
+              "collision": {
+                "actual": [
+                  3305761608,
+                  1151336448,
+                  3296689988
+                ],
+                "expected": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ]
+              },
+              "display": {
+                "actual": [
+                  3305761608,
+                  1151336448,
+                  3296689988
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "faceYaw": {
+                "actual": -13330,
+                "expected": 18611
+              },
+              "floorHeight": {
+                "actual": 1151336448,
+                "expected": 1108869120
+              },
+              "forwardVel": {
+                "actual": 1088421888,
+                "expected": 0
+              },
+              "input": {
+                "actual": 8193,
+                "expected": 32
+              },
+              "movement": {
+                "actual": [
+                  3305761608,
+                  1151336448,
+                  3296689988
+                ],
+                "expected": [
+                  3305734144,
+                  1145028608,
+                  3296722944
+                ]
+              },
+              "rng": {
+                "actual": 52619,
+                "expected": 56027
+              },
+              "vx": {
+                "actual": 3235286425,
+                "expected": 0
+              },
+              "vz": {
+                "actual": 1073789774,
+                "expected": 2147483648
+              }
+            },
+            "update": 1
+          }
+        ],
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3303211008,
+            1145044992,
+            3296722944
+          ],
+          "depth": 3297934253,
+          "display": [
+            3305734144,
+            1151336448,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1151336448,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "stage": null,
+        "status": "rejected",
+        "targets": {
+          "original": {
+            "conditionalPrefixMatches": false,
+            "differences": {
+              "action": {
+                "actual": 8389719,
+                "expected": 4864
+              },
+              "actionArg": {
+                "actual": 1,
+                "expected": 262145
+              },
+              "collision": {
+                "actual": [
+                  3305785148,
+                  1151336448,
+                  3296661740
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "display": {
+                "actual": [
+                  3305785148,
+                  1151336448,
+                  3296661740
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "floorHeight": {
+                "actual": 1151336448,
+                "expected": 1156733869
+              },
+              "floorOwner": {
+                "actual": -1,
+                "expected": 61
+              },
+              "movement": {
+                "actual": [
+                  3305785148,
+                  1151336448,
+                  3296661740
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "platform": {
+                "actual": -1,
+                "expected": 61
+              },
+              "usedSlot": {
+                "actual": -1,
+                "expected": 64
+              }
+            },
+            "eventMatches": false,
+            "pending": "Raw/display preservation to accepted return is source-guided, not independently observed by Wafel for this input.",
+            "requiredEntryRecords": {
+              "collision": [
+                3305734144,
+                1145044992,
+                3296722944
+              ],
+              "display": [
+                3305734144,
+                1156733869,
+                3296722944
+              ]
+            },
+            "status": "rejected"
+          }
+        },
+        "updates": 2
+      },
+      "dialog": {
+        "case": 189,
+        "controls": [
+          {
+            "buttons": 24576,
+            "stick": [
+              -7,
+              74
+            ]
+          },
+          {
+            "buttons": 24590,
+            "stick": [
+              -7,
+              61
+            ]
+          }
+        ],
+        "move": "dialog-final-sink-depth--39.0288",
+        "parent": 96,
+        "parentComparisons": [
+          {
+            "differences": {
+              "buttonDown": {
+                "actual": 24576,
+                "expected": 0
+              },
+              "buttonPressed": {
+                "actual": 24576,
+                "expected": 0
+              },
+              "collision": {
+                "actual": [
+                  3305734144,
+                  1156414145,
+                  3296722944
+                ],
+                "expected": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ]
+              },
+              "depth": {
+                "actual": 3256622469,
+                "expected": 0
+              },
+              "floorHeight": {
+                "actual": 1156412624,
+                "expected": 1108869120
+              },
+              "floorOwner": {
+                "actual": 61,
+                "expected": -1
+              },
+              "input": {
+                "actual": 57353,
+                "expected": 32
+              },
+              "movement": {
+                "actual": [
+                  3305734144,
+                  1156414145,
+                  3296722944
+                ],
+                "expected": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ]
+              },
+              "platform": {
+                "actual": 61,
+                "expected": -1
+              },
+              "rng": {
+                "actual": 50242,
+                "expected": 56027
+              }
+            },
+            "update": 1
+          }
+        ],
+        "patch": {
+          "action": 536875781,
+          "actionArg": 0,
+          "actionState": 24,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 3256622469,
+          "display": [
+            3305734144,
+            1156414145,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "stage": null,
+        "status": "rejected",
+        "targets": {
+          "original": {
+            "conditionalPrefixMatches": false,
+            "differences": {
+              "action": {
+                "actual": 9176147,
+                "expected": 4864
+              },
+              "actionArg": {
+                "actual": 0,
+                "expected": 262145
+              },
+              "collision": {
+                "actual": [
+                  3305665832,
+                  1156708718,
+                  3295636100
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "display": {
+                "actual": [
+                  3305665832,
+                  1156708718,
+                  3295636100
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "floorHeight": {
+                "actual": 1156708718,
+                "expected": 1156733869
+              },
+              "movement": {
+                "actual": [
+                  3305665832,
+                  1156708718,
+                  3295636100
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "usedSlot": {
+                "actual": -1,
+                "expected": 64
+              }
+            },
+            "eventMatches": false,
+            "pending": "Raw/display preservation to accepted return is source-guided, not independently observed by Wafel for this input.",
+            "requiredEntryRecords": {
+              "collision": [
+                3305734144,
+                1145044992,
+                3296722944
+              ],
+              "display": [
+                3305734144,
+                1156733869,
+                3296722944
+              ]
+            },
+            "status": "rejected"
+          }
+        },
+        "updates": 2
+      },
+      "freefall": {
+        "case": 37,
+        "controls": [
+          {
+            "buttons": 24588,
+            "stick": [
+              4,
+              -3
+            ]
+          },
+          {
+            "buttons": 16384,
+            "stick": [
+              -111,
+              1
+            ]
+          }
+        ],
+        "move": "freefall-copy-v-4-depth-0",
+        "parent": 26,
+        "parentComparisons": [
+          {
+            "differences": {
+              "action": {
+                "actual": 4864,
+                "expected": 205521409
+              },
+              "actionArg": {
+                "actual": 262146,
+                "expected": 0
+              },
+              "buttonDown": {
+                "actual": 24588,
+                "expected": 0
+              },
+              "buttonPressed": {
+                "actual": 24588,
+                "expected": 0
+              },
+              "collision": {
+                "actual": [
+                  3305734144,
+                  1144963072,
+                  3296722944
+                ],
+                "expected": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ]
+              },
+              "display": {
+                "actual": [
+                  3305734144,
+                  1144963072,
+                  3296722944
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "floorHeight": {
+                "actual": 3324764160,
+                "expected": 1108869120
+              },
+              "floorNull": {
+                "actual": 1,
+                "expected": 0
+              },
+              "input": {
+                "actual": 57376,
+                "expected": 32
+              },
+              "movement": {
+                "actual": [
+                  3305734144,
+                  1144963072,
+                  3296722944
+                ],
+                "expected": [
+                  3305734144,
+                  1145028608,
+                  3296722944
+                ]
+              },
+              "rng": {
+                "actual": 50242,
+                "expected": 56027
+              },
+              "usedSlot": {
+                "actual": 64,
+                "expected": -1
+              },
+              "vy": {
+                "actual": 1082130432,
+                "expected": 0
+              }
+            },
+            "update": 1
+          }
+        ],
+        "patch": {
+          "action": 16779404,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1144963072,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1144963072,
+            3296722944
+          ],
+          "vy": 1082130432
+        },
+        "stage": null,
+        "status": "rejected",
+        "targets": {
+          "original": {
+            "conditionalPrefixMatches": false,
+            "differences": {
+              "actionArg": {
+                "actual": 262146,
+                "expected": 262145
+              },
+              "collision": {
+                "actual": [
+                  3305734144,
+                  1144963072,
+                  3296722944
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "display": {
+                "actual": [
+                  3305734144,
+                  1144963072,
+                  3296722944
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "floorHeight": {
+                "actual": 3324764160,
+                "expected": 1156733869
+              },
+              "floorOwner": {
+                "actual": -1,
+                "expected": 61
+              },
+              "movement": {
+                "actual": [
+                  3305734144,
+                  1144963072,
+                  3296722944
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "platform": {
+                "actual": -1,
+                "expected": 61
+              }
+            },
+            "eventMatches": false,
+            "pending": "Raw/display preservation to accepted return is source-guided, not independently observed by Wafel for this input.",
+            "requiredEntryRecords": {
+              "collision": [
+                3305734144,
+                1145044992,
+                3296722944
+              ],
+              "display": [
+                3305734144,
+                1156733869,
+                3296722944
+              ]
+            },
+            "status": "rejected"
+          }
+        },
+        "updates": 2
+      },
+      "ground": {
+        "case": 145,
+        "controls": [
+          {
+            "buttons": 8192,
+            "stick": [
+              8,
+              2
+            ]
+          },
+          {
+            "buttons": 24576,
+            "stick": [
+              8,
+              -51
+            ]
+          }
+        ],
+        "move": "ground-copy-y-1280-depth-0",
+        "parent": 72,
+        "parentComparisons": [
+          {
+            "differences": {
+              "action": {
+                "actual": 4864,
+                "expected": 205521409
+              },
+              "actionArg": {
+                "actual": 262145,
+                "expected": 0
+              },
+              "buttonDown": {
+                "actual": 8192,
+                "expected": 0
+              },
+              "buttonPressed": {
+                "actual": 8192,
+                "expected": 0
+              },
+              "collision": {
+                "actual": [
+                  3305734144,
+                  1151336448,
+                  3296722944
+                ],
+                "expected": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ]
+              },
+              "display": {
+                "actual": [
+                  3305734144,
+                  1151336448,
+                  3296722944
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "floorHeight": {
+                "actual": 1151336448,
+                "expected": 1108869120
+              },
+              "input": {
+                "actual": 49153,
+                "expected": 32
+              },
+              "movement": {
+                "actual": [
+                  3305734144,
+                  1151336448,
+                  3296722944
+                ],
+                "expected": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ]
+              },
+              "rng": {
+                "actual": 50242,
+                "expected": 56027
+              },
+              "usedSlot": {
+                "actual": 64,
+                "expected": -1
+              }
+            },
+            "update": 1
+          }
+        ],
+        "patch": {
+          "action": 205521409,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1151336448,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "stage": null,
+        "status": "rejected",
+        "targets": {
+          "original": {
+            "conditionalPrefixMatches": false,
+            "differences": {
+              "actionArg": {
+                "actual": 262144,
+                "expected": 262145
+              },
+              "collision": {
+                "actual": [
+                  3305734144,
+                  1151336448,
+                  3296722944
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "display": {
+                "actual": [
+                  3305734144,
+                  1151336448,
+                  3296722944
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "floorHeight": {
+                "actual": 1151336448,
+                "expected": 1156733869
+              },
+              "floorOwner": {
+                "actual": -1,
+                "expected": 61
+              },
+              "movement": {
+                "actual": [
+                  3305734144,
+                  1151336448,
+                  3296722944
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "platform": {
+                "actual": -1,
+                "expected": 61
+              }
+            },
+            "eventMatches": false,
+            "pending": "Raw/display preservation to accepted return is source-guided, not independently observed by Wafel for this input.",
+            "requiredEntryRecords": {
+              "collision": [
+                3305734144,
+                1145044992,
+                3296722944
+              ],
+              "display": [
+                3305734144,
+                1156733869,
+                3296722944
+              ]
+            },
+            "status": "rejected"
+          }
+        },
+        "updates": 2
+      },
+      "horizontal": {
+        "case": 1,
+        "controls": [
+          {
+            "buttons": 0,
+            "stick": [
+              5,
+              -6
+            ]
+          },
+          {
+            "buttons": 0,
+            "stick": [
+              6,
+              2
+            ]
+          }
+        ],
+        "move": "horizontal-air-16-24576-above-contact-inherited",
+        "parent": 0,
+        "parentComparisons": [
+          {
+            "differences": {
+              "action": {
+                "actual": 16779404,
+                "expected": 205521409
+              },
+              "collision": {
+                "actual": [
+                  3305688816,
+                  1156733869,
+                  3296813600
+                ],
+                "expected": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ]
+              },
+              "display": {
+                "actual": [
+                  3305688816,
+                  1156733869,
+                  3296813600
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "faceYaw": {
+                "actual": 24576,
+                "expected": 18611
+              },
+              "floorHeight": {
+                "actual": 1156541632,
+                "expected": 1108869120
+              },
+              "floorOwner": {
+                "actual": 61,
+                "expected": -1
+              },
+              "forwardVel": {
+                "actual": 1098540646,
+                "expected": 0
+              },
+              "input": {
+                "actual": 40,
+                "expected": 32
+              },
+              "movement": {
+                "actual": [
+                  3305688816,
+                  1156733869,
+                  3296813600
+                ],
+                "expected": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ]
+              },
+              "rng": {
+                "actual": 50242,
+                "expected": 56027
+              },
+              "vx": {
+                "actual": 1093734205,
+                "expected": 0
+              },
+              "vy": {
+                "actual": 3229614080,
+                "expected": 0
+              },
+              "vz": {
+                "actual": 3241217853,
+                "expected": 2147483648
+              }
+            },
+            "update": 1
+          }
+        ],
+        "patch": {
+          "action": 16779404,
+          "actionArg": 0,
+          "actionState": 0,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1147142144,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "faceYaw": 24576,
+          "forwardVel": 1098907648,
+          "movement": [
+            3305780485,
+            1145044992,
+            3296537580
+          ],
+          "vx": 1093993715,
+          "vy": 0,
+          "vz": 3241477363
+        },
+        "stage": null,
+        "status": "rejected",
+        "targets": {
+          "original": {
+            "conditionalPrefixMatches": false,
+            "differences": {
+              "action": {
+                "actual": 67110001,
+                "expected": 4864
+              },
+              "actionArg": {
+                "actual": 0,
+                "expected": 262145
+              },
+              "collision": {
+                "actual": [
+                  3305677738,
+                  1156784885,
+                  3296835757
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "display": {
+                "actual": [
+                  3305677738,
+                  1156784885,
+                  3296835757
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "floorHeight": {
+                "actual": 1156784885,
+                "expected": 1156733869
+              },
+              "movement": {
+                "actual": [
+                  3305677738,
+                  1156784885,
+                  3296835757
+                ],
+                "expected": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ]
+              },
+              "usedSlot": {
+                "actual": -1,
+                "expected": 64
+              }
+            },
+            "eventMatches": false,
+            "pending": "Raw/display preservation to accepted return is source-guided, not independently observed by Wafel for this input.",
+            "requiredEntryRecords": {
+              "collision": [
+                3305734144,
+                1145044992,
+                3296722944
+              ],
+              "display": [
+                3305734144,
+                1156733869,
+                3296722944
+              ]
+            },
+            "status": "rejected"
+          }
+        },
+        "updates": 2
+      },
+      "interaction": {
+        "case": 167,
+        "controls": [
+          {
+            "buttons": 20491,
+            "stick": [
+              61,
+              -8
+            ]
+          },
+          {
+            "buttons": 20496,
+            "stick": [
+              -90,
+              124
+            ]
+          }
+        ],
+        "move": "interaction-dialog-24-0-above-contact",
+        "parent": 148,
+        "parentComparisons": [
+          {
+            "differences": {
+              "buttonDown": {
+                "actual": 20491,
+                "expected": 0
+              },
+              "buttonPressed": {
+                "actual": 20491,
+                "expected": 0
+              },
+              "collision": {
+                "actual": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "expected": [
+                  3305734144,
+                  1145044992,
+                  3296722944
+                ]
+              },
+              "floorHeight": {
+                "actual": 1156412624,
+                "expected": 1108869120
+              },
+              "floorOwner": {
+                "actual": 61,
+                "expected": -1
+              },
+              "input": {
+                "actual": 8201,
+                "expected": 32
+              },
+              "movement": {
+                "actual": [
+                  3305734144,
+                  1156733869,
+                  3296722944
+                ],
+                "expected": [
+                  3305734144,
+                  1145061376,
+                  3296722944
+                ]
+              },
+              "rng": {
+                "actual": 50242,
+                "expected": 56027
+              }
+            },
+            "update": 1
+          }
+        ],
+        "patch": {
+          "action": 536875781,
+          "actionArg": 0,
+          "actionState": 24,
+          "actionTimer": 0,
+          "collision": [
+            3305734144,
+            1147142144,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1145061376,
+            3296722944
+          ],
+          "vy": 0
+        },
+        "stage": null,
+        "status": "rejected",
+        "targets": {
+          "original": {
+            "conditionalPrefixMatches": false,
+            "differences": {
+              "action": {
+                "actual": 205521409,
+                "expected": 4864
+              },
+              "actionArg": {
+                "actual": 0,
+                "expected": 262145
+              },
+              "floorHeight": {
+                "actual": 1156412624,
+                "expected": 1156733869
+              },
+              "platform": {
+                "actual": -1,
+                "expected": 61
+              },
+              "usedSlot": {
+                "actual": -1,
+                "expected": 64
+              }
+            },
+            "eventMatches": false,
+            "pending": "Raw/display preservation to accepted return is source-guided, not independently observed by Wafel for this input.",
+            "requiredEntryRecords": {
+              "collision": [
+                3305734144,
+                1145044992,
+                3296722944
+              ],
+              "display": [
+                3305734144,
+                1156733869,
+                3296722944
+              ]
+            },
+            "status": "rejected"
+          }
+        },
+        "updates": 2
+      }
+    },
+    "process": {
+      "command": [
+        "C:\\Users\\tariq\\OneDrive\\Documents\\sm64 - the item-grab proof\\reference-sm64-wmotr-abc-proof\\SSL-Coq\\less-than-one-a-press\\build\\wafel-pilot\\python\\python.exe",
+        "-X",
+        "utf8",
+        "C:\\Users\\tariq\\OneDrive\\Documents\\sm64 - the item-grab proof\\reference-sm64-wmotr-abc-proof\\SSL-Coq\\less-than-one-a-press\\instrumentation\\concrete-ink-backward\\reverse_scattershot.py",
+        "--predecessor-menu",
+        "contact-approach",
+        "--seed",
+        "20261004",
+        "--depth",
+        "8",
+        "--archive",
+        "24",
+        "--game-updates",
+        "3000000",
+        "--trials",
+        "1000000",
+        "--max-trials",
+        "1000000",
+        "--chunk-records",
+        "100",
+        "--search-seconds",
+        "600.0",
+        "--setup-seconds",
+        "60",
+        "--verification-seconds",
+        "60",
+        "--wall-seconds",
+        "970.0",
+        "--progress",
+        "--output",
+        "build\\concrete-ink-backward\\20261004-contact-ten-minutes-v2\\report.json"
+      ],
+      "exitCode": 0,
+      "processWallSeconds": 660.3220337,
+      "timedOut": false
+    },
+    "processWallSeconds": 660.3220337,
+    "run": {
+      "acceptedFromSynchronizedRecords": 0,
+      "archiveEntries": 24,
+      "batchGameUpdates": 301188,
+      "buttonClasses": {
+        "B": 5941,
+        "B+Z": 5931,
+        "R": 5931,
+        "Start": 5931,
+        "Z": 5931,
+        "camera": 5931,
+        "none": 5944
+      },
+      "completedTrials": 41540,
+      "deepestValidatedUpdates": 1,
+      "distinctRetainedBuckets": 24,
+      "distinctTestedCombinations": 41540,
+      "expansionSampling": "seeded-menu-per-parent-v2",
+      "parentMismatchFieldCounts": {
+        "action": 19453,
+        "actionArg": 10036,
+        "actionState": 1552,
+        "actionTimer": 2934,
+        "buttonDown": 17802,
+        "buttonPressed": 17802,
+        "collision": 20377,
+        "depth": 3928,
+        "display": 19498,
+        "faceYaw": 9817,
+        "flags": 3912,
+        "floorHeight": 20770,
+        "floorNull": 4562,
+        "floorOwner": 10091,
+        "forwardVel": 8180,
+        "input": 20554,
+        "movement": 19109,
+        "platform": 7260,
+        "rng": 20770,
+        "usedSlot": 8824,
+        "vx": 9724,
+        "vy": 5950,
+        "vz": 10393
+      },
+      "peakRssBytes": 301404160,
+      "preparationGameUpdates": 495,
+      "proposalFamilies": {
+        "contact": 11875,
+        "dialog": 40,
+        "first-floor-query": 6923,
+        "freefall": 310,
+        "ground": 207,
+        "horizontal": 7840,
+        "interaction": 498,
+        "pre-action-retry": 13847
+      },
+      "retainedPoseRecipes": 6,
+      "retainedSuffixes": 24,
+      "status": "search-or-wall-limit",
+      "targetEvaluations": {
+        "hybrid:accepted-projection": 1731,
+        "hybrid:rejected": 5191,
+        "hybrid:rejected-event": 8655,
+        "original:accepted-projection": 6924,
+        "original:rejected": 16446,
+        "original:rejected-event": 3462,
+        "variant:accepted-projection": 1731,
+        "variant:rejected": 11248
+      },
+      "timing": {
+        "limitSemantics": "Cooperative checks between updates and bounded IO operations; an in-flight native update/IO cannot be preempted. Completed records are checkpointed and safety finalization may exceed these limits.",
+        "limits": {
+          "overall": 970.0,
+          "search": 600.0,
+          "setup": 60.0,
+          "verification": 60.0
+        },
+        "phaseSeconds": {
+          "checkpoint": 53.74752340000044,
+          "finalization": 0.024257899999952315,
+          "preparation": 4.4612665,
+          "search": 600.0080155999996,
+          "verification": 0.02912369999999953
+        },
+        "searchCheckBoundary": "Between complete candidate replays, at most depth+23 native updates. The game-update budget is checked before each individual update.",
+        "totalSeconds": 658.2701870999999
+      },
+      "totalStoredBytes": 17981517
+    },
+    "signature": {
+      "aMode": "released",
+      "architecture": "AMD64",
+      "archiveLimit": 24,
+      "contextFrames": [
+        485,
+        486,
+        487,
+        488,
+        489,
+        490,
+        491,
+        492
+      ],
+      "depth": 8,
+      "endpoints": {
+        "hybrid": {
+          "action": 4864,
+          "actionArg": 262145,
+          "actionState": 0,
+          "actionTimer": 0,
+          "area": 1,
+          "buttonDown": 0,
+          "buttonPressed": 0,
+          "collision": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "faceYaw": 18611,
+          "flags": 17,
+          "floorHeight": 1156733869,
+          "floorNull": 0,
+          "floorOwner": 61,
+          "forwardVel": 0,
+          "input": 40,
+          "level": 8,
+          "marioSlot": 67,
+          "movement": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "pad": [
+            0,
+            0,
+            0
+          ],
+          "pillars": 4,
+          "platform": 61,
+          "rng": 20512,
+          "timer": 494,
+          "topAction": 1,
+          "topActive": 257,
+          "topSlot": 61,
+          "topTimer": 132,
+          "usedSlot": 64,
+          "vx": 0,
+          "vy": 0,
+          "vz": 2147483648
+        },
+        "original": {
+          "action": 4864,
+          "actionArg": 262145,
+          "actionState": 0,
+          "actionTimer": 0,
+          "area": 1,
+          "buttonDown": 0,
+          "buttonPressed": 0,
+          "collision": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "faceYaw": 18611,
+          "flags": 17,
+          "floorHeight": 1156733869,
+          "floorNull": 0,
+          "floorOwner": 61,
+          "forwardVel": 0,
+          "input": 40,
+          "level": 8,
+          "marioSlot": 67,
+          "movement": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "pad": [
+            0,
+            0,
+            0
+          ],
+          "pillars": 4,
+          "platform": 61,
+          "rng": 20512,
+          "timer": 494,
+          "topAction": 1,
+          "topActive": 257,
+          "topSlot": 61,
+          "topTimer": 132,
+          "usedSlot": 64,
+          "vx": 0,
+          "vy": 0,
+          "vz": 2147483648
+        },
+        "variant": {
+          "action": 4864,
+          "actionArg": 262145,
+          "actionState": 0,
+          "actionTimer": 0,
+          "area": 1,
+          "buttonDown": 0,
+          "buttonPressed": 0,
+          "collision": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "depth": 0,
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "faceYaw": 18611,
+          "flags": 17,
+          "floorHeight": 1156733869,
+          "floorNull": 0,
+          "floorOwner": 61,
+          "forwardVel": 0,
+          "input": 40,
+          "level": 8,
+          "marioSlot": 67,
+          "movement": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "pad": [
+            0,
+            0,
+            0
+          ],
+          "pillars": 4,
+          "platform": 61,
+          "rng": 20512,
+          "timer": 494,
+          "topAction": 1,
+          "topActive": 257,
+          "topSlot": 61,
+          "topTimer": 132,
+          "usedSlot": 64,
+          "vx": 0,
+          "vy": 0,
+          "vz": 2147483648
+        }
+      },
+      "entryRecordContract": "For this IDLE installation menu, raw/display records at accepted warp return equal those at the start of the installation update (the last parent checkpoint for an extension). This is an explicit unproved per-input prefix frame; the native event directly observes movement only. Earlier proposals are not required to inherit those records.",
+      "expansionSampling": "seeded-menu-per-parent-v2",
+      "initialAux": {
+        "archive": [],
+        "deepest": 0,
+        "expansions": 0,
+        "fresh": 0,
+        "updates": 0
+      },
+      "jobOrder": [
+        {
+          "family": "pre-action-retry",
+          "move": "pre-action-retry-y-768",
+          "patch": {
+            "action": 205521409,
+            "actionArg": 0,
+            "actionState": 0,
+            "actionTimer": 0,
+            "collision": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "depth": 0,
+            "display": [
+              3305734144,
+              1156733869,
+              3296722944
+            ],
+            "movement": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "vy": 0
+          },
+          "setup": "original",
+          "targets": [
+            "original",
+            "hybrid"
+          ]
+        },
+        {
+          "family": "pre-action-retry",
+          "move": "pre-action-retry-y-767",
+          "patch": {
+            "action": 205521409,
+            "actionArg": 0,
+            "actionState": 0,
+            "actionTimer": 0,
+            "collision": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "depth": 0,
+            "display": [
+              3305734144,
+              1156733869,
+              3296722944
+            ],
+            "movement": [
+              3305734144,
+              1145028608,
+              3296722944
+            ],
+            "vy": 0
+          },
+          "setup": "original",
+          "targets": [
+            "original",
+            "hybrid"
+          ]
+        },
+        {
+          "family": "pre-action-retry",
+          "move": "pre-action-retry-y-769",
+          "patch": {
+            "action": 205521409,
+            "actionArg": 0,
+            "actionState": 0,
+            "actionTimer": 0,
+            "collision": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "depth": 0,
+            "display": [
+              3305734144,
+              1156733869,
+              3296722944
+            ],
+            "movement": [
+              3305734144,
+              1145061376,
+              3296722944
+            ],
+            "vy": 0
+          },
+          "setup": "original",
+          "targets": [
+            "original",
+            "hybrid"
+          ]
+        },
+        {
+          "family": "pre-action-retry",
+          "move": "pre-action-retry-y-1201",
+          "patch": {
+            "action": 205521409,
+            "actionArg": 0,
+            "actionState": 0,
+            "actionTimer": 0,
+            "collision": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "depth": 0,
+            "display": [
+              3305734144,
+              1156733869,
+              3296722944
+            ],
+            "movement": [
+              3305734144,
+              1150689280,
+              3296722944
+            ],
+            "vy": 0
+          },
+          "setup": "original",
+          "targets": [
+            "original",
+            "hybrid"
+          ]
+        },
+        {
+          "family": "first-floor-query",
+          "move": "pre-action-retry-y-1202",
+          "patch": {
+            "action": 205521409,
+            "actionArg": 0,
+            "actionState": 0,
+            "actionTimer": 0,
+            "collision": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "depth": 0,
+            "display": [
+              3305734144,
+              1156733869,
+              3296722944
+            ],
+            "movement": [
+              3305734144,
+              1150697472,
+              3296722944
+            ],
+            "vy": 0
+          },
+          "setup": "original",
+          "targets": [
+            "original",
+            "hybrid"
+          ]
+        },
+        {
+          "family": "first-floor-query",
+          "move": "pre-action-retry-y-1861",
+          "patch": {
+            "action": 205521409,
+            "actionArg": 0,
+            "actionState": 0,
+            "actionTimer": 0,
+            "collision": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "depth": 0,
+            "display": [
+              3305734144,
+              1156733869,
+              3296722944
+            ],
+            "movement": [
+              3305734144,
+              1156096000,
+              3296722944
+            ],
+            "vy": 0
+          },
+          "setup": "original",
+          "targets": [
+            "original",
+            "hybrid"
+          ]
+        },
+        {
+          "family": "first-floor-query",
+          "move": "successful-query-state-only-y-1861",
+          "patch": {
+            "action": 205521409,
+            "actionArg": 0,
+            "actionState": 0,
+            "actionTimer": 0,
+            "collision": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "depth": 0,
+            "display": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "movement": [
+              3305734144,
+              1156096000,
+              3296722944
+            ],
+            "vy": 0
+          },
+          "setup": "original",
+          "targets": [
+            "original",
+            "variant",
+            "hybrid"
+          ]
+        },
+        {
+          "family": "pre-action-retry",
+          "move": "pre-action-retry-y-768",
+          "patch": {
+            "action": 205521409,
+            "actionArg": 0,
+            "actionState": 0,
+            "actionTimer": 0,
+            "collision": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "depth": 0,
+            "display": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "movement": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "vy": 0
+          },
+          "setup": "variant",
+          "targets": [
+            "variant"
+          ]
+        },
+        {
+          "family": "pre-action-retry",
+          "move": "pre-action-retry-y-767",
+          "patch": {
+            "action": 205521409,
+            "actionArg": 0,
+            "actionState": 0,
+            "actionTimer": 0,
+            "collision": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "depth": 0,
+            "display": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "movement": [
+              3305734144,
+              1145028608,
+              3296722944
+            ],
+            "vy": 0
+          },
+          "setup": "variant",
+          "targets": [
+            "variant"
+          ]
+        },
+        {
+          "family": "pre-action-retry",
+          "move": "pre-action-retry-y-769",
+          "patch": {
+            "action": 205521409,
+            "actionArg": 0,
+            "actionState": 0,
+            "actionTimer": 0,
+            "collision": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "depth": 0,
+            "display": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "movement": [
+              3305734144,
+              1145061376,
+              3296722944
+            ],
+            "vy": 0
+          },
+          "setup": "variant",
+          "targets": [
+            "variant"
+          ]
+        },
+        {
+          "family": "pre-action-retry",
+          "move": "pre-action-retry-y-1201",
+          "patch": {
+            "action": 205521409,
+            "actionArg": 0,
+            "actionState": 0,
+            "actionTimer": 0,
+            "collision": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "depth": 0,
+            "display": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "movement": [
+              3305734144,
+              1150689280,
+              3296722944
+            ],
+            "vy": 0
+          },
+          "setup": "variant",
+          "targets": [
+            "variant"
+          ]
+        },
+        {
+          "family": "first-floor-query",
+          "move": "pre-action-retry-y-1202",
+          "patch": {
+            "action": 205521409,
+            "actionArg": 0,
+            "actionState": 0,
+            "actionTimer": 0,
+            "collision": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "depth": 0,
+            "display": [
+              3305734144,
+              1145044992,
+              3296722944
+            ],
+            "movement": [
+              3305734144,
+              1150697472,
+              3296722944
+            ],
+            "vy": 0
+          },
+          "setup": "variant",
+          "targets": [
+            "variant"
+          ]
+        }
+      ],
+      "maxTrials": 1000000,
+      "order": "seeded-strata-v1",
+      "parentPolicy": "diagnose-and-replay-actual-suffix",
+      "predecessorMenu": "contact-approach",
+      "python": "3.9.13",
+      "reconstruction": "pinned-init-capture360-pillar4-neutral-to131-v1",
+      "retentionSuffix": {
+        "input": {
+          "buttons": 0,
+          "stick": [
+            0,
+            0
+          ]
+        },
+        "updates": 23
+      },
+      "scheduler": "scattershot",
+      "seed": 20261004,
+      "sourceHashes": {
+        "../../../reference-sm64-decomp/src/game/interaction.c": "a327202d33612821f884f01b5e4692aa5cfe2003f3b9a2eeb1452ad72725ea00",
+        "../../../reference-sm64-decomp/src/game/mario.c": "832c5301d3eda065310db5e5e429f6448eeeebcf7226a7e0bf2ac132556b8b1d",
+        "../../../reference-sm64-decomp/src/game/mario_actions_airborne.c": "49a1df4e42e169a745e7c91c592bb6139ca1aa43ad27d6e7f1fb3d9cdc6f812f",
+        "../../../reference-sm64-decomp/src/game/mario_actions_cutscene.c": "e52b4a0d4278f3436c6e8ab7c6b9b0ba7e5bf6d84804c4a23f996c47c9b2735b",
+        "../../../reference-sm64-decomp/src/game/mario_actions_moving.c": "63364abba7cd12cb89e47614f901c933334a26654183896448f309fa2d847cfb",
+        "build/wafel-pilot/capture.bKv95w/inputs.jsonl": "9bcc451964025d9f0bb1344c45957b6bfd095451b44bfb9a01f8584a75db6a72",
+        "build/wafel-pilot/sm64_jp.dll": "960fe979068b78e6733b3ddb87741833fbf4eb29b2a21a2bba871977427c2d0f",
+        "generated/jp_interaction.v": "39223e59a53a700e36c6e08f63b280889c3e25aef40dce66a063588467ae16e1",
+        "generated/jp_mario.v": "6eae1a48bc0eb232f8a30a4d1089989d571418f34061f74e9a39a02d77922271",
+        "generated/jp_mario_actions_airborne.v": "15baaa2ee897d1ed5af963e4b2dac8eaaf1cfe8176b7a0dbeb6036b4ca5b06e4",
+        "generated/jp_mario_actions_cutscene.v": "6a8a49283200ef88bf9a1845cec0e581aee55aef63fc1a2c3cb37cb0f92f9bef",
+        "generated/jp_mario_actions_moving.v": "be1314c3ff8ea5ab33015e20a20344e7360d7b44533ba059d5c2b5b35d9084a7",
+        "generated/us_interaction.v": "667179fdc995a6d43e364af44b91bbbc04806a752286788cd3ce3bae4d5d6be1",
+        "generated/us_mario.v": "9219c324571bede4ec6913a6c000c9a4ec41f9328e614d14967870f02af44dcf",
+        "generated/us_mario_actions_airborne.v": "d1b60941e380695b229ab67a7cdaa764f486decb01fcb015eed6b15e5aabf6a0",
+        "generated/us_mario_actions_cutscene.v": "ea98a4a6069dc429904a3fd302c9a1df46b99f64fbc69e143015358e83db00a0",
+        "generated/us_mario_actions_moving.v": "d447fc51ac385c75eb1d4f1b5a38c96dcedaef825e75b7c9e322a1fbb428aa7a",
+        "instrumentation/concrete-ink-backward/chunk_ledger.py": "cfac94c2e736b32c39ee18c8bb3c9af8a4b17e4cc27dd3f67bb92def914140a2",
+        "instrumentation/concrete-ink-backward/compact_store.py": "8f4f474a62728fa0dd0a1107001b3f1d238381e77df56bf0246501b5778470bb",
+        "instrumentation/concrete-ink-backward/contact_predecessors.py": "afd04cd9c5851030103ad215a2629c6489a7658b69891ad049f263cb9aabaaf1",
+        "instrumentation/concrete-ink-backward/controller_inputs.py": "122c1f37ac7e03981b7e0d645ace0b0fb36aa748786cde3c2e96122ffe94b8bf",
+        "instrumentation/concrete-ink-backward/product_sweep.py": "205d010fe21d4a559b3ed4a4a1cb4e7d611a66978e7ece2f760b211ebf0fc6b1",
+        "instrumentation/concrete-ink-backward/reverse_scattershot.py": "685ab25b8a05cb5149a4e1bb0441333832a6abb77467472849081c8069580539",
+        "instrumentation/concrete-ink-backward/search.py": "90db7656eb456ec1661558b7f0c32e5dc7e422b1c99049cbde87ef4cbf9a2303",
+        "instrumentation/concrete-ink-backward/work_limits.py": "b2fea08775e667ffa9db09767fde0fc4f07e9e3a8b368dd93cdd0803875fad18",
+        "instrumentation/wafel-jp-pilot/backward_validation.py": "06437f52f074d958ff56642e19eaf304fd8ef7dcb78897e4ca6bd0e4cd3651de",
+        "instrumentation/wafel-jp-pilot/backward_wafel.py": "a2df51c3f68db76ebc855eec5f495593bbc2e591931fa0412979a07532c5cb52",
+        "instrumentation/wafel-jp-pilot/replay.py": "ea422b6478e40931c9d61aaa0e19c9d86a551a0219dbeaca85cd9a82e70df66d"
+      },
+      "targets": {
+        "hybrid": {
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1156096000,
+            3296722944
+          ]
+        },
+        "original": {
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "display": [
+            3305734144,
+            1156733869,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1156733869,
+            3296722944
+          ]
+        },
+        "variant": {
+          "collision": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "display": [
+            3305734144,
+            1145044992,
+            3296722944
+          ],
+          "movement": [
+            3305734144,
+            1156096000,
+            3296722944
+          ]
+        }
+      },
+      "wafel": "0.8.5"
+    },
+    "summary": {
+      "acceptedExtendedSuffixes": [],
+      "auditAndSummarySeconds": 132.6797362,
+      "auditIO": {
+        "bytesRead": 35890258,
+        "bytesWritten": 0,
+        "checkpointSeconds": 0.0,
+        "checkpoints": 0
+      },
+      "auditSeconds": 121.3188714,
+      "distinctExtendedMoveLabels": 2090,
+      "distinctExtendedPatchSuffixes": 20770,
+      "distinctExtendedPoseRecipes": 6433,
+      "extendedButtonClasses": {
+        "B": 2967,
+        "B+Z": 2967,
+        "R": 2967,
+        "Start": 2967,
+        "Z": 2967,
+        "camera": 2967,
+        "none": 2968
+      },
+      "extendedFamilies": {
+        "contact": 11875,
+        "dialog": 40,
+        "freefall": 310,
+        "ground": 207,
+        "horizontal": 7840,
+        "interaction": 498
+      },
+      "extendedGoalStages": {
+        "installation-goal": 20770
+      },
+      "extendedStickRectangles": {
+        "0": 2308,
+        "1": 2308,
+        "2": 2308,
+        "3": 2308,
+        "4": 2308,
+        "5": 2308,
+        "6": 2308,
+        "7": 2307,
+        "8": 2307
+      },
+      "extendedSynchronizedStartingRecords": 1311,
+      "fullAudit": "passed",
+      "goalMismatchFieldCounts": {
+        "action": 10223,
+        "actionArg": 20320,
+        "collision": 20552,
+        "depth": 3564,
+        "display": 20422,
+        "floorHeight": 19974,
+        "floorOwner": 10691,
+        "movement": 20552,
+        "platform": 11991,
+        "usedSlot": 10223
+      },
+      "kindOutcomes": {
+        "extend": {
+          "rejected": 20770
+        },
+        "fresh": {
+          "accepted-projection": 10386,
+          "rejected": 10384
+        }
+      },
+      "parentMismatchFieldCounts": {
+        "action": 19453,
+        "actionArg": 10036,
+        "actionState": 1552,
+        "actionTimer": 2934,
+        "buttonDown": 17802,
+        "buttonPressed": 17802,
+        "collision": 20377,
+        "depth": 3928,
+        "display": 19498,
+        "faceYaw": 9817,
+        "flags": 3912,
+        "floorHeight": 20770,
+        "floorNull": 4562,
+        "floorOwner": 10091,
+        "forwardVel": 8180,
+        "input": 20554,
+        "movement": 19109,
+        "platform": 7260,
+        "rng": 20770,
+        "usedSlot": 8824,
+        "vx": 9724,
+        "vy": 5950,
+        "vz": 10393
+      },
+      "schema": 1,
+      "verificationScope": "Every chunk hash, record/cursor/count, retained reference, archive and deterministic sampler transition; not a gameplay proof.",
+      "verifiedAttempts": 41540
+    }
+  },
+  "date": "2026-10-04",
+  "implementationCommit": "2eac9e6bc4676f974e98c289afd0267f0794fa9a",
+  "localFiles": {
+    "corrected": "build\\concrete-ink-backward\\20261004-contact-ten-minutes-v2",
+    "preliminary": "build\\concrete-ink-backward\\20261004-contact-ten-minutes"
+  },
+  "prefixCondition": "For this IDLE installation menu, raw/display records at accepted warp return equal those at the start of the installation update (the last parent checkpoint for an extension). This is an explicit unproved per-input prefix frame; the native event directly observes movement only. Earlier proposals are not required to inherit those records.",
+  "preliminary": {
+    "acceptedExtendedSuffixes": [],
+    "batchGameUpdates": 290572,
+    "completedTrials": 40075,
+    "fullAuditAttempt": {
+      "status": "verification incomplete",
+      "timing": {
+        "limitSemantics": "Cooperative checks between updates and bounded IO operations; an in-flight native update/IO cannot be preempted. Completed records are checkpointed and safety finalization may exceed these limits.",
+        "limits": {
+          "overall": 180.0,
+          "search": null,
+          "setup": null,
+          "verification": 120.0
+        },
+        "phaseSeconds": {
+          "checkpoint": 0.0,
+          "finalization": 0.0,
+          "preparation": 2.9699999999965865e-05,
+          "search": 0.0,
+          "verification": 120.00108080000001
+        },
+        "totalSeconds": 120.00111050000001
+      }
+    },
+    "processWallSeconds": 667.1195646,
+    "timing": {
+      "limitSemantics": "Cooperative checks between updates and bounded IO operations; an in-flight native update/IO cannot be preempted. Completed records are checkpointed and safety finalization may exceed these limits.",
+      "limits": {
+        "overall": 970.0,
+        "search": 600.0,
+        "setup": 60.0,
+        "verification": 60.0
+      },
+      "phaseSeconds": {
+        "checkpoint": 62.112916099999424,
+        "finalization": 0.02358419999995931,
+        "preparation": 3.1510099,
+        "search": 600.0008448000006,
+        "verification": 0.023106800000000316
+      },
+      "searchCheckBoundary": "Between complete candidate replays, at most depth+23 native updates. The game-update budget is checked before each individual update.",
+      "totalSeconds": 665.3114618
+    },
+    "verdict": "Preserved preliminary pass; menu-prefix starvation; not broad coverage"
+  },
+  "reachability": "All earliest poses and pillar completion supplied conditionally. No patch-free no-A route or mechanism impossibility follows from this finite menu/sample.",
+  "schema": 1,
+  "smoke": {
+    "fullAuditPassed": true,
+    "gameUpdates": 1902,
+    "trials": 256
+  },
+  "tests": {
+    "concrete": 76,
+    "freefallPilot": 15,
+    "total": 91
+  },
+  "verdict": "Finite conditional search; no earlier Ink edge found"
+}

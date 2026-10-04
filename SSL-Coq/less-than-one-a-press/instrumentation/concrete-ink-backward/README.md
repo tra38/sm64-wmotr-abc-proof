@@ -287,3 +287,48 @@ fifteen pilot tests still pass. The test backend is not a game model.
 Full reports and emulator logs remain in ignored build output; no ROM, DLL,
 save state, conversation export or credentials are published. See
 [the experiment note](../../docs/notes/rank1-concrete-ink-backward.md).
+
+## Expanded contact search, 4 October 2026
+
+`reverse_scattershot.py --predecessor-menu contact-approach` adds finite
+earlier collision offsets, horizontal walking/freefall target-minus-speed
+proposals, and automatic-message states/timers. The game tests their effects;
+these are conditional predecessor hypotheses, not claimed exact inverses.
+The earliest scene, support, RNG and completed pillars remain supplied.
+Moving-support/rotation inverses and other actions/writers are still absent.
+
+Unlike the legacy profile, an unequal saved parent does not stop the expanded
+trial. Its actual resulting state continues through the entire saved suffix,
+with only the earliest patch. Actual intermediate observations are archived
+on success. Warp movement, distinct raw/display requirements under the
+explicit prefix condition, original-top retention and first Area-2 payoff
+are still required. Named emulator controls do not validate that prefix
+condition for every sampled input.
+
+The versioned `seeded-menu-per-parent-v2` scheduler draws from the whole move
+menu even for a newly retained parent. Each parent's menu cycle is a seeded
+permutation; global expansion counts rotate seven button classes and nine
+encoded-stick regions. These regions schedule samples, not equivalence groups.
+Old ledgers retain their original schedule during audit. Source, sampler or
+configuration changes reject resume; never append the repaired schedule to
+an older run.
+
+The bounded runner refuses an existing output directory. It allows 600 seconds
+of search work, depth 8, archive 24, seed 20261004, released A, and at most
+three million native updates / one million proposals. Setup and verification
+have separate 60-second allowances; explicit checkpoints are excluded from
+search time. The overall/hard process caps are 970/1000 seconds. Cooperative
+limits and safe finalization can add time beyond the search allowance.
+
+```powershell
+& './build/wafel-pilot/python/python.exe' -X utf8 instrumentation/concrete-ink-backward/bounded_scattershot_run.py --output build/concrete-ink-backward/NEW-DIRECTORY
+& './build/wafel-pilot/python/python.exe' -X utf8 instrumentation/concrete-ink-backward/summarize_contact_run.py --report build/concrete-ink-backward/NEW-DIRECTORY/report.json --output build/concrete-ink-backward/NEW-DIRECTORY/full-audit-summary.json --seconds 300
+```
+
+The second command audits a completed fresh-run ledger in full before counting
+actual earlier proposals and their diagnostics. It does not run game trials.
+Its verification cap is separate; exhaustion reports verification incomplete,
+not a gameplay failure. [The ten-minute report](../../docs/notes/rank1-contact-scattershot-ten-minutes.md)
+records results and the preserved preliminary pass with its scheduling defect.
+`expected-contact-ten-minutes.json` is the compact checked receipt; local full
+ledgers retain every patch, input suffix, mismatch and reconstruction record.
