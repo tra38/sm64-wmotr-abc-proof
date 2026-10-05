@@ -17,3 +17,16 @@ The declared runtime artifacts are located by the existing `wafel-jp-pilot/repla
 The action-entry log records movement and velocity. It does not observe collision/display at that within-update cut, so no subframe collision peak is measured. The largest detected **end-update** collision gap is zero. Supplied Mario poses are conditional, although the surrounding scene follows the original controller trace. The suffix's absence of A presses does not make the patched starting pose a no-A gameplay witness.
 
 Tests reject unsynchronized initial records, skipped update boundaries and A input, and check equal/unequal end-update gap accounting. Keep full reports, hashes and patch fields for a local audit. No stock actor position or dimension is inferred to be player-reachable from this diagnostic.
+# Chosen-XYZ follow-up
+
+`placement.py` keeps real actor size/tangibility and supplies only its chosen
+XYZ plus synchronized Mario poses. Eight selected actors × three locations ×
+three continuous neutral updates gives 24 trials / 72 checkpoints. The Y=768
+cases schedule **death operation 18** after their floor miss; that must not be
+reported as clean Ink. Seven Y=1280 contacts reach a bounce action entry.
+See `docs/notes/ssl1-placement-runtime-review.md` for conditions and results.
+
+`expected-placement-report.json.gz` preserves the exact first report (gzip
+mtime zero); `expected-placement-receipt.json` records its decompressed SHA-256
+and the independently repeated timings. Run `test_placement_receipt.py` with
+ordinary Python to check the committed report without loading the game.

@@ -1,0 +1,656 @@
+{
+  "schema": 1,
+  "runtime": "Wafel 0.8.5 JP",
+  "poll": 500,
+  "reportSha256": "c72a3485f9f22b06ec1d993fcd1a54b9d7deda96b15e1452a0f3c2ee0bce1bab",
+  "dllSha256": "960fe979068b78e6733b3ddb87741833fbf4eb29b2a21a2bba871977427c2d0f",
+  "captureSha256": "9bcc451964025d9f0bb1344c45957b6bfd095451b44bfb9a01f8584a75db6a72",
+  "availableActors": 12,
+  "testedActors": 8,
+  "trials": 24,
+  "updates": 72,
+  "bounces": 7,
+  "maxDetectedBounceEntryRise": 89.9998779296875,
+  "maxDetectedEndUpdateCollisionGap": 0.0,
+  "maxDetectedEndUpdateDisplayGap": 249.95330810546875,
+  "outcomes": [
+    {
+      "slot": 6,
+      "species": "bhvGoomba",
+      "position": [
+        -2400.0,
+        768.0,
+        -1024.0
+      ],
+      "actorY": 767.9999389648438,
+      "height": 75.0,
+      "radius": 108.0,
+      "downOffset": 0.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": false,
+      "actionEntries": [],
+      "firstFloorNull": true,
+      "firstWarpOperation": 18,
+      "firstEndY": [
+        842.9999389648438,
+        842.9999389648438,
+        768.0
+      ]
+    },
+    {
+      "slot": 6,
+      "species": "bhvGoomba",
+      "position": [
+        -2400.0,
+        1280.0,
+        -1024.0
+      ],
+      "actorY": 1279.9998779296875,
+      "height": 75.0,
+      "radius": 108.0,
+      "downOffset": 0.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": true,
+      "actionEntries": [
+        {
+          "action": 16779404,
+          "position": [
+            -2400.0,
+            1354.9998779296875,
+            -1024.0
+          ],
+          "vy": 30.0
+        }
+      ],
+      "firstFloorNull": false,
+      "firstWarpOperation": 0,
+      "firstEndY": [
+        1439.0001220703125,
+        1439.0001220703125,
+        1439.0001220703125
+      ]
+    },
+    {
+      "slot": 6,
+      "species": "bhvGoomba",
+      "position": [
+        -2200.0,
+        768.0,
+        -1024.0
+      ],
+      "actorY": 767.9999389648438,
+      "height": 75.0,
+      "radius": 108.0,
+      "downOffset": 0.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": false,
+      "actionEntries": [],
+      "firstFloorNull": true,
+      "firstWarpOperation": 18,
+      "firstEndY": [
+        768.0,
+        768.0,
+        768.0
+      ]
+    },
+    {
+      "slot": 7,
+      "species": "bhvGoomba",
+      "position": [
+        -2400.0,
+        768.0,
+        -1024.0
+      ],
+      "actorY": 767.9999389648438,
+      "height": 75.0,
+      "radius": 108.0,
+      "downOffset": 0.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": false,
+      "actionEntries": [],
+      "firstFloorNull": true,
+      "firstWarpOperation": 18,
+      "firstEndY": [
+        842.9999389648438,
+        842.9999389648438,
+        768.0
+      ]
+    },
+    {
+      "slot": 7,
+      "species": "bhvGoomba",
+      "position": [
+        -2400.0,
+        1280.0,
+        -1024.0
+      ],
+      "actorY": 1279.9998779296875,
+      "height": 75.0,
+      "radius": 108.0,
+      "downOffset": 0.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": true,
+      "actionEntries": [
+        {
+          "action": 16779404,
+          "position": [
+            -2400.0,
+            1354.9998779296875,
+            -1024.0
+          ],
+          "vy": 30.0
+        }
+      ],
+      "firstFloorNull": false,
+      "firstWarpOperation": 0,
+      "firstEndY": [
+        1439.0001220703125,
+        1439.0001220703125,
+        1439.0001220703125
+      ]
+    },
+    {
+      "slot": 7,
+      "species": "bhvGoomba",
+      "position": [
+        -2200.0,
+        768.0,
+        -1024.0
+      ],
+      "actorY": 767.9999389648438,
+      "height": 75.0,
+      "radius": 108.0,
+      "downOffset": 0.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": false,
+      "actionEntries": [],
+      "firstFloorNull": true,
+      "firstWarpOperation": 18,
+      "firstEndY": [
+        768.0,
+        768.0,
+        768.0
+      ]
+    },
+    {
+      "slot": 8,
+      "species": "bhvGoomba",
+      "position": [
+        -2400.0,
+        768.0,
+        -1024.0
+      ],
+      "actorY": 767.9999389648438,
+      "height": 75.0,
+      "radius": 108.0,
+      "downOffset": 0.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": false,
+      "actionEntries": [],
+      "firstFloorNull": true,
+      "firstWarpOperation": 18,
+      "firstEndY": [
+        842.9999389648438,
+        842.9999389648438,
+        768.0
+      ]
+    },
+    {
+      "slot": 8,
+      "species": "bhvGoomba",
+      "position": [
+        -2400.0,
+        1280.0,
+        -1024.0
+      ],
+      "actorY": 1279.9998779296875,
+      "height": 75.0,
+      "radius": 108.0,
+      "downOffset": 0.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": true,
+      "actionEntries": [
+        {
+          "action": 16779404,
+          "position": [
+            -2400.0,
+            1354.9998779296875,
+            -1024.0
+          ],
+          "vy": 30.0
+        }
+      ],
+      "firstFloorNull": false,
+      "firstWarpOperation": 0,
+      "firstEndY": [
+        1439.0001220703125,
+        1439.0001220703125,
+        1439.0001220703125
+      ]
+    },
+    {
+      "slot": 8,
+      "species": "bhvGoomba",
+      "position": [
+        -2200.0,
+        768.0,
+        -1024.0
+      ],
+      "actorY": 767.9999389648438,
+      "height": 75.0,
+      "radius": 108.0,
+      "downOffset": 0.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": false,
+      "actionEntries": [],
+      "firstFloorNull": true,
+      "firstWarpOperation": 18,
+      "firstEndY": [
+        768.0,
+        768.0,
+        768.0
+      ]
+    },
+    {
+      "slot": 38,
+      "species": "bhvFlyGuy",
+      "position": [
+        -2400.0,
+        768.0,
+        -1024.0
+      ],
+      "actorY": 767.9999389648438,
+      "height": 90.0,
+      "radius": 105.0,
+      "downOffset": 0.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": false,
+      "actionEntries": [],
+      "firstFloorNull": true,
+      "firstWarpOperation": 18,
+      "firstEndY": [
+        857.9999389648438,
+        857.9999389648438,
+        768.0
+      ]
+    },
+    {
+      "slot": 38,
+      "species": "bhvFlyGuy",
+      "position": [
+        -2400.0,
+        1280.0,
+        -1024.0
+      ],
+      "actorY": 1279.9998779296875,
+      "height": 90.0,
+      "radius": 105.0,
+      "downOffset": 0.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": true,
+      "actionEntries": [
+        {
+          "action": 276826276,
+          "position": [
+            -2400.0,
+            1369.9998779296875,
+            -1024.0
+          ],
+          "vy": 80.0
+        }
+      ],
+      "firstFloorNull": false,
+      "firstWarpOperation": 0,
+      "firstEndY": [
+        1439.0001220703125,
+        1439.0001220703125,
+        1439.0001220703125
+      ]
+    },
+    {
+      "slot": 38,
+      "species": "bhvFlyGuy",
+      "position": [
+        -2200.0,
+        768.0,
+        -1024.0
+      ],
+      "actorY": 767.9999389648438,
+      "height": 90.0,
+      "radius": 105.0,
+      "downOffset": 0.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": false,
+      "actionEntries": [],
+      "firstFloorNull": true,
+      "firstWarpOperation": 18,
+      "firstEndY": [
+        768.0,
+        768.0,
+        768.0
+      ]
+    },
+    {
+      "slot": 44,
+      "species": "bhvFlyGuy",
+      "position": [
+        -2400.0,
+        768.0,
+        -1024.0
+      ],
+      "actorY": 767.9999389648438,
+      "height": 90.0,
+      "radius": 105.0,
+      "downOffset": 0.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": false,
+      "actionEntries": [],
+      "firstFloorNull": true,
+      "firstWarpOperation": 18,
+      "firstEndY": [
+        857.9999389648438,
+        857.9999389648438,
+        768.0
+      ]
+    },
+    {
+      "slot": 44,
+      "species": "bhvFlyGuy",
+      "position": [
+        -2400.0,
+        1280.0,
+        -1024.0
+      ],
+      "actorY": 1279.9998779296875,
+      "height": 90.0,
+      "radius": 105.0,
+      "downOffset": 0.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": true,
+      "actionEntries": [
+        {
+          "action": 276826276,
+          "position": [
+            -2400.0,
+            1369.9998779296875,
+            -1024.0
+          ],
+          "vy": 80.0
+        }
+      ],
+      "firstFloorNull": false,
+      "firstWarpOperation": 0,
+      "firstEndY": [
+        1439.0001220703125,
+        1439.0001220703125,
+        1439.0001220703125
+      ]
+    },
+    {
+      "slot": 44,
+      "species": "bhvFlyGuy",
+      "position": [
+        -2200.0,
+        768.0,
+        -1024.0
+      ],
+      "actorY": 767.9999389648438,
+      "height": 90.0,
+      "radius": 105.0,
+      "downOffset": 0.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": false,
+      "actionEntries": [],
+      "firstFloorNull": true,
+      "firstWarpOperation": 18,
+      "firstEndY": [
+        768.0,
+        768.0,
+        768.0
+      ]
+    },
+    {
+      "slot": 45,
+      "species": "bhvFlyGuy",
+      "position": [
+        -2400.0,
+        768.0,
+        -1024.0
+      ],
+      "actorY": 767.9999389648438,
+      "height": 90.0,
+      "radius": 105.0,
+      "downOffset": 0.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": false,
+      "actionEntries": [],
+      "firstFloorNull": true,
+      "firstWarpOperation": 18,
+      "firstEndY": [
+        857.9999389648438,
+        857.9999389648438,
+        768.0
+      ]
+    },
+    {
+      "slot": 45,
+      "species": "bhvFlyGuy",
+      "position": [
+        -2400.0,
+        1280.0,
+        -1024.0
+      ],
+      "actorY": 1279.9998779296875,
+      "height": 90.0,
+      "radius": 105.0,
+      "downOffset": 0.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": true,
+      "actionEntries": [
+        {
+          "action": 276826276,
+          "position": [
+            -2400.0,
+            1369.9998779296875,
+            -1024.0
+          ],
+          "vy": 80.0
+        }
+      ],
+      "firstFloorNull": false,
+      "firstWarpOperation": 0,
+      "firstEndY": [
+        1439.0001220703125,
+        1439.0001220703125,
+        1439.0001220703125
+      ]
+    },
+    {
+      "slot": 45,
+      "species": "bhvFlyGuy",
+      "position": [
+        -2200.0,
+        768.0,
+        -1024.0
+      ],
+      "actorY": 767.9999389648438,
+      "height": 90.0,
+      "radius": 105.0,
+      "downOffset": 0.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": false,
+      "actionEntries": [],
+      "firstFloorNull": true,
+      "firstWarpOperation": 18,
+      "firstEndY": [
+        768.0,
+        768.0,
+        768.0
+      ]
+    },
+    {
+      "slot": 54,
+      "species": "bhvKlepto",
+      "position": [
+        -2400.0,
+        768.0,
+        -1024.0
+      ],
+      "actorY": 767.9999389648438,
+      "height": 250.0,
+      "radius": 160.0,
+      "downOffset": 0.0,
+      "tangible": false,
+      "bounceAtFirstActionEntry": false,
+      "actionEntries": [],
+      "firstFloorNull": true,
+      "firstWarpOperation": 18,
+      "firstEndY": [
+        768.0,
+        768.0,
+        768.0
+      ]
+    },
+    {
+      "slot": 54,
+      "species": "bhvKlepto",
+      "position": [
+        -2400.0,
+        1280.0,
+        -1024.0
+      ],
+      "actorY": 1279.9998779296875,
+      "height": 250.0,
+      "radius": 160.0,
+      "downOffset": 0.0,
+      "tangible": false,
+      "bounceAtFirstActionEntry": false,
+      "actionEntries": [
+        {
+          "action": 16779404,
+          "position": [
+            -2400.0,
+            1280.0,
+            -1024.0
+          ],
+          "vy": -4.0
+        }
+      ],
+      "firstFloorNull": false,
+      "firstWarpOperation": 0,
+      "firstEndY": [
+        1280.0,
+        1280.0,
+        1280.0
+      ]
+    },
+    {
+      "slot": 54,
+      "species": "bhvKlepto",
+      "position": [
+        -2200.0,
+        768.0,
+        -1024.0
+      ],
+      "actorY": 767.9999389648438,
+      "height": 250.0,
+      "radius": 160.0,
+      "downOffset": 0.0,
+      "tangible": false,
+      "bounceAtFirstActionEntry": false,
+      "actionEntries": [],
+      "firstFloorNull": true,
+      "firstWarpOperation": 18,
+      "firstEndY": [
+        768.0,
+        768.0,
+        768.0
+      ]
+    },
+    {
+      "slot": 77,
+      "species": "bhvPokeyBodyPart",
+      "position": [
+        -2400.0,
+        768.0,
+        -1024.0
+      ],
+      "actorY": 767.9999389648438,
+      "height": 60.0,
+      "radius": 120.0,
+      "downOffset": 30.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": false,
+      "actionEntries": [],
+      "firstFloorNull": true,
+      "firstWarpOperation": 18,
+      "firstEndY": [
+        827.9999389648438,
+        827.9999389648438,
+        768.0
+      ]
+    },
+    {
+      "slot": 77,
+      "species": "bhvPokeyBodyPart",
+      "position": [
+        -2400.0,
+        1280.0,
+        -1024.0
+      ],
+      "actorY": 1279.9998779296875,
+      "height": 60.0,
+      "radius": 120.0,
+      "downOffset": 30.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": true,
+      "actionEntries": [
+        {
+          "action": 16779404,
+          "position": [
+            -2400.0,
+            1339.9998779296875,
+            -1024.0
+          ],
+          "vy": 30.0
+        }
+      ],
+      "firstFloorNull": false,
+      "firstWarpOperation": 0,
+      "firstEndY": [
+        1439.0001220703125,
+        1439.0001220703125,
+        1439.0001220703125
+      ]
+    },
+    {
+      "slot": 77,
+      "species": "bhvPokeyBodyPart",
+      "position": [
+        -2200.0,
+        768.0,
+        -1024.0
+      ],
+      "actorY": 767.9999389648438,
+      "height": 60.0,
+      "radius": 120.0,
+      "downOffset": 30.0,
+      "tangible": true,
+      "bounceAtFirstActionEntry": false,
+      "actionEntries": [],
+      "firstFloorNull": true,
+      "firstWarpOperation": 18,
+      "firstEndY": [
+        768.0,
+        768.0,
+        768.0
+      ]
+    }
+  ],
+  "scope": "Conditional chosen actor XYZ and synchronized Mario pose. No size, tangibility, behavior, home, RNG, floor or collision-list patch. Three uninterrupted neutral A-released updates per trial. Not a clone construction or controller-reached contact.",
+  "observation": "End-update exact movement/collision/display bits; action-entry log exposes movement only. No direct measured subframe collision gap or all-size-history claim.",
+  "timings": {
+    "firstSeconds": 0.8145907,
+    "repeatSeconds": 0.8891443000000001
+  }
+}

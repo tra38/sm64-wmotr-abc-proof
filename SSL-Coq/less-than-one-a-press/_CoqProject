@@ -645,3 +645,5 @@ proofs/InkBounceApproachGap.v
 proofs/InkBounceClearAscent.v
 proofs/InkMarioRawCopyCall.v
 proofs/InkMarioZeroParticleTail.v
+proofs/InkFlyGuyGrowthPrefix.v
+proofs/InkFlyGuySizeBoundary.v
