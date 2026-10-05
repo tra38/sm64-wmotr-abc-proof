@@ -42,7 +42,9 @@ or throw position, and an actual later contact. We have not constructed such
 a clean no-A enemy placement at the pyramid top. The concrete native SSL
 callbacks spawn Pokey parts, while the named Goomba/Fly Guy/Klepto examples
 are normally level-entry actors. A chosen replacement species needs its own
-slot-filling explanation. Arbitrary placement is not an accepted assumption.
+slot-filling explanation. The later transfer-test grant now accepts a chosen
+cloned enemy X/Y/Z, potentially using a HOLP from another course; it does not
+accept arbitrary hitbox size or establish a clean placement history.
 
 These are pinned-source findings, not a completed Coq classification of
 cloning. The relevant code is `mario_actions_object.c`'s pickup comment and
@@ -144,3 +146,10 @@ seven, and the finite ascent certificate has four. Integration reports
 466/560 proof modules in the main import closure, with 94 standalone and no
 problems. These checks do not discharge the explicit gameplay premises.
 No emulator search was run in this tranche.
+
+The [later collision-copy and clone-size follow-up](ink-bounce-collision-lifetime.md)
+now connects the actual Mario callback to its mandatory raw copy and frames
+the zero-particle return tail. It also records a small conditional runtime
+check and a [stock actor/negative-size inventory](ssl1-clone-enemy-inventory.md).
+The no-emulator statement above describes this earlier audit tranche, not the
+subsequent diagnostic.

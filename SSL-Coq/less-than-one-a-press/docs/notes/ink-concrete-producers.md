@@ -48,7 +48,7 @@ exist before the bounce. Geometry
 preparation runs before interactions, and the stock warp handler runs before
 the bounce handlers. A bounce therefore cannot create a gap and have the
 earlier warp check consume it in that same ordinary interaction pass.
-The new completed-air-call proof checks its compulsory display copy and real return tail, independently of actor position or velocity. Earlier bounce sound, action entry and subsequent action/raw-copy effects still need their own connection.
+The completed-air-call proof checks its compulsory display copy and real return tail, independently of actor position or velocity. The [collision-lifetime follow-up](ink-bounce-collision-lifetime.md) now connects the completed actual Mario callback to its mandatory raw copy, then frames the zero-particle tail through callback return. Under reached ordinary receiver/storage conditions, movement and collision Y agree there; display keeps its copy-cut height. Earlier bounce sound/action effects, changed contact reads, nonzero particles and later callbacks/pre-action writers remain separate.
 
 For platforms, moving the platform itself upward or downward is not evidence
 that this helper changes Mario Y by that amount. The generated implementation
@@ -125,6 +125,14 @@ own checkpoint instead of treating a supplied pose as a discovered producer.
 
 No new search was run, no full family was excluded, and all subjective atlas
 estimates are unchanged.
+
+That statement describes the original four-producer tranche. The later
+[collision-copy diagnostic](ink-bounce-collision-lifetime.md) adds 16 supplied
+synchronized Mario poses and 384 end-update observations, without constructing
+a controller-reached bounce pose, clone or Ink route. The [actor inventory](ssl1-clone-enemy-inventory.md)
+records the chosen-position transfer grant and signed negative Fly Guy dimensions.
+The original sound/action history and the remaining later writers are not
+silently folded into the new copy/zero-particle theorem.
 
 ## Validation receipt
 

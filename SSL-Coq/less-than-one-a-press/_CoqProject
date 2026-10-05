@@ -643,3 +643,5 @@ proofs/InkAirReturnFrame.v
 
 proofs/InkBounceApproachGap.v
 proofs/InkBounceClearAscent.v
+proofs/InkMarioRawCopyCall.v
+proofs/InkMarioZeroParticleTail.v

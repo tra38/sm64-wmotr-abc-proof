@@ -52,7 +52,7 @@ From LessThanOneAPress.Proofs Require Import
   SecretContactExecution
   InkBackwardSource InkBackwardExecution InkCopyCaller InkFloorResetCopy InkRawCopyHeight
   InkQuicksandBackward InkMovingBackward InkControllerBackward InkBackwardHistory
-  PositionSplitCatalog TweesterGap InkConcreteProducerBoundary
+  PositionSplitCatalog TweesterGap InkConcreteProducerBoundary InkMarioRawCopyCall InkMarioZeroParticleTail
   CompCertRouteScope.
 
 Import ListNotations.
@@ -1366,6 +1366,12 @@ Proof. exact icpb_stopped_floor_producer_checked. Qed.
 
 Theorem current_ink_bounce_air_producer_boundary : InkBounceAirProducerCheckedBoundary.
 Proof. exact icpb_bounce_air_producer_checked. Qed.
+
+Theorem current_ink_bounce_collision_copy_boundary : InkMarioCallbackRawCopyCut.
+Proof. exact imrc_completed_callback_reaches_matching_raw_copy. Qed.
+
+Theorem current_ink_bounce_zero_particle_return_boundary : InkMarioZeroParticleBoundary.
+Proof. exact imzp_zero_particle_boundary_checked. Qed.
 
 (* The graphical-fallback tranche shows that update order does not by itself
    refute the scheduling shape; it does not execute the branch in Clight or

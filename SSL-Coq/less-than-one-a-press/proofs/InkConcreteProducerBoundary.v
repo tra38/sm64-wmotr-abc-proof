@@ -5,7 +5,7 @@ From LessThanOneAPress.Proofs Require Import InkFloorProducerEffect
   InkPlatformProducerHeight InkBounceProducerEffect InkQuicksandProducerSize
   InkStoppedFloorQuery InkGroundReturnFrame InkStoppedCrawlAlignment
   InkFloorAlignmentTailFrame InkAirReturnFrame InkBounceApproachGap
-  InkBounceClearAscent.
+  InkBounceClearAscent InkMarioRawCopyCall InkMarioZeroParticleTail.
 
 (** Actor placement is not bounded by the old low-spawn example.  A matched
     fresh guard bounds the newly created rise; the completed actual air call
@@ -13,7 +13,8 @@ From LessThanOneAPress.Proofs Require Import InkFloorProducerEffect
     does not assert that every quarter accepts those coordinates. *)
 Definition InkBounceAirProducerCheckedBoundary : Prop :=
   InkBouncePlacementIndependentGapCheckpoint /\ InkBounceFreshDisplayGapCheckpoint /\
-  InkBounceFreshSynchronizedGapCheckpoint /\ InkAirRefreshBoundary /\ InkBounceClearAscentBoundary.
+  InkBounceFreshSynchronizedGapCheckpoint /\ InkAirRefreshBoundary /\ InkBounceClearAscentBoundary /\
+  InkMarioCallbackRawCopyCut /\ InkMarioZeroParticleBoundary.
 
 Theorem icpb_bounce_air_producer_checked : InkBounceAirProducerCheckedBoundary.
 Proof.
@@ -21,7 +22,9 @@ Proof.
   split; [exact ibag_completed_bounce_creates_at_most_251_display_gap|].
   split; [exact ibag_completed_bounce_creates_at_most_251_synchronized_gap|].
   split; [exact iar_air_refresh_boundary_checked|].
-  exact ibca_clear_ascent_boundary_checked.
+  split; [exact ibca_clear_ascent_boundary_checked|].
+  split; [exact imrc_completed_callback_reaches_matching_raw_copy|].
+  exact imzp_zero_particle_boundary_checked.
 Qed.
 
 (** These are adjacent actual cuts, not an asserted producer classification.

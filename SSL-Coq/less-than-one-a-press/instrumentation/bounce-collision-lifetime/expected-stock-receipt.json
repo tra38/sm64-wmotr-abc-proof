@@ -1,0 +1,196 @@
+{
+  "trials": 16,
+  "bounceDetections": 12,
+  "updates": 384,
+  "species": {
+    "bhvGoomba": {
+      "trials": 6,
+      "bounces": 6
+    },
+    "bhvFlyGuy": {
+      "trials": 6,
+      "bounces": 6
+    },
+    "bhvKlepto": {
+      "trials": 2,
+      "bounces": 0
+    },
+    "bhvPokeyBodyPart": {
+      "trials": 2,
+      "bounces": 0
+    }
+  },
+  "maxDetectedEndUpdateCollisionGap": 0.0,
+  "unequalEndUpdateY": 0,
+  "unequalEndUpdateDisplayY": 0,
+  "firstUpdate": [
+    {
+      "slot": 6,
+      "species": "bhvGoomba",
+      "epsilon": 1.0,
+      "bounce": true,
+      "movementY": 156.0,
+      "collisionY": 156.0,
+      "displayY": 156.0,
+      "particleFlags": 0
+    },
+    {
+      "slot": 6,
+      "species": "bhvGoomba",
+      "epsilon": 32.0,
+      "bounce": true,
+      "movementY": 156.0,
+      "collisionY": 156.0,
+      "displayY": 156.0,
+      "particleFlags": 0
+    },
+    {
+      "slot": 7,
+      "species": "bhvGoomba",
+      "epsilon": 1.0,
+      "bounce": true,
+      "movementY": 156.0,
+      "collisionY": 156.0,
+      "displayY": 156.0,
+      "particleFlags": 0
+    },
+    {
+      "slot": 7,
+      "species": "bhvGoomba",
+      "epsilon": 32.0,
+      "bounce": true,
+      "movementY": 156.0,
+      "collisionY": 156.0,
+      "displayY": 156.0,
+      "particleFlags": 0
+    },
+    {
+      "slot": 8,
+      "species": "bhvGoomba",
+      "epsilon": 1.0,
+      "bounce": true,
+      "movementY": 156.0,
+      "collisionY": 156.0,
+      "displayY": 156.0,
+      "particleFlags": 0
+    },
+    {
+      "slot": 8,
+      "species": "bhvGoomba",
+      "epsilon": 32.0,
+      "bounce": true,
+      "movementY": 156.0,
+      "collisionY": 156.0,
+      "displayY": 156.0,
+      "particleFlags": 0
+    },
+    {
+      "slot": 38,
+      "species": "bhvFlyGuy",
+      "epsilon": 1.0,
+      "bounce": true,
+      "movementY": 333.4415588378906,
+      "collisionY": 333.4415588378906,
+      "displayY": 333.4415588378906,
+      "particleFlags": 0
+    },
+    {
+      "slot": 38,
+      "species": "bhvFlyGuy",
+      "epsilon": 32.0,
+      "bounce": true,
+      "movementY": 333.4415588378906,
+      "collisionY": 333.4415588378906,
+      "displayY": 333.4415588378906,
+      "particleFlags": 0
+    },
+    {
+      "slot": 44,
+      "species": "bhvFlyGuy",
+      "epsilon": 1.0,
+      "bounce": true,
+      "movementY": 979.5148315429688,
+      "collisionY": 979.5148315429688,
+      "displayY": 979.5148315429688,
+      "particleFlags": 0
+    },
+    {
+      "slot": 44,
+      "species": "bhvFlyGuy",
+      "epsilon": 32.0,
+      "bounce": true,
+      "movementY": 979.5148315429688,
+      "collisionY": 979.5148315429688,
+      "displayY": 979.5148315429688,
+      "particleFlags": 0
+    },
+    {
+      "slot": 45,
+      "species": "bhvFlyGuy",
+      "epsilon": 1.0,
+      "bounce": true,
+      "movementY": 1339.514892578125,
+      "collisionY": 1339.514892578125,
+      "displayY": 1339.514892578125,
+      "particleFlags": 0
+    },
+    {
+      "slot": 45,
+      "species": "bhvFlyGuy",
+      "epsilon": 32.0,
+      "bounce": true,
+      "movementY": 1339.514892578125,
+      "collisionY": 1339.514892578125,
+      "displayY": 1339.514892578125,
+      "particleFlags": 0
+    },
+    {
+      "slot": 54,
+      "species": "bhvKlepto",
+      "epsilon": 1.0,
+      "bounce": false,
+      "movementY": 585.0760498046875,
+      "collisionY": 585.0760498046875,
+      "displayY": 585.0760498046875,
+      "particleFlags": 0
+    },
+    {
+      "slot": 54,
+      "species": "bhvKlepto",
+      "epsilon": 32.0,
+      "bounce": false,
+      "movementY": 616.0760498046875,
+      "collisionY": 616.0760498046875,
+      "displayY": 616.0760498046875,
+      "particleFlags": 0
+    },
+    {
+      "slot": 77,
+      "species": "bhvPokeyBodyPart",
+      "epsilon": 1.0,
+      "bounce": false,
+      "movementY": 300.9807434082031,
+      "collisionY": 300.9807434082031,
+      "displayY": 300.9807434082031,
+      "particleFlags": 0
+    },
+    {
+      "slot": 77,
+      "species": "bhvPokeyBodyPart",
+      "epsilon": 32.0,
+      "bounce": false,
+      "movementY": 331.9807434082031,
+      "collisionY": 331.9807434082031,
+      "displayY": 331.9807434082031,
+      "particleFlags": 0
+    }
+  ],
+  "scope": "Supplied synchronized Mario contact poses in a controller-reached full scene. Stock actor fields untouched; neutral A-released suffix. Not a reachable pose or no-A route.",
+  "observation": "Exact end-update movement/collision/display words; within-update log exposes only movement and velocity at action entry. No measured subframe collision-gap peak.",
+  "reportSha256": "c0a88189c3d25a1ddb5bb50da7dcc751514e51de060bdb65bf6e59a5399403a8",
+  "dllSha256": "960fe979068b78e6733b3ddb87741833fbf4eb29b2a21a2bba871977427c2d0f",
+  "captureSha256": "9bcc451964025d9f0bb1344c45957b6bfd095451b44bfb9a01f8584a75db6a72",
+  "runtime": "Wafel 0.8.5 JP",
+  "poll": 500,
+  "totalSeconds": 0.793915
+}
