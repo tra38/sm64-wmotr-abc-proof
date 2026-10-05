@@ -636,3 +636,10 @@ proofs/InkStoppedFloorQuery.v
 proofs/InkStoppedCrawlAlignment.v
 proofs/InkFloorAlignmentTailFrame.v
 proofs/InkGroundReturnFrame.v
+
+proofs/InkAirCallBackward.v
+
+proofs/InkAirReturnFrame.v
+
+proofs/InkBounceApproachGap.v
+proofs/InkBounceClearAscent.v

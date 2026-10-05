@@ -250,7 +250,7 @@ Proof. intros []; vm_compute; split; reflexivity. Qed.
 
 Definition ibp_f32 (z : Z) := Float32.of_int (Int.repr z).
 (** Finite bounded-height diagnostic, NOT a bound over unclassified scaling or
-    inherited discrepancies.  Even actor bottom Y=768 and live height=90
+    inherited discrepancies.  Even actor raw position Y=768 and live height=90
     produce Y=858, below both tested high-movement installation heights. *)
 Theorem ibp_named_small_snap_is_below_installers :
   Int.unsigned (Float32.to_bits (Float32.add (ibp_f32 768) (ibp_f32 90))) = 1146519552 /\

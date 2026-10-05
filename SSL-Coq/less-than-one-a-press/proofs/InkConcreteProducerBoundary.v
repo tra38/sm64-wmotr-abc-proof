@@ -4,7 +4,25 @@
 From LessThanOneAPress.Proofs Require Import InkFloorProducerEffect
   InkPlatformProducerHeight InkBounceProducerEffect InkQuicksandProducerSize
   InkStoppedFloorQuery InkGroundReturnFrame InkStoppedCrawlAlignment
-  InkFloorAlignmentTailFrame.
+  InkFloorAlignmentTailFrame InkAirReturnFrame InkBounceApproachGap
+  InkBounceClearAscent.
+
+(** Actor placement is not bounded by the old low-spawn example.  A matched
+    fresh guard bounds the newly created rise; the completed actual air call
+    separately erases the display/movement split.  Finite flight arithmetic
+    does not assert that every quarter accepts those coordinates. *)
+Definition InkBounceAirProducerCheckedBoundary : Prop :=
+  InkBouncePlacementIndependentGapCheckpoint /\ InkBounceFreshDisplayGapCheckpoint /\
+  InkBounceFreshSynchronizedGapCheckpoint /\ InkAirRefreshBoundary /\ InkBounceClearAscentBoundary.
+
+Theorem icpb_bounce_air_producer_checked : InkBounceAirProducerCheckedBoundary.
+Proof.
+  split; [exact ibag_completed_fresh_guard_bounce_has_bounded_rise|].
+  split; [exact ibag_completed_bounce_creates_at_most_251_display_gap|].
+  split; [exact ibag_completed_bounce_creates_at_most_251_synchronized_gap|].
+  split; [exact iar_air_refresh_boundary_checked|].
+  exact ibca_clear_ascent_boundary_checked.
+Qed.
 
 (** These are adjacent actual cuts, not an asserted producer classification.
     In particular the matrix helper and the origin of the cached floor are
@@ -28,7 +46,8 @@ Definition InkConcreteProducerCheckedBoundary : Prop :=
   InkFloorProducerCheckedBoundary /\ InkPlatformNonrotationHeightBoundary /\
   InkBounceHeightCheckpoint /\ InkBounceBoundedProducerCheckpoint /\
   InkBounceFreshContactNoDownwardCheckpoint /\
-  InkQuicksandProducerSizeBoundary /\ InkStoppedFloorProducerCheckedBoundary.
+  InkQuicksandProducerSizeBoundary /\ InkStoppedFloorProducerCheckedBoundary /\
+  InkBounceAirProducerCheckedBoundary.
 
 Theorem icpb_concrete_producer_boundary_checked : InkConcreteProducerCheckedBoundary.
 Proof.
@@ -38,5 +57,6 @@ Proof.
   split; [exact ibp_completed_bounded_bounce_is_insufficient_at_snap|].
   split; [exact ibp_fresh_contact_bounce_cannot_snap_below_collision|].
   split; [exact iqps_quicksand_producer_size_checked|].
-  exact icpb_stopped_floor_producer_checked.
+  split; [exact icpb_stopped_floor_producer_checked|].
+  exact icpb_bounce_air_producer_checked.
 Qed.
