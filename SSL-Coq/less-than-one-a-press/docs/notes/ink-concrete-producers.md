@@ -12,9 +12,9 @@ one direction of mismatch does not automatically exclude the other.
 
 | Producer | What the new proof settles | What still needs checking |
 | --- | --- | --- |
-| Floor alignment | An accepted ground quarter installs the same movement and cached floor height. Composing it with the real display refresh and following alignment snap leaves **zero display gap at that snap**, whatever the floor height. | An early stopped quarter can skip that alignment. Crawl/slide can still call the later snap after the display copy, so this is a concrete surviving writer. Its corrected query, remembered floor, intervening helpers, matrix tail and subsequent collision copy need connecting. Animation translation is separate. |
+| Floor alignment | An accepted ground quarter installs the same movement and cached floor height. Composing it with the real display refresh and following alignment snap leaves **zero display gap at that snap**, whatever the floor height. The new stopped-crawl connection instead leaves display at pre-snap movement height and sets movement to the remembered height at the first alignment store. | The stopped query returns a local answer and does not replace that remembered height. Its earlier provenance and the reason the quarter stops remain open; so do the whole matrix/action tail, collision copy and next useful contact. Crouch slide needs its separate caller connection. See the [stopped-floor proof and gap measurements](ink-stopped-floor-producer.md). |
 | Platform displacement | The actual X/Z translations preserve local Y. A reached nonrotating tail sends that Y to the real setter, whose complete three-coordinate execution leaves State Y equal to the supplied local Y. There is **no direct addition of platform vertical velocity** in this helper. | Connect the post-getter local bindings and rotation test to a full invocation. Pitch/roll/yaw matrix branches still need quantitative effects; the existing complete platform-phase proof preserves collision and display, even when movement changes. Floor following is a different writer. |
-| Bounce snap | The actual helper writes the binary32 sum **actor bottom Y + live hitbox height**, while preserving other blocks at that checkpoint. With finite bottom Y in [-32768,768] and finite hitbox height in [-32768,250], it writes at most **1018**, below Variant 1861. | Derive those live bounds and the registered contact for the relevant actor history. Initial templates alone do not bound every live scale. The ensuing sound/action/movement and copies are not framed by this snap proof. Knockback trajectory and other upward assistance remain separate. |
+| Bounce snap | The actual helper writes the binary32 sum **actor raw position Y + live hitbox height**, while preserving other blocks at that checkpoint. With finite raw actor Y in [-32768,768] and finite hitbox height in [-32768,250], it writes at most **1018**, below Variant 1861. | Derive those live bounds and the registered contact for the relevant actor history. Initial templates alone do not bound every live scale. The ensuing sound/action/movement and copies are not framed by this snap proof. Knockback trajectory and other upward assistance remain separate. |
 | Negative depth / dialog | Among the three position records, a real sink changes display only; it can also translate the graphical matrix. Supplied depth **-1170.8648681640625** maps display 768 exactly to the checked top height. With retained depth **-4**, 292 consecutive real sink calls give 1936 and 293 give 1940. The accepted classified stock no-A contract instead makes depth nonnegative, so the sink cannot raise display. | The supplied-seed magnitude test is not a reached dialog. It needs a supported starting pose, actual intervening calls, retained depth/display and transfer to the low floorless collision pose. The unrestricted seed-history coverage remains open outside the accepted contract. |
 
 The negative-depth calculation rules out a simple size objection: a small
@@ -106,10 +106,22 @@ The sink-chain theorem uses consecutive real callee invocations; it does not
 silently add a dialog scheduler between them. The accepted conditional seed
 exclusion and the granted negative-seed transfer test remain distinct.
 
-The most concrete next producer target is the early stopped crawl/slide
-quarter followed by floor alignment. Prove its reached corrected query and
-cached height, then follow the actual copies. This is a specific writer
-sequence, rather than an assertion that every floor history is harmless.
+The [stopped-floor follow-up](ink-stopped-floor-producer.md) now connects the
+real corrected-vector query and its cache frame, the complete post-refresh
+angle/return/free tail, and the stopped crawling caller to its actual first
+alignment snap. The gap at that snap is pre-snap movement minus remembered
+height. The query's lower local answer does not supply the remembered value.
+The final matrix-pointer assignment preserves the positions, but the preceding
+matrix helper's calls and later action/copy effects are not yet framed. The
+next producer target is the earlier origin of a large movement/cache mismatch
+and its stopping exit, followed by survival to the next useful check.
+
+The largest reviewed **detected** display gap is 1834 units in the earlier
+conditional dialog-support receipt, after supplied negative depth/dialog/support;
+it refreshes on release and gives no Ink. That is not a clean no-A maximum.
+No reachable maximum for the stopped-floor or rotating-platform family is
+proved. The linked measurement table states each bound and detection at its
+own checkpoint instead of treating a supplied pose as a discovered producer.
 
 No new search was run, no full family was excluded, and all subjective atlas
 estimates are unchanged.
@@ -127,3 +139,12 @@ seven. These counts describe the existing foundations of the execution model;
 they do not discharge the explicit gameplay premises above. The generated
 catalog check and its five code tests also pass. No new axioms or proof holes
 were introduced.
+
+The [stopped-floor follow-up](ink-stopped-floor-producer.md) extends that
+receipt with audit `20261004-200321-m_64kz9h`: 634 registered sources,
+462/556 main import closure, 94 standalone and no problems. All 13 selected
+statements pass compilation and allowed-foundation checks; the backward
+boundary has nine foundations and the others seven each. The actual
+ground-call result, caller snap and final pointer-store connections now enter
+the existing boundary. Earlier cached-floor creation, the stopping cause and
+the complete matrix/action tail remain explicit open gameplay connections.

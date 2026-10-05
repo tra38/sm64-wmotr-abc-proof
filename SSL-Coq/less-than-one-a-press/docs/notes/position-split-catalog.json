@@ -108,13 +108,13 @@
       "id": "floor-animation",
       "number": 3,
       "title": "The floor moves Mario, but does the display follow?",
-      "status": "Accepted snap proved · early stops open",
+      "status": "Accepted snap insufficient · stopped-crawl snap connected",
       "effect": "Floor alignment can set Mario's movement height to the remembered floor height without itself replacing his stored display. Animation movement can also change his movement coordinates.",
       "prerequisite": "Idle plus Z can enter crouching, then Z plus stick can enter crawling; walking plus a Z press can enter crouch slide without A. These source-local constructors give access to alignment, not to its exceptional floor setup. Animation movement is separate.",
       "area1": "Yes. These ordinary actions exist here. What we do not have is a reached stopped quarter and remembered floor that make the large, surviving mismatch needed for Ink.",
       "timing": "Most of this happens during the action. We must keep reading past the interesting assignment: a later copy might immediately remove the advantage.",
-      "evidence": "The new real US/JP connection follows an accepted ground quarter, its completed display refresh and the subsequent alignment snap: display and movement have the same floor height at that snap. Collision can still be old. The alignment matrix tail is retained as an execution, not assumed harmless.",
-      "missing": "Check an early stopped crawl/slide quarter: it can skip movement alignment before the display copy, yet the caller still reaches align_with_floor. Derive its corrected floor/ceiling query and cached height, then the caller helpers, matrix tail and later collision copy. Animation translation remains separate.",
+      "evidence": "The accepted-quarter refresh/snap has zero display gap. The new stopped-crawl connection follows the real ground refresh, angle setter, return/free and speed guard to the first alignment store: display is pre-snap movement and movement becomes remembered height. The real stopped query preserves that cache; its lower local answer does not replace it. The final matrix-pointer store preserves positions, but the preceding matrix calls are not yet framed.",
+      "missing": "Derive the earlier origin of a large movement/remembered-height mismatch and the actual stopping exit through wall/ceiling/water calls. Then compose the complete matrix/action tail, collision copy and next useful contact. The stopped-crawl gap formula has no proved reachable maximum and no detected useful creator. Slide's extra caller helpers and animation remain separate.",
       "functions": [
         "align_with_floor",
         "update_mario_pos_for_anim"
@@ -127,10 +127,10 @@
       "availability": "available",
       "section": "catalog",
       "gap": {
-        "amount": "0 display-minus-movement gap at accepted refresh/snap; early stop: old display Y minus cached floor Y",
+        "amount": "0 at accepted refresh/snap; stopped crawl: pre-snap movement minus remembered height; reachable maximum unknown",
         "verdict": "Accepted refresh/snap is insufficient for the raised-display gap; early stops remain live",
-        "detail": "The completed accepted quarter makes movement and cached floor height agree. The real refresh then copies that height into display, and the following snap cannot separate them. An early stopped quarter can skip the first alignment, leaving a later cached-floor snap as a concrete candidate.",
-        "limit": "This is not a Variant exclusion: movement and display can agree above an older collision record. The theorem stops at the snap; intervening caller helpers, the real matrix tail, other quarters and animation translations remain to connect.",
+        "detail": "A conditional stopped snap from 1938.864868 to remembered 1280 leaves 658.864868 units; remembered 768 would give 1170.864868. These are arithmetic candidates, not selected live caches or detected gameplay. The accepted quarter still gives zero gap. The stopped query itself cannot put its lower answer into the cache.",
+        "limit": "The new caller result reaches the first real snap; it does not establish the earlier cache, whole matrix/action effects or next-update consumption. This is not a Variant exclusion: movement/display can agree above old collision. No reachable stopped-crawl maximum has been measured or proved.",
         "basis": "Actual generated US/JP execution composition",
         "insufficiency": {
           "card": "proved-producer-floor-snap",
@@ -141,7 +141,7 @@
       },
       "review": {
         "group": "producer",
-        "summary": "The accepted refresh/snap is proved synchronized. The specific surviving candidate is an early stopped quarter followed by a lower cached-floor snap; animation remains separate."
+        "summary": "The stopped-crawl snap is now connected to its real refresh/return and speed guard. A useful lower remembered floor needs an earlier writer, then the gap must survive the remaining calls."
       },
       "outcomes": [
         {
@@ -150,7 +150,7 @@
         },
         {
           "category": "live",
-          "scope": "The accepted refresh/snap is proved synchronized. The specific surviving candidate is an early stopped quarter followed by a lower cached-floor snap; animation remains separate."
+          "scope": "The stopped-crawl snap is now connected to its real refresh/return and speed guard. A useful lower remembered floor needs an earlier writer, then the gap must survive the remaining calls."
         }
       ]
     },
@@ -367,7 +367,7 @@
       "prerequisite": "Walking off a ledge can enter freefall and a falling contact from above without A; hostile contact can cause knockback without A. The relevant actor, overlap and interaction must still be reached. A Goomba bounce and a gust of wind do not write the same things.",
       "area1": "SSL has several of these enemies and hazards. Their presence does not automatically give us a useful position split.",
       "timing": "Most of these handlers come after the warp handler. Once the nonfading warp accepts Mario, the loop stops; we cannot sneak an extra bounce in afterward in that same loop.",
-      "evidence": "The actual US/JP helper writes actor bottom Y plus live hitbox height before its sound call, preserving other blocks at that checkpoint. Under the stated finite low-bottom/250-height bounds, the result is at most 1018. Stock templates and spawn records are checked separately; they do not prove live scale bounds. A passed actual contact-height guard, with its actor top still matching this bounce sum, also proves that the snap cannot place Mario below the compared collision bottom; the live read matching is explicit.",
+      "evidence": "The actual US/JP helper writes actor raw position Y plus live hitbox height before its sound call, preserving other blocks at that checkpoint. Under the stated finite low-position/250-height bounds, the result is at most 1018. Stock templates and spawn records are checked separately; they do not prove live scale bounds. A passed actual contact-height guard, with its actor top still matching this bounce sum, also proves that the snap cannot place Mario below the compared collision bottom; the live read matching is explicit.",
       "missing": "Derive actor position, live dimensions and actual registered contact, then follow the sound/action/movement and display copies. Fire Fly Guy shrinking can change dimensions; a negative-height arithmetic example does not establish contact or useful copy survival. Knockback flight remains separate.",
       "functions": [
         "bounce_off_object",
@@ -385,14 +385,14 @@
       "gap": {
         "amount": "Snap = binary32(actor Y + live hitbox height); bounded low-actor snap is at most 1018",
         "verdict": "The bounded immediate snap cannot reach Variant 1861; other directions and flight remain open",
-        "detail": "If live actor bottom is at most 768 and live height at most 250, within the stated finite numeric range, the actual helper snaps movement no higher than 1018: 250 above 768 and 843 below 1861. Initial Goomba/Pokey/FlyGuy/Klepto sizes are not silently promoted to all-history bounds. The 30/80 values are later velocity, not immediate displacement.",
+        "detail": "If live actor raw position Y is at most 768 and live height at most 250, within the stated finite numeric range, the actual helper snaps movement no higher than 1018: 250 above 768 and 843 below 1861. Initial Goomba/Pokey/FlyGuy/Klepto sizes are not silently promoted to all-history bounds. The 30/80 values are later velocity, not immediate displacement.",
         "limit": "A higher actor, inherited gap, changed scale, later flight or downward snap needs its own derivation. The source documents repeated fire Fly Guy shrinking. The finite 1861 + (-1093) =768 calculation is only a numerical candidate; negative dimensions may prevent contact. No whole bounce or knockback family is ruled out.",
         "basis": "Actual generated snap with all-binary32 bounds under explicit live-value conditions",
         "insufficiency": {
           "card": "proved-producer-bounce-snap",
           "module": "proofs/InkBounceProducerEffect.v",
           "theorem": "ibp_completed_bounded_bounce_is_insufficient_at_snap",
-          "scope": "For finite live actor bottom in [-32768,768] and hitbox height in [-32768,250], the reached actual snap is at most 1018 and below Variant 1861. The actor bounds, earlier contact and ensuing flight/copies are not derived by this result."
+          "scope": "For finite live actor raw position Y in [-32768,768] and hitbox height in [-32768,250], the reached actual snap is at most 1018 and below Variant 1861. The actor bounds, earlier contact and ensuing flight/copies are not derived by this result."
         }
       },
       "review": {
@@ -402,7 +402,7 @@
       "outcomes": [
         {
           "category": "proved",
-          "scope": "For finite live actor bottom in [-32768,768] and hitbox height in [-32768,250], the reached actual snap is at most 1018 and below Variant 1861. The actor bounds, earlier contact and ensuing flight/copies are not derived by this result."
+          "scope": "For finite live actor raw position Y in [-32768,768] and hitbox height in [-32768,250], the reached actual snap is at most 1018 and below Variant 1861. The actor bounds, earlier contact and ensuing flight/copies are not derived by this result."
         },
         {
           "category": "live",

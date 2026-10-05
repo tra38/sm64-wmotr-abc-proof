@@ -38,10 +38,10 @@ The review separates six scoped insufficient cases, five helpers, four concrete 
 | --- | --- | --- | --- |
 | [01 — ordinary-step](#split-ordinary-step) | Insufficient at the stated checkpoint | 0 at the completed ground copy; air/water copies reviewed separately | 01 · Already proved — insufficient: Completed ground-copy checkpoint only; other exits and later writers are separate.<br>Insufficient — already proved at the completed ground copy |
 | [02 — geometry-retry](#split-geometry-retry) | Helper, not a height source | 0 between display and movement after retry | Helper only — not a gap source: Consumes an existing gap; it does not supply the raised display.<br>Consumes a gap; does not create the raised display |
-| [03 — floor-animation](#split-floor-animation) | Concrete producer still open | 0 display-minus-movement gap at accepted refresh/snap; early stop: old display Y minus cached floor Y | 01 · Already proved — insufficient: Accepted quarter, completed ordinary refresh and immediately following alignment snap give zero display-minus-movement gap at that checkpoint. This excludes that raised-display snap subcase only; older collision disagreement and early stopped quarters remain open.<br>Still live — producer unproved: The accepted refresh/snap is proved synchronized. The specific surviving candidate is an early stopped quarter followed by a lower cached-floor snap; animation remains separate.<br>Accepted refresh/snap is insufficient for the raised-display gap; early stops remain live |
+| [03 — floor-animation](#split-floor-animation) | Concrete producer still open | 0 at accepted refresh/snap; stopped crawl: pre-snap movement minus remembered height; reachable maximum unknown | 01 · Already proved — insufficient: Accepted quarter, completed ordinary refresh and immediately following alignment snap give zero display-minus-movement gap at that checkpoint. This excludes that raised-display snap subcase only; older collision disagreement and early stopped quarters remain open.<br>Still live — producer unproved: The stopped-crawl snap is now connected to its real refresh/return and speed guard. A useful lower remembered floor needs an earlier writer, then the gap must survive the remaining calls.<br>Accepted refresh/snap is insufficient for the raised-display gap; early stops remain live |
 | [04 — platform](#split-platform) | Concrete producer still open | 0 new vertical change in the linked nonrotating tail; rotating displacement still needs a live bound | 01 · Already proved — insufficient: At the reached zero-rotation guard, with local Y linked to entry State Y, the completed real tail leaves State Y unchanged. Display/collision need not agree. Full entry and rotating support remain open.<br>Still live — producer unproved: Separate rotation displacement from floor following. Vertical platform velocity is not directly added; the proved nonrotating tail supplies no new vertical change.<br>Vertical platform velocity alone is insufficient in this helper |
 | [09 — push](#split-push) | Helper, not a height source | 0 new vertical gap from the direct push writes | Helper only — not a gap source: Sideways movement can help reach a query; it does not supply the height gap.<br>A sideways helper, not the height source |
-| [10 — bounce](#split-bounce) | Concrete producer still open | Snap = binary32(actor Y + live hitbox height); bounded low-actor snap is at most 1018 | 01 · Already proved — insufficient: For finite live actor bottom in [-32768,768] and hitbox height in [-32768,250], the reached actual snap is at most 1018 and below Variant 1861. The actor bounds, earlier contact and ensuing flight/copies are not derived by this result.<br>Still live — producer unproved: The immediate low-actor snap has a proved conditional height bound. Live scaling, other actor heights, downward writes and later bounce/knockback flight remain distinct producer questions.<br>The bounded immediate snap cannot reach Variant 1861; other directions and flight remain open |
+| [10 — bounce](#split-bounce) | Concrete producer still open | Snap = binary32(actor Y + live hitbox height); bounded low-actor snap is at most 1018 | 01 · Already proved — insufficient: For finite live actor raw position Y in [-32768,768] and hitbox height in [-32768,250], the reached actual snap is at most 1018 and below Variant 1861. The actor bounds, earlier contact and ensuing flight/copies are not derived by this result.<br>Still live — producer unproved: The immediate low-actor snap has a proved conditional height bound. Live scaling, other actor heights, downward writes and later bounce/knockback flight remain distinct producer questions.<br>The bounded immediate snap cannot reach Variant 1861; other directions and flight remain open |
 | [12 — attachments](#split-attachments) | Insufficient at the stated checkpoint | Pole/hang copies: 0. Ledge release: a 100-unit subtraction or a shallower floor snap | Geometrically unavailable — scoped: No pole beside the Area-1 warp and no checked hangable Area-1/top triangles: stock-data check, not a whole-history theorem.<br>Source review only — not broadly proved: The remote tree and ordinary ledges remain separate; their full transfer/exit histories are not excluded.<br>Insufficient at the local drop — source review |
 | [13 — cannon](#split-cannon) | Insufficient at the stated checkpoint | 0 while seated; firing leaves display at or below movement | Unavailable under route constraints — scoped: Normal cannon firing requires an A press; this excludes that launch in the no-new-A route, not the stock cannon itself.<br>Only finite-tested — not broadly proved: The normal-launch sizing calculation is finite, not a proof of every cannon-related history.<br>Insufficient at normal launch — source and finite checks |
 | [14 — tornado](#split-tornado) | Insufficient at the stated checkpoint | 0 at the completed non-ejecting display-copy checkpoint | 01 · Already proved — insufficient: Normal non-ejecting copy checkpoint only; transport, ejection and later writers are separate.<br>Insufficient — already proved at the normal Tweester copy |
@@ -63,7 +63,7 @@ The review separates six scoped insufficient cases, five helpers, four concrete 
 | --- | --- | --- |
 | 01 | [Walking, falling and the ordinary position copies](#split-ordinary-step) | Insufficient at ground copy · other checkpoints open |
 | 02 | [The floor check borrows Mario's display position](#split-geometry-retry) | Helper · needs an earlier height gap |
-| 03 | [The floor moves Mario, but does the display follow?](#split-floor-animation) | Accepted snap proved · early stops open |
+| 03 | [The floor moves Mario, but does the display follow?](#split-floor-animation) | Accepted snap insufficient · stopped-crawl snap connected |
 | 04 | [Ride a platform while the other positions stay put](#split-platform) | Nonrotating tail proved · rotations open |
 | 05 | [Chuckya and King Bob-omb: the stock lists cannot choose them](#split-chuckya-anchor) | Ruled out · stock lists |
 | 06 | [Dorrie: no neck lift from the stock SSL lists](#split-dorrie) | Ruled out · stock lists |
@@ -289,7 +289,7 @@ Proof: [`ifp_accepted_refresh_then_alignment_has_zero_display_gap`](../../proofs
 
 Proof: [`iph_nonrotating_tail_has_no_new_vertical_change`](../../proofs/InkPlatformProducerHeight.v).
 
-**[Bounces and knockback are different kinds of help](#split-bounce) — Insufficient.** For finite live actor bottom in [-32768,768] and hitbox height in [-32768,250], the reached actual snap is at most 1018 and below Variant 1861. The actor bounds, earlier contact and ensuing flight/copies are not derived by this result.
+**[Bounces and knockback are different kinds of help](#split-bounce) — Insufficient.** For finite live actor raw position Y in [-32768,768] and hitbox height in [-32768,250], the reached actual snap is at most 1018 and below Variant 1861. The actor bounds, earlier contact and ensuing flight/copies are not derived by this result.
 
 Proof: [`ibp_completed_bounded_bounce_is_insufficient_at_snap`](../../proofs/InkBounceProducerEffect.v).
 
@@ -374,13 +374,13 @@ Related atlas ranks: 1, 2, 3, 13A.
 
 ### 03 — The floor moves Mario, but does the display follow?
 
-**Role in this review.** The accepted refresh/snap is proved synchronized. The specific surviving candidate is an early stopped quarter followed by a lower cached-floor snap; animation remains separate.
+**Role in this review.** The stopped-crawl snap is now connected to its real refresh/return and speed guard. A useful lower remembered floor needs an earlier writer, then the gap must survive the remaining calls.
 
-**Gap sizing: 0 display-minus-movement gap at accepted refresh/snap; early stop: old display Y minus cached floor Y.** Accepted refresh/snap is insufficient for the raised-display gap; early stops remain live
+**Gap sizing: 0 at accepted refresh/snap; stopped crawl: pre-snap movement minus remembered height; reachable maximum unknown.** Accepted refresh/snap is insufficient for the raised-display gap; early stops remain live
 
-The completed accepted quarter makes movement and cached floor height agree. The real refresh then copies that height into display, and the following snap cannot separate them. An early stopped quarter can skip the first alignment, leaving a later cached-floor snap as a concrete candidate.
+A conditional stopped snap from 1938.864868 to remembered 1280 leaves 658.864868 units; remembered 768 would give 1170.864868. These are arithmetic candidates, not selected live caches or detected gameplay. The accepted quarter still gives zero gap. The stopped query itself cannot put its lower answer into the cache.
 
-**Limits.** This is not a Variant exclusion: movement and display can agree above an older collision record. The theorem stops at the snap; intervening caller helpers, the real matrix tail, other quarters and animation translations remain to connect.
+**Limits.** The new caller result reaches the first real snap; it does not establish the earlier cache, whole matrix/action effects or next-update consumption. This is not a Variant exclusion: movement/display can agree above old collision. No reachable stopped-crawl maximum has been measured or proved.
 
 **Evidence level.** Actual generated US/JP execution composition
 
@@ -396,9 +396,9 @@ Proof: [`ifp_accepted_refresh_then_alignment_has_zero_display_gap`](../../proofs
 
 **Does the gap last long enough.** Most of this happens during the action. We must keep reading past the interesting assignment: a later copy might immediately remove the advantage.
 
-**What we know.** The new real US/JP connection follows an accepted ground quarter, its completed display refresh and the subsequent alignment snap: display and movement have the same floor height at that snap. Collision can still be old. The alignment matrix tail is retained as an execution, not assumed harmless.
+**What we know.** The accepted-quarter refresh/snap has zero display gap. The new stopped-crawl connection follows the real ground refresh, angle setter, return/free and speed guard to the first alignment store: display is pre-snap movement and movement becomes remembered height. The real stopped query preserves that cache; its lower local answer does not replace it. The final matrix-pointer store preserves positions, but the preceding matrix calls are not yet framed.
 
-**What is left to check.** Check an early stopped crawl/slide quarter: it can skip movement alignment before the display copy, yet the caller still reaches align_with_floor. Derive its corrected floor/ceiling query and cached height, then the caller helpers, matrix tail and later collision copy. Animation translation remains separate.
+**What is left to check.** Derive the earlier origin of a large movement/remembered-height mismatch and the actual stopping exit through wall/ceiling/water calls. Then compose the complete matrix/action tail, collision copy and next useful contact. The stopped-crawl gap formula has no proved reachable maximum and no detected useful creator. Slide's extra caller helpers and animation remain separate.
 
 Stock source: [align_with_floor](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario_actions_moving.c#L88); [update_mario_pos_for_anim](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/src/game/mario.c#L207).
 
@@ -476,13 +476,13 @@ Related atlas ranks: 5, 13A, 13B.
 
 **Gap sizing: Snap = binary32(actor Y + live hitbox height); bounded low-actor snap is at most 1018.** The bounded immediate snap cannot reach Variant 1861; other directions and flight remain open
 
-If live actor bottom is at most 768 and live height at most 250, within the stated finite numeric range, the actual helper snaps movement no higher than 1018: 250 above 768 and 843 below 1861. Initial Goomba/Pokey/FlyGuy/Klepto sizes are not silently promoted to all-history bounds. The 30/80 values are later velocity, not immediate displacement.
+If live actor raw position Y is at most 768 and live height at most 250, within the stated finite numeric range, the actual helper snaps movement no higher than 1018: 250 above 768 and 843 below 1861. Initial Goomba/Pokey/FlyGuy/Klepto sizes are not silently promoted to all-history bounds. The 30/80 values are later velocity, not immediate displacement.
 
 **Limits.** A higher actor, inherited gap, changed scale, later flight or downward snap needs its own derivation. The source documents repeated fire Fly Guy shrinking. The finite 1861 + (-1093) =768 calculation is only a numerical candidate; negative dimensions may prevent contact. No whole bounce or knockback family is ruled out.
 
 **Evidence level.** Actual generated snap with all-binary32 bounds under explicit live-value conditions
 
-**Already proved — Insufficient.** For finite live actor bottom in [-32768,768] and hitbox height in [-32768,250], the reached actual snap is at most 1018 and below Variant 1861. The actor bounds, earlier contact and ensuing flight/copies are not derived by this result.
+**Already proved — Insufficient.** For finite live actor raw position Y in [-32768,768] and hitbox height in [-32768,250], the reached actual snap is at most 1018 and below Variant 1861. The actor bounds, earlier contact and ensuing flight/copies are not derived by this result.
 
 Proof: [`ibp_completed_bounded_bounce_is_insufficient_at_snap`](../../proofs/InkBounceProducerEffect.v).
 
@@ -494,7 +494,7 @@ Proof: [`ibp_completed_bounded_bounce_is_insufficient_at_snap`](../../proofs/Ink
 
 **Does the gap last long enough.** Most of these handlers come after the warp handler. Once the nonfading warp accepts Mario, the loop stops; we cannot sneak an extra bounce in afterward in that same loop.
 
-**What we know.** The actual US/JP helper writes actor bottom Y plus live hitbox height before its sound call, preserving other blocks at that checkpoint. Under the stated finite low-bottom/250-height bounds, the result is at most 1018. Stock templates and spawn records are checked separately; they do not prove live scale bounds. A passed actual contact-height guard, with its actor top still matching this bounce sum, also proves that the snap cannot place Mario below the compared collision bottom; the live read matching is explicit.
+**What we know.** The actual US/JP helper writes actor raw position Y plus live hitbox height before its sound call, preserving other blocks at that checkpoint. Under the stated finite low-position/250-height bounds, the result is at most 1018. Stock templates and spawn records are checked separately; they do not prove live scale bounds. A passed actual contact-height guard, with its actor top still matching this bounce sum, also proves that the snap cannot place Mario below the compared collision bottom; the live read matching is explicit.
 
 **What is left to check.** Derive actor position, live dimensions and actual registered contact, then follow the sound/action/movement and display copies. Fire Fly Guy shrinking can change dimensions; a negative-height arithmetic example does not establish contact or useful copy survival. Knockback flight remains separate.
 

@@ -1361,6 +1361,9 @@ Proof. exact twg_gap_boundary_checked. Qed.
 Theorem current_ink_concrete_producer_boundary : InkConcreteProducerCheckedBoundary.
 Proof. exact icpb_concrete_producer_boundary_checked. Qed.
 
+Theorem current_ink_stopped_floor_producer_boundary : InkStoppedFloorProducerCheckedBoundary.
+Proof. exact icpb_stopped_floor_producer_checked. Qed.
+
 (* The graphical-fallback tranche shows that update order does not by itself
    refute the scheduling shape; it does not execute the branch in Clight or
    settle clean-entry reachability.  It provides local and PU conditional

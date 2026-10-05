@@ -632,3 +632,7 @@ proofs/InkQuicksandProducerSize.v
 proofs/InkBounceProducerEffect.v
 proofs/InkPlatformProducerHeight.v
 proofs/InkConcreteProducerBoundary.v
+proofs/InkStoppedFloorQuery.v
+proofs/InkStoppedCrawlAlignment.v
+proofs/InkFloorAlignmentTailFrame.v
+proofs/InkGroundReturnFrame.v
