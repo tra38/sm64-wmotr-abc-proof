@@ -1335,6 +1335,13 @@ Qed.
 Theorem current_ink_backward_execution_boundary : InkBackwardHistoryCheckedBoundary.
 Proof. exact ibh_backward_histories_checked. Qed.
 
+(** Actual taken graphical retry and real floor-call contact frame.  Source
+    chronology and the reached nonzero delayed-warp guard are exported
+    separately inside this boundary; intervening wall/interaction history,
+    floor selection, action eligibility and platform lifetime remain open. *)
+Theorem current_ink_fallback_contact_boundary : InkFallbackBoundary.InkFallbackCheckedBoundary.
+Proof. exact InkFallbackBoundary.ifb_fallback_contact_and_pending_guard_checked. Qed.
+
 (** At the chosen accepted-warp return, the final action-setting tail has
     preserved all three position records. A disagreement there already
     existed after the preceding stop-riding call. This does not frame that

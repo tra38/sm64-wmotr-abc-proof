@@ -652,4 +652,8 @@ proofs/InkFlyGuyCycleHeight.v
 proofs/InkBounceReadContinuity.v
 proofs/InkBounceDetermineEntry.v
 proofs/InkBounceLiveReadBoundary.v
+proofs/InkFallbackSourceOrder.v
+proofs/InkFallbackContact.v
+proofs/InkFailedRetryGuard.v
+proofs/InkFallbackBoundary.v
 proofs/InkPokeyLiveScale.v

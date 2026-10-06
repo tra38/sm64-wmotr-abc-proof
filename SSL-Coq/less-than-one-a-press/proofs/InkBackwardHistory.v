@@ -16,7 +16,8 @@ From LessThanOneAPress.Proofs Require Import
   InkLandingCancellationCaller InkLandingDescriptorFrame
   InkLandingEntryBound InkAnimationTimerHandoff InkDirectActionStores
   InkLandingDescriptorAccess StockSoundRequestFrame InkInitActionChoice
-  InkActionConstructor InkActionInstall InkWarpAcceptance InkConcreteProducerBoundary.
+  InkActionConstructor InkActionInstall InkWarpAcceptance InkConcreteProducerBoundary
+  InkFallbackBoundary.
 
 Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkLandingHistoryCheckedBoundary /\
@@ -45,7 +46,7 @@ Definition InkBackwardHistoryCheckedBoundary : Prop :=
   InkLandingAnimationLoaderHandoff /\ InkAnimationTimerChangeRequiresTransfer /\
   InkDirectActionStoreBoundary /\ InkLandingDescriptorAccessSource /\
   StockSoundImplementationBoundary /\ InkInitActionCheckpoint /\ InkWarpAcceptanceBoundary /\
-  InkConcreteProducerCheckedBoundary.
+  InkConcreteProducerCheckedBoundary /\ InkFallbackCheckedBoundary.
 
 Theorem ibh_backward_histories_checked : InkBackwardHistoryCheckedBoundary.
 Proof.
@@ -107,5 +108,6 @@ Proof.
   split; [exact isr_stock_sound_implementation_checked|].
   split; [exact iia_completed_initialization_has_only_idle_action_at_its_store|].
   split; [exact iwa_warp_acceptance_boundary_checked|].
-  exact icpb_concrete_producer_boundary_checked.
+  split; [exact icpb_concrete_producer_boundary_checked|].
+  exact ifb_fallback_contact_and_pending_guard_checked.
 Qed.
