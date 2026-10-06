@@ -647,3 +647,9 @@ proofs/InkMarioRawCopyCall.v
 proofs/InkMarioZeroParticleTail.v
 proofs/InkFlyGuyGrowthPrefix.v
 proofs/InkFlyGuySizeBoundary.v
+proofs/InkStockBounceHeight.v
+proofs/InkFlyGuyCycleHeight.v
+proofs/InkBounceReadContinuity.v
+proofs/InkBounceDetermineEntry.v
+proofs/InkBounceLiveReadBoundary.v
+proofs/InkPokeyLiveScale.v

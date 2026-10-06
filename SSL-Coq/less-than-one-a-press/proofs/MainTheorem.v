@@ -53,6 +53,7 @@ From LessThanOneAPress.Proofs Require Import
   InkBackwardSource InkBackwardExecution InkCopyCaller InkFloorResetCopy InkRawCopyHeight
   InkQuicksandBackward InkMovingBackward InkControllerBackward InkBackwardHistory
   PositionSplitCatalog TweesterGap InkConcreteProducerBoundary InkMarioRawCopyCall InkMarioZeroParticleTail InkFlyGuySizeBoundary
+  InkBounceLiveReadBoundary InkStockBounceHeight InkFlyGuyCycleHeight InkPokeyLiveScale
   CompCertRouteScope.
 
 Import ListNotations.
@@ -1377,6 +1378,16 @@ Proof. exact imzp_zero_particle_boundary_checked. Qed.
     not establish every actor's initialization or all live size histories. *)
 Theorem current_ink_fly_guy_size_store_boundary : InkFlyGuySizeStoreBoundary.
 Proof. exact ifgs_size_store_boundary_checked. Qed.
+
+(** Actual classifier return through the two bounce handler families.  The
+    live height ceiling and the earlier enemy histories remain explicit. *)
+Theorem current_ink_bounce_live_read_boundary : InkBounceLiveReadBoundary.
+Proof. exact iblr_real_classifier_through_bounce_has_at_most_251_new_rise. Qed.
+
+(** The actual guarded growth call constructs its scale argument. Skipped
+    growth and preservation of the incoming child scale are separate. *)
+Theorem current_ink_pokey_growth_scale_argument_boundary : InkPokeyLiveScaleArgumentBoundary.
+Proof. exact ipls_reached_growth_constructs_bounded_scale_argument. Qed.
 
 (* The graphical-fallback tranche shows that update order does not by itself
    refute the scheduling shape; it does not execute the branch in Clight or

@@ -5,7 +5,8 @@ From LessThanOneAPress.Proofs Require Import InkFloorProducerEffect
   InkPlatformProducerHeight InkBounceProducerEffect InkQuicksandProducerSize
   InkStoppedFloorQuery InkGroundReturnFrame InkStoppedCrawlAlignment
   InkFloorAlignmentTailFrame InkAirReturnFrame InkBounceApproachGap
-  InkBounceClearAscent InkMarioRawCopyCall InkMarioZeroParticleTail InkFlyGuySizeBoundary.
+  InkBounceClearAscent InkMarioRawCopyCall InkMarioZeroParticleTail InkFlyGuySizeBoundary
+  InkBounceLiveReadBoundary InkStockBounceHeight InkFlyGuyCycleHeight InkPokeyLiveScale.
 
 (** Actor placement is not bounded by the old low-spawn example.  A matched
     fresh guard bounds the newly created rise; the completed actual air call
@@ -14,7 +15,8 @@ From LessThanOneAPress.Proofs Require Import InkFloorProducerEffect
 Definition InkBounceAirProducerCheckedBoundary : Prop :=
   InkBouncePlacementIndependentGapCheckpoint /\ InkBounceFreshDisplayGapCheckpoint /\
   InkBounceFreshSynchronizedGapCheckpoint /\ InkAirRefreshBoundary /\ InkBounceClearAscentBoundary /\
-  InkMarioCallbackRawCopyCut /\ InkMarioZeroParticleBoundary /\ InkFlyGuySizeStoreBoundary.
+  InkMarioCallbackRawCopyCut /\ InkMarioZeroParticleBoundary /\ InkFlyGuySizeStoreBoundary /\
+  InkBounceLiveReadBoundary /\ InkPokeyLiveScaleArgumentBoundary.
 
 Theorem icpb_bounce_air_producer_checked : InkBounceAirProducerCheckedBoundary.
 Proof.
@@ -25,7 +27,9 @@ Proof.
   split; [exact ibca_clear_ascent_boundary_checked|].
   split; [exact imrc_completed_callback_reaches_matching_raw_copy|].
   split; [exact imzp_zero_particle_boundary_checked|].
-  exact ifgs_size_store_boundary_checked.
+  split; [exact ifgs_size_store_boundary_checked|].
+  split; [exact iblr_real_classifier_through_bounce_has_at_most_251_new_rise|].
+  exact ipls_reached_growth_constructs_bounded_scale_argument.
 Qed.
 
 (** These are adjacent actual cuts, not an asserted producer classification.
