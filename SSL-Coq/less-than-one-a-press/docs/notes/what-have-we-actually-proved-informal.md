@@ -2,18 +2,24 @@
 
 Here’s the version we’re talking about: **5c06fff57155dc22d12f60c69f4c1c46d890e09a**, on **codex/ssl-pyramid-item-proof**, reviewed on 6 October 2026. Think of this as a freeze-frame of the evidence. It won’t quietly turn into a progress counter. The unrelated CLAUDE.md edit and root build directory sitting in the checkout aren’t part of the evidence, and this review leaves them alone. The game facts come from the pinned stock C and generated US/JP Clight in the [lifetime audit](https://github.com/tra38/sm64-wmotr-abc-proof/blob/5c06fff57155dc22d12f60c69f4c1c46d890e09a/SSL-Coq/less-than-one-a-press/docs/notes/ink-gap-lifetime-audit.md). We ran no new gameplay search, solver, theorem or runtime trial for this review.
 
+The four approved additions use evidence from **cac0adb6b0a72667980df60859bbdb042af66b63**, inspected 6 October 2026: other platform routes, target credit, Goomba raising/PU transport and Eyerok particles. The existing Ink, pole, Eyerok and elevator chapters keep their **5c06fff57155dc22d12f60c69f4c1c46d890e09a** evidence baseline. This is a documentation extension, with no new theorem or gameplay trial.
+
 **We’ve proved useful things. We still haven’t proved that both pyramid stars require a new A press.** That’s the headline. Some tricks hit a wall once their conditions are fixed. Some supplied setups actually work, and the awkward part is getting there through gameplay. A finished local proof can sit inside an unfinished route. Both statements get to be true.
 
-## The four verdicts, right up front
+## The eight verdicts, right up front
 
 | Category | Current conclusion | The qualification that matters most |
 | --- | --- | --- |
-| Ink | Three supplied JP setups install a useful retained top pointer. Several proposed gap sources and copy mistakes have scoped exclusions. | Creating the right split through allowed gameplay, before the right checks, remains open. The supplied setups are not controller-reachable witnesses. |
-| The pole issue | Ordinary no-A releases exist; staged Goomba damage can get Mario to the ring. The normalized soft-bonk departure fails within its envelope. | A real enemy must reach the useful contact, and the same continuation must lead onward. Neither requirement is supplied by the damage demonstration. |
-| Eyerok | Named hand rides, departures and speed-building cycles have conditional height/speed barriers. Some local boarding and reboarding tricks work. | The whole live hand/action/support history is not classified. A model-wide barrier is not yet a barrier for every gameplay route. |
-| The elevator | The checked ordinary launches fail. An aligned Mario cannot perform the eleven-descent hold under the proved query contract. Fresh triplet spawning has a separate contracted exclusion. | Ground-pound entry, harder falls, changed support and enemy/coin installation still need their actual histories. A granted height window is not an escape. |
+| [Ink](#review-ink) | Three supplied JP setups install a useful retained top pointer. Several proposed gap sources and copy mistakes have scoped exclusions. | Creating the right split through allowed gameplay, before the right checks, remains open. The supplied setups are not controller-reachable witnesses. |
+| [The pole issue](#review-pole) | Ordinary no-A releases exist; staged Goomba damage can get Mario to the ring. The normalized soft-bonk departure fails within its envelope. | A real enemy must reach the useful contact, and the same continuation must lead onward. Neither requirement is supplied by the damage demonstration. |
+| [Eyerok](#review-eyerok) | Named hand rides, departures and speed-building cycles have conditional height/speed barriers. Some local boarding and reboarding tricks work. | The whole live hand/action/support history is not classified. A model-wide barrier is not yet a barrier for every gameplay route. |
+| [The elevator](#review-elevator) | The checked ordinary launches fail. An aligned Mario cannot perform the eleven-descent hold under the proved query contract. Fresh triplet spawning has a separate contracted exclusion. | Ground-pound entry, harder falls, changed support and enemy/coin installation still need their actual histories. A granted height window is not an escape. |
+| [Other platform routes](#review-other-platforms) | Relocation, clones, skipped queries and Area-2 support changes have source/model or run-specific exclusions. | Earlier useful ownership and the actual allocator/callback/query interval are not covered for every history. |
+| [Target credit](#review-target-credit) | Correct target collection and all five Puzzle consumptions are necessary inside the certified account; real local contact consumers are proved. | Actual award/save and revisit/contact-history refinement remain open. Access alone is not credit. |
+| [Goomba raising / PU transport](#review-goomba-pu) | Named 91-update schedules fail: favorable 46 rises reach Y1017, below Y1791. | Longer preparation, legitimate repeatable raising, physical transport and live handoff remain open. |
+| [Eyerok particles](#review-eyerok-particles) | Own fragments allocate before free; sibling fragments require at least 70 updates against a one-active-update window in the archived model. | Real allocator/callback coverage and post-unload seed classification remain required. Other particles and cross-area reuse are separate. |
 
-These four names are ways of tackling obstacles, so their code can overlap. Ink tries to set something up outside the pyramid that pays off at the elevator. The pole is the later barrier on the lower route. Eyerok is about borrowing the boss hands for transport or speed; simply beating the boss isn’t the trick. The elevator is the upper-entry cage: get out of it, or arrange an interaction inside it that makes getting out possible.
+The original four names are ways of tackling obstacles, so their code can overlap. Ink tries to set something up outside the pyramid that pays off at the elevator. The pole is the later barrier on the lower route. Eyerok is about borrowing the boss hands for transport or speed; simply beating the boss isn’t the trick. The elevator is the upper-entry cage: get out of it, or arrange an interaction inside it that makes getting out possible. The added chapters give other installers, reward accounting, enemy raising/transport and fragment-slot reuse their own space, without sneaking in another unapproved category.
 
 ### A quick guide to the receipts
 
@@ -35,6 +41,8 @@ The [current capstone](https://github.com/tra38/sm64-wmotr-abc-proof/blob/5c06ff
 The README's headline describes an Area-2 goal; its [linked gameplay boundary](https://github.com/tra38/sm64-wmotr-abc-proof/blob/5c06fff57155dc22d12f60c69f4c1c46d890e09a/SSL-Coq/less-than-one-a-press/README.md#L26) starts in Area 1. These are different interfaces. We use the agreed Area-1 start when discussing reachability, and preserve the explicit clean-pyramid/route premises of the capstone rather than silently connecting the two.
 
 </details>
+
+<a id="review-ink"></a>
 
 ## Ink: the gap can clock in before it vanishes
 
@@ -103,6 +111,8 @@ The four-producer [boundary](https://github.com/tra38/sm64-wmotr-abc-proof/blob/
 
 </details>
 
+<a id="review-pole"></a>
+
 ## The pole issue: getting off is only step one
 
 ### Where Mario actually needs to go
@@ -151,6 +161,8 @@ The overall lower-cut theorem has its own requirements: an actual target event m
 **Superseded readings:** “only A can leave the pole” is false. Y4020 is not every release height. The transfer graph does not cover all airborne motion, and the separate 91-frame Goomba-raising bound belongs to its exterior top-window proposal, not every Area-2 enemy approach. A successful known one-A route cannot prove that an alternative needs A.
 
 </details>
+
+<a id="review-eyerok"></a>
 
 ## Eyerok: the hands do a lot, but the route still needs receipts
 
@@ -205,6 +217,8 @@ A family-wide exclusion needs more than a theorem about a model. Live ownership,
 [Current Eyerok atlas scope](https://github.com/tra38/sm64-wmotr-abc-proof/blob/5c06fff57155dc22d12f60c69f4c1c46d890e09a/SSL-Coq/less-than-one-a-press/docs/no-a-route-atlas.md#L1366) retains the wake installer, seams/partial updates, alternate speed predecessors and separate lower-tier cases. None is silently closed by the selected ride barrier.
 
 </details>
+
+<a id="review-elevator"></a>
 
 ## The elevator: having the height and getting the move are different problems
 
@@ -262,8 +276,160 @@ The square-root issue is not simply “we do not know what sqrt does.” The [ex
 
 </details>
 
-### One possible extra chapter—your call
+<a id="review-other-platforms"></a>
 
-**Final reward and save-bit continuation** is the extra category I'd suggest. These four chapters explain access and manipulation. They don't, by themselves, finish all five Puzzle triggers, collect the target or establish that the correct save bit was newly set. Several routes share that downstream job, so putting all of it under just Ink, pole, Eyerok or elevator would be awkward. Ranks 7, 7A, 8, 9 and the related contact branches already track it. This is a proposal for your approval, not a stealth fifth category or the start of another work campaign.
+## Other platform-displacement routes, other than Ink
 
-The general question of whether the game follows each proof model already applies to all four chapters. It isn't a hidden fifth gameplay category. This review didn't need new execution to settle a factual disagreement. The gaps listed here are connections we still need for reachability or coverage, rather than announcements of a newly discovered glitch.
+Evidence for this added chapter: repository **cac0adb6b0a72667980df60859bbdb042af66b63**, inspected 6 October 2026. The original four chapters retain their earlier baseline.
+
+### A different way to remember the wrong floor
+
+The remembered platform is the trick’s engine. We still need a way to put a useful object in that memory and keep it there until the game applies its movement. Moving the warp or a standable top, carrying its collision onto a clone, or moving Mario while the next floor query is skipped would be different setups. An Area-2 reload might change support too, but a new floor address isn’t automatically an installer. Original, Variant and Hybrid stay in the [Ink chapter](#review-ink), where their position splits belong.
+
+### The routes that have receipts—and their limits
+
+The clean four-pillar run gives us a solid example: 2,462 frames and 2,353 top-collision loads, with three later reuses of the retired top slot. The top and warp keep their original identities, and every reuse clears the old collision first. So this zero-A JP run does not move the warp, clone a usable top, or sneak the old collision into a replacement. That’s a checked run plus a source census, rather than a verdict on every possible spawn and slot history.
+
+Skipping a query sounds like a chance to carry yesterday’s floor into a new position. The existing semantic model makes its preserving step an identity, and the linked record still asks for callback, lifetime, alias and external-effect facts. It checks that model; it hasn’t shown that all real skipped updates keep Mario still. To make this route work, Mario needs a live remembered pointer first, then actual movement before a later platform query recomputes the pointer.
+
+### Some engine behavior works when we supply the setup
+
+There’s also a State-first diagnostic: supplied movement XYZ=(-1862,67314,-902) becomes query XYZ=(-1862,1778,-902), while collision stays at the portal. The lookup and capture can work without using display fallback. That gives us another consumer of an inherited split, rather than a gameplay source for the pointer. The stock-null chronology model blocks the stated payload within its rules. We still need the earlier owner, useful payload and legal pre-collision split.
+
+Inside Area 2, the Amp-shock check starts at the pole centre, Y=4020, with zero vertical speed and no sideways movement. Its integer fall model lands on static Y=3200 at update 21 and misses the checked moving-owner corridors. The certificate joins source patterns and arithmetic; it doesn’t run the complete linked shock, air-step and platform chain. A staged reload really changes the static floor address, but displacement is zero, both owners and the platform are null, and the clean-controller flag is false. Neither is a transport success. Ordinary Goomba damage at the pole stays in the [pole chapter](#review-pole).
+
+### The exact next evidence we would need
+
+A closure needs the live connection each proposal is missing. For relocation and clones, that’s the reached spawn/collision writers and slot generations. For skipped queries, it’s the actual callbacks, movement and pointer through the whole interval. For Area-2 support, it’s homes, axes, floor lists, owners and real entry/reload effects—or a clean useful exception. Any surviving pointer still needs the capture, lifetime and first apply described in [Ink](#review-ink). Ranks 17/27 and 26A–E are pointer/payload classifications, not extra installers we found. This review ran no new runtime test.
+
+<details>
+<summary>Other platform-displacement routes, other than Ink: evidence ledger and remaining connections</summary>
+
+| Claim | Proof or receipt | Assumptions / status | Scope | Remaining limitation |
+| --- | --- | --- | --- | --- |
+| Relocated warp/top or collision-preserving clone | [Source census](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/Area1WarpTopCloneCensus.v#L166); [receipt boundary](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/Area1Rank4WarpTopTraceReceipt.v#L239); [authenticated run description](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/instrumentation/jp-rank4-warp-top/README.md#L10) | Generated syntax and recorded counters derived; all reached writer/lifetime coverage still required. | One zero-A JP run: 2,462 frames, 2,353 loads, three cleared reuses. | Does not exclude another legal spawn/alias/owner history. |
+| Moving during a skipped query | [Identity model and linked premises](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/Area1MovingSkippedQueryClosure.v#L339); [temporal model](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/Area1InstallerTemporalClosure.v#L152) | Preserving step defined as identity; callback/lifetime/alias/external propositions remain supplied. | Completed model preservation and source reductions. | No linked all-history movement exclusion. |
+| State-first lookup capability | [Supplied nonlocal endpoints](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/docs/notes/area1-nonlocal-endpoints.md#L40); [payload/setup boundary](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/docs/notes/area1-nonlocal-endpoints.md#L245); [framed classification](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/Area1PrecollisionWriterClosure.v#L534) | Unusual State/Object split and scene supplied; terrain/collision frames and platform refinement required. | Conditional engine capability and chronology model. | Earlier legal platform installation is not constructed. |
+| Amp shock / moving support | [Fall kernel](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/Area2Rank12ObjectImpulse.v#L491); [composite certificate](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/Area2Rank12ObjectImpulse.v#L600) | Y4020/vy0, zero horizontal motion and specified stock corridors in an integer model. | Selected finite/source-model fall to Y3200 at update21. | Live shock, owners, list and collision chain not derived. |
+| Reload changes support address | [Script/entry facts](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/Area2Rank12AReloadSupport.v#L187); [staged receipt witness](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/Area2Rank12AReloadSupport.v#L291); [raw JP trace](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/old-proofs/eyerok-manipulation/instrumentation/results/jp_platform_trace.txt#L1) | Staged receipt; clean-controller flag false; no useful platform retained. | One floor-address change with zero displacement. | Other useful reload/support histories remain open. |
+
+</details>
+
+<a id="review-target-credit"></a>
+
+## Getting credit for the target without the expected route
+
+Evidence for this added chapter: repository **cac0adb6b0a72667980df60859bbdb042af66b63**, inspected 6 October 2026. The original four chapters retain their earlier baseline.
+
+### Getting through a gate isn’t the save-file payoff
+
+We want Inside the Ancient Pyramid and Pyramid Puzzle in the save file. The familiar pole jump and elevator exit are leads, rather than rules saying every route must look that way. Another reachable setup could earn the right contact. But getting past a gate isn’t pickup either. Puzzle also has five distinct secret triggers before the reward. We need the right object, its collection and the newly set target bit in one execution.
+
+### What the credit proofs really buy us
+
+Once a playthrough obeys CertifiedExecution’s rules, the bookkeeping is proved: a target bit can’t become new credit without the right collection event, star origin and overlap. From CleanPyramidEntry, Puzzle also needs all five distinct consumption events. That conditional result is finished. The event rules already ask for provenance, overlap, counter changes and preservation by other events; showing that the whole game follows those rules is the unfinished connection. None of this makes a particular physical gate mandatory.
+
+Some smaller results now follow the actual US/JP code. The successful secret and star searches really read the pointer they use, and neither changes memory; the star search also checks the interaction type. A completed secret callback with a memory change or observable event must first have got a successful entry answer. We still have to show that the change was credit and explain where the contact list came from. Clearing, capacity, registration, later writes, object generations, geometric readings and helper effects all matter before we connect it to the actual saved reward.
+
+### Leaving and coming back changes the accounting
+
+When the area loads, Puzzle counts the secrets still present and treats missing ones as progress. If none remain, it can spawn the reward immediately. Normal removal and no-respawn records can keep earned progress across visits. So we can’t demand five fresh touches during the last visit. We need a legitimate earlier contact, removal and reload history for every credited missing original secret. Supplying an unexplained missing object doesn’t earn a shortcut.
+
+The later route has positive evidence: the published lower-entry runs visibly finish both targets, spending their one displayed A press at the second pole. Exact JP inputs reproduce that edge and reach the Grindel base. Separate injected JP suffixes show five secrets plus spawn, or a tuned pickup with save byte 0x00→0x20 and zero A counters. We can’t splice those into a clean zero-A run. Rank 9 starts with Mario airborne outside the elevator and 99 coins; nine later pickup timings fail, and one stationary Act-3 sample misses by 75 units. Its independent access and full target pickup are still missing.
+
+### Follow the reward all the way into the save
+
+To call a route successful, follow uninterrupted controller inputs through access, real contacts, dispatch, object lifetime, secret/revisit accounting and the correct new save bit. To rule it out, connect those real operations to the certified account and show that allowed no-A histories cannot supply the necessary contact or legitimate earlier secret credit; don’t just assume alternate credit can’t happen. The theorem protecting three private action-table blocks through finite selected initialized Clight runs is already finished. Public reward state has other writers and receivers to account for under Rank 31. Machine-only out-of-bounds overwrites, ACE, DMA and post-undefined-behavior continuations are outside the current model. This chapter adds no new runtime check.
+
+<details>
+<summary>Getting credit for the target without the expected route: evidence ledger and remaining connections</summary>
+
+| Claim | Proof or receipt | Assumptions / status | Scope | Remaining limitation |
+| --- | --- | --- | --- | --- |
+| New target credit needs the specified collection | [CertifiedStep constructors](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/AreaTransitions.v#L167); [target-bit necessity](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/StarCollection.v#L70) | CertifiedExecution and newly_collected supply the theorem interface; its event rules require provenance, overlap, counters and preservation. | All histories in that certified account. | Whole-game step-to-account refinement not discharged. |
+| Puzzle needs all five distinct consumptions | [HiddenStar necessity](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/HiddenStar.v#L314); [revisit source audit](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/docs/notes/ordinary-gameplay-route-coverage.md#L210) | CleanPyramidEntry and certified event history; ordinary removal/respawn mechanisms audited. | Completed bookkeeping; actual revisit source paths identified. | Earlier earned progress and live reload/removal histories need connection. |
+| Successful queries and completed secret effects need contact reads | [Consumer execution](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/ContactConsumerExecution.v#L478); [secret callback](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/SecretContactExecution.v#L218); [geometric conditions](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/ObjectContactNecessity.v#L306) | Real successful calls, valid receivers and memory; geometric phase/readback conditions explicit. | Local actual US/JP execution; memory-preserving searches. | Credit identification, contact-list origin/lifetime and award calls remain. |
+| Downstream collection can work from supplied access | [Distinct receipts](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/Area2DownstreamReceipts.v#L101); [continuation limits](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/docs/notes/area2-downstream-continuations.md#L277) | One-A visual runs or separate injected suffixes; Rank9 airborne/99-coin start granted. | Positive bounded receipts; no joined clean no-A run. | Authenticate version/inputs, clean access, full live pickup and save. |
+| Private action tables are preserved | [Reached-execution closure](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/WritableActionTableReachedExecution.v#L459); [award/contact gaps](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/docs/notes/collection-backward-contact.md#L63) | Genuine selected initialized task start and stated private-block conditions. | All finite reached executions of the selected Clight runtime for three blocks. | Not public reward-state integrity or all defined receiver/save histories. |
+
+</details>
+
+<a id="review-goomba-pu"></a>
+
+## Goomba raising and PU transport
+
+Evidence for this added chapter: repository **cac0adb6b0a72667980df60859bbdb042af66b63**, inspected 6 October 2026. The original four chapters retain their earlier baseline.
+
+### The plan is to raise the Goomba, then actually meet it
+
+Here the Goomba is the thing we want to raise. The plan controls when its movement runs, then needs a way to bring it into real contact with Mario and the Spindel. This is separate from taking ordinary Goomba damage at the second pole. A PU—parallel universe—is a distant coordinate region whose terrain queries can alias the main map through local signed-16 narrowing. Matching terrain doesn’t teleport the enemy or make distant actors touch.
+
+### The short top window runs out of rises
+
+The proposed loop starts with damaging contact, departure beyond the Goomba’s 4000-unit drawing distance, a FAR reset and a return nearby. One selected grounded setup arms the first rise; afterward the repeating ready state is airborne action 2 with vertical speed 25. Gravity makes that speed exactly 21 in binary32. Stored height still rounds: adding 21 at 2^29 produces no change. That example isn’t a proof that the chosen Y51 orbit reaches the stagnating value.
+
+The integer H/F/R mirror tracks hit/depart, far-reset and near-rearm phases; its productive hit adds 21 to modeled Y. The original post-collision schedule gets 31 rises during the supplied 91-update top window, taking Y=51 to 702. Letting raw Object timing help gives 45 in the return-first phase, or 46 in the favorable departure-first phase. The checked binary32 ceiling there is Y=1017. The target is Y=1791, so we’re 774 short. Crossing first needs 83 rises and reaches 1794. These finite schedule classes are exhausted, even with favorable placement inside the model.
+
+The important fine print is where those rules come from. The top window, Spindel band, event membership and H/F/R transitions are audited or modeled inputs. The main boundary joins US/JP source receipts to the arithmetic and explicitly leaves the Clight-to-event connection open. The named short-window setup is conditionally blocked. We haven’t proved a maximum for all earlier preparation or every enemy history.
+
+### A matching map isn’t a matching enemy
+
+Distance between objects uses their full floating-point coordinates. X/Z terrain aliasing can’t cancel a huge vertical separation or make a distant Spindel load collision. Given the audited Mario contact band [2036,2336], the integer hitbox model needs Goomba Y in [1961,2496]; live Spindel surface selection is still unproved. They don’t move a singleton there, make a repeatable raise/reset loop or finish capture and handoff in one segment. A failed out-of-range conversion isn’t a bonus route either: the trap result needs the specified invalid-conversion processor controls connected to the live call.
+
+### What we haven’t built yet
+
+We have source-event audits and exact binary32 schedule checks here, rather than a controller replay that raises a Goomba, transfers it through a PU and earns the target. The ordinary approach and damage receipts under [pole](#review-pole) and [elevator](#review-elevator) don’t fill that hole. This chapter ran no new runtime search. An event schedule can be checked exactly without being an actual enemy trajectory.
+
+The archived PU certificate has a scope warning too. It proves a compact bounded US transition system, without an exact recorded source pin; its companion countermodels allow PU entry through unclamped air velocity or platform displacement. The active project rechecks selected source facts without importing that archived namespace. We can’t turn the old bounded result into a universal no-PU theorem.
+
+For the live short-window closure, connect the timer/surface window, real event sequence, collision and loading tests to generated execution. If we prepare earlier, we need a legitimate repeatable raising cycle outside that window, physical transport, continued loading, the same live singleton throughout, actual capture, useful handoff, every-update no-A coverage and target continuation. One uninterrupted allowed-input run would settle a success; a reached-event/transport exclusion would settle the named negative case. Longer independent preparation is still open. The 46-rise bound doesn’t close it.
+
+<details>
+<summary>Goomba raising and PU transport: evidence ledger and remaining connections</summary>
+
+| Claim | Proof or receipt | Assumptions / status | Scope | Remaining limitation |
+| --- | --- | --- | --- | --- |
+| Short-window H/F/R height obstruction | [Conditional mirror definition](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/GoombaRaising.v#L45); [source-event boundary](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/MainTheorem.v#L1142) | 91-update window and event classification supplied; no linked H/F/R retail execution. | Named schedules only; 31/45/46 rises and checked binary32 heights. | Earlier preparation, repeated cycles and actual event membership remain open. |
+| Terrain alias does not supply physical contact/transport | [Goomba raising audit](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/docs/notes/goomba-raising.md#L139); [Spindel contact band](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/GoombaRaising.v#L353); [binary32 rises](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/GoombaRaising.v#L675); [uninhabited transport/capture schemas](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/GoombaRaising.v#L1198) | Full-coordinate distance and the checked actor/Mario dimensions and thresholds. | Source/math kernels for the stated PU/contact geometry. | Live singleton motion, loading, capture and handoff not constructed. |
+| Invalid coordinate conversion is not a continuing state | [Nonlocal cast model](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/Area1NonlocalCastSemantics.v#L176) | Invalid exception enabled and specified processor/cast binding; preservation still required. | Trap semantics under those controls. | Different controls or unbound live calls need their own result. |
+| Archived PU barrier has bounded scope | [Archive transfer policy](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/docs/notes/archived-proof-evidence.md#L8); [bounded certificate](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/old-proofs/ssl-parallel-universe/proofs/NoAPressed.v#L510); [companion countermodels](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/old-proofs/ssl-parallel-universe/proofs/MovementSourceFacts.v#L75) | Compact US model; exact source pin not recorded; active namespace does not import archive. | Finished archived bounded model result, with broader movement counterexamples. | Actual unclamped velocity/platform sources and all reached PU-entry histories require coverage. |
+
+</details>
+
+<a id="review-eyerok-particles"></a>
+
+## Eyerok particle displacement
+
+Evidence for this added chapter: repository **cac0adb6b0a72667980df60859bbdb042af66b63**, inspected 6 October 2026. The original four chapters retain their earlier baseline.
+
+### Could the hand’s debris inherit its address?
+
+The game can remember a platform by its address in the Object pool. What if the hand dies, a fragment takes that exact slot, and Mario’s next platform apply reads the fragment’s movement? That’s the particle-displacement pitch. It isn’t an ordinary hand ride or the JP cross-area stale-hand story under [Eyerok](#review-eyerok). Nearby debris won’t do: we need the same slot reused before the remembered pointer is consumed.
+
+### The hand’s own debris arrives too early; its sibling is too late
+
+The checked order is mist, 30 rotating triangles, deletion mark, coins, and only then end-of-update unload. The deletion mark clears active flags; it doesn’t free the slot. So the hand’s own fragments have already allocated while the hand still owns its slot. The proof of that timing obstruction exists. We aren’t starting this arithmetic again.
+
+The eye lock also holds the sibling idle while the first hand dies. Give the sibling the favorable option of being selected to open before unload: it still needs at least 30 opening updates and 40 dying updates. That’s at least 70 against a one-active-update reuse window. Time stop suppresses platform apply; the archived schedule doesn’t make the pause extra active allocation time. Within this model, neither hand’s fragments can take the needed slot in time.
+
+### This exclusion is finished inside its rules
+
+EyerokParticleDisplacement.v spells out a finite lifecycle/event relation. After unload, its seeds allow an idle sibling or one newly selected to open. The no-replacement theorem and common fragment certificate cover both checked versions within that audited timing, and the archived verdict packages them with generated source-shape checks. What it doesn’t do is execute and classify every real allocator, callback and platform apply. Archiving it also doesn’t make it active-spine coverage. Retired atlas R1 keeps this exact conditional result.
+
+The archive’s displacement model changes position and facing while preserving stored speeds. Its separate US area-load model clears the saved pointer; JP deliberately differs. Neither result puts a fragment into the slot. The JP cross-area manifest is evidence for a different stale-slot construction, not a same-area Eyerok-particle success. This review verified no dedicated controller-reached fragment installer and ran no new runtime test.
+
+### The remaining job is the real allocation timeline
+
+Follow the real allocator and callbacks through free-list ownership, hand death, eye lock and the first platform apply. Show that no omitted eligible allocation slips in before apply, and that the live run reaches one of the proved post-unload seeds. Then this named two-hand fragment idea is closed in gameplay. Other particles, other replacement objects and JP cross-area reuse still have their own cases. The 70-versus-one proof doesn’t cover those. We need the execution connection, rather than another delay calculation.
+
+<details>
+<summary>Eyerok particle displacement: evidence ledger and remaining connections</summary>
+
+| Claim | Proof or receipt | Assumptions / status | Scope | Remaining limitation |
+| --- | --- | --- | --- | --- |
+| Own fragments cannot take the hand slot | [Archived allocation-order lemmas](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/old-proofs/eyerok-manipulation/proofs/EyerokParticleDisplacement.v#L23); [pinned source audit](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/old-proofs/eyerok-manipulation/generated/source_audit.txt#L118) | Finite event ranking mirrors audited mist/triangle/mark/coins/unload ordering. | Own-hand fragments in the selected same-area explosion. | All reached allocator/callback effects and slot generations still need execution coverage. |
+| Sibling fragments miss the reuse window | [70-update delay and window theorem](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/old-proofs/eyerok-manipulation/proofs/EyerokParticleDisplacement.v#L300); [no-replacement theorem](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/old-proofs/eyerok-manipulation/proofs/EyerokParticleDisplacement.v#L348) | Eye lock, 30+40 animation updates, idle/open-selected post-unload seed, one-active-update window. | Both hands in the explicit lifecycle model; no Eyerok-fragment replacement. | Actual seeds and complete live transition membership not derived. |
+| Source-shape and model results are packaged | [Common archived scenario verdict](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/old-proofs/eyerok-manipulation/proofs/ExploitScenarioVerdict.v#L4); [archive scope](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/old-proofs/eyerok-manipulation/docs/claim.md#L46); [retired R1 verdict](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/docs/no-a-route-atlas.md#L1576) | Generated source shapes checked separately from the hand-written lifecycle relation. | Finished archived conditional scenario certificate. | Not an all-history theorem or automatically integrated active-spine proof. |
+| Modeled displacement preserves speed; cross-area policy differs | [Displacement and US model](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/old-proofs/eyerok-manipulation/proofs/EyerokParticleDisplacement.v#L375); [JP cross-area manifest](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/old-proofs/eyerok-manipulation/instrumentation/results/jp_platform_manifest.md) | Explicit kinematics/area-load model; JP receipt supplied scenes. | Separate displacement semantics and versioned stale-slot evidence. | Does not establish same-area particle installation; unrelated allocation/reuse remains separate. |
+
+</details>

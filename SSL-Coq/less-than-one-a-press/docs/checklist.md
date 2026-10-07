@@ -1,5 +1,7 @@
 # Verification checklist
 
+- [x] Extend both canonical review tones and the existing private review page with the four approved chapters: other platform routes, target credit, Goomba raising/PU transport and Eyerok particles. Pin new evidence to `cac0adb`, preserve the original four chapters at `5c06fff`, and keep exact shared ledgers. Explain the named 91-update raising barrier, certified credit/revisit limits and archived fragment timing; no new proof, gameplay search or route-estimate change. Check immutable sources, eight-chapter navigation, saved tone preference and mobile readability, then publish with private access unchanged.
+
 - [x] Add an informal documentary tone option to the four-category review while preserving the original text. Keep both versions' numbers, links, assumptions, scope and verdicts consistent; share unchanged evidence tables and details. Persist the reader's choice and test switching, keyboard access, storage fallback and mobile layout. No new proof or gameplay result.
 
 - [x] Consolidate [What Have We Actually Proved?](notes/what-have-we-actually-proved.md) at `5c06fff` into the four requested categories: Ink, second pole, Eyerok and elevator. Check actual theorem premises, active/archived dependencies and existing receipts; preserve local/conditional/finite/reachable distinctions and unchanged atlas estimates. No gameplay search, new solver or proof campaign. Link the canonical review from the private site as a separate reading page with expandable evidence ledgers.
