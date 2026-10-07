@@ -1,40 +1,24 @@
 # What Have We Actually Proved?
 
-Here’s the version we’re talking about: **5c06fff57155dc22d12f60c69f4c1c46d890e09a**, on **codex/ssl-pyramid-item-proof**, reviewed on 6 October 2026. Think of this as a freeze-frame of the evidence. It won’t quietly turn into a progress counter. The unrelated CLAUDE.md edit and root build directory sitting in the checkout aren’t part of the evidence, and this review leaves them alone. The game facts come from the pinned stock C and generated US/JP Clight in the [lifetime audit](https://github.com/tra38/sm64-wmotr-abc-proof/blob/5c06fff57155dc22d12f60c69f4c1c46d890e09a/SSL-Coq/less-than-one-a-press/docs/notes/ink-gap-lifetime-audit.md). We ran no new gameplay search, solver, theorem or runtime trial for this review.
+The usual routes to Inside the Ancient Pyramid and Pyramid Puzzle ask Mario to leave the upper-entry elevator or second pole. Can ordinary gameplay, including defined glitches, avoid a new A press? Some prepared tricks help, and some studied alternatives fail. We still have neither a complete no-A route nor a full impossibility proof.
 
-The four approved additions use evidence from **cac0adb6b0a72667980df60859bbdb042af66b63**, inspected 6 October 2026: other platform routes, target credit, Goomba raising/PU transport and Eyerok particles. The existing Ink, pole, Eyerok and elevator chapters keep their **5c06fff57155dc22d12f60c69f4c1c46d890e09a** evidence baseline. This is a documentation extension, with no new theorem or gameplay trial.
+Our start is normally initialized SSL Area 1. Keeping A held after an earlier legitimate press isn’t the same as never pressing it. Artificial placement lets us test a payoff while leaving the controller-driven setup to explain. One game update passes through the gameplay loop, and its checks don’t all happen at once.
 
-The newly approved final-reward chapter checks **877dae5c457298fc847b6a6f677253025e8e228a**. It follows pickup into active target credit; the earlier eight chapters keep their own evidence baselines.
-
-**We’ve proved useful things. We still haven’t proved that both pyramid stars require a new A press.** That’s the headline. Some tricks hit a wall once their conditions are fixed. Some supplied setups actually work, and the awkward part is getting there through gameplay. A finished local proof can sit inside an unfinished route. Both statements get to be true.
+We’ll follow the game before opening the proof details. Expandable evidence keeps exact numbers, sources and conditions. Conditional proofs and limited tests settle different things. Atlas percentages express subjective route promise, not measured confidence or a completion meter.
 
 ## The nine verdicts, right up front
 
-| Category | Current conclusion | The qualification that matters most |
+| Topic | What happens in the studied cases | The remaining gameplay question |
 | --- | --- | --- |
-| [Ink](#review-ink) | Three supplied JP setups install a useful retained top pointer. Several proposed gap sources and copy mistakes have scoped exclusions. | Creating the right split through allowed gameplay, before the right checks, remains open. The supplied setups are not controller-reachable witnesses. |
-| [The pole issue](#review-pole) | Ordinary no-A releases exist; staged Goomba damage can get Mario to the ring. The normalized soft-bonk departure fails within its envelope. | A real enemy must reach the useful contact, and the same continuation must lead onward. Neither requirement is supplied by the damage demonstration. |
-| [Eyerok](#review-eyerok) | Named hand rides, departures and speed-building cycles have conditional height/speed barriers. Some local boarding and reboarding tricks work. | The whole live hand/action/support history is not classified. A model-wide barrier is not yet a barrier for every gameplay route. |
-| [The elevator](#review-elevator) | The checked ordinary launches fail. An aligned Mario cannot perform the eleven-descent hold under the proved query contract. Fresh triplet spawning has a separate contracted exclusion. | Ground-pound entry, harder falls, changed support and enemy/coin installation still need their actual histories. A granted height window is not an escape. |
-| [Other platform routes](#review-other-platforms) | Relocation, clones, skipped queries and Area-2 support changes have source/model or run-specific exclusions. | Earlier useful ownership and the actual allocator/callback/query interval are not covered for every history. |
-| [Target credit](#review-target-credit) | Correct target collection and all five Puzzle consumptions are necessary inside the certified account; real local contact consumers are proved. | Actual award/save and revisit/contact-history refinement remain open. Access alone is not credit. |
-| [Goomba raising / PU transport](#review-goomba-pu) | Named 91-update schedules fail: favorable 46 rises reach Y1017, below Y1791. | Longer preparation, legitimate repeatable raising, physical transport and live handoff remain open. |
-| [Eyerok particles](#review-eyerok-particles) | Own fragments allocate before free; sibling fragments require at least 70 updates against a one-active-update window in the archived model. | Real allocator/callback coverage and post-unload seed classification remain required. Other particles and cross-area reuse are separate. |
-| [Final reward / save bit](#review-final-reward) | A separate tuned JP receipt observes the new Puzzle bit; five secrets and a spawned star alone do not establish collection. | The clean continuation through the actual pickup helpers, target-index read and save writer is not yet connected. Permanent saving is a separate checkpoint. |
-
-The original four names are ways of tackling obstacles, so their code can overlap. Ink tries to set something up outside the pyramid that pays off at the elevator. The pole is the later barrier on the lower route. Eyerok is about borrowing the boss hands for transport or speed; simply beating the boss isn’t the trick. The elevator is the upper-entry cage: get out of it, or arrange an interaction inside it that makes getting out possible. The added chapters give other installers, reward accounting, enemy raising/transport and fragment-slot reuse their own space, without sneaking in another unapproved category.
-
-### A quick guide to the receipts
-
-Coq checks the proofs. Clight is the generated version of the C program those execution proofs follow. An update is one trip through the gameplay loop. Movement often breaks that trip into four quarter-steps. Those little steps don’t each get their own rendered frame.
-
-A **local execution proof** follows a real chunk of the generated program. Give it the stated memory and entry conditions, and it tells us what every completed execution of that chunk does. Getting Mario to that entry is still a separate job. The proof doesn’t spawn the setup for us.
-
-A **conditional model theorem** can cover as many steps as you like, provided they obey its model. We still have to connect relevant gameplay to those rules. An **exhaustive finite certificate** really checks every case in its declared set. A **bounded test** checks the trials we chose. A **supplied-state success** starts from a patched setup and shows the payoff. A reachable route needs an uninterrupted controller replay from the accepted start, with those patches gone.
-
-Keep an eye on the assumption labels. **Accepted** means a starting condition or rules contract we agreed to use. **Derived** means the indicated segment already proves it. **Still required** means the connection to earlier or later gameplay is missing. We don’t reopen a settled dependency just because another part is unfinished. A successful build or assumption audit checks the machinery; a giant pile of theorem files isn’t a gameplay completion meter. The atlas percentages are subjective route-promise judgments. They aren’t calibrated confidence, test failure rates or percentages finished.
-
-Our starting point is normally initialized SSL Area 1, with the agreed clean state and controller history. Ordinary controller play and defined, in-bounds glitches are fair game. Memory corruption and arbitrary state writes don’t count as gameplay. Also, already holding A without a new edge—a new press—and never having pressed A are different challenges. Held A needs a legitimate earlier held state. The negative-seed argument tracks an actual physical press in its history.
+| [Ink](#review-ink) | Three prepared position splits change the Area-2 arrival. | Can gameplay create a useful split at the right checks? |
+| [The pole issue](#review-pole) | A placed Goomba knocks Mario onto the ring. | Can an enemy legally reach that contact? |
+| [Eyerok](#review-eyerok) | A hand ride works; named departures hit height or speed limits. | Can another legal hand cycle or support break those limits? |
+| [The elevator](#review-elevator) | Ordinary launches fall short; grounded alignment blocks the named hold. | How can the useful airborne action begin? |
+| [Other platforms](#review-other-platforms) | The checked replacements/reload do not give useful transport. | Can a useful moving owner survive until use? |
+| [Target credit](#review-target-credit) | Collection and legitimate secret history are necessary in the proved account. | Can another reachable contact or revisit earn that credit? |
+| [Goomba raising / PU](#review-goomba-pu) | The named short raising schedules run out of height. | Can longer preparation and actual transport work? |
+| [Eyerok particles](#review-eyerok-particles) | Own fragments allocate too early; sibling fragments arrive too late. | Does the live allocation timeline fit the proved lifecycle? |
+| [Final reward](#review-final-reward) | A separate prepared pickup sets the active Puzzle bit. | Can one clean history finish the actual pickup and save write? |
 
 <details>
 <summary>The overall theorem and the starting-boundary distinction</summary>
@@ -43,56 +27,37 @@ The [current capstone](https://github.com/tra38/sm64-wmotr-abc-proof/blob/5c06ff
 
 The README's headline describes an Area-2 goal; its [linked gameplay boundary](https://github.com/tra38/sm64-wmotr-abc-proof/blob/5c06fff57155dc22d12f60c69f4c1c46d890e09a/SSL-Coq/less-than-one-a-press/README.md#L26) starts in Area 1. These are different interfaces. We use the agreed Area-1 start when discussing reachability, and preserve the explicit clean-pyramid/route premises of the capstone rather than silently connecting the two.
 
+### Versions and evidence scope
+
+This editorial review was checked against repository **a5cefb0f1769b65b54a65fbd7a1fe2d203ba469f**, on **codex/ssl-pyramid-item-proof**, 7 October 2026. No proof, gameplay search, solver or runtime trial was added. The first four chapters retain evidence version **5c06fff57155dc22d12f60c69f4c1c46d890e09a**; the next four retain **cac0adb6b0a72667980df60859bbdb042af66b63**; final reward retains **877dae5c457298fc847b6a6f677253025e8e228a**. The [lifetime audit](https://github.com/tra38/sm64-wmotr-abc-proof/blob/5c06fff57155dc22d12f60c69f4c1c46d890e09a/SSL-Coq/less-than-one-a-press/docs/notes/ink-gap-lifetime-audit.md) identifies pinned C and generated US/JP Clight.
+
+### How to read a claim
+
+Coq checks the proofs; Clight is the generated representation of the C program those execution proofs follow. A local execution theorem establishes what a specified completed program segment does under its entry and memory conditions. A model theorem covers its declared transition rules; relevant gameplay must still be connected to those rules. An exhaustive finite certificate covers its declared finite set. A bounded test covers its selected trials. A supplied-state success demonstrates payoff, not controller reachability.
+
+The evidence ledgers distinguish accepted starting/rules contracts, derived segment facts and connections still required. Counts of files, theorems and passing builds do not measure gameplay completion. The permitted execution model covers ordinary controller play and defined, in-bounds glitches, not memory corruption, arbitrary memory/code changes or continuations after undefined behavior.
+
 </details>
 
 <a id="review-ink"></a>
 
-## Ink: the gap can clock in before it vanishes
+## Ink: enter the pyramid with the wrong platform
 
-### Why this trick looked so good
+Take the upper entrance normally and Mario arrives in a descending elevator. Ink tries to change that arrival: have him remember the spinning pyramid top as his platform, carry that reference into Area 2, and let the next platform-motion calculation move him outside the usual starting position. Three artificially prepared Japanese-version setups show that payoff. What we haven’t built is the gameplay that creates their position split and reaches the entrance at the right time.
 
-Ink wants Mario to enter the pyramid while the game still remembers the spinning top as his platform. JP can carry that old address through the transition. At the first platform-motion apply in Area 2, the old top’s remaining movement fields can shove Mario outside the normal elevator start. There are three jobs here: **capture** the owner, **retain** its reference, then get useful **displacement** from it. US clears things differently on entry, so its case needs to stay separate.
+Start with Original at X=-2200, Z=-1024. Mario’s movement and collision heights are 768, while his stored display height is about 1939. Movement tells the game where to move him and query terrain; collision supplies his position for object contact; display supplies the stored graphics position, before other animation effects. We’ll call them M, C and D. Positive D−M puts display above movement; M−C puts movement above collision; D−C puts display above collision.
 
-Here’s the slightly cursed bookkeeping: Mario has more than one position. **M**, in MarioState, is the movement position. **C**, in Mario’s Object, is the raw collision position. **D** is the stored display position; even that isn’t necessarily the final animated mesh you see. Y goes up and down. XYZ always means X, Y, Z.
+Now follow one update. Object collision detection reads the low collision position first and records entrance contact. Terrain preparation then searches for a floor at the low movement position. That fails in Original’s tested scene, so the game copies display XYZ into movement XYZ and tries again. Movement is high enough to find the top, and the low contact recorded earlier is still there.
 
-We’ll keep three gaps separate. **D−C** puts display above collision. **M−C** puts movement above collision. **D−M** puts display above movement. A negative gap puts the first record lower. When the game copies a position, one gap can disappear while its useful effect moves into another record. Losing a gap doesn’t always mean losing the trick.
+The copy closes display-minus-movement, D−M, while handing its roughly 1171-unit difference to movement-minus-collision, M−C. The warp can use the earlier contact. That’s why arriving beside the portal only through fallback isn’t equivalent: fallback doesn’t run object-contact detection again. It can preserve a contact, but it doesn’t create that earlier contact for us.
 
-### Three setups that actually pay off—when supplied
+Variant takes a different starting split: movement at 1861, collision/display at 768, giving M−C of 1093. Its first lookup finds the top directly; floor queries allow a surface up to 78 units above the integer query height. Hybrid adds Original’s raised display to the high movement. A found floor still isn’t a landing. Once the entrance accepts the warp, Mario’s disappeared waiting action lines movement and display up with that floor. Copying movement into collision afterward lets the final platform check remember the top.
 
-The controls sit at X=-2200, Z=-1024. H is the checked timer-131 top height: 1938.8648681640625. Original starts with M/C/D=768/768/H. Variant starts with 1861/768/768. Hybrid gives Variant the raised display too: 1861/768/H. These are three supplied controls. We haven’t reached them through gameplay, and we aren’t claiming they’re the entire installer menu.
+By the update’s end the records agree. The trick has already used their disagreement, though, and the remembered platform carries the later displacement. We can’t judge Ink just by the final gap, or treat Original’s gap as the minimum for every installer. These tests grant pillar completion and patch the opening pose; they don’t give us a controller-reached approach window. The US version handles platform clearing differently on entry.
 
-The order does the work. Collision detection goes first, reads low C XYZ, and records portal contact. Geometry then looks for a floor at M. Original misses, so fallback copies D XYZ into M and tries again. Now it’s H/768/H. The D−M gap is gone, but its 1170.8648681640625-unit effect has become M−C. Variant already has a 1093-unit M−C gap. Its first query can find the top because floor lookup allows a floor 78 units above the integer query Y.
+Getting the split is the hard part. Normal ground alignment brings display along with movement. A stopped crawl can refresh display at the old movement height and then snap movement to a lower remembered floor, but we still need a reason for that floor memory. Moving-platform application comes before collision and can leave collision/display alone; useful rotation needs a real support and its motion. In the proved normal copy and zero-particle case, a fresh bounce comes after the warp check and its new movement/collision gap is copied away before another warp check can read it.
 
-A floor query finding the top hasn’t landed Mario on it. Variant is still about 77.864868 units below the checked top. Once the cached warp is accepted, Mario enters the nonfading disappeared action—the waiting state for this portal. That state still does ordinary floor alignment. M snaps to the cached floor height, D follows, and the later raw copy brings C along. By the final platform check, we have H/H/H. The height difference is strictly below four units, so it can capture the owner.
-
-And there goes the split, before the next complete boundary. **It has already done its job at the useful checks.** The retained pointer takes the payoff onward. Looking only at the zero gap at frame end would completely miss what just happened.
-
-| Phase in the supplied installation update | Original M/C/D | Variant M/C/D | Hybrid M/C/D |
-| --- | --- | --- | --- |
-| Contact recorded, before geometry | 768/768/H | 1861/768/768 | 1861/768/H |
-| Geometry complete; warp accepted | H/768/H | 1861/768/768 | 1861/768/H |
-| Disappeared floor alignment/display copy | H/768/H | H/768/H | H/768/H |
-| Raw copy and final capture | H/H/H | H/H/H | H/H/H |
-
-The supplied JP lifecycle tests see Area-2 movement go from (0,5500,256) to (365.5927734375,5500,-1096.8026123046875). They grant pillar completion and patch the installation pose once. That’s a working conditional payoff. Creating the gap is still missing, and no clean approach window has been established.
-
-### What the proofs shut down—and the leads still standing
-
-The real fallback proof protects the Object pool and contact cache through the copy, the actual floor retry and the height store. The local signed-16 conversion doesn’t write chopped-down coordinates back into M. Fallback goes to stored D. It isn’t an automatic ride to a portal, a platform or the “main universe.” If fallback merely brings Mario to the portal, it can’t invent cached contact during that segment. Contact already recorded before fallback is another situation, and Original shows why we care.
-
-Finding a floor still leaves work for contact eligibility, the actual warp handler, action guards and cleanup. If the later fresh floor read is null after interactions, the action suffix returns before dispatch. At the proved completed call, a live pending death/game-over request blocks replacement by an object-warp request. We still need the earlier death installation and its preservation through the intervening calls. The local guard proof doesn’t fill those in.
-
-The normal copies do shut down some ideas. With the stated receiver and storage conditions, a completed raw copy brings M and C together vertically. The completed zero-particle callback tail keeps them together. That last result needs the actual caller-local particle mask to be zero. Finding a zero State particle field later won’t substitute for it. And none of this automatically clears an arbitrary D gap.
-
-The four producer leads don’t all land in the same bucket. Accepted ground alignment makes D follow M. A stopped crawl can first refresh D at the old height, then snap M to a lower remembered floor. Its D−M gap is old movement height minus cached height. The catch: that stopped query doesn’t install the lower cache. We still need to explain where it came from and follow the matrix/action tail. Platform application happens early enough, before collision, and its full phase preserves C/D with ordinary storage. The specified nonrotating tail adds zero Y. A useful rotating case still needs its live owner and field history.
-
-A fresh bounce changes M during interactions, after the warp’s priority slot. There’s no second warp check before the normal raw copy. Under the completed-copy conditions, its new M−C gap can’t hang around for a later check. The real classifier-to-first-snap read connection is already proved; we don’t need to assume that match again. With the stated finite values and live height≤250, the new rise is at most 251 units. Earlier size/contact histories, inherited gaps and later writers still need their own connections.
-
-Quicksand depth stores how far Mario is sinking. Usually it lowers D. Make it negative and that adjustment can point upward instead. A negative seed plus a stalled dialog can keep raising D: the largest reviewed detected D−M is 1834 units, after 3668 real sink calls from a supplied -0.5 seed. Of 68 supplied releases, 56 move actual Mario before display refresh. Every first query still finds a floor and refreshes that update. Those continuations fail; the sample doesn’t close every release. The no-A seed argument is **already proved under its accepted writer, timer and first-action/input conditions**. That result stays settled. Applying those conditions to every live history remains separate. The temporary quicksand-jump negative is clamped before its helper checkpoint; late common landing has no matching immediate clamp.
-
-### What would finally settle this branch?
-
-We need allowed gameplay to create the first useful split with the right floor, contact and timing, then keep the same continuation through capture, retention and the first Area-2 apply. An uninterrupted controller-only replay would settle a positive case. To rule the branch out, cover every relevant producer: too small, too late for its consumer, or necessarily losing the payoff at final selection or lifetime. We already have a useful clearing theorem: final raw Y≤818 with an actual returned finite floor height≥1281 clears both platform references. The successful controls raise final C and escape that premise. So that theorem can’t be used to erase the supplied successes.
+Quicksand depth is Mario’s stored sinking amount: normally it lowers display, while a negative value lifts it. During a stalled dialog that lift can repeat. One supplied experiment built 1834 units of display-minus-movement, but all 68 tested releases found a floor and refreshed display in that update. Under the accepted account of depth changes, landing timing and how actions begin from physical inputs, a useful negative seed needs A. Extending that account to every gameplay history is a separate job. We need a legal gap producer that reaches contact and floor selection in time, then continues through platform capture, retention and Area-2 displacement.
 
 <details>
 <summary>Ink evidence ledger, assumptions and corrected interpretations</summary>
@@ -112,41 +77,68 @@ We need allowed gameplay to create the first useful split with the right floor, 
 
 The four-producer [boundary](https://github.com/tra38/sm64-wmotr-abc-proof/blob/5c06fff57155dc22d12f60c69f4c1c46d890e09a/SSL-Coq/less-than-one-a-press/proofs/InkConcreteProducerBoundary.v#L53) is a conjunction of separately checked cuts, not a proof that every producer history belongs to them. The [full lifetime audit](https://github.com/tra38/sm64-wmotr-abc-proof/blob/5c06fff57155dc22d12f60c69f4c1c46d890e09a/SSL-Coq/less-than-one-a-press/docs/notes/ink-gap-lifetime-audit.md) preserves exact source references, receipt locations and all phase conditions.
 
+### Exact numerical checkpoints and supplementary conditions
+
+### What the trick is asking
+
+Ink aims to enter the pyramid while remembering the spinning top as Mario's platform. JP can carry the old address through the transition. When Area 2 first applies platform motion, it can read the old top's remaining movement fields and displace Mario outside the ordinary elevator start. **Capture**, **retention** and **displacement** are separate jobs: first remember the owner, then keep the reference, then obtain useful motion from it. US's entry clearing is a different case.
+
+The interesting part is that Mario has more than one position. **M** is movement position in MarioState. **C** is raw collision position in Mario's Object. **D** is the stored display position, which need not equal the final visible animated mesh. Y is vertical; XYZ always means X, Y, Z.
+
+**D−C** is display above collision; **M−C** is movement above collision; **D−M** is display above movement. A negative value means the first record is lower. The game can copy one record into another, removing one difference while transferring its effect.
+
+### What the supplied controls actually show
+
+At X=-2200, Z=-1024, let H=1938.8648681640625, the checked timer-131 top height. Original begins at M/C/D=768/768/H. Variant begins at 1861/768/768. Hybrid adds a raised display to Variant: 1861/768/H. These are three supplied controls, not every possible installer and not three reached gameplay poses.
+
+Collision detection runs before Mario's geometry. It reads low C XYZ and records portal contact. Geometry then queries at M. Original's first query misses, so fallback copies D XYZ into M and retries. It becomes H/768/H: D−M disappears, but the 1170.8648681640625-unit effect is now M−C. Variant already has a 1093-unit M−C gap. Its first query can find the top because the lookup allows a floor 78 units above its integer query Y.
+
+Finding the floor is not landing on it. Variant remains about 77.864868 units below the checked top at that point. After the cached warp is accepted, Mario enters the nonfading disappeared action, the game's waiting state for this portal. It still performs ordinary floor alignment: M snaps to the cached floor height and D follows. The later raw copy makes C follow M. The final platform check now sees H/H/H and can capture the owner with a height difference strictly below four units.
+
+So the entry split disappears before the next complete boundary, **after useful checks have consumed it**. The retained pointer carries the effect onward. A zero gap at frame end would miss the installation mechanism.
+
+| Phase in the supplied installation update | Original M/C/D | Variant M/C/D | Hybrid M/C/D |
+| --- | --- | --- | --- |
+| Contact recorded, before geometry | 768/768/H | 1861/768/768 | 1861/768/H |
+| Geometry complete; warp accepted | H/768/H | 1861/768/768 | 1861/768/H |
+| Disappeared floor alignment/display copy | H/768/H | H/768/H | H/768/H |
+| Raw copy and final capture | H/H/H | H/H/H | H/H/H |
+
+The exact supplied JP lifecycle tests observe Area-2 movement from (0,5500,256) to (365.5927734375,5500,-1096.8026123046875). They grant pillar completion and patch the installation pose once. That demonstrates conditional payoff, not creation of the gap. No clean approach window has been established.
+
+### What the proofs eliminate, and what they leave
+
+The new real fallback proof preserves the Object pool and contact cache through the copy, actual floor retry and height store. Local signed-16 conversion does not write truncated coordinates back into M. Fallback returns to stored D, not automatically to a portal, platform or “main universe.” Arriving at the portal only because of fallback cannot invent a cached contact during that segment. An already cached contact is different; Original shows why that case matters.
+
+A successful query alone does not prove warp acceptance. Contact eligibility, the actual handler, action guards and cleanup still matter. If a later fresh floor read remains null after interactions, the action suffix returns before dispatch. A live pending death/game-over request cannot be replaced by a completed object-warp request. But the earlier death installation and preservation through intervening calls are still separate connections.
+
+Ordinary copies also have real exclusions. The completed raw copy cannot leave M and C vertically different under its receiver/storage conditions. The completed zero-particle callback tail preserves that equality. The actual caller-local particle mask must be zero; merely seeing a zero State particle field later is insufficient. These facts do not erase an arbitrary D gap.
+
+For the producer hunt, the four concrete leads have different verdicts. Accepted ground alignment refreshes D to M. A stopped crawl can instead refresh D at an earlier height, then snap M to a lower remembered floor. That creates D−M equal to old movement height minus cached height—but the stopped query does not install that lower cache. Its provenance and the remaining matrix/action tail are open. Platform application is early enough, before collision; the full phase preserves C/D under ordinary storage conditions, while a specified nonrotating tail adds zero Y. Useful live rotation still needs its own owner/field history.
+
+A fresh bounce changes M during interactions, after the warp's priority slot. There is no second warp check before the ordinary raw copy. Under the completed-copy conditions, its fresh M−C gap cannot wait for a later check. The real classifier-to-first-snap connection is now proved; that read match need not be assumed again. With the stated finite values and live height≤250, the new rise is at most 251 units. Explaining every earlier size/contact history, inherited gaps and later writers remains open.
+
+Quicksand depth is Mario's stored sinking amount. Normally it lowers D; a negative value can turn that adjustment into an upward offset. Negative depth plus a stalled dialog can repeatedly raise D. The largest reviewed detected D−M is 1834 units after 3668 real sink calls from a supplied -0.5 seed. Among 68 supplied releases, 56 move actual Mario before display refresh, but every first query finds a floor and refreshes that update. That rejects those continuations, not all releases. The no-A seed argument is **already proved under its accepted writer, timer and first-action/input conditions**. It is not reopened here. Deriving those conditions for every live history remains separate; the quicksand-jump temporary negative is clamped before its helper checkpoint, whereas late common landing has no equivalent immediate clamp.
+
+### What would settle Ink
+
+We need the first useful split and floor/contact/timing combination from allowed gameplay, plus the same continuation through capture, retention and first Area-2 apply. A controller-only replay would settle a positive case. An exclusion must show that every relevant producer is too small or reaches its consumer too late, or that final selection/lifetime necessarily destroys its payoff. The existing low-final-C/high-floor clearing theorem is useful: it clears both platform references when final raw Y≤818 and the actual returned finite floor height≥1281. The successful controls avoid that premise by raising final C.
+
 </details>
 
 <a id="review-pole"></a>
 
-## The pole issue: getting off is only step one
+## The pole issue: damage can supply the departure
 
-### Where Mario actually needs to go
+Put a Goomba in the right place and damage can knock Mario from the second pole onto the upper ring without a new A press. The staged tests show that part working. Mario can even be holding the pole normally; handstand isn’t required. The missing part is getting an enemy there through ordinary gameplay and finishing the route afterward.
 
-The lower pyramid entrance takes Mario to the second pole. Getting him to let go sounds like the whole problem, but the useful destination is the ring/aperture beyond it. The checked central pole-top seed is (0,4020,1331), and the ring floor is at Y=3942. In the model, the opening spans X=-101..102 and Z=1229..1434. Mario needs enough sideways travel before he drops too low, then a continuation toward the target star. A release that dumps him back down the pole has not done the job.
+Mario needs to move sideways before he drops below the opening. He’s around Y=4020 near the pole top, with the ring floor at Y=3942. A normal jump provides a useful departure; letting go can simply return him to the lower floor. In the studied soft-bonk trajectory he gets at most 82 units from the pole when he needs 101. That modeled departure falls short, and the two enemy-free Z-release tests fall back down too.
 
-This is why the A-button obstacle shows up so quickly: the normal jump off gives Mario a useful departure. But “the normal jump uses A” is not the same claim as “every departure needs A.” Z releases, bonks, damage and action changes each get their own check. We cannot close those routes by borrowing the conclusion from the normal jump.
+Taking damage sends him into a different action and trajectory. Three prepared contacts reach the ring, including one that keeps the handstand’s extra 174 units. We don’t need a giant Goomba: a regular one on the ring has a top just three units below holding Mario, and a normal jump bridges that difference. Its position and timing are what make the hit useful.
 
-### The bonk falls short. Damage has an opening.
+There are six individual stock Goombas and a triplet to work with. The limited terrain graph found no ring approach among its short walking, jumping and transfer moves. It didn’t cover long flights, hard-fall rebounds or repeated pushes. So the question is quite concrete: can one of these actors legally reach a nonlethal hit while Mario keeps a useful pole pose, then send him onto the ring?
 
-Start with the soft-bonk model. Mario begins at Y=4020, loses height, and gets only a little farther from the pole. By the time the eligible floor window closes, his radius is at most 82; he needs 101. That rules out this envelope under its stated conditions. It does not rule out every pose Mario could release from. The retail fixtures add two concrete failures: timed Z release starts at 4070, delayed release starts at 4020, and both end back at the Y=3200 base. Those two releases fail. We have not turned two trials into every possible release.
-
-Then damage makes things more interesting. We have checked local executions of the actual pole damage-selection fragment and falling initializer. Three staged JP contacts, at Y=4194, 4020 and 4070, send Mario toward the ring and land him on Y=3942 without a new A edge. So there is a local payoff here. Handstand can preserve its extra 174 units locally, but this fixture does not even need handstand: holding the pole works too.
-
-The catch is the setup. These tests stage the area loading, Mario's pole pose and a Goomba's position. The supplied attack is a **payoff demonstration**: arrange this contact, and the departure can work. The Goomba still has to get there in stock gameplay, and Mario still has to arrange that contact from the accepted start. The fixture has not done those jobs for us.
-
-### Great. Now get the enemy there.
-
-The stock roster gives us six singleton regular Goombas and a triplet. The contact numbers are encouraging. A regular Goomba on the Y=3942 ring reaches top 4017, just three below Mario holding at 4020; one ordinary 21-unit rise brings it high enough. Its 108 radius plus Mario's 37 can cover the nearby horizontal distance. We do not need a gigantic enemy for this part. We do need to deliver a normal-sized one to the right place.
-
-An older finite terrain graph found no reviewed path from the nine actors to the ring, and Coq checks the graph's encoded receipt lists. That is useful evidence about that graph. It does not establish that every real Goomba trajectory fits its short walking, jump and pair-transfer edges. Long airborne transfers, hard-fall rebounds and repeated pushes are left out. Calling the graph a universal exclusion would make it cover moves it never actually checked.
-
-The other departures also need careful labels. Collecting the no-exit coin star while Mario is still attached selects a standing dance and snaps him to the actual cached floor; it does not automatically launch him into the air. The checked Amp-shock composite zeroes horizontal motion, stays vertically stationary only on its first update, then falls to the base on update 21 and fails its stock corridor/support cases. That closes those cases, not Goomba knockback: the staged Goomba payoff works. Likewise, the direct action-request censuses and local A tests close their listed requests, rather than every later collision or support history.
-
-The source model protects the named private action tables too. A calculation using a hypothetically changed table is not a stock gameplay setup, and corruption is outside this review's allowed model. Table protection still leaves ordinary contact and exported-state questions to answer. We also have a cleaner geometric exclusion: the checked stock targets are too far sideways to touch from inside the unchanged pole aperture. Mario cannot collect them straight across that barrier under those conditions. A different target pose or a real departure is a separate case.
-
-### The missing link is an actual approach
-
-For the damage route, we need a stock actor to approach legally and make nonlethal contact while Mario is still in a useful pole state. Then that same continuation has to survive the selected damage action, walls, ring landing and onward target contact. A clean replay would establish that route. To rule it out, we need coverage of the falls, rebounds and flights the old graph leaves out—or a different invariant that bounds every useful enemy approach and departure.
-
-The overall lower-cut theorem has its own requirements: an actual target event must have an earlier validated crossing, and the listed writer/support alternatives must be excluded. The normalized bonk proof does not establish those premises. There is also a reconstructed one-A segment that reaches the downstream Grindel neighborhood. Its receipt stops before Grindel landing, all five Puzzle triggers or a target save-bit update. Useful progress, but the finish is not in that receipt.
+The other tested departures behave differently. Pick up a coin star while still attached and Mario chooses a standing dance, lining up with his remembered floor rather than automatically launching. The checked Amp-shock sequence removes sideways motion and falls to the base. Those failures don’t undo the Goomba-damage success. The checked targets are also too far sideways to touch from inside the unchanged opening. Even a useful enemy arrival still has to finish the ring landing and collection; getting Mario to let go isn’t the whole trip.
 
 <details>
 <summary>Pole evidence ledger and superseded claims</summary>
@@ -163,43 +155,53 @@ The overall lower-cut theorem has its own requirements: an actual target event m
 
 **Superseded readings:** “only A can leave the pole” is false. Y4020 is not every release height. The transfer graph does not cover all airborne motion, and the separate 91-frame Goomba-raising bound belongs to its exterior top-window proposal, not every Area-2 enemy approach. A successful known one-A route cannot prove that an alternative needs A.
 
+### Exact numerical checkpoints and supplementary conditions
+
+### What the route needs
+
+The lower pyramid entrance leads to the second pole. The useful destination is the ring/aperture beyond it, not simply any state in which Mario lets go. The checked central pole-top seed is (0,4020,1331); the ring floor is Y=3942. The modeled aperture spans X=-101..102 and Z=1229..1434. Mario must get sideways far enough while still high enough, then continue toward the target star.
+
+This explains the familiar A-button obstacle: the normal jump off supplies a useful departure. It does not prove every departure requires A. Z releases, bonks, damage and action changes deserve separate checks.
+
+### What fails, and what really works locally
+
+The normalized soft-bonk model starts at Y=4020 and loses height while gaining little radius. Before the eligible floor window closes, its radius is at most 82, short of the required 101. That is a real conditional exclusion of that envelope. It is not a theorem about every released pose. In the retail fixtures, timed Z release begins at 4070 while delayed release begins at 4020; both fail and return to the Y=3200 base. Those two trials are evidence about those releases.
+
+Damage changes the story. The actual pole damage-selection fragment and falling initializer have checked local executions. Three staged JP contacts at Y=4194, 4020 and 4070 cross toward the ring and land on Y=3942 without a new A edge. The 174 extra handstand units can survive locally, but handstand is not required by this fixture: holding also works.
+
+What was staged? Area loading, the pole pose and a Goomba's position. The supplied attack is a **payoff demonstration**. It says “if we arrange this contact, the departure can work.” It does not say the stock Goomba can arrive there, or that Mario can arrange that damage contact from the accepted start.
+
+### The enemy problem and the other departures
+
+The stock roster has six singleton regular Goombas and a triplet. Contact arithmetic is encouraging: a regular Goomba on the Y=3942 ring has top 4017, only three below holding Mario at 4020; one ordinary 21-unit rise brings it high enough. Its 108 radius plus Mario's 37 can cover the nearby horizontal distance. Those calculations remove a need for an enormous enemy; they do not deliver it.
+
+The older finite terrain graph reports no reviewed path from the nine actors to the ring. Coq checks its encoded receipt lists. It does not prove that every actual Goomba trajectory fits its short walking/jump/pair-transfer edges. Long airborne transfers, hard-fall rebounds and repeated pushes are omitted. Treating that graph as a universal installer exclusion would be a mistake.
+
+Two tempting alternatives have narrower failures. Collecting the no-exit coin star while still attached chooses a standing dance and snaps to the actual cached floor; it is not an automatic airborne launch. The checked Amp-shock composite zeroes horizontal motion, is vertically stationary only on the first update, then falls to the base on update 21 and fails its stock corridor/support cases. That failure must not be applied to ordinary Goomba knockback, whose staged payoff succeeds. Direct action-request censuses and local A tests close their listed requests, not all later collision and support histories.
+
+The source model also protects the named private action tables. Hypothetical changed-table arithmetic is not a stock gameplay installer, and corruption is outside this review's allowed model. Protection of those tables does not close every ordinary contact or exported-state issue. The checked stock targets are also too far horizontally to touch while Mario remains inside the unchanged pole aperture; this prunes the direct across-barrier contact, not alternate target poses or an actual departure.
+
+### What is still needed
+
+For damage, the exact missing connection is a stock actor's legal approach to nonlethal contact while Mario remains in a useful pole state, followed continuously through the selected damage action, walls, ring landing and onward target contact. A clean replay would establish a positive route. A negative theorem needs live trajectory coverage of the omitted falls/rebounds/flights, or another invariant that bounds every useful enemy approach and departure.
+
+The overall lower-cut theorem also requires that an actual target event has an earlier validated crossing and that the listed writer/support alternatives are excluded. Those are premises, not conclusions of the normalized bonk proof. A reconstructed one-A segment reaches the downstream Grindel neighborhood, but its receipt explicitly stops before Grindel landing, all five Puzzle triggers or a target save-bit update.
+
 </details>
 
 <a id="review-eyerok"></a>
 
-## Eyerok: the hands do a lot, but the route still needs receipts
+## Eyerok: a moving hand still needs a useful destination
 
-### Why put the boss hands to work?
+A moving Eyerok hand really can take Mario upward. In a prepared US test he boards through punching and jump-kick, pressing B with A already held, then rides to a hand top at Y=-943. That local action sequence works; the earlier approach and boss schedule were supplied. We’re borrowing the hands for transport or speed, because simply beating Eyerok gives a different star from the pyramid targets.
 
-First, beating Eyerok gives the wrong star for this project. The normal boss reward uses star index 3; our targets use indices 2 and 5. So the boss fight cannot substitute for either pyramid target. The interesting idea is to treat the hands as moving floors: board one, keep useful speed while it rises or changes shape, reboard after an attack, or carry its platform reference through a warp.
+Where can he go from there? The nearest studied tunnel floor is Y=-562. Mario needs a departure with enough upward speed and clearance, not just a ride. Even a generous calculation allowing the ledge check and floor-query tolerance has every integer starting vertical speed through 31 miss. The best query is seven units short. Speed 32 clears the arithmetic threshold, but we haven’t supplied it with a legal stronger launch. Jump-kick replaces upward speed; it doesn’t add another jump on top.
 
-That makes “the Eyerok exploit” a bundle of related routes. A ride needs a usable hand contact and enough height or speed to depart somewhere useful. A stale-hand route needs to capture an owner at the warp, keep usable bytes or replacement motion, and reach useful target contact afterward. The sleeping-hand “Pedro” idea needs enough independently obtained speed to cross the wall band into a narrow floor/ceiling squeeze. Same boss, different jobs.
+The proof work follows actual velocity and height calculations for selected double-pound flight steps too. The hand’s origin rises 285 units. We still need the full flight’s floor checks, impact, reset and next launch joined together. Repeating a schedule inside the proved set of action effects can’t grow unlimited speed. The remaining cycle question is whether every relevant hand cycle stays in that set.
 
-### The ride is real. Its setup is still supplied.
+A different destination gets a different answer. The broader two-hand model grants enough height and extra Mario rise to reach 1809, below the high-floor query threshold of 1889. That blocks this destination within the model, not the lower tier. Standing on top puts Mario’s attack above the eye, yet a supplied long-jump test does reboard after the hand returns home. It doesn’t give us a compatible no-new-A launch or a useful departure afterward.
 
-A staged US retail ride actually goes idle → punching → jump-kick, using a B edge with A already held. Mario catches the rising hand at a 49-unit gap, then rides its movements of 85, 70, 55, 40, 25 and 10 units to top Y=-943. That supersedes the older claim that we had to inject this local action predecessor directly. This part can happen through the tested action sequence. The earlier travel, hand contact and boss schedule are still supplied.
-
-The selected double-pound flight has stronger source support. Actual US/JP Clight prefixes construct ten specified velocity/Y steps: six up, four down. The origin rises 285 units, and the closed mesh offset is 306, giving the selected top ceiling -943. But those prefixes stop before the water-query tail. We have not yet joined them into the entire ten-update flight, impact, reset and next launch. The checked pieces are finished; that longer connection is not.
-
-Here, “seed” means Mario's starting vertical speed, not quicksand depth. In the ideal departure model, every integral seed through 31 misses the Y=-562 tunnel floor. Even if we grant the full 160-unit ledge check and the 78-unit floor allowance, seed 31 only gets the query ceiling to -569. Seven units short. Seed 32 crosses the arithmetic threshold, but we do not have the stronger clean predecessor that supplies it. Jump-kick does not rescue the shortfall by adding another arc: it replaces vertical speed with 20.
-
-We also have a theorem that the modeled six-effect schedule keeps the seed limit through any finite number of cycles. That is a genuine universal result **within that effect alphabet**. The advertised 181,944 combinations are arithmetic quotient tuples, not every analog-input sequence. The remaining job is to show that every relevant live frame belongs to that alphabet. The theorem does not quietly do that classification for us.
-
-### Each other hand route gets its own verdict
-
-The broader two-hand envelope puts the later hand surface at no more than 1179. Grant Mario another 630 and he reaches 1809, still below the 1889 query threshold for the Area-2 floor at Y=1967. That high-floor payoff is ruled out within this envelope. The Y=1280 tier is a different destination, so it needs its separate archived wall/path exclusions, with speed≤48 and the stated travel/quarter-step budgets. Together these are specific exclusions, not a blanket claim that Mario can never return to Area 2.
-
-Attacking and reboarding is not a closed case either. A standing attack fails because Mario on the hand's top is above the eye hitbox. But an injected long-jump fixture does reboard nonlethally after the hand returns home. It does not ride the immediate hit impulse. Ordinary long-jump entry needs a fresh A edge, and this fixture supplies no compatible no-new-A predecessor. It also leaves the useful later departure missing. The lethal direction/braking trials fail, but those trials are not every analog schedule.
-
-Sleeping-hand speed has a steep entry price: the model needs speed over 400. Start generously at 110, allow 0.15 per air update for 400 updates, and Mario reaches only 170. The named stock platform drops also stay below the strict 100-unit off-floor requirement, while the modeled preserving butt-slide bounce cannot repeat without normalization. Inject speed 424 and the landing payoff works. That tells us what supplied speed can buy. The stock-cycle exclusion still needs the real owner tracks, action transitions, collision refresh and episode bounds to follow the model.
-
-The JP stale-hand construction is retired within its audited stock classification: the modeled installation bands and later motion do not provide useful transport. Its one modeled nonidentity replacement moves about eight down and 38 backward. That does not classify every live hand pose or slot history, and there is no modeled Act-6 continuation for this construction. The wake-sandwich proposal has a similar split verdict: its update-11 entry/update-12 closure rules out a repeat-ground speed engine, but leaves a one-update cache installer open. Other seams and partial-update flag histories still need their exact writers and transforms.
-
-### What would actually close an Eyerok route?
-
-For the selected ride, join the proved movement prefixes through the real floor/contact work, terminal clamp, impact/reset and every later launch. Then either show that reboarding cannot break out of the height/speed envelope, or find the first legal step that does. A positive route needs one controller history that supplies the useful seed, boards the hand, makes the departure, takes the warp and reaches target contact. The hand ride alone is one part of that story.
-
-A family-wide exclusion needs more than a theorem about a model. Live ownership, collision selection, actor lifetime and action/callback histories have to justify that model's classification. Archived hand results still count as supporting evidence under their original premises. Being in the archive does not automatically make a result part of the current capstone.
+The sleeping-hand trick asks us to bring speed instead of height. Its supplied fast landing can work, but the studied speed-building cycle reaches only 170 against an entry requirement over 400. The audited JP stale-hand route also gives no useful transport in its classified cases. These are separate mechanisms with separate conditions. A survivor needs a legal approach, hand contact, complete cycle and departure to its destination. A stronger launch, different support or unclassified hand history remains the opening; [Eyerok particles](#review-eyerok-particles) handles the fragments separately.
 
 <details>
 <summary>Eyerok evidence ledger, active versus archived work</summary>
@@ -219,45 +221,57 @@ A family-wide exclusion needs more than a theorem about a model. Live ownership,
 
 [Current Eyerok atlas scope](https://github.com/tra38/sm64-wmotr-abc-proof/blob/5c06fff57155dc22d12f60c69f4c1c46d890e09a/SSL-Coq/less-than-one-a-press/docs/no-a-route-atlas.md#L1366) retains the wake installer, seams/partial updates, alternate speed predecessors and separate lower-tier cases. None is silently closed by the selected ride barrier.
 
+### Exact numerical checkpoints and supplementary conditions
+
+### Why investigate the boss hands?
+
+Eyerok's ordinary reward is a different star: normal boss-star index 3, whereas the targets use indices 2 and 5. Beating the boss does not substitute for collecting either pyramid target. The idea is to use the hands as moving floors: board one, preserve speed while it rises or changes shape, reboard after an attack, or carry a platform reference through a warp.
+
+That gives this category several related routes, not one “Eyerok exploit.” A ride needs a usable hand contact and enough height/speed for a departure. A stale-hand route needs an owner captured at the warp, surviving bytes or replacement motion, and useful target contact afterward. The sleeping-hand “Pedro” idea needs enough independently obtained speed to cross the wall band into its narrow floor/ceiling squeeze.
+
+### What the ride proves
+
+A staged US retail ride really performs idle → punching → jump-kick with a B edge and A already held. It catches a rising hand at a 49-unit gap, then rides its movements of 85, 70, 55, 40, 25 and 10 units to top Y=-943. Earlier claims that this local action predecessor had to be directly injected are superseded. The earlier travel, hand contact and boss schedule are still supplied.
+
+The selected double-pound flight has stronger source evidence: actual US/JP Clight prefixes construct ten specified velocity/Y steps, six up and four down. The origin rises 285 units; the closed mesh offset is 306, giving the selected top ceiling -943. Those prefixes stop before the water-query tail. They do not yet connect the entire ten-update flight, impact, reset and next launch.
+
+“Seed” in this argument means Mario's starting vertical speed, not quicksand depth. Within the ideal departure model, every integral seed through 31 misses the Y=-562 tunnel floor. Even granting a full 160-unit ledge check and the 78-unit floor allowance, seed 31 reaches a query ceiling of -569: seven units short. Seed 32 crosses the arithmetic threshold, but no stronger clean predecessor is established. A jump-kick replaces vertical speed with 20; it does not stack an extra arc on top of conserved speed.
+
+The modeled six-effect schedule preserves the seed limit for any finite number of cycles. This is a real universal theorem **within that effect alphabet**. The advertised 181,944 combinations are arithmetic quotient tuples, not an exhaustive analog-input search. Classifying every live frame into the alphabet remains open.
+
+### The other hand routes have their own boundaries
+
+The broader two-hand envelope bounds the later hand surface at 1179. Granting Mario another 630 reaches 1809, below the 1889 query threshold for the Area-2 floor at Y=1967. This excludes that high-floor payoff within the envelope. It does not exclude the separate Y=1280 tier. The latter has its own archived wall/path exclusions under speed≤48 and travel/quarter-step budgets; those are not a blanket “cannot return to Area 2” theorem.
+
+Attacking and reboarding is also not generally disproved. Standing on the hand's top is above the eye hitbox, so the simple standing-attack plan fails. But an injected long-jump fixture nonlethally reboards after the hand returns home. It does not ride the immediate hit impulse. Ordinary long-jump entry needs a fresh A edge; this fixture supplies no compatible no-new-A predecessor. Its useful later departure is also missing. Lethal direction/braking failures exclude those trials, not every analog schedule.
+
+For sleeping-hand speed, the modeled entry needs speed over 400. Starting at a generous 110 and allowing 0.15 per air update for 400 updates reaches only 170. Named stock platform drops stay below the strict 100-unit off-floor requirement; the modeled preserving butt-slide bounce cannot repeat without normalization. An injected speed-424 landing demonstrates the payoff once speed is supplied. The stock-cycle exclusion still depends on actual owner tracks, action transitions, collision refresh and episode bounds obeying the model.
+
+The JP stale-hand construction is retired within its audited stock classification: its modeled installation bands and later motion do not supply useful transport. The one modeled nonidentity replacement moves about eight down and 38 backward. That is not proof that every live hand pose and slot history satisfies the classification. There is no modeled Act-6 continuation for this construction. The wake-sandwich proposal's update-11 entry/update-12 closure also rules out a repeat-ground speed engine, while leaving a one-update cache installer open. Other seams and partial-update flag histories need their exact writers and transforms.
+
+### What would settle an Eyerok route?
+
+For the selected ride, connect the proven movement prefixes through real floor/contact work, the terminal clamp, impact/reset and every later launch. Then show that reboarding cannot escape the height/speed envelope—or exhibit the first legal step that does. For a positive route, the same controller history must establish the useful seed, boarding, departure, warp and target contact.
+
+For a family-wide exclusion, live ownership, collision selection, actor lifetime and action/callback histories must justify the model classification. A theorem over the model cannot stand in for that connection. Archived hand results remain supporting evidence with their original premises; archive presence does not automatically make them part of the current capstone.
+
 </details>
 
 <a id="review-elevator"></a>
 
-## The elevator: having the height and getting the move are different problems
+## The elevator: the useful move needs a way to begin
 
-### First, meet the cage
+The upper entrance puts Mario on an elevator boxed into a shaft. He needs to get high enough above the walls and move sideways before dropping back inside. The studied normal rollout and jump-kick with A already held don’t reach that height. Ground-pound startup might: Mario lifts while the elevator lowers. The question is how to begin ground pound without another A press, then use the height to get out.
 
-Take the upper pyramid warp and Mario arrives on an elevator descending inside a shaft. We want him out through the walls while useful pyramid terrain is still within reach. Ink would change the way he arrives. Here, we're asking what the stock elevator gives us if that installation never happened.
+Here’s why it looked worth trying. The modeled full rollout peaks around 228 units above the base; jump-kick gives 135, below the strict 231-unit cutoff. Grant a ground-pound start and the descending-support scenario reaches 260 after 15 updates. That’s useful height, but startup stops horizontal speed too. We still owe both a way into the move and a sideways departure afterward.
 
-Rollout and a jump-kick with A already held were sensible first picks: both can lift Mario without a fresh A edge. But their full arithmetic return envelopes peak at 227.5 and 135 relative units. The checked cutoff is strictly above 231. Close is still short. The selected JP wall, floor and ceiling traces fail too. Checking four representative held-A faces doesn't cover every continuous launch pose, but these full-return numbers do supersede the older partial-frame estimates. And waiting for rollout's animation to finish doesn't unlock another move: the actual code keeps Mario in rollout, rather than handing him a freefall or ground-pound entry.
+Another idea leaves Mario at his original height while the elevator drops ten units eleven times. Under the proved grounded-movement conditions, that hold doesn’t happen: floor queries find the current base, the ceiling is high enough, and each descent lines Mario up with the base again. We need the actual wall-corrected queries and live floor lists to keep satisfying those conditions, or a first legal exception that breaks them.
 
-Ground pound offers a different deal. Mario rises during startup while the elevator keeps descending. In the granted 15-update scenario, that puts him 260 units above the base—past the cutoff. Startup itself contributes at most 110; the descending support supplies the rest. **The height window works conditionally. Getting into ground pound is the missing part.** Startup also stops horizontal speed, so even the height win still needs a way to leave sideways.
+Harder falls have a different story. A supplied arithmetic example rebounds from a strong impact and reaches a 565-unit floor gap after 31 updates. That passes a freefall action gate the ordinary slide-kick misses. But the initializer fixes launch speed, so we can’t inherit that stronger impact before initialization; something afterward has to cause it. The separate ground-pound input and useful escape still follow that gate.
 
-### Can Mario stay up while the elevator drops?
+Could an enemy or coin change the action for us? The fixed coin layouts miss the cage, although a supplied coin arriving underneath can snap onto the bottom base. That doesn’t arrange the spawn or collection; even a useful 100th coin needs its star placed and timed correctly. A Goomba on the low floor beside the wall needs a harder rebound than a normal jump to reach Mario. The limited actor tests didn’t deliver that hit.
 
-Here's the proposed trick: keep Mario at his old Y while the elevator drops ten units, eleven times. That would build the off-floor difference needed to enter an airborne action. The elevator moves away; Mario gets the separation without having to jump for it.
-
-The completed grounded-quarter proof closes that particular trick **under its query contract**. Each contracted descent lines Mario back up with the current base. The result covers any supplied finite number of those calls, so eleven of them cannot leave him at his starting height. This isn't assuming that alignment magically persists between calls. The intervening work preserves Mario's Y, and the next call proves alignment again.
-
-The contract spells out what that result needs: a real, nonnull floor at the current base height; a ceiling high enough; the shell-riding bit clear; and proposed Y matching the Y Mario carried into the call. It also specifies the numerical base range and which actual receiver, reads and writes the proof follows. With those conditions in place, repeatedly choosing blocked grounded steps cannot produce the eleven-descent hold.
-
-There's real support for those conditions. The base covers its interior. Inside the checked rectangle, the positive-Y static support is low. Ordinary underside queries skip the base as a ceiling, and no static triangle enters the proved shaft corridor. Skipping a surface load during time stop doesn't, by itself, delete surfaces that are already there. The unfinished connection is to the complete live situation: loading, rounded plane heights, floor-list membership and every query after wall correction. A first legal failure of one of those facts would give us an actual exception to investigate, instead of another assumed way to stay up.
-
-### Okay, what about a harder fall—or some help?
-
-“Mario is never more than 100 units from the floor” would be a convenient shortcut. It's also false. Grounded and airborne phases need different rules. The ordinary slide-kick profile fails its freefall timeout gate: the checked gaps are 142 and 206, while the gate wants a gap over 500 and a timer over 30. Supply an impact speed of -75, though, and the arithmetic changes. The rebound is 37.5, and the gap reaches 565 at update 31. That passes the freefall gate in this example; entering ground pound still needs a separate eligible Z transition. The real initializer sets launch speed to 12, so we can't smuggle in -75 before it. A harder fall produced afterward is still an open branch.
-
-There also isn't a convenient coin waiting on the cage. The checked fixed layouts miss the enlarged base, and the formation-offset exclusions apply within their own bounds. In the supplied catcher example, a coin arriving underneath can query the floor and snap onto the bottom base. That's useful behavior, but it doesn't arrange the enemy's defeat, the spawn, the coin's trajectory, lasting support or collection. One yellow coin doesn't unlock ground pound anyway. A useful 100th coin also needs the star in the right place and the action at the right time. Separately, horizontal contact distance rules out touching the checked target stars or secret triggers while Mario stays inside the unchanged elevator footprint. It doesn't rule out a differently placed target, or Mario actually escaping.
-
-The Goomba geometry is close enough to deserve attention. At the supplied west-wall contact, a Goomba at X=-551, Z=-187 can meet the vertical and horizontal allowances after a sufficiently hard fall rebound. But its real floor is below the elevator. Walking there, or making an ordinary jump from that low floor, doesn't do the job. Isolated stock-actor searches got some raised eastern Goombas into the low pit; none delivered elevator contact. Those trials leave hard rebounds, roofs and airborne transfers outside their coverage. And even reaching the bottom cage wouldn't skip the second pole later in the route.
-
-The distant fresh triplet has a firmer verdict, with a specific boundary. Its unloaded parent at stock X/Z has a calculated distance of at least 3882 from raw Mario anywhere in the full elevator base, under the checked finite vertical-difference range. Activation requires a distance strictly below 3000. Coq carries the nonspawning result through any finite sequence of contracted checks; the required parent fields, distance interval and Mario confinement are explicit. So fresh spawning is closed under that confinement contract. Children spawned earlier and the six singleton Goombas are separate cases.
-
-### What would actually settle escape?
-
-For ordinary grounded play, connect the live floor/query contract across the actual allowed inputs—or find the first legal update that breaks it. For the harder-fall idea, show how the fall happens after the initializer, reaches the airborne action and timer gate, and leads to a useful sideways exit. For enemy or coin help, show a stock actor's actual approach, defeat/contact and collectible trajectory while Mario remains confined, then carry that same continuation through the action change and departure.
-
-An uninterrupted replay with no new A press would settle a positive case. To settle a negative one, we have to cover the surviving support, action and impulse alternatives. Repeating the ordinary launches that already failed won't close those branches. The height and alignment proofs are finished at their stated boundaries. Connecting them to every relevant elevator history is the remaining gameplay question.
+The fresh stock triplet has a firmer exclusion under the confinement and parent-history contract: its parent stays at least 3882 away when activation needs strictly less than 3000. That leaves earlier children and individual Goombas separate. The checked targets are also out of direct touch range inside the unchanged cage. We need a legal action/support exception or enemy/coin arrival, then sideways escape that actually works. Reaching the bottom cage wouldn’t skip the pole later on.
 
 <details>
 <summary>Elevator evidence ledger and the contracts that remain</summary>
@@ -277,33 +291,55 @@ The square-root issue is not simply “we do not know what sqrt does.” The [ex
 
 **Superseded readings:** old quarter/frame peaks are replaced by full-return 135/227.5. The eleven-descent alignment completion is no longer open inside its contract. A 260-unit granted startup does not prove entry, and the airborne counterexample prevents extending the grounded invariant to all actions.
 
+### Exact numerical checkpoints and supplementary conditions
+
+### The cage, and the promising idea
+
+Entering through the upper pyramid warp puts Mario on a descending elevator inside a shaft. The challenge is to escape its walls early enough to reach useful pyramid terrain. Ink would change that entry; this section asks what stock elevator gameplay can do without such an installer.
+
+Ordinary rollout and an already-held-A jump-kick looked worth checking because they can move Mario upward without a fresh A edge. Their full arithmetic return envelopes peak at 227.5 and 135 relative units, below the checked strict 231-unit cutoff. The selected JP wall/floor/ceiling traces fail. Four representative held-A faces do not establish every continuous launch pose, but the full-return figures are stronger than the earlier partial-frame estimates. The actual rollout animation ending also keeps Mario in rollout; it does not supply a new freefall or ground-pound entry.
+
+Ground pound has a different attraction. Its startup lifts Mario while the elevator descends. A granted 15-update scenario reaches relative height 260, above the cutoff. The startup's own lift is bounded by 110; the rest comes from descending support. **That is a conditional height window, not proof that Mario can enter ground pound.** Startup also stops horizontal speed, so useful height still needs a sideways departure.
+
+### Can we make the elevator fall away?
+
+One proposed producer holds Mario at his old Y while the elevator descends eleven times by ten units. That could create the off-floor difference needed to enter an airborne action.
+
+The completed grounded-quarter proof now closes that named mechanism under its query contract. Every contracted descent realigns Mario to the current base. This works for any supplied finite number of such calls; eleven cannot retain the initial height. It does not assume alignment survives between calls: interludes preserve Mario's Y, and the next call derives alignment again.
+
+What is the contract? A real nonnull floor at current base height, sufficiently high ceiling, the shell-riding bit clear, and proposed Y matching Mario's carried Y. The numerical base range and actual receiver/read/write conditions are also explicit. If these hold, repeatedly choosing blocked grounded steps cannot create the eleven-descent hold.
+
+Several source and geometry results support the contract. The base covers its interior; positive-Y static support inside the checked rectangle is low; ordinary underside queries skip the base as a ceiling; no static triangle enters the proved shaft corridor. Time-stop loading skips do not themselves delete the existing surfaces. But full live loading, rounded plane heights, list membership and every wall-corrected query still need their connection. The first actual failure of one of those facts would be a concrete exception worth testing.
+
+### What about a harder fall, enemy or coin?
+
+The blanket claim “Mario is never more than 100 units from the floor” is false; grounded and airborne phases need different invariants. The ordinary slide-kick profile misses its freefall timeout gate: its timeout checks have gaps 142 and 206, below the required over-500 gap at a timer over 30. A supplied -75 impact rebounds at 37.5 and reaches gap 565 at update 31, passing that freefall gate in the arithmetic example. Ground-pound entry would then need a separate eligible Z transition. The actual initializer forces launch speed 12, so inheriting -75 before that initializer is excluded. Producing a harder fall afterward remains open.
+
+Coins are not already sitting conveniently on the cage. The checked fixed layouts miss the enlarged base, and formation-offset exclusions have their own bounds. A coin arriving underneath can query and snap onto the bottom base in the supplied catcher example. That does not prove defeat, spawning, coin trajectory, lasting support or collection. A yellow coin alone does not unlock ground pound; a useful 100th coin also needs the star's placement and action timing. Directly touching the checked target stars or secret triggers from inside the unchanged elevator footprint is separately excluded by horizontal contact distance; that does not exclude a different target placement or an escape.
+
+The Goomba geometry is close enough to be interesting. At a supplied west-wall contact, Goomba X=-551, Z=-187 with a sufficiently hard fall rebound can reach the vertical/horizontal allowances. Its actual floor is below the elevator, so merely walking or a normal low-ground jump is insufficient. Isolated stock-actor searches get some raised eastern Goombas into the low pit; none supplies elevator contact. Those trials do not cover all hard rebounds, roofs or airborne transfers. Reaching the bottom cage also does not skip the later second pole.
+
+The distant fresh triplet is a separate, stronger exclusion. Its unloaded parent at stock X/Z has a calculated distance of at least 3882 from raw Mario in the full elevator base, versus a strict 3000 activation threshold, under the checked finite vertical-difference range. Coq carries nonspawning through any finite sequence of contracted checks. The parent fields, distance interval and Mario confinement are explicit. This closes fresh spawning under that confinement contract; it does not exclude children spawned earlier or the six singleton Goombas.
+
+### What would settle elevator escape?
+
+For ordinary grounded continuation, establish the live floor/query contract across the actual allowed inputs, or find its first legal violation. For the harder-fall branch, establish the post-initializer fall, airborne action/timer gate and a useful lateral exit. For an enemy/coin branch, connect an actual stock approach, defeat/contact and collectible trajectory while Mario remains confined, then the same action change and departure.
+
+A continuous no-new-A replay would settle a positive case. A negative result must cover the still-live support/action/impulse alternatives, not just repeat the ordinary failed launches. Existing height and alignment proofs are finished at their stated boundaries; their application to every elevator history is the remaining gameplay question.
+
 </details>
 
 <a id="review-other-platforms"></a>
 
 ## Other platform-displacement routes, other than Ink
 
-Evidence for this added chapter: repository **cac0adb6b0a72667980df60859bbdb042af66b63**, inspected 6 October 2026. The original four chapters retain their earlier baseline.
+Could Mario remember some other moving platform and change his arrival without Original’s display fallback? The proposals move the warp or a standable top, keep usable collision on a clone, or let Mario move while a platform query is skipped. A clone would need to do the required collision and motion job, rather than just look like the top.
 
-### A different way to remember the wrong floor
+We have a concrete negative example from a checked zero-A JP four-pillar run. The warp and top keep their normal identities. Whenever the retired top’s object slot is reused, its collision gets cleared before the new behavior is installed. That run doesn’t produce a replacement installer. The source inventory and replay don’t cover every possible object creation and lifetime.
 
-The remembered platform is the trick’s engine. We still need a way to put a useful object in that memory and keep it there until the game applies its movement. Moving the warp or a standable top, carrying its collision onto a clone, or moving Mario while the next floor query is skipped would be different setups. An Area-2 reload might change support too, but a new floor address isn’t automatically an installer. Original, Variant and Hybrid stay in the [Ink chapter](#review-ink), where their position splits belong.
+A skipped query could, in principle, let yesterday’s platform survive into a new position. The preservation model describes an unchanged step; it hasn’t shown that all real skipped updates keep Mario still. There’s also a supplied distant-coordinate diagnostic that finds and captures a floor while collision stays at the portal. It begins with the split already there. Either idea still needs the earlier useful platform and a real movement history.
 
-### The routes that have receipts—and their limits
-
-The clean four-pillar run gives us a solid example: 2,462 frames and 2,353 top-collision loads, with three later reuses of the retired top slot. The top and warp keep their original identities, and every reuse clears the old collision first. So this zero-A JP run does not move the warp, clone a usable top, or sneak the old collision into a replacement. That’s a checked run plus a source census, rather than a verdict on every possible spawn and slot history.
-
-Skipping a query sounds like a chance to carry yesterday’s floor into a new position. The existing semantic model makes its preserving step an identity, and the linked record still asks for callback, lifetime, alias and external-effect facts. It checks that model; it hasn’t shown that all real skipped updates keep Mario still. To make this route work, Mario needs a live remembered pointer first, then actual movement before a later platform query recomputes the pointer.
-
-### Some engine behavior works when we supply the setup
-
-There’s also a State-first diagnostic: supplied movement XYZ=(-1862,67314,-902) becomes query XYZ=(-1862,1778,-902), while collision stays at the portal. The lookup and capture can work without using display fallback. That gives us another consumer of an inherited split, rather than a gameplay source for the pointer. The stock-null chronology model blocks the stated payload within its rules. We still need the earlier owner, useful payload and legal pre-collision split.
-
-Inside Area 2, the Amp-shock check starts at the pole centre, Y=4020, with zero vertical speed and no sideways movement. Its integer fall model lands on static Y=3200 at update 21 and misses the checked moving-owner corridors. The certificate joins source patterns and arithmetic; it doesn’t run the complete linked shock, air-step and platform chain. A staged reload really changes the static floor address, but displacement is zero, both owners and the platform are null, and the clean-controller flag is false. Neither is a transport success. Ordinary Goomba damage at the pole stays in the [pole chapter](#review-pole).
-
-### The exact next evidence we would need
-
-A closure needs the live connection each proposal is missing. For relocation and clones, that’s the reached spawn/collision writers and slot generations. For skipped queries, it’s the actual callbacks, movement and pointer through the whole interval. For Area-2 support, it’s homes, axes, floor lists, owners and real entry/reload effects—or a clean useful exception. Any surviving pointer still needs the capture, lifetime and first apply described in [Ink](#review-ink). Ranks 17/27 and 26A–E are pointer/payload classifications, not extra installers we found. This review ran no new runtime test.
+A different floor address doesn’t necessarily move Mario. In one prepared Area-2 reload the address changes, but displacement stays zero: neither static floor belongs to a moving object. The checked Amp-shock fall also reaches static ground rather than useful moving support. We need legal spawning, skipped queries or support changes that keep a genuinely moving owner until use. A survivor still has [Ink’s](#review-ink) capture and lifetime jobs to finish; these diagnostics haven’t supplied extra reached routes.
 
 <details>
 <summary>Other platform-displacement routes, other than Ink: evidence ledger and remaining connections</summary>
@@ -316,33 +352,41 @@ A closure needs the live connection each proposal is missing. For relocation and
 | Amp shock / moving support | [Fall kernel](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/Area2Rank12ObjectImpulse.v#L491); [composite certificate](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/Area2Rank12ObjectImpulse.v#L600) | Y4020/vy0, zero horizontal motion and specified stock corridors in an integer model. | Selected finite/source-model fall to Y3200 at update21. | Live shock, owners, list and collision chain not derived. |
 | Reload changes support address | [Script/entry facts](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/Area2Rank12AReloadSupport.v#L187); [staged receipt witness](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/Area2Rank12AReloadSupport.v#L291); [raw JP trace](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/old-proofs/eyerok-manipulation/instrumentation/results/jp_platform_trace.txt#L1) | Staged receipt; clean-controller flag false; no useful platform retained. | One floor-address change with zero displacement. | Other useful reload/support histories remain open. |
 
+### Exact numerical checkpoints and supplementary conditions
+
+### What would make this a different installer?
+
+A platform installer must first make Mario remember a useful moving object, then keep that reference until the displacement helper consumes it. Relocating the warp or a standable top, preserving collision on a clone, and moving during a skipped-query interval are distinct proposals. Changing support on an Area-2 revisit is another access idea, although a changed floor address alone is not a displacement installer. Original, Variant and Hybrid stay in the [Ink chapter](#review-ink); they are controls for its position-split mechanism.
+
+### What is actually excluded?
+
+The relocation/clone census is backed by an authenticated zero-A JP four-pillar run: 2,462 frames, 2,353 top-collision loads, and three retired-slot reuses. The top and warp retain their canonical identities; each reuse clears collision before changing behavior. That rules out this construction in that run. The generated-source census and checked receipt counters do not classify every allowed spawn, alias or object lifetime.
+
+The skipped-query result needs a sharper qualification. Its semantic step is an identity function, and its linked record retains explicit callback, lifetime, alias and external-effect premises. It proves preservation inside that model; it does not derive that every real skipped update leaves Mario still. A useful exception needs an earlier live pointer and real movement before a later platform query recomputes the pointer.
+
+### Capabilities are not completed routes
+
+The related State-first diagnostic supplies movement XYZ=(-1862,67314,-902), which narrows locally to query XYZ=(-1862,1778,-902), while collision remains at the portal. Its lookup/capture capability works without display fallback. This is another way to use an inherited split, not an independently reached platform installer. The stock-null chronology model blocks its specified payload under its conditions; the earlier owner, payload and legal pre-collision split are still missing.
+
+Inside Area 2, the Amp-shock composite supplies a pole-centre start at Y=4020 with vertical speed zero and no horizontal motion. Its integer fall kernel lands on static Y=3200 at update 21, outside its checked moving-owner corridors. This is a finished source-pattern/arithmetic certificate, not execution of the complete linked shock/air-step/platform chain. A staged reload receipt changes the static floor address but prints zero displacement, null owners and a null platform; its clean-controller flag is false. Neither result proves useful transport. Ordinary Goomba pole damage remains in the [pole chapter](#review-pole).
+
+### What would close the remaining routes?
+
+For relocation or cloning, connect the reached spawn/collision writers and slot generations to the census. For skipped queries, derive actual callback targets and movement/pointer preservation across the entire interval. For Area-2 support changes, connect homes, axes, live floor lists, owners and entry/reload effects to the selected model, or supply a clean useful exception. Then apply the shared capture, pointer-lifetime and first-apply obligations in [Ink](#review-ink). Ranks 17/27 and 26A–E classify pointer/payload fate; they are not extra installer discoveries. No new runtime test was needed for this consolidation.
+
 </details>
 
 <a id="review-target-credit"></a>
 
 ## Getting credit for the target without the expected route
 
-Evidence for this added chapter: repository **cac0adb6b0a72667980df60859bbdb042af66b63**, inspected 6 October 2026. The original four chapters retain their earlier baseline.
+The familiar pole jump and elevator exit are routes to the rewards, not rules saying every solution must copy them. We want Inside the Ancient Pyramid and Pyramid Puzzle. Another legal position might allow actual target contact without crossing the usual gate. With normal target positions, horizontal distance rules out direct touch inside the unchanged pole opening or elevator; other reachable approaches are still the question.
 
-### Getting through a gate isn’t the save-file payoff
+Puzzle has a useful wrinkle. Touch some secret triggers, leave, then come back: initialization counts the originals still present and restores progress from the missing ones. If none remain, the reward can spawn right away. We can’t demand five fresh touches on that last visit. We do need legitimate earlier contact and removal for every credited missing trigger; unexplained absences don’t earn progress.
 
-We want Inside the Ancient Pyramid and Pyramid Puzzle in the save file. The familiar pole jump and elevator exit are leads, rather than rules saying every route must look that way. Another reachable setup could earn the right contact. But getting past a gate isn’t pickup either. Puzzle also has five distinct secret triggers before the reward. We need the right object, its collection and the newly set target bit in one execution.
+The certified bookkeeping is settled within its rules: new target credit needs the right collection event, and Puzzle needs all five distinct secret consumptions from the clean starting account. Smaller proofs follow real US/JP contact searches too, including the successful lookup required before an effectful secret callback. Joining actual contacts, removal and reload to those credited events is still unfinished.
 
-### What the credit proofs really buy us
-
-Once a playthrough obeys CertifiedExecution’s rules, the bookkeeping is proved: a target bit can’t become new credit without the right collection event, star origin and overlap. From CleanPyramidEntry, Puzzle also needs all five distinct consumption events. That conditional result is finished. The event rules already ask for provenance, overlap, counter changes and preservation by other events; showing that the whole game follows those rules is the unfinished connection. None of this makes a particular physical gate mandatory.
-
-Some smaller results now follow the actual US/JP code. The successful secret and star searches really read the pointer they use, and neither changes memory; the star search also checks the interaction type. A completed secret callback with a memory change or observable event must first have got a successful entry answer. We still have to show that the change was credit and explain where the contact list came from. Clearing, capacity, registration, later writes, object generations, geometric readings and helper effects all matter before we connect it to the actual saved reward.
-
-### Leaving and coming back changes the accounting
-
-When the area loads, Puzzle counts the secrets still present and treats missing ones as progress. If none remain, it can spawn the reward immediately. Normal removal and no-respawn records can keep earned progress across visits. So we can’t demand five fresh touches during the last visit. We need a legitimate earlier contact, removal and reload history for every credited missing original secret. Supplying an unexplained missing object doesn’t earn a shortcut.
-
-The later route has positive evidence: the published lower-entry runs visibly finish both targets, spending their one displayed A press at the second pole. Exact JP inputs reproduce that edge and reach the Grindel base. Separate injected JP suffixes show five secrets plus spawn, or a tuned pickup with save byte 0x00→0x20 and zero A counters. We can’t splice those into a clean zero-A run. Rank 9 starts with Mario airborne outside the elevator and 99 coins; nine later pickup timings fail, and one stationary Act-3 sample misses by 75 units. Its independent access and full target pickup are still missing.
-
-### Follow the reward all the way into the save
-
-To call a route successful, follow uninterrupted controller inputs through access, real contacts, dispatch, object lifetime, secret/revisit accounting and the correct new save bit. To rule it out, connect those real operations to the certified account and show that allowed no-A histories cannot supply the necessary contact or legitimate earlier secret credit; don’t just assume alternate credit can’t happen. The theorem protecting three private action-table blocks through finite selected initialized Clight runs is already finished. Public reward state has other writers and receivers to account for under Rank 31. Machine-only out-of-bounds overwrites, ACE, DMA and post-undefined-behavior continuations are outside the current model. This chapter adds no new runtime check.
+Published lower-route videos visibly finish both stars using one displayed A press at the pole. Reconstructed JP inputs repeat that press and land at Y=3840 near the Grindel stone block, without boarding it or finishing collection. Other prepared tests cover secret completion and pickup separately. A no-A alternative needs its own continuous contact/revisit history through the right reward. Ruling it out would require showing that every legal alternative lacks the contact or earlier credit it needs. The [final-reward chapter](#review-final-reward) takes over once legitimate star contact is supplied.
 
 <details>
 <summary>Getting credit for the target without the expected route: evidence ledger and remaining connections</summary>
@@ -355,37 +399,43 @@ To call a route successful, follow uninterrupted controller inputs through acces
 | Downstream collection can work from supplied access | [Distinct receipts](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/Area2DownstreamReceipts.v#L101); [continuation limits](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/docs/notes/area2-downstream-continuations.md#L277) | One-A visual runs or separate injected suffixes; Rank9 airborne/99-coin start granted. | Positive bounded receipts; no joined clean no-A run. | Authenticate version/inputs, clean access, full live pickup and save. |
 | Private action tables are preserved | [Reached-execution closure](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/WritableActionTableReachedExecution.v#L459); [award/contact gaps](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/docs/notes/collection-backward-contact.md#L63) | Genuine selected initialized task start and stated private-block conditions. | All finite reached executions of the selected Clight runtime for three blocks. | Not public reward-state integrity or all defined receiver/save histories. |
 
+### Exact numerical checkpoints and supplementary conditions
+
+**Receipt endpoint wording:** “Grindel base” in the retained summary means the Y=3840 landing near the object, not boarding the Grindel as Mario’s platform. The retained pole summary’s “before Grindel landing” refers to that uncompleted boarding. The linked continuation note and receipt agree on no boarding or target credit; their timer labels differ by one update (551 versus 552).
+
+### Collection, contact and crossing a gate are different jobs
+
+The two rewards are Inside the Ancient Pyramid and Pyramid Puzzle. A valid route need not copy the familiar pole jump or elevator exit if another reachable history earns the correct contact and credit. Conversely, crossing a barrier does not prove pickup. Puzzle adds five distinct secret triggers before its reward. The collection must identify the correct target object and newly set the correct save bit in the same execution.
+
+### The bookkeeping theorem—and its real-code links
+
+Within CertifiedExecution, a new target bit requires a collection event with correct star origin and overlap. From CleanPyramidEntry, new Puzzle collection requires all five distinct consumption events. These are completed conditional bookkeeping proofs. Their event constructors already require provenance, overlap, counter changes and preservation by other events; mapping every actual game step into that account is still required. They do not prove a physical gate must be crossed.
+
+Actual US/JP contact-consumer proofs narrow that connection. Successful secret and star searches read the requested/returned pointer and preserve memory; the star search checks its interaction type. A completed secret callback with a memory change or observable event must first have obtained a successful entry query. That does not identify the effect as credit or establish the contact list’s origin. Clearing, capacity, registration, later writes, object generations, geometric readbacks and helper effects still need their live connection to award/save execution.
+
+### Revisits and the existing positive evidence
+
+Puzzle initialization counts remaining secrets, restores progress from those missing, and can spawn the reward immediately when none remain. Normal removal/no-respawn records can preserve earned progress across visits. Therefore each credited missing original secret needs an earlier legitimate contact/removal/reload history; five fresh touches on the final visit cannot be assumed. An unexplained missing object is not free credit.
+
+Published lower-entry runs visually finish both targets with one displayed A press at the second pole. An exact JP controller segment reproduces that edge and reaches the Grindel base. Injected JP suffixes separately show five secrets plus spawn, and a tuned pickup/save byte change 0x00→0x20 with zero A counters. They cannot be joined into one clean zero-A route. Rank 9 grants an airborne outside-elevator start and 99 coins; nine later pickup timings fail, and one stationary Act-3 sample misses by 75 units. Independent access and complete target pickup remain open.
+
+### What would close credit without the expected route?
+
+A positive case needs uninterrupted controller-reached access, actual contacts, dispatch, object lifetime, secret/revisit accounting and the correct new save bit. A negative case needs refinement of those real operations to the certified account and proof that allowed no-A histories cannot supply the necessary contact or legitimate earlier secret credit, not a decree that alternate credit is impossible. Three private action-table blocks are already protected through finite selected initialized Clight executions; that settled theorem does not protect all public reward state. Defined aliases/receiver/save effects remain Rank 31 obligations. Machine-only out-of-bounds overwrites, ACE, DMA and post-undefined-behavior continuations lie outside the current model. No new runtime check was run here.
+
 </details>
 
 <a id="review-goomba-pu"></a>
 
 ## Goomba raising and PU transport
 
-Evidence for this added chapter: repository **cac0adb6b0a72667980df60859bbdb042af66b63**, inspected 6 October 2026. The original four chapters retain their earlier baseline.
+Here we want the Goomba to gain height, rather than have it bounce Mario. The modeled loop uses damaging contact, a trip far enough away to reset the enemy’s update state, and a return to rearm the next rise. A modeled productive rise adds 21 units. The studied short preparation window ends before the enemy is high enough.
 
-### The plan is to raise the Goomba, then actually meet it
+Begin at Y=51. Even the favorable checked schedule gets only 46 rises in the supplied 91-update top window: Y=1017 when it needs Y=1791. Earlier variants fit fewer rises. Those named schedules are conditionally insufficient, but a longer preparation or different repeatable raising cycle sits outside that window. We also need actual gameplay to follow the modeled hit, reset and return rules.
 
-Here the Goomba is the thing we want to raise. The plan controls when its movement runs, then needs a way to bring it into real contact with Mario and the Spindel. This is separate from taking ordinary Goomba damage at the second pole. A PU—parallel universe—is a distant coordinate region whose terrain queries can alias the main map through local signed-16 narrowing. Matching terrain doesn’t teleport the enemy or make distant actors touch.
+Then we still have to meet the enemy. A parallel universe, or PU, is a distant coordinate region whose terrain queries can resemble the main map after coordinates are narrowed. That doesn’t teleport a Goomba. Object distance keeps the full coordinates, so matching familiar terrain can leave the enemy too far away to load or contact Mario and the moving Spindel. Height alone doesn’t arrange transport or handoff.
 
-### The short top window runs out of rises
-
-The proposed loop starts with damaging contact, departure beyond the Goomba’s 4000-unit drawing distance, a FAR reset and a return nearby. One selected grounded setup arms the first rise; afterward the repeating ready state is airborne action 2 with vertical speed 25. Gravity makes that speed exactly 21 in binary32. Stored height still rounds: adding 21 at 2^29 produces no change. That example isn’t a proof that the chosen Y51 orbit reaches the stagnating value.
-
-The integer H/F/R mirror tracks hit/depart, far-reset and near-rearm phases; its productive hit adds 21 to modeled Y. The original post-collision schedule gets 31 rises during the supplied 91-update top window, taking Y=51 to 702. Letting raw Object timing help gives 45 in the return-first phase, or 46 in the favorable departure-first phase. The checked binary32 ceiling there is Y=1017. The target is Y=1791, so we’re 774 short. Crossing first needs 83 rises and reaches 1794. These finite schedule classes are exhausted, even with favorable placement inside the model.
-
-The important fine print is where those rules come from. The top window, Spindel band, event membership and H/F/R transitions are audited or modeled inputs. The main boundary joins US/JP source receipts to the arithmetic and explicitly leaves the Clight-to-event connection open. The named short-window setup is conditionally blocked. We haven’t proved a maximum for all earlier preparation or every enemy history.
-
-### A matching map isn’t a matching enemy
-
-Distance between objects uses their full floating-point coordinates. X/Z terrain aliasing can’t cancel a huge vertical separation or make a distant Spindel load collision. Given the audited Mario contact band [2036,2336], the integer hitbox model needs Goomba Y in [1961,2496]; live Spindel surface selection is still unproved. They don’t move a singleton there, make a repeatable raise/reset loop or finish capture and handoff in one segment. A failed out-of-range conversion isn’t a bonus route either: the trap result needs the specified invalid-conversion processor controls connected to the live call.
-
-### What we haven’t built yet
-
-We have source-event audits and exact binary32 schedule checks here, rather than a controller replay that raises a Goomba, transfers it through a PU and earns the target. The ordinary approach and damage receipts under [pole](#review-pole) and [elevator](#review-elevator) don’t fill that hole. This chapter ran no new runtime search. An event schedule can be checked exactly without being an actual enemy trajectory.
-
-The archived PU certificate has a scope warning too. It proves a compact bounded US transition system, without an exact recorded source pin; its companion countermodels allow PU entry through unclamped air velocity or platform displacement. The active project rechecks selected source facts without importing that archived namespace. We can’t turn the old bounded result into a universal no-PU theorem.
-
-For the live short-window closure, connect the timer/surface window, real event sequence, collision and loading tests to generated execution. If we prepare earlier, we need a legitimate repeatable raising cycle outside that window, physical transport, continued loading, the same live singleton throughout, actual capture, useful handoff, every-update no-A coverage and target continuation. One uninterrupted allowed-input run would settle a success; a reached-event/transport exclusion would settle the named negative case. Longer independent preparation is still open. The 46-rise bound doesn’t close it.
+The archived no-PU certificate handles a bounded movement model. Other modeled air velocity and platform movement reach outside its coverage, so it isn’t a universal gameplay exclusion. A route needs a legal repeated raising loop, physical transport that keeps the enemy loaded, the same live Goomba through capture and useful handoff, and target continuation without another A press. The ordinary enemy help at the [pole](#review-pole) or [elevator](#review-elevator) isn’t that setup.
 
 <details>
 <summary>Goomba raising and PU transport: evidence ledger and remaining connections</summary>
@@ -397,33 +447,45 @@ For the live short-window closure, connect the timer/surface window, real event 
 | Invalid coordinate conversion is not a continuing state | [Nonlocal cast model](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/proofs/Area1NonlocalCastSemantics.v#L176) | Invalid exception enabled and specified processor/cast binding; preservation still required. | Trap semantics under those controls. | Different controls or unbound live calls need their own result. |
 | Archived PU barrier has bounded scope | [Archive transfer policy](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/docs/notes/archived-proof-evidence.md#L8); [bounded certificate](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/old-proofs/ssl-parallel-universe/proofs/NoAPressed.v#L510); [companion countermodels](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/old-proofs/ssl-parallel-universe/proofs/MovementSourceFacts.v#L75) | Compact US model; exact source pin not recorded; active namespace does not import archive. | Finished archived bounded model result, with broader movement counterexamples. | Actual unclamped velocity/platform sources and all reached PU-entry histories require coverage. |
 
+### Exact numerical checkpoints and supplementary conditions
+
+### Raising an enemy is different from bouncing Mario
+
+This proposal raises a Goomba by controlling when its movement runs, then transports or aligns it with Mario and the Spindel. It is not ordinary enemy damage at the second pole. A PU (parallel universe) is a distant coordinate region whose terrain queries can alias the main map because collision locally narrows coordinates to signed 16-bit values. That terrain alias does not itself teleport an object or make two distant actors collide.
+
+### The finite height barrier is already proved
+
+The proposed loop requires damaging contact, departure beyond the Goomba’s 4000-unit drawing distance, a FAR reset and a near return. The selected grounded priming branch arms the first rise; subsequent ready states use airborne action 2 with vertical speed 25. Gravity gives exact binary32 speed 21. The stored-height addition can still round: adding 21 at 2^29 stagnates. This example does not prove that the selected Y51 orbit reaches that value.
+
+The conditional integer H/F/R mirror uses hit/depart, far-reset and near-rearm phases, with 21 units per modeled productive hit. The original post-collision schedule allows 31 rises in the supplied 91-update top window: Y=51 reaches 702. The revised raw-Object return-first schedule allows 45; the favorable departure-first phase allows 46. Its checked binary32 result is Y=1017, versus required Y=1791: 774 units short. The first crossing needs 83 rises and reaches 1794. These complete finite schedule classes fail even with favorable positioning within the model.
+
+The timing window, Spindel contact band, event membership and H/F/R transitions remain audited/model inputs. The main source-event boundary combines US/JP source receipts and arithmetic; it explicitly does not link a Clight run to those event mirrors. This is a completed conditional obstruction for the named short-window setup, not a maximum over every earlier preparation or enemy history.
+
+### Why terrain aliasing is not transport
+
+Object distance uses full floating-point coordinates. A vertical difference alone can put the Goomba beyond the movement/load thresholds, regardless of X/Z aliasing. Given the audited Mario contact band [2036,2336], the integer hitbox model requires Goomba Y in [1961,2496]; live Spindel surface selection remains unproved. They do not construct physical singleton transport, a repeated raise/reset loop or a same-segment capture/handoff. A failed out-of-range coordinate conversion is not a usable continuation: its trap claim requires the specified invalid-conversion processor controls and their live binding.
+
+### Runtime evidence and the exact open connection
+
+The existing evidence includes source-event audits and exact binary32 schedule computations, not a controller-reached raise/PU-transfer/target replay. Ordinary Goomba approaches and pole-damage receipts belong to the [pole](#review-pole) and [elevator](#review-elevator) chapters and do not supply this setup. No new runtime search was run for this chapter. A supplied event schedule is an arithmetic certificate, not footage of the enemy executing it.
+
+The archived PU certificate proves a compact bounded US transition system, with no exact recorded source pin. Companion countermodels expose PU entry through unclamped air velocity or platform displacement. The active project rechecks selected source facts without importing that archived namespace. The archived result therefore does not establish universal no-PU coverage.
+
+To close the named top-window route in live gameplay, derive its timer/surface window, actual event sequence, collision and load tests from the generated execution. A longer-preparation survivor needs a legitimate repeatable raising cycle outside that window, followed by physical transport, maintained loading, the same live singleton throughout, real capture, useful handoff, every-update no-A coverage and target continuation. Either construct those in one uninterrupted allowed-input run or exclude the reached events/transport combination. Longer independent preparation is still open; the finite 46-rise bound does not rule it out.
+
 </details>
 
 <a id="review-eyerok-particles"></a>
 
 ## Eyerok particle displacement
 
-Evidence for this added chapter: repository **cac0adb6b0a72667980df60859bbdb042af66b63**, inspected 6 October 2026. The original four chapters retain their earlier baseline.
+A dying Eyerok hand sends fragments flying. Suppose a fragment takes the removed hand’s exact object slot while Mario still remembers that slot as his platform. The next platform-motion calculation could read the fragment’s movement and shift him. In the established lifecycle model, the hand’s own fragments and the sibling’s fragments both miss that opportunity, for different reasons.
 
-### Could the hand’s debris inherit its address?
+The hand makes its mist and triangles before its slot becomes free. Its deletion mark changes active flags; removal happens at the end of the update. The fragments allocate while the hand is still occupying the very slot we need them to inherit. Having debris nearby isn’t enough; it has to take that exact address.
 
-The game can remember a platform by its address in the Object pool. What if the hand dies, a fragment takes that exact slot, and Mario’s next platform apply reads the fragment’s movement? That’s the particle-displacement pitch. It isn’t an ordinary hand ride or the JP cross-area stale-hand story under [Eyerok](#review-eyerok). Nearby debris won’t do: we need the same slot reused before the remembered pointer is consumed.
+The sibling misses from the other direction. The eye lock keeps it idle; even a sibling newly selected to open needs at least 30 opening updates and 40 dying updates. That’s 70 against a one-active-update remembered-pointer window. Time stop suppresses platform application; the studied schedule does not turn the pause into extra active allocation opportunities. The conditional exclusion of these named fragments is finished for both checked versions.
 
-### The hand’s own debris arrives too early; its sibling is too late
-
-The checked order is mist, 30 rotating triangles, deletion mark, coins, and only then end-of-update unload. The deletion mark clears active flags; it doesn’t free the slot. So the hand’s own fragments have already allocated while the hand still owns its slot. The proof of that timing obstruction exists. We aren’t starting this arithmetic again.
-
-The eye lock also holds the sibling idle while the first hand dies. Give the sibling the favorable option of being selected to open before unload: it still needs at least 30 opening updates and 40 dying updates. That’s at least 70 against a one-active-update reuse window. Time stop suppresses platform apply; the archived schedule doesn’t make the pause extra active allocation time. Within this model, neither hand’s fragments can take the needed slot in time.
-
-### This exclusion is finished inside its rules
-
-EyerokParticleDisplacement.v spells out a finite lifecycle/event relation. After unload, its seeds allow an idle sibling or one newly selected to open. The no-replacement theorem and common fragment certificate cover both checked versions within that audited timing, and the archived verdict packages them with generated source-shape checks. What it doesn’t do is execute and classify every real allocator, callback and platform apply. Archiving it also doesn’t make it active-spine coverage. Retired atlas R1 keeps this exact conditional result.
-
-The archive’s displacement model changes position and facing while preserving stored speeds. Its separate US area-load model clears the saved pointer; JP deliberately differs. Neither result puts a fragment into the slot. The JP cross-area manifest is evidence for a different stale-slot construction, not a same-area Eyerok-particle success. This review verified no dedicated controller-reached fragment installer and ran no new runtime test.
-
-### The remaining job is the real allocation timeline
-
-Follow the real allocator and callbacks through free-list ownership, hand death, eye lock and the first platform apply. Show that no omitted eligible allocation slips in before apply, and that the live run reaches one of the proved post-unload seeds. Then this named two-hand fragment idea is closed in gameplay. Other particles, other replacement objects and JP cross-area reuse still have their own cases. The 70-versus-one proof doesn’t cover those. We need the execution connection, rather than another delay calculation.
+What remains is the actual allocation timeline: when the hand slot is released, which starting phase the sibling has, every eligible allocation and the first platform apply. We need the relevant real allocations and callbacks to follow the proved lifecycle. A different, unclassified replacement object remains a separate possibility. So does [Eyerok’s](#review-eyerok) JP cross-area stale-hand reuse, where an area transition leaves different slot contents. The local 70-versus-one calculation isn’t the missing part.
 
 <details>
 <summary>Eyerok particle displacement: evidence ledger and remaining connections</summary>
@@ -435,37 +497,41 @@ Follow the real allocator and callbacks through free-list ownership, hand death,
 | Source-shape and model results are packaged | [Common archived scenario verdict](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/old-proofs/eyerok-manipulation/proofs/ExploitScenarioVerdict.v#L4); [archive scope](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/old-proofs/eyerok-manipulation/docs/claim.md#L46); [retired R1 verdict](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/less-than-one-a-press/docs/no-a-route-atlas.md#L1576) | Generated source shapes checked separately from the hand-written lifecycle relation. | Finished archived conditional scenario certificate. | Not an all-history theorem or automatically integrated active-spine proof. |
 | Modeled displacement preserves speed; cross-area policy differs | [Displacement and US model](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/old-proofs/eyerok-manipulation/proofs/EyerokParticleDisplacement.v#L375); [JP cross-area manifest](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cac0adb6b0a72667980df60859bbdb042af66b63/SSL-Coq/old-proofs/eyerok-manipulation/instrumentation/results/jp_platform_manifest.md) | Explicit kinematics/area-load model; JP receipt supplied scenes. | Separate displacement semantics and versioned stale-slot evidence. | Does not establish same-area particle installation; unrelated allocation/reuse remains separate. |
 
+### Exact numerical checkpoints and supplementary conditions
+
+### The idea: replace the hand, not ride it
+
+A stale platform pointer is an old Object-pool address still remembered after its owner is removed. Particle displacement tries to allocate a moving fragment into that same slot before Mario consumes the pointer. Then the apply helper would read fragment motion rather than hand motion. This is distinct from ordinary hand rides and from JP cross-area stale-hand reuse in the [Eyerok chapter](#review-eyerok). It requires actual slot reuse in the narrow same-area window, not merely particles nearby.
+
+### The archived result already blocks the named fragments
+
+The audited explosion order is mist, 30 rotating triangles, deletion mark, coins, then end-of-update unload. Marking clears active flags; it does not put the hand slot on the free list. Therefore the dying hand’s own fragments allocate before its slot is available. That timing obstruction is already formalized; this review does not redo it.
+
+The first dying hand retains the exclusive eye lock, keeping its sibling idle. Even allowing the sibling to be selected to open before unload, it still needs at least 30 opening updates plus 40 dying updates: at least 70, versus the one-active-update stale-pointer window. Time stop suppresses platform apply; the archived audited schedule does not turn the pause into extra active allocation opportunities. Neither hand can provide an Eyerok fragment in that model window.
+
+### Exactly what model is proved?
+
+EyerokParticleDisplacement.v uses an explicit finite lifecycle/event relation, with post-unload seeds restricted to an idle or newly selected opening sibling. Its no-replacement theorem and common fragment certificate apply to both checked versions under the audited timing. They are packaged with generated source-shape checks in the archived scenario verdict. They are not a linked refinement of every allocator, callback and platform-apply execution, and are not automatically active-spine coverage. Retired atlas R1 retains precisely that conditional verdict.
+
+The archive also proves that its modeled displacement changes position/facing while preserving stored speeds. Its separate US area-load model clears the saved pointer; JP intentionally differs. Neither statement proves an Eyerok fragment ever occupies the slot. The JP cross-area manifest tests a different stale-slot construction and cannot be counted as a successful same-area Eyerok-particle witness. No dedicated controller-reached fragment installer was verified in this review, and no new runtime test was run.
+
+### What would turn the conditional exclusion into a live one?
+
+Connect every reached relevant allocator and callback to the real free-list/owner generations, the death/eye-lock progression and the first platform apply. Exclude an omitted eligible allocation before apply, and derive that the actual run enters one of the proved post-unload seeds. That would close the named two-hand fragment construction. Unrelated particles, other replacement objects and JP cross-area reuse need separate coverage; the existing 70-versus-one result does not exclude them. The missing step is execution coverage, not the local delay calculation.
+
 </details>
 
 <a id="review-final-reward"></a>
 
 ## Final reward and save-bit continuation
 
-This added chapter checks repository **877dae5c457298fc847b6a6f677253025e8e228a**, inspected 6 October 2026. The previous eight chapters keep their stated baselines and text. We’re sorting existing evidence here, with no new proof or gameplay trial.
+Getting the Puzzle star to appear leaves one more job. A prepared JP replay touches all five secrets and spawns it without recording collection. A separately tuned replay picks it up and changes the active SSL reward byte from 0x00 to 0x20. One shows spawning; the other shows pickup. They start from different supplied setups, so we can’t join them into a clean no-A route.
 
-### The finish line: make the right star count
+Healthy pickup runs helpers, records the interacted and used star, reads its reward number, then calls the collection save routine. That routine adds the course bit before the handler chooses Mario’s final collection action. A bit is the little yes/no collection record: our targets use indices 2 and 5; the 100-coin reward uses 6. With normal reward provenance, collecting that coin star doesn’t tick either target’s box.
 
-Say Mario really touches the target. Now keep that same playthrough going: does the pickup code award the right star and turn its bit from clear to set, without a new A press? The [target-credit chapter](#review-target-credit) handles alternate contact, secret credit and revisits; the [Ink chapter](#review-ink) handles installation and access. Getting there, or making a star appear, still leaves this final step.
+For this project the finish line is the target bit changing from clear to set in the active save record. The dance, leaving the level and a permanent cartridge save happen at later checkpoints. We have a proof keeping the Mario and star pointer arguments intact. It doesn’t prove every helper’s effect on those objects or the entire live reward-number/save-write sequence.
 
-A save bit is the game’s little yes/no record for a collected star. Our target indices are 2 for Act 3 and 5 for the Puzzle reward; the 100-coin star is 6. The finite normal-source proof keeps them separate. A 100-coin reward might help set up a trick, but under that normal provenance its bit doesn’t stand in for either target. Wrong receipt, wrong reward.
-
-### Follow the pickup, not just the celebration
-
-The healthy pickup branch does some housekeeping first: stop riding/holding, create the collection puff and run the other helpers. Then it records the interacted/used object, reads that object’s star number from its behavior parameters, and calls the collection save routine. The local execution proof keeps the Mario and star argument pointers intact. That doesn’t automatically keep everything inside those objects intact, or keep them alive through every helper.
-
-The generated US/JP code calls the collection save routine before setting the final collection action. The ordinary save branch finds the active file and course and adds the intended star flag if it wasn’t there. The course-bit setter changes the active course byte and marks the file modified. That’s what the source says. The checked named-call facts don’t by themselves prove the live arguments and writes along a reached pickup.
-
-For this project, the finish line is a newly set bit in the modeled active save flags. The dance, leaving the level, copying the backup and writing EEPROM are separate checkpoints. EEPROM is the cartridge’s persistent save storage. There’s a later save routine for that job, so seeing the active byte change doesn’t prove the permanent save has finished too.
-
-### The receipts don’t all show the same finish
-
-One injected JP replay gets all five secrets and makes the Puzzle star appear, but records no star interaction or new target bit. A separately tuned replay gets the star/used-object match and active SSL byte 0x00 → 0x20 at timer 1343, with zero A counters in its checked suffix. The literal receipt checks preserve that distinction. We can’t splice those setups into a clean route, and projected counters aren’t authenticated inputs for the whole history.
-
-### What would actually close this?
-
-CertifiedExecution says a new target bit needs the specified collection event. Its constructors already ask for the modeled event effects; they don’t make the generated pickup code run and prove every write for us. The missing bridge follows the live handler past its helpers, through the real star-number read and correct SSL file/course save write, then connects that to the modeled collection event.
-
-We need one uninterrupted allowed-input continuation from the accepted start, or a clean prefix that joins this suffix with exactly matching state and controller history. Follow that same target through dispatch and helpers, show its bit starts clear and really becomes set, and account for every new A press. Claim a completed dance, exit or permanent save only after following that later checkpoint too. The downstream payoff is conditional; the complete no-A target route is still open.
+Start with legitimate contact from the [target-credit chapter](#review-target-credit), then follow that same star through the helpers and into the right SSL file and course’s new bit. This must join a continuous allowed-input history. The tuned pickup gives a conditional downstream payoff, with zero projected A counters in its checked suffix; it doesn’t reconstruct the earlier route or authenticate the whole controller history. If we also claim the dance or permanent save finishes, we need to follow those later checkpoints too.
 
 <details>
 <summary>Final reward and save-bit continuation: evidence ledger and remaining connections</summary>
@@ -477,5 +543,31 @@ We need one uninterrupted allowed-input continuation from the accepted start, or
 | Active credit precedes the final collection action in the source | [Named-call source checks](https://github.com/tra38/sm64-wmotr-abc-proof/blob/877dae5c457298fc847b6a6f677253025e8e228a/SSL-Coq/less-than-one-a-press/proofs/ClightFacts.v#L135); [ordinary save branch](https://github.com/tra38/sm64-wmotr-abc-proof/blob/877dae5c457298fc847b6a6f677253025e8e228a/SSL-Coq/less-than-one-a-press/generated/us_save_file.v#L1783); [course-bit setter](https://github.com/tra38/sm64-wmotr-abc-proof/blob/877dae5c457298fc847b6a6f677253025e8e228a/SSL-Coq/less-than-one-a-press/generated/us_save_file.v#L2315); [later action setter](https://github.com/tra38/sm64-wmotr-abc-proof/blob/877dae5c457298fc847b6a6f677253025e8e228a/SSL-Coq/less-than-one-a-press/generated/us_interaction.v#L5308); [separate backup/EEPROM save](https://github.com/tra38/sm64-wmotr-abc-proof/blob/877dae5c457298fc847b6a6f677253025e8e228a/SSL-Coq/less-than-one-a-press/generated/us_save_file.v#L1192) | Generated-source ordering observed; Coq source-shape checks establish named calls syntactically. | Active course bit is updated and the file marked modified; the project’s endpoint is clear-to-set credit. | No complete reached pickup/save execution or permanent-save theorem follows from these source checks. |
 | Triggering the Puzzle does not finish collection | [Trigger-only and separately tuned pickup observations](https://github.com/tra38/sm64-wmotr-abc-proof/blob/877dae5c457298fc847b6a6f677253025e8e228a/SSL-Coq/less-than-one-a-press/docs/notes/area2-downstream-continuations.md#L205); [Literal receipt checks and trigger-only counterexample](https://github.com/tra38/sm64-wmotr-abc-proof/blob/877dae5c457298fc847b6a6f677253025e8e228a/SSL-Coq/less-than-one-a-press/proofs/Area2DownstreamReceipts.v#L101) | Separate injected JP setups; checked receipt values and projected A counters. | One run spawns without credit; another records the correct used-object match and active byte 0x00 → 0x20 at timer 1343. | These are not one clean route or authenticated whole-history no-A coverage. |
 | A clean reward needs one connected suffix | [Necessary collection-event theorems](https://github.com/tra38/sm64-wmotr-abc-proof/blob/877dae5c457298fc847b6a6f677253025e8e228a/SSL-Coq/less-than-one-a-press/proofs/StarCollection.v#L70); [Exact clean-prefix/suffix interface](https://github.com/tra38/sm64-wmotr-abc-proof/blob/877dae5c457298fc847b6a6f677253025e8e228a/SSL-Coq/less-than-one-a-press/proofs/Area2DownstreamContinuations.v#L265); [Same-suffix coverage conditions](https://github.com/tra38/sm64-wmotr-abc-proof/blob/877dae5c457298fc847b6a6f677253025e8e228a/SSL-Coq/less-than-one-a-press/proofs/Area2DownstreamContinuations.v#L440); [Documented actual award/save gap](https://github.com/tra38/sm64-wmotr-abc-proof/blob/877dae5c457298fc847b6a6f677253025e8e228a/SSL-Coq/less-than-one-a-press/docs/notes/collection-backward-contact.md#L75) | Certified execution already requires the modeled event effects; clean access and coherent input boundary are separate premises. | Conditional collection and composition statements, not an inhabited controller-reached route. | Connect the live target, helpers, index, active SSL save byte, bit transition and allowed input history to those events in the same execution. |
+
+### Exact numerical checkpoints and supplementary conditions
+
+### The finish line: new credit for the correct star
+
+This chapter starts after legitimate target contact has been supplied. It asks whether that same playthrough completes the actual award and changes the correct target bit from clear to set, without a new A edge. The [target-credit chapter](#review-target-credit) covers alternate contact, secret credit and revisits; the [Ink chapter](#review-ink) covers installation and access. Neither access nor a spawned reward supplies this final continuation.
+
+A save bit is a small yes/no record for a collected star. The project’s target indices are 2 for Act 3 and 5 for the Puzzle reward; the 100-coin star uses 6. The finite normal-source proof keeps those rewards distinct. Collecting a 100-coin star can help a setup, but its bit cannot substitute for either target under that normal provenance.
+
+### What the pickup code actually does
+
+The healthy star-pickup branch runs helpers, including stopping riding/holding and creating the collection puff. It then records the interacted/used object, reads the star number from that object’s behavior parameters, and calls the collection save routine. The local execution proof preserves the Mario and star argument pointers. It does not prove that every helper preserves the contents or lifetime of the objects those pointers name.
+
+The generated US/JP code calls the collection save routine before its final collection-action setter. The ordinary save branch derives the active file and course and adds the intended star flag when absent. The course-bit setter updates the active course byte and marks the file modified. These are source observations; the checked named-call facts alone do not establish the reached arguments or memory effects.
+
+The project’s collection endpoint is a newly set bit in the modeled active save flags. Finishing the dance, leaving the level, copying the backup or writing EEPROM are separate checkpoints. EEPROM is the cartridge’s persistent save storage. The source has a later save routine for that work; an observed active byte is not a proof that permanent saving finished.
+
+### What the existing receipts establish
+
+One injected JP replay consumes all five secrets and spawns the Puzzle star, but records no star interaction or new target bit. A separately tuned replay records the star/used-object match and active SSL byte 0x00 → 0x20 at timer 1343, with zero A counters during its checked suffix. The literal receipt checks formalize that distinction. The two setups cannot be spliced into a clean route, and the projected counters are not authenticated input coverage for the whole history.
+
+### The exact missing connection
+
+Inside CertifiedExecution, a new target bit requires the specified collection event. Its constructors already require the modeled event effects; they do not derive the full pickup from the generated program. The remaining bridge is from the live handler, after its helpers, to the actual target-index read, correct SSL file/course and save write, then to that modeled collection event.
+
+Closure needs one uninterrupted allowed-input continuation from the accepted start, or an exact clean prefix joined to this suffix with matching state and controller history. Follow the same target object through dispatch and helpers, establish the initially clear bit and its actual set operation, and account for every new A edge. If a later dance, exit or permanent-save outcome is claimed, follow that later checkpoint separately. The current evidence establishes a conditional downstream payoff, not a complete no-A target route.
 
 </details>
