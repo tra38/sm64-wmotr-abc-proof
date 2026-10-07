@@ -6,7 +6,7 @@ Our start is normally initialized SSL Area 1. Keeping A held after an earlier le
 
 We’ll follow the game before opening the proof details. Expandable evidence keeps exact numbers, sources and conditions. Conditional proofs and limited tests settle different things. Atlas percentages express subjective route promise, not measured confidence or a completion meter.
 
-## The nine verdicts, right up front
+## The ten verdicts, right up front
 
 | Topic | What happens in the studied cases | The remaining gameplay question |
 | --- | --- | --- |
@@ -18,6 +18,7 @@ We’ll follow the game before opening the proof details. Expandable evidence ke
 | [Target credit](#review-target-credit) | Collection and legitimate secret history are necessary in the proved account. | Can another reachable contact or revisit earn that credit? |
 | [Goomba raising / PU](#review-goomba-pu) | The named short raising schedules run out of height. | Can longer preparation and actual transport work? |
 | [Eyerok particles](#review-eyerok-particles) | Own fragments allocate too early; sibling fragments arrive too late. | Does the live allocation timeline fit the proved lifecycle? |
+| [Backup credit](#review-backup-credit-where-would-it-come-from) | Ordinary backup saving copies earlier active credit. | Can interrupted cartridge saving preserve an old credited backup? |
 | [Final reward](#review-final-reward) | A separate prepared pickup sets the active Puzzle bit. | Can one clean history finish the actual pickup and save write? |
 
 <details>
@@ -36,6 +37,8 @@ This editorial review was checked against repository **a5cefb0f1769b65b54a65fbd7
 Coq checks the proofs; Clight is the generated representation of the C program those execution proofs follow. A local execution theorem establishes what a specified completed program segment does under its entry and memory conditions. A model theorem covers its declared transition rules; relevant gameplay must still be connected to those rules. An exhaustive finite certificate covers its declared finite set. A bounded test covers its selected trials. A supplied-state success demonstrates payoff, not controller reachability.
 
 The evidence ledgers distinguish accepted starting/rules contracts, derived segment facts and connections still required. Counts of files, theorems and passing builds do not measure gameplay completion. The permitted execution model covers ordinary controller play and defined, in-bounds glitches, not memory corruption, arbitrary memory/code changes or continuations after undefined behavior.
+
+The backup-credit explanation is now a standalone chapter before final reward, in both tones. It reuses the source audit at **cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59**, already documented in review version **ca56208028891fca6e25c5d0a963aae9ac38c4f6**. No source conclusion, proof scope, gameplay receipt or route estimate changed. The earlier chapter evidence versions above remain in effect.
 
 </details>
 
@@ -521,6 +524,38 @@ Connect every reached relevant allocator and callback to the real free-list/owne
 
 </details>
 
+<a id="review-backup-credit-where-would-it-come-from"></a>
+
+## Backup credit: where would it come from?
+
+Imagine the active file says “no star,” while its backup says “star collected.” Reloading backup would bring that credit back. The catch is getting the copies to disagree that way. In the audited stock code, backup receives credit that active already had.
+
+Take a star collected and saved normally. Gameplay updates the active file in RAM, the console’s working memory. Saving copies it into the RAM backup, then writes both records to the cartridge. Game-over reload copies backup back into active. Erase briefly looks like an opening: active goes blank while backup keeps its old stars. But the same routine immediately copies the blank file into backup before ordinary play resumes. There is no demonstrated chance to fit a gameplay reload into that interval.
+
+An interrupted cartridge write is a different story. A previously earned star could remain in the old backup if erase writes a complete valid blank primary record, then stops before replacing backup. Startup checks each record separately and leaves two valid records alone, even when they disagree about stars. A later game over could restore the old credit if no intervening save replaces backup and debug level select is disabled.
+
+Starting the blank file does not automatically overwrite backup. Still, we have not tested that device sequence or replayed the required save-free gameplay continuation. Even if it works, it brings back an earlier star; it does not explain first credit from our accepted target-clear start.
+
+Coq already excludes that first-credit reload when the target-clear copies agree. We still need to show that ordinary gameplay gives the actual reload the condition this proof needs. For the interruption idea, we would need the readable blank-primary/credited-backup pair and a real reload before another save. Same copy direction, different starting histories.
+
+<details>
+<summary>Backup credit: evidence, assumptions and the interrupted-save question</summary>
+
+The 7 October source review at `cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59` separates active RAM, backup RAM and persisted EEPROM. Normal saving copies an already credited active file into backup before device I/O; reload copies backup in the opposite direction. Completed erase clears both RAM records. A brief mismatch inside erase is followed by the mandatory copy before ordinary gameplay resumes, so it is not a demonstrated reload opportunity. Unsaved collection can leave active ahead of backup; equality is not required at every statement.
+
+Startup accepts two separately valid records without checking agreement. The SDK writes blocks in ascending order, so an interrupted erase could conditionally leave a complete valid blank primary beside an old credited backup. New-file startup does not automatically overwrite backup. Hardware readback and a continuous save-free consumer replay remain untested; the actual game-over reload requires debug level select disabled, no demo and an expired pending timer. This would restore earlier target credit, not create a target absent from all permitted save inputs. It is outside the accepted coherent target-clear start, rather than a known uninterrupted no-A route.
+
+The existing Coq reload exclusion is finished under its agreement premise. Applying it to all actual earlier save and device histories remains separate. The finite modeled writer kernel does not include ordinary active-to-backup saving; its backup-preservation theorem cannot substitute for that connection. No new proof or device test was run.
+
+| Backup claim | Immutable evidence | Status and scope |
+| --- | --- | --- |
+| Saving copies active to backup before EEPROM; erase immediately saves | [US save/erase/copy bodies](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59/SSL-Coq/less-than-one-a-press/generated/us_save_file.v#L1192); [matching JP bodies](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59/SSL-Coq/less-than-one-a-press/generated/jp_save_file.v#L1192) | Source/AST audit of ordinary operations; correct indices, storage and external byte-copy behavior still need the full execution bridge. |
+| Startup does not repair two valid differing records; reload copies backup | [US load/reload](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59/SSL-Coq/less-than-one-a-press/generated/us_save_file.v#L1342); [JP load/reload](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59/SSL-Coq/less-than-one-a-press/generated/jp_save_file.v#L1342); [actual game-over call](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59/SSL-Coq/less-than-one-a-press/generated/us_level_update.v#L6009); [pinned SDK block order](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/lib/src/osEepromLongWrite.c#L18) | Device-interruption/readback and a save-free consumer history are not established. Supplied mismatch is not reachability. |
+| Coherent clean reload cannot be first target credit | [Clean-entry theorem and premises](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59/SSL-Coq/less-than-one-a-press/proofs/CleanEntry.v#L34); [certified reload theorem](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59/SSL-Coq/less-than-one-a-press/proofs/AreaTransitions.v#L290) | Existing conditional Coq result; agreement is assumed at that boundary, not derived from every persisted history. |
+| Incoherent reload remains an explicit modeled cause | [First-transition cause](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59/SSL-Coq/less-than-one-a-press/proofs/SourceExhaustiveness.v#L517); [limited writer kernel](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59/SSL-Coq/less-than-one-a-press/proofs/SourceExhaustiveness.v#L578) | No independent stock backup award found. An active-credit producer or previously credited storage still needs its own history. |
+
+</details>
+
 <a id="review-final-reward"></a>
 
 ## Final reward and save-bit continuation
@@ -529,7 +564,7 @@ Getting the Puzzle star to appear leaves one more job. A prepared JP replay touc
 
 Healthy pickup runs helpers, records the interacted and used star, reads its reward number, then calls the collection save routine. That routine adds the course bit before the handler chooses Mario’s final collection action. A bit is the little yes/no collection record: our targets use indices 2 and 5; the 100-coin reward uses 6. With normal reward provenance, collecting that coin star doesn’t tick either target’s box.
 
-For this project the finish line is the target bit changing from clear to set in the active save record. The dance, leaving the level and a permanent cartridge save happen at later checkpoints. Backup saving copies active credit; reload reverses it. Interrupted cartridge writes remain a separate question. We have a proof keeping the Mario and star pointer arguments intact. It doesn’t prove every helper’s effect on those objects or the entire live reward-number/save-write sequence.
+For this project the finish line is the target bit changing from clear to set in the active save record. The dance, leaving the level and a permanent cartridge save happen at later checkpoints. The [backup-credit chapter](#review-backup-credit-where-would-it-come-from) separates ordinary copying from the untested interrupted-cartridge idea. We have a proof keeping the Mario and star pointer arguments intact. It doesn’t prove every helper’s effect on those objects or the entire live reward-number/save-write sequence.
 
 Start with legitimate contact from the [target-credit chapter](#review-target-credit), then follow that same star through the helpers and into the right SSL file and course’s new bit. This must join a continuous allowed-input history. The tuned pickup gives a conditional downstream payoff, with zero projected A counters in its checked suffix; it doesn’t reconstruct the earlier route or authenticate the whole controller history. If we also claim the dance or permanent save finishes, we need to follow those later checkpoints too.
 
@@ -569,20 +604,5 @@ One injected JP replay consumes all five secrets and spawns the Puzzle star, but
 Inside CertifiedExecution, a new target bit requires the specified collection event. Its constructors already require the modeled event effects; they do not derive the full pickup from the generated program. The remaining bridge is from the live handler, after its helpers, to the actual target-index read, correct SSL file/course and save write, then to that modeled collection event.
 
 Closure needs one uninterrupted allowed-input continuation from the accepted start, or an exact clean prefix joined to this suffix with matching state and controller history. Follow the same target object through dispatch and helpers, establish the initially clear bit and its actual set operation, and account for every new A edge. If a later dance, exit or permanent-save outcome is claimed, follow that later checkpoint separately. The current evidence establishes a conditional downstream payoff, not a complete no-A target route.
-
-### Backup credit: where would it come from?
-
-The 7 October source review at `cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59` separates active RAM, backup RAM and persisted EEPROM. Normal saving copies an already credited active file into backup before device I/O; reload copies backup in the opposite direction. Completed erase clears both RAM records. A brief mismatch inside erase is followed by the mandatory copy before ordinary gameplay resumes, so it is not a demonstrated reload opportunity. Unsaved collection can leave active ahead of backup; equality is not required at every statement.
-
-Startup accepts two separately valid records without checking agreement. The SDK writes blocks in ascending order, so an interrupted erase could conditionally leave a complete valid blank primary beside an old credited backup. New-file startup does not automatically overwrite backup. Hardware readback and a continuous save-free consumer replay remain untested; the actual game-over reload requires debug level select disabled, no demo and an expired pending timer. This would restore earlier target credit, not create a target absent from all permitted save inputs. It is outside the accepted coherent target-clear start, rather than a known uninterrupted no-A route.
-
-The existing Coq reload exclusion is finished under its agreement premise. Applying it to all actual earlier save and device histories remains separate. The finite modeled writer kernel does not include ordinary active-to-backup saving; its backup-preservation theorem cannot substitute for that connection. No new proof or device test was run.
-
-| Backup claim | Immutable evidence | Status and scope |
-| --- | --- | --- |
-| Saving copies active to backup before EEPROM; erase immediately saves | [US save/erase/copy bodies](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59/SSL-Coq/less-than-one-a-press/generated/us_save_file.v#L1192); [matching JP bodies](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59/SSL-Coq/less-than-one-a-press/generated/jp_save_file.v#L1192) | Source/AST audit of ordinary operations; correct indices, storage and external byte-copy behavior still need the full execution bridge. |
-| Startup does not repair two valid differing records; reload copies backup | [US load/reload](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59/SSL-Coq/less-than-one-a-press/generated/us_save_file.v#L1342); [JP load/reload](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59/SSL-Coq/less-than-one-a-press/generated/jp_save_file.v#L1342); [actual game-over call](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59/SSL-Coq/less-than-one-a-press/generated/us_level_update.v#L6009); [pinned SDK block order](https://github.com/n64decomp/sm64/blob/9921382a68bb0c865e5e45eb594d9c64db59b1af/lib/src/osEepromLongWrite.c#L18) | Device-interruption/readback and a save-free consumer history are not established. Supplied mismatch is not reachability. |
-| Coherent clean reload cannot be first target credit | [Clean-entry theorem and premises](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59/SSL-Coq/less-than-one-a-press/proofs/CleanEntry.v#L34); [certified reload theorem](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59/SSL-Coq/less-than-one-a-press/proofs/AreaTransitions.v#L290) | Existing conditional Coq result; agreement is assumed at that boundary, not derived from every persisted history. |
-| Incoherent reload remains an explicit modeled cause | [First-transition cause](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59/SSL-Coq/less-than-one-a-press/proofs/SourceExhaustiveness.v#L517); [limited writer kernel](https://github.com/tra38/sm64-wmotr-abc-proof/blob/cb99a401b91ecdb1fd54dd26aa4c3e98ac2e3d59/SSL-Coq/less-than-one-a-press/proofs/SourceExhaustiveness.v#L578) | No independent stock backup award found. An active-credit producer or previously credited storage still needs its own history. |
 
 </details>

@@ -1,5 +1,7 @@
 # Verification checklist
 
+- [x] Promote the existing backup-credit explanation into its own [review chapter](notes/what-have-we-actually-proved.md#review-backup-credit-where-would-it-come-from) immediately before final reward, with calm and informal narratives and shared unchanged evidence. Add it to the overview and ten-chapter navigation; retain the former anchor, tone preference, earlier chapter sources and private access. This is editorial organization only: no new proof, source finding, game/device run or estimate change.
+
 - [x] Audit [backup target-credit provenance](notes/backup-star-credit-audit.md) at `cb99a40` using pinned C, actual US/JP generated bodies and existing theorem premises. Distinguish active RAM, backup RAM and EEPROM; normal save copies prior active credit, completed erase clears both RAM copies, and unsaved collection need not preserve equality. Startup accepts two individually valid differing records. Record the interrupted-device/prior-credit possibility as untested and outside accepted clean entry; no gameplay run, new Coq closure or estimate change. Keep both review tones and the private site consistent.
 - [ ] Connect actual save/copy/erase/repair/reload operations and live indices/storage to the backup-credit condition at consumer checkpoints. Separately scope and validate any interrupted persistent-write/readback and save-free reload history; signature validity alone does not prove target-save agreement.
 
